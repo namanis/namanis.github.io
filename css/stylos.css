@@ -1,0 +1,6 @@
+p {font-size: 100%;
+	font-family: verdana;
+	margin: auto;
+	text-align:justify ;
+}
+pre { overflow: scroll; display: inline-block; width: 30em; height: 12em; font-size: 20px; background-color:yellow;  border: dotted;}
