@@ -2,8 +2,9 @@ p {font-size: 100%;
 	font-family: verdana;
 	margin: auto;
 	text-align:justify ;
+white-space: wrap;
 }
-pre { overflow: scroll; display: inline-block; width: 40em; height: 16em; font-size: 20px; background-color:yellow;  border: dotted; }
+pre { overflow: auto; display: inline-block; width: auto; height: auto; font-size: 20px; background-color:yellow;  border: dotted; }
  h1{text-align: center; width: 100%; background-color: yellow; }
- h2, h4{background-color: silver; }
+ h2, h3, h4{background-color: silver; }
 ol, ul,li {font-size: 25px;}

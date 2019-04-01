@@ -1,4 +1,5 @@
 ﻿
+
 <!DOCTYPE html>
  <html lang="pt-br">
  <head>
@@ -8,7 +9,7 @@
  <title> Programar em Java</title>
  </head>
  <body>
-<div >
+<div class="conteudo">
   <h1>APRENDENDO PROGRAMAR EM JAVA</h1>
   <h2>Apresentação</h2>
   <p>Olá ! Bem vindo(a)s! Estou criando este conteúdo com intuito de fornecer conhecimento 
@@ -31,13 +32,13 @@ que pensa em certificar-se em java e já deu os primeiros passos ou que quer som
 <ul>
 <li>Definir o Escopo de variáveis</li>
 <li>Definir a estrutura de um classe Java</li>
-<li>Criar aplicaçoes java executávelcom um metodo main;</li>
+<li>Criar aplicaçoes java executável com um método main;</li>
 <li>Executar um programa java da linha de comando; incluindo saída no console.</li>
 <li>importar outros  pacotes java para fazê-los acessíveis em seu código</li>
 <li>Declarar e inicializar variáveis(incluindo cast ou tipos primitivos).</li>
-<li>Diferenciar entre variáveis de referência  e variáveis primitivas</li>
+<li>Diferenciar entre variáveis de referência e variáveis primitivas</li>
 <li>Conhecer como ler e/ou escrever para campos do objeto  </li>
-<li>Ciclo de vida do Objeto e coletores de lixo;</li>
+<li>Ciclo de vida do Objeto e coletores de lixo</li>
 <li>Usar Operadores java; inculindo parenteses para sobrepor precedência de operadores;</li>
 <li>Criar if e if/else e construtores ternário</li>
 <li>Usar uma declaração switch</li>
@@ -47,14 +48,14 @@ que pensa em certificar-se em java e já deu os primeiros passos ou que quer som
 <li>Usar break e continue</li>
 </ul>
 </p>
-<p>Pra se ter um melhor nível de aprendizado é recomendável que não comece com uma Ide do tipo Eclipse ou Netbeans
-Comece utilizando bloco de notas e execute utilizando linhas de comando:</p>
-<p> <b>-"javac <nomedoprograma>.java" pra compilar e "java<nomedopragrama>"" pra executar</b></p><br>
+<p>Pra se ter um melhor nível de aprendizado é recomendável que não comece com uma Ide do tipo Eclipse ou Netbeans,
+Comece utilizando bloco de notas e execute utilizando linhas de comando:</p><br>
+<p> <b>-"javac (nomedoprograma).java" pra compilar e "java(nomedopragrama)" pra executar</b></p><br>
 <p>Estes comandos podem ser utilizado no seu sistema operacional linux, windows, e outros independentemente!
 Pois java tem uma máquina virtual que cuida de todo o programa.</p><br>
  <p>Pra utilizar estes comandos crie uma pasta e coloque seus códigos dentro, depois acesse via shell
 promptDos se for windows, git bash no linux e outros.</p><br>
-<p>Este  reconhece que você ao menos tem conhecimento de instalação do java e já teve algum contato
+<p>Este reconhece que você ao menos tem conhecimento e já fez a instalação do java e também teve algum contato
 com lógica de programação e sabe acessar a linha de comando.</p>
  
 <p>Esse conteúdo é baseado no livro Certified Associate Java SE 8 Programmer I<br>
@@ -64,14 +65,14 @@ Boa Leitura!</p>
  <br>
 <h1>1-ENTENDENDO A ESTRUTURA JAVA</h1>
 <p>No programa Java, classes são básicos construtores de blocos. Quando define uma classe, você descreve todas as partes e características 
-destes construtores de blocos. Para usar mais classes, você tem que criar objetos. </p>
+destes construtores de blocos. Para usar mais classes, você tem que criar objetos. </p><br>
 <p>Um objeto é uma instância de uma classe em memória no tempo de execução.
 Todos os vários objetos de todas as diferentes classes representa o estado de seu programa.</p> 
 <br>
 <p><b>Class Arvore{}</b></p>
 <br>
 <h2>Campos e métodos</h2>
-<p>As variáveis são conhecidas como campo é é o que aguarda o estado do programa.
+<p>As variáveis são conhecidas como campo e é quem aguarda o estado do programa.
 Métodos são conhecios como função ou procedimentos em outras linguagens. Juntos são chamados de membros da classe.</p>
 <pre>
 1-public class Arvore{
@@ -96,7 +97,7 @@ Métodos são conhecios como função ou procedimentos em outras linguagens. Jun
 <li>Isto siginifica que o chamador devera passar um parâmetro <b>String</b> e esperar nada ser retornado.</li>
 </ul>
 <h2>Comentários</h2>
-<p>Os comentário em java são importantes para deixar o programa mais legível.
+<p>Os comentário em java são importantes para deixar o programa mais legível e bem documentado.
    Existe algumas maneiras de comentar o programa que será mostrado logo abaixo: </p>
 <pre>
 // comentario até o fim da linha
@@ -160,9 +161,9 @@ $ java Planta Hortela , Mastruz<br>
 <p>
   <br>
 <h2>Entendendo Pacotes, Declaracão e imports</h2>
-<p>Java coloca classes em Pacotes (package "name package";).E quando necessitamos de classes que são predefinidas
+<p>Java coloca classes em Pacotes (package "name package";). E quando necessitamos de classes que são predefinidas
  precisamos importá-las para dentro da nossa classe para que as classes funcionem. Nos casos abaixo estamos tentando
-  usar a <b>Classe Random</b> para números aleatórios.</p>
+usar a <b>Classe Random</b> para números aleatórios.</p>
 <pre>
 // sem import não funciona
 public class ImportExample {
@@ -194,7 +195,7 @@ System.out.println(r.nextInt(10));
 }
 </pre>
 <h2>Imports redundantes</h2>
-<p>Java lang é um pacote especial e é automaticamente importado, nela contém classe como <b>String</b> por exemplo.</p>
+<p><b>Java lang</b> é um pacote especial e é automaticamente importado, nela contém classe como <b>String</b> por exemplo.</p>
 <pre>
  import java.lang.System; // desnecessario
  import java.lang.*;// desnecessario
@@ -260,17 +261,17 @@ public class Baleia {
 int numFilhote;// variavel de instancia
 public static void main(String[] args) {
 Baleia mae = new Baleia();
-mae.numFilhote = 5; //set variable - Escrever na variavel conhecido como "set"
-System.out.println(mae.numFilhote); //read variable - Ler a variavel conhecido como "get'
+mae.numFilhote = 5; //set variable - Escrever na variavel 
+System.out.println(mae.numFilhote); //read variable - Ler a variavel 
 }
 }
 </pre>
 <p>Voce pode ler e escrever campos na declaração..</p>
 <pre>
-public class Name {
-String first = "Theodore";
-String last = "Moose";
-String full = first + last;
+public class Nome {
+String primerio = "Alan";
+String ultimo = "Santos";
+String nometodo = primeiro + ultimo;
 }
 </pre>
 <h2>Inicialização Ordenada</h2>
@@ -297,10 +298,10 @@ System.out.println(fruta.name); } }
 </p>
 <h2>Distinguir entre Objeto Referência e Primitivos</h2>
 <p>Aplicações java contem 2 tipos de dados: tipo primitivo e tipo referência.</p>
-<h4>Tipos primitivos</h4>
+<h3>Tipos primitivos</h3>
 <p>Java tem oito tipos de dados embutido que é referido como tipos primitivos de dados.</p>
 <div>
-  <table>
+  <table style= "text-align:center; border:2px;">
   <tr>
     <th>Palavra-chave</th>
     <th>Tipo</th>
@@ -358,11 +359,11 @@ System.out.println(fruta.name); } }
 </div>
 <br>
 <ol>
-<li>float e double são usados com ponto flutuantes(decimal) valores</li> 
-<li>Um float requer a letra <b>f</b> seguido do número.</li>
+<li><b>float</b> e <b>double</b> são usados com valores ponto flutuantes(decimal)</li> 
+<li>Um <b>float</b> requer a letra <b>f</b> seguido do número.</li>
 <li>byte, short, int e long são números usados sem casas decimais</li>
 </ol>
-<h4>Tipos referência</h4>
+<h3>Tipos referência</h3>
 <p>Um tipo de referência refere-se a um objeto (uma instância de uma classe). Ao contrário dos 
 tipos primitivos que contêm seus valores na memória onde a variável é alocada, referências não mantêm o valor
 do objeto a que se referem. Em vez disso, uma referência "aponta" para um objeto armazenando o endereço  
@@ -515,14 +516,14 @@ Finalizer f = new Finalizer();
 Você viu que as classes Java consistem em membros chamados campos e métodos. O objeto é uma instância de uma classe Java. 
 Existem três estilos de comentário: um comentário de linha única (//), um comentário de múltiplas linhas (/ * * /) 
 e um comentário de Javadoc (/ ** * /).</p><br>
-<p>Java inicia a execução do programa com um método main().</p><br> 
-<p>A assinatura mais comum para este método executado a partir da linha de comando é public static void main (String [] args).</p><br>
-<p>Argumentos são passados ​​após o nome da classe, como em java NameOfClass firstArgument.
+<p>Java inicia a execução do programa com um <b>método main()</b>.</p><br> 
+<p>A assinatura mais comum para este método executado a partir da linha de comando é <b>public static void main (String [] args)</b>.</p><br>
+<p>Argumentos são passados ​​após o nome da classe, como em java NomeDaClasse primeiroArgumento.
 Argumentos são indexados começando com 0.<p/><br>
 <p>O código Java é organizado em pastas chamadas pacotes.
 Para fazer referência a classes em outros pacotes, você usa uma instrução de importação.</p><br> 
-<p>Um caractere(*) que termina uma instrução de importação significa que você deseja importar todas as classes desse pacote. 
- Não inclui pacotes que estão dentro daquele.java.lang é um pacote especial que não precisa ser importado.<p><br>
+<p>Um caractere(*) que termina uma instrução de importação significa que você deseja importar todas as classes desse pacote. </p>
+<b>Java.lang</b> é um pacote especial que não precisa ser importado.<p><br>
 <p>Construtores criam objetos Java. Um construtor é um método que corresponde ao nome da classe e
 omitindo o tipo de retorno. Quando um objeto é instanciado, campos e blocos de código são
 inicializado pela primeira vez. Então o construtor é executado.</p><br>
@@ -531,7 +532,7 @@ tipos de referência. Os tipos de referência podem ter métodos e serem designa
 <p>Declarar uma variável envolve declarar o tipo de dados e dar à variável um nome.
 As variáveis ​​que representam campos em uma classe são automaticamente inicializadas para o valor “zero” ou nulo 
 correspondente durante a instanciação de objetos. Variáveis ​​locais devem ser especificamente inicializado.</p><br>
-<p> Identificadores podem conter letras, números, $ ou _. Identificadores podem não começar com
+<p> Identificadores podem conter letras, números, $ ou _. Identificadores podem  não começar com
 números.<p><br>
 <p>Escopo refere-se àquela parte do código onde uma variável pode ser acessada. Há três
 tipos de variáveis ​​em Java, dependendo de seu escopo: variáveis ​​de instância, variáveis ​​de classe e
@@ -543,7 +544,7 @@ se presente. Depois vem as declarações de importação, se presentes. Depois v
 <p>A coleta de lixo é responsável por remover objetos da memória quando eles podem
 nunca mais ser usado novamente. Um objeto se torna elegível para coleta de lixo quando não há
 mais referências a ele ou suas referências ficaram fora do escopo. O método finalize ()
-será executado uma vez para cada objeto se / quando for o primeiro lixo coletado.</p><br>
+será executado uma vez para cada objeto se ou quando for o primeiro lixo coletado.</p><br>
 
 <p><i>O código Java é orientado a objetos, o que significa que todo código é definido em classes. Modificadores de acesso
 permite que classes encapsulem dados. Java é independente de plataforma, compilando para bytecode. Isto é
@@ -552,9 +553,9 @@ porque roda dentro de uma máquina virtual</i>.</p><br><br>
 
 <h1>2-ENTENDENDO OPERADORES EM JAVA</h1>
 <p>Um operador Java é um simbolo especial que pode ser aplicado para um conjunto de variáveis, valores, 
-ou literais-referido como operando - e este retorna o resultado.</p>
+ou literais-referido como operando - e este retorna o resultado.</p><br>
 <p>São três operadores acessíveis em java: unário, binário, ternário. Estes tipos de operadores podem ser aplicado
-para uma, duas ou três operandos, respectivamente.</p>
+para uma, duas ou três operandos, respectivamente.</p><br>
 <p> Os operadores Java não são necessariamente avaliados da ordem da esquerda para a direita. Por exemplo, 
 a seguinte expressão Java é realmente avaliada da direita para a esquerda, considerando os operadores específicos envolvidos:</p>
 <br>
@@ -570,8 +571,8 @@ double x = 4 + 3 * --y;
 <p>Neste exemplo, primeiro decrementa <b>y</b> para 1 e então multiplica o resultado do valor por 3 
 e finalmente adciona 4. O valor final de <b>x</b> e <b>y</b> seria 7.0 ( fica 7.0 automaticamente por o tipo ser double ) e 1 respectivamente .</p>
 <h2>Ordem de precedência do operador</h2>
-<h4>Simbolos e exemplos de Operadores</h4>
-<table>
+<h3>Simbolos e exemplos de Operadores</h3>
+<table style = "text-align:center;">
   <tr>
     <th> Operadores</th>
     <th> Simbolos e Exemplos</th>
@@ -675,7 +676,7 @@ e finalmente adciona 4. O valor final de <b>x</b> e <b>y</b> seria 7.0 ( fica 7.
 </table>
 <h2>Trabalhando com Operadores binários Aritimético</h2>
 <p>Operadores binarios são comumente combinado em experssões complexas com mais do que duas variáveis, contudo, operador precedente
-é muito importante em avaliar expressões.</p>
+é muito importante em avaliar expressões.</p><br>
 <p>Operadores Aritimetico inclui adição(+), subtração(-), multiplicação(*), divisão(/), e modulo(%).
  Eles também inclui o perador unario ++ e --. Os operadores(*, /, %) tem maior prioridade em relação ao operadores (+,-).</p>
 <p>Isso significa quando você ver uma expressão assim:</p>
@@ -807,10 +808,9 @@ boolean z = !0; // NÃO COMPILA  NÃO PODE ATRIBUIR UM INTEIRO PARA UMA VARIAVEL
 <br>
 <h2>Operadores Incremento e Decremento</h2>
 <p>Operadores Incremento e Decremento ++ e -- respectivamente pode ser aplicado a operandos numéricos 
-e ter a ordem ou precedência mais alta, em comparação aos operadores binários.</p>
-<p>Eles são aplicado primeiro para uma expressão.</p>
+e ter a ordem ou precedência mais alta, em comparação aos operadores binários. Eles são aplicado primeiro para uma expressão.</p><br>
 <p>Se o operador é colocado antes do operando, refere como operador pre-incremento e o operador pre-decremento.
- Então o operador é aplicado primeiro e o valor retornado é o novo valor da expressão.</p>
+ Então o operador é aplicado primeiro e o valor retornado é o novo valor da expressão.</p><br>
 <p>Se o operaor é colocado depois do operando refere como o operador pos-incremento e o operador pos-decremento, 
 neste caso o valor original da expressão é retornado com operador aplicado depois do valor retornado.</p>
 <p>Trecho ilustrando estas distinções.</p>
@@ -823,8 +823,8 @@ System.out.println(counter--); // Saída 1
 System.out.println(counter); // Saída 0
 </pre>
 <p>
-O primeiro operador pre-incremento atualiza o valor para <b>counter</b> e a saida do novo valor 1.
- O próximo operador pos-decremente também atualiza o valor de <b>counter</b> mas antes do valor de saida o decremento ocorre.</p>
+O primeiro operador pre-incremento atualiza o valor para <b>counter</b> e a saída do novo valor 1.
+ O próximo operador pos-decremento também atualiza o valor de <b>counter</b> mas antes do valor de saida o decremento ocorre.</p>
 <p>Como você ler ese código?</p>
 <pre>
 int x = 3;
@@ -877,7 +877,7 @@ int z =(int)9l;
 long t = 19230139810323L;
 </pre>
 <p>As expressões do exemplo anterior agora compilam, embora haja um custo. O segundo valor, 1.921.222,
- é muito grande para ser armazenado como um <b>short</b>, portanto ocorre um excesso numérico e ele se torna 20.678.</p> 
+ é muito grande para ser armazenado como um <b>short</b>, portanto ocorre um excesso numérico e ele se torna 20.678.</p><br> 
 <p>Overflow é quando um número é tão grande que não cabe mais dentro do tipo de dados, então o sistema “envolve”
  o próximo valor mais baixo e conta a partir daí. Há também um underflow análogo, quando o número é muito baixo 
  para caber no tipo de dados.</p>
@@ -923,7 +923,7 @@ System.out.println(x > z); // Saída false
 uma classe, subclasse ou classe que implementa uma determinada interface, como mencionado em <b>b</b></i>.</p>
 <p>O operador <b>instanceof</b>, é útil para determinar se um objeto arbitrário é um membro de uma classe particular ou interface.</p>
 <h2>Operadores Lógicos</h2>
-<p>Os operadores lógicos, (&), (|), e (^), pode ser aplicado para ambos tipos de dados , numérico e booleano.</p>
+<p>Os operadores lógicos, (&), (|), e (^), pode ser aplicado para ambos tipos de dados, numérico e booleano.</p>
 <p>Quando eles são alocados para um tipo de dados boolean, eles são referidos como operadores lógicos. 
   Alternativamente, quando eles são aplicados para um tipo de dados numéricos, eles são referidos como operadores bitwise (bit a bit).</p>
 <h3>Logica da tabela verdade para & | e ^</h3>
@@ -949,8 +949,8 @@ uma classe, subclasse ou classe que implementa uma determinada interface, como m
 <li> OU Inclusivo é somente falso se ambos operandos são falso</li>
 <li> OU Exclusivo é somente verdade se os operandos são diferentes</li>
 </ul>
-<p> Operadores && e || são conhecidos como operadores curto-circuito. Eles são quase idênticos
- aos operadores lógico & e | , respectivamente espera que o lado-direito da expressão nunca 
+<p> Operadores <b>&& </b>e <b>||></b> são conhecidos como operadores curto-circuito. Eles são quase idênticos
+ aos operadores lógico <b>&</b> e <b>|</b> , respectivamente espera que o lado-direito da expressão nunca 
  pode ser avaliado se o resultado final pode ser determinado pela expressão lógica do lado-esquerdo.</p>
  <br>
 <p><b>boolean x = true || (y<4);</b></p>
@@ -1058,7 +1058,7 @@ System.out.println("Boa Noite");
 <p><b>expressaoBoolena ? expressao1 : expressao2</b></p>
 <br>
 <p>O primeiro operando deve ser uma expressão booleana, e a segunda e terceira pode ser qualquer expressão que retorna um valor.
-O operador ternário é relmente um condensada forma de um <b>if-then-else</b> declaração que returna um value. Por exemplo:</p> 
+O operador ternário é relmente uma condensada forma de um <b>if-then-else</b> declaração que returna um valor. Por exemplo:</p> 
 <pre>
 int y=10;
 final int x;
@@ -1175,7 +1175,7 @@ em ordem até encontrar uma declaração ou terminar a estrutura.</p>
       -> Sabado</b><br></p>
 
 <h2>A DECLARAÇÃO while</h2>
-<p>Uma estrutura de controle de repeticao, que nós referimos como loop, executa uma declaração de códigos múltiplas vezes sucessivamente.</p>
+<p>Uma estrutura de controle de repetição, que nós referimos como loop, executa uma declaração de códigos múltiplas vezes sucessivamente.</p>
 <h2>A estrutura da declaração while</h2>
 <pre>
 while(expressaoBooleana){ 
@@ -1249,7 +1249,7 @@ x++;
 <h2>A DECLARAÇÃO for</h2>
 <p>Um <b>loop for</b> básico tem a mesma expressão booleana condicional e declaração, ou bloco de declaração, como outros loops:
  um bloco de inialização e uma declaração de atualização.</p>
-<h4>A estrutura básica da declaração for</h4>
+<h3>A estrutura básica da declaração for</h3>
 <br>
 <p>
   <b>
@@ -1259,10 +1259,10 @@ for(inicializacao; expressaobooleana; declaracaoAtualizacao){<br>
 </p>
 <br>
 <ol>
-<li> Executa a declaração inicialização</li>
-<li> ExpressaoBooleana é verdadeiro(true) continue, senão finaliza loop</li>
-<li> Executa o Corpo</li>
-<li>Executa a declaracoAtualizacao</li>
+<li> Executa a declaração <b>inicialização</b></li>
+<li> <b>expressaobooleana</b> é verdadeiro(true) continue, senão finaliza loop</li>
+<li> Executa o <b>corpo</b></li>
+<li>Executa a <b>declaracoAtualizacao</b></li>
 <li>Retorna ao passo 2</li>
 </ol>
 <p>Note que cada seção é separada por ponto e virgula. A inicialização e seção de atualização pode conter múltiplas declarações, 
@@ -1293,10 +1293,10 @@ System.out.print(x);
 <p>Este código demonstra três variações do <b>loop for</b>.
 Primeiro, você pode declarar uma variável, como <b>x</b> neste exemplo, antes de iniciar o loop e usá-lo após a conclusão. 
 Segundo, seu bloco de inicialização, expressão booleana e instruções de atualização pode incluir variáveis ​​extras que podem não se referenciar. 
-Por exemplo, <b>z</b> é definido no bloco de inicialização e nunca é usado. Finalmente, a atualização pode modificar várias variáveis.</p>
+Por exemplo, <b>z</b> é definido no bloco de inicialização e nunca é usado. Finalmente, a atualização pode modificar várias variáveis.</p><br>
 <p>Este codigo quando executar a saida é:</p>
 <p><b>//0 1 2 3 4</b></p>
-<h2>A Declaraçao For-each</h2>
+<h2>A Declaraçao for-each</h2>
 <p>Esta declaração é especialmente desenhada para iteragir sobre <b>arrays</b> e objetos <b>colletion</b>.</p> 
 <h2>Estrutura de uma declaração for-each</h2>
 <pre>
@@ -1312,12 +1312,12 @@ for(tipodedados1 instancia : collection){//Abre chaves
 
 <p>A declaração <b>loop for-each</b> é composta de uma seção de inicialização e um objeto para ser iterado.
  O lado-direito da declaração <b>loop for-each</b> deve ser construido um <b>array</b> ou um objeto em que implemente 
- a classe <b>java.lang.Iterable</b>, que inclui mais do framework <b>Java Collections.</b></p>
+ a classe <b>java.lang.Iterable</b>, que inclui mais do framework <b>Java Collections.</b></p><br>
  <p>O lado-esquerdo do <b>loop for-each</b> deve incluir uma declaração para uma instância de uma variável, cujo tipo corresponde ao tipo de um membro do
-<b>array</b> ou <b>collection </b> no lado direito da instrução.</p>
-<p>Em cada iteração do loop, a variável nomeada no lado-esquerdo da declaração é atribuido um novo valor do <b>array</b>
+<b>array</b> ou <b>collection </b> no lado direito da instrução.</p><br>
+<p>Em cada iteração do loop, a variável nomeada no lado-esquerdo da declaração é atribuído um novo valor do <b>array</b>
  ou <b>collection</b> no lado-direito da declaração.</p>
-<p>Vamos ver alguns exemplos:</p>
+<p>Vamos ver alguns exemplos:</p><br>
 <p>Qual será a saida deste codigo.</p>
 <pre>
 final Sring[] nomes = new String[3];
@@ -1413,18 +1413,17 @@ para as declarações, foi abordado  tipos de estruturas de controle de
 estruturas de controle de repetição, incluindo <b>for</b>, </b>for-each</b>, <b>while</b> e <b>do-while</b>.</p> <br>
 <p>A maioria dessas estruturas requer a avaliação de uma expressão booleana particular, seja para
 decisões de ramificação ou uma vez por repetição. A declaração <b>switch</b> é a única que suporta uma variedade de tipos de dados, 
-incluindo variáveis ​​de <b>string</b>.</p></br>
+incluindo variáveis ​​de <b>String</b>.</p></br>
 <p>Com uma declaração para cada, você não precisa escrever explicitamente uma expressão booleana, uma vez que
 o compilador os constrói implicitamente.</p><br>
 <p>Concluímos discutindo as opções avançadas de controle e como o fluxo pode ser
 aprimorada por meio de loops aninhados, com informações de interrupção e instruções permanentes. </p>
 <br>
   <br>
-<p>Parabéns por ter chegado até aqui, agora é hora de brincar com os códigos que estão no repositório pronto pra ser usado.
-  Os códigos correspondem a todo este conteúdo. Divirtam-se!</p><br>
+<p>Parabéns por ter chegado até aqui, agora é hora de brincar com os códigos que estão no repositório esperando seu clique, pronto pra ser usado.
+  Os códigos correspondem a todo este conteúdo esplanado. Não se preocupe com as dúvidas, pois elas serão esclarecidas durante o processo dos próximos capítulos. Divirtam-se!</p><br>
 
 <p style="text-align:center;"><a href="https://github.com/namanis/namanis.github.io/tree/master/javacodigos" target="_blank" >ACESSE O REPOSITÓRIO GITHUB</a></p>
 </div>
 </body>
 </html>
-
