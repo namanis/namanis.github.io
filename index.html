@@ -8,8 +8,61 @@
  <title> Programar em Java</title>
  </head>
  <body>
-<div>
-<h1>ENTENDENDO A ESTRUTURA JAVA</h1>
+<div class="conteudo">
+  <h1>APRENDENDO PROGRAMAR EM JAVA</h1>
+  <h2>Apresentação</h2>
+  <p>Olá ! Bem vindo(a)s! Estou criando este conteúdo com intuito de fornecer conhecimento 
+em uma tecnologia que está entre as mais usadas no mundo.</p><br>
+<p>Com Java você pode criar inúmeras aplicações para web, desktop, mobile, webservices e mais 
+uma infinidade de coisa.</p><br>
+<p>Mas como todo conhecimento para ser adquirido tem que ser iniciado, esse espaço é pra você 
+que pensa em certificar-se em java e já deu os primeiros passos ou que quer somente aprender
+ uma tecnologia pra desenvolver suas idéias.</p>
+
+<p>Este projeto será desenvolvido em 03 partes: </p><br>
+<p>
+1º->Entendendo a estrutura java - Entendendo Operadores em java (Concluído)<br>
+2º->APIs Java - Metodos e Encapsulamento (futuro)<br>
+3º->Desenho da Classe e Excessões(futuro)<br>
+</p>
+<br>
+<p>Nesta primeira parte o objetivo é aprender o básico, como:</p>
+<p>
+<ul>
+<li>Definir o Escopo de variáveis</li>
+<li>Definir a estrutura de um classe Java</li>
+<li>Criar aplicaçoes java executávelcom um metodo main;</li>
+<li>Executar um programa java da linha de comando; incluindo saída no console.</li>
+<li>importar outros  pacotes java para fazê-los acessíveis em seu código</li>
+<li>Declarar e inicializar variáveis(incluindo cast ou tipos primitivos).</li>
+<li>Diferenciar entre variáveis de referência  e variáveis primitivas</li>
+<li>Conhecer como ler e/ou escrever para campos do objeto  </li>
+<li>Ciclo de vida do Objeto e coletores de lixo;</li>
+<li>Usar Operadores java; inculindo parenteses para sobrepor precedência de operadores;</li>
+<li>Criar if e if/else e construtores ternário</li>
+<li>Usar uma declaração switch</li>
+<li>Criar e usar while loops</li>
+<li>Criar e usar for loops incluindo for-each</li>
+<li>Criar e usar do/while loops</li>
+<li>Usar break e continue</li>
+</ul>
+</p>
+<p>Pra se ter um melhor nível de aprendizado é recomendável que não comece com uma Ide do tipo Eclipse ou Netbeans
+Comece utilizando bloco de notas e execute utilizando linhas de comando:</p>
+<p> <b>-"javac <nomedoprograma>.java" pra compilar e "java<nomedopragrama>"" pra executar</b></p><br>
+<p>Estes comandos podem ser utilizado no seu sistema operacional linux, windows, e outros independentemente!
+Pois java tem uma máquina virtual que cuida de todo o programa.</p><br>
+ <p>Pra utilizar estes comandos crie uma pasta e coloque seus códigos dentro, depois acesse via shell
+promptDos se for windows, git bash no linux e outros.</p><br>
+<p>Este  reconhece que você ao menos tem conhecimento de instalação do java e já teve algum contato
+com lógica de programação e sabe acessar a linha de comando.</p>
+ 
+<p>Esse conteúdo é baseado no livro Certified Associate Java SE 8 Programmer I<br>
+Um guia de estudo para o exame 1z0-808.<br>
+Boa Leitura!</p>
+ 
+ <br>
+<h1>1-ENTENDENDO A ESTRUTURA JAVA</h1>
 <p>No programa Java, classes são básicos construtores de blocos. Quando define uma classe, você descreve todas as partes e características 
 destes construtores de blocos. Para usar mais classes, você tem que criar objetos. </p>
 <p>Um objeto é uma instância de uma classe em memória no tempo de execução.
@@ -23,11 +76,11 @@ Métodos são conhecios como função ou procedimentos em outras linguagens. Jun
 <pre>
 1-public class Arvore{
 2-private string nome;
-3-public String getName(){
+3-public String getNome(){
 4-return nome;
 5-}
 6-public void setNome(String novoNome){
-7-name=novoNome;
+7-nome=novoNome;
 8-}
 9-}
 </pre>
@@ -457,18 +510,47 @@ Finalizer f = new Finalizer();
 <p>A razão é que o programa sai antes que haja qualquer necessidade de executar o coletor de lixo. 
   Enquanto <b>f</b> é elegível para coleta de lixo, Java tem coisas melhores para fazer do que coletar lixo constantemente.
   Você precisa saber que essa chamada <b>finalize()</b> pode ser executada zero ou uma vez.</p>
-<pre>
-public class WaterBottle {
-private String brand;
-private boolean empty;
-public static void main(String[] args) {
-WaterBottle wb = new WaterBottle();
-System.out.print("Empty = " + wb.empty);
-System.out.print(", Brand = " + wb.brand);
-} 
-}
-</pre>
-<h1>ENTENDENDO OPERADORES EM JAVA</h1>
+<h1>RESUMÃO</h1>
+<p>
+Você viu que as classes Java consistem em membros chamados campos e métodos. O objeto é uma instância de uma classe Java. 
+Existem três estilos de comentário: um comentário de linha única (//), um comentário de múltiplas linhas (/ * * /) 
+e um comentário de Javadoc (/ ** * /).</p><br>
+<p>Java inicia a execução do programa com um método main().</p><br> 
+<p>A assinatura mais comum para este método executado a partir da linha de comando é public static void main (String [] args).</p><br>
+<p>Argumentos são passados ​​após o nome da classe, como em java NameOfClass firstArgument.
+Argumentos são indexados começando com 0.<p/><br>
+<p>O código Java é organizado em pastas chamadas pacotes.
+Para fazer referência a classes em outros pacotes, você usa uma instrução de importação.</p><br> 
+<p>Um caractere(*) que termina uma instrução de importação significa que você deseja importar todas as classes desse pacote. 
+ Não inclui pacotes que estão dentro daquele.java.lang é um pacote especial que não precisa ser importado.<p><br>
+<p>Construtores criam objetos Java. Um construtor é um método que corresponde ao nome da classe e
+omitindo o tipo de retorno. Quando um objeto é instanciado, campos e blocos de código são
+inicializado pela primeira vez. Então o construtor é executado.</p><br>
+<p>Tipos primitivos são os blocos básicos de construção dos tipos Java. Eles são montados em
+tipos de referência. Os tipos de referência podem ter métodos e serem designados como nulos.</p><br> 
+<p>Declarar uma variável envolve declarar o tipo de dados e dar à variável um nome.
+As variáveis ​​que representam campos em uma classe são automaticamente inicializadas para o valor “zero” ou nulo 
+correspondente durante a instanciação de objetos. Variáveis ​​locais devem ser especificamente inicializado.</p><br>
+<p> Identificadores podem conter letras, números, $ ou _. Identificadores podem não começar com
+números.<p><br>
+<p>Escopo refere-se àquela parte do código onde uma variável pode ser acessada. Há três
+tipos de variáveis ​​em Java, dependendo de seu escopo: variáveis ​​de instância, variáveis ​​de classe e
+variáveis ​​locais. Variáveis ​​de instância são os campos não estáticos da sua classe. Variáveis ​​de classe são
+os campos estáticos dentro de uma classe. Variáveis ​​locais são declaradas dentro de um método.</p><br>
+<p>Para alguns elementos de classe, a ordem é importante no arquivo. A declaração do pacote vem primeiro
+se presente. Depois vem as declarações de importação, se presentes. Depois vem a declaração de classe.</p><br>
+<p>Campos e métodos podem estar em qualquer ordem dentro da classe.</p><br>
+<p>A coleta de lixo é responsável por remover objetos da memória quando eles podem
+nunca mais ser usado novamente. Um objeto se torna elegível para coleta de lixo quando não há
+mais referências a ele ou suas referências ficaram fora do escopo. O método finalize ()
+será executado uma vez para cada objeto se / quando for o primeiro lixo coletado.</p><br>
+
+<p><i>O código Java é orientado a objetos, o que significa que todo código é definido em classes. Modificadores de acesso
+permite que classes encapsulem dados. Java é independente de plataforma, compilando para bytecode. Isto é
+robusto e simples, não fornecendo ponteiros ou sobrecarga do operador. Finalmente, o Java é seguro
+porque roda dentro de uma máquina virtual</i>.</p><br><br>
+
+<h1>2-ENTENDENDO OPERADORES EM JAVA</h1>
 <p>Um operador Java é um simbolo especial que pode ser aplicado para um conjunto de variáveis, valores, 
 ou literais-referido como operando - e este retorna o resultado.</p>
 <p>São três operadores acessíveis em java: unário, binário, ternário. Estes tipos de operadores podem ser aplicado
@@ -916,7 +998,7 @@ System.out.println(x == z); // SAIDA true
 <p>
 <b>Estrutura:</b><br>
 if(expressão booleana){ <i>//As chaves requere para blocos de multipla declaração, é opcional para uma única declaração</i>.<br>
-	// ramo se verdade<br>
+  // ramo se verdade<br>
 }<br>
 </p>
 <br>
@@ -946,14 +1028,14 @@ contSaudacao++;<br>
 <p>Estrutura:</p>
 <pre>
 if(expressão booleana){
-	// ramifica se verdade
+  // ramifica se verdade
 } else{  //declaração else é opcional
-	//ramifica se falso
+  //ramifica se falso
 }
 if(horaDoDia < 11){
-	System.out.println("Bom dia!");
+  System.out.println("Bom dia!");
 }else{
-	System.out.pintln("Boa tarde!");
+  System.out.pintln("Boa tarde!");
 }
 </pre>
 <p>Agora nosso código está realmente ramificando entre uma das duas opções possíveis, com a avaliação
@@ -981,9 +1063,9 @@ O operador ternário é relmente um condensada forma de um <b>if-then-else</b> d
 int y=10;
 final int x;
 if(y > 5){
-	x=2*y;
+  x=2*y;
 }else{
-	x=3*y;
+  x=3*y;
 }
 </pre>
 <p> Compare o trecho de código anterior com a seguinte trecho de código ternário equivalente:</p>
@@ -1037,13 +1119,24 @@ default: // Opcional default , este pode aparecer em qualquer lugar dentro da de
 <h2>Valores constantes de tempo de compilação</h2>
 <p>Os valores em cada declaração <b>case</b> deve ser valores constantes em tempo de compilação do mesmo
  tipo de dados como do valor do <b>switch</b>.</p>
-<p>Isto significa que você pode usar somente literais, enum constantes, ou variveis constantes <b>final</b>do mesmo tipo de dados</p>
+<p>Isto significa que você pode usar somente literais, enum constantes, ou variveis constantes <b>final</b> do mesmo tipo de dados</p>
 <p>Por constante <b>final</b>, queremos dizer que a variável deve ser marcado com o modificador <b>final</b> e inicializado com um
 valor literal na mesma expressão na qual ele é declarado.</p>
+<pre>
+final int a = 2;
+final int b = 5;
+final int c = 7;
+switch (a) {
+case b + c: // não dá erro em tempo de compilãção porque é avaliado
+//todas as variaveis são finais. então isto é compilação em tempo constante
+System.out.println(b + c);
+break;
+}
+</pre>
 <p>Exemplo usando dias da semana com 0 para domingo, 1 para Segunda assim por diante:</p>
 <pre>
 int diasDaSemana = 5;
-switch(dayOfWeek) {
+switch(diaDaSemana) {
 default:
 System.out.println("Quarta-Feira");
 break;
@@ -1309,8 +1402,29 @@ continue rotuloOpcional; // Ponto e virgula(requerido)
 <p>Você pode notar que a sintax da declaração <b>continue</b> é um espelho da declaração <b>break</b>.
   Enquanto a declaração <b>break</b> transfere o controle para o encerramento da declaração, 
 a declaração <b>continue</b> transfere o controle para a expressão booleana que determina se o loop deve continuar.</p>
+
+<h1>RESUMÃO</h1>
+
+<p>Foi  visto agora uma ampla variedade de tópicos, incluindo  operadores Java,
+com instruções de fluxo de controle.</p><br> 
+<p>É importante entender como usar todos os operadores Java necessários
+para as declarações, foi abordado  tipos de estruturas de controle de
+ tomada de decisão , incluindo <b>if-then, if-then-else</b>, e a declaração <b>switch</b>, bem como
+estruturas de controle de repetição, incluindo <b>for</b>, </b>for-each</b>, <b>while</b> e <b>do-while</b>.</p> <br>
+<p>A maioria dessas estruturas requer a avaliação de uma expressão booleana particular, seja para
+decisões de ramificação ou uma vez por repetição. A declaração <b>switch</b> é a única que suporta uma variedade de tipos de dados, 
+incluindo variáveis ​​de <b>string</b>.</p></br>
+<p>Com uma declaração para cada, você não precisa escrever explicitamente uma expressão booleana, uma vez que
+o compilador os constrói implicitamente.</p><br>
+<p>Concluímos discutindo as opções avançadas de controle e como o fluxo pode ser
+aprimorada por meio de loops aninhados, com informações de interrupção e instruções permanentes. </p>
+<br>
+  <br>
+<p>Parabéns por ter chegado até aqui, agora é hora de brincar com os códigos que estão no repositório pronto pra ser usado.
+  Os códigos correspondem a todo este conteúdo. Divirtam-se!</p><br>
+
+<p style="text-align:center;"><a href="https://github.com/namanis/namanis.github.io/tree/master/javacodigos" target="_blank" >ACESSE O REPOSITÓRIO GITHUB</a></p>
 </div>
-
-
-</html>
 </body>
+</html>
+
