@@ -535,6 +535,11 @@ width:250px;
   display: none ;
 
 }
+.divcanvas p{margin:auto;}
+   #myCanvas{ margin:auto; }
+.divretangulo { position:relative; margin: auto;}
+ 
+
 
 /*<div class="setas2">
        <ul class="setas-col2 setas-pseudo-absolute2">
@@ -544,13 +549,10 @@ width:250px;
 @media  (min-width: 681px)(max-width: 1140px) {
   
 
-  .divcanvas p{margin:auto;}
-   #myCanvas{ margin:auto; }
-.divretangulo { position:relative;
-  margin: auto;}
- 
 
-.divretangulo p{margin:auto;}
+.divcanvas p{margin:auto;}
+   #myCanvas{ margin:auto; }
+.divretangulo { position:relative; margin: auto;}
 
 
 
