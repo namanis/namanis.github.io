@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="css/stylos.css">
+<link rel="stylesheet" href="css/stylew3.css">
+ <title> Programar em Java</title>
+  
+    <script type="text/javascript"src="js/efeitos.js"></script>
+    
+ </head>
+
+   
+ <body>
+<!-- Simulate a smartphone / tablet look -->
+
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+  <a class="w3-bar-item w3-button" href="">1 - ESTRUTURA DO JAVA</a>
+
+  <a class="w3-bar-item w3-button" href="#pacotedeclaracaoimport">Pacotes, Declaração e Imports</a>
+ <a class="w3-bar-item w3-button" href="#objetos">Criando Objetos</a>
+ <a class="w3-bar-item w3-button" href="#referenciaxprimitivo">Referência x Primitivo</a>
+  <a class="w3-bar-item w3-button" href="#declararvariavel">Declarando e Inicializando Variáveis</a>
+          <a class="w3-bar-item w3-button"href="#iniciarvariavel">Padrão de Inicialização das Variáveis</a>
+          <a class="w3-bar-item w3-button" href="#resumo">Resumão</a>
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+    <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+<!--  <span id="myIntro" class="w3-hide">JAVA SE: Versão 8</span></p>-->
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+
+
+
+<section id="estruturajava">
+<h1>1 - A ESTRUTURA DO JAVA</h1>
+<p>Nesta primeira parte o objetivo é aprender o básico, como:</p>
+
+<ul>
+<li>Definir o Escopo de variáveis</li>
+<li>Definir a estrutura de um classe Java</li>
+<li>Criar aplicações java executável com um método main;</li>
+<li>Executar um programa java da linha de comando; incluindo saída no console.</li>
+<li>Importar outros  pacotes java para fazê-los acessíveis em seu código</li>
+<li>Declarar e inicializar variáveis(incluindo cast ou tipos primitivos).</li>
+<li>Diferenciar entre variáveis de referência e variáveis primitivas</li>
+<li>Conhecer como ler e/ou escrever para campos do objeto  </li>
+<li>Ciclo de vida do Objeto e coletores de lixo</li>
+</ul>
+
+<p>No programa Java, classes são básicos construtores de blocos. Quando define uma classe, você descreve todas as partes e características 
+destes construtores de blocos. Para usar mais classes, você tem que criar objetos. </p><br>
+<p>Um objeto é uma instância de uma classe em memória no tempo de execução.
+Todos os vários objetos de todas as diferentes classes representa o estado de seu programa.</p> 
+<br>
+<p><b>Class Arvore{}</b></p>
+<br>
+<h2>Campos e métodos</h2>
+<p>As variáveis são conhecidas como campo e é quem aguarda o estado do programa.
+Métodos são conhecidos como função ou procedimentos em outras linguagens. Juntos são chamados de membros da classe.</p>
+<pre>
+1-public class Arvore{
+2-private string nome;
+3-public String getNome(){
+4-return nome;
+5-}
+6-public void setNome(String novoNome){
+7-nome=novoNome;
+8-}
+9-}
+</pre>
+<ul>
+<li>1- Cria um classe que pode ser pública e não pública</li> 
+<li>2- Declara variável como privada (significa que sua variável só é acessível ao membro desta classe)</li> 
+<li>3-5 Define o primeiro método. Um método é uma operação que pode ser chamado e o nome <b>public</b> significa
+ que este método pode ser chamado de outras classes. Este vem com um tipo de retorno. Neste caso o método retorna uma <b>String.</b></li>
+<li>6-8 Outro método. Esse tem um tipo de retorno especial chamado <b>void</b>. Void significa que nenhuma valor neste é retornado. Este método necessita que as informações sejam fornecidas para ele a partir do método de chamada. Esta informação é chamada de parâmetro. <b>setNome</b> tem um parâmetro nomeado <b>novoNome</b>, e é um tipo de <b>String</b>. Isto siginifica que o chamador deverá passar um parâmetro <b>String</b> e esperar nada ser retornado.</li>
+</ul>
+<h2>Comentários</h2>
+<p>Os comentários em java são importantes para deixar o programa mais legível e bem documentado.
+   Existem algumas maneiras de comentar o programa que será mostrado logo abaixo: </p>
+<pre>
+// comentario até o fim da linha
+
+/* Multiplas linhas
+* comentar linha aqui
+*/
+
+/**
+* javadoc multiplas linhas comentários
+* @author alan Santos
+*/
+
+</pre>
+<h2>Classes vs Arquivos</h2>
+<p>Na maioria das vezes cada classe Java é definida no seu próprio arquivo *.java. Ele é geralmente <b>public</b>, qual significa que qualquer código pode chamá-lo. Mas só que Java não exige que a classe seja <b>public</b>. Por exemplo esta classe funciona:</p>
+<pre>
+1: class Arvore {
+2: String nome;
+3: }
+</pre>
+  <p>Você pode colocar duas classes no mesmo arquivo. Quando você faz isso, no máximo uma das classes no arquivo pode ser <b>pubic</b>. Exemplo:</p>
+<pre>
+public class Arvore{
+private string nome;
+}
+class Arvore2{
+}
+</pre>
+
+<p> Se você tem uma classe pública, ele precisa corresponder o nome do arquivo. <b> public class Arvore2</b> não iria compilar em um arquivo nomeado <b>Arvore.java</b></p>
+<h2>Escrevendo um método main</h2>
+<p>O programa java inicia a execução com este <b>metodo main()</b>. Um <b>método main()</b> é o gateway entre o 
+início de um processo java, que é gerenciado pelo <b>java virtual machine (JVM)</b>, e os códigos dos programas.
+O <b>JVM</b> chama no sistema subjacente para alocar memória , tempo de CPU, acessar arquivos e mais.
+O <b>método main()</b> nos permite ligar nosso código neste processo, mantendo-o vivo por tempo suficiente
+para fazer o trabalho que codificamos.</p>
+<pre>
+public class Planta{
+public static void main(String[] args){}
+}
+</pre>
+<p>Este código não é útil. Este não tem declarações nem instruções. Somente para ilustrar.<br>
+   Para compilar execute este comando abaixo no terminal de dentro da pasta onde se encontra os códigos do programa:</p>
+<br>
+<p><b>
+ javac Planta.java <br>
+ java Planta <br>
+</b>
+</p>
+<br>
+<p>Para compilar o código Java, o arquivo deve ter a extensão <b>.java</b>. O nome do arquivo deve corresponder o nome da classe. O resultado é um arquivo de <b>bytecode</b> para o mesmo nome, mas com o nome do arquivo com uma extensão <b>.class</b>. <b>Byecode</b> consiste de instruçoes que o JVM sabe como executar. Note que devemos omitir a extensão <b>.class</b> para executar <b>Planta.java</b> porque o período tem um significado reservado na JVM.</p>
+<p>Vamos revisar as palavras na assinatura do método main(). A palavra chave <b>public</b> é o chamado modificador de acesso. Ele declara este método em nível de exposição para potenciais chamadores no programa.</p>
+<p>A palavra chave <b>static</b> liga um método a sua classe para que possa ser chamado apenas pelo nome da classe, por exemplo, Planta.main(). Java não precisa criar um objeto para chamar o método main().</p>
+<p>A palavra chave <b>void</b> representa um tipo de retorno. Um método que não retorna dados, retorna o controle para o chamador. No geral, é um boa prática usar métodos <b>void</b> que muda um estado do objeto.</p>
+<p>A lista de parâmetros do método main() é representada como um array do objeto <b>java.lang.String</b>. Na prática você pode escrever <b>String[ ]</b>, <b>String args[ ]</b> ou <b>String... args</b>; o compilador aceita qualquer um destes. O nome da variável <b>args</b> sugere que esta lista contém valores que foram lidos(argumentos) quando o JVM iniciou. Os caracteres[ ] são colchetes e representam um array. Uma array é uma lista de tamanho fixo de itens que são todos do mesmo tipo. Os caracteres<b>...</b> são chamados varargs (listas de argumentos variáveis). Você vai poder se aprofundar com mais detalhes nos capítulos mais adiante.</p>
+<p> Vamos ver como usar o parâmetro <b>args</b>:</p>
+<pre>
+public class Planta{
+public static void main(String[] args){
+System.out.println(args[0]);
+System.out.println(args[1]);
+}
+}
+</pre>
+<p> args[0] acessa o primeiro elemento do array. Array indexado inicia com 0 no Java. Para executá-lo, digite isto:</p>
+<p><b>
+ javac Planta.java<br>
+ java Planta Hortela Mastruz<br>
+ <br>
+
+ //saida:  <br>
+ Hortela<br>
+Mastruz
+</b>
+</p>
+  <br>
+<p>O programa corretamente identifica as primeiras duas "palavras" como os argumentos. Espaços são usados para separar argumentos. Se você quiser espaços no lado de dentro de um argumento, você precisa usar aspas como neste exemplo:
+ </p>
+
+<p><b>
+javac Planta.java<br>
+java Planta "Vera Cruz" Terra<br>
+ <br>
+
+//saida: <br>
+ Vera Cruz <br>
+ Terra
+</b>
+</p>
+</section>
+<section  id="pacotedeclaracaoimport">
+<h1> Pacotes, Declaracões e Imports</h1>
+
+
+<p> Java vem com milhares de classes embutidas. Com todas estas classes, Java precisa de uma maneira para organizá-las. Ele manipula isto de uma maneira similar a um armário de arquivo. Você coloca todos pedaços de papéis na pasta. Java coloca <b>classes</b> em <b>pacotes</b>. Estes são agrupamentos lógicos para classes.</p>
+<p> Não colocaríamos você em frente a um arquivo pedindo que você encontre um artigo específico. Em vez disso, diríamos a você qual pasta procurar. Java funciona desta maneira. Ele precisa que você diga quais pacotes procurar para encontrar o código.</p>
+
+<p>Suponha que você tente compilar este código:</p>
+
+<pre>
+// sem import não funciona
+public class ImportExample {
+public static void main(String[] args) {
+Random r = new Random(); // NÃO COMPILA
+System.out.println(r.nextInt(10)); 
+}
+}
+</pre> 
+<p>O compilador Java fornece um erro semelhante a este:</p><br>
+<p><b>Random cannot be resolved to a type</b></p><br>
+<p>Esse erro pode significar que você digitou um erro no nome da classe. A outra causa deste erro é omitir a necessidade da <b> declaração import</b>. Declarando <b>import</b> diz a Java qual pacote procurar as classes. Desde que você não disse a Java onde procurar por <b>Random</b>, ele não tem nenhuma pista. </p>
+<p>Tentando isso novamente com o <b>import</b> permite que você compile:</p>
+
+<pre>
+import java.util.Random; // import nos conta onde encontrar o Random
+public class ImportExample {
+public static void main(String[] args) {
+Random r = new Random(); 
+System.out.println(r.nextInt(10));//imprime numero entre 0 e 9
+}
+}
+</pre>
+<p> Agora o código é executado; ele imprime um número aleatório entre 0 e 9. Assim como os arrays, o Java gosta de começar a contar a partir de 0.</p>
+
+<h2>Wildcards(*) </h2>
+<p>Usando wildcards(*) dentro das pastas que contém as classes você importa não somente a que você quer, mas
+ também deixa disponível todas as outras.</p>
+<pre>
+import java.util.*; // importa java.util.Random além de outras coisas
+public class ImportExample {
+public static void main(String[] args) {
+Random r = new Random();
+System.out.println(r.nextInt(10));
+}
+}
+</pre>
+<h2>Imports Redundantes</h2>
+<p> Existe um pacote especial no mundo Java chamado <b>Java.lang</b>. Este pacote é especial porque é importado automaticamente. Você ainda pode digitar esse pacote em uma declaração <b>import</b>, mas não é necessário. No código a seguir, quantos dos imports você pensa que são redundantes?</p>
+<pre>
+ 1:import java.lang.System; // desnecessario
+ 2:import java.lang.*;// desnecessario
+ 3:import java.util.Random;// necessario
+ 4:import java.util.*;// neste caso não é necessario pois já importou o Random acima
+ 5:public class ImportExample {
+ 6:public static void main(String[] args) {
+ 7:Random r = new Random();
+ 8:System.out.println(r.nextInt(10));
+ 9:}
+ 10:}
+</pre>
+
+<p>A resposta é que três dos imports são redundantes. Linhas 1 e 2 são redundantes porque tudo no <b>java.lang</b> está automaticamente considerado para ser importado. Linha 4 é também redundante neste exemplo porque <b>Random</b> já está importado de <b>java.util.Random</b>. Se linha 3 não estivesse presente, <b>java.util.*</b> não seria redundante.</p>
+<h2>Criar Novo Pacote</h2>
+<p>Crie essas pastas <b>packagea</b> e <b>packageb</b> em seu diretorio com suas devidas classes <b>ClasseA</b> e <b>ClasseB</b>.</p>
+<p> Este agora é o momento para cria rum novo pacote. A estrutura de diretório em seu computador está relacionado par ao nome do pacote.. Suponha que temos estas duas classes:</p>
+<pre>
+C:\javatest\packagea\ClasseA.java
+package packagea;
+public class ClassA {
+}
+C:\javatest\packageb\ClasseB.java
+package packageb;
+import packagea.ClasseA;
+public class ClasseB {
+public static void main(String[] args) {
+ClasseA a;
+System.out.println("Got it");
+}
+}
+</pre>
+<p>Após criar as pastas e as classes, execute estes comandos no terminal:</p><br>
+<p>Quando você executa o programa Java, Java conhece onde procurar os nomes dos pacotes. Neste caso execute de C:\javatest porque ambos pacotes, packageb e packageb estão por baixo dele.</p> 
+
+
+<h3>Compilando códigos com Pacotes</h3>
+<p>Você irá aprender Java muito mais fácil usando linha de comando para compilar e testar seus exemplos. Uma vez você conhecendo bem a sintax do Java, você pode mudar para um ambiente de desenvolvimento integrado (IDE) como Eclipse. Uma IDE ajudará você no tempo de codificação. Mas o grande objetivo é conhecer os detalhes da linguagem e com a IDE isso não é possível, pois os detalhes são ocultados.  A seguir este exemplo faz você conhecer como usar linhas de comando:</p><br>
+
+<p><b>Windows Setup</b></p><br>
+<p> Crie esses dois arquivos:</p>
+<ul>
+  <li> C:\javatest\packagea\ClasseA.java</li>
+  <li>C:\javatest\packageb\ClasseB.java</li>
+</ul><br>
+<p>Então digite este comando:</p><br>
+<p><b>cd C:\javatest</b></p><br>
+
+<p><b>Mac/Linux Setup</b></p>
+<p>Crie os dois arquivos:</p>
+<ul>
+  <li> /javatest/packagea/ClasseA.java</li>
+  <li> /javatest/packageb/ClasseB.java</li>
+</ul><br>
+<p> Então digite este comando:</p><br>
+<p>cd /javatest<p> <br>
+<p> Para compilar digite este comando:</p>
+ <p><b>
+javac packagea/ClasseA.java packageb/ClasseB.java</b></p><br>
+<p>Se este comando não funcionar, você irá receber uma mensagem de erro. Faça uma checagem dos arquivos com cuidado  veja se os arquivos foram fornecidos. Se o comando funcionar, dois novos aqruivos serão criados: </p> <br>
+<p>packagea/ClasseA.class e packageb/ClasseB.class</p><br>
+<p>Para executar digite este comando:</p>
+<p><b>java packageb.ClasseB</b></p><br>
+<p>Se a saída for <b>Go it</b> então funcionou bem!</p><br>
+<p><b>Caminhos de Classe e JARs</b></p>
+<p>Você pode também especificar a localização de outros arquivos explicitamente usando o caminho de classe. Esta técnica é útil quando os arquivos de classe estão localizados em outro lugar ou em um arquivo JAR especial . Um arquivo JAR é como um arquivo zip de arquivos de classe principalmente Java.</p>
+<p>No Windows, você digita o seguinte:</p> <br>
+<p>java -cp ".;C:\javatest\outraLocalizacao;c:\javatest\myJar.jar" myPackage.MyClass</p><br>
+<p> E no Mac OS/Linux, você digita isto:</p><br>
+<p>java -cp ".:/javatest/outraLocalizacao:/javatest/myJar.jar" myPackage.MyClass</p><br>
+<p>O ponto indica que você deseja incluir o diretório atual no caminho da classe. O resto do comando diz para procurar por arquivos de classe soltos (ou pacotes) em <b>outraLocalizacao</b> e dentro de <b>myJar.jar</b>. O Windows usa ponto e vírgula para separar partes do caminho da classe; outros sistemas operacionais usam dois pontos.</p>
+<p>Finalmente, você pode usar um wildcard(*) para corresponder todos os JARs em um diretório. Exemplo:</p><br>
+<p>java -cp "C:\javatest\diretorioComJars\*" myPackage.MyClass</p><br>
+<p>Este comando adicionará todos os JARs ao caminho da classe que estão no <b>diretorioWComJars</b>. Ele não incluirá nenhum JAR no caminho de classe que esteja em um subdiretório de </b>diretorioComJars</b>.</p>
+
+</section>
+<section id="objetos">
+<h1>Criando Objetos</h1>
+<p>Um objeto é uma instância da classe. Nas seções a seguir iremos mostrar nos construtores, campos de objetos, inicializadores de instância, e a ordem na qual são inicializados.</p> 
+
+<h2>Construtores</h2>
+<p>Para criar uma instância de classe, temos que escrever a palavra chave <b>new</b> antes. Por exemplo:</p>
+  <p><b>ex: Randon r = new Random();</b></p>
+  <p> Primeiro declara o tipo que será criado <b>(Random)</b> e dá um nome a variável<b>(r)</b>. Isto dá a Java um lugar para armazenar uma referência para o objeto. Então você escreve <b> new Random()</b> para na verdade criar o objeto. <b>Random()</b> parece como método, desde quando está seguido por parênteses. Ele é chamado de <b>construtor</b>, que é um tipo especial de método que cria um novo objeto.</p>
+<p>Agora vamos definir o construtor:</P>
+<pre>
+public class Folha {
+public Folha() {
+System.out.println("Estou no construtor");
+}
+}
+</pre>
+<p>Existe dois pontos chaves sobre o construtor: o nome da construtor corresponde ao nome da classe, e não existe tipo de retorno.</P><br>
+
+<P><b>public void Folha(){}// NÃO É UM CONSTRUTOR</b></p><br>
+
+<p>Construtor também serve para inicializar campos. Um maneira de inicializar campo é fazer diretamente na linha na qual eles são declarados:</p>
+<pre>
+public class Fruta {
+int numManga = 0;// inicializa na linha
+String nome;
+public Fruta() {
+name = "Manga";// inicializa no constructor
+}
+}
+</pre>
+<h2>Lendo e Escrevendo Campos de Objetos</h2>
+<p>É possível ler e escrever variáveis de instância diretamente do chamador:</p>
+<pre>
+public class Baleia {
+int numFilhote;// variavel de instancia
+public static void main(String[] args) {
+Baleia mae = new Baleia();
+mae.numFilhote = 5; //set variable - Escrever na variavel 
+System.out.println(mae.numFilhote); //read variable - Ler a variavel 
+}
+}
+</pre>
+<p>Ler uma variável é conhecido como <b>getting</b>. A classe ler <b>numFilhote</b> diretamente para imprimir esta saída. Escrever para uma variável é conhecido como <b>setting</b>. Esta classe escreve ou define <b>numFilhote</b> para <b>5</b>.</p>
+<p>Você pode ler e escrever campos na declaração:</p>
+<pre>
+1:public class Nome {
+2:String primeiro = "Alan";
+3:String ultimo = "Santos";
+4:String nometodo = primeiro + ultimo;
+5:}
+</pre>
+<p>Linha 2 e 3 ambos escrevem nos campos. Linha 4 faz ambos. Ele lê os campos <b>primeiro</b> e <b>último</b>. Este então escreve no campo <b>nometodo</b>.</p>
+
+<h2>Blocos Inicializadores de Instância</h2>
+<p>Quando aprendemos sobre métodos as <b>chaves {}</b> estão presentes. O código entre as chaves é chamado de <b> bloco de código</b>.</p>
+<p>As vezes os blocos de códigos estão no lado de dentro de um método. Estes são executados quando o método é chamado. Outras vezes, o bloco de código é chamado do lado de fora do método. Estes são chamados de <b>inicializadores de instância.</b></p>
+<p> Quantos blocos você ver neste exemplo? Quantos inicializadores de instância você ver?</p>
+<pre>
+3: public static void main(String[] args) {
+4: { System.out.println("Feathers"); }
+5: }
+6: { System.out.println("Snowy"); }
+</pre>
+<p>Existem três blocos de códigos e um inicializador de instância. Um maneira de saber disso é contando o número de pares de chaves. Se não existir a mesma quantidade de chaves aberta e fechada o código não compila.</p>
+  <p>Contando os inicializadores de instância. Existe somente um par de chaves do lado de fora do método. Linha 6 é um <b>inicializador de instância</b>.</p>
+
+<h2>Ordem de Inicialização</h2>
+<p>Campos e blocos inicializadores de instância são executados na ordem em que aparecem o arquivo.
+ O construtor é executado depois que todos os campos e blocos de inicialização de instância são executados.</p>
+<pre>
+1:public class Fruta {
+2:private String nome = "Manga";
+3:{ System.out.println("Escrevendo no campo");}
+4:public Fruta() {
+5:nome = "Pera";
+6:System.out.println("Escrevendo no construtor");
+7:}
+8:public static void main(String[] args) {
+9:Fruta  fruta = new Fruta();
+10:System.out.println(fruta.nome); } }
+</pre><br>
+<p>Executando este exemplo imprime isto:</p><br>
+<p><b>->Escrevendo no campo<br>
+->Escrevendo no construtor<br>
+->Pera</b>
+</p><br>
+<p> Vamos olhar o que acontece aqui. Iniciamos com o <b>método main()</b> porque é onde Java inicia a execução. Na linha 9, chamamos o <b>construtor Fruta</b>. Java cria um novo objeto. Primeiro ele inicializa o nome para <b>Manga</b> na linha 2. Depois ele executa a declaração que imprime no inicializador de instância na linha 3. Uma vez os campos e instância são executados, Java retorna para o construtor. Linha 5 muda o valor do <b>nome</b> para <b>Pera</b> e linha 6 imprime outra declaração. Neste ponto, o construtor é feito em execução e vai voltar para a delcaração que imprime na linha 10.</p>
+</section>
+<section  id="referenciaxprimitivo">
+<h1>Distinguir entre Objeto Referência e Primitivos</h1>
+<p>Aplicações java contem 2 tipos de dados: tipo primitivo e tipo referência.</p>
+<h2>Tipos Primitivos</h2>
+<p>Java tem oito tipos de dados embutido que é referido como tipos primitivos de dados. Estes oitos tipos de dados representa os blocos de construção para objetos Java. Porque todos objetos Java são justamente uma coleção complexa destes tipos de dados primitivos.</p><br>
+<p> A Tabela mostra os tipos primitivos de Java juntos com seu tamanho em bytes e o alcance de valores que cada esperam.</p><br>
+
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  <tr>
+    <th>Palavra-chave</th>
+    <th>Tipo</th>
+     <th>Exemplo</th>
+     <tr>
+      <tr>
+     <td> boolean</td>
+     <td> true ou false</td>
+     <td> true</td>
+     
+  </tr>
+  <tr>
+     <td> byte</td>
+     <td> 8-bit valor integral</td>
+     <td> 125</td>
+     
+  </tr>
+  <tr>
+     <td> short</td>
+     <td> 16-bit valor integral</td>
+     <td> 125</td>
+     
+  </tr>
+  <tr>
+     <td> int</td>
+     <td> 32-bit valor integral</td>
+     <td> 125</td>
+     
+  </tr>
+  <tr>
+     <td> long</td>
+     <td> 64-bit valor integral</td>
+     <td> 125</td>
+     
+  </tr>
+  <tr>
+     <td> float</td>
+     <td> 32-bit valor integral</td>
+     <td> 125.54f</td>
+     
+  </tr>
+  <tr>
+     <td> double</td>
+     <td> 64-bit valor integral</td>
+     <td> 125.555</td>
+     
+  </tr>
+  <tr>
+     <td> char</td>
+     <td> 16-bit  valor Unicode</td>
+     <td> 'a'</td>
+     
+  </tr>
+</table>
+</div>
+<br>
+<ul>
+<li><b>float</b> e <b>double</b> são usados com valores ponto flutuantes(decimal)</li> 
+<li>Um <b>float</b> exige a letra <b>f</b> seguido do número.</li>
+<li>byte, short, int e long são números usados sem casas decimais</li>
+<li>Cada tipo numérico usa o dobro de bits do tipo similar menor. Por exemplo, o short usa o dobro de bits do byte.</li>
+</ul>
+<p> Devemos saber que um byte pode esperar um valor de -128 até 127. Vamos ver como Java ler isto. Um byte tem 8 bits. Um bit tem duas possibilidades e valores. 2<sup>8</sup> é 2 x 2 = 4 x 2 = 8 x 2 = 16 x 2 = 32 x 2 = 64 x 2 = 128 x 2 = 256. Desde que 0 necessita ser incluído no alcance, Java tira isso do lado positivo.</p>
+<p> O número de bits é usado pelo Java quando ele cálcula a quantidade de memória a ser reservada para sua variável. Por exemplo, java aloca 32 bits se você escrever isto:</p>
+
+<pre> int num;</pre>
+
+<p>Quando um número está presente no código, este é chamado de <b>literal</b>. Por padrão Java assume que você está definindo um valor <b>int</b> como um literal. No próximo exemplo, o número listado é mais grande do que a forma no <b>int</b>.</p>
+
+<pre>long max = 3123456789; // NÃO COMPILA</pre>
+<p>Java reclama que o número está fora de alcance. E ele está - para um <b>int</b>. Portanto, nós não temos um <b>int</b>. A solução é adcionar o caracter <b>L</b> ao número:</p>
+<pre>long max = 3123456789L; //Agora Java sabe que ele é um long </pre>
+
+
+
+
+<h2>Tipos Referência</h2>
+<p>Um tipo de referência refere-se a um objeto (uma instância de uma classe). Ao contrário dos 
+tipos primitivos que contêm seus valores na memória onde a variável é alocada, referências não mantêm o valor
+do objeto a que se referem. Em vez disso, uma referência "aponta" para um objeto armazenando o endereço  
+da memória onde o objeto está localizado, um conceito referido como um ponteiro.</p>
+<p>Referência do tipo <b>java.util.Date</b> e uma referência do tipo <b>String</b/>:
+<br>
+<br>
+<b>
+java.util.Date hoje;
+<br>
+String cumprimento;
+</b>
+</p>
+<br>
+<p>A variável <b>hoje</b> é uma referência do tipo <b>Date</b> e pode somente apontar para objeto <b>Date</b> .
+ A variável <b>cumprimento</b> é uma referência e só pode apontar para <b>String</b>. O valor é atribuído para uma referência em uma das duas maneiras:</p>
+<ol>
+<li>Uma referência pode ser atribuída a outro objeto do mesmo tipo.</li>
+<li>Uma referência pode ser atribuída a um novo objeto usando a  palavra-chave <b>new</b>.</li>
+</ol>
+<br>
+<p> Por exemplo, a declaração seguinte atribui estas referências para os novos objetos:</p>
+<p>
+ <b>
+hoje = new java.util.Date();
+<br>
+cumprimento = "Como está voCê?";
+</b>
+</p><br>
+
+<p> A referência <b>hoje</b> agora aponta para um novo objeto <b>Date</b> em memória, e <b>hoje</b> pode ser usado para acessar vários campos e métodos deste objeto <b>Date</b>. Similarmente, a referência <b>cumprimento</b> aponta apara um novo objeto <b>String</b>, <b>"Como está vocÊ?"</b>. O objeto <b>String</b> e <b>Date</b> não tem nomes e podem ser acessados somente via suas coresspondentes referências.</p>
+<h2>Diferenças Chaves</h2>
+<p>Existem umas poucas importantes diferenças que abordaremos entre tipos primitivos e referências. Primeiro, tipo de referência pode ser atribuído <b>null</b>, o que significa que eles não se referem atualmente a um objeto.. Tipos primitivos dará a você um erro de compilador se você tentar atribuir <b>null</b>. Neste exemplo, o valor não pode ser apontado para <b>null</b> porque ele é do tipo <b>int</b>.</p>
+<pre>
+int value = null; // NÃO COMPILA
+String s = null;
+</pre>
+
+<p>Em seguida, os tipos de referência podem ser usados para chamar métodos quando eles não apontam para <b>null</b>. Primitivos não tem métodos declarados nele. Neste exemplo, podemos chamar um método na referência desde que ele seja de um tipo de referência. Você pode dizer que <b>lenght</b> é um método porque ele tem <b>()</b> depois dele. A linha a seguir não faz sentido. Nenhum método existe no <b>len</b> porque ele é um primitivo <b>int</b>. Primitivos não tem métodos.</p>
+<pre>
+String reference = "hello";
+int len = reference.length();
+int bad = len.length(); // NÃO COMPILA
+</pre>
+
+<p> Finalmente, note que todos os tipos primitivos tem tipos de nome com letra minúscula. Todas as classes que vem com Java inicia com letra maiúsucla. Esse é um padrão adotado para criar classes em Java.</p>
+</section>
+<section id="declararvariavel">
+<h1>Declarando e Inicializando Variáveis</h1>
+
+<p>Uma variável é um nome para um pedaço de memória que armazena dados. Quando você declara uma variável, você precisa declarar o tipo de variável junto com um nome. Por exemplo, o código a seguir declara duas variáveis. Uma é nomeada <b>zooName</b> e é do tipo <b>String</b>. A outra é nomeada <b>numberAnimals</b> e é do tipo <b>int</b>.<p><br>
+<p><b>Declarando variáveis</b></p>
+
+<pre>
+String zooName;
+int numberAnimals;
+</pre>
+<br>
+<p> Agora que declaramos uma variável, podemos dá a ele um valor. Isto é chamado  inicializando uma variável. Para inicializar uma variável, você somente escreve o tipo, o nome da variável seguido por um sinal de igualdade, e por um valor desejado: </p><br>
+<p><b>Inicializando variáveis</b></p>
+<pre>
+String zooName = "The Best Zoo";
+int numberAnimals = 100;
+</pre>
+<h2> Declarando Múltiplas Variáveis</h2>
+
+<p>Você também pode declarar e inicializar múltiplas variáveis na mesma declaração. Quantas variáveis você pensa que são declaradas e inicializada nas duas linhas a seguir?</p>
+
+<p><b>Declarar e inicializar múltiplas variáveis</b></p>
+<pre>
+String s1, s2;
+String s3 = "yes", s4 = "no";
+</pre>
+
+<p>Quatro variáveis foram declaradas: <b>s1, s2, s3 e s4</b>. Você pode declarar muitas variáveis na mesma declaração contanto que eles sejam do mesmo tipo. Você pode inicializar qualquer um ou todos daqueles valores em linha. No exemplo anterior, temos 2 variáveis inicializada: <b>s3</b> e <b>s4</b>. As outras duas variáveis permancem declaradas mas não ainda inicializada. </p>
+
+<p>Este exemplo a seguir não compila:</p>
+<pre>int num, String value; //NÃO COMPILA</pre>
+<p>Este código não compila porque ele tenta declarar múltiplas variáveis de diferentes tipos na mesma declaração.</p>
+<p>Vamos demonstrar mais alguns exemplos com diferentes terminologias:</p>
+<pre>
+boolean b1, b2;
+String s1 = "1", s2;
+double d1, double d2;
+int i1; int i2;
+int i3; i4;
+</pre>
+<p> A primeira declaração é legal. Ela declara duas variáveis sem inicializá-las. A segunda declaração também é legal. Ele declara duas variáveis e inicializa somente uma delas.</p>
+<p>A terceira declaração não é legal. Java não permite você declarar dois diferentes tipos na mesma declaração. Variáveis <b>d1</b> e <b>d2</b> são do mesmo tipo. Eles são ambos do tipo <b>double</b>. Mas mesmo eles sendo do mesmo tipo o correto seria <b>double d1, d2;</b> não precisa repetir double 2 vezes.</p>
+<p> A quarta declaração é legal. Apesar de <b>int</b> aparecer duas vezes, cada um está em uma declaração separada. Um ponto e vírgula(;) são declarações em Java. Isto acontece quando existem duas declarações completamente diferentes na mesma linha. A quinta declaração não é legal. Novamente, nós temos duas declarações completamente diferentes na mesma linha. O segundo não é uma declaração válida porque omite o tipo.
+</p>
+
+
+<h2>Identificadores</h2>
+<p>As mesmas regras para identificadores se aplicam a qualquer coisa que você é livre para nomear, incluindo variáveis,
+métodos, classes e campos.</p>
+<p>Existem apenas três regras para lembrar de identificadores legais:</p>
+<ul>
+<li>O nome deve começar com uma letra ou o símbolo $ ou _.</li>
+<li>Caracteres subseqüentes também podem ser números.</li>
+<li>Você não pode usar o mesmo nome que é uma palavra reservada do Java. </li>
+</ul>
+<pre>
+<b>Os exemplos a seguir são legais</b>
+okidentifier
+$OK2Identifier 
+_alsoOK1d3ntifi3r
+__SStillOkbutKnotsonice$ 
+<b>Estes exemplos são ilegais:</b> 
+3DPointClass // identificaores não pode inicalizar com números
+hollywood@vine // @ não é uma letra, digito, $ ou _
+*$coffee // * não é uma letra, digito, $ ou _
+public // public  é uma palavra reservada
+</pre>
+<h2>Palavras Reservadas</h2> 
+<p>Você não pode usar o mesmo nome que uma palavra reservada do Java. Como você pode imaginar,
+ uma palavra reservada é uma palavra-chave que o Java reservou para que você não tenha permissão para usá-la.
+Lembre-se de que o Java faz distinção entre maiúsculas e minúsculas, portanto, 
+é possível usar versões das palavras-chave que diferem apenas no caso.</p>
+<pre>
+abstract assert boolean break byte case catch 
+char class const* continue default do double
+else enum extends false final finally float for 
+goto* if implements import instanceof int 
+interface long native new null package private 
+protected public return short static strictfp 
+super switch synchronized this throw throws 
+transient true try void volatile while
+</pre>
+</section>
+<section id="iniciarvariavel">
+<h1> Padrão de Inicialização das Variáveis</h1>
+<p> Antes que você possa usar uma variável, ele precisa de um valor. Alguns tipos de variáveis obtém este valor definido automaticamente, e outros necessita que o programador especifique ele. Na seção seguinte, vamos ver diferenças entre variáveis padrão para local, instância e classe.</p>
+
+<h2>Variáveis Locais</h2>
+<p>Variáveis Locais são definidas dentro do método. Variáveis locais deve ser inicializada antes de ser utilizada. Eles não tem um valor padrão e contém coletor de dados até inicializar. O compilador não irá deixar ler um valor não inicializado. Por exemplo:</p>
+<pre>
+ 4: public int notValid() {
+ 5: int y = 10; 
+ 6: int x; 
+ 7: int reply = x + y; //NÃO COMPILA
+ 8: return reply;
+ 9: }
+</pre>
+<p> <b>y</b> é inicializado para <b>10</b>. Portanto, porque <b>x</b> não é inicializado antes ele é usado na expressão na linha 7, o compilador gera o seguinte erro:</p> 
+<pre>Test.java:5: variable x might not have been initialized
+int reply = x + y;</pre>
+<p>O compilador é inteligente o suficiente para reconhecer variáveis que tem sido inicializada depois  de sua declaração, mas antes elas são usados. Aqui está um exemplo:</p> 
+<pre>
+ public int valid() {
+ int y = 10;
+ int x; // x é declarada aqui
+ x = 3; // e inicializada aqui
+ int reply = x + y;
+ return reply;
+ }
+</pre>
+
+<h2> Variáveis de Instância e Classe</h2>
+<p>As variáveis que não são locais são conhecidas como variável de instância ou variável de classe.
+Variáveis de instância são chamadas de campos. Variaveis de classes são compartilhadas com múltiplos
+objetos. Uma variável ela é de classe quando tem uma palavra chave <b>static</b> antes dela.</p>
+<p> Variáveis de instância e de classe não exige você inicializá-las. Assim que você declarar essas variáveis, um valor padrão são dadas a elas.</p>
+<br>
+<p><b> TABELA dos valores padrão de inicialização por tipo</b></p><br>
+  <div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Tipos de variaveis </th>   <th>Valor da inicalização padrão</th></tr>
+<tr><td>boolean</td><td>               false</td></tr>
+<tr><td>byte,short,int,long</td><td>   0(no tipo's bit-length)</td></tr>
+<tr><td>float,double</td><td>          0.0(no tipo’s bit-length)</td></tr>
+<tr><td>char</td><td>                  '\u0000'(NUL)</td></tr>
+<tr><td>Todas as referências de objetos (tudo o mais)</td><td>null</td></tr>
+</table>
+</div>
+  <br>
+
+<h2> Variável de Escopo</h2>
+<p>Aprendemos que variável local são colocadas dentro de um método. Quantas variáveis local você pode ver neste exemplo?</p>
+  <pre>
+1: public void comer(int pedacosDeQueijo) {
+2: int fatiasDeQueijo = 1; }
+</pre>
+<p>Existem duas variáveis locais neste método. <b>fatiasDeQueijo</b> é declarado no lado de dentro do método.
+ E <b>pedacosDeQueijo</b> que é chamado de um parâmetro do método. Ambas as variáveis são ditas como tendo um escopo local para o método. 
+ Isso significa que eles não podem ser usado fora do método. </p>
+ <p> Variáveis locais nunca podem ter um escopo maior que o método em que estão definidas. Contudo, eles podem ter um pequeno escopo. Considere este exemplo:</p>
+<pre>
+3: public void comerSeFaminto(boolean faminto) {
+4: if (faminto) {
+5: int pedacosDeQueijo = 1;
+6: } // fatiasDeQueijo vai sair do escopo
+7: System.out.println(fatiasDeQueijo);// Não Compila
+8: }
+</pre>
+
+<p><b>faminto</b> tem um escopo do método de entrada. <b>fatiasDeQueijo</b> tem um pequeno escopo. Ele está somente acessível para uso na <b>declaração if </b> porque ele é declarado dentro dele. Quando você ver umas chaves{} definidas no código, isso significa que você tem um nova entrada de bloco de código.. Cada bloco de código tem seu próprio escopo. Quando há vários blocos, você os combina de dentro para fora. Neste caso, o <b>bloco da declaração if</b> inicia na linha 4 e  finaliza na linha 6. O bloco do método é iniciado na linha 3 e finaliza na linha 8.</p>
+<p>Desde que <b>fatiasDeQueijo</b> é declarado no bloco, o escopo é limitado para este bloco. Quando o compilador pega a linha 7, ele reclama que não conhece nada sobre <b>fatiasDeQueijo</b> e  manda um erro:</p>
+<pre><b>fatiasDeQueijo cannot be resolved to a variable</b></pre>
+
+<p> Lembre que bloco podem conter outros blocos. Este pequeno bloco contendo variáveis de referências pode definir nos mais largos blocos com escopo, mas não vice e versa. Por exemplo:</p>
+<pre>
+16: public void comerSeFaminto(boolean faminto) {
+17: if (faminto) {
+18: int fatiasDeQueijo = 1;
+19: { 
+20: boolean pedacinho = true; 
+21: System.out.println(fatiasDeQueijo); 
+22: }
+23: }
+24: System.out.println(pedacinho); // DOES NOT COMPILE
+25: }
+</pre>
+<p>A variável definida na linha 18 está no escopo até o fim do bloco na linha 23. Usando ele no pequeno bloco das linhas 19 à 22. A variável definida na linha 20 vai sair do escopo na linha 22. Usá-lo na linha 24 não é permitido.</p>
+<p> Agora vamos ver se você pode descobrir em qual linha cada uma das cinco variáveis locais entram e saem do escopo:</p>
+<pre>
+11: public void comerMais(boolean faminto, int quantidadeDeAlimento) {
+12: int espacoNaBarriga = 5;
+13: if (faminto) {
+14: boolean horaDeComer = true;
+15: while (quantidadeDeAlimento> 0) { 
+16: int quantidadeComida = 2;
+17: espacoNaBarriga = espacoNaBarriga - quantidadeComida ;
+18: quantidadeDeAlimento = quantidadeDeAlimento - quantidadeComida ;
+19: }
+20: }
+21: System.out.println(quantidadeDeAlimento );
+22: }
+</pre>
+<p> O primeiro passo para descobrir o escopo é identificar os blocos de código. Neste caso existem três blocos. Você pode dizer isso porque existem três conjuntos de chaves. Começando pelo conjunto mais interno, podemos ver onde o <b>bloco do loop while</b> começa e termina.  Enquanto isso se repete saímos para o <b>bloco de declaração if</b> e o <b>bloco de método</b>.</p>
+<p>Agora que sabemos onde estão os blocos, podemos examinar o escopo de cada variável. <b>faminto</b> e <b>quantidadeDeAlimento</b> são parâmetros de método, então eles estão disponíveis para todo o método. Isso significa que seu escopo é das linhas 11 a 22. <b>espacoNaBarriga</b> entra no escopo na linha 12 porque é onde ele é declarado. Ele permanece no escopo para o restante do método e, portanto, sai do escopo na linha 22. <b>horaDeComer</b> entra no escopo na linha 14, onde ele é declarado. Ele sai do escopo na linha 20, onde o bloco if termina. A <b>quantidadeComida</b> entra no escopo na linha 16, onde é declarado. Ele sai do escopo na linha 19, onde o bloco while termina.</p><br>
+<p> Para fixar vamos rever as regras no escopo:</p>
+<ul>
+  <li> Variável Local - no escopo da declaração até o fim do bloco</li>
+<li> Variável de Instância - no escopo da declaração até o lixo do objeto coletado </li>
+<li> Variável de Classe - no escopo da declaração até o final do programa </li>
+</ul>
+<h2>Ordenando Elementos na Classe</h2>
+<p>Agora que vimos as partes comuns da classe, vamos olhar na ordem correta para tipá-los dentro do arquivo. Comentários podem ir em qualquer lugar no código. Além do que, você precisa memorizar estas regras na Tabela.</p><br>
+<p><b>Tabela Elementos da Classe</b></p><br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Elemento </th><th> Exemplo</th><th>  Necessário?</th><th> Onde coloco isso?</th></tr>
+<tr><td>Declaração de pacote </td><td> package abc; </td><td>Não</td><td>  Primeira linha do arquivo</td></tr>
+<tr><td>Declaração do import</td><td> import java.util.*;</td><td> Não</td><td>    Imediatamente depois do pacote</td></tr>
+<tr><td>Declaração da classe</td><td>public class  </td><td> Sim</td><td>Imediatamente depois do pacote</td></tr>
+<tr><td>Declaração do campo</td><td> int value; </td><td> Não</td><td> Qualquer lugar dentro da classe</td></tr>
+<tr><td>Declaração do método </td><td> void method() </td><td>Não</td><td>Qualquer lugar dentro da classe</td></tr>
+</table>
+</div>
+<br>
+<p>Vamos ver o exemplo contendo um de cada elemento:</p>
+<pre>
+package structure; // pacote deve ser o primeiro não comentado
+import java.util.*; // import deve vir depois do pacote
+public class Meerkat { // então vem a classe
+double weight; // campos e métodos podem ir ou não na ordem
+public double getWeight() {
+return weight; }
+double height; // outro campo – eles não precisam estar juntos
+}</pre>
+<h2>Destruindo Objetos</h2>
+<p>Java fornece um coletor de lixo(garbage collection) automaticamente para procurar objetos que não necessita mais.
+  <p> Todos objetos Java são armazenado em seu programa de mémória <b>heap</b>. O <b>heap</b>, que também é chamado de armazenamento gratuito, representa um grande conjunto de memória não utilizada alocada para seu aplicativo Java. O <b>heap</b> pode ser bastante largo, dependendo do seu ambiente, mas existe sempre um limite para este tamanho. Se seu programa manter instanciação de objetos e deixá-los no <b>heap</b>, eventualmente ele irá executar fora da memória.</p>
+  <p> Nas próximas seções, vamos olhar no <b>garbage collection</b> e o método <b>finalize()</b>.
+  <h3>Garbage Colletction </h3>
+<p><b>Garbage Collections(coletores de lixo)</b> refere-se ao processo de liberar memória automaticamente no <b>heap</b> 
+deletando objetos que não podem ser mais acessados no seu programa.</p>
+<p>Java fornece um método chamado <b>System.gc()</b> que não é garantido executar e você deve ser capaz de reconhecer quando objetos torna elegível pelo <b>garbage collection</b>.</p>
+<p> A parte mais interessante é quando a memória pertencente ao objeto pode ser recuperado. Java espera pacientemente até que o código não mais necessite dessa mémória. Um objeto irá permanecer no <b>heap</b> até ele não está mais acessível. Um objeto não está mais acessível quando uma destas duas situações ocorrem:</p>
+<ul>
+<li> O objeto não tem mais qualquer referência apontando para ele.</li>
+  <li> Todas as referências ao objeto ficaram fora do escopo.</li>
+</ul>
+<h3>Objetos vs Referências</h3>
+<p> Não confunda uma referência com o objeto ao qual ele se refere; eles são duas entidades distintas. A referência é uma variável que tem um nome e pode ser usado para acessar conteúdos de um objeto. Uma referência pode ser atribuída para outra referência, passada para um método, ou retornar de um método. Todas as referências são do mesmo tamanho não importa o que seu tipo é.</p>
+<p> Um objeto fica no <b>heap</b> e não possui um nome. Portanto, você não tem como acessar um objeto, exceto por meio de uma referência. Objetos vem de todas diferentes formas e tamanhos e consomem quantidades variantes de memória. Um objeto não pode ser atribuído para outro objeto, nem pode um objeto ser passado para um método ou retornado de um méodo. É o objeto que recebe o coletor de lixo, não sua referência.</p><br>
+
+
+<div class="divcanvas ">
+  <p><b>Uma Referência</b></p>
+<canvas id="myCanvas" width="200" height="100"style="border:5px solid #d3d3d3; ">
+
+Your browser does not support the canvas element.
+</canvas>
+</div>
+
+
+ <!-- <div class="divlinha">
+<svg  height="130" width="200">
+  <polyline points="40,80,80,80,80"
+  style="fill:white;stroke:black;stroke-width:1" /></svg>
+ 
+  </div>-->
+      
+  <div class="divretangulo">
+  <p><b>O Heap</b></p>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="400" height="200" viewBox="0 0 600 300" >
+ 
+
+  
+  <rect width="400" height="300" style="fill:gray;stroke-width:0;stroke:rgb(0,0,0);margin:auto;" />
+
+           
+  <svg width="300" height="300">
+<text x="155" y="75" fill="black" style="font-size:25px">Um Objeto</text>
+        <rect x="155" y="85" width="125" height="125" style="fill:white;stroke:black;stroke-width:1;" />
+  <circle cx="210" cy="155" r="20" stroke="black" stroke-width="2" style="fill:white"; />
+
+        </svg>
+
+ 
+
+
+</svg>
+
+</div>
+
+    <br>
+    <p ><b>Uma referência</b> pode ou não pode ser criada no <b>heap</b>. Todas referências são os mesmos tamanhos, não importa qual seu tipo de dado, e são acessados pelo seu nome da variável</i></p>
+    <br>
+    <p><b>Objetos</b> estão sempre no <b>heap</b>.
+Eles não têm nome e só podem ser
+acessado através de uma referência. Objetos variam em
+tamanho dependendo da definição da classe.</i></p>
+
+<br>
+<p>Vamos descobrir agora quando cada objeto torna eleito pelo <b>garbage collection:</b></p>
+<pre>
+1: public class Escopo {
+2: public static void main(String[] args) {
+3: String um, dois;
+4: um = new String("a");
+5: dois = new String("b");
+6: um = dois;
+7: String tres = um;
+8: um = null;
+9: } }
+</pre>
+<p> Na linha 3. escrevemos <b>um</b> e <b>dois</b>. Na linha 4 temos o primeiro objeto. A linha 5 é similar. Vamos mostra exemplos através de desenhos que representam a referência, o objeto e quando elegível para ser coletado.</p>
+<br>
+<p><b> Desenho depois da linha 5</b></p>
+<div class="divretangulo">
+<svg width="300" height="400">
+<text x="20" y="150" fill="black" style="font-size:25px">um--></text>
+
+        <rect x="100" y="85" width="125" height="125" style="fill:gray;stroke:black;stroke-width:1;" />
+  
+<text x="150" y="150" fill="black" style="font-size:25px">"a"</text>
+  <text x="20" y="325" fill="black" style="font-size:25px">dois--></text>
+        <rect x="100" y="255" width="125" height="125" style="fill:gray;stroke:black;stroke-width:1;" />
+  <text x="150" y="325" fill="black" style="font-size:25px">"b"</text>
+        </svg>
+      </div>
+
+ <!--<div style="width:10px; height:100px; margin-left:200px; float:bottom;"><p><b>um-</b></p> </div>
+   <div style="width:10px;  height:100px; margin-left:200px;"><p><b>dois-</b></p> </div> 
+   <div style= "width:100px ; height:100px ; background-color:gray ; margin-left:300px;"><br><br> <p style="margin-left:40px;"><p><b>"a"</b></p></div> <br> 
+   <div style= "width:100px ; height:100px ; background-color:gray; margin-left:300px ;"><br><br> <p style="margin-left:40px;"><b>"b"</b></p></div> <br> -->
+ 
+
+<p> Na linha 6, a variável <b>um</b> muda apontando para  <b>"b"</b>. Na linha 7 temos uma nova variável. Note que <b>tres</b> agora aponta para qual <b>um</b> está apontando, e não qual ele estava apontando no início. Repare no desenho a seguir:</p><br>
+<p><b>Desenho depois da linha 7</b></p>
+<div class="divretangulo">
+
+<svg width="300" height="400">
+<text x="20" y="150" fill="black" style="font-size:25px">um XX</text>
+<text x="20" y="300" fill="black" style="font-size:25px">um---></text>
+
+        <rect x="100" y="85" width="125" height="125" style="fill:gray;stroke:black;stroke-width:1;" />
+  
+<text x="150" y="150" fill="black" style="font-size:25px">"a"</text>
+  <text x="20" y="325" fill="black" style="font-size:25px">dois--></text>
+  <text x="20" y="350" fill="black" style="font-size:25px">tres--></text>
+        <rect x="100" y="255" width="125" height="125" style="fill:gray;stroke:black;stroke-width:1;" />
+  <text x="150" y="325" fill="black" style="font-size:25px">"b"</text>
+        </svg>
+      </div>
+ <!--<div style="width:75px; height:200px; margin-left:200px; float: left;"><p><b>um-</b></p> <p><b>dois-</b></p> <p><b>tres-</b></p></div> <div style= "width:100px ; height:100px ; background-color:gray ; margin-left:500px;"><br><br> <p style="margin-left:40px;"><b>"a"</b></p></div> <br> <div style= "width:100px ; height:100px ; background-color:gray; margin-left:500px ;"><br><br> <p style="margin-left:40px;"><b>"b"</b></p></div> <br> -->
+ <p>Finalmente na linha 8 é definida a variável para null. Agora vamos saber qual o primeiro objeto elegível pelo <b>garbage colletction</b>. Na linha 6, nos livramos da única seta apontando para <b>"a"</b>, tornando esse objeto elegível pelo <b>garbage colletction (coletor de lixo)</b>. <b>"b"</b> tem uma seta apontada para ele até ele sair do escopo. Isto significa que <b>"b"</b> não sai do escopo até o fim do método na linha 9.</p>
+
+
+
+
+
+<h2>finalize()</h2>
+<p>Java permite que os objetos implementem um método chamado <b>finalize()</b> que possa ser chamado.
+  Este método é chamado se o coletor de lixo tentar coletar o objeto.</p>
+<pre>
+public class Finalizer {
+protected void finalize() {
+System.out.println("Calling finalize");
+} 
+public static void main(String[] args) {
+Finalizer f = new Finalizer();
+} 
+}
+</pre>
+<p>A razão é que o programa sai antes que haja qualquer necessidade de executar o coletor de lixo. 
+  Enquanto <b>f</b> é elegível pora coleta de lixo, Java tem coisas melhores para fazer do que coletar lixo constantemente.
+  Você precisa saber que essa chamada <b>finalize()</b> pode ser executada zero ou uma vez. Agora mais um interessante exemplo:</p>
+  <pre>
+public class Finalizer {
+private static List objects= new ArrayList();
+protected void finalize() {
+objects.add(this); // Não faça isso
+} }
+  </pre>
+
+
+  <p> Lembre, <b>finalize()</b> é somente executado quando o objeto é elegível para coleta de lixo. O problema aqui é que, ao final do método, o objeto não é mais elegível para a coleta de lixo porque uma variável estática está se referindo a ele e as variáveis estáticas permanecem no escopo até o término do programa.</p>
+</section>
+<section id="resumo">
+<h1>Resumão</h1>
+<p>
+Você viu que as classes Java consistem em membros chamados campos e métodos. O objeto é uma instância de uma classe Java. 
+Existem três estilos de comentário: um comentário de linha única (//), um comentário de múltiplas linhas (/ * * /) 
+e um comentário de Javadoc (/ ** * /).</p><br>
+<p>Java inicia a execução do programa com um <b>método main()</b>.</p><br> 
+<p>A assinatura mais comum para este método executado a partir da linha de comando é <b>public static void main (String [ ] args)</b>.</p><br>
+<p>Argumentos são passados ​​após o nome da classe, como em java NomeDaClasse primeiroArgumento.
+Argumentos são indexados começando com 0.<p/><br>
+<p>O código Java é organizado em pastas chamadas pacotes.
+Para fazer referência a classes em outros pacotes, você usa uma declaração de importação.</p><br> 
+<p>Um caractere(*) que termina uma declaração de importação significa que você deseja importar todas as classes desse pacote. </p>
+<p><b>Java.lang</b> é um pacote especial que não precisa ser importado.<p><br>
+<p>Construtores criam objetos Java. Um construtor é um método que corresponde ao nome da classe e
+omitindo o tipo de retorno. Quando um objeto é instanciado, campos e blocos de código são
+inicializado pela primeira vez. Então o construtor é executado.</p><br>
+<p>Tipos primitivos são os blocos básicos de construção dos tipos Java. Eles são montados em
+tipos de referência. Os tipos de referência podem ter métodos e serem designados como nulos.</p><br> 
+<p>Declarar uma variável envolve declarar o tipo de dados e dar à variável um nome.
+As variáveis ​​que representam campos em uma classe são automaticamente inicializadas para o valor “zero” ou nulo 
+correspondente durante a instanciação de objetos. Variáveis ​​locais devem ser especificamente inicializado.</p><br>
+<p> Identificadores podem conter letras, números, $ ou _. Identificadores não podem  começar com
+números.<p><br>
+<p>Escopo refere-se àquela parte do código onde uma variável pode ser acessada. Há três
+tipos de variáveis ​​em Java, dependendo de seu escopo: variáveis ​​de instância, variáveis ​​de classe e
+variáveis ​​locais. Variáveis ​​de instância são os campos não estáticos da sua classe. Variáveis ​​de classe são
+os campos estáticos dentro de uma classe. Variáveis ​​locais são declaradas dentro de um método.</p><br>
+<p>Para alguns elementos de classe, a ordem é importante no arquivo. A declaração do pacote vem primeiro
+se presente. Depois vem as declarações de importação, se presentes. Depois vem a declaração de classe.</p><br>
+<p>Campos e métodos podem estar em qualquer ordem dentro da classe.</p><br>
+<p>A coleta de lixo é responsável por remover objetos da memória quando eles podem
+nunca mais ser usado novamente. Um objeto se torna elegível para coleta de lixo quando não há
+mais referências a ele ou suas referências ficaram fora do escopo. O método finalize ()
+será executado uma vez para cada objeto se ou quando for o primeiro lixo coletado.</p><br>
+
+<p><i>O código Java é orientado a objetos, o que significa que todo código é definido em classes. Modificadores de acesso
+permite que classes encapsulem dados. Java é independente de plataforma, compilando para bytecode. Isto é
+robusto e simples, não fornecendo ponteiros ou sobrecarga do operador. Finalmente, o Java é seguro
+porque roda dentro de uma máquina virtual</i>.</p><br><br>
+</section>
+
+<p class="nav-arq" id="referencia">Index <a href="index.html">&laquo; anterior</a> | <a href="operadorjava.html">próximo >>Operadores e Declarações: &raquo;</a></p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.moveTo(0,100);
+    ctx.lineTo(200,1);
+    ctx.stroke();
+    ctx.font = "20px Comic Sans MS";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "left";
+    ctx.fillText("nome",canvas.width/3, canvas.height/3); //, canvas.width/2, canvas.height/2
+/*ctx.myCanvas.moveTo(100, 150);*/
+    ctx.beginPath();
+    ctx.arc(140, 70, 15, 0, 2 * Math.PI);
+    ctx.stroke(); 
+</script>
+
+</body>
+</html>
+

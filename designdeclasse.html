@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="css/stylos.css">
+<link rel="stylesheet" href="css/stylew3.css">
+ <title> Programar em Java</title>
+ 
+   <script type="text/javascript"src="js/efeitos.js"></script>
+ </head>
+ <body>
+  
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+   <a class="w3-bar-item w3-button" href="#dclasse">5 - DESIGN DE CLASSE</a>
+  <a class="w3-bar-item w3-button" href="#heranca">Introduzindo uma Herança de Classe </a>
+          <a class="w3-bar-item w3-button" href="#classeabstrata">Criando Classes Abstratas</a>
+          <a class="w3-bar-item w3-button" href="#interface">Implementando Interfaces</a>
+          <a class="w3-bar-item w3-button" href="#polimorfismo">Entendendo Polimorfismo</a>
+                  <a class="w3-bar-item w3-button" href="#resumo">Resumão</a>
+  <div> 
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+    <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+<a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores e Declaraçoes </a>
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class=" w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<section id="dclasse">
+  <header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+<h1>5 - DESIGN DE CLASSE</h1>
+
+<p><b>O objetivo desta seção é trabalhar com herança, classes abstratas, interfaces e polimorfismo.</b></p>
+
+
+<ul>
+<li>Descrever herança e seus benefícios</li>
+<li>Desenvolver códigos que demonstre o uso de polimorfismo; incluindo sobreposição e tipo de objeto vs tipo de referência</li>
+<li>Determinar quando <b>casting</b> é necessário</li>
+<li>Usar <b>super</b> e <b>this</b> para acessar objetos e construtores</li>
+<li>Usar classes abstratas e interfaces.</li>
+</ul>
+
+ <p>Em sua essência, o design adequado da classe Java é sobre reusabilidade de código, aumentando funcionalidade e padronização. Por exemplo, para criar uma nova classe que estende uma classe existente, você pode ter acesso a uma enorme quantidade de primitivo herdado, objetos e métodos. Alternativamente, por desenhar uma interface padrão para sua aplicação, você garante que qualquer classe que implemente a interface tenha certamente métodos necessários definidos. Finalmente, para criar classes de definições abstratas, você estará definindo uma plataforma que outros desenvolvedores pode estender e construir no topo dela.</p>
+ </section>
+<section id="heranca">
+ <h1>Introduzindo a Herança de Classe</h1>
+
+ <p>Quando criar uma nova classe em Java, você pode definir a classe para herdar de uma classe existente. Herança é o processo pelo qual a nova subclasse filho inclui automaticamente qualquer primitivo <b>public</b> ou <b>protected</b>, objetos, ou métodos definidos na classe pai.</p>
+ <p>Referimos para qualquer classe que herda de outra classe como uma classe filho ou de uma classe descendente. Alternativamente, nos referimos à classe que o filho herda de classe pai ou uma classe ancestral. Se filho X herda da classe Y, que por sua vez herda da classe Z, então X seria considerado um filho indiretamente, ou descendente da classe Z.</p>
+<p>Java suporta herança única , pelo qual uma classe pode herdar de somente uma classe pai direta. Java também suporta herança de múltiplos níveis, pelo qual uma classe pode estender outras classes, que por sua vez estende outras classes. Você pode estender uma classe qualquer número de vezes, permitindo cada descendente ganhar acesso a membros ancestrais.</p>
+
+
+<h2>Estendendo uma Classe</h2>
+
+<p>Em Java, você pode estender uma classe adcionando o nome da classe pai na definição usando a palavra chave <b>extends</b>.</p>
+<pre>
+public abstract class ElephantSeal extends Seal {
+// Métodos e variáveis definidas aqui
+}
+
+public ou default - modificador de acesso
+abstract ou final - palavra chave (opcional)
+class - palavra chave (exige)
+nome da classe - ElephantSeal
+extends classe pai - Seal (opcional)
+</pre>
+
+<p>Porque Java permite somente um arquivo público por classe, nós podemos criar dois arquivos, <b>Animal.java</b> e <b>Lion.java</b>, no  qual a classe <b>Lion</b> estende a classe <b>Animal</b>. Assumindo que eles estão no mesmo pacote, uma declaração <b>import</b> não é necessário em <b>Lion.java</b> para acessar a classe <b>Animal</b>.</p>
+
+<p>Aqui o conteúdo de Animal.java:</p>
+<pre>
+public class Animal {
+private int age;
+public int getAge() {
+return age;
+}
+public void setAge(int age) {
+this.age = age;
+}
+}
+</pre>
+
+<p>E aqui o conteúdo de Lion.java:</p>
+
+<pre>
+public class Lion extends Animal {
+private void roar() {
+System.out.println("The "+getAge()+" year old lion says: Roar!");
+}
+}
+</pre>
+
+<p>Note o uso da palavra chave <b>extends</b> em <b>Lion.java</b> para indicar que a classe <b>Lion</b> estende da classe <b>Animal</b>. Neste exemplo, nós vemos que <b>getAge()</b> e <b>setAge()</b> são acessíveis pela subclasse <b>Lion</b>, porque eles estão marcados como <b>public</b> na classe pai. O primitivo <b>age</b> está marcado como <b>private</b> e portanto não está acessível para subclasse <b>Lion</b>, o exemplo seguinte não compilaria:</p>
+
+<pre>
+public class Lion extends Animal {
+private void roar() {
+System.out.println("The "+age+" year old lion says: Roar!"); 
+// DOES NOT COMPILE
+}
+}
+</pre>
+
+<h2>Aplicando modificadores de acesso da classe</h2>
+
+<p>O modificador de acesso <b>public</b> aplicado para classe indica que este pode ser referenciado e usado em qualquer classe. O modificador <b>default(pacote private)</b> que é a falta de qualquer modificador, indica que a classe pode ser acessada somente por uma subclasse ou classe dentro do mesmo pacote.</p>
+<p>Um arquivo Java pode ter muitas classes, mas na maioria uma classe <b>public</b>. De fato, este pode ter uma classe <b>não public</b> no todo. Um recurso de usar o modificador <b>default(pacote private)</b> é que você pode definir muitas classes dentro do mesmo arquivo Java. Por exemplo, a seguir a definição poderia aparecer no único arquivo Java nomeado <b>Groundhog.java</b>, desde que este contenha somente uma classe <b>public</b>:</p>
+<pre>
+class Rodent {}
+public class Groundhog extends Rodent {}
+</pre>
+
+<h2>Criando Objetos Java</h2>
+<p>Em Java, todas as classes herdam de uma única classe. <b>java.lang.Object</b>. Além disso, <b>java.lang.Objec</b> é a classe que não tem qualquer classe pai.  Por que o compilador inseriu automaticamente o código em qualquer classe que você escreve que não estenda uma classe específica.
+Por exemplo, considere as seguintes duas definições de classe equivalentes: </p>
+
+<pre>
+public class Zoo {
+}
+public class Zoo extends java.lang.Object {
+}
+</pre>
+
+<p>Quando Java ver a definição da classe que não estende outra classe, este imediatamente adciona a sintax <b>extends java.lang.Object</b> para a definição da classe.</p>
+<p>Se você definir que a nova classe estende uma classe existente, Java não adciona esta sintax, apesar da nova classe ainda herdar de <b>java.lang.Object</b>. Desde que todas as classes herdam de <b>java.lang.Object</b>, estendendo uma classe existente significa que o filho automaticamente herda de <b>java.lang.Object</b> pela construção. Isto quer dizer que se você olhar na estrutura de qualquer classe, sempre terá no fim <b>java.lang.Object</b> no topo da árvore. Todos os objetos herdam de <b>java.lang.Object</b>.</p>
+
+
+<h2>Definindo Construtores</h2>
+
+<p>Toda classe tem pelo menos um construtor. No caso de nenhum construtor é declarado o compilador irá inserir automaticamente um <b>construtor default sem argumento</b>.</p> 
+<p>Em Java, a primeira declaração de cada construtor ou é uma chamada para outro construtor dentro da classe, usando <b>this()</b>, ou uma chamada para um construtor diretamente na classe pai, usando <b>super()</b>. Se um construtor pai leva um argumento, o super construtor também iria levar argumentos. Nos referimos ao comando <b>super()</b> como qualquer construtor pai, mesmo aqueles que levam um argumento. Note o uso de ambos <b>super()</b> e <b>super(age)</b> no exemplo a seguir:</p>
+<pre>
+public class Animal {
+private int age;
+public Animal(int age) {
+super();
+this.age = age;
+}
+}
+public class Zebra extends Animal {
+public Zebra(int age) {
+super(age);
+}
+public Zebra() {
+this(4);
+}
+}
+</pre>
+<p>Na primeira classe, <b>Animal</b>, a primeira declaração do construtor é um chamado para o construtor pai definido em <b>java.lang.Object</b>, que não leva argumento. Na segunda classe, <b>Zebra</b>, a primeira declaração do primeiro construtor é um chamado para construtor <b>Animal</b>, que leva um único argumento. A classe <b>Zebra</b> também inclui um segundo construtor sem argumento que não chama <b>super()</b> mas chama o outro construtor dentro da classe <b>Zebra</b> usando <b>this(4)</b>.
+O comando <b>super()</b> pode ser somente usado como a primeira declaração do construtor. Por exemplo, a seguir duas definições de classe que não irão compilar:</p>
+<pre>
+public class Zoo {
+public Zoo() {
+System.out.println("Zoo created");
+super(); // DOES NOT COMPILE
+}
+}
+public class Zoo {
+public Zoo() {
+super();
+System.out.println("Zoo created");
+super(); // DOES NOT COMPILE
+}
+}
+</pre>
+
+<p>A primeira classe não vai compilar porque o chamado do construtor pai deve ser a primeira declaração do construtor, não a segunda declaração. No segundo trecho do código, <b>super()</b> é a primeira declaração do construtor, mas também é usado como a terceira declaração. O comando <b>super()</b> pode ser somente usado como a primeira declaração do construtor, de outra forma não vai compilar.</p>
+<p>Se a classe pai tiver mais do que um construtor, a classe filho pode usar qualquer construtor pai nesta definição:</p>
+<pre>
+public class Animal {
+private int age;
+private String name;
+public Animal(int age, String name) {
+super();
+this.age = age;
+this.name = name;
+}
+public Animal(int age) {
+super();
+this.age = age;
+this.name = null;
+}
+}
+public class Gorilla extends Animal {
+public Gorilla(int age) {
+super(age,"Gorilla");
+}
+public Gorilla() {
+super(5);
+}
+}
+</pre>
+
+<p>Neste exemplo, o primeiro construtor filho leva um argumento, <b>age</b>, e chama o construtor pai, que leva dois argumentos, <b>age</b> e <b>name</b>. O segundo construtor filho não leva argumento, e ele chama o construtor pai, que leva um argumento, <b>age</b>.
+
+<h3>Noções básicas sobre aprimoramentos do compilador</h3>
+<p>Até agora, definimos numerosas classes que não explica o chamado do construtor pai via palavra-chave <b>super()</b>, então porque o código compila? A resposta é que o compilador Java automaticamente insere um chamado ao construtor sem argumento <b>super()</b> se a primeira declaração não é chamado  para o construtor pai. Por exemplo, as três definições de construtor e de classe a seguir são equivalentes, porque o compilador irá convertê-las automaticamente para o último exemplo:</p> 
+<pre>
+public class Donkey {
+}
+public class Donkey {
+public Donkey() {
+}
+}
+public class Donkey {
+public Donkey() {
+super();
+}
+}
+</pre>
+<p>A diferença entre essas três definições de classe <b>Donkey</b> é por que Java vai automaticamente convertê-los para a última definição.</p>
+<p> O que acontece se a classe pai não tiver um construtor sem argumento?</p>
+<p> Lembre-se de que o construtor sem argumento não é obrigatório e será inserido apenas se não houver um construtor definido na classe. Neste caso, o compilador Java não vai ajudar e você deve criar pelo menos um construtor em sua classe filho que explicita chamar um construtor pai via comando <b>super()</b>. Por exemplo , a seguir este código não vai compilar:</p>
+<pre>
+public class Mammal {
+public Mammal(int age) {
+}
+}
+public class Elephant extends Mammal { // DOES NOT COMPILE
+}
+</pre>
+<p>Neste exemplo nenhum construtor é definido dentro da classe <b>Elephant</b>, assim o compilador tenta inserir um construtor <b>default</b> sem argumento com a chamada <b>super()</b>. O compilador não funciona quando percebe não existir um construtor pai que não leve argumento. Neste exemplo, devemos explicitamente definir pelo menos um construtor, como no código a seguir:</p>
+<pre>
+public class Mammal {
+public Mammal(int age) {
+}
+}
+public class Elephant extends Mammal {
+public Elephant() { // DOES NOT COMPILE
+}
+}
+</pre>
+<p>Este código não compila, porque o compilador tenta inserir o <b>super()</b> sem argumento como a primeira declaração do contrutor na classe <b>Elephant</b>. E não existe tal construtor na classe pai.</p>
+<pre>
+public class Mammal {
+public Mammal(int age) {
+}
+}
+public class Elephant extends Mammal {
+public Elephant() {
+super(10);
+}
+}
+</pre>
+
+<p>Este código vai compilar porque adcionamos um construtor com um chamado explícito para um construtor pai. Note que agora a classe <b>Elephant</b> tem um construtor sem argumento mesmo que a classe pai <b>Mammal</b> não. Subclasses pode definir construtores sem argumentos mesmo se suas classes pai não fazem, o construtor fornecido do filho mapeia para o construtor pai via um chamado explícito do comando <b>super()</b>.</p>
+
+<h3>Definição das regras do Construtor</h3>
+<p>
+1- A primeira declaração de cada construtor é um chamado para outro construtor dentro da classe usando <b>this()</b>, ou um chamado para um construtor na classe pai direto usando <b>super()</b>.</p>
+<p>2-  O chamado <b>super()</b> não pode ser usado depois da primeira declaração do construtor.</p>
+<p>3- Se o chamado <b>super()</b> não é declarado no construtor, Java vai inserir um <b>super()</b> sem argumento como a primeira declaração do construtor.</p>
+<p>4- Se o pai não tem um construtor sem argumento e o filho não define qualquer construtor, o compilador vai lançar um erro e tentar inserir um <b>construtor default</b>(construtor padrão) sem argumento dentro da classe filho.</p>
+<p>5- Se o pai não tem um construtor sem argumento, o compilador exige um chamado explícito para um construtor pai em cada construtor filho.</p>
+
+<h3>Chamando Construtores</h3>
+
+<p>Em Java, o construtor pai é sempre executado antes do construtor filho. Por exemplo, tente determinar qual a saída deste código a seguir:</p>
+<pre>
+class Primate {
+public Primate() {
+System.out.println("Primate");
+}
+}
+class Ape extends Primate {
+public Ape() {
+System.out.println("Ape");
+}
+}
+public class Chimpanzee extends Ape {
+public static void main(String[] args) {
+new Chimpanzee();
+}
+}
+</pre>
+
+<p>O compilador primeiro insere o comando <b>super()</b> como a primeira declaração de ambos os construtores <b>Primate</b> e <b>Ape</b>. Em seguida, o compilador insere um <b>construtor default sem argumento</b> na classe <b>Chimpanzee</b> com <b>super()</b> como a primeira declaração do construtor. O código será executado com os construtores pai chamado primeiro e gerará a seguinte saída:</p><br>
+<p>
+ <b>Primate</b><br>
+ <b>Ape</b>
+</p>
+ <br>
+ <h2>Chamando Membros da classe herdada</h3>
+
+<p>Classes Java pode usar qualquer membro <b>public</b> ou <b>protected</b> da classe pai, incluindo métodos, primitivos, ou referência de objeto. Se classe pai e classe filho são partes do mesmo pacote, a classe filho pode também usar qualquer membro padrão definido na classe pai. A classe filho nunca pode acessar um membro privado da classe pai, pelo menos não através de uma referência direta.</p>
+<p>Para referenciar um membro na classe pai, você pode chamá-lo somente diretamente, como no exemplo a seguir:</p>
+<pre>
+class Fish {
+protected int size;
+private int age;
+public Fish(int age) {
+this.age = age;
+}
+public int getAge() {
+return age;
+}
+}
+public class Shark extends Fish {
+private int numberOfFins = 8;
+public Shark(int age) {
+super(age);
+this.size = 4; 
+}
+public void displaySharkDetails() {
+System.out.print("Shark with age: "+getAge());
+System.out.print(" and "+size+" meters long");
+System.out.print(" with "+numberOfFins+" fins");
+}
+}
+</pre>
+<p>Na classe filho, usamos o método <b>public getAge()</b> e membro <b>protected size</b> para acessar valores na classe pai.</p>
+<p>Podemos usar a palavra chave <b>this</b> para acessar membros da classe pai que estão acessíveis da classe filho, desde que uma classe filho herde todos os membros deste pai. Considere a seguinte alternativa para definir o método <b>displaySharkDetails()</b> :</p>
+<pre>
+public void displaySharkDetails() {
+System.out.print("Shark with age: "+this.getAge());
+System.out.print(" and "+this.size+" meters long");
+System.out.print(" with "+this.numberOfFins+" fins");
+}
+</pre>
+<p>Em Java, você pode referenciar explicitamente um membro da classe pai usando a palavra chave <b>super</b>, como a seguir:</p>
+<pre>
+public void displaySharkDetails() {
+System.out.print("Shark with age: "+super.getAge());
+System.out.print(" and "+super.size+" meters long");
+System.out.print(" with "+this.numberOfFins+" fins");
+}
+</pre>
+
+<p>Nós popdemos usar <b>this</b> ou <b>super</b> para acessar membros da classe pai, mas é o mesmo para os membros da classe filho?</p>
+<pre>
+public void displaySharkDetails() {
+System.out.print("Shark with age: "+super.getAge());
+System.out.print(" and "+super.size+" meters long");
+System.out.print(" with "+super.numberOfFins+" fins"); // DOES NOT COMPILE
+}
+</pre>
+
+<p>Este código não compila porque <b>numberOfFins</b> é somente um membro da classe atual, não da classe pai. Em outras palavras, vimos que <b>this</b> e <b>super</b> podem ambos serem usados para métodos ou variáveis definida na classe pai, mas somente <b>this</b> pode ser usado por membros definidos na classe.</p>
+
+<h2>Herdando Métodos</h2>
+
+<p>Herdar uma classe nos concede acesso ao público e aos membros protegidos da classe pai, mas também define o estágio para colisões entre métodos definidos em ambos a classe pai e a subclasse.</p>
+
+<p>Quando você sobrescreve um método, você pode referenciar a versão pai do método usando a palavra chave <b>super</b>. Nesta maneira, a palavra chave <b>this</b> e <b>super</b> permite você selecionar entre a atual e a versão pai do método, respectivamente.</p>
+
+<pre>
+public class Canine {
+public double getAverageWeight() {
+return 50;
+}
+}
+public class Wolf extends Canine {
+public double getAverageWeight() {
+return super.getAverageWeight()+20;
+}
+public static void main(String[] args) {
+System.out.println(new Canine().getAverageWeight());
+System.out.println(new Wolf().getAverageWeight());
+}
+}
+</pre>
+
+<p>Neste exemplo, no qual a classe filho <b>Wolf</b> sobrescreve a classe pai <b>Canine</b>, o método <b>getAverageWeight()</b> executa sem problemas a saída a seguir:</p> <br>
+<p>
+	<b>50.00</b><br>
+    <b>70.00</b>
+</p>
+<br>
+
+<p>O que aconteceria com a saída do código a seguir se removermos a palavra chave <b>super</b> no método <b>getAverageWeight()</b> da classe <b>Wolf</b>?
+<pre>
+public double getAverageWeight() {
+return getAverageWeight()+20; // INFINITE LOOP
+}
+</pre>
+
+<p>Neste exemplo, o compilador não iria chamar o método pai <b>Canine</b>, iria chamar ao método atual <b>Wolf</b> desde que você pensaria que estivesse executando um chamado recursivo. Uma função recursiva é uma que chama a si mesmo como parte da execução. Uma função recursiva deve ter um condição de terminação. Neste exemplo não existe, portanto, a aplicação tentará chamar a si mesmo infinitamente e produz um erro de <b>stack overflow</b>( O fluxo sobrecarrega a pilha) em tempo de execução(runtime). </p>
+<p>Sobrescrever um método não é sem limitações:</P>
+<br>
+<p>1- O método na classe filho deve ter a mesma assinatura como o método na classe pai.</p>
+<p>2- O método na classe filho deve ser pelo menos tão acessível ou mais acessível do que o método na classe pai.</p>
+<p>3- O método na classe filho não pode lançar uma exceção checked(checada)que é nova ou mais ampla que a classe de qualquer exceção lançada no método da classe pai.</p>
+<p>4- Se o método retornar um valor, ele deve ser o mesmo ou uma subclasse do método na classe pai, conhecido como <b>covariant return types</b>.
+
+<h3>Sobrecarregar vs Sobrescrever</h3>
+
+<p>Sobrecarregar um método e sobrescrever um método são similares, pois ambos envolve redefinir um método que usa o mesmo nome. Eles diferem em que um método sobrecarregado vai usar uma diferente assinatura do que um método sobrescrito. A distinção permite método sobrecarregado lidar com mais liberdade na sintax do que um método sobrescrito teria. Por exemplo:</p>
+<pre>
+public class Bird {
+public void fly() {
+System.out.println("Bird is flying");
+}
+public void eat(int food) {
+System.out.println("Bird is eating "+food+" units of food");
+}
+}
+public class Eagle extends Bird {
+public int fly(int height) {
+System.out.println("Bird is flying at "+height+" meters");
+return height;
+}
+public int eat(int food) { // DOES NOT COMPILE
+System.out.println("Bird is eating "+food+" units of food");
+return food;
+}
+}
+</pre>
+<p>O primeiro método <b>fly()</b>, está sobrecarregado na subclasse <b>Eagle</b>, desde que a assinatura muda de um construtor sem argumento para um construtor com um argumento <b>int</b>. Porque o método está sendo sobrecarregado e não sobrescrito, o tipo de retorno pode ser mudado de <b>void</b> para <b>int</b> sem problemas.</p>
+<p>O segundo método, <b>eat()</b>, é sobrescrito na subclasse <b>Eagle</b>, desde que a assinatura é a mesma como é na classe pai <b>Bird</b>- ambos levam um único argumento <b>int</b>. Porque o método está sendo sobrescrito, o tipo de retorno do método em <b>Eagle</b> deve ser uma subclasse do tipo de retorno do método em <b>Bird</b>. Neste exemplo, o tipo de retorno <b>void</b> não é uma subclasse de <b>int</b>, portanto,  compilador lançará uma exceção nesta definição de método.</p>
+
+<p>Vamos ver alguns exemplos das últimas três regras de sobrescrever métodos:</p>
+<pre>
+public class Camel {
+protected String getNumberOfHumps() {
+return "Undefined";
+}
+}
+public class BactrianCamel extends Camel {
+private int getNumberOfHumps() { // DOES NOT COMPILE
+return 2;
+}
+}
+</pre>
+
+<p>Neste exemplo, o método na classe filho não compila por duas razões. Primeiro, ele viola a segunda regra de sobrescrever métodos: o método filho deve ser pelo menos tão acessível quanto o pai. Neste exemplo, o método pai usa o modificador <b>protected</b>, mas o método filho usa  modificador <b>private</b>, fazendo dele menos acessível no método filho do que no método pai. Este também viola a quarta regra de sobrescrever métodos: o tipo de retorno do método pai e método filho deve ser <b>covariant</b>.Neste exemplo, o tipo de retorno do método pai é <b>String</b>, enquanto o tipo de retorno do método filho é <b>int</b>, nenhum dos quais são <b>covariante</b> entre si.</p>
+<p>Vamos olhar agora exemplos de métodos que usam excecões:</p>
+<pre>
+public class InsufficientDataException extends Exception {}
+public class Reptile {
+protected boolean hasLegs() throws InsufficientDataException {
+throw new InsufficientDataException();
+}
+protected double getWeight() throws Exception {
+return 2;
+}
+}
+public class Snake extends Reptile {
+protected boolean hasLegs() {
+return false;
+}
+protected double getWeight() throws InsufficientDataException{
+return 2;
+}
+}
+</pre>
+
+<p>Neste exemplo, ambas classes pai e filho define dois métodos, <b>hasLegs()</b> e <b>getWeight()</b>. O primeiro método <b>hasLegs()</b>, lança uma exceção  <b>InsufficientDataException</b> na classe pai, mas não lança exceção na classe filho. Isto não viola a terceira regra de sobrescrever métodos, apesar, que nenhuma nova exceção é definida. Em outras palavras, um método filho pode ocultar ou eliminar uma exceção do método pai sem problemas.</p>
+<p>O segundo método, <b>getWeight()</b>, lança uma exceção na classe pai e <b>InsufficientDataException</b> na classe filho. Isto  também é permitido, como <b>InsufficientDataException</b> é uma subclasse de <b>Exception</b> por construção.</p>
+
+<p>Nenhum dos métodos no exemplo anterior viola a terceira regra de sobrescrever métodos, assim o código compila e executa sem problemas.</p>
+<p>Vamos ver um exemplo que viola a terceira regra:</p>.
+<pre>
+public class InsufficientDataException extends Exception {}
+public class Reptile {
+protected double getHeight() throws InsufficientDataException {
+return 2;
+}
+protected int getLength() {
+return 10;
+}
+}
+
+public class Snake extends Reptile {
+protected double getHeight() throws Exception { // DOES NOT COMPILE
+return 2;
+}
+protected int getLength() throws InsufficientDataException { // DOES NOT COMPILE
+return 10;
+}
+}
+</pre>
+
+<p>Nenhum dos métodos na classe filho deste código vai compilar. O método <b>getHeight()</b> na classe pai lança um <b>InsufficientDataException</b>, enquanto que o método na classe filho lança um <b>Exception</b>. Desde que <b>Exception</b> não é uma subclasse de <b>InsufficientDataException</b>,  a terceira regra de sobrescrever métodos é violada e o código não vai compilar. Coincidentemente, <b>Exception</b> é uma superclasse de <b>InsufficientDataException</b>.
+<p>Já o método <b>getLenght()</b> não lança uma exceção na classe pai, mas lança uma exceção, <b>InsufficientDataException</b>, na classe filho. Nesta maneira, a classe filho define uma nova exceção que a classe pai não fez. Que é uma violação da terceira regra de sobrescrever métodos.</p>
+
+<h3>Redeclarando Métodos Privados</h3>
+
+<p>Em java não é possível sobrescrever um método privado na classe pai desde que o método pai não seja acessível da classe filho. Justamente porque a classe filho não tem acesso ao método pai, não significa que a classe filho não pode definir a própria versão do método.</p>
+<p>Java permite você redeclarar um novo método na classe filho com a mesma ou assinatura modificada como o método na classe pai. Este método na classe filho é um método independente e separado, sem relação a versão do método pai, assim nenhuma das regras para sobrescrever métodos são invocados.</p>
+<pre>
+public class Camel {
+private String getNumberOfHumps() {
+return "Undefined";
+}
+}
+
+public class BactrianCamel extends Camel {
+private int getNumberOfHumps() {
+return 2;
+}
+}
+</pre>
+
+<p>Este código compila sem problemas. Note que o tipo de retorno difere no método filho de <b>String</b> para <b>int</b>. Neste exemplo o método <b>getNumberOfHumps()</b> na classe pai está oculto, assim o método na classe filho  é um novo método e não um sobrescrito do método na classe pai. Se o método na classe pai fosse <b>public</b> ou <b>protected</b>, o método na classe filho não iria compilar. </p>
+
+<h3>Ocultando Métodos Estáticos</h3>
+<p>Um método oculto ocorre quando a classe filho deixa um método estático com o mesmo nome e assinatura como um método estático definido na classe pai. Método oculto é similar, mas não exatamente o mesmo que um método sobrescrito. Primeiro, a quarta regra para sobrescrever um método deve ser seguido quando o método é oculto. Em adcional, uma nova regra é adcionada para ocultar um método, nomeadamente o uso da palavra chave <b>static</b> deve ser o mesmo entre classe pai e filho. A seguir uma lista de 5 regras para ocultar um método:</p>
+
+<p>1- O método na classe filho deve ter a mesma assinatura como o método na classe pai.</p>
+<p>2- O método na classe filho deve ser pelo menos tão acessível ou mais acessível do que o método na classe pai.</p>
+<p>3- O método na classe filho não pode lançar uma execeção checked(checada) que é nova ou mais ampla do que a classe de qualquer exceção lançada no método da classe pai.</p>
+<p>4- Se o método retornar um valor, este deverá ser o mesmo ou uma subclasse do método na classe pai, conhecido como <b>covariant return types</b>.</p>
+<p>5- O método definido na classe filho deve ser marcado como <b>static</b> se este é marcado como <b>static</b> na classe pai(método oculto)). O método não deve ser marcado como <b>static</b> na classe filho se este não é marcado como <b>static</b> na classe pai(método sobrescrito).</p>
+
+<p>Vamos ver alguns exemplos da nova regra:</p>
+<pre>
+public class Bear {
+public static void eat() {
+System.out.println("Bear is eating");
+}
+}
+
+public class Panda extends Bear {
+public static void eat() {
+System.out.println("Panda bear is chewing");
+}
+public static void main(String[] args) {
+Panda.eat();
+}
+}
+</pre>
+<p>Neste exemplo, o codigo compila e excuta sem problemas. O método <b>eat()</b> na classe filho oculta o método <b>eat()</b> na classe pai. Porque eles são ambos marcados como <b>static</b>, isto não é considerado um método sobrescrito.</p>
+<p>Vamos constatar isto com exemplo que viola a quinta regra:</p>
+<pre>
+public class Bear {
+public static void sneeze() {
+System.out.println("Bear is sneezing");
+}
+public void hibernate() {
+System.out.println("Bear is hibernating");
+}
+}
+public class Panda extends Bear {
+public void sneeze() { // DOES NOT COMPILE
+System.out.println("Panda bear sneezes quietly");
+}
+public static void hibernate() { // DOES NOT COMPILE
+System.out.println("Panda bear is going to sleep");
+}
+}
+</pre>
+
+<p>Neste exemplo, <b>sneeze()</b> é marcado como <b>static</b> na classe pai mas não na classe filho. O compilador detecta que você está tentando sobrescrever um método que deveria ser oculto e gera erro do compilador. No segundo método, <b>hibernate()</b> é um membro de instância na classe pai mas um método estático na classe filho. Neste cenário o compilador pensa que você está tentando ocultar o método que deve ser sobrescrito e também gera um erro do compilador.</p>
+
+<h3>Sobrescrever vs Ocultar métodos</h3>
+
+<p>Ao contrário de sobrescrever um método, no qual um método filho substitui o método pai na chamada definida em ambos o pai e filho, ocultar métodos somente substitui o método pai na chamada definida na classe filho.</p>
+<p>Em tempo de execução(runtime) a versão filho de um método sobrescrito é sempre executado para uma instância, independentemente de a chamada do método ser definida em um método de classe pai ou filho. Nesta maneira, o método pai nunca é usado a não ser que um chamado explícito para o método pai seja referenciado, usando a sintax <b>NomeClassePai.metodo()</b>. Alternativamente, em tempo de execução a versão pai de um método oculto é sempre executado se a chamada ao método é definido na classe pai. Vamos olhar este exemplo:</p>
+<pre>
+public class Marsupial {
+public static boolean isBiped() {
+return false;
+}
+public void getMarsupialDescription() {
+System.out.println("Marsupial walks on two legs: "+isBiped());
+}
+}
+public class Kangaroo extends Marsupial {
+public static boolean isBiped() {
+return true;
+}
+public void getKangarooDescription() {
+System.out.println("Kangaroo hops on two legs: "+isBiped());
+}
+public static void main(String[] args) {
+Kangaroo joey = new Kangaroo();
+joey.getMarsupialDescription();
+joey.getKangarooDescription();
+}
+}
+</pre>
+
+<p>Neste exemplo, o código compila e executa sem problemas, saindo assim:</p><br>
+
+<p><b>Marsupial walks on two legs: false</b><br>
+<b>Kangaroo hops on two legs: true</b>
+</p><br>
+
+<p>Note que <b>isBiped()</b> retorna <b>false</b> na classe pai e <b>true</b> na classe filho. No primeiro método chamado, o método pai <b>getMarsupialDescription()</b> é usado. A classe <b>Marsupial</b> somente conhece sobre <b>isBiped()</b> a partir da sua própria definição de classe, assim esta saída é <b>false</b>. No segundo método chamado, o filho executa um método de <b>isBiped()</b>, que oculta a versão do método pai e retorna <b>true</b>.</p>
+
+<p>Agora vamos usar neste exemplo uma versão sobrescrita de <b>isBiped()</b> em vez de uma versão oculta:</p>
+<pre>
+class Marsupial {
+public boolean isBiped() {
+return false;
+}
+public void getMarsupialDescription() {
+System.out.println("Marsupial walks on two legs: "+isBiped());
+}
+}
+public class Kangaroo extends Marsupial {
+public boolean isBiped() {
+return true;
+}
+public void getKangarooDescription() {
+System.out.println("Kangaroo hops on two legs: "+isBiped());
+}
+public static void main(String[] args) {
+Kangaroo joey = new Kangaroo();
+joey.getMarsupialDescription();
+joey.getKangarooDescription();
+}
+}
+</pre>
+
+<p>Este código compila e executa sem problemas, mas esta saída é levemente diferente:</p><br>
+
+<p><b>Marsupial walks on two legs: true</b><br>
+<b>Kangaroo hops on two legs: true</b></p>
+<br>
+
+<P>Neste exemplo, o métod <b>isBiped()</b> é sobrescrito, não oculto, na classe filho. Portanto, este é substituído em tempo de execução na classe pai com a chamada para o método da classe filho.</p>
+
+
+
+<h3>Criando métodos final</h3>
+
+<p>Em herança de métodos existe uma regra: métodos <b>final</b> não podem ser sobrescrito. Você pode criar um método com a palavra chave <b>final</b>, porém fazendo assim você proibe a classe filho de sobrescrever este método. Esta regra serve quando você sobrescreve um método e quando oculta um método. Em outras palavras, você não pode ocultar um método estático na classe pai se este é marcado como <b>final</b>.
+<p>Vamos olhar este exemplo:</p>
+<pre>
+public class Bird {
+public final boolean hasFeathers() {
+return true;
+}
+}
+public class Penguin extends Bird {
+public final boolean hasFeathers() { // DOES NOT COMPILE
+return false;
+}
+}
+</pre>
+
+<p>Neste exemplo, o método <b>hasFeathers()</b> é marcado como <b>final</b> na classe pai <b>Bird</b>, então a classe filho <b>Penguin</b> não pode sobrescrever o método pai, resultando em um erro do compilador.</p>
+
+<h2>Herdando Variavéis</h2>
+
+<p>Existe uma quantidade de regras quando dois métodos tem a mesma assinatura e são definido em ambas classes pai e filho. Felizmente, as regras para variáveis com o mesmo nome nas classes pai e filho são mais simples, porque Java não permite variáveis serem sobrescrita mas sim ocultas.</p>
+
+<h3>Ocultando Variáveis</h3>
+
+<p> Quando você oculta variáveis, você define uma variável com o mesmo nome como uma variável em uma classe pai. Este cria duas cópias da variável dentro de uma instância da classe filho: uma instância definida por uma referência pai e outra definida pela referência filho. Como ao ocultar um método estático, você não pode sobrescever uma variávael; você pode somente ocultá-la. Também similar a ocultar um método estático, a regra para acessar as variáveis pai e filho são bastante similares. Se você está referenciando a variável de dentro da classe pai, a variável definida na classe pai é usada. Alternativamente, se você está referenciando a variável de dentro da classe filho, a variável definida na classe filho é usada. De qualque forma, você pode referenciar o valor pai da variável com um uso explícito da palavra chave <b>super</b>. Considere o seguinte exemplo:</p>
+
+<pre>
+public class Rodent {
+protected int tailLength = 4;
+public void getRodentDetails() {
+System.out.println("[parentTail="+tailLength+"]");
+}
+}
+public class Mouse extends Rodent {
+protected int tailLength = 8;
+public void getMouseDetails() {
+System.out.println("[tail="+tailLength +",parentTail="+super.tailLength+"]");
+}
+public static void main(String[] args) {
+Mouse mouse = new Mouse();
+mouse.getRodentDetails();
+mouse.getMouseDetails();
+}
+}
+</pre>
+
+<p>Este compila sem problemas e a saída quando executado é a seguinte:</p>
+<br>
+<p><b>[parentTail=4]</b><br>
+<b>[tail=8,parentTail=4]</b></p>
+<br>
+<p>Note que a instância de <b>Mouse</b> contém duas cópias da variável <b>tailLength</b>: uma definida no pai e outra definida no filho. Essas instâncias são mantidas separadas uma da outra, permitindo a instância de <b>Mouse</b> referenciar ambos valores <b>tailLength</b> independentemente. </p>
+<p>No primeiro método chamado, <b>getRodentDetails()</b>, o método pai sai com o valor pai da variável <b>tailLength</b>. No segundo método chamado, <b>getMouseDetails()</b>, o método filho sai com ambas a versão pai e filho da variável <b>tailLength</b>, usando a palavra chave <b>super</b> para acessar este valor da variável pai.</p> 
+</section>
+<section id="classeabstrata">
+<h1>Criando Classes Abstratas</h1>
+
+<p>Classe abstrata é uma classe que é marcada com a palavra chave <b>abstract</b> e não pode ser instanciada. Um método abstrato é um método marcado com a plavra chave <b>abstract</b> definida em uma classe abstrata, pelo qual nenhuma implementação é fornecida na classe em que esta é declarada.</p>
+
+<p>A seguir um exemplo de código :</p>
+
+<pre>
+public abstract class Animal {
+protected int age;
+public void eat() { 
+System.out.println("Animal is eating");
+}
+public abstract String getName();
+}
+public class Swan extends Animal {
+public String getName() {
+return "Swan";
+}
+} 
+</pre>
+
+<p>A primeira coisa para notar sobre  este exemplo de código é que a classe <b>Animal</b> é declarada <b>abstract</b> e <b>Swan</b> não é. O próximo membro <b>age</b> e o método <b>eat()</b> são marcados como <b>protected</b> e <b>public</b>, respectivamente; portanto, eles são herdados na subclasse assim como <b>Swan</b>. Finalmente, o método <b>abstract getName()</b> é terminado com um ponto e vírgula e não fornece um corpo na classe pai <b>Animal</b>. Este método é implementado com o mesmo nome e assinatura como o método pai na classe <b>Swan</b>.</p>
+
+<h2>Definindo uma Classe Abstrata</h2>
+
+<p>Uma classe Abstrata não exige incluir qualquer método abstrato. Por exemplo, o código seguinte compila sem problemas mesmo apesar deste não definir qualquer método abstrato.</p><br>
+<p><b>
+public abstract class Cow {
+}</b></P><br>
+
+<p>Uma classe abstrata não tem que implementar qualquer método abstrato, um método abstrato pode somente ser definido em uma classe abstrata. Por exemplo o seguinte código não vai compilar porque um método abstrato não é definido dentro de uma classe abstrata:</p>
+<pre>
+public class Chicken {
+public abstract void peck(); // DOES NOT COMPILE
+}
+</pre>
+
+<p>Por definição, uma classe abstrata não pode ser marcada como <b>final</b>. Por definição, uma classe abstrata é uma que deve ser estendida por outra classe para ser instanciada, enquanto que uma classe <b>final</b> não pode ser estendida por outra classe. Marcando uma classe abstrata como <b>final</b>, você está dizendo a classe para nunca ser instanciada, assim o compilador recusa processar o código.</p>
+<br>
+<p>Por exemplo o código não compila:</p><br>
+<p><b>pubic final abstract class Tortoise{ // Does Not Compile
+}</b></p><br>
+
+<p>Da mesma forma um método abstrato não pode ser marcada como <b>final</b> pela mesma razão que uma classe abstrata não pode ser marcada como <b>final</b>. Uma vez marcada como <b>final</b>, o método nunca pode ser sobrescrito na classe, fazendo dele impossível para criar uma instância concreta da classe abstrata.</P>
+<pre>
+public abstract class Goat {
+public abstract final void chew(); // DOES NOT COMPILE
+}
+</pre>
+
+<p>Finalmente, um método não pode ser marcado como ambos <b>abstract</b> e <b>private</b>. </p>
+<pre>
+public abstract class Whale {
+private abstract void sing(); // DOES NOT COMPILE
+}
+public class HumpbackWhale extends Whale {
+private void sing() {
+System.out.println("Humpback whale is singing");
+}
+}
+</pre>
+
+<p>Neste exemplo, o método abstrato <b>sing()</b> definido na classe pai <b>Whale</b> não é visível para a subclasse <b>HumpbackWhale</b>. Mesmo apesar de HumpbackWhale não fornecer uma implementação, isso não é considerado um sobrescrever do método abstrato desde que o método abstrato é inacessível. O compilador reconhece isto na classe pai e lança uma exceção assim que <b>private</b> e <b>abstract</b> são aplicados para o mesmo método.</p>
+<p>Se mudar o modificador de acesso de <b>private</b> para <b>protected</b> na classe pai <b>Whale</b>, o codigo compilaria?</b>
+<pre>
+public abstract class Whale {
+protected abstract void sing();
+}
+public class HumpbackWhale extends Whale {
+private void sing() { // DOES NOT COMPILE
+System.out.println("Humpback whale is singing");
+}
+}
+</pre>
+
+<p>Neste exemplo modificado, o código não compila, mas por uma razão diferente. A regra para sobrescrever método que também funciona para classe abstrata nos diz que a subclasse não pode reduzir a visibilidade do método pai, <b>sing()</b>. Porque o método é declarado como <b>protected</b> na classe pai, este deveria ser marcado como <b>protected</b> ou <b>public</b> na classe filho.</p>
+
+<h2>Criando uma Classe Concreta</h2>
+
+<p>Uma classe abstrata torna útil quando esta é estendida por uma subclasse concreta. Um subclasse concreta é a primeira subclasse não abstrata que estende uma classe abstrata e é necessário implementar todos métodos abstratos herdados.</p>
+<pre>
+public abstract class Animal {
+public abstract String getName();
+}
+
+public class Walrus extends Animal { // DOES NOT COMPILE
+}
+</pre>
+<p>Primeiro note que <b>Animal</b> é marcado como <b>abstract</b> e <b>Walrus</b> não é. Neste exemplo, <b>Walrus</b> é considerado a primeira subclasse concreta de <b>Animal</b>. Segundo, desde que <b>Walrus</b> é a primeira subclasse concreta, este deve implementar todos os métodos <b>abstracts</b> herdados, <b>getName()</b> neste exemplo.</p>
+<p>Note que quando definimos uma classe concreta como a primeira subclasse não abstrata, incluimos a possibilidade que outra classe não abstrata possa estender uma classe não abstrata existente.  O ponto chave é que a primeira classe para estender a classe não abstrata deve implementar todos os métodos abstratos herdados. Por exemplo, a variação do seguinte código não vai compilar:</p>
+
+<pre>
+public abstract class Animal {
+public abstract String getName();
+}
+public class Bird extends Animal { // DOES NOT COMPILE
+}
+public class Flamingo extends Bird {
+public String getName() {
+return "Flamingo";
+}
+}
+</pre>
+
+<p>Mesmo apesar da segunda subclasse <b>Flamingo</b> implementar o método abstrato <b>getName()</b>, a primeira subclasse concreta <b>Bird</b> não; portanto, a classe <b>Bird</b> não irá compilar.</p>
+
+<h2>Estendendo uma Classe Abstrata</h2>
+
+<p>Classes abstratas podem estender outras classes abstratas e não é necessário fornecer implementações para qualquer dos métodos abstratos. Uma classe concreta que estende uma classe abstrata deve implementar todos métodos abstratos herdados. Por exemplo, o código seguinte a classe concreta <b>Lion</b> deve implementar dois métodos, <b>getName()</b> e <b> roar()</b>:</p>
+<pre>
+public abstract class Animal {
+public abstract String getName();
+}
+public abstract class BigCat extends Animal {
+public abstract void roar();
+}
+public class Lion extends BigCat {
+public String getName() {
+return "Lion";
+}
+public void roar() {
+System.out.println("The Lion lets out a loud ROAR!");
+}
+}
+</pre>
+<p>Neste exemplo de código, <b>BigCat</b> estende <b>Animal</b> mas é marcado como <b>abstract</b>; contudo, este não é necessário fornecer uma implementação para o método <b>getName()</b>. A classe <b>Lion</b>  não é marcada como <b>abstract</b>, e como a primeira subclasse concreta, este deve implementar todos métodos abstratos herdados não definido na classe pai.</p>
+<p>Existe uma exceção a regra para método abstrato e classe concreta: uma subclasse concreta não é necessário fornecer um implementação para um método abstrato se uma classe abstrata intermediária fornecer a implemetação. Por exemplo:</p>
+<pre>
+public abstract class Animal {
+public abstract String getName();
+}
+public abstract class BigCat extends Animal {
+public String getName() {
+return "BigCat";
+}
+public abstract void roar();
+}
+public class Lion extends BigCat {
+public void roar() {
+System.out.println("The Lion lets out a loud ROAR!");
+}
+}
+</pre>
+<p>Neste exemplo, <b>BigCat</b> fornece uma implementação para o método abstrato <b>getName()</b> definido na classe abstrata <b>Animal</b>. Portanto, <b>Lion</b> herda somente um método abstrato, <b>roar</b>, e não é necessário fornecer uma implementação para o método <b>getName()</b>.
+A seguir  regras para classe abstrata é métodos abstratos.</p>
+
+
+<p>Definição das regras para Classe Abstrata:</p>
+<ol>
+<li>Classe Abstrata não podem ser instanciada diretamente.</li>
+<li>Classe Abstrata pode ser definida com qualquer número incluindo zero, de métodos abstrato e não abstrato.</li>
+<li>Classe Abstrata não pode ser marcada como <b>private</b> ou <b>final</b>.</li>
+<li>Uma Classe Abstrata que estende outra classe abstrata herda todos métodos abstrato, assim como seus próprios métodos abstrato.</li>
+<li>A primeira classe concreta que estende uma classe abstrata deve fornecer uma implementação para todos os métodos abstrato herdados.</li>
+</ol>
+
+<p>Definições das regras para Método Abstrato:</p>
+<ol>
+<li>Método Abstrato pode somente ser definido em classe abstrata.</li>
+<li>Método Abstrato não pode ser declarado  <b>private</b> ou <b>final</b>.</li>
+<li>Método Abstrato não deve fornecer um corpo no método/implementação na classe abstrata por qual é este declarado.</li>
+<li>Implementar um método abstrato na subclasse segue a mesma regra para sobrescrever um método. Por exemplo, o nome e assinatura deve ser a mesma, e a visibilidade do método na subclasse deve ser pelo menos tão acessível como o método na classe pai.</li>
+</ol>
+</section>
+<section id="interface">
+<h1>Implementando Interfaces </h1>
+
+<p>Apesar de Java não permitir heranças múltiplas, ele permite que as classes implementem qualquer número de interfaces. Uma <b>interface</b> é um tipo de dado abstrato que define uma lista de métodos <b>public absract</b> que qualquer classe implementando a <b>interface</b> deve fornecer. Uma <b>interface</b> pode também incluir uma lista de variáveis constante e métodos default(padrão). Em Java, uma <b>interface</b> é definida com a palavra chave <b>interface</b>. A classe invoca a <b>interface</b> por usar a palavra chave <b>implements</b> na dfinição da classe.</p> 
+
+<pre>
+Definindo uma interface
+     
+public abstract interface CanBurrow{
+                            
+public static final int Minimum_DEPTH =2
+	       
+public abstract int getMAximumDepth();
+}
+}
+
+public -->modificador public ou acesso default
+abstract --> palavra chave(assumido)
+interface --> palavra chave (necessário)
+CanBurrow --> nome da interface
+public static final(assumido)
+public abstract(assumido)
+</pre>
+
+<h3>Implementando uma interface</h3>
+
+<pre>
+          
+public class FieldMouse implements CanBurrow{
+	public int getMaxImumDepth() {
+	|           return 10;   
+  |  
+  |-->assinatura corresponde ao método da interface
+	
+  }  
+ }
+FieldMouse --> nome da classe
+implements --> palavra chave (necessário)
+CanBurrow --> nome da interface
+</pre>
+
+<p>Como vimos neste exemplo, uma interface não é declarada uma classe abstrata, apesar dela ter muitas das mesmas propriedades da classe abstrata. Note que os modificadores do método neste exemplo, <b>abstract</b>, e <b>public</b>, são assumidos. Em outras palavras, se ou não você fornecê-los, o compilador irá automaticamente inseri-los como parte da definição do método.</p>
+<p>Uma classe pode implementar múltiplas interfaces, cada uma separada por vírgula, assim como no exemplo abaixo:</p>
+<pre>
+public class Elephant implements WalksOnFourLegs, HasTrunk, Herbivore {
+}</pre>
+
+<h2>Definindo uma Interface</h2>
+
+<p>Pode pensar que uma interface é um tipo de classe abstrata especializada, pois ela compartilha muitas das mesmas propriedades e regras de uma classe abstrata. Vamos ver essas regras:</p>
+<ol>
+<li>Interfaces não pode ser instanciada diretamente.</li>
+<li>Uma interface não é necessário ter qualquer método</li>
+<li>Uma interface não pode ser marcada como <b>final</b>.</li>
+<li>Todo nível-topo da interface são assumido ter acesso <b>public</b> ou <b>default</b>, e eles devem incluir modificador <b>abstract</b> na sua definição. Portanto, marcar uma <b>interface</b> como <b>private</b>, <b>protected</b>, ou <b>final</b> irá engatilhar um erro de compilador, desde que este é incompatível com essa suposição.</li>
+<li>Todo os métodos <b>não default</b> em uma interface são asumidos ter o modificar <b>abstract</b> e <b>public</b> em sua definição. Portanto, fazer um método com <b>private</b>, <b>protected</b>, ou <b>final</b> irá engatilhar erros de compilador pois esses são incompatíveis com a palavra chave <b>public</b> e <b>abstract</b>.</li>
+</ol>
+
+<p>As três primeiras regras são idênticas para criar uma classe abstrata. Imagine que temos uma <b>interface WalksOnTwoLegs</b>:</p>
+
+<br>
+<p><b>public interface WalksOnTwoLegs {}</b></p>
+<br>
+<p>Ele compila sem problemas, desde que interfaces não são exigidos qualquer métodos.</p>
+
+<p>Agora vamos ver esses dois exemplos:</p>
+<pre>
+public class TestClass {
+public static void main(String[] args) {
+WalksOnTwoLegs example = new WalksOnTwoLegs(); // DOES NOT COMPILE
+}
+}
+
+public final interface WalksOnEightLegs { // DOES NOT COMPILE
+}
+</pre>
+
+<p>O primeiro exemplo não compila, como <b>WalksOnTwoLegs</b> é uma <b>interface</b> ele não pode ser instanciada diretamente. O segundo exemplo, <b>WalksOnTwoLegs</b>, não compila desde que interfaces não pode ser marcado como <b>final</b> pela mesma razão que classes abstrata não pode ser marcada como <b>final</b>.</p>
+<p>A quarta e quinta regra sobre " palavrachave assumida" deve-se pensar como o compilador insere um <b>construtor default(padrão) sem argumento</b> ou declaração <b>super()</b> dentro do seu construtor. Você pode fornecer esses modificadores, mas se não o fizer o compilador irá inseri-lo automaticamente. Por exemplo. A seguir duas definições de interfaces são equivalentes:</p>
+<pre>
+public interface CanFly {
+void fly(int speed);
+abstract void takeoff();
+public abstract double dive();
+}
+public abstract interface CanFly {
+public abstract void fly(int speed);
+public abstract void takeoff();
+public abstract double dive();
+}
+</pre>
+
+<p>Neste exemplo, a palavra chave <b>abstract</b> é adcionado automaticamente primeiro para a definição da <b>interface</b>. Então cada método é pré-anexado com a palavra chave <b>public</b> e <b>abstract</b>. Se o método já tem esta palavra chave então nenhuma mudança é necessária.
+vamos olhar um exemplo que viola as regras da palavra chave assumida.</p>
+<pre>
+private final interface CanCrawl { // DOES NOT COMPILE
+private void dig(int depth); // DOES NOT COMPILE
+protected abstract double depth(); // DOES NOT COMPILE
+public final void surface(); // DOES NOT COMPILE
+}
+</pre>
+<p>A primeira linha não compila porque está marcado como <b>final</b> e modificador de acesso <b>private</b>, isto conflita com o <b>public</b> ou acesso <b>default</b> exigido para acessar interfaces. A segunda e terceira linha não compila porque todos métodos de interfaces são asumidos para ser <b>public</b> e marcá-los como <b>private</b> ou <b>protected</b> lança um erro de compilador. Finalmente, a última linha não compila porque o método é marcado como <b>final</b> e desde que métodos de interfaces são assumidos para ser abstrato, o compilador lança uma exceçãao por usar ambos a palavra chave <b>abstract</b> e <b>final</b> no método.</p>
+
+<h2>Herdando uma interface</h2>
+
+<p>Existe duas regras sobre herança que você deveria manter em mente quando estender uma interface:</p>
+
+<p>1-Uma <b>interface</b> que estende outra <b>interface</b>, também como uma classe abstrata que implemnta uma <b>interface</b>, herdam de todos métodos abstrato como seu próprio método abstrato.</p>
+<p>2- A primeira classe concreta que implementa uma <b>interface</b>, ou estende uma classe abstrata que implementa uma <b>interface</b>, deve fornecer uma implementação para todos dos métodos abstrato herdados.</p>
+
+<p>Como uma classe abstrata, uma <b>interface</b> pode ser estendida usando a palavra chave <b>extends</b>, Nesta maneira, a nova <b>interface</b> herda todos os métodos abstrato da interface pai. Ao contrário de uma classe abstrata, uma interface pode estender múltplas interfaces. Considere o seguinte exemplo:</p>
+<pre>
+public interface HasTail {
+public int getTailLength();
+}
+public interface HasWhiskers {
+public int getNumberOfWhiskers();
+}
+public interface Seal extends HasTail, HasWhiskers {
+}
+</pre>
+
+<p>Qualquer classe que implementa a <b>interface Seal</b> deve fornecer uma implementação para todos os métodos na interface pai - neste caso, <b>getTailength()</b> e <b>getNumberOfWhiskers()</b>.</p>
+<p>Neste cenário a classe abstrata é tratada na mesma maneira como uma interface estendendo outra interface. Em outras palavras, a classe abstrata herda o método abstrato da interface mas não é necessário implementá-lo.</p>
+<p>Vamos ver outro exemplo:</p>
+
+<pre>
+public interface HasTail {
+public int getTailLength();
+}
+public interface HasWhiskers {
+public int getNumberOfWhiskers();
+}
+public abstract class HarborSeal implements HasTail, HasWhiskers {
+}
+public class LeopardSeal implements HasTail, HasWhiskers { // DOES NOT COMPILE
+}
+</pre>
+
+<p>Neste exemplo, vimos que <b>HarborSel</b> é uma classe abstrata e compila sem problemas. Qualquer classe que estenda <b>Harboseal</b> será necessário implementar todos os métodos da <b>interface HasWhiskers</b> e <b>HasTail</b>. Alternativamente, <b>LeopardSeal</b> náo é uma classe abstrata, então deve implementar todos os métodos da interface dentro desta definição. Neste exemplo, <b>LeopardSeal</b> não fornece uma implementação para o método da interface, assim o código não compila.</p>
+
+<h3>Classes, Interfaces, e Palavras Chave</h3>
+<p>Uma classe pode implementar uma <b>interface</b>, uma classe não pode estender uma <b>interface</b>. Da mesma forma, enquanto que uma <b>interface</b> pode estender outra <b>interface</b>, uma <b>interface</b> não pode implementar outra <b>interface</b>.</p>
+<p>Exemplos:</p>
+<pre>
+public interface CanRun {}
+public class Cheetah extends CanRun {} // DOES NOT COMPILE
+public class Hyena {}
+public interface HasFur extends Hyena {} // DOES NOT COMPILE
+</pre>
+
+<p>O primeiro exemplo mostra uma classe tentando estender uma <b>interface</b> que não compila. O segundo exemplo mostra uma <b>interface</b> tentando estender uma classe, que também não compila.</p>
+
+<h3>Herança Múltipla e Método Abstrato</h3>
+
+<p>Desde que Java permite por herança múltipla via interfaces, você pode estar perguntando o que irá acontecer se você define uma classe que herda de duas interfaces que contém o mesmo método abstrato:</p>
+<pre>
+public interface Herbivore {
+public void eatPlants();
+}
+public interface Omnivore {
+public void eatPlants();
+public void eatMeat();
+}
+</pre>
+
+<p>Neste cenário, a assintaura para os dois métodos da <b>interface eatPlants()</b> são compatíveis, assim você pode definir a classe que execute ambas interfaces simultaneamente:</b>
+<pre>
+public class Bear implements Herbivore, Omnivore {
+public void eatMeat() {
+System.out.println("Eating meat");
+}
+public void eatPlants() {
+System.out.println("Eating plants");
+}
+}
+</pre>
+
+<p>Neste exemplo métodos da interface são abstratas e define o comportamento que a classe implementando interface deve ter. Se dois métodos abstrato da interface tem comportamento idêntico - ou neste caso a mesma assinatura do método - cria uma classe que implemente um dos dois métodos implementado automaticamente o segundo método. Neste maneira, o método da interface são considerados duplicados desde que eles tenham a mesma assinatura.</p>
+<p>O que acontece se os dois métodos tem diferentes assinaturas? Se o nome do método é o mesmo mas os parâmetros de entrada são diferentes, não existe conflito porque este é considerado um método sobrecarregado.</p> 
+ <p>Exemplos:</p>
+<pre>
+public interface Herbivore {
+public int eatPlants(int quantity);
+}
+
+public interface Omnivore {
+public void eatPlants();
+}
+public class Bear implements Herbivore, Omnivore {
+public int eatPlants(int quantity) {
+System.out.println("Eating plants: "+quantity);
+return quantity;
+}
+public void eatPlants() {
+System.out.println("Eating plants");
+}
+}
+</pre>
+
+<p>Neste exemplo, vimos que a classe que implementa ambas interfaces deve fornecer implementação de ambas versões de <b>eatPlants()</b>, desde que eles são considerados métodos separados.</p>
+<p>Infelizmente, se o nome do método e os paramentros de entrada são os mesmos, mas o tipo de retorno são diferentes entre os dois métodos,  a classe ou interface tenta herdar ambas interfaces e não irá compilar. A razão para não compilar tem menos com interface e mais com o desenho da classe. Em Java não é possível definir dois métodos na classe com o mesmo nome e parâmetros de entrada, mas diferentes tipo de retorno.</p>
+
+
+<p> Exemplos:</P>
+
+<pre>
+public interface Herbivore {
+public int eatPlants();
+}
+public interface Omnivore {
+public void eatPlants();
+}
+public class Bear implements Herbivore, Omnivore {
+public int eatPlants() { // DOES NOT COMPILE
+System.out.println("Eating plants: 10");
+return 10;
+}
+public void eatPlants() { // DOES NOT COMPILE
+System.out.println("Eating plants");
+}
+}
+</pre>
+
+<p>O código não compila, a classe define dois métodos com o mesmo nome e parâmetros de entrada mas diferente tipo de retorno.</p>
+<p>O compilador lança uma exceção se você definir uma interface ou classe abstrata que herdam de duas interfaces conflitando, como mostrada abaixo:</p>
+
+<pre>
+public interface Herbivore {
+public int eatPlants();
+}
+public interface Omnivore {
+public void eatPlants();
+}
+public interface Supervore extends Herbivore, Omnivore {} // DOES NOT COMPILE
+public abstract class AbstractBear implements Herbivore, Omnivore {}
+// DOES NOT COMPILE
+</pre>
+
+<h2>Variáveis de Interface</h2>
+
+<p>As variáveis de interface pode ser definida dentro da interface. Como métodos de interface, variáveis de interfaces são assumidos ser <b>public</b>. Ao contrario do método da interface, apesar, variáveis de interface também são assumidos ser <b>static</b> e <b>final</b>.</p>
+<p>Abaixo duas regras de variáveis de intereface:</p>
+<p>1- <b>Inteface</b> são asumidos ser <b>public</b>, <b>static</b> e <b>final</b>. Portanto, marcando uma variável como <b>private</b> ou <b>protected</b> irá engatilhar um erro de compilador, como irá marcar qualquer variável como <b>abstract</b>.</p>
+<p>2-O valor de uma variável de interface  deve ser definido quando ele é declarado desde que este esteja marcado como <b>final</b>.</p>
+
+<p>Nessa maneira, variáveis de interface são essencialmente variáveis constantes definida no nível da interface. Porque eles são assumidos como <b>static</b>, eles são acessíveis mesmo sem uma instância da interface.</p>
+<p>Exemplos:</p>
+<pre>
+public interface CanSwim {
+int MAXIMUM_DEPTH = 100;
+final static boolean UNDERWATER = true;
+public static final String TYPE = "Submersible";
+}
+public interface CanSwim {
+public static final int MAXIMUM_DEPTH = 100;
+public static final boolean UNDERWATER = true;
+public static final String TYPE = "Submersible";
+}
+</pre>
+
+<p>Como vimos neste exemlo, o compilador irá automaticamente inserir <b>public static final</b> para qualquer variáveis de interface que encontrar faltando esse modificador. Letras maiúsculas denotam valores constantes dentro da classe.</p>
+
+<p>Baseado nesta regra vamos ver exemplo que não compila:</p>
+<pre>
+public interface CanDig {
+private int MAXIMUM_DEPTH = 100; // DOES NOT COMPILE
+protected abstract boolean UNDERWATER = false; // DOES NOT COMPILE
+public static String TYPE; // DOES NOT COMPILE
+</pre>
+
+<p>O primeiro exemplo, <b>MAXIMUM_DEPTH</b>, não compila porque o modificador <b>private</b> é usado, e todas as interfaces são assuimidos ser <b>public</b>. A segunda linha, <b>UNDERWATER</b>, não compila porque é marcado como <b>protected</b>, que conflita com o modificador <b>public</b> assumido, e marcado como <b>abstract</b> que conflita com o modificador <b>final</b> assumido. O último exemplo, <b>TYPE</b>, não compila porque um valor está faltando. Você deve fornecer um valor para o membro da classe <b>static final</b> quando ele é definido.</p>
+
+<h2>Métodos de Interface Default</h2>
+
+<p>Um <b>método default</b> é um método definido dentro de uma interface com a palavra chave <b>default</b> no qual um corpo do método é fornecido.
+Um <b>método default</b> dentro de uma interface define um método abstrato com uma implementação default. Nesta maneira, classes tem opção para sobrescrever um <b>método default</b> se eles precisarem, mas eles não são exigidos para fazer assim. Se a classe não sobrescrever o método, a implementação default será usada. Nesta maneira, a definição do método é concreta, não abstrata.</p>
+
+<p>A seguir um exemplo de um método default definido em uma interface:</p>
+<pre>
+public interface IsWarmBlooded {
+boolean hasScales();
+public default double getTemperature() {
+return 10.0;
+}
+}
+</pre>
+
+<p>Neste exemplo definem dois métodos de interface, uma é um método abstract normal e outro um método default. Note que ambos métodos são assumidos ser <b>public</b>, como todos os métodos de uma interface são todos <b>public</b>. O primeiro método é terminado com ponto e vírgula e não fornece um corpo, enquanto que o segundo método default fornece um corpo. Qualquer classe que implemente <b>IsWarmBlooder</b> pode contar com a implementação default de <b>getTemperatur()</b> ou sobrescrever o método e criar sua própria versão. </p>
+<p>A seguir regras  de métodos de interface default:</p>
+<p>1- Um método default pode somente ser declarado dentro de uma interface e não dentro de uma classe ou classe abstrata.</p>
+<p>2-Um método default deve ser marcado com a palavra chave default. Se um método é marcado com default, ele deve fornecer um corpo de método.</p>
+<p>3-Um método default não é assumido para ser <b>static, final, ou abstract</b>, ele pode ser usado ou sobrescrito por uma classe que implemente a interface.</p>
+<p>4- Como todos os métodos em uma interface, um método default é assumido ser <b>public</b> e não irá compilar se marcado com <b>private </b>ou <b>protected</b>.</p>
+
+<pre>
+A seguir trechos de código que não compila:
+public interface Carnivore {
+public default void eatMeat(); // DOES NOT COMPILE
+public int getRequiredFoodAmount() { // DOES NOT COMPILE
+return 13;
+}
+}
+</pre>
+
+<p>Neste exemplo, o primeiro método, <b>eatMeat()</b>, não compila porque ele está marcado como <b>default</b> mas não fornece um corpo de método. O segundo método, <b>getRequiredFoodAmount()</b>, também não compila porque ele fornece um corpo de método mas não é marcado com a palavra chave <b>default</b>.</p>
+<p>Ao contrário da variável de interface, que são assumidos membros da classe estática, métodos default não pode ser marcado com <b>static</b> e exige uma instância da classe implementando a interface para ser invocada. Eles não podem ser marcado também como <b>final</b> ou <b>abstract</b>, porque para eles são permitidos serem sobrescritos na subclasse mas não é exigido ser sobrescrito.</p>
+<p>Quando uma interface estende outra interface que contém um método default, ele pode escolher ignorar o método default. Neste caso a implementação default para o método será usado.</p>
+<p>A seguir exemplo de classe que sobrescreve um método de interface default e redeclara um segundo método de interface como abstract: </p>
+<pre>
+public interface HasFins {
+public default int getNumberOfFins() {
+return 4;
+}
+public default double getLongestFinLength() {
+return 20.0;
+}
+public default boolean doFinsHaveScales() {
+return true;
+}
+}
+
+public interface SharkFamily extends HasFins {
+public default int getNumberOfFins() {
+return 8;
+}
+public double getLongestFinLength();
+public boolean doFinsHaveScales() { // DOES NOT COMPILE
+return false;
+}
+}
+</pre>
+<p>Neste exemplo, a primeira interface, <b>HasFins</b>, define três métodos default: <b>getNumberOfFins()</b>, <b>getLongestFinLength()</b>, e <b>doFinsHaveScales()</b>. A segunda interface, <b>SharkFamily</b>, estende <b>HasFins</b> e sobrescreve o método default <b>getNumberOfFins()</b> com um novo método que retorna um diferente valor. Mais adiante, a <b>interface SharkFamily</b> substitui o método default <b>getLongestFinLength()</b> com um novo método abstrato, forçando qualquer classe que implemente a <b>interface SharkFamily</b> fornecer um implementação do método.  Finalmente, a <b>interface SharkFamily</b> sobrescreve o método <b>doFinsHaveScales()</b> mas não marca o método como <b>default</b>. Desde que interfaces podem somente conter métodos com um corpo eles são marcados como <b>default</b>, caso contrário o código não irá compilar.</p>
+
+<h3>Método Default e Múltipla Herança</h3>
+
+<p>Qual seria a saída do seguinte código?</p>
+<pre>
+public interface Walk {
+public default int getSpeed() {
+return 5;
+}
+}
+public interface Run {
+public default int getSpeed() {
+return 10;
+}
+}
+public class Cat implements Walk, Run { // DOES NOT COMPILE
+public static void main(String[] args) {
+System.out.println(new Cat().getSpeed());
+}
+}
+</pre>
+<p>Neste exemplo, <b>Cat</b> herda os dois métodos default para <b>getSpeed()</b>, então qual ele faz uso? Desde que <b>Walk</b> e <b>Run</b> são considerados irmãos em termo de como eles são usados na classe <b>Cat</b>, não está claro se o código deve sair 5 ou 100. A resposta é que o código nem sai valor - o compilador falha.</p>
+<p>Se uma classe implementa duas interfaces que tem métodos default com o mesmo nome e assinatura, o compilador irá lançar um erro. Existe um exceção para essa regra: se a subclasse sobrescreve o método default duplicado, o código irá compilar sem problemas - a ambiguidade sobre que versão do método chamar tem sido removido. Por exemplo, a seguinte impelementação modificada de <b>Cat</b> irá compilar a saída 1:</p>
+
+<pre>
+public class Cat implements Walk, Run { 
+public int getSpeed() {
+return 1;
+}
+public static void main(String[] args) {
+System.out.println(new Cat().getSpeed());
+}
+}
+</pre>
+
+<p>Você pode ver que tem uma classe que implementa ou herda dois métodos default duplicado forçando a classe implementar uma nova versão do método, ou o código não irá compilar.</p>
+<p>Essa regra é válida mesmo para classes abstratas que implementam várias interfaces, porque o método default pode ser chamado em um método concreto dentro da classe abstrata.</p>
+
+<h2>Métodos de Interface Estática</h2>
+
+<p>Um método estático definido em uma interface não é herdado em qualquer classe que implemente a interface.</p>
+<p>Aqui estão regras do método de interface estática:</p>
+<p>1-Como todos os métodos em uma interface, um método estático é assumido ser <b>public</b> e não irá compilar se marcado como <b>private</b> e <b>protected</b>.</p>
+<p>2- Para referenciar o método estático, uma referência para o nome da interface deve ser usado.</p>
+
+<p>A seguir está um exemplo de um método static definido em uma interface:</p>
+<pre>
+public interface Hop {
+static int getJumpHeight() {
+return 8;
+}
+}
+</pre>
+
+<p>O método <b>getJumpHeight()</b> funciona somente como um método estático como definido na classe. Em outras palavras, ele pode ser acessado sem uma instância de classe usando a sintax <b>Hop.getJumpHeigth()</b></p>.
+<p>A seguir está um exemplo da classe <b>Bunny</b> que implementa <b>Hop</b>:</p>
+<pre>
+public class Bunny implements Hop {
+public void printDetails() {
+System.out.println(getJumpHeight()); // DOES NOT COMPILE
+}
+}
+</pre>
+
+<p>Como pode ver, sem uma referência explícita para o nome da interface o código não irá compilar, mesmo que <b>Bunny</b> implemente <b>Hop</b>. Nesta maneira, o método da interface estática não são herdados por uma classe implementando a interface. A seguir a versão modificada do código resolve o problema com a referência para o nome da <b>interface Hop</b>:
+<pre>
+public class Bunny implements Hop {
+public void printDetails() {
+System.out.println(Hop.getJumpHeight());
+}
+}
+</pre>
+
+<p>Então a classe que implementa duas interfaces contendo métodos estático com a mesma assinatura irá ainda compilar em tempo de execução, porque o método estático não são herdados pela subclasse e deve ser acessado com uma referência ao nome da interface.</p>
+</section>
+<section id="polimorfismo">
+<h1>Entendendo Polimorfismo</h1>
+
+<p>Java suporta polimorfismo, a propriedade de um objeto tornar nas muitas diferentes formas. Um objeto Java pode ser acessado usando uma referência com o mesmo tipo do objeto, uma referência que é uma superclasse do objeto ou uma referência que define uma interface que o objeto implementa, diretamente ou através de uma superclasse. Além disso, um <b>cast</b> não é necessária se o objeto estiver sendo reatribuído para um tipo <b>super</b> ou interface do objeto.</p>
+<pre>
+public class Primate {
+public boolean hasHair() {
+return true;
+
+}
+}
+public interface HasTail {
+public boolean isTailStriped();
+}
+public class Lemur extends Primate implements HasTail {
+public boolean isTailStriped() {
+return false;
+}
+public int age = 10;
+public static void main(String[] args) {
+Lemur lemur = new Lemur();
+System.out.println(lemur.age);
+HasTail hasTail = lemur;
+System.out.println(hasTail.isTailStriped());
+Primate primate = lemur;
+System.out.println(primate.hasHair());
+}
+}
+</pre>
+<p>Este código compila e excecuta sem problemas e gera a seguinte saída:</p>
+
+<pre>
+10
+false
+true
+</pre>
+
+<p>A mais importante coisa a notar sobre este exemplo é que somente um objeto, <b>Lemur</b>, é criado e referenciado. A capacidade de uma instância de <b> Lemur</b> ser passada com uma instância de uma interface que implementa, <b>HasTail</b>, como também uma instância de uma desta superclasses, <b>Primate</b>,  é a natureza do polimorfismo.</p>
+ <p>A seguir um trecho de código que não vai compilar:</p>
+ <pre>
+HasTail hasTail = lemur;
+System.out.println(hasTail.age); // DOES NOT COMPILE
+Primate primate = lemur;
+System.out.println(primate.isTailStriped()); // DOES NOT COMPILE
+</pre>
+
+<p>Neste exemplo, a referência hasTail tem acesso direto somente para métodos definido com a <b>interface HasTail</b>, portanto, este não conhece que a variável <b>age</b> é parte do objeto. Da mesma forma, a referência <b>primate</b> tem acesso somente para métodos definido na classe <b>Primate</b>, e este não tem acesso direto para o método <b>isTailStriped().</b></p>
+
+<h2>Objeto vs Referência</h2>
+
+<p>Em Java, todos objetos são acessados por referência, assim como um desenvolvedor você nunca tem acesso direto ao objeto em si. Conceitualmente, você deve considerar o objeto como a entidade que existe na memória, alocada pelo Ambiente Java em tempo de execução. Independetemente do tipo de referência que você tem para o objeto em memória, o objeto em si não muda. Por exemplo, desde que todos objetos herdam <b>java.lang.Object</b>, eles podem todos serem reatribuídos para <b>java.lang.Object</b>, como mostraremos no exemplo abaixo:</p>
+<pre>
+Lemur lemur = new Lemur();
+Object lemurAsObject = lemur;
+</pre>
+
+<p>Mesmo apesar do objeto <b>Lemur</b> ter sido atribuído uma referência com um tipo diferente, o objeto em si não tem mudado e ainda existe como um objeto <b>Lemur</b> na memória.</p> 
+<p>Podemos ver esses princípios através de duas regras:</p>
+<p>1- O tipo do objeto determina qual propriedade existe dentro do objeto na memória.</p>
+<p>2- O tipo da referência para o objeto determina qual método e variáveis são acessíveis para o programa Java.</p> 
+
+<pre>
+public class Primate {
+public boolean hasHair() {
+return true;
+
+}
+}
+public interface HasTail {
+public boolean isTailStriped();
+}
+public class Lemur extends Primate implements HasTail {
+public boolean isTailStriped() {
+return false;
+}
+public int age = 10;
+public static void main(String[] args) {
+Lemur lemur = new Lemur();
+System.out.println(lemur.age);
+HasTail hasTail = lemur;
+System.out.println(hasTail.isTailStriped());
+Primate primate = lemur;
+System.out.println(primate.hasHair());
+}
+}
+</pre>
+
+<pre>
+Referencia da interface HasTail                 
+ <b>hasTail</b>                             
+ 
+ Referencia da classe Lemur                    
+ <b>lemur</b>                                  
+
+Referencia da classe Primate
+<b>primate</b>
+
+Objeto Lemur em memoria
+<b>age 10
+hasHair() 
+isTailSriped()</b>
+</pre>
+
+<h2>Casting de Objetos</h2>
+
+<p>No exemplo anterior, criamos uma única instância de um objeto <b>Lemur</b> acessando ele via superclasse e referência de interface. Uma vez mudado o tipo de referência, perdemos acesso para métodos mais específicos definido na subclasse que ainda existe dentro do objeto. Podemos recuperar essa referência por <b>casting</b>, o objeto volta para a classe específica da que ele veio:</p>
+<pre>
+Primate primate = lemur;
+Lemur lemur2 = primate; // DOES NOT COMPILE
+Lemur lemur3 = (Lemur)primate;
+System.out.println(lemur3.age);
+</pre>
+
+<p>Neste exemplo, primeiro tentamos converter a referência <b>primate</b> de volta para referencia <b>lemur</b>, <b>lemur2</b>, sem um <b>cast</b> explícito. O resultado é que o código não compila. No segundo exemplo, explicitamente fazemos <b>cast</b> do objeto para a subclasse do objeto <b>Primate</b> e ganhamos acesso para todos os métodos acessíveis para a classe <b>Lemur</b>.</p>
+
+<p>Aqui são algumas regras básicas :</p>
+
+<p>1- Fazes Casting em um objeto de uma subclasse para uma superclasse não exige um <b>cast</b> explícito.</b>
+<p>2- Fazer casting em um objeto de uma superclasse para uma subclasse exige um <b>cast</b> explicito.
+<p>3- O compilador não irá permitir <b>cast</b> de tipos não relacionado</p>
+<p>4- Mesmo quando o código compila sem problemas, uma exceção pode ser lançada em tempo de execução se o objeto sendo <b>cast</b> não é na verdade uma instância desta classe.</p>
+
+<p>Considere este exemplo:</p>
+<pre>
+public class Bird {}
+public class Fish {
+public static void main(String[] args) {
+Fish fish = new Fish();
+Bird bird = (Bird)fish; // DOES NOT COMPILE
+}
+}
+</pre>
+
+<p>Neste exemplo a classe <b>Bird</b> e <b>Fish</b> não são relacionado através de qualquer hierarquia de classe; portanto, o código não irá compilar.</p>
+
+<p>Mesmo duas classes compartilhando uma relação hierarquica, isto não significa que uma instância de um pode automaticamente fazer <b>cast</b>  para outra. Aqui exemplo:</p>
+
+<pre>
+public class Rodent {
+}
+public class Capybara extends Rodent {
+public static void main(String[] args) {
+Rodent rodent = new Rodent();
+Capybara capybara = (Capybara)rodent; // Throws ClassCastException at runtime
+}
+}
+</pre>
+
+<p>Este código cria uma instância de <b>Rodent</b> e então tenta fazer um <b>cast</b> para uma subclasse de <b>rodent</b>, <b>Capybara</b>. Este código irá compilar sem problemas, mas irá lançar um <b>ClassCastException</b> em tempo de execução desde que o objeto sendo referenciado não é uma instância da classe <b>Capybara</b>.</p>
+
+
+<h2>Método Virtual</h2>
+
+<p>O mais importante recurso do polimorfismo. Um método virtual é um método no qual a específica implementação não é determinada até o tempo de execução. De fato, todos métodos Java, não-final, não-static, e não-private são considerados métodos virtual, desde que qualquer deles podem ser sobrescrito em tempo de execução. O que faz um método virtual especial em Java é que se você chamar um método em um objeto que sobrescreve um método, você pega o método sobrescrito, mesmo se o método chamado está em uma referência pai ou dentro da classe pai.</p>
+
+<pre>
+public class Bird {
+public String getName() {
+return "Unknown";
+}
+public void displayInformation() {
+System.out.println("The bird name is: "+getName());
+}
+}
+public class Peacock extends Bird {
+public String getName() {
+return "Peacock";
+}
+public static void main(String[] args) {
+Bird bird = new Peacock();
+bird.displayInformation();
+}
+} 
+</pre>
+
+<p>Este código compila e executa sem problemas a seguinte saída:</p><br>
+
+<p><b>The bird name is: Peacock</b></p><br>
+
+<p>O método <b>getName()</b> é sobrescrito na classe filho <b>Peacock</b>. O valor do método <b>getName()</b> em tempo de execução no método <b>displayInformation()</b> é substituído com o valor da implementação na subclasse <b>Peacock</b>.
+<p>Em outras palavras, a classe pai <b>Bird</b> define sua própria versão de <b>getName()</b> e não conhece nada sobre a classe <b>Peacock</b> durante o tempo de compilação, no tempo de execução a instância usa a versão sobrescrita do método, como definida na instância do objeto.</p>
+
+<h2>Parâmetros Polimórficos</h2>
+<p>Uma das mais útil aplicação de polimorfismo é a capacidade para passar instância de uma subclasse ou interface para um método. Por exemplo, você pode definir um método que leva uma instância de uma interface como um parâmetro. Nesta maneira, qualquer classe que implemente a interface pode ser passada para o método.</p>
+<pre>
+public class Reptile {
+public String getName() {
+return "Reptile";
+}
+}
+public class Alligator extends Reptile {
+public String getName() {
+return "Alligator";
+}
+}
+public class Crocodile extends Reptile {
+public String getName() {
+return "Crocodile";
+}
+}
+public class ZooWorker {
+public static void feed(Reptile reptile) {
+System.out.println("Feeding reptile "+reptile.getName());
+}
+
+public static void main(String[] args) {
+feed(new Alligator());
+feed(new Crocodile());
+feed(new Reptile());
+}
+}
+</pre>
+
+<p>Este código compila e executa gerando a seguinte saída:</p>
+
+<pre>
+Feeding: Alligator
+Feeding: Crocodile
+Feeding: Reptile
+</pre>
+
+<p>Vamos focar no método <b>feed(Reptile reptile)</b> neste exemplo. Este método foi capaz de manipular instâncias de <b>Alligator</b> e <b>Crocodile</b> sem problemas, porque ambos são subclasses da classe <b>Reptile</b>. Ele foi também capaz de aceitar um tipo correspondente da classe <b>Reptile</b>.</p>
+
+<h2>Polimorfismo e Sobrescrever Métodos</h2>
+
+<p>A primeira regra é que um método sobrescrito deve ser pelo menos tão acessível como o método que está sobrescrevendo.</p>
+<pre>
+public class Animal {
+public String getName() {
+return "Animal";
+}
+}
+public class Gorilla extends Animal {
+protected String getName() { // DOES NOT COMPILE
+return "Gorilla";
+}
+}
+public class ZooKeeper {
+public static void main(String[] args) {
+Animal animal = new Gorilla();
+System.out.println(animal.getName());
+}
+}
+</pre>
+
+<p>Como você pode ver, este exemplo cria um problema de ambigüidade na classe <b>ZooKeeper</b>. A referência <b>animal.getName()</b> é permitida porque o método é público na classe <b>Animal</b>, mas devido ao polimorfismo, o próprio objeto <b>Gorilla</b> foi substituído por uma versão menos acessível, não disponível para a classe <b>ZooKeeper</b>.Isso cria uma contradição em que o compilador não deve permitir o acesso a este método, mas porque está sendo referenciado como uma instância de Animal, é permitido. Portanto, o Java elimina essa contradição, impedindo que um método seja substituído por uma versão menos acessível do método.</p> 
+</section>
+<section id="resumo">
+<h1>Resumão</h1>
+
+<p>Esse conteúdo apresentado abordou a estrutra básica da classe introduzindo noções de herança. A seguir classes Java com um multinível padrão de herança-única no qual cada classe tem exatamente uma classe pai direta, com todas as classes eventualmente herdando de <b>java.lang.Object</b>. Interfaces Java simula uma forma limitada de múltipla herança, desde que classes Java possam implementar múltiplas interfaces.</p><br>
+<p>Herdar uma classe dar para você acesso para todos métodos de <b>public</b> e <b>protected</b> da classe, mas a regra especial para construtores e sobrescrever métodos deve ser seguido ou o código não irá compilar. Por exemplo, se a classe pai não inclui um construtor sem argumento, uma chamada explícita para o contrutor pai deve ser fornecido no construtor filho.</p><br>
+ <p>Abordamos métodos sobrecarregados, sobrescrito, e ocultos mostrando como eles diferem, especialmente em termos de polimorfismo. Introduzimos noções de ocultar variáveis, apesar de não ser encorajado fazer esta prática, por dificultar mais a manutenção do código.</p><br>
+ <p>Foi introduzido classes abstrata e interfaces, e mostrado como você pode usar para definir uma plataforma para outros desenvolvedores interagir com ela. Por definição, uma tipo de classe abstrata não pode ser instanciada diretamente e exige uma subclasse completa para o código ser usado. </p><br>
+ <p>Finalmente introduziu-se o conceito de polimorfismo, central para linguagem Java, e mostrado como objetos podem ser acessados na forma da variável.</p><br>
+ <p>Compreender quando <b>cast</b> são necessários para acessar objetos e ser capaz de identificar a diferença entre problemas de tempo de compilação e de execução.</p><br>
+ 
+<p class="nav-arq" id="referencia"> Métodos e Encapsulamentos<a href="metodoenc.html">&laquo; anterior</a>|<a href="excecao.html">próximo >> Exceções &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</section>
+</div>
+
+ </div>
+ </body>
+ </html>
+

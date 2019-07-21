@@ -1,0 +1,1112 @@
+Métodos e encapsolamento
+
+Trabalhando com métodos e encapsulamento
+criar métodos com argumentos e returnar valores; incluindo métodos sobrecarregados
+Aplicar campos e me´todos com a palavra-chave static
+Criar e sobracarregar construtores; incluindo impacto nos construtores padrão
+Aplicar modificadores de acesso
+Aplicar principios de encapsulamento para classe
+Determinar o efeito sobre referências de objetos e valores primitivos quando eles são passados dentro dos métodos que muda os valores
+
+Trabalahando com classes Selecionadas do Java API
+Escrever uma simples expressão Lambda que consome um Predicado de expressão Lambda
+
+Nesta parte iremos explorar me´todos e, construtores varia´veis de instancias, a plavra-chave final, modificadores de acesso,  inicialização e escrever uma simples exppressão lambda.
+
+
+Desenhado Métodos
+Todo o programa Java nós temos visto o método main(). Podemos escrever outros métodos tmbém. Por exemplo
+
+
+modificador de acesso
+  |               tipo de retorno 
+  |     opcional  |      nomoe do método       exceção(opcional)   
+  |       |       |      |                      |               
+public  final  void  desligar(int minutos)  throws InterruptedException {
+                                 |
+          // corpo do método     |
+                                 Lista de parâmetros  
+                                     	
+	}
+}
+
+Isto é chamado de uma declaração de métodos, que especifica todas as informações necessárias para chamar o método. Existe uma quantidade de partes que iremos cobrir .
+
+
+TABLE 4.1  Parts of a method declaration
+Element Value in nap() example Required?
+Access modifier public No
+Optional specifier final No
+Element Value in nap() example Required?
+Return type void Yes
+Method name nap Yes
+Parameter list (int minutes) Yes, but can be empty parentheses
+Optional exception 
+list
+throws InterruptedException No
+Method body {
+// take a nap
+}
+
+Para chamar esse método, basta digitar seu nome, seguido por um único valor int em parênteses> desligar(10);
+
+Vamos dar uma olhada em cada pare de me´todo basico:
+
+Modificadores de Acesso
+
+Java oferece quatro modificadores de acesso:
+
+public: O método pode ser chamado de qualquer classe
+private O metodo pode ser chaado somentede dentro da mesma classe.
+protected O métodp pode ser chamado da classe no mesmo pacote ou sublasses.
+Default(Pacote Privado) O me´todo pode somente ser chamdi das classes no mesmo pacote. Este é um pouco complicado porque não existe a palvra chave Default. Você simplesmente omite o modificador de acesso.
+
+Atnção nos moodificadores de acesso
+public void estudar1()}
+default void estudar2() {} // DOES NOT COMPILE
+void public estudar3() {} // DOES NOT COMPILE
+void estudar4() {}
+estudar1() é uma declaração de método válido com acesso publico. estudar4() é uma declaração de método válido com acesso default. estudar2() não compila porque default não é um modificador de acesso valido. estudar3() não compila porque o modificador é especificado depois do tipo de retorno. 
+
+Especificadores Opcionais
+
+Existem um numero de especificadores opcionais . ao contra´rio do modificador de acesso você pode ter multiplos especificadores no memso método(Apesar de algumas combin~ções serem ilegais). Quando acontece você pode especificá-lo em qualquer ordem.
+
+static : Usado por metodos de classe
+final : Usado quando um método não é permitido ser sobrescrito por uma subclasse.
+
+public void estudar1() {}
+public final void estudar2() {}
+public static final void estudar3() {} 
+public final static void estudar4() {}
+public modifier void estudar5() {} // DOES NOT COMPILE
+public void final estudar6() {} // DOES NOT COMPILE
+final public void estudar7() {
+
+estudar1() é uma declaração de método válido sem especificador opcional. estudar2() é uma declaração de méodo válido, com final como especificador opcional. estudar3() e estudar4() são declaraçoes de métodos válidos com ambos final e static como especificadores opcionais. A ordem desta duas chaves não importa. estudar5() não compila porque modificador não é um especificador opcional válido. estudar6() não compila´porque o especificador opcional é deposi do tipo de retorno.
+estudar7()  compila. Java permite colocar o especicador opcional antes do modificdor de acesso.
+
+ Tipo de Retorno
+
+ o próximo item na declaração do método é o tipo de retorno. O tipo de retorno pode ser tal como String ou int. Se não existir retorno,  a palavra chave void é usada.
+ Quando checar o tipo de retorno, você também tem que olhar o lado de dentro do corpo do  método. Métodos com um outro tipo de retorno do que void são requeridos para ter uma declaração  return dentro do corpo do método. Esta declaração return deve incluir  o primiivo ou objeto para ser retornado.
+Métodos que tem um tipo de retorno de void são permitidos ter um a declaração return com nenhum valor retornado ou omite a declaração interiramente.
+
+public void estudar1() { }
+public void estudar2() { return; }
+public String estudar3() { return ""; }
+public String estudar4() { } // DOES NOT COMPILE
+public estudar5() { } // DOES NOT COMPILE
+String estudar6(int a) { if (a == 4) return ""; } // DOES NOT COMPILE
+
+Desde que o tipo de retorno de estudar1() é void, a declaração return é opcional. estudar2() mostra a declaração return opcional que corretamente não retorna nada. estudar3() é um método válido com um tipo de retorno String e uma declaração return que retorna uma String. estudar4() não compila porque a declaração return está em falta. estudar5() não compila porque o tipo de retorno esá ausente.
+estudar6() é um pouco complicado. Há uma declaração de retorno, mas nem sempre é executada. Se a for 6, a declaração de retorno não será executada. Como o String sempre precisa ser retornado, o compilador reclama.
+
+Nome do Método
+
+O nome do método segue as memsmas regras dos nmes das variáveis. Um identificador pode somente conter letras, numeros, $, ou _. Também o primerio cracter, não é permitido ser número, e palavras-chaves não são permitidos. Por convenção, os métodos começam com uma letra minúscula, mas não são obrigatórios.
+
+public void estudar1() { }
+public void 2estudar() { } // DOES NOT COMPILE
+public estudar3 void() { } // DOES NOT COMPILE
+public void Estudar_$() { }
+public void() { } // DOES NOT COMPILE
+
+
+estudar1() é uma declaração de método válido com um nome tradiconal. 2estudar() não compila porque identificadores não são permitidos iniciar com números. estudar3() não compila porque o nome do método é antes do tipo de retorno. Estudar_$() é uma declaração de método válido. Embora isto certamente não é uma boa pratica iniciar um método com letra maiúscula e finalizar com pontuação, isso é legal. A linha final do código não compila porque o nome do método está ausente.
+
+Lista de Parametros
+Apesar da requerida lista de parametro, não precisa conter nenhum parâmetro. Iso significa que você pode somente ter um par de parenteses vazio depois do nome do método, tal como void desligar(). Se você tem multiplos parametros, separe-os com vírgula.
+
+public void estudar1() { }
+public void estudar2 { } // DOES NOT COMPILE
+public void estudar3(int a) { }
+public void estudar4(int a; int b) { } // DOES NOT COMPILE
+public void estudar5(int a, int b) { }
+
+estudar1() é uma declaração de método válido sem nenhum parâmetro. estudar2() não compila porque está faltando o parênteses ao redor da lista d eparâmetros. estudar3() é uma declaração de metodo valido com um parâmetro. estudar4() não compila porque os parametros são separados por ponto e vírgula em vez de uma virgula. Ponto e vírgula são para separar declarações, não listas de parametro. estudar5() é uma declaração de método válido com dois parâmetros.
+
+Lista de Exceçao Opcional
+Em Java, o codigo pode indicar que alguam coisa foi errada para lançar uma exceção. Por agora , você somente precisa conhecer  que ele é opcional e onde no me´todo vai colocar sua assinatura se presente. Neste exemplo, InterruptedException é um tipo de Exceção. 
+
+public void zeroExceptions() { }
+public void oneException() throws IllegalArgumentException { }
+public void twoExceptions() throws 
+IllegalArgumentException, InterruptedException { }
+
+
+Corpo do Metodo
+
+A parte final da declaração de um método é o corpo do método (exceto para métodos abstratos e interfaces, algo que aprenderá mais adiante). Um corpo do método é um simples bloco de código. Este tem chaves que contem zero or mais declaraçoes Java.
+
+public void estudar1() { }
+public void estudar2; // DOES NOT COMPILE
+public void estudar3(int a) { int name = 5; }
+
+estudar() é uma declaração de método valido  com o corpo do método vazio. estudar2() não compila porque está faltando as chaves ao redor do corpo do método vazio. estudar3() é uma declaração de método válido com uma declaração no corpo do método.
+
+Trabalhando com Varargs
+
+Um método pode usar um parâmetro vararg(argume) como este fosse um array. Um parâmetro vararg deve ser o ultimo elemento no método na lista de parâmetro. Isto implica você estar somete permitido ter um parâmetro vararg por método.
+
+public void  estudar1(int... nums) { }
+public void estudar2(int start, int... nums) { }
+public void estudar3(int... nums, int start) { } // DOES NOT COMPILE
+public void estudar4(int... start, int... nums) { } // DOES NOT COMPILE
+
+estudar1() é uma declaração de método válido com um parâmetro vararg. estudar2() é uma declaração de método válido com um parâmetro int e um parametro vararg. estudar3() e estudar4() não compila porque eles tem um parâmetro vararg em uma posição que não é uma última.
+Quando chamar um método com um parâmetro vararg, você tem uma escolh. Você pode passar um array, ou você pode listar os elementos do array e deixar Jva criar isso para vocÊ. Você pode omitir os valores do vararg na chamada do método e Java criará um array de tamanho zero pra você.
+
+15: public static void estudar(int start, int... nums) {
+16: System.out.println(nums.length);
+17: }
+18: public static void main(String[] args) {
+19: estudar(1); // 0
+20: estudar(1, 2); // 1
+21: estudar(1, 2, 3); // 2
+22: estudar(1, new int[] {4, 5}); // 2
+23: }
+
+linha 19 Java cria um array de tamanhao ) para nums. Linha 20 Java converte este valor para um array de tamanhp 1. Linha 21 Java converte estes dois valores para um array de tamanho 2. Linha 22 passa 1 como start e um aarray de tamanho 2 diretamente como nums.
+
+Acessar um parêametro vararg é também como acessar um array:
+16: public static void run(int... nums) {
+17: System.out.println(nums[1]);
+18: }
+19: public static void main(String[] args) {
+20: run(11, 22); // 22
+21: }
+
+Linha 20 chama o prâmetro varag de dois parâmetros. Quando o método é chamado, este ver um array de tamanho 2. Desde que são indexados com base 0, 22 é imprimido. 
+
+Aplicando Modificadores de Acesso.
+Existem 4 modificdores de acesso: public, private, protected, e default acesso.
+-private : Acesspivel somente dentro da mesma classe
+-acesso default(pacote privado): privado e outras classes no memso pacote
+-protected : acesso default e classes filhas
+-public : protected e classes em outros pacotes
+
+Acesso Private
+Acesso private é fácil. Somente código na mesma classe pode chamar métodos privados ou acessar campos privados.
+<div>pond.duck
+<div> FatherDuck</div>
+<div> MotherDuck</div>
+<div> BadDucking </div>
+<div> GoodDucking </div>
+</div>
+
+<div>pond.swan
+<div>BadCygnet</div>
+</div>
+
+1: package pond.duck;
+2: public class FatherDuck {
+3: private String noise = "quack";
+4: private void quack() {
+5: System.out.println(noise); // private access is ok
+6: }
+7: private void makeNoise() {
+8: quack(); // private access is ok
+9: } }
+
+FatherDuck faz um chamado para o método privado quack() na linha 8 e usa a variavel de instancia private noise na linha 5.
+
+1: package pond.duck;
+2: public class BadDuckling {
+3: public void makeNoise() {
+4: FatherDuck duck = new FatherDuck();
+5: duck.quack(); // DOES NOT COMPILE
+6: System.out.println(duck.noise); // DOES NOT COMPILE
+7: } }
+
+Na linha 5, tenta acessar o método privado em outra classe. Na linha 6, tenta acessar uma variável de instância privada em outra classe. ambos geram erros de compilação.
+
+Acesso Default (pacote privado)
+
+Java usa o default, que é um acesso de pacote privado. Que signicia este membro é "privado" para classe no mesmo pacote. em outras palavras , somente classe do mesmo pacote pode acessá-las.
+
+package pond.duck;
+public class MotherDuck {
+String noise = "quack";
+void quack() {
+System.out.println(noise); // default access is ok
+}
+private void makeNoise() {
+quack(); // default access is ok
+} }
+
+MotherDuck popde chamar quack() e referir pra noise. Depois de tudo, membros na mesma classe certmente estão no mesmo pacote.
+
+
+package pond.duck;
+public class GoodDuckling {
+public void makeNoise() {
+MotherDuck duck = new MotherDuck();
+duck.quack(); // default access
+System.out.println(duck.noise); // default access
+} }
+
+Observe que todas as classes que cobrimos até agora estão no mesmo pacote pond.cuck. Isto permite o aceesso default(pacote privdo) funcionar.
+
+package pond.swan;
+import pond.duck.MotherDuck; // importando autro pacote
+public class BadCygnet {
+public void makeNoise() {
+MotherDuck duck = new MotherDuck();
+duck.quack(); // DOES NOT COMPILE
+System.out.println(duck.noise); // DOES NOT COMPILE 
+} }
+
+Lembre que quando não existe acesso modificador, somente classes no mesmo pacote pode acessr-lo.
+
+Acesso Protected
+
+Acesso Protected permite tudo que acesso default(pacote private) permite e mais. O acesso modificador proteced adciona a habilidde de acessar membros da classe pai . 
+
+
+<div> pond.shore 
+
+<div> Bird</div>
+<div> BirdWatcher</div>
+</div>
+<div>pond.goose
+
+<div> Gosing (extends Bird)</div>
+<div> Goose (extends Bird)</div>
+</div>
+
+Primeiro, nos criamos uma classe Bird e damos acesso protected para estes membros:
+package pond.shore;
+public class Bird {
+protected String text = "floating"; // protected access
+protected void floatInWater() { // protected access
+System.out.println(text);
+} }
+
+Agora criamo um subclasse:
+
+package pond.goose;
+import pond.shore.Bird; // in a different package
+public class Gosling extends Bird { // extends means create subclass
+public void swim() {
+floatInWater(); // calling protected member
+System.out.println(text); // calling protected member
+} }
+
+Esta é uma subclasse simples. Ele extend a classe Bird. Extender significa criar uma subclasse que acesso para qualqeur membros protected or publico da classe pai. Desde Gosling é uma subclasse de Bird, ele pode acessar este membro mesmo estando em difrente pacote.
+
+Lembre que protected também dar acesso para tudo que acesso default faz. Isso quer dizer que a classe no mesmo pacote como Bird pode aceesar este mebros protected.
+
+package pond.shore; // same package as Bird
+public class BirdWatcher {
+public void watchBird() {
+Bird bird = new Bird();
+bird.floatInWater(); // calling protected member
+System.out.println(bird.text); // calling protected member
+} }
+
+Esde qeu Bird e BirdWatcher estão no mesmo pacote, BirdWatcher pode acessar membros da variavel brid. A definição de protected permite acesar subclasses no mesmo pacote.
+
+
+Acesso Publico
+
+Aceeso public quer dizer que qualquer um pode acessar o membro de qualquer lugar
+
+package pond.duck;
+public class DuckTeacher {
+public String name = "helpful"; // public access
+public void swim() { // public access
+System.out.println("swim");
+} }
+
+DuckTeacher permite acessar qualquer classe que quiser.
+
+package pond.goose;
+import pond.duck.DuckTeacher;
+public class LostDuckling {
+public void swim() {
+DuckTeacher teacher = new DuckTeacher();
+teacher.swim(); // allowed
+System.out.println("Thanks" + teacher.name); // allowed
+} }
+
+LostDuckling é capaz  de referir para swim() e name no DuckTeacher porque eles são public.
+
+TABLE 4.2 Access modifiers
+Can access
+If that member 
+is private?
+If that member has 
+default (package 
+private) access?
+If that member 
+is protected?
+If that 
+member is
+public?
+Member in the same 
+class
+Yes Yes Yes Yes
+Member in another 
+class in same package
+No Yes Yes Yes
+Applying Access Modifiers  181
+Can access
+If that member 
+is private?
+If that member has 
+default (package 
+private) access?
+If that member 
+is protected?
+If that 
+member is
+public?
+Member in a 
+superclass in a 
+different package
+No No Yes Yes
+Method/field in a nonsuperclass class in a 
+different package
+No No No Yes
+
+Desenhado Métodos e campos staticos
+
+Métodos Static não requere uma instancia da classe. Eles são compartilhados além de todos usuários da classe. Você pode pensar de statics como sendo membro da única classe objeto que existe independentemente de qualquer instancia desta classe.
+O métod main() é statico. Isto quer dizer que você pode chamá-lo pelo nome da classe
+
+public class Koala {
+public static int count = 0; // static variable
+public static void main(String[] args) { // static method
+System.out.println(count);
+}
+}
+
+O JVM basicamente chama Koala.main() para iniciar o progrma. Você pode fazer isto também. Temos o KoalaTester que não faz nada mas chama o método main().
+public class KoalaTester {
+public static void main(String[] args) {
+Koala.main(new String[0]); // call static method
+}
+}
+
+Quando executamos Koala.Tester ele faz uma chamado para o método main() de Koala, que imprime o valor de count. O próposito deste exemplo é mostrar que o método main() pode ser chamado como qualquer outro meódo statico.
+
+Chamando oum Método ou Variével Static
+Acedsar o método stiico é fácil. Você somente coloca o nome da classe antes do métoddo ou variável. Exemplo:
+
+System.out.println(Koala.count);
+Koala.main(new String[0]);
+
+Você pod eusar uma instancia de objeto para chamar um método statico.
+
+5: Koala k = new Koala();
+6: System.out.println(k.count); // k is a Koala
+7: k = null;
+8: System.out.println(k.count); // k is still a Koala
+
+A saída deste códio é 0 duas vezes. Linha 6 ver que k é um Koala e count é uma variável static, assim ele ler esta variável static. Linha 8 faz a mesma coisa. Java não se importa que k seja nulo. Como estamos procurando por uma estática, isso não importa.
+
+Static vs. Instância
+Um membro Static não pode chamar um membro da instância
+
+public class Static {
+private String name = "Static class";
+public static void first() { }
+public static void second() { }
+public void third() { System.out.println(name); }
+public static void main(String args[]) {
+first();
+second();
+third(); // DOES NOT COMPILE
+} }
+
+ compilador vai dar um erro sobre fazer uma referencia estatica pra um método não estático.
+
+ TABLE 4.3  Static vs. instance calls
+Type Calling Legal? How?
+Static method Another static method or 
+variable
+Yes Using the classname
+Static method An instance method or 
+variable
+No
+Instance method A static method or variable Yes Using the classname or a 
+reference variable
+Instance method Another instance method 
+or variable
+Yes Using a reference variabl
+
+Vamos ver alguns exemplos 
+1: public class Gorilla {
+2: public static int count;
+3: public static void addGorilla() { count++; }
+4: public void babyGorilla() { count++; }
+5: public void announceBabies() {
+6: addGorilla();
+7: babyGorilla();
+8: }
+9: public static void announceBabiesToEveryone() {
+10: addGorilla();
+11: babyGorilla(); // DOES NOT COMPILE
+12: }
+13: public int total;
+14: public static average = total / count; // DOES NOT COMPILE
+15: }
+
+Linha 3  e 4  estão funcionanaco porque ambos static e metodos de instancia pode referir para uma variável static. Linha 5-8 estão funcionando porque um método de inst~´ancia pode chamr um método static. Linha 11 não compila porque um método static não pode chamar um método de instancia. Similarmente , linha 14 não compila porque uma variável static está tentando usar uma variável de instância.
+
+Variável Static
+Algumas variáveis estáticas devem mudar conforme o programa é executado. Como variável de instância você pode inicializar uma variavel statica.
+
+public class Initializers {
+private static int counter= 0; // initialization
+}
+Outras variáveis de instância nunca mudam durnte o programam. Este tipo é conhecido como constatnte. Este usa o modificador "final" para garantir que a variável nunca vá mudar. Constantes static final usa  uma convenção de nomeação diferente de outras variáveis. Eles usm letras maiúsculas com underscore entre as palavras. Exemplo:
+
+public class Initializers {
+private static final int NUM_BUCKETS = 45;
+public static void main(String[] args) {
+NUM_BUCKETS = 5; // DOES NOT COMPILE
+} }
+
+Inicialização Static
+Adcione a palavra-chave static para especificar que eles deverão ser executado quando a primeira classe é usada.
+private static final int NUM_SECONDS_PER_HOUR;
+static {
+int numSecondsPerMinute = 60;
+int numMinutesPerHour = 60;
+NUM_SECONDS_PER_HOUR = numSecondsPerMinute * numMinutesPerHour;
+}
+A inicalização static executa quando a primeira classe é usada. a declaração nele executa e atribui qualquer variável staic como necessidade. A variável final não permite ser reatribuido.
+Vamos ver outro exempl para entender a diferença:
+14: private static int one;
+15: private static final int two;
+16: private static final int three = 3;
+17: private static final int four; // DOES NOT COMPILE
+18: static {
+19: one = 1;
+20: two = 2;
+21: three = 3; // DOES NOT COMPILE
+22: two = 4; // DOES NOT COMPILE
+23: }
+Linha 14 declara uma variável static que não é final. Este pode ser aribuido muitas vezes. Linha 15 declara um avariável final sem inicializá-la.Isto significa que podemos inicalizálo exetamente uma vez no bloco satic. Linha 22 não compila porque esta é  segunda tentatica.. Linha 16 declara uma variável final e inicialliza no mesmo momento. Não é permitido atribuir novamente então a linha 21 não compila. Linha 17 declara uma variável final que nunca é inicializada.
+
+Imports Static
+Imports são conveniente porque não precisa especificr onde cada classe vem no momento de usá-la. Existe outro tipo de import chamado import static. Imports regulares são para importar classes. Imports Static são para importar membros static das classes.
+
+import java.util.ArrayList;
+import java.util.*;
+//Nós regularmente usa,mos esta tecnica para importar:
+import java.util.List;
+import java.util.Arrays;
+public class Imports {
+public static void main(String[] args) {
+List<String> list = Arrays.asList("one", "two");
+}
+}  
+
+Justamente como imports regulares, você ppode usar asterisiticos(8) ou importar membro específico.
+
+O método aneririor tem um me´todo static chamado: Arrays.asList. Reescrevendo o código para usar um import static:
+
+import java.util.List;
+import static java.util.Arrays.asList; // static import
+public class StaticImports {
+public static void main(String[] args) {
+List<String> list = asList("one", "two"); // no Arrays.
+} }
+
+Neste exemplo, nós estamos especialmente importando o método asList. Isso significa que qualquer momento nós referimos para asList na classe, este vai chamar Arrays.asList().
+
+Passando dados entre métodos
+Java é uma linguagem de passagem por valor. Isso quer dizer ue a cópia da variável é feita e o método recebe esta cópia. Atribuições feita no método não afeta o chamado. Exemplo:
+
+2: public static void main(String[] args) {
+3: int num = 4;
+4: newNumber(5);
+5: System.out.println(num); // 4
+6: }
+7: public static void newNumber(int num) {
+8: num = 8;
+9: }
+
+Na linha 3 é tribuído o valor de 4. Na linha , nós chamamos um método. Na linha 8, o parâmetro num no método  é definido como 8.  Apesar deste parâmetro ter o mesmo  noem coma a variável na linha 3 isto é uma coincidência. O nome poderá ser qualquer coisa. A variável 3 nunca muda porque nenhuma atribuição é feita para ele.
+
+Agora vamos ver um exemplo com tipo de referencia. Qual seria a sáida deste código? 
+
+public static void main(String[] args) {
+String name = "Webby";
+speak(name);
+System.out.println(name); 
+}
+public static void speak(String name) {
+name = "Sparky";
+}
+
+A resposta correta é webby. 
+a variável atribuida é somente para o parâmetro do método e não afeta o chamador.
+
+ Para revisar, o Java usa o pass-by-value para obter dados em um método. Atribuir um novo primitivo ou referência a um parâmetro não altera o chamador. Chamar métodos em uma referência a um objeto afeta o chamador.
+
+ Vamos tentar um exemplo:
+
+ 1: public class ReturningValues {
+2: public static void main(String[] args) {
+3: int number = 1; // 1
+4: String letters = "abc"; // abc
+5: number(number); // 1
+6: letters = letters(letters); // abcd
+7: System.out.println(number + letters); // 1abcd
+8: }
+9: public static int number(int number) {
+10: number++;
+11: return number;
+12: }
+13: public static String letters(String letters) {
+14: letters += "d";
+15: return letters;
+16: }
+17: }
+
+Linhas 3 e 4 são atribuições diretas. Linha 5 chama um método. Linha 10 incremeta o parâmetro do método para 2 mas deixa a variável numbers no método main() como 1. Enquato linha 11 retorna o valor, o chamador ignora ele. O método chamado na linha 6 não ignora o resultado assim a letrar torna "abcd". Lembrar que isto acontece porque do valor retornado e não o parâmetro do método.
+
+Métodos de Sobrecarga
+sobrecarga de método ocorre quando existem métodos de diferentes assinaturas com o memso nome mas tipos diferentes de parâmetros.TTudo que não seja a assinatura do método pode variar para métodos sobrecarregados. Isso significa que pode haver diferentes modificadores de acesso, especificadores (como estático), tipos de retorno e listas de exceções.
+
+Estes métodos sobrecarregados são todos válidos:
+
+public void fly(int numMiles) { }
+public void fly(short numFeet) { }
+public boolean fly() { return false; }
+void fly(int numMiles, short numFeet) { }
+public void fly(short numFeet, int numMiles) throws Exception { }
+
+Vamos ver exemplo de sobrecrga que não é válido:
+
+public void fly(int numMiles) { }
+public int fly(int numMiles) { } // DOES NOT COMPILE
+Este método não compila porque este apenas difere do original por tipo de retorno.
+
+Por que este exemplo não compila?
+public void fly(int numMiles) { }
+public static void fly(int numMiles) { } // DOES NOT COMPILE
+
+A lista de parâmetro é o mesmo. A diferença é que uma é um método instancia e outro um método static.
+
+Sobrecarga e Varargs
+
+Qual método  você pensa que é chamado se passarmos um int[]?
+public void fly(int[] lengths){}
+public void fly(int... lengths){} // Does Not Compile
+
+JAva trata varags como se fosse um array. Isto signific que a assinatura do método é o mesmo para ambos os métodos. Como não temos permissão para sobrecarregar métodos com a mesma lista de parâmetros, esse código não compila.
+
+AutoBoxing
+
+O que acontece se nós tivermos ambos uma versão primitiva e uma integer?
+
+public void fly(int numMiles) { }
+public void fly(Integer numMiles) { }
+
+Java vai chamar a versão int numMiles. Java tenta usar a lista de parÂmetros mais especifica que pode encntrar. Quando uma versão int primitivo não está presente este será autobox. Contudo , quando a versão int primitivo é fornecido, não existe razão para java fazer um trabalho extra de Autoboxing.
+
+Tipos de Refrencias
+Dada a regra sobre o Java escolher a versão mais específica de um método que ele pode.O que você pensa sobre a saída deste código?
+
+public class ReferenceTypes {
+public void fly(String s) {
+System.out.print("string ");
+}
+public void fly(Object o) {
+System.out.print("object ");
+}
+public static void main(String[] args) {
+ReferenceTypes r = new ReferenceTypes();
+r.fly("test");
+r.fly(56);
+} }
+
+A resposta é " string object". O primeiro chamado é umma string e encontra um correspondente direto. Nõ existe razão para usar a versão Object quando existe uma boa lista de par^metro String somente esperando para ser chamado. O  segundo chamado procuro por uma lista de parâmetro int. Quando este um não é encontrado, ele faz um autoboxes para Integer. Como ainda não encontra uma correspondência, vai para o Object.
+
+Primitivos
+Primitivo funciona de maneira similar a variáveis de referencia. Java tenta encontrar o método sobrecarregado correspondente mais específico. 
+O que acontece aqui?
+public class Plane {
+public void fly(int i) {
+System.out.print("int ");
+}
+public void fly(long l) {
+System.out.print("long ");
+}
+public static void main(String[] args) {
+Plane p = new Plane();
+p.fly(123);
+p.fly(123L);
+} }
+A respostaa é int long. O primeiro chamado pass um int e ver uma exta correspondência. O segundo chamdo passa um long e também ver uma exata correspodência. 
+
+Juntando Tudo
+
+Até agora, tods as regras quand um método sobrecarregado é chamdo deve ser lógico.Java chma o me´todo mais especifico que ele pode. Quando alguns dos tipos intergae, Java foca  regra na compatibilidade anterior.
+A tablea abaixo mostra a ordem que Jva usa para escolher o método sobrecarreagdo correto.
+
+Rule Example of what will be chosen for glide(1,2)
+Exact match by type public String glide(int i, int j) {} 
+Larger primitive type public String glide(long i, long j) {} 
+Autoboxed type public String glide(Integer i, Integer j) {} 
+Varargs public String glide(int... nums) {} 
+
+Vamos praticar executando as regras da Tabela.  
+
+public class Glider2 {
+public static String glide(String s) {
+return "1";
+}
+public static String glide(String... s) {
+return "2";
+}
+public static String glide(Object o) {
+return "3";
+}
+public static String glide(String s, String t) {
+return "4";
+}
+public static void main(String[] args) {
+System.out.print(glide("a"));
+System.out.print(glide("a", "b"));
+System.out.print(glide("a", "b", "c"));
+} }
+
+Este imprime a saída 142. O primeiro chamado corresponde  assinatura pegando um único String porque este é o mais específico que corresponde. O segundo chamado corresponde a assinatura que pega dois parâmetros String.  O terceiro chamado a vesão varargs é usada desque que não existe correspondente melhor.
+
+Criando Construtoresor é um método especial que corresponde ao nome da classe e não em umtipo de retorno. Aqui um exemplo:
+public class Bunny {
+public Bunny() {
+System.out.println("constructor");
+}
+}
+O nome do construtor, Bunny, corresponde ao nome da classe, Bunny, e não existe tipo de retorno, nem mesmo o void.  
+Estes dois contrutores abaixo não são váilido para classe Bunny:
+
+public bunny() { } // DOES NOT COMPILE
+public void Bunny() { }
+
+O primeiro não corresponde ao nome da classe porque Java é case sensitive. O segundo me´todo é perfeitamente um bom método, mas não é um construtor  porque este tem um tipo de retorno, void.
+Construtore são usados quando criam um novo objeto. Este processo é chamado de instanciação porque este cria uma nova instancia da classe. Um construtor é chamado quando  quando nós escremos new seguido pelo nome da classe que nós queremos instanciar. Exemplo:
+new Bunny()
+Quando Java ver esa palavra-chave, ele aloca memoria pra o novo objeto. Java também procuro por um construtor e chama ele.
+Um consrutor é tipicamente usado para inicalizar variáveis de instancia. a palavra-chave diz a Java que você quer referenciar uma va´riável de instância. Na maioria da vezes this é opcional. O problema é que alguams vezes existem dudas variáveis com o mesmo nome. No construtor, tem um que é parÂmetro e um que vari´´avel de uma instancia. Se você de outra maneira não dizer, Java dar uma com o escopo mais granular, que é o parametro. Usando this.nome Java conta que quer instanciar a variável.
+
+Aqui uma maneira comum de escrever um construtor :
+
+1: public class Bunny {
+2: private String color;
+3: public Bunny(String color) {
+4: this.color = color;
+5: } }
+
+Na linha 4 nós atribuímos o parametro color para a variável de instância color. O lado direito da atribuição refere ao parâmetro porque não especifica nada especial. o lado esquerdo da aribuição usa this para contar a Java que queremos usar a variável de instância.
+
+Construtor Default
+
+Cada classe em Java tem um construtor se codificar um or não. Se você não incluir qualquer construtor na classe, Java criará um pra você sem qualquer parâmetro.
+
+Algumas vezes nós chamamos o construtor-default sem argumentos. Exemplo:
+public class Rabbit {
+public static void main(String[] args) {
+Rabbit rabbit = new Rabbit(); // Calls default constructor
+}
+}
+Na classe Rabbit, Java não ver construtor codificado e cria um.
+public Rabbit() {}
+
+o construtor-default tem uma lista de parA^metro vazio e um corpo vazio
+O consruor default somene é suprido se não existir construtor presente.
+
+class Rabbit1 {
+}
+class Rabbit2 {
+public Rabbit2() { }
+}
+class Rabbit3 {
+public Rabbit3(boolean b) { }
+}
+class Rabbit4 {
+private Rabbit4() { }
+}
+
+Somene Rabbit1 tem um construtor-default sem argumento. Este não tem um construtor codificado então Java gera um construtor-default sem argumento. Rabbit2 e Rabbit3 ambos tem um construtor publicado. Rabbit4 tem um consrutor privado.
+
+Vamos ver como funciona executando estes construtores:
+
+1: public class RabbitsMultiply {
+2: public static void main(String[] args) {
+Creating Constructors  199
+3: Rabbit1 r1 = new Rabbit1();
+4: Rabbit2 r2 = new Rabbit2();
+5: Rabbit3 r3 = new Rabbit3(true);
+6: Rabbit4 r4 = new Rabbit4(); // DOES NOT COMPILE
+7: } }
+
+Linha 3 chama o construtor deault sem argumento gerado. Linha 4 e 5 chama o construtor cfornecido pelo usário. Linhaa 6 não compila, Rabbit4 e´um construtor privador então outras classes não pode chamá-la.
+
+Sobecarga de construtores
+temos visto somente um construtor por classe. VocÊ pode ter múltiplos construtores na mesma classe . Ao sobrecarregar métodos, o nome do método e a lista de parâmetros precisavam corresponder. Como construtores, o nome é sempre o mesmo nome da classe. isto significa que construtores deve ter diferentes parâmetros em ordem para ser sobrecarregado.
+
+Este exemplo mostra dois construtores:
+
+public class Hamster {
+private String color;
+private int weight;
+public Hamster(int weight) { // first constructor
+this.weight = weight;
+color = "brown";
+}
+public Hamster(int weight, String color) { // second constructor
+this.weight = weight;
+this.color = color;
+}
+}
+
+Um dos construtores lev um unico parâmetro int. O outro leva um int e um String. Esta lista de parâmetro são diferentes, assim os construtores são sobrecarregados com sucesso.
+
+Caso queiramos para o primeiro construroe chamar o segundo construtor com dois parÂmetros. você pode ser tentado a escrever isso:
+
+public Hamster(int weight) {
+Hamster(weight, "brown"); // DOES NOT COMPILE
+}
+
+Isto não funciona . Construores podem ser chamado apenas por escrever new antes do nome do construtor. O que acontece se colocarmos new antes donomme do construtor.
+
+public Hamster(int weight) {
+new Hamster(weight, "brown"); // Compiles but does not do what we want
+}
+
+Esta tentatica compila. Mas não do forma que queremos. Quando o construtor com um parâmetro é chamado, este cria um objeto com o default color e weight.Em seguida, ele constrói um objeto diferente com o wright e color desejados e ignora o novo objeto. Nós queremos weight e color definido no objeto nós estamos tentando instanciá-lo no primeiro lugar.
+
+JAva fornece uma solução com this, a mesma palvra chave usada para referir a variáveis de instancia. Quando this é usado é como se fosse um método, Java chama outros construtores na mesma instancia da classe.
+
+public Hamster(int weight) {
+this(weight, "brown");
+}
+
+Agora sim, Java chama os construtores que leva dois parâmetros. weight e color fica definido nesta instância.
+
+this() tem uma regra especial que você precisa saber. Se você escolher chamá lo, o this() deve ser a primeira declaração não comentada no construtor. 
+
+3: public Hamster(int weight) {
+4: System.out.println("in constructor");
+5: // ready to call this
+6: this(weight, "brown"); // DOES NOT COMPILE
+7: }
+Mesmo imprimindo a declaração na linha 4 não muda qualquer variável, ele ainda é uma declaração Java e não pode ser inserida antes da chamada para this().
+
+Encadeamento de Construtores
+
+Construtores sobrecarregados geralmente chamam uns aos outros. Uma técnica comum é fazer com que cada construtor adicione um parâmetro até chegar ao construtor que faz todo o trabalho.
+Essa abordagem é chamada de encadeamento de construtores. Neste exemplo, todos os três construtores são encadeados
+
+public class Mouse {
+private int numTeeth;
+private int numWhiskers;
+private int weight;
+public Mouse(int weight) {
+this(weight, 16);  // calls constructor with 2 parameters
+}
+public Mouse(int weight, int numTeeth) {
+this(weight, numTeeth, 6);  // calls constructor with 3 parameters
+}
+public Mouse(int weight, int numTeeth, int numWhiskers) {
+this.weight = weight;
+this.numTeeth = numTeeth;
+this.numWhiskers = numWhiskers;
+}
+public void print() {
+System.out.println(weight + " " + numTeeth + " " + numWhiskers);
+}
+public static void main(String[] args) {
+Mouse mouse = new Mouse(15);
+mouse.print();
+}
+}
+Este código imprime 15 6 6 . O métoodo main() chama o construtor com um parâmetro. Este construtor adciona o segundo valor codigo-fixo e chama o construtor com dois parâmeros. Este construtor adciona mais um valor codigo-fixo e chama o construtor com trêa parâmetros. O construtor parâmetro-três atribui a variavel de instancia.
+
+Campos Final
+
+A variável de instÂncia final deve ser atribuído um valor exatamente uma vez. Nós vimos isto contecer na linha da declaração e na instÂncia inicalizada. Existe mais uma atribuição desta que pode ser feita: no construtor.
+
+public class MouseHouse {
+private final int volume;
+private final String name = "The Mouse House";
+public MouseHouse(int length, int width, int height) {
+volume = length * width * height;
+}}
+ O construtor é parte do processo de inicialização, assim este é permitido atribuir variavel instancia final nele.
+
+
+ Ordem de inicialização
+Esta é uma lista que tem que ser memorizada:
+1- Se existe uma superclasse(que estudaremos mais adiante) inicialize este primeiro
+2- Declarações de variáveis estáticas e inicializadores estáticos na ordem em que aparecem no arquivo
+3-Declarações de variável de instância e inicializadores de instância na ordem em que aparecem no arquivo
+4-Construtores
+Vamos tentar o primeiro exemplo:
+1: public class InitializationOrderSimple {
+2: private String name = "Torchie";
+3: { System.out.println(name); }
+4: private static int COUNT = 0;
+5: static { System.out.println(COUNT); }
+6: static { COUNT += 10; System.out.println(COUNT); }
+7: public InitializationOrderSimple() {
+8: System.out.println("constructor");
+9: } }
+1: public class CallInitializationOrderSimple {
+2: public static void main(String[] args) {
+3: InitializationOrderSimple init = new InitializationOrderSimple();
+4: } }
+
+A saída é:
+0
+10
+Torchie
+constructor
+
+Vamos olhar por que: Regra 1não aplica porque não existe superclasse. Regra 2 diz para executar uma declaração de variável statica e inicializadores estáticos.- neste caso linha 5 e 6, com a saída  e 10. Regra 3 diz para executar a decaração de variavel de instancia e inicializadores de instancia=- aui, linha2, e 3, com a saída Torchie. Finalmente, regra 4 diz para executar o contrutor- aqui linha 7-9, com a sáida construtor.
+
+Encapsular Dados
+
+Temos um exemplo de uma classe com um campo que não está privado:
+ public class Swan {
+int numberEggs; // instance variable
+}
+
+Desde que exista um acesso default(pacote privado), significa que qualquer classe no pacote pode definir numberEggs.Nós não temos mais controle sobre o que é colocado em nossa própria classe. Um chamado poderá escrever assim:
+mother.numberEggs = -1;
+
+Isto claramente não é bom. Nós não quieremos a mãe Swan tendo um número de ovos negativo!
+
+Encapsulaeto significa que nós definimos a classe assim somente métodos na classe com as variáveis pode referir para variavel de instancia. Chamadores são requeridos para usar estes me´todos. Vamos dar um olhado no exemplo do Encapsulamento da classe Swan:
+
+1: public class Swan {
+2: private int numberEggs; // private
+3: public int getNumberEggs() { // getter
+4: return numberEggs;
+5: }
+6: public void setNumberEggs(int numberEggs) { // setter
+7: if (numberEggs >= 0) // guard condition
+8: this.numberEggs = numberEggs;
+9: } }
+
+Note que agora numberEggs é privado na linha 2. Isto significa que somente o código dentro da classe pode ler ou escrever o valor de numberEggs. Desde que nós escrevemos a classe, nós sabemos ser  melhor do que definir um núemro negativos de ovos.  Adcionado um me´todo nas linhas 3-5 para ler o valor. que é chamado de um método acessor ou um getter. Adcinado também um método nas linhs 6-9 para atualizar o valor, que é chamado de método definidor ou setter. O setter tem uma declaração  if neste exemplo para evitar configurar a variável de instância para um valor inválido.Essa condição de proteção protege a variável da instância.
+Na linha 8 nós usamos a palvra chave this  para diferenciar entre o parâmero do método numberEggs e a variável de instância numberEggs.
+
+TABLE 4.5  Rules for JavaBeans naming conventions
+Rule Example
+Properties are private. private int numEggs;
+Getter methods begin with isif the 
+property is a boolean.
+public boolean isHappy() { 
+return happy; 
+}
+Getter methods begin with getif the 
+property is not a boolean.
+public int getNumEggs() { 
+return numEggs; 
+}
+Setter methods begin with set. public void setHappy(boolean happy) { 
+this.happy = happy; 
+}
+The method name must have a prefix 
+of set/get/is, followed by the first 
+letter of the property in uppercase, followed by the rest of the property name.
+public void setNumEggs(int num) { 
+numEggs = num;
+}
+
+Criar Classes Imutáveis
+Encapsular dados é útil porque evita chamadores de fazer mudanças descontroladas em sua classe. Outra tecnica comum é fazer classes imutáveis asim eles não podem ser toda mudada.
+Classes Imutáveis são úteis porque você sabe que eles serão sempre os mesmos. Você pode passar ao redor de sua aplicação com a garantia que o chamador não mudará nada. Isto ajuda a fazer protgrama scom fácil manutenção.Ajuda também na performance pois limita o número de cópias.
+
+public class ImmutableSwan {
+private int numberEggs;
+public ImmutableSwan(int numberEggs) {
+this.numberEggs = numberEggs;
+}
+public int getNumberEggs() {
+return numberEggs;
+} }
+
+Neste exemplo não tem um setter. Nós não temos um construtor que permiti definir o valor. Imutável é apenas medido depois que o objeto é construído. classes imutáveis são permitidos ter valores. Eles somente não pode ser mudado após a instanciação.
+
+Escrevendo Lambdas Simples
+ Java é uma linguagem orientada-objeto.  Programa funcional é uma maneira de escrever codigo masi declarativamente. Você especifica oque você quer fazer em vez de lidar com o estado dos objetos. Vcê foca mais na expressão do que loops.
+
+ Prgramação funcional usa expressão lambda para escrever código. Uma expressão é um bloco de código que que é passado ao redor. você pode pensar da expressão lambda como um me´todo anõnimo. 
+ Expressão lambda, é como um método que você passa como se fosse uma variável.
+
+ Lambda Exemplo
+
+ O objetivo pe imprimir todos os animais da lista de acordo com alguns critérios. Iremos mostrar como fazer isto com expresão lambda para ilustrar como lambdas são úteis. Inicamos a saída com a classe Anima:
+
+ public class Animal {
+private String species;
+private boolean canHop;
+private boolean canSwim;
+public Animal(String speciesName, boolean hopper, boolean swimmer) {
+species = speciesName;
+canHop = hopper;
+canSwim = swimmer;
+}
+public boolean canHop() { return canHop; }
+public boolean canSwim() { return canSwim; }
+public String toString() { return species; }
+}
+
+A classe Animal tem trê variáveis de instâncias, que estão definids no construtor. Ele tem dois métodos que obtem o estado de se  animal pode hop(pular) or swim(nadar). Tambem tem um método toString() assim nós podemos facilmente identificar o Animal no programa.
+Vamos usar agora umaa interrface , assunto qual aprenderemos adiante. Por agora, é suficente embrar que uma interface especifica os métodos que nossa classe precisa implementar:
+
+public interface CheckTrait {
+boolean test(Animal a);
+}
+
+A primeira coisa que nós queremos checar é se o Animal pode pular. Esta classe pode forncer isto:
+ public class CheckIfHopper implements CheckTrait {
+public boolean test(Animal a) {
+return a.canHop();
+}
+}
+
+Agora nós temos  tudo que nós precisamos para escrever nosso código para procurar os Animais que pulam:
+
+1: public class TraditionalSearch {
+2: public static void main(String[] args) {
+3: List<Animal> animals = new ArrayList<Animal>(); // list of animals
+4: animals.add(new Animal("fish", false, true));
+5: animals.add(new Animal("kangaroo", true, false));
+6: animals.add(new Animal("rabbit", true, false));
+7: animals.add(new Animal("turtle", false, true));
+8: 
+9: print(animals, new CheckIfHopper()); // pass class that does check
+10: }
+11: private static void print(List<Animal> animals, CheckTrait checker) {
+12: for (Animal animal : animals) {
+13: if (checker.test(animal)) // the general check
+14: System.out.print(animal + " ");
+15: }
+16: System.out.println();
+17: }
+18: }
+
+o me´todo print() na linha11 é muito geral- ele pode checar quqlauer traço. Não é necessário saber especificamente o que estamos procurando para imprimir uma lista de animais.
+O que acontece se se quisermos imprimir os Animais que nadam? Nós vamos precisar escrever outra classe CheckIfSwins. Então nós precisamos adcionar uma nova linha sob linha 9 que instacia esta classe. Estas duas coisas somente para fazer outra checagem. Nós podemos repetir esta classe inteira aqui e fazer você encontrar uma linha mudada. Usando lambda podemos substituir a linha 9 com o dófdigo seguinte:
+
+9: print(animals, a -> a.canHop());
+
+Para imprimir Animals que não sabem nadar não tem necessidade de uma classe extra para fazer umma coisa simples:
+
+print(animals, a -> a.canSwim());
+
+E para imprimir Animals que não sabem nadar?
+print(animals, a -> ! a.canSwim());
+
+Este código usa um conceito chamado deferred execution. Deferred Execution significa que o código é especificdo agora mas será executado mais tarde. Neste caso, masi tarde é quando´o método print() chamá-lo.
+
+Sintax Lambda
+
+Uma das expressões lambda mais simples que você pode escrever é aquela que você acabou de ver:
+a -> a.canHop();
+
+Isto significa que Java deve chamar um método com um parâmetro Animal que retorna um valor boolean que é o resultado de um canHop().
+Estamas passando este lambda como o segundo parametro do me´todo print(). Este método espera um CheckTrait como o segundo par^metro. Desque nós estams passando um lambda em vez disso, Java tenta mapear lambda para esta interface:
+boolean test(Animal a);
+Desde que o me´todo da interface leva um Animal, isso quer dizer que o prametro lambda tem que ser um Animal. E desde que o método da interface retorna um boolean, lambda retorna um boolean.
+Em lambda estas duas próximas expressoes que vamos analisar fazem exatamente a mesma coisa:
+
+a -> a.canHop()
+|  |      | 
+|  seta   corpo 
+nome do parÂmetro
+
+
+- Especifica um unico par`^ametro com o nome "a".
+- O operador seta para separar o para~metro e o corpo
+- Um corpo que chama um único método e retorna o resultado deste método
+
+(Animal a) -> { return a.canHop(); }
+  |     |  |      |        |
+  |     |  seta   |        corpo 
+  |     |        reuqerido porque do bloco
+  |     nome do parametro
+  |
+ tipo parametro opcional 
+
+ -Especifica um unico parametro com o nome "a" e a afirmação é tipo Animal
+ - O operador seta para separar o parâmetro do corpo
+ - U compo que tem um ou mais linhas de código incluindo ponto e virgula e a declaração return.
+ Os pareneses só podem ser omitidos se exixtir um único parâmetro e este tipo não estar explicitamente afirmado.
+ Vamos olhar alguns exemplos de lambds válidos. Faz de conta que exsitam interfaces validas que pode consumir um lambda com zero, um ,ou dois parametros String.
+
+3: print(() -> true); // 0 parameters
+4: print(a -> a.startsWith("test")); // 1 parameter
+5: print((String a) -> a.startsWith("test")); // 1 parameter
+6: print((a, b) -> a.startsWith("test")); // 2 parameters
+7: print((String a, String b) -> a.startsWith("test")); // 2 parameters
+
+Note que todos estes exemplos tem parenteses ao redor da lista de parametros exceto de um que leva somente um parametro e não especifica o tipo. linha 3 leva 0 parametro e sempre retorna o Boolean true. linha4 leva um paramentro  e chama o método nele, retornando o resultado. Linha 5 faz o memso exceto que ele explicitamete define o ipo da variável. Linha 6 e 7 levam dois paramentros e ignora um deles.Não existe um regra que diga a você como usar todos os parametros definidos.
+Agora vamos fazer você identificar sisntax invalidaws.
+
+print(a, b -> a.startsWith("test")); // DOES NOT COMPILE
+print(a -> { a.startsWith("test"); }); // DOES NOT COMPILE
+print(a -> { return a.startsWith("test") }); // DOES NOT COMPILE
+A primeira linha precisa de parenteses ao redor da listade parametrso. A segunda linha está faltando a palvra chave return. A ultima linha está faltando o ponto e vrigula.
+
+Predicados
+Lambdas trabalha com interfaces que tem somente um método. Este são chamados de interfaces funcional- interfaces que pode ser usada com programação funcional.
+Você pode imaginar que nós teriamos que criar quantidades de interfaces como esta para usar lambdas. Queremos testar Animals e Strings e Plants e qualquer coisa a mais que vir.
+Java reconhece que isto é um problema comum e fornece assim uma interface. Esta fica no pacote java.util.function e o trecho dele vemos a seguir: 
+public interface Predicate<T> {
+boolean test(T t);
+}
+
+Este tipo de interface usa um tipo de T que é a sintax para genericos. Isso é como criar um ArrayList e conseguir especificar qualquer tpo nele.
+
+1: import java.util.*;
+2: import java.util.function.*;
+3: public class PredicateSearch {
+4: public static void main(String[] args) {
+5: List<Animal> animals = new ArrayList<Animal>();
+6: animals.add(new Animal("fish", false, true));
+7: 
+8: print(animals, a -> a.canHop());
+9: }
+10: private static void print(List<Animal> animals, Predicate<Animal>↵
+checker) {
+11: for (Animal animal : animals) {
+12: if (checker.test(animal))
+13: System.out.print(animal + " ");
+14: }
+15: System.out.println();
+16: }
+17: }
+Desta vez, a linha 10 é a única que mudou. Esperamos ter um Predicado passado nesse tipo Animal.
+ArrayList declara um método removeIf() que leva um Predicate. Imagine que temos uma lista de nomes para pet bunnies. Nós decicmos que vamos remover todos os nomes de bunnies que inicia com a letra "h". Nós podemos resolver estes problema escrevendo um loop:
+
+3: List<String> bunnies = new ArrayList<>();
+4: bunnies.add("long ear");
+5: bunnies.add("floppy");
+6: bunnies.add("hoppy");
+7: System.out.println(bunnies); // [long ear, floppy, hoppy]
+8: bunnies.removeIf(s -> s.charAt(0) != 'h');
+9: System.out.println(bunnies); // [hoppy]
+Linha 8 define um predicate que leva um String e retorna um boolean. O método removeIf() faz o resto.
+
+Resumão
+
+Java inicia me´todos com um modificdor de acesso public, private, protected ou blank(acesso default). Este é seguido por uma opção específica como static, final, ou abstract. O próximo vem com o tipo de reorno, que é void ou um tipo Java. Os noemes dos me´todos segue usando a regra de identificador padrão Java. Zero ou mais parâmetros vai no parênteses como a lista de parâmetros.Zero ou mais declarações vai nas chaves para fazer o corpo do método.
+Usando a palavra chave private significa que o código é somente acessível de dentro da mesma classe. Acesso default(pacote private) significa que o código é somente acessível do memso pacote. Usando a palvra chave protected significa que o código é acessível do mesmo pacote ou subclasse. Usando a palavra chave public significa que o código é acessível de qualquer lugar. Metodos Static e variáveis static são compartilhadas pela classe. Quando referenciado do lado de fora da classe, eles são chamados usando o nome da classe - por exemplo, Staticclasse.metodo(). Membros da intância são permitidos chamar membros staics, mas membros staticos não são permitidos chamar membros da instância. Imports Static são usados para importar membros staticos.
+Java usa passagem por valor, que significa que chamar me´todos cria uma cópia dos parâmetros.Atribuir novos valores a esses parâmetros no método não afeta as variáveis do chamador.
+Chamar métodos em objetos que são parâmetros do método altera o estado desses objetos e é refletido no chamador.
+Sobrecarga de métodos são métodos com o mesmo nome mas uma lista de parâmetro diferente. Java chama o me´todo mais especifico encontrado. Corrsponde por primitivos mais largos. Depois que vem autoboxing e varargs.
+Construtores são usados para instanciar novos objetos. O construtor default sem argumeto é chamado quando o construtor é  codificado. Multiplos constutores são permitidos e podem chamar outros escrevendo this(). If this() está presente, ele deve ser a primeria declaração no construtor. Construtores pode referir para variáveis de instancia por escrever this antes do nome da varia´vel indicando que ele quer a varia´vel de instância e não o parâmetro do método com este nome. A ordem de inicialização é a superclasse; variáveis static e inicializadores statico na ordem que aparecer; varia´veis de instância e inicializadores de instÂncia na ordem que aparecer; e finalmente o construtor.
+Encapsulamento refere-se a impedir que os chamadores alterem as variáveis de instância diretamente. Isto é feito por fazer varia´veis de instancia privaate e getters/setters public. Imutabilidade refere-se a impedir chamadores de mudar as varia´veis de instância no todo. 
+Expressoes Labda, or lambdas, permite passar ao redor blocos de códigos. A sisntx padrão como ( String a, String b) -> {return a.equals(b);} O tipo do parâmetro pode ser omitido. Quando somente um parâmetro é especificado sem um tipo, os parenteses também podem ser omiidos. As chaves e a declarção return podem ser omitidos para uma unica declaração, fazendo de forma curta( a-> a.equals(b). Lambdas são passados para um me´todo esperndo uma interface com um me´todo. Predicate é uma interface comum. ele tem um método nomeado test que retorna um boolean e leva um tipo. O método reomveIf() no ArrayList leva um predicate.
