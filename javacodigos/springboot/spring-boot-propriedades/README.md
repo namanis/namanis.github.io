@@ -1,6 +1,4 @@
-# spring-boot-propriedades-casadocodigo
-
-Aplicação web que lista as propriedades do Spring Boot
+﻿# spring-boot-propriedades Aplicação web que lista as propriedades do Spring Boot
 
 Tecnologias usadas:
 
