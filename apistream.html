@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+ <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ 
+ <title> Programar em Java</title>
+ <body>
+ 
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+       <a class="w3-bar-item w3-button"  href="#javastreamapi">11 - JAVA STREAM API</a>
+            <a class="w3-bar-item w3-button"  href="#extrairdadostream">Extrair Dados de um Stream</a>
+          <a class="w3-bar-item w3-button"  href="#pesquisarnostream">Pesquisar Dados de um Stream(Fluxo)</a>
+          <a class="w3-bar-item w3-button"  href="#classeoptional">A classe Optional</a>
+          <a class="w3-bar-item w3-button" href="#objetosoptional">Criar Objetos Optional</a>
+          <a class="w3-bar-item w3-button"  href="#streamoptional">Optional Stream</a>
+          <a class="w3-bar-item w3-button"  href="#versaoprimoptional">Versões Primitiva de Optional&ltT> </a>
+          <a class="w3-bar-item w3-button"  href="#calculostream">Métodos de Dados Stream e Métodos de Calculo</a>
+           <a class="w3-bar-item w3-button"  href="#ordenacolecaoapi">Ordenado uma Coleção usando Api de Stream</a>
+          <a class="w3-bar-item w3-button"  href="#salvarcolecao">Salvar resultados para uma Coleção</a>
+           <a class="w3-bar-item w3-button"  href="#usarflatmap">Usando o Método flatMap em Stream</a>
+          
+          
+           
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+   
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top  w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+
+<section id="javastreamapi">
+<h1>Java Stream API</h1>
+
+<p><b>Objetivos são:</b></p>
+<ul>
+<li>Desenvolver códigos para extrair dados de um objeto usando me´todos peek() e map() inlcuindo versões primitivas do método map()</li>
+<li>Pesquisar por dados usando métodos de pesquisa das classes Stream incluindo findFirst, finndAny, anyMatch, allMatch, noneMatch</li>
+<li>Desenvover códigos que use classe Optional</li>
+<li>Desenvolver código que usa métodos de dados e métodos de cálculo do Stream</li>
+<li>Classificar uma coleção usando Api de Stream</li>
+<li>Salvar resultados em uma coleção usando o método <b>collect</b> e os dados do grupo/partição usando a classe Collectors</li>
+<li>Usar métodos flatMap() no Api de Stream<li>
+</ul>
+
+<br>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+</section>
+<section id="extrairdadostream">
+<h1>Extrair Dados de um Stream</h1>
+
+<p>Vamos iniciar com um exemplo simples:</p>
+<pre class="brush:java">
+long count = Stream.of(1, 2, 3, 4, 5).map(i -> i * i).count();
+System.out.printf("The stream has %d elements", count);
+</pre>
+
+<p><b>Este código imprime:</b></p>
+
+<pre>The stream has 5 elements</pre>
+
+
+<p>A operação <b>map()</b> neste fluxo aplica a função lambda fornecida passada como seu argumento nos elementos do fluxo. Nesse caso, ele agrupa os elementos no fluxo. O método <b>count()</b> retorna o valor 5 - você o captura em uma variável e imprime no console. Mas como você pode verificar o resultado da aplicação das  operações intermediárias <b>map()</b> neste código? Para isso você pode usar o método <b>peek()</b>:
+<pre class="brush:java">
+long count = Stream.of(1, 2, 3, 4, 5)
+.map(i -> i * i)
+.peek(i -> System.out.printf("%d ", i))
+.count();
+System.out.printf("%nThe stream has %d elements", count);
+</pre>
+<p><b>Este código imprime:</b></p>
+<pre>
+1 4 9 16 25
+The stream has 5 elements
+</pre>
+
+<p>Este exemplo também ilustra como as operações intermediárias podem ser encadeadas juntas. Isso é possível porque operações intermediárias retornam fluxos.</p>
+<p>Agora, vamos adicionar outro método <b>peek()</b> antes de chamar o método <b>map()</b> para entender como ele funciona:</p>
+<pre class="brush:java">
+Stream.of(1, 2, 3, 4, 5)
+.peek(i -> System.out.printf("%d ", i))
+.map(i -> i * i)
+.peek(i -> System.out.printf("%d ", i))
+.count();
+</pre>
+<p><b>Este código imprime:</b></p>
+
+<pre>1 1 2 4 3 9 4 16 5 25</pre>
+
+<p>Como você pode observar dessa saída, o <b>stream pipeline</b>  está processando os elementos um por um. Cada elemento é mapeado para o seu quadrado. O método <b>peek()</b> nos ajuda a entender o que está sendo processado no fluxo sem distribuí-lo.</p>
+
+ <p>O método <b>peek()</b> é usado principalmente para fins de depuração. Isso nos ajuda a entender como os elementos são transformados no pipeline. Não o use no código de produção.</p>
+
+<p>Você pode usar os métodos <b>map()</b> e <b>peek()</b> nas versões primitivas do <b>Stream&ltT>;</b> Em seguida, o trecho de código a seguir usa um <b>DoubleStream</b>:</p>
+<pre class="brush:java">
+DoubleStream.of(1.0, 4.0, 9.0)
+.map(Math::sqrt)
+.peek(System.out::println)
+.sum();
+</pre>
+<p>Este código imprime 1.0, 2.0 e 3.0 em linhas separadas no console. A tabela abaixo mostra a origem, as operações intermediárias e as operações do terminal nesse fluxo de pipeline.</p>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>DoubleStream.of(1.0,4.0,9.0).</th><th>-></th><th>map(Math::sqrt)</th><th>-></th><th>.peek(System.out::println</th><th>-></th><th>.sum();</th></tr>
+  <tr><td>Fonte do fluxo (como elementos 1.0 , 4.0 e 9.0)</td><td></td><td>1 Operação Intermediária (mapear elementos valores 1.0 , 2.0 e 3.0)</td><td></td><td>2 Operação Intermediaria (imprime 1.0 , 2.0 e 3.0)</td><td></td><td>Operação Terminal (retorna a soma 6.0)</td></tr>
+  </table>
+  </div>  
+
+</section>
+<section id="pesquisarnostream">
+<h2>Pesquisar Dados de um Stream(Fluxo)</h2>
+
+<p>Os métodos que terminam com a palavra “Match” e os métodos que começam com a palavra “find” na interface Stream são úteis para pesquisar dados do fluxo. Você pode usar operações de correspondência, como <b>anyMatch()</b>, <b>allMatch()</b> e <b>noneMatch()</b>, se estiver procurando elementos no fluxo que correspondam à condição especificada. Esses métodos retornam um valor booleano. Para as operações de busca <b>findFirst()</b> e <b>findAny()</b>, elementos correspondentes podem não estar presentes no <b>Stream</b>, então eles retornam <b>Optional< T ></b> (discutimos <b>Optional< T ></b> na próxima seção).</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Nome do Método</th><th>Descrição</th></tr>
+<tr><td>boolean anyMatch(Predicate&lt? super T> check)</td><td>Retorna true se houver algum elemento no fluxo que corresponda ao predicate fornecido. Retorna false se o fluxo estiver vazio ou se não houver elementos correspondentes.</td></tr>
+
+<tr><td>boolean allMatch(Predicate&lt? super T> check)</td><td>Retorna true apenas se todos os elementos no fluxo corresponderem ao predicate determinado. Retorna true se o fluxo estiver vazio sem avaliar o predicate!</td></tr>
+
+<tr><td>boolean noneMatch(Predicate&lt? super T> check)</td><td>Retorna true apenas se nenhum dos elementos no fluxo corresponder ao predicate fornecido. Retorna true se o fluxo estiver vazio sem avaliar o predicate!</td></tr>
+
+<tr><td>Optional&ltT> findFirst() </td><td>Retorna o primeiro elemento do fluxo; se não houver elemento presente no fluxo, ele retorna um objeto Optional<T> vazio.</td></tr>
+
+<tr><td>Optional&ltT> findAny()  </td><td> Retorna um dos elementos do fluxo; se não houver elemento presente no fluxo, ele retorna um objeto Optional<T> vazio.</td></tr>
+<br>
+ <p><i>Ao contrário o método anyMatch que retorna false quando o fluxo está vazio, os métodos allMatch() e noneMtch() retornam true if o fluxo está vazio!</i></p>
+</table>
+</div>
+<p>Aqui um exemplo simples que ilustra como usar os métodos anyMatch(), allMatch(), e noneMatch():</p>
+<pre class="brush:java">
+//MatchUse.java
+import java.util.stream.IntStream;
+public class MatchUse {
+public static void main(String []args) {
+// Average temperatures in Concordia, Antarctica in a week in October 2015
+boolean anyMatch
+= IntStream.of(-56, -57, -55, -52, -48, -51, -49).anyMatch(temp -> temp > 0);
+System.out.println("anyMatch(temp -> temp > 0): " + anyMatch);
+boolean allMatch
+= IntStream.of(-56, -57, -55, -52, -48, -51, -49).allMatch(temp -> temp > 0);
+System.out.println("allMatch(temp -> temp > 0): " + allMatch);
+boolean noneMatch
+= IntStream.of(-56, -57, -55, -52, -48, -51, -49).noneMatch(temp -> temp > 0);
+System.out.println("noneMatch(temp -> temp > 0): " + noneMatch);
+}
+}
+</pre>
+<p>Este programa imprime:</p>
+<pre class="brush:java">
+anyMatch(temp -> temp > 0): false
+allMatch(temp -> temp > 0): false
+noneMatch(temp -> temp > 0): true
+</pre>
+<p>Como todas as temperaturas fornecidas são negativas, os métodos <b>anyMatch()</b> e <b>allMatch()</b> retornam <b>false</b>, enquanto <b>noneMatch()</b> retorna <b>true</b>.</p>
+<p>Os métodos <b>findFirst()</b> e <b>findAny()</b> são úteis para pesquisar elementos em fluxos. Aqui está um programa que usa o método <b>findFirst()</b>.</p>
+<pre class="brush:java">
+//FindFirstUse1.java
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Stream;
+
+public class FindFirstUse1 {
+public static void main(String []args) {
+Method[] methods = Stream.class.getMethods();
+Optional&ltString> methodName = Arrays.stream(methods)
+.map(method -> method.getName())
+.filter(name -> name.endsWith("Match"))
+.sorted()
+.findFirst();
+System.out.println("Result: " + methodName.orElse("No suitable method found"));
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>Result: allMatch</pre>
+
+<p>Neste programa, obtemos a lista de métodos no próprio Stream usando reflexão. Então, usando o método <b>map()</b>, obtemos a lista de nomes de métodos e verificamos se os nomes terminam com a string “Match”, ordenamos esses métodos e retornamos o primeiro método encontrado. Se estivermos procurando por qualquer nome de método que termine com “Match”, poderemos usar o método <b>findAny()</b>.</p>
+
+<p>O exemplo seguinte tem um fluxo com muitos valores de temperatura dados como valores <b>double</b>. Usando <b>findFirst()</b>, estamos procurando por qualquer temperatura que seja maior que 0. O que o programa imprimirá?</p>
+<pre class="brush:java">
+//FindFirstUse2.java
+import java.util.OptionalDouble;
+import java.util.stream.DoubleStream;
+public class FindFirstUse2 {
+public static void main(String []args) {
+OptionalDouble temperature = DoubleStream.of(-10.1, -5.4, 6.0, -3.4, 8.9, 2.2)
+.filter(temp -> temp > 0)
+.findFirst();
+System.out.println("First matching temperature > 0 is " + temperature.getAsDouble());
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>First matching temperature > 0 is 6.0
+</pre>
+<p>Neste fluxo de valores double, o método <b>filter()</b> filtra os elementos 10.1 e -5.4 porque a condição temp > 0 é falsa. Para o elemento 6.0, o método <b>filter()</b> avalia a condição como <b>true</b> e <b>findFirst()</b> retorna esse elemento. Observe que os elementos restantes são ignorados neste fluxo de pipeline: os elementos 8.9 e 2.2 também satisfazem a condição temp > 0, mas o fluxo do pipeline é fechado, já que o método <b>findFirst()</b> já retornou o valor 6.0. Em outras palavras, métodos de pesquisa, como <b>findFirst()</b>, estão em curto-circuito. Depois que o resultado é determinado, o restante dos elementos no fluxo não são processados.</p>
+<br>
+<p><i>Os métodos “match” e “find” para procurar elementos estão “em curto-circuito” na natureza. O que é um curto-circuito? a avaliação para quando o resultado é encontrado (e o restante não é avaliado). Você já está familiarizado com o nome de "curto-circuito" dos operadores && e ||. Por exemplo, na expressão ((s != Null) && (s.length () > 0)), se a String <b>s</b> for nula, a condição (s != null) será avaliada como false; portanto, falso é o resultado da expressão. A expressão restante (s.length() > 0) não é avaliada nesse caso.</i></p>
+</section>
+<section id="classeoptional">
+ <h1>A classe Optional</h1>
+
+ <p>A classe <b>java.util.Optional</b> é um detentor de valor que pode ser nulo. Existem vários métodos em classes no pacote <b>java.util.stream</b> que retornam valores <b>Optional</b>. Vamos ver um exemplo agora.</p>
+<pre class="brush:java">
+ public static void selectHighestTemperature(Stream&ltDouble> temperatures) {
+System.out.println(temperatures.max(Double::compareTo));
+}
+</pre>
+<p><b>Aqui está um chamado deste método:</b></p>
+<pre class="brush:java">
+selectHighestTemperature(Stream.of(24.5, 23.6, 27.9, 21.1, 23.5, 25.5, 28.3));
+</pre>
+<p><b>Este código imprime:</b></p>
+<pre>
+Optional[28.3]
+</pre>
+<p>TO método max() no Stream leva um Comparator como um argumento e retorna um Optional <T></p>
+
+<pre class="brush:java">Optional&ltT> max(Comparator&lt? super T> comparator);</pre>
+
+<p>Por que <b>Optional&ltT></b> em vez de retornar tipo <b>T</b>? É porque o método <b>max()</b> pode não conseguir encontrar o valor máximo - pense em um fluxo vazio, por exemplo:</p>
+
+<pre class="brush:java">selectHighestTemperature(Stream.of());</pre>
+
+<p>Agora, este código imprime:</p>
+
+<pre>Optional.empty</pre>
+
+<p>Para obter o valor de <b>Optional</b>, você pode usar os métodos <b>isPresent()</b> e <b>get()</b>, como em:
+
+<pre class="brush:java">max.ifPresent(System.out::println);</pre>
+
+<p>Esse método <b>ifPresent()</b> no <b>Optional</b> usa um <b>Consumer&ltT></b> como argumento. Você também pode usar métodos como <b>orElse()</b> e ou <b>ElseThrow()</b> que discutiremos um pouco depois, depois de discutir como criar objetos <b>Optional</b>.</p>
+</section>
+<section id="objetosoptional">
+<h2>Criar Objetos Optional</h2>
+
+<p>Existem muitas maneiras de criar objetos <b>Optional</b>. Uma deles é usar métodos de fábrica na classe <b>Optional</b>, como em:</p>
+
+<pre class="brush:java">Optional&ltString> empty = Optional.empty();</pre>
+
+<p>Você pode também usar of() em classes Optional:</p>
+
+<pre class="brush:java">Optional&ltString> nonEmptyOptional = Optional.of("abracadabra");</pre>
+
+
+<p>No entanto, você não pode passar null para o método <b>Optional.of()</b>, como em:</p>
+<pre class="brush:java">
+Optional&ltString> nullStr = Optional.of(null);
+System.out.println(nullStr);
+// colidindo com um NullPointerException
+</pre>
+<p>Isso resultará em lançar um <b>NullPointerException</b>. Se você quiser criar um objeto <b>Optional</b> com valor nulo, poderá usar o método <b>ofNullable()</b>:</p>
+<pre class="brush:java">
+Optional&ltString> nullableStr = Optional.ofNullable(null);
+System.out.println(nullableStr);
+// imprime: Optional.empty
+</pre>
+
+<br>
+
+<img src="imagens/jee7/optional.jpg">
+<p><i>A figura acima visualiza a representação dos objetos < String> opcionais apontados por <b>nonEmptyOptional, nullStr e nullableStr</b></i></p>
+<br>
+</section>
+<section id="streamoptional">
+<h2>Optional Stream</h2>
+
+<p>Você também pode considerar como <b>Optional</b> um fluxo que pode ter zero elementos ou um elemento. Assim, você pode aplicar métodos como <b>map()</b>, <b>filter()</b> e <b>flatMap()</b> neste fluxo! Como isso é útil? Aqui está um exemplo :</p>
+<pre class="brush:java">
+import java.util.Optional;
+public class OptionalStream {
+public static void main(String []args) {
+Optional&ltString> string = Optional.of(" abracadabra ");
+string.map(String::trim).ifPresent(System.out::println);
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+
+<pre>abracadabra</pre>
+
+
+<p>Você pode usar métodos <b>orELse()</b> ou <b>orElseThrow()</b>, quando estas operações falhar:</p>
+<pre class="brush:java">
+Optional&ltString> string = Optional.ofNullable(null);
+System.out.println(string.map(String::length).orElse(-1));
+</pre>
+<p>Esse código imprime -1 porque a variável <b>string</b> é uma variável <b>Optional</b> que mantém <b>null</b> e, portanto, o método <b>orElse()</b> é executado e retorna <b>-1</b>. Alternativamente, você pode lançar uma exceção usando o método <b>orElseThrow()</b>:</p>
+
+<pre class="brush:java">
+Optional&ltString> string = Optional.ofNullable(null);
+System.out.println(string.map(String::length).orElseThrow(IllegalArgumentException::new))
+</pre>
+
+<p>Este segmento de código lança um <b>IllegalArgumentException</b>. Chamar métodos como <b>map()</b>, <b>flatMap()</b> ou <b>filter()</b> em um objeto <b>Optional</b> é útil quando você está lidando com o objeto <b>Optional</b> retornado de uma função em que você não sabe o que o objeto <b>Optional</b> contém.</p>
+
+</section>
+<section id="versaoprimoptional">
+<h2>Versões Primitiva de Optional&ltT></h2>
+
+
+<p>No código que vimos mais cedo, usamos ambos tipos <b>Stream&ltDouble></b> e <b>Optional&ltDouble></b>:</p>
+<pre class="brush:java">
+public static void selectHighestTemperature(Stream&ltDouble> temperatures) {
+Optional&ltDouble> max = temperatures.max(Double::compareTo);
+if(max.isPresent()) {
+System.out.println(max.get());
+}
+}
+</pre>
+<p>É melhor usar <b>DoubleStream</b> e <b>OptionalDouble</b>, que são versões de tipo primitivo para <b>double</b> para <b>Stream&ltT></b> e <b>Optional&ltT></b> respectivamente. (As outras duas versões de tipo primitivo disponíveis são para <b>int</b> e <b>long</b>, nomeadas como <b>OptionalInt</b> e <b>OptionalLong</b>, respectivamente). Portanto, esse código pode ser reescrito como:</p>
+<pre class="brush:java">
+public static void selectHighestTemperature(DoubleStream temperatures) {
+OptionalDouble max = temperatures.max();
+max.ifPresent(System.out::println);
+}
+</pre>
+<p>Quando invocamos com o seguinte chamado, selectHighestTemperature(DoubleStream.of(24.5, 23.6, 27.9, 21.1, 23.5, 25.5, 28.3)); Nós obtemos o valor máximo corretamente imprimido no console:</p>
+<pre>
+28.3 
+</pre>
+
+<p>Semelhante ao método <b>max()</b>, <b> Stream&ltT></b> que retorna <b>Optional&ltT></b>, o método <b>max()</b> em <b>DoubleStream</b> retorna um <b>OptionalDouble.</b></p>
+</section>
+<section id="calculostream">
+<h1>Métodos de Dados Stream e Métodos de Cálculo</h1>
+
+<p>A interface <b>Stream&ltT></b> tem dados e métodos de cálculo <b>count()</b>, <b>min()</b> e <b>max()</b>. Os métodos <b>min()</b> e <b>max()</b> usam um objeto <b>Comparator</b> como argumento e retornam um <b>Optional&ltT></b>. Aqui está um exemplo do uso desses métodos:</p>
+<pre class="brush:java">
+//WordsCalculation.java
+import java.util.Arrays;
+public class WordsCalculation {
+public static void main(String []args) {
+String[] string = "you never know what you have until you clean your room".split(" ");
+System.out.println(Arrays.stream(string).min(String::compareTo).get());
+}
+}
+</pre>
+<p><b>Este código imprime:</b></p>
+<pre>
+clean
+</pre>
+
+<p>Como o método <b>min()</b> requer uma maneira de comparar os elementos no fluxo, estamos passando a referência do método <b>String::compareTo</b> neste programa. Como <b>min()</b> retorna um <b>Optional&ltT></b>, usamos o método <b>get()</b> para obter a <b>string</b> resultante. Como o <b>String::compareTo</b> compara lexicograficamente duas <b>strings</b>, obtemos a palavra “clean” como resultado.</p>
+<p>Aqui está o trecho de código modificado que compara as cadeias não lexicograficamente, mas com base no tamanho da <b>string</b>:</p>
+<pre class="brush:java">
+Comparator&ltString> lengthCompare = (str1, str2) -> str1.length() - str2.length();
+System.out.println(Arrays.stream(string).min(lengthCompare).get());
+</pre>
+<p>Com essa mudança, o programa imprime "you" porque é a menor palavra por tamanho na string dada.</p>
+<p>Existem dados adicionais e métodos de cálculo como sum() e average() fornecidos nas versões primitivas da interface <b>Stream&ltT></b></p>.
+
+<p>Métodos de dados e calculo importantes na interface IntStream:</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Método</th><th>Descrição</th></tr>
+<tr><td>int sum()</td><td>Retorna a soma dos elementos no fluxo; 0 no caso do fluxo estar vazio.</td></tr>
+
+<tr><td>long count()</td><td>Retorna o número de elementos no fluxo; 0 se o fluxo estiver vazio.</td></tr>
+
+<tr><td>OptionalDouble average()</td><td>Retorna o valor médio dos elementos no fluxo; um valor vazio OptionalDouble , caso o fluxo esteja vazio</td></tr>
+
+<tr><td>OptionalInt min()</td><td>Retorna o valor inteiro mínimo no fluxo; um valor OptionalInt vazio no caso do fluxo estar vazio</td></tr>
+
+
+<tr><td>OptionalInt max()</td><td>Retorna o valor inteiro máximo no fluxo; um valor OptionalInt vazio, caso o fluxo esteja vazio.</td></tr>
+
+<tr><td>IntSummaryStatistics summaryStatistics() </td><td>Retorna um objeto IntSummaryStatistics que possui valores sum, count, average, min e max.</td></tr>
+</table>
+</div>
+
+<p>As interfaces <b>LongStream</b> e <b>DoubleStream</b> possuem métodos semelhantes aos listados para o <b>IntStream</b></p>
+<pre class="brush:java">
+import java.util.IntSummaryStatistics;
+import java.util.regex.Pattern;
+public class WordStatistics {
+public static void main(String []args) {
+String limerick = "There was a young lady named Bright " + "who traveled much faster than light " + "She set out one day " + "in a relative way " + "and came back the previous night ";
+IntSummaryStatistics wordStatistics = Pattern.compile(" ")
+.splitAsStream(limerick)
+.mapToInt(word -> word.length())
+.summaryStatistics();
+System.out.printf(" Number of words = %d \n Sum of the length of the words = %d \n" + " Minimum word size = %d \n Maximum word size %d \n " + " Average word size = %f \n", 
+wordStatistics.getCount(),
+wordStatistics.getSum(),
+wordStatistics.getMin(),
+wordStatistics.getMax(), 
+wordStatistics.getAverage());
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+Number of words = 28
+Sum of the length of the words = 115
+Minimum word size = 1
+Maximum word size 8
+Average word size = 4.107143
+</pre>
+
+<p>Depois de dividir as palavras como um fluxo usando o método <b>splitAsStream()</b> na classe <b>Pattern</b>, esse programa chama o método <b>mapToInt()</b> para transformar a palavra em seus comprimentos. Por que <b>mapToInt()</b> em vez do método <b>map()</b>? O método <b>map()</b> retorna um fluxo, mas queremos realizar cálculos nos elementos subjacentes no fluxo. A interface <b>Stream</b> não possui métodos que executam cálculos, mas suas versões de tipo primitivo possuem métodos de cálculo e dados. Por isso, chamamos o método <b>mapToInt()</b> que retorna um IntStream. <b>IntStream</b> tem muitos dados e métodos de cálculo úteis como foi mostrado antes. Nós chamamos o método <b>summaryStatistics()</b> no <b>IntStream</b>. Finalmente, chamamos vários métodos, como <b>sum()</b> e <b>average()</b>, no objeto <b>IntSummaryStatistics</b> retornado para resumir o cálculo em palavras usadas na <b>limerick</b> dada.</p>
+<p>Você também pode chamar diretamente métodos como <b>sum()</b> e <b>average()</b> fornecidos no <b>IntStream</b>, como em:</p>
+
+<pre class="brush:java">IntStream.of(10, 20, 30, 40).sum();</pre>
+
+<p>Esses métodos são mais concisos do que seus equivalentes usando o método <b>reduce()</b>:</p>
+
+<pre class="brush:java">IntStream.of(10, 20, 30, 40).reduce(0, ((sum, val) -> sum + val));</pre>
+
+
+<p>Por que a API de fluxo fornece o método <b>reduce()</b> quando podemos usar métodos como <b>sum()</b> que são mais concisos, fáceis de usar e fáceis de ler?</p>
+<p>A resposta é que <b>reduce()</b> é um método generalizado: você pode usá-lo quando quiser executar operações repetidas em elementos de fluxo para calcular um resultado. Considere o fatorial de 10. Não temos um método como <b>sum()</b> no <b>IntStream</b> que pode nos ajudar a multiplicar todos os valores. Portanto, podemos usar o método <b>reduce()</b> nesse caso:</p>
+<pre class="brush:java">
+// fatorial de 5
+System.out.println(IntStream.rangeClosed(1, 5).reduce((x, y) -> (x * y)).getAsInt());
+// imprime: 120
+</pre>
+<p>De fato, o método <b>sum()</b> de <b>IntStream</b> é internamente implementado para chamar método <b>reduce()</b> (na classe intPipeline):</p>
+<pre class="brush:java">
+@Override
+public final int sum() {
+return reduce(0, Integer::sum);
+}
+</pre>
+<p>Neste caso, o método <b>sum()</b> é implementado passando a referência de método <b>Integer::sum</b> como o segundo argumento para o método <b>reduce()</b>.</p>
+<br>
+<p><i>operações de redução (também conhecidas como "redutores") podem ser implícitas ou explícitas. Métodos como sum (), min() e max() no IntStream são exemplos de redutores implícitos. Quando usamos o método reduce() diretamente no nosso código, estamos usando redutores explícitos. Podemos converter redutores implícitos em seus redutores explícitos equivalentes.</i></p>
+<br>
+</section>
+<section id="ordenacolecaoapi">
+<h1>Ordenando uma Coleção usando Api de Stream</h1>
+
+
+ <p>Aqui está um programa que ordena strings com comparação lexicográfica:</p>
+<pre class="brush:java">
+//SortingCollection.java
+import java.util.Arrays;
+import java.util.List;
+public class SortingCollection {
+public static void main(String []args) {
+List words = Arrays.asList("follow your heart but take your brain with you".split(" "));
+words.stream().distinct().sorted().forEach(System.out::println);
+}
+}
+</pre>
+<p><b>Este programam imprime isto:</b></p>
+<pre>
+brain
+but
+follow
+heart
+take
+with
+you
+your
+</pre>
+
+<p>Neste código, "words" é uma coleção do tipo lista. Primeiro, obtemos um fluxo dessa lista usando o método <b>stream()</b> e, em seguida, chamamos o método <b>distinct()</b> para remover duplicatas (a palavra “your” é repetida na coleção). Depois disso, chamamos o método <b>sorted()</b>.</p>
+<p>O método <b>sorted()</b> classifica os elementos em sua “ordem natural”; O método <b>sorted()</b> requer que os elementos no fluxo implementem a interface <b>Comparable</b>. Como ordenar os elementos em alguma outra ordem? Para isso, você pode chamar o método sobrecarregado ordenado que usa um <b>Comparator</b> como argumento.</p>
+
+
+<pre class="brush:java">Stream&ltT> sorted(Comparator&lt? super T> comparator)</pre>
+
+
+<p>Aqui está a versão modificada do programa anterior que ordena os elementos com base no comprimento das seqüências de caracteres.</p>
+
+
+<pre class="brush:java">
+//SortByLength.java
+import java.util.Arrays;
+import java.util.List;
+import java.util.Comparator;
+public class SortByLength {
+public static void main(String []args) {
+List words = Arrays.asList("follow your heart but take your brain with you".split(" "));
+Comparator&ltString> lengthCompare = (str1, str2) -> str1.length() - str2.length();
+words.stream().distinct().sorted(lengthCompare).forEach(System.out::println);
+}
+}
+</pre>
+<p>Este programa imprime:</p>
+<pre>
+but
+you
+your
+take
+with
+heart
+brain
+follow
+</pre>
+
+<p>Nesta saída, as palavras são ordendas com base no comprimento das palavras. A palavra “heart” aparece antes de “brain”, embora sejam do mesmo tamanho. Então, e se quisermos primeiro ordenar as palavras por comprimento e depois ordenar as palavras do mesmo comprimento por ordem natural? Para isso, você pode usar o método padrão <b>thenComparing()</b> fornecido na interface <b>Comparator</b>.<p>
+<pre class="brush:java">
+//SortByLengthThenNatural.java
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+public class SortByLengthThenNatural {
+public static void main(String []args) {
+List words = Arrays.asList("follow your heart but take your brain with you".split(" "));
+Comparator&ltString> lengthCompare = (str1, str2) -> str1.length() - str2.length();
+words.stream()
+.distinct()
+.sorted(lengthCompare.thenComparing(String::compareTo))
+.forEach(System.out::println);
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+but
+you
+take
+with
+your
+brain
+heart
+follow
+</pre>
+<p>E se quisermos inverter esta ordem? Felizmente, a interface <b>Comparator</b> foi aprimorada com muitos métodos estáticos e padrão estáveis ​​no Java 8. Um desses métodos adicionados é <b>reversed()</b> e você pode fazer uso disso.</p>
+<pre class="brush:java">
+//SortByLengthThenNaturalReversed.java
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+public class SortByLengthThenNaturalReversed {
+public static void main(String []args) {
+List words =
+Arrays.asList("follow your heart but take your brain with you".split(" "));
+Comparator&ltString> lengthCompare = (str1, str2) -> str1.length() - str2.length();
+words.stream()
+.distinct()
+.sorted(lengthCompare.thenComparing(String::compareTo).reversed())
+.forEach(System.out::println);
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+follow
+heart
+brain
+your
+with
+take
+you
+but
+</pre>
+</section>
+<section id="salvarcolecao">
+<h1>Salvar resultados para uma Coleção</h1>
+
+<p>A classe <b>Collectors</b> possui métodos que suportam a tarefa de coletar elementos em uma coleção. Você pode usar métodos como <b>toList()</b>, <b>toSet()</b>, <b>toMap()</b> e <b>toCollection()</b> para criar uma coleção de um fluxo.</p>
+<p>Aqui está um exemplo simples que cria uma Lista de um fluxo e a retorna. Este código usa o método <b>collect()</b> do <b>Stream</b> e o método <b>toList()</b> da classe <b>Collectors.</b></p>
+<pre class="brush:java">
+//CollectorsToList.java
+import java.util.stream.Collectors;
+import java.util.regex.Pattern;
+import java.util.List;
+public class CollectorsToList {
+public static void main(String []args) {
+String frenchCounting = "un:deux:trois:quatre";
+List gmailList = Pattern.compile(":")
+.splitAsStream(frenchCounting)
+.collect(Collectors.toList());
+gmailList.forEach(System.out::println);
+}
+}
+</pre> 
+
+<p>o método <b>collect()</b> em Stream leva um <b>Collector</b> como um argumento:</p>
+
+<pre class="brush:java">&ltR, A> R collect(Collector&lt? super T, A, R> collector);</pre>
+
+<p>Neste código, usamos o método <b>toList()</b> na classe <b>Collectors</b> para coletar os elementos do fluxo em uma lista.</p>
+<p>Aqui está um exemplo que usa o método <b>Collectors.toSet()</b>:</p>
+<pre class="brush:java">
+//CollectorsToSet.java
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
+public class CollectorsToSet {
+public static void main(String []args) {
+String [] roseQuote = "a rose is a rose is a rose".split(" ");
+Set words = Arrays.stream(roseQuote).collect(Collectors.toSet());
+words.forEach(System.out::println);
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+a
+rose
+is
+</pre>
+
+<p>Este código converte a sentença dada em uma <b>string</b> em um fluxo de palavras. O método <b>Collectors.toSet()</b> chamado dentro do método <b>collect()</b> coleta as palavras em um conjunto. Como um <b>Set</b> remove duplicatas, este programa imprime apenas as palavras “a”, “rose” e “is” no console.</p>
+<p>Assim como listas e conjuntos, você também pode criar mapas a partir de um fluxo. Aqui está um programa que cria um mapa a partir de um fluxo de strings.</p>
+<pre class="brush:java">
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+public class CollectorsToMap {
+public static void main(String []args) {
+Map&ltString, Integer> nameLength = Stream.of("Arnold", "Alois", "Schwarzenegger")
+.collect(Collectors.toMap(name -> name, name -> name.length()));
+nameLength.forEach((name, len) -> System.out.printf("%s - %d \n", name, len));
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+Alois - 5
+Schwarzenegger - 14
+Arnold - 6
+</pre>
+<p>O método <b>Collectors.toMap()</b> recebe dois argumentos - o primeiro para chaves e o segundo para valores. Aqui, usamos os elementos no próprio fluxo como a chave e o comprimento da <b>string</b> como o valor. Você notou que a ordem das <b>strings</b> “Arnold”, “Alois” e “Schwarzenegger” no fluxo não é mantida? É porque o <b>Map</b> não mantém a ordem de inserção dos elementos.</p>
+
+<p>Neste código, note que nós temos usado name -> name:</p>
+
+<pre class="brush:java">Collectors.toMap(name -> name, name -> name.length())</pre>
+
+<p>Podemos simplificá-lo passando Function.identity() em vez disso, como em:</p>
+
+<pre class="brush:java">Collectors.toMap(Function.identity(), name -> name.length())</pre>
+
+ 
+<p>Lembre-se de que o método <b>identity()</b> na interface <b>Function</b> retorna o argumento recebido.
+E se você quiser usar uma coleção específica - digamos <b>TreeSet</b> - para agregar elementos do método <b>collect()</b>? Para isso, você pode usar o método <b>Collections.toCollection()</b> e passar a referência de construtor de <b>TreeSet</b> como o argumento.</p>
+<pre class="brush:java">
+//CollectorsToTreeSet.java
+import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+public class CollectorsToTreeSet {
+public static void main(String []args) {
+String []roseQuote = "a rose is a rose is a rose".split(" ");
+Set words = Arrays.stream(roseQuote).collect(Collectors.toCollection(TreeSet::new));
+words.forEach(System.out::println);
+}
+}
+</pre>
+<p><b>Esteprograma imprime:</b></p>
+<pre>
+a
+is
+rose
+</pre>
+<p>Lembre-se de que um <b>TreeSet</b> ordena os elementos e, portanto, a saída está na ordem de classificação.</p>
+<p>Você também pode agrupar os elementos em um fluxo com base em determinados critérios.</p>
+
+<pre class="brush:java">
+//GroupStringsByLength.java
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class GroupStringsByLength {
+public static void main(String []args) {
+String []string= "you never know what you have until you clean your room".split(" ");
+Stream&ltString> distinctWords = Arrays.stream(string).distinct();
+Map&ltInteger, List&ltString>> wordGroups =
+distinctWords.collect(Collectors.groupingBy(String::length));
+wordGroups.forEach(
+(count, words) -> {
+System.out.printf("word(s) of length %d %n", count);
+words.forEach(System.out::println);
+});
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+word(s) of length 3
+you
+word(s) of length 4
+know
+what
+have
+your
+room
+word(s) of length 5
+never
+until
+clean
+</pre>
+<p>O método <b>groupingBy()</b> na classe <b>Collectors</b> usa uma função como um argumento. Ele usa o resultado da função para retornar um <b>Map</b>. O objeto <b>Map</b> consiste nos valores retornados pela função e na lista de elementos correspondentes.</p>
+<p>E se você quiser separar palavras mais longas de palavras menores? Para isso, você pode usar o método <b>partitioningBy()</b> na classe <b>Collectors</b>. O método de partição usa um <b>Predicate</b> como argumento.</p>
+
+<pre class="brush:java">
+//PartitionStrings.java
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+public class PartitionStrings {
+public static void main(String []args) {
+String []string= "you never know what you have until you clean your room".split(" ");
+Stream&ltString> distinctWords = Arrays.stream(string).distinct();
+Map&ltBoolean, List&ltString>> wordBlocks =
+distinctWords.collect(Collectors.partitioningBy(str -> str.length() > 4));
+
+System.out.println("Short words (len <= 4): " + wordBlocks.get(false));
+System.out.println("Long words (len > 4): " + wordBlocks.get(true));
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+Short words (len <= 4): [you, know, what, have, your, room]
+Long words (len > 4): [never, until, clean]
+</pre>
+<p>No método <b>partitioningBy()</b>, fornecemos a condição<b> str -> str.length() > 4</b>. Agora, o resultado será dividido em duas partes: uma parte com elementos que avaliaram como <b>true</b> para essa condição e outra parte que avaliou para falso. Neste caso, usamos o método <b>partitioningBy()</b> para dividir as palavras em pequenas palavras (com palavras de comprimento <= 4) e palavras longas (com palavras de comprimento > 4).</p>
+<br>
+<p><i>Como os métodos groupingBy() e partitioningBy() são diferentes? o método groupingBy() usa uma função de classificação (do tipo Function) e retorna os elementos de entrada e suas entradas correspondentes com base
+na função de classificação (e organiza os resultados em um Map&ltK, Lista&ltT>>). O método partitioningBy() usa um Predicate como argumento e classifica as entradas como true e false com base no Predicate fornecido (e organiza os resultados em um Map&ltBoolean, List&ltT>>).</i></p> 
+
+
+</section>
+<section id="usarflatmap">
+<h1>Usando o Método flatMap em Stream</h1>
+
+<p>No programa anterior, encontramos palavras distintas em uma <b>string</b> depois de chamar o método <b>split()</b>:</p>
+<pre class="brush:java">
+String []string= "you never know what you have until you clean your room".split(" ");
+Stream< String > distinctWords = Arrays.stream(string).distinct();
+</pre>
+
+<p>E se quisermos encontrar caracteres distintos (únicos) na frase? Que tal este código, funciona?</p>
+<pre class="brush:java">
+String [] string= "you never know what you have until you clean your room".split(" ");
+Arrays.stream(string)
+.map(word -> word.split(""))
+.distinct()
+.forEach(System.out::print);
+</pre>
+<p>Este código imprime rabiscos como este:</p>
+
+<pre>Ljava.lang.String;@5f184fc6[Ljava.lang.String;@3feba861[Ljava.lang.String;@5b480cf9[</pre>
+<p>Por quê? Porque o <b>word.split()</b> retorna um <b>String[ ]</b> e <b>distinct()</b> remove referências duplicadas. Como os elementos no fluxo são do tipo <b>String[ ]</b>, o <b>forEach()</b> imprime o padrão <b>toString()</b> implementação que imprime algo que não é legível por humanos.</p>
+<p>Uma maneira de resolver esse problema é usar <b>Arrays.stream()</b> novamente em <b>word.split("")</b> e converter os fluxos resultantes em entradas individuais (isto é, "achatar" os fluxos) como em: <b>flatMap(word -> Arrays.stream (word.split ("")))</b>.</p>
+ <p>Com essa mudança, aqui está o programa  que imprime os caracteres únicos em uma frase.</p>
+<pre class="brush:java">
+import java.util.Arrays;
+public class UniqueCharacters {
+public static void main(String []args) {
+String []string= "you never know what you have until you clean your room".split(" ");
+Arrays.stream(string)
+.flatMap(word -> Arrays.stream(word.split("")))
+.distinct()
+.forEach(System.out::print);
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+
+<pre>younevrkwhatilcm</pre>
+
+<p>Vamos discutir um exemplo que ilustra claramente a diferença entre os <b>métodos map()</b> e </b>flatMap()</b>.</p>
+<pre class="brush:java">
+//UsingMap.java
+import java.util.Arrays;
+import java.util.List;
+public class UsingMap {
+public static void main(String []args) {
+List&ltInteger> integers = Arrays.asList(1, 2, 3, 4, 5);
+integers.stream()
+.map(i -> i * i)
+.forEach(System.out::println);
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+1
+4
+9
+16
+25
+</pre>
+
+<p>Neste programa, temos uma List< Integer > com valores de 1 a 5. Como temos elementos inteiros, podemos chamar diretamente o método <b>map()</b> e transformar os elementos em seus valores quadrados.</p>
+<br>
+<img src="imagens/jee7/flatmap1.jpg">
+<p><i>o método <b>map()</b> transforma elementos em um <b>stream</b></i>.</p><br>
+
+<p>Agora, as coisas se tornam difíceis se tivermos uma Lista de <b>List< Integer ></b>, como em:</p>
+<pre class="brush:java">
+//UsingFlatMap.java
+import java.util.Arrays;
+import java.util.List;
+public class UsingFlatMap {
+public static void main(String []args) {
+List&ltList &ltInteger>> intsOfInts = Arrays.asList(
+Arrays.asList(1, 3, 5),
+Arrays.asList(2, 4));
+intsOfInts.stream()
+.flatMap(ints -> ints.stream())
+.sorted()
+.map(i -> i * i)
+.forEach(System.out::println);
+}
+}
+</pre>
+
+
+<p>A saída deste programa é a mesma do programa anterior. Também imprime os quadrados dos valores 1 a 5.
+Neste programa, temos uma variável <b>intsOfInts</b> que é uma Lista de <b>List&ltInteger></b>. Quando você chama o método <b>stream()</b> em <b>intsOfInts</b>, qual será o tipo de elementos? Será <b>List&ltInteger></b>. Como processamos os elementos dentro da <b>List&ltInteger></b>? Para isso, uma maneira é chamar o método <b>stream()</b> em cada um dos seus elementos. Para converter esses fluxos em elementos Integer, chamamos o método <b>flatMap()</b>. Após a chamada para <b>flatMap()</b>, temos um fluxo de números inteiros. Agora podemos executar operações como <b>sorted()</b> e <b>map()</b> para processar ou transformar esses elementos. A seguir é mostrado a diferença entre os métodos <b>map()</b> e <b>flatMap()</b> em um <b>Stream</b>.</p>
+<br>
+<img src="imagens/jee7/flatmap2.jpg">
+<p><i>O método flatMap() achata o fluxo.</i></p>
+<br>
+ <p>o método <b>flatMap()</b> opera em elementos como o método <b>map()</b>. no entanto, <b>flatMap()</b> achata os fluxos resultantes do mapeamento de cada um de seus elementos em um fluxo simples.</p>
+</section>
+
+ <p class="nav-arq" id="referencia">Interfaces Lambda : <a href="lambda.html">&laquo; anterior | <a href="exceptioassertion.html">próximo &raquo;</a> Exceção e Asserção</p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/apijavastream" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+</body>
+	</html>
+
+
+
+
+
+
+
+
+
+

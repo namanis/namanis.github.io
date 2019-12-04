@@ -2,16 +2,29 @@
 <!DOCTYPE html>
  <html lang="pt-br">
  <head>
-  <head>
+   <head>
  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-
-  <link rel="stylesheet" type="text/css" href="css/stylos.css">
-<link rel="stylesheet" href="css/stylew3.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+ 
+    <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
  <title> Programar em Java</title>
-   
-      <script type="text/javascript"src="js/efeitos.js"></script>
+
  </head>
  <body>
 
@@ -28,15 +41,42 @@
      <a class="w3-bar-item w3-button"href="#operadores">2 - OPERADORES E DECLARAÇÕES</a>
   <a class="w3-bar-item w3-button" href="#aritmeticos">Trabalhando com Operadores Aritméticos e Binários</a>
 
-  <a class="w3-bar-item w3-button"  href="#unario">Trabalhando com Operadores Unário</a></li>
- <a class="w3-bar-item w3-button" href="#obadcionais">Usando Operadores Binários Adicionais</a>
- <a class="w3-bar-item w3-button"  href="#declaracao">Declarações em Java</a>
-  <a class="w3-bar-item w3-button" <a href="#controlefluxo">Controle de Fluxo Avançado</a>
+  <a class="w3-bar-item w3-button"  href="#opartimet">Operadores Aritméticos</a></li>
+ <a class="w3-bar-item w3-button" href="#promnum">Promoção Numérica</a>
+ <a class="w3-bar-item w3-button"  href="#unario">Trabalhando com Operadores Unário</a>
+  <a class="w3-bar-item w3-button" <a href="#complogic">Complemento Lógico e Negação de Operadores</a>
        
-          <a class="w3-bar-item w3-button" href="#resumo">Resumão</a>
-  
+          <a class="w3-bar-item w3-button" href="#operincdec">Operadores Incremento e Decremento</a>
+           <a class="w3-bar-item w3-button"href="#obadcionais">Usando Operadores Binários Adicionais</a>
+  <a class="w3-bar-item w3-button" href="#opatrib">Operadores de atribuição</a>
+
+  <a class="w3-bar-item w3-button"  href="#castingprim">Casting em Valores Primitivos</a></li>
+ <a class="w3-bar-item w3-button" href="#operatribcom">Operadores de Atribuição Composta</a>
+ <a class="w3-bar-item w3-button"  href="#operelacional">Operadores Relacional</a>
+  <a class="w3-bar-item w3-button" <a href="#oplogic">Operadores Lógicos</a>
+       
+          <a class="w3-bar-item w3-button" href="#opiguald">Operadores de Igualdade</a>
+           <a class="w3-bar-item w3-button"href="#declaracao">Declarações em Java</a>
+  <a class="w3-bar-item w3-button" href="#decifthen">DECLARAÇÃO if-then</a>
+
+  <a class="w3-bar-item w3-button"  href="#ifthenelsedec">DECLARAÇÃO if-then-else</a></li>
+ <a class="w3-bar-item w3-button" href="#opternario">Operador Ternário</a>
+ <a class="w3-bar-item w3-button"  href="#decswitch">A DECLARAÇÃO switch</a>
+  <a class="w3-bar-item w3-button" <a href="#valconst">Valores constantes em tempo de compilação</a>
+       
+          <a class="w3-bar-item w3-button" href="#decwhile">A DECLARAÇÃO while</a>
+           <a class="w3-bar-item w3-button"href="#dowilhesec">A DECLARAÇÃO do..while</a>
+  <a class="w3-bar-item w3-button" href="#decfor">A DECLARAÇÃO for</a>
+
+  <a class="w3-bar-item w3-button"  href="#controlefluxo">Controle de Fluxo Avançado</a></li>
+ <a class="w3-bar-item w3-button" href="#loopaninh">LOOPS ANINHADOS</a>
+ <a class="w3-bar-item w3-button"  href="#addrotopc">Adcionar Rótulo Opcional</a>
+  <a class="w3-bar-item w3-button" <a href="#decbreak">A DECLARAÇÃO <b>break</b></a>
+       
+          <a class="w3-bar-item w3-button" href="#continuedec">A DECLARACÃO continue</a>
+  <a class="w3-bar-item w3-button" href="#resumo">Resumão</a>
   <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Links <i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
     <div id="demo" class="w3-hide">
 
     <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
@@ -44,6 +84,30 @@
 <a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
 <a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
 <a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
       
     </div>
   </div>
@@ -72,21 +136,20 @@
 <li>Criar e usar loops do/while </li>
 <li>Usar break e continue</li>
 </ul>
-<p>Um operador Java é um simbolo especial que pode ser aplicado para um conjunto de variáveis, valores, 
+<p>Um operador Java é um símbolo especial que pode ser aplicado para um conjunto de variáveis, valores, 
 ou literais - referido como operando - e este retorna o resultado.</p><br>
 <p>São três operadores acessíveis em java: unário, binário, ternário. Estes tipos de operadores podem ser aplicado
 para uma, duas ou três operandos, respectivamente.</p><br>
 <p> Os operadores Java não são necessariamente avaliados da ordem da esquerda para a direita. Por exemplo, 
 a seguinte expressão Java é realmente avaliada da direita para a esquerda, considerando os operadores específicos envolvidos:</p>
 <br>
-<p>
-<b>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+
+<pre class="brush:java">
 int y = 2;
-<br>
+
 double x = 4 + 3 * --y;
-</b>
-<br>
-</p>
+</pre>
 <br>
 <p>Neste exemplo, primeiro decrementa <b>y</b> para 1 e então multiplica o resultado do valor por 3 
 e finalmente adciona 4. O valor final de <b>x</b> e <b>y</b> seria 7.0 ( fica 7.0 automaticamente por o tipo ser double ) e 1 respectivamente .</p><br>
@@ -198,28 +261,29 @@ e finalmente adciona 4. O valor final de <b>x</b> e <b>y</b> seria 7.0 ( fica 7.
 </section>
 <section id="aritmeticos">
 <h1>Trabalhando com Operadores Aritméticos Binários </h1>
-<p>Operadores binários são comuns na maioria da Linguagem Java. Eles podem ser usados para operações de performance matemática nas variáveis, criar expressões lógicas, como também atribuições básicas de variável. Operadores binarios são comumente combinado em experssões complexas com mais do que duas variáveis, portanto, a precedência do operador é muito importante na avaliação de expressões. </p><br>
-
+<p>Operadores binários são comuns na maioria da Linguagem Java. Eles podem ser usados para operações de performance matemática nas variáveis, criar expressões lógicas, como também atribuições básicas de variável. Operadores binarios são comumente combinado em expressões complexas com mais do que duas variáveis, portanto, a precedência do operador é muito importante na avaliação de expressões. </p><br>
+</section>
+<section id="opartimet">
 <h2>Operadores Aritméticos</h2>
 <p>Operadores Aritméticos inclui adição(+), subtração(-), multiplicação(*), divisão(/), e modulo(%).
  Eles também inclui operador unário ++ e --. Os operadores(*, /, %) tem maior prioridade em relação ao operadores (+,-).</p>
 <p>Isso significa quando você ver uma expressão assim:</p>
 
-<pre>int x = 3*5 + 2*5 -10;</pre>
+<pre class="brush:java">int x = 3*5 + 2*5 -10;</pre>
 
 <p>Primeiro avalia 3*5 e 2*5 que reduz a expressão ficando assim:</p>
 
-<pre>int x = 15 + 10 - 8;</pre>
+<pre class="brush:java">int x = 15 + 10 - 8;</pre>
 
  <p>Então, você avalia os termos restantes da ordem da esquerda para a direita,resultando no valor de x = 17.</p>
 <p>Você pode mudar a ordem da operação adcionando parênteses ao redor da seção que será avaliada primeiro:</p>
-<pre>int x = 2 * (( 5 + 3) * 4 - 8)</pre>
+<pre class="brush:java">int x = 2 * (( 5 + 3) * 4 - 8)</pre>
 <p>Desta vez, você avaliaria o operador de adição 5 + 3, que reduz a expressão para o seguinte:</p>
-<pre>int x = 2 * (8 * 4 - 8);</pre>
+<pre class="brush:java">int x = 2 * (8 * 4 - 8);</pre>
 <p>Você pode reduzir ainda mais essa expressão multiplicando os dois primeiros valores entre parênteses:</p>
-<pre>int x = 2 * ( 32 - 8 );</pre>
+<pre class="brush:java">int x = 2 * ( 32 - 8 );</pre>
 <p>A seguir você pode subtrair valores de dentro dos parênteses antes de aplicar os termos do lado de fora dos parênteses:</p>
-<pre>
+<pre class="brush:java">
 int x = 2 * 24;
 int x = 48;
 </pre>
@@ -230,7 +294,7 @@ restante quando dois números são divididos. Por exemplo, 9 dividido por 3 divi
 
 
   <p> Para entender a diferença entre divisão aritmética e módulos considere que para valores inteiros, a divisão resulta no valor mínimo do inteiro mais próximo que cumpre a operação, enquanto o módulo é o valor restante da divisão. A seguir exemplos que ilustra essas diferenças:</p>
-<pre>
+<pre class="brush:java">
 System.out.print(9 / 3); // saída 3
 System.out.print(9 % 3); // saída 0
 System.out.print(10 / 3); // saída  3
@@ -240,52 +304,49 @@ System.out.print(11 % 3); // saída 2
 System.out.print(12 / 3); // saída  4
 System.out.print(12 % 3); // saída 0
 </pre>
+</section>
+<section id="promnum">
 <h2>Promoção Numérica</h2>
 <p>1. Se dois valores de tipos de dados diferentes. Java irá automaticamente promover um dos valores mais largos dos dois tipos de dados.</p>
 <p> Qual é o tipo de dados x * y?</p><br>
-<p><b>
+<pre class="brush:java">
 int x = 1;
-<br>
+
 long y = 33;
-</b>
-</p>
+</pre>
 <p><i>O valor será promovido para long, pois long é mais largo do que int.</i></p>
 <br>
 <p>2. Se um dos valores é integral e o outro é ponto flutuante, Java irá automatiamente promover o valor integral
  ao tipo de dados valores ponto flutuante saída.</p>
 <p>Qual é o tipo de dados x + y?</p>
 <br>
-<p><b>
+<pre class="brush:java">
 int x = 40;
-<br>
+
 float y = 2.1f;
-<p></b>
+</pre>
   <br>
 <p>3.Pequenos tipos de dados nomeadamente <b>byte, short, e char</b>, são primeiros promovidos para <b>int</b>,
  em qualquer momento que eles estiverem usando um operador aritmético binario java, mesmo se nenhum dos operandos for <b>int</b>.</p>
 <p>Qual é o tipo de dados x / y?</p>
 <br>
-<p><b>
+<pre class="brush:java">
 short x = 10;
-<br>
+
 short y = 3;
-</b>
-</p>
+</pre>
 <p><i>Antes da operacão <b>x</b> e <b>y</b> serão pomovidos para <b>int</b>, resultando na saída do tipo <b>int</b></i>.</p><br>
 <p>4. Após toda a promoção ter ocorrido e os operandos terem o mesmo tipo de dados,
  o valor resultante terá o mesmo tipo de dados que seus operandos promovidos.</p>
 <p>Qual é o tipo de dados x * y / z?</p>
 <br>
-<p>
-<b>
+<pre class="brush:java">
 short x = 14;
-<br>
+
 float y = 13;
-<br>
+
 double z = 30;
-<br>
-</b>
-</p>
+</pre>
 <br>
 <p><i>Neste caso, primeiro <b>x</b> seria automaticamente promovido para <b>int</b>, porque este é um <b>short</b> 
   e está sendo usado em uma operação aritmética binária.</i></p>
@@ -307,17 +368,19 @@ double z = 30;
 <tr><td>!                </td><td>Inverte um valor lógico Booleano</td></tr>
 </table>
 </div>
+</section>
+<section id="complogic">
 <h2>Complemento Lógico e Negação de Operadores</h2>
 <p>O operador de complemento lógico, <b>!</b>, inverte o valor de uma expressão booleana. 
 Por exemplo se o valor é verdadeiro(true) será convertido para falso, e vice versa. Para ilustrar isso, compare as saídas das seguintes declarações:</p>
-<pre>
+<pre class="brush:java">
 boolean x = false;
 System.out.println(x); // false 
 x=!x;
 System.out.println(x); // verdadeiro (true)
 </pre>
 <p>Da mesma forma, o operador negação, <b>-</b>, reverte o sinal de uma expressão numérica.</p>
-<pre>
+<pre class="brush:java">
 double x = 1.21;
 System.out.println(x); // 1.21
  x = -x;
@@ -328,15 +391,16 @@ System.out.println(x); // -1.21
 <br>
 <p> Nenhuma das linhas abaixo irão compilar:</p>
 <br>
-<p><b>
+<pre class="brush:java">
 int x = !5; // NÃO COMPILA, JAVA NÃO PODE PERFORMAR UMA INVERSÃO LÓGICA DE UMA VALOR NÚMERICO
-<br>
+
 boolean y = -true; // NÃO COMPILA, NÃO PODE NEGAR NUMERICAMENTE UM VALOR BOOLEANO.
-<br>
+
 boolean z = !0; // NÃO COMPILA,  NÃO PODE ATRIBUIR UM INTEIRO PARA UMA VARIÁVEL BOOLEANA.
-</b>
-</p>
+</pre>
 <br>
+</section>
+<section id="operincdec">
 <h2>Operadores Incremento e Decremento</h2>
 <p>Operadores Incremento e Decremento ++ e -- respectivamente pode ser aplicado a operandos numéricos 
 e ter a ordem ou precedência mais alta, em comparação aos operadores binários. Eles são aplicado primeiro para uma expressão.</p><br>
@@ -345,7 +409,7 @@ e ter a ordem ou precedência mais alta, em comparação aos operadores binário
 <p>Se o operador é colocado depois do operando refere como o operador pos-incremento e o operador pos-decremento, 
 neste caso o valor original da expressão é retornado com operador aplicado depois do valor retornado.</p>
 <p>Trecho ilustrando estas distinções:</p>
-<pre>
+<pre class="brush:java">
 int counter = 0;
 System.out.println(counter); // Saída 0
 System.out.println(++counter); // Saída 1
@@ -357,7 +421,7 @@ System.out.println(counter); // Saída 0
 O primeiro operador pre-incremento atualiza o valor para <b>counter</b> e a saída do novo valor 1.
  O próximo operador pos-decremento também atualiza o valor de <b>counter</b> mas antes do valor de saída o decremento ocorre.</p>
 <p>Como você ler ese código?</p>
-<pre>
+<pre class="brush:java">
 int x = 3;
 int y = ++x * 5 / x-- + --x;
 System.out.println("x is " + x);
@@ -365,14 +429,14 @@ System.out.println("y is " + y);
 </pre>
 <p><b>x</b> aqui é modificado três vezes na mesma linha. Cada momento ele é modificado, como a expressão move da esquerda para direita, o valor e <b>x</b> muda, com diferentes valores sendo atribuídos para a variável.</p><br>
 <p>Vejamos mais alguns exemplos:</p>
-<pre>int y= 4*5/ x-- + --x;</pre>
+<pre class="brush:java">int y= 4*5/ x-- + --x;</pre>
  <p><i> para x é atribuido o valor 4</i></p><br>
 <p>Próximo <b>x</b> é decrementado, mas o valor original de 4 é usado na expressão:</p>
-<pre>int y = 4 * 5 / 4 + --x </pre>
+<pre class="brush:java">re>int y = 4 * 5 / 4 + --x </pre>
 <p> <i>para <b>x</b> é atribuído o valor de <b>3</b></i></p>
 <br>
 <p>A atribuição final de <b>x</b> reduz para o valor 2, e este é um operador pre-incremento, que o valor é retornado assim:</p>
-<pre>int y = 4 * 5 / 4 +2;</pre> 
+<pre class="brush:java">int y = 4 * 5 / 4 +2;</pre> 
 
 <p> para <b>x</b> é atribuido o valor <b>2</b></p><br>
 <p>Finalmente, nós avaliamos a multiplicação e divisão da esquerda pra direita, por causa da precedência dos operadores. E o resultado imprimido é:</p>
@@ -384,15 +448,17 @@ y é 7;
 <section id="obadcionais">
 <h1>Usando Operadores Binários Adicionais</h1>
 <p> Agora vamos abordar mais e incluir todos os outros operadores binários que precisamos conhecer. Isto inclui operadores que melhoram atribuições que comparam valores aritméticos e retornam resultados booleanos, e aqueles que comparam valores objetos e booleanos e retornam resultados booleanos.</p>
+</section>
+<section id="opatrib">
 <h2>Operadores de atribuição</h2>
 <p>Um operador de atribuição  é um operador binário que modifica, ou atribui a variável no lado-esquerdo do lado do operador,
  com o resultado do valor no lado-direito do lado da equação.</p>
 <br>
-<p><b>int x =1</b></p>
+<pre class="brush:java">int x=1</pre>
 
 <p><i>Esta declaração atribui para <b>x</b> o valor de <b>1</b></i></p>
 <p>O Java promoverá automaticamente de tipos de dados menores para maiores, como vimos na seção anterior sobre operadores aritméticos, mas lançará uma exceção de compilador se detectar que você está tentando converter de tipos de dados maiores para menores. Vamos ver alguns exemplos:</p>
-<pre>
+<pre class="brush:java">
 int x = 1.0; // NÃO COMPILA
 short y = 1921222; // NÃO COMPILE
 int z = 9f; //  NÃO COMPILA
@@ -406,9 +472,11 @@ long t = 192301398193810323; // NÃO COMPILA
 <li>Finalmente, o último não compila porque java interpreta o literal como <b>int</b> e nota que o valor é mais extenso do que o <b>int</b> permite.</li>
 <li>O literal necessitaria adicionar <b>L</b> no final do número para ser considerado long.</li>
  </ol>
+ </section>
+ <section id="castingprim">
 <h3>Casting em Valores Primitivos</h3>
 <p>Casting primitivos é necessário em qualquer momento que você esta indo de um tipo de dados numérico mais extenso para tipo de dados numérico de menor extensão, ou convertendo de um número ponto flutuante para um número inteiro.</p>
-<pre>
+<pre class="brush:java">
 int x = (int) 1.0;
 short y = (short) 1921222 // armazenado como 20678 
 int z =(int)9l;
@@ -420,21 +488,23 @@ long t = 19230139810323L;
  o próximo valor mais baixo e conta a partir daí. Há também um underflow análogo, quando o número é muito baixo 
  para caber no tipo de dados.</p>
 <p> Vamos ver exemplos para o momento:</p>
-<pre>
+<pre class="brush:java">
 short x = 10;
 short y = 3;
 short z = x * y; //NÃO COMPILA
 </pre>
 <p> Baseado em tudo que aprendemos agora, pode você entender por que a última linha desta declaração não irá compilar? Se você lembrar, valores <b>short</b> são automaticamente promovido para <b>int</b> quando aplicar qualquer operador aritmético, com o valor do resultado sendo do tipo <b>int</b>. Tentar definir uma variável <b>short</b> para uma <b>int</b> resulta no erro de compilador. Java pensa que você está tentando converter implicitamente de um tipo de dados mais largo para um menor.</p>
 <p> Existem momentos que você  pode sobrescrever o comportamento padrão do compilador. Por exemplo, no exemplo anterior, sabemos que o resultado de 10 * 3 é 30, qual pode ser facilmente colocado na variável tipo <b>short</b>. Se você precisar que o resultado seja <b>short</b>, você pode sobrescrever este comportamento fazendo um <b>casting</b> do resultado da multiplicação:</p> 
-<pre>
+<pre class="brush:java">
 short x = 10;
 short y = 3;
 short z = (short)(x * y);
 </pre> 
+</section>
+<section id="operatribcom">
 <h2>Operadores de Atribuição Composta</h2>
 <p>Existem numerosos operadores de operação composta mas vamos ver somente esses dois, += e *=. Operadores complexo são realmente uma forma simples de atribuição do operador, com uma operação lógica ou aritmética embutido que aplica do lado-esquerdo e direito da declaração e armazena o valor do resultado no lado-esquerdo da declaração. Por exemplo:</p>
-<pre>
+<pre class="brush:java">
 int x = 2, z=3;
 x= x*z;  // operador de atribuição simples
 x *= z; // operador atribuição composta 
@@ -442,20 +512,21 @@ x *= z; // operador atribuição composta
 <p>O lado-esquerdo do operador composto pode ser somente aplicado para variável que já está definido e não 
  pode ser usada para declarar uma nova variável. Se <b>x</b> não estivesse definido a expressão <b>x*=z</b> não compilaria.<p>
 <p>o operador composto é útil para abreviar e também pode nos salvar de fazer um <b>cast</b> explícito. Exemplo:</p>
-<pre>
+<pre class="brush:java">
 long x = 10;
 int y = 5
 y = y * x; // não compila
 y = (int)y * x; //cast explicito 
 </pre>
 <p>Esta penúltima linha poderia ter ficado com um <b>cast</b> explícito para (int), mas existe uma melhor maneira atribuindo operador composto:</p>
-<pre>
+<pre class="brush:java">
 long x = 10
 int y = 5
 y *= x; // compila
 </pre>
 <p> O operador composto primeiro irá fazer um <b>cast</b> de <b>x</b> para um <b>long</b>, aplicar a multiplicação de dois valores <b>long</b>, e então fazer um <b>cast</b> do resultado para <b>int</b>.</p>
-
+</section>
+<section id="operelacional">
 <h2> Operadores Relacional</h2>
 <p>Operadores relacional compara duas expressões e retorna um valor booleano. Os quatro primeiros operadores relacionais são aplicados somente para tipos de dados númericos primitivos. Se os dois operandos numéricos não forem do mesmo tipo de dados, o menor será promovido da maneira discutida anteriormente.</p>
 <br>
@@ -469,7 +540,7 @@ y *= x; // compila
 </table>
 </div>
 <br>
-<pre>
+<pre class="brush:java">
 int x = 10, y = 20, z = 10;
 System.out.println(x < y); // Saída true(verdadeiro)
 System.out.println(x <= y); // Saída true
@@ -491,6 +562,8 @@ interface, como mencionado em b</td></tr>
   </div>
     <br>
 <p>O operador <b>instanceof</b>, é útil para determinar se um objeto arbitrário é um membro de uma classe particular ou interface.</p>
+</section>
+<section id="oplogic">
 <h2>Operadores Lógicos</h2>
 <p>Os operadores lógicos, (&), (|), e (^), pode ser aplicado para ambos tipos de dados, numérico e booleano.</p>
 <p>Quando eles são aplicados para um tipo de dados boolean, eles são referidos como operadores lógicos. 
@@ -530,16 +603,18 @@ interface, como mencionado em b</td></tr>
  aos operadores lógico <b>&</b> e <b>|</b> , respectivamente espera que o lado-direito da expressão nunca 
  possa ser avaliado se o resultado final pode ser determinado pela expressão lógica do lado-esquerdo.</p>
  <br>
-<p><b>boolean x = true || (y<4);</b></p>
+<pre class="brush:java">boolean x = true || (y< 4);</pre>
 <br>
 <p>Referindo a tabela verdade, o valor de <b>x</b> pode ser somente <b>false</b> se ambos os lados da expressão forem falso.</p>
-<pre>
+<pre class="brush:java">
 if(x != null && x.getValue() < 5){// expressão ok
 // fazer algo
 }if(x != null & x.getValue() < 5){//Lança uma excessão se x for nulo
 // fazer algo
 }
 </pre>
+</section>
+<section id="opiguald">
 <h2>Operadores de Igualdade</h2>
 <p>Vamos iniciar com  o básico, o operador <b>igual ==</b> e operador <b>não igual !=</b>. Como operador relacional 
   eles comparam dois operandos e retorna um valor booleano se as expressões ou valores são iguais, ou não iguais.</p><br>
@@ -554,7 +629,7 @@ if(x != null && x.getValue() < 5){// expressão ok
 <p>A comparação por igualdade são limitado por estes casos, então você não pode misturar e combinar tipos :</p><br>
 
 <p>Caso : 1</p>
-<pre>
+<pre class="brush:java">
 boolean x = true == 3; // NÃO COMPILA
 boolean y = false != "Giraffe"; // NÃO COMPILA
 boolean z = 3 == "Kangaroo"; // NÃO COMPILA
@@ -562,7 +637,7 @@ boolean z = 3 == "Kangaroo"; // NÃO COMPILA
 
 <p> Preste atenção ao tipo de dados quando você ver um operador de igualdade.</p><br>
   <p>Caso : 2</p>
-<pre>
+<pre class="brush:java">
 boolean y = false;
 boolean x = (y = true);
 System.out.println(x); // saída true
@@ -570,7 +645,7 @@ System.out.println(x); // saída true
 <p> Você pode pensar qua a saída deveria ser <b>false</b>, e se a expressão fosse <b>(y == true)</b>, então você estaria correto. Neste exemplo, apesar,  a expressão está atribuindo valor de <b>true</b> para <b>y</b>. E como sabemos a atribuição em si tem o valor da atribuição. Portanto, a saída seria <b>true</b>.</p>
 <p>Para comparação de objetos, o operador de igualdade é aplicado às referências aos objetos, não aos objetos para os quais eles apontam. Duas referências são iguais se e somente se eles apontarem para o mesmo objeto, ou ambos apontarem para null. Vamos ver alguns exemplos:</p><br>
 <p>Caso : 3</p>
-<pre>
+<pre class="brush:java">
 File x = new File("myFile.txt");
 File y = new File("myFile.txt");
 File z = x;
@@ -584,26 +659,29 @@ System.out.println(x == z); // saída true
 <p> Operadores Java permite você criar uma quantidade de complexas expressões, mas eles são limitados na maneira que eles podem controlar o fluxo do programa. Por exemplo, imagine que você quer uma seção de código para somente ser executado sob certas condições que não pode ser acessada até o tempo de execução. Ou suponha que você quer que um segmento particular do código repita uma vez para cada item em alguma lista.</p> <br>
 <p>Uma Declaração em Java é unidade completa de execução em Java, termidada com ponto e virugula<b>(;)</b>. As declarações do controle de fluxo  interrompem o fluxo de execução usando tomada de decisão, loop e ramificação, permitindo que o aplicativo execute seletivamente determinados segmentos de código.</p>
 <p>Estas declarações podem ser aplicadas para expressões única como também  um bloco de código Java. Um bloco de código em Java é um grupo de zero ou mais declarações entres chaves<b>({})</b>, e pode ser usado em qualquer lugar que uma única declaração seja permitida.</p>
+</section>
+<section id="decifthen">
 <h2>DECLARAÇÃO if-then</h2>
 <p>Frequentemente, somente queremos executar um bloco de código sob certa circunstância.
  A declaração <b>if-then</b>, permite nossa aplicação executar um bloco de código particular
  se e somente se a expressão avaliada for verdadeira em tempo de execução.</p>
  <br><p><b>Estrutura:</b></p>
-<pre>
+<pre class="brush:java">
 if(expressão booleana){ 
-<i>//As chaves são necessárias para blocos de múltipla declaração, é opcional para uma única declaração</i>
-  // ramifica se verdade
+//As chaves são necessárias para blocos de múltipla declaração,
+// é opcional para uma única declaração
+// ramifica se verdade
 }
 </pre>
 
-<p>Exemplo, imagine ter uma função que usa a hora do dia, um valor inteiro de 0 a 23 para mostrar uma mensagem ao usuario.</p>
-<pre>
+<p>Exemplo, imagine ter uma função que usa a hora do dia, um valor inteiro de 0 a 23 para mostrar uma mensagem ao usuário.</p>
+<pre class="brush:java">
 if(horaDoDia < 11)
 System.out.println("Bom dia");
 </pre>
 
 <p>Se a hora do dia for menor que 11 então a messagem será mostrada.</p>
-<pre>
+<pre class="brush:java">
 if(horaDodia < 11) {
 System.out.println("Bom dia");
 contSaudacao++;
@@ -612,11 +690,13 @@ contSaudacao++;
 
 <p>Aqui é incrementado algum valor, <b>contSaudacao</b>, cada vez que saudação é imprimido na tela.</p>
 <p> O bloco permite múltiplas declarações para ser executado  baseado na avaliação <b>if-then</b>. Note que a primeira declaração não contém um bloco ao redor da seção, mas poderia ter. É considerado boa prática colocar blocos ao redor do componente de execução da declaração <b>if-then</b> como também muitas outras declarações de controle de fluxo. </p>
+</section>
+<section id="ifthenelsedec">
 <h2>DECLARAÇÃO if-then-else</h2>
 <p>E se quisermos exibir uma mensagem diferente se ela for 11
 a.m. ou mais tarde? Vamos prestar atenção nessa nova estrutura de ramificação:</p>
 <br><p><b>Estrutura:</b></p>
-<pre>
+<pre class="brush:java">
 if(expressão booleana){
   // ramifica se verdade
 } else{  //declaração else é opcional
@@ -633,7 +713,7 @@ if(horaDoDia < 11){
 <p> O operador <b>else</b> usa uma instrução ou bloco de instrução, da mesma maneira que a declaração <b>if</b>.
  Dessa maneira, podemos acrescentar declarações <b>if-then</b> adicionais a um bloco <b>else</b> para chegar
  a um exemplo mais refinado:</p>
-<pre>
+<pre class="brush:java">
 if(horaDoDia < 11) {
 System.out.println("Bom dia!");
 } else if(horaDoDia < 15) {
@@ -643,15 +723,16 @@ System.out.println("Boa Noite");
 }
 </pre>
 <p> Neste exemplo, o processo Java continurá execução até ele encontrar uma declaração <b>if-then</b> que avalie para verdade. Se nenhuma das primeiras duas expressões são verdadeira ele irá executar o bloco <b>else</b> do final do código.</p>
-
+</section>
+<section id="opternario">
 <h2>Operador Ternário</h2>
 
 <p> O operador condicional,<b> ? : </b>, conhecido como Operador Ternário, é o único operador que leva três operandos, e é desta forma:</p>
-<pre> <b>expressaoBoolena ? expressao1 : expressao2</b></pre>
+<pre class="brush:java">expressaoBoolena ? expressao1 : expressao2</pre>
 
 <p>O primeiro operando deve ser uma expressão booleana, e a segunda e terceira pode ser qualquer expressão que retorna um valor.
 O operador ternário é relmente uma condensada forma de uma declaração <b>if-then-else</b> que retorna um valor. Por exemplo:</p> 
-<pre>
+<pre class="brush:java">
 int y = 10;
 final int x;
 if (y > 5) {
@@ -661,21 +742,23 @@ x = 2 * y;
 }
 </pre>
 <p> Compare o trecho de código anterior com o seguinte trecho de código ternário equivalente:</p>
-<pre>
+<pre class="brush:java">
 int y = 10;
 int x = (y>5) ? (2*y) : (3*y);
 </pre>
 <p>Note que este é frequentemente útil para readapidabilidde, adcionando parênteses ao redor do expressão em operação ternária.</p>
-<pre>
+<pre class="brush:java">
 System.out.println((y>5) ? 21 : "zebra");
 int animal = (y>91) ? 9 : "Horse": // Não compila
 </pre>
 <p>Ambas expressões similares avaliada e valores booleano retornam um <b>int</b> e uma <b>String</b>, apesar que somente a primeira linha irá compilar.</p>
+</section>
+<section id="decswitch">
 <h2>A DECLARAÇÃO switch</h2>
 <p>É uma complexa estrutura de tomada de decisão no qual o único valor é acessado e o fluxo é redirecionado 
 para o ramo correspondente, conhecido como declaração <b>case</b>. Se nenhuma declaração <b>case</b> for encontrada que corresponda ao valor, uma declaração padrão opcional será chamada. Se tal opção <b>default</b> não estiver disponível, toda a declaração do <b>switch</b> será ignorada.</p>
 <br><p><b>Estrutura da declaração switch</b></p>
-<pre>
+<pre class="brush:java">
 switch(TestVariavel) {// --> Iniciando com a chave(necessário)
 case ExpressaoConstante1;
 // Ramo para case1:
@@ -690,7 +773,7 @@ default: // Opcional default , este pode aparecer em qualquer lugar dentro da de
 } //-->Finalizando chaves(necessário)
 </pre>
 <p>Tipos de dados suportados pela declaracão switch:</p>
-<pre>
+<pre class="brush:java">
 .int e Integer
 .byte e byte
 .short e Short
@@ -698,26 +781,28 @@ default: // Opcional default , este pode aparecer em qualquer lugar dentro da de
 .String
 .enum values
 </pre>
+</section>
+<section id="valconst">
 <h2>Valores constantes em tempo de compilação</h2>
 <p>Os valores em cada declaração <b>case</b> deve ser valores constantes em tempo de compilação do mesmo
  tipo de dados como do valor do <b>switch</b>.</p>
 <p>Isto significa que você pode usar somente literais, enum constantes, ou variáveis constantes <b>final</b> do mesmo tipo de dados.</p>
 <p>Por constante <b>final</b>, queremos dizer que a variável deve ser marcado com o modificador <b>final</b> e inicializado com um
 valor literal na mesma expressão na qual ele é declarado.</p>
-<pre>
+<pre class="brush:java">
 final int a = 2;
 final int b = 5;
 final int c = 7;
 switch (a) {
 case b + c: // não dá erro em tempo de compilãção porque é avaliado
-//todas as variáveis são contantes <b>final</b>.
+//todas as variáveis são contantes final.
 //isto é compilação em tempo constante
 System.out.println(b + c);
 break;
 }
 </pre>
 <p>Exemplo usando dias da semana com <b>0</b> para domingo, <b>1</b> para Segunda e assim por diante:</p>
-<pre>
+<pre class="brush:java">
 int diasDaSemana = 5;
 switch(diaDaSemana) {
 default:
@@ -732,12 +817,12 @@ break;
 }
 </pre>
 <p>Com o valor do <b>diaDaSemana</b> de 5, este codigo sairá:</p><br>
-<p><b>-->Quarta-Feira</b><p><br>
+<pre>Quarta-Feira</pre>
 <p>A primeira coisa que pode notar é que existe um <b>break</b> no fim da declaração de cada seção <b>case </b> e <b>default</b>.
 É o <b>break</b> que termina a declaração <b>switch</b> e retorna o controle de fluxo para encerrar a declaração. Se você deixar de fora a declaração <b>break</b> o fluxo irá continuar para o próximo processo <b>case</b> ou bloco <b>default</b> automaticamente. </p>
 <p>Outra coisa que você pode notar é que o bloco <b>default</b> não está no fim da declaração <b>switch.</b> Não existe exigência que a declaração <b>case</b> ou <b>default</b> seja em uma ordem particular, a menos que você tenha caminhos que atinjam várias seções do bloco de <b>switches</b> em uma única execução. </p><br>
 <p><b>Veja este Exemplo:</b></p>
-<pre>
+<pre class="brush:java">
 int diaDaSemana = 5;
 switch(diaDaSemana) {
 case 0:
@@ -755,13 +840,15 @@ foi removido e a ordem foi alterada.<p>
 para o bloco <b>default</b> e então irá executar todos os processo e declarações <b>case</b> 
 em ordem até encontrar uma declaração ou terminar a estrutura.</p><br>
 <p>Saida:</p><br>
-<p><b>-> DiaDaSemana<br> 
-      -> Sabado</b><br></p>
-
+<pre>
+DiaDaSemana 
+Sabado</pre>
+</section>
+<section id="decwhile">
 <h2>A DECLARAÇÃO while</h2>
 <p>Uma estrutura de controle de repetição, que nós referimos como loop, executa uma declaração de códigos múltiplas vezes sucessivamente. Usando variáveis ​​não constantes, cada repetição da declaração pode ser diferente. Por exemplo, uma declaração que repete uma lista de nomes exclusivos e a saída deles encontraria um novo nome em cada execução do loop.</p><br>
 <p><b>A estrutura da declaração while:</b></p>
-<pre>
+<pre class="brush:java">
 while(expressaoBooleana){ 
 //Chaves é necessário para blocos de múltiplas declarações 
 //Chaves é opcional para uma unica declaração.
@@ -772,7 +859,7 @@ while(expressaoBooleana){
 Durante a execução, a expressão booleana é avaliada antes de cada iteração do loop e finaliza se a avaliação retornar falso.</p>
 <p>É importante notar que o loop pode terminar antes da primeira avaliação da expressão booleana. 
   Dessa maneira o bloco de declaração pode nunca ser executado.</p>
-<pre>
+<pre class="brush:java">
 int espacoNaBarriga = 5;
 public void comeQueijo(int pedacosDequeijo) {
 while (pedacosDequeijo > 0 && espacoNaBarriga > 0) { 
@@ -786,13 +873,15 @@ System.out.println(pedacosDeQueijo + " Saindo pedacos de queijo");
  tenha espaço em sua barriga ou não haja comida para comer.</p>
 <p>Com cada iteração do loop, o rato "come um pedaço de queijo e perde espaço em sua barriga.
 Usando uma declaração booleana composta, você assegura que o <b>loop while</b> possa terminar para qualquer uma das condições. </p>
+</section>
+<section id="dowilhesec">
 <h2>A DECLARAÇÃO do..while</h2>
 <p>Ao contrário de <b>loop while </b>, <b>loop do-while </b> garante que a declaração ou bloco seja executada pelo menos uma vez.</p><br>
 <p><b>A estrutura da declaração do..while</b>:</p>
-<pre>
-//palavra chave--->
- do{ 
-//chaves opcional para única declaração e necessário para múltiplas declarações
+<pre class="brush:java">
+//palavra chave
+ do { 
+//chave opcional para única declaração e necessário para múltiplas declarações
         //Corpo
  } while(expressaoBooleana); 
 //necessário ponto e virgula
@@ -802,7 +891,7 @@ Usando uma declaração booleana composta, você assegura que o <b>loop while</b
 <p>A diferença primária entre a estrutura de um <b>loop do-while </b> a um <b>loop while </b> é que <b>loop do-while ,</b> 
 propositadamente ordena a declaração ou o bloco de instruções antes da expressão condicional, 
 a fim de reforçar que a declaração será executada antes que a expressão seja avaliada. Por exemplo, dê uma olhada na saída da seguinte declaração:</p>
-<pre>
+<pre class="brush:java">
 int x = 0;
 do {
 x++;
@@ -811,16 +900,16 @@ System.out.println(x); // Outputs 1
 } 
 </pre>
 <p>Java executará o bloco de declarações primeiro e, em seguida, verificará a condição do loop. Mesmo que o loop saia imediatamente, o bloco de instruções ainda foi executado uma vez e o programa gera 1.</p>
-
+</section>
+<section id="decfor">
 <h2>A DECLARAÇÃO for</h2>
 <p>Um <b>loop for</b> básico tem a mesma expressão booleana condicional e declaração, ou bloco de declaração, como outros loops:
  um bloco de inicialização e uma declaração de atualização.</p><br>
 <p><b>A estrutura básica da declaração for:</b></p>
-<pre>
-  <b>
-for(inicializacao; expressaobooleana; declaracaoAtualizacao){
+<pre class="brush:java">
+  for(inicializacao; expressaobooleana; declaracaoAtualizacao){
   //Corpo
-}</b>
+}
 </pre>
 
 <ol>
@@ -834,18 +923,18 @@ for(inicializacao; expressaobooleana; declaracaoAtualizacao){
   separadas por virgulas.</p>
   <p>Variáveis declaradas no bloco de inicialização para um <b>loop for</b> tem escopo limitado e são somente acessíveis dentro do <b>loop for</b> . Alternativamente, variáveis declaradas antes do <b>loop for</b> e atribuído um valor no bloco de inicialização pode ser usado do lado de fora do <b>loop for</b> porque seu escopo precede a criação do <b>loop for</b>. </p><br>
 <p>Este é um loop básico que imprime numeros de 0 a 9:</p>
-<pre>
+<pre class="brush:java">
 for(int i = 0; i < 10; i++) {
 System.out.print(i + " ");
 }
 //Saída -> 0 1 2 3 4 5 6 7 8 9 
 </pre>
 <p> A variável local <b>i</b> é inicializada para <b>0</b>. A variável <b>i</b> está somente no escopo para a duração do loop e não é acessível do lado de fora do loop uma vez ter completado. Como um <b>loop while</b>, a condição booleana é acessada em cada iteração do loop antes que o loop execute. Desde que ele retorne <b>true</b>, o loop executa e gera <b>0</b> seguido por um espaço. A seguir, o loop executa a seção de atualização, que neste caso aumenta o valor de <b>i</b>. para <b>1</b>. O loop então avalia a expressão booleana uma segunda vez, e o processo repete múltiplas vezes, imprimindo:</p>
-<p><b>0 1 2 3 4 5 6 7 8 9 </b></p>
+<pre>0 1 2 3 4 5 6 7 8 9 </pre>
 <p>Na décima iteração, o valor de <b>i</b> alcança <b>9</b> e é incrementado mais <b>1</b> para alcançar <b>10</b>. Na décima primeira iteração do loop, a expressão booleana é acessada e desde que (10 < 10) retorne <b>false</b>, o loop termina sem executar a declaração no corpo do loop.</p>
 <br>
 <p><b>1 : Criando um loop infinito</b></p>
-<pre>
+<pre class="brush:java">
 for( ; ; ) {
 System.out.println("Hello World");
 }
@@ -854,7 +943,7 @@ System.out.println("Hello World");
 <p>Isso é na verdade um loop infinito que irá imprimir a mesma declaração repetidamente. Estes exemplos reforça o fato que os componentes do <b>loop for</b> são opcionais. Note que o ponto e virgula que separa as três seções são necessárias , como for(;) e for() não irá compilar.</p><br>
 
 <p><b>2 : Adcionar Múltiplos termos para declaração for:</b></p> 
-<pre>
+<pre class="brush:java">
 int x = 0;
 for(long y = 0, z = 4; x < 5 && y < 10; x++, y++) {
 System.out.print(y + " ");
@@ -867,16 +956,16 @@ Primeiro, você pode declarar uma variável, como <b>x</b> neste exemplo, antes 
 Segundo, seu bloco de inicialização, expressão booleana e declarações de atualização pode incluir variáveis ​​extras que não podem referenciar um ao outro. 
 Por exemplo, <b>z</b> é definido no bloco de inicialização e nunca é usado. Finalmente, a declaração da atualização pode modificar múltiplas variáveis.</p><br>
 <p>Este código quando executar a saída é:</p>
-<p><b>//0 1 2 3 4</b></p><br>
+<pre>0 1 2 3 4</pre>
 <p><b>3: Redeclarando a Variável no Bloco de Inicialização</b></p>
-<pre>
+<pre class="brush:java">
 int x = 0;
 for(long y = 0, x = 4; x < 5 && y < 10; x++, y++) { // DOES NOT COMPILE
 System.out.print(x + " ");
 }
 </pre>
 <p>Este exemplo parece com o exemplo anterior, mas não compila por causa do bloco de inicialização. A diferença é que <b>x</b> é repetido no bloco de inicialização depois de já ter sido declarado antes do loop, resultando em parar o compilador porque da declaração da variável duplicada. Nós podemos corrigir este loop mudando a declaração de <b>x</b> e <b>y</b> como segue:</p>
-<pre>
+<pre class="brush:java">
 int x = 0;
 long y = 10;
 for(y = 0, x = 4; x < 5 && y < 10; x++, y++) {
@@ -884,34 +973,31 @@ System.out.print(x + " ");
 }</pre>
 <p> Note que a variação agora irá compilar porque o bloco de inicialização simplesmente atribui o valor para <b>x</b> e não declara ele.</p><bR>
 <p><b>4 : Usando Tipos de Dados Incompatível no Bloco de Incialização:</b></p>
-<pre>
-for(long y = 0, int x = 4; x < 5 && y < 10; x++, y++) { // DOES NOT COMPILE
+<pre class="brush:java">
+for(long y = 0, int x = 4; x < 5 && y < 10; x++, y++) { // NÃO COMPILA
 System.out.print(x + " ");
 }
 </pre>
 <p>Não compila porque as variáveis no bloco de inicialização devem ser todos do mesmo tipo. No primeiro exemplo <b>y</b> e <b>z</b> ambos foram <b>long</b>, então o código compila sem problema, mas neste exemplo eles tem tipos diferentes, assim o código não irá compilar.</p>
 <br>
 <p><b>5 : Usando Variáveis do Loop do lado de fora do Loop:</b></p>
-<pre>
+<pre class="brush:java">
 for(long y = 0, x = 4; x < 5 && y < 10; x++, y++) {
 System.out.print(y + " ");
 }
-System.out.print(x); // DOES NOT COMPILE
+System.out.print(x); // NÃO COMPILA
 </pre>
 <p> A variação final no segundo exemplo não irá compilar por uma diferente razão do que o exemplo anterior. Se voce notar, <b>x</b> é definido no bloco de inicialização do loop, e então usado depois do loop terminar. Desde que <b>x</b> foi somente escopado para o loop, usá-lo no lado de fora do loop irá lançar um erro de compilação.</p>
 <h2>A DECLARAÇÃO for-each</h2>
 <p>Esta declaração é especialmente desenhada para iteragir sobre <b>arrays</b> e objetos <b>colletion</b>.</p> <br>
 <p><b>Estrutura de uma declaração for-each:</b></p>
-<pre>
+<pre class="brush:java">
 // Necessário, dois pontos :
 for(tipodedados1 instancia : collection){//Abre chaves
-    //  |
-        -->membro da coleção do tipodedados1
-   //Corpo   
-         |
-          -->iterage com colecão de objetos
- Chaves necessária para blocos de múltiplas declarações,
-  opcional para uma única declaração
+   // tipodedados1-->membro da coleção do tipodedados
+   //Corpo -->iterage com colecão de objetos
+ //Chaves são necessárias para blocos de múltiplas declarações,
+// e opcional para uma única declaração
 }//fecha Chaves
 </pre>
 
@@ -924,68 +1010,69 @@ for(tipodedados1 instancia : collection){//Abre chaves
  ou <b>collection</b> no lado-direito da declaração. </p>
 <p>Vamos ver alguns exemplos:</p><br>
 <p>Qual será a saída deste código.</p>
-<pre>
+<pre class="brush:java">
 final String[] nomes = new String[3];
 nomes[0] = " Lisa";
 nomes[1] ="Catia";
 nomes[2]= "Alan";
 for(String nome : names){
 System.out.println(nome + ", ");
-<b>A saida será: Lisa , Catia, Alan</b>
 </pre>
+<pre>A saida será: Lisa , Catia, Alan</pre>
 <p>Qual será a saída deste código?</p>
-<pre>
-java.util.List< String > values = new java.util.ArrayList< String >();
+<pre class="brush:java">
+java.util.List&ltString> values = new java.util.ArrayList&ltString>();
 values.add("Lisa");
 values.add("Catia");
 values.add("Alan");
 for(String value : values) {
 System.out.print(value + ", ");
 }
-Este código imprime os mesmos valores: 
-<b>Lisa, Catia, Alan,</b>
 </pre>
+<p>Este código imprime os mesmos valores: </p>
+<pre>Lisa, Catia, Alan,</b></pre>
 
 <p>Você pode ter notado que no exemplo <b>for-each</b> anterior foi imprimido uma vírgula extra no fim da lista:</p>
-<p><b>Lisa, Catia, Alan,</b></p>
+<pre>Lisa, Catia, Alan,</pre>
 <p>Embora a declaração for-each seja conveniente para trabalhar com listas em muitos casos, ela oculta o acesso à variável do  loop iterador. Se quiséssemos imprimir apenas a vírgula entre os nomes, poderíamos converter o exemplo em um loop padrão, como no exemplo a seguir:</p>
-<pre>
-java.util.List< String > names = new java.util.ArrayList< String >();
+<pre class="brush:java">
+java.util.List&ltString> names = new java.util.ArrayList&ltString>();
 names.add("Lisa");
 names.add("Catia");
 names.add("Alan");
-for(int i=0; i< names.size(); i++) {
+for(int i=0; i < names.size(); i++) {
 String name = names.get(i);
-if(i>0) {
+if(i > 0) {
 System.out.print(", ");
 }
 System.out.print(name);
 }
-Este código vai imprimir o seguinte:
-<b>Lisa, Catia, Alan</b>
 </pre>
+<p>Este código vai imprimir o seguinte:</p>
+<pre>Lisa, Catia, Alan</pre>
 <p>Também é comum usar um padrão para loop sobre um loop for-each se comparar vários elementos em um loop dentro de uma única iteração, como no exemplo a seguir. Observe que pulamos a execução do primeiro loop, já que o valor [-1] não está definido e lançaria um erro: <b>IndexOutOfBoundsExceptionerror</b></p>
-<pre>int[] values = new int[3];
+<pre class="brush:java">
+int[] values = new int[3];
 values[0] = 10;
 values[1] = new Integer(5);
 values[2] = 15;
 for(int i=1; i < values.length; i++) {
 System.out.print(values[i]-values[i-1]);
 }
-Este código vai imprimir o seguinte:
-<b>-5, 10,</b>
- </pre>
+</pre>
+<p>Este código vai imprimir o seguinte:</p>
+<pre>-5, 10,</pre>
  <p>Quando você ver um <b>loop for-each</b>, o lado direito da declaração é um array ou um objeto <b>Iterable</b> e o lado-esquerdo tem um tipo correspondente. Por exemplo, estes dois exemplos a seguir não irão compilar.</p>
-<pre>
+<pre class="brush:java">
 String names = "Lisa";
-for(String name : names) { // DOES NOT COMPILE
+for(String name : names) { // NÃO COMPILA
 System.out.print(name + " ");
 }
 </pre>
 <p>Neste exemplo, a <b>String names</b> não é um <b>array</b>, e nem implementa <b>java.lang.Iterable</b>, assim o compilador irá lançar um exceção desde que ele não sabe iteragir sobre o <b>String</b>.</p>
-<pre>
+<pre class="brush:java">
 String[] names = new String[3];
-for(int name : names) { // DOES NOT COMPILE
+for(int name : names) { // NÃO COMPILA
 System.out.print(name + " ");
 }</pre>
 <p>Este código irá falhar a compilação porque o lado esquerdo da declaração <b>for-each</b> não define uma instância de <b>String</b>.</p>
@@ -993,10 +1080,11 @@ System.out.print(name + " ");
 <section id="controlefluxo">
 <h1>Controle de Fluxo Avançado</h1>
 <p>Até agora, temos lidado com loops únicos que só terminam quando sua expressão booleana é avaliada como falsa. Agora, mostraremos outras maneiras pelas quais os loops podem terminar ou você verá que o caminho percorrido durante o tempo de execução pode não ser tão simples quanto nos exemplos anteriores.</p>
-
+</section>
+<section id="loopaninh">
 <h2>LOOPS ANINHADOS</h2>
 <p>Loops que pode conter outros loops. Por Exemplo, considere que o código a seguir iterage sobre dois arrays dimensional, um array que contém outro array como um deste membro.</b></p>
-<pre>
+<pre class="brush:java">
 int[][] meuComplexoArray = {{5,2,1,3},{3,9,8,9},{5,7,12,7}};
 for(int[] meuSimplesArray : meuComplexoArray) {
 for(int i=0; i < meuSimplesArray.length; i++) {
@@ -1013,7 +1101,7 @@ System.out.println();
 </pre>
 
 <p> Loops Aninhados pode incluir while e do-while, como vamos mostrar neste exemplo:</p>
-<pre>
+<pre class="brush:java">
 int x = 20;
 while(x>0) {
 do {
@@ -1026,12 +1114,13 @@ System.out.print(x+"\t");
 <p> A primeiro vez que este loop executa, o loop interno repete até  que o valor de <b>x</b> seja <b>4</b>. O valor irá então ser decrementado para <b>3</b> e esta será a saída no final da primeira iteração do loop externo. Na segunda iteração do loop externo, o <b>do-while</b> interno será executado uma vez, mesmo que <b>x</b> não esteje maior que 5. Como você pode recordar, a declaração <b>do-while</b> sempre executa o corpo pelo menos uma vez. Este irá reduzir o valor para <b>1</b>, que será ainda mais reduzido pelo operador de decremento no loop externo para <b>0</b>. Uma vez o valor alcança <b>0</b>, o loop externo irá terminar. E o resultado deste código será este:<p>
   <pre><b>3    0</b></pre>
 
-
+</section>
+<section id="addrotopc">
 <h2>Adcionar Rótulo Opcional</h2>
 <p>Um rótulo(Label) é um ponteiro opcional para o cabeçário da declaração que permite o fluxo da aplicação pular para ele ou brecar dele.
 Esta é a única palavra prosseguida por dois pontos(:). Por exemplo, nós podemos adcionar rótulos para um dos exemplos anteriores:</p>
 
-<pre>
+<pre class="brush:java">
 int[][] meuComplexoArray = {{5,2,1,3},{3,9,8,9},{5,7,12,7}};
 OUTER_LOOP: for(int[] meuSimplesArray : meuComplexoArray) {
 INNER_LOOP: for(int i=0; i < meuSimplesArray.length; i++) {
@@ -1042,21 +1131,23 @@ System.out.println();
 </pre>
 
 <p>Quando estamos lidando com somente um loop, eles não adcionam valores, mas eles são bastantes úteis em ambientes aninhados. Rótulo Opcional são geralmente usado em loop estruturado.</p>
+</section>
+<section id="decbreak">
 <h2>A DECLARAÇÃO <b>break</b></h2>
 <p> Como vimos quando trabalhamos com a declaração <b>switch</b> a declaração <b>break</b> transfere a saída do fluxo de controle para o encerramento da declaração. O mesmo espera <b>true</b> para declaração <b>break</b> que aparece dentro de <b>while, do-while, e loops for</b>, pois terminará o loop mais cedo. </p><br>
 <p><b>A estrutura da declaração break:</b></p>
-<pre>
+<pre class="brush:java">
 //Referencia opcional para o cabeçalho do loop
 rotuloOpcional: while(expressaoBooleana){
 //Corpo DoisPontos(Necessário se o rotuloOpcional está presente)
 //Algum lugar no loop
 break rotuloOpcional; // Ponto e virgula(Necessário)
-//|-> break palavra chave
+//-> break palavra chave
 }
 </pre>
 <p>Note que a declaração <b>break</b> pode ter um parâmetro de rótulo opcional.
 Sem um parâmetro como rótulo, a declaração final terminará o loop interno mais próximo que está atualmente em processo de execução. O parâmetro de rótulo opcional nos permite sair de um loop externo de nível superior. No exemplo a seguir, procuramos a primeira posição do índice do array (x, y) de um número dentro de uma array bidimensional não classificada:</p>
-<pre>
+<pre class="brush:java">
 public class SearchSample {
 public static void main(String[] args) {
 int[][] list = {{1,13,5},{1,2,5},{2,7,2}};
@@ -1082,9 +1173,9 @@ System.out.println("Value "+searchValue+" found at: " +
 }
   </pre>
   <p> Quando executado, este código sairá:</p><br>
-  <p><b>Value 2 found at: (1,1)</b></p><br>
+  <pre>Value 2 found at: (1,1)</pre>
   <p>Em particular, dê uma olhada no <b>break</b> de declaração <b>PARENT_LOOP</b>. Esta declaração irá sair de toda a estrutura do loop assim que o primeiro valor correspondente for encontrado. Agora, imagine o que aconteceria se substituíssemos o corpo do loop interno pelo seguinte:</p>
-  <pre>
+  <pre class="brush:java">
 if(list[i][j]==searchValue) {
 positionX = i;
 positionY = j;
@@ -1093,9 +1184,9 @@ break;
   </pre>
   <p>Como isso mudaria nosso fluxo e a saída mudaria? Em vez de sair quando o primeiro valor correspondente for encontrado, o programa só sairá do loop interno quando a condição for atendida. Em outras palavras, a estrutura agora encontrará o primeiro valor correspondente do último loop interno para conter o valor, resultando na seguinte saída:
 </p><br>
-<p><b>Value 2 found at: (2,0)</b></p><br>
+<pre>Value 2 found at: (2,0)</pre>
 <p>Finalmente, e se removêssemos o <b>break</b> completamente:</p>
-<pre>
+<pre class="brush:java">
 if(list[i][j]==searchValue) {
 positionX = i;
 positionY = j;
@@ -1103,11 +1194,13 @@ positionY = j;
 </pre>
 
 <p>Nesse caso, o código irá procurar o último valor na estrutura inteira que tenha o valor correspondente. A saída ficará assim:</p><br>
-<p><b>Value 2 found at: (2,2)</b></p><br>
+<pre>Value 2 found at: (2,2)</pre>
+</section>
+<section id="continuedec">
 <h2>A DECLARACÃO continue</h2>
 <p>Uma declaracão que faz com que o fluxo termine a execução do loop atual</p><br>
 <p><b>A estrutura da declaração continue:</b></p>
-<pre>
+<pre class="brush:java">
 //Referencia opcional para o cabeçalho do loop
 rotuloOpcional: while(expressaoBoolena){
 //Corpo DoisPontos(Necessário se o rotuloOpcional está presente)
@@ -1119,7 +1212,7 @@ continue rotuloOpcional; // Ponto e virgula(necessário)
 <p>Você pode notar que a sintax da declaração <b>continue</b> é um espelho da declaração <b>break</b>.
   Enquanto a declaração <b>break</b> transfere o controle para o encerramento da declaração, 
 a declaração <b>continue</b> transfere o controle para a expressão booleana que determina se o loop deve continuar. Em outras palavras, termina a iteração atual do loop. Também como a declaração <b>break</b>, a declaração <b>continue</b> é aplicada ao loop interno mais próximo em execução usando instruções de rótulo opcionais para substituir esse comportamento. Vamos dar uma olhada no seguinte exemplo:</p>
-<pre>
+<pre class="brush:java">
 public class SwitchSample {
 public static void main(String[] args) {
 FIRST_CHAR_LOOP: for (int a = 1; a <= 4; a++) {
@@ -1133,13 +1226,13 @@ System.out.print(" " + a + x);
 }
 </pre>
 <p>Com a estrutura definida, o loop retornará o controle para o loop pai sempre que o primeiro valor for <b>2</b> ou o segundo valor for <b>b</b>. Isso resulta em uma execução do loop interno para cada uma das três chamadas de loop externo. A saída é assim:</p><br>
-<p><b>1a 3a 4a</b></p><br>
+<pre>1a 3a 4a</pre>
 <p>Agora, imagine que removemos o rótulo <b>FIRST_CHAR_LOOP</b> na declaração <b>continue</b> para que o controle seja retornado ao loop interno em vez do externo. Veja se você consegue entender como a saída será alterada:</p>
-<br>
-<p><b>1a 1c 3a 3c 4a 4c</b></p><br>
+
+<pre>1a 1c 3a 3c 4a 4c</pre>
 <p>Finalmente, se removermos a declaração <b>continue
-</b> e a declaração <b>if-then</b> completamente, chegaremos a uma estrutura que produz todos os valores, como:</p><br>
-<p><b>1a 1b 1c 2a 2b 2c 3a 3b 3c 4a 4b 4c</b></p><br>
+</b> e a declaração <b>if-then</b> completamente, chegaremos a uma estrutura que produz todos os valores, como:</p>
+<pre>1a 1b 1c 2a 2b 2c 3a 3b 3c 4a 4b 4c</pre>
 
 <p> A tabela abaixo ajuda a lembrar quando <b>rótulos, break</b> e declaração <b>continue</b> são permitdo em Java.</p><br>
 <p><b>Tabela Uso avançado de controle de fluxo</b></p>
@@ -1176,7 +1269,7 @@ aprimorada por meio de loops aninhados, com informações de interrupção e ins
 </section>
 
 <p class="nav-arq" id="referencia">Estrutura do Java: <a href="estruturadojava.html">&laquo; anterior</a> | <a href="apijava.html">próximo >>Api's em Java &raquo;</a></p>
-<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/operadoresjava" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
 </div>
 </div>
 

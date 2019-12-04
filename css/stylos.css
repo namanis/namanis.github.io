@@ -34,17 +34,17 @@ pre {
   word-wrap: break-word;
   text-align: left;
   font-size: calc(1.0em + 1.0vw);
-   background-color:#FFFF08; 
+   background-color:#f1f279; 
     border: dotted;
     white-space: wrap;
 }
- h1{text-align: center; width: 100%; height: 100px;  background-color: #FFFF08 ;font-size: calc(1.0em  + 1vw);}
+ h1{text-align: center; width: 100%; height: 100px;  background-color: #a3d39c ;font-size: calc(1.0em  + 1vw);}
  h2, h3, h4{background-color: silver; }
 ol, ul,li {font-size: calc(50em + 1.0v); }
 
 .corfundo{ background: #111111; padding-top: 25px;}
 
-.corfundo2{ background: #FFFF08; }
+.corfundo2{ background: #a3d39c; }
 
 .circulo {
   width: 100px;
@@ -52,8 +52,10 @@ ol, ul,li {font-size: calc(50em + 1.0v); }
   border-radius: 50%;
   overflow: hidden;
   float: left;
-  margin: 15px;
+  margin: 5px;
   transition: 0.3s ease;
+  /* background: #a7d07e;*/
+
 }
 
 .circulo:hover{
@@ -104,9 +106,9 @@ img {
 }
 
 .container {
-  max-width: 420px;
-  margin: 20px auto;
-  margin-top: 100px; 
+  max-width: 620px;
+  margin: 80px auto;
+  margin-top: 80px; 
 }
 
 .container::after, .container::before {
@@ -120,7 +122,7 @@ img {
 .rodape {
 margin-top: 200px;
  /* margin: 40px;*/
-  background: #FFFF08;
+  background: #a7d07e;
 }
 .rodape p { font-style: italic; font-size:15px; text-align: center}
 .rodape img { margin: auto;}
@@ -268,7 +270,12 @@ width:250px;
 .w3-table td,.w3-table th,.w3-table-all td,.w3-table-all th{padding:8px 8px;display:table-cell;text-align:left;vertical-align:top}
 .w3-table th:first-child,.w3-table td:first-child,.w3-table-all th:first-child,.w3-table-all td:first-child{padding-left:16px}
 .w3-theme {color:#111111 !important; background-color:#111111 !important}
-.w3-themedrop {color:#fff !important; background-color:#FFFF08 !important}
+.w3-themedrop {color:#fff !important; background-color:#a3d39c!important}
+/** Imagens**/
+
+.w3-image{max-width:100%;height:auto}img{vertical-align:middle; margin:auto }a{color:inherit}
+
+
 
 /** Fluxograma*/
 .setas-col{
@@ -287,7 +294,7 @@ width:250px;
     height: 60px;
     width: 150px;
     margin: 10px;
-    background-color: #ffff08;
+    background-color: #f1f279;
 
 }
 
@@ -318,7 +325,7 @@ width:250px;
     height: 60px;
     width: 175px;
     margin-left: 400px;
-    background-color: #ffff08;
+    background-color: #f1f279;
  }
 
 .setas-item-text2 {
@@ -412,7 +419,7 @@ width:250px;
     height: 60px;
     width: 150px;
     margin: 10px;
-    background-color: #ffff08;
+    background-color: #f1f279;
 
 }
 
@@ -443,7 +450,7 @@ width:250px;
     top: 65px; /* 2x o tamanho da seta*/
     left: 20px;
     border: 15px solid transparent; /* Tamanho da seta */
-    border-bottom-color: #00ff2d; /* Cor e lado da seta */
+    border-bottom-color: #a7d07e; /* Cor e lado da seta */
     transform: translate(10%, 0);
 }
 .setas-pseudo-absolute-r .seta_left-r:before {
@@ -452,7 +459,7 @@ width:250px;
     top: 0;
     left: -30px; /* 2x o tamanho da seta*/
     border: 15px solid transparent; /* Tamanho da seta */
-    border-right-color: #00ff2d; /* Cor e lado da seta */
+    border-right-color: #a7d07e; /* Cor e lado da seta */
     transform: translate(0, 50%);
 }
 
@@ -462,7 +469,7 @@ width:250px;
     top: 0;
     left: -30px; /* 2x o tamanho da seta*/
     border: 15px solid transparent; /* Tamanho da seta */
-    border-right-color: #00ff2d; /* Cor e lado da seta */
+    border-right-color: #a7d07e; /* Cor e lado da seta */
     transform: translate(550%, 50%);
 }
 .setas-col2{
@@ -481,7 +488,7 @@ width:250px;
     height: 60px;
     width: 165px;
     margin-left: auto;
-    background-color: #ffff08;
+    background-color: #f1f279;
 
 
 }
@@ -504,7 +511,7 @@ width:250px;
     top: -30px; /* 2x o tamanho da seta*/
     left:55px;
     border: 15px solid transparent; /* Tamanho da seta */
-    border-bottom-color: #00ff2d; /* Cor e lado da seta */
+    border-bottom-color: #a7d07e; /* Cor e lado da seta */
     transform: translate(50%, 0);
 }
 
@@ -513,7 +520,7 @@ width:250px;
     height: 60px;
     width: 150px;
     margin: 10px;
-    background-color: #ffff08;
+    background-color: #f1f279;
 
 }
 .setas-pseudo-absolute-r1 .seta_top-r1:before {
@@ -522,7 +529,7 @@ width:250px;
     top: -30px; /* 2x o tamanho da seta*/
     left: 20px;
     border: 15px solid transparent; /* Tamanho da seta */
-    border-bottom-color: #00ff2d; /* Cor e lado da seta */
+    border-bottom-color: #a7d07e; /* Cor e lado da seta */
     transform: translate(20%, 0);
 }
 

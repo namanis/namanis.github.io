@@ -1,0 +1,1143 @@
+
+<!DOCTYPE html>
+ <html lang="pt-br">
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="css/stylos.css">
+
+ <title> Programar em Java</title>
+   
+    <script type="text/javascript"src="js/efeitos.js"></script>
+     <link rel="stylesheet" href="css/stylew3.css">
+
+      <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ </head>
+
+   
+ <body>
+<!-- Simulate a smartphone / tablet look -->
+
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+  <a class="w3-bar-item w3-button" href="#appwebspring">25 -Criando aplicativos da Web com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href="#webaplicat">WebApplication</a>
+ <a class="w3-bar-item w3-button" href="#dispatch">O DispatcherServlet</a>
+<a class="w3-bar-item w3-button" href="#intappspring">Introdução a um aplicativo Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href="#implapringweb">Implementando o Spring Web MVC no Aplicativo BookStore</a>
+  <a class="w3-bar-item w3-button" href="#trabanot">Trabalhando com Formularios Usando Anotações</a>
+ <a class="w3-bar-item w3-button"href="#configvalid">Configurando Validador </a>
+          
+ 
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+    <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+<!--  <span id="myIntro" class="w3-hide">JAVA SE: Versão 8</span></p>-->
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+ <h1 class="w3-xxxlarge">JAVA EE</h1>
+</header>
+</section>
+<section id="appwebspring">
+<h1>Criando aplicativos da Web com o Spring Web MVC</h1>
+
+<p> O Spring Web MVC forneceu a arquitetura <b>Model-View-Controller</b> e uma infinidade de componentes que, juntos, ajudam a desenvolver aplicativos da Web fracamente acoplados, construídos no contêiner Spring IoC.</p>
+
+<p>A estrutura Web MVC da Spring, como muitas outras estruturas MVC da web, é orientada por solicitações, projetada em torno de um servlet central chamado <b>DispatcherServlet</b> que envia solicitações aos controladores e oferece outra funcionalidade que facilita o desenvolvimento de aplicativos da web. DispatcherServlet implementa um dos padrões de camada da web Java EE, chamado <b>Front Controller</b>.Assim, o <b>DispatcherServlet</b> atua como o controlador frontal da estrutura Spring MVC, e toda solicitação da Web precisa passar por ela para poder controlar e administrar todo o processo de manipulação de solicitações. O fluxo de trabalho de processamento de solicitação do Spring Web MVC DispatcherServlet é ilustrado na Figura abaixo.</p>
+
+<img src="imagens/jee7/springwebmvcdisp.png">
+<p>Seguindo a Figura acima, a visão geral de alto nível do fluxo de trabalho é a seguinte:</p>
+<br>
+<ul>
+
+<li>1. O cliente envia uma solicitação ao contêiner da Web na forma de uma solicitação HTTP.</li>
+<li>2. DispatcherServlet intercepta a solicitação para descobrir os mapeamentos de manipulador apropriados.</li>
+<li>3. Com a ajuda dos mapeamentos de manipulador assim descobertos, o DispatcherServlet
+envia a solicitação para o controlador apropriado.</li>
+<li>4. O controlador processa a solicitação e retorna o modelo e exibe os objetos para DispatcherServlet na forma de uma instância ModelAndView.</li>
+<li>5. DispatcherServlet então resolve a View (que pode ser JSP, FreeMarker, Velocity etc.), consultando o objeto ViewResolver.</li>
+<li>6. A exibição selecionada é então renderizada de volta ao cliente.</li>
+
+</ul>
+<br>
+<p><b>DispatcherServlet</b> é o coração da estrutura do Spring Web MVC, mas antes de mergulhar no DispatcherServlet, primeiro você deve examinar o <b>ApplicationContext</b> em um aplicativo da web. Como mencionado anteriormente, um aplicativo Web possui seu próprio <b>WebApplicationContext</b> especializado que deve ser carregado antes que o <b>DispatcherServlet</b> seja inicializado. Quando o aplicativo Spring Web MVC é iniciado e antes que o aplicativo Web esteja pronto para atender às solicitações, o <b>WebApplicationContext</b> e o <b>DispatcherServlet</b> entram em ação, conforme explicado aqui:</p>
+<br>
+<ul>
+	<li>1. O contêiner de servlet inicializa o aplicativo Web e, em seguida, aciona o evento contextInitialized, que é escutado pelo ContextLoaderListener.</li>
+<li>2. ContextLoaderListener cria o WebApplicationContext root.</li>
+<li>3. O DispatcherServlet é inicializado, criando seu próprio WebApplicationContext e aninhando-o dentro do WebApplicationContext root.</li>
+<li>4. DispatcherServlet procura componentes como ViewResolvers e HandlerMappings. Se um componente for encontrado, ele será inicializado; caso contrário, o padrão para o componente é inicializado.</li>
+</ul>
+	<br>
+	</section>
+	<section id="webaplicat">
+	<h1>WebApplication</h1>
+	<p>Em aplicativos da web, o <b>ApplicationContext</b> usado é chamado <b>WebApplicationContext</b> e é um <b>ApplicationContext</b> especializado que conhece o ambiente do servlet. É o ApplicationContext root em um aplicativo Web e deve ser carregado antes que o <b>DispatcherServlet</b> seja inicializado para garantir que todos os serviços, como a fonte de dados, estejam disponíveis e sejam requeridos pelo aplicativo Web. <b>WebApplicationContext</b> é configurado no arquivo <b>web.xml</b> usando <b>ContextLoaderListener</b>, conforme ilustrado abaixo:</p>
+	<pre class="brush:xml">
+<listener>
+<listener-class>
+org.springframework.web.context.ContextLoaderListener
+</listener-class>
+</listener>
+</pre>
+
+<p>Por padrão, <b>ContextLoaderListener</b> carrega o arquivo de contexto do aplicativo armazenado no seu diretório <b>WEB-INF</b>. Esse local pode ser substituído, definindo o parâmetro de contexto <b>ConfigLocation</b> de contexto em <b>web.xml</b>, conforme mostrado no ntrecho de código a seguir:</p>
+<pre class="brush:xml">
+<context-param>
+<param-name>contextConfigLocation</param-name>
+<param-value>
+classpath:service-context.xml
+classpath:data-access-context.xml
+</param-value>
+</context-param>
+</pre>
+<p>Neste ponto, a configuração do <b>WebApplicationContext</b> no <b>web.xml</b> se parece com este código:</p>
+<pre class="brush:xml">
+<context-param>
+<param-name>contextConfigLocation</param-name>
+<param-value>
+classpath:service-context.xml
+classpath:data-access-context.xml
+</param-value>
+</context-param>
+<listener>
+<listener-class>
+org.springframework.web.context.ContextLoaderListener
+</listener-class>
+</listener>
+</pre>
+
+<p><b>ContextLoaderListener</b>, por padrão, procura um arquivo <b>/WEB-INF/applicationContext.xml</b> se você não especificar um <b>&ltcontext-param></b> denominado <b>contextConfigLocation</b> .</p>
+
+<p>Agora que você sabe como configurar o <b>WebApplicationContext</b> em um aplicativo Web, podemos passar para o segundo objeto, <b>DispatcherServlet</b>, configurado no arquivo <b>web.xml</b>.</p>
+</section>
+<section id="dispatch">
+<h1>O DispatcherServlet</h1>
+<p>Como qualquer servlet, o <b>DispatcherServlet</b> precisa ser configurado no <b>web.xml</b> para poder manipular solicitações. A configuração e o uso do <b>DispatcherServlet</b> exige o seguinte:</p>
+<br>
+<ul>
+<li>
+1. Você deve indicar ao contêiner para carregar o DispatcherServlet e mapeá-lo para padrões de URL.</li>
+<li>2. Depois que o DispatcherServlet é carregado, ele cria seu próprio
+org.springframework.web.context.WebApplicationContext.</li>
+<li>3. O DispatcherServlet detecta os componentes SpringMVC neste contexto de aplicativo e, se não for encontrado, utilizará o padrão. Esses componentes SpringMVC e seus padrões serão explicados mais adiante.</li>.
+<li>4. O DispatcherServlet, em seguida, delega tarefas para cada um dos componentes do SpringMVC (ou seus padrões), dependendo da solicitação.
+</li>
+</ul>
+<br>
+
+<p><i>DispatcherServlet cria seu próprio WebApplicationContext, que contém os componentes específicos da Web, como Controllers e ViewResolver. Esse WebApplicationContext é aninhado dentro
+o WebApplicationContext root, carregado antes da inicialização do DispatcherServlet, para garantir que os componentes da Web no WebApplicationContext do DispatcherServlet possam encontrar suas dependências</i>.</p>
+<br>
+
+<p><b>DispatcherServlet</b>, como qualquer outro <b>servlet</b>, é declarado no arquivo <b>web.xml</b> do seu aplicativo da web. Você precisa mapear as solicitações que deseja que o <b>DispatcherServlet</b> manipule, usando um mapeamento de URL no mesmo arquivo web.xml. O código a seguir ilustra uma declaração e mapeamento DispatcherServlet.</p>
+
+<pre class="brush:xml">
+&ltweb-app>
+&ltservlet>
+&ltservlet-name>bookstore&lt/servlet-name>
+&ltservlet-class>org.springframework.web.servlet.DispatcherServlet&lt/servlet-class>
+&ltload-on-startup>1&lt/load-on-startup>
+&lt/servlet>
+&ltservlet-mapping>
+&ltservlet-name>bookstore&lt/servlet-name>
+&lturl-pattern>/bookstore/*&lt/url-pattern>
+&lt/servlet-mapping>
+&lt/web-app>
+</pre>
+
+<p>Em um Servlet 3.0 e em um ambiente mais recente, você também pode usar o <b>WebApplicationInitializer</b>, uma interface fornecida pela estrutura Spring MVC, para configurar o contêiner do servlet programaticamente. O próximo código ilustra o programa equivalente  do exemplo <b>web.xml</b> anterior.</p>
+
+<pre class="brush:java">
+public class ExampleWebApplicationInitializer implements WebApplicationInitializer {
+@Override
+public void onStartup(ServletContext container) {
+ServletRegistration.Dynamic registration = container.addServlet("dispatcher", 
+new DispatcherServlet());
+registration.setLoadOnStartup(1);
+registration.addMapping("/bookstore/*");
+}
+}</pre>
+
+<p>Como mencionado anteriormente, <b>DispatcherServlets</b> pesquisa os componentes <b>SpringMVC</b> a partir do <b>WebApplicationContext</b> criado e, se não encontrado, usa o padrão. Esses componentes do Spring MVC são expressos como interfaces. A Tabela abaixo fornece uma visão geral de todos os principais tipos de componentes envolvidos no fluxo de trabalho de processamento de solicitações.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Tipo de Bean</th><th>Explanação</th></tr>
+<tr><td>HandlerMapping</td><td>
+Mapeia solicitações recebidas para manipuladores e interceptadores</td></tr>
+<tr><td>HandlerAdapter</td><td>Para estender o DispatcherServlet para personalizar o fluxo de trabalho da web</td></tr>
+<tr><td>HandlerExceptionResolver</td><td>Mapeia exceções para visualizações</td></tr>
+<tr><td>ViewResolver</td><td>Resolve nomes de vistas lógicas para vistas reais</td></tr>
+<tr><td>LocaleResolver</td><td>Resolve o código de idioma que um cliente está usando para visualizações internacionalizadas</td></tr>
+<tr><td>ThemeResolver</td><td>Resolve temas para personalizar layouts</td></tr>
+<tr><td>MultipartResolver</td><td>Analisa multipartes para upload de arquivos</td></tr>
+<tr><td>FlashMapManager </td><td>Suporta FlashMap para transmitir atributos de uma solicitação para outra</td></tr>
+</table>
+<Br>
+	<p>Os componentes Spring MVC do DispatcherServlet usam o Spring MVC que precisam ser configurados no WebApplicationContext para processar solicitações. No entanto, se você não configurar esses componentes, o Spring Web MVC usará o padrão. A próxima Tabela  lista a implementação padrão dos componentes.</p>
+	<br>
+
+	<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Componente</th><th>Implementação padrão</th></tr>
+<tr><td>MltipartResolver</td><td>Nenhum padrão; configuração explícita necessária</td></tr>
+<tr><td>LocaleResolver</td><td>AcceptHeaderLocaleResolver</td></tr>
+<tr><td>ThemeResolver</td><td>FixedThemeResolver</td></tr>
+<tr><td>HandlerMapping</td><td>BeanNameUrlHandlerMapping - DefaultAnnotationHandlerMapping</td></tr>
+<tr><td>HandlerAdapter</td><td>HttpRequestHandlerAdapter
+SimpleControllerHandlerAdapter
+AnnotationMethodHandlerAdapter</td></tr>
+<tr><td>HandlerExceptionResolver</td><td>AnnotationMethodHandlerExceptionResolver
+ResponseStatusExceptionResolver
+DefaultHandlerExceptionResolver</td></tr>	
+<tr><td>RequestToViewNameTranslator</td><td>DefaultRequestToViewNameTranslator</td></tr>
+<tr><td>ViewResolver</td><td>InternalResourceViewResolver</td></tr>
+<tr><td>FlashMapManager</td><td>SessionFlashMapManager</td></tr>
+	</table>
+<br>
+</section>
+<section id="intappspring">
+<h1>Introdução a um aplicativo Spring Web MVC</h1>
+
+<p>Nesta seção, mostrarei as etapas de criação de um aplicativo Spring MVC <b>Ola Mundo</b>  usando o Spring Tool Suite (um IDE baseado em Eclipse). Você aprenderá os conceitos fundamentais do Spring
+MVC ao criar o aplicativo de amostra. 
+Todos os códigos utilizado aqui estão no reposítorio do git que poderão ser acessado no final da página.</p>
+<br>
+
+<p>As ferramentas usadas neste aplicativo incluem o seguinte:</p>
+</p>
+
+<ul>
+<li> Spring Framework 4.2.4 a versão atual é de 5</li>
+<li> Spring Tool Ide 3.9.2<- Atualmente está no na versão 4</li>
+<li>vFabric tc Server Developer Edition v3.2( baseado no Apache Tomcat otimizado para aplicações spring</li>
+</ul>
+<br>
+<p>O Spring Tool Suite (STS) é um IDE baseado em Eclipse que é desenvolvido e mantido ativamente pela comunidade SpringSource. O STS fornece modelos de projeto como Spring Batch, Spring
+Integração, Spring Persistence (Hibernate + JPA), Spring MVC e assim por diante. Além disso, o STS sempre obtém a atualização mais recente dos artefatos Spring do repositório Maven.</p>
+<br>
+<ul>
+<li>Você pode optar por baixar e instalar o STS de uma das três maneiras:</li>
+<li>Faça o download e instale o STS no programa de instalação.</li>
+<li>Instale o STS através de uma atualização do Eclipse.</li>
+<li><a href="https://spring.io/tools3/sts/all"target="_blank">Faça o download e extraia o arquivo zip.</a> </li>
+</ul>
+<br>
+<p>Start STS no seu próprio workspace. Do  menu principal, select File ➤New ➤Spring Legacy Project.</p>
+<br>
+<img src="imagens/jee7/legacypojet.png">
+<br>
+<p>Após clicar em Spring Legacy Project adcione o nome do projeto e selecione  Spring MVC Project:</p>
+<ul>
+<li>O nome do projeto :olamundo</li>
+<li>Top-level package: com.alpis.olamundo</li>
+</ul>
+<br>
+<img src="imagens/jee7/olamundospring.png">
+<br>
+<p>Clique em Avançar, que requer o download de uma atualização do modelo. </p>
+<br>
+<p>Clique em Sim para baixar a atualização, que deve abrir a caixa de diálogo New Spring MVC Project.</p>
+<br>
+<p>Clique em Concluir e o STS criará um projeto baseado no Spring MVC com alguns padrões para o controlador, visualizações e configuração. Ainda não escrevemos nenhuma linha de código, mas o aplicativo está pronto para ser implantado e executado.</p>
+<br>
+<p>Clique com o botão direito do mouse na visualização Servidores e selecione New ➤Server
+
+</p>
+<br>
+<p>Na caixa de diálogo Novo servidor, selecione VMware ➤VMware vFabric tc Server ..., conforme mostrado na Figura abaixo</p>
+
+<br>
+<img src="imagens/jee7/serverspring.png">
+<br>
+
+<p>Clique em Avançar. Na próxima tela, mantenha a opção "Criar nova instância" selecionada</p>
+<br>
+<img src="imagens/jee7/newinstancia.png">
+<br>
+
+<p>Clique em Avançar. Na próxima tela, digite tcServer como nome para a nova instância e selecione base como modelo (veja a Figura abaixo).</p>
+<br>
+<img src="imagens/jee7/tcserver.png">
+<br>
+<p>Adicione olamundo e clique em Finish para concluir a configuração do servidor. Agora implante adcionando o aplicativo olamundo.</p>
+<br>
+<img src="imagens/jee7/addremovespring.png">
+<br>
+
+<p>O aplicativo é implantado no servidor se o virmos com o nome do servidor, conforme ilustrado na Figura abaixo:
+</p>
+
+<br>
+<img src="imagens/jee7/tcspringola.png">
+<br>
+
+<p>Inicie o servidor e execute o aplicativo usando o URL http://localhost:8080/olamundo</p>
+
+<br>
+<img src="imagens/jee7/olaspring.png">
+<br>
+
+<p>Agora vamos explorar o que foi criado pelo modelo do Spring MVC Project. Expanda as ramificações na visualização Explorador de Projetos para ver como o projeto está estruturado, conforme ilustrado na Figura.</p>
+
+
+<br>
+<img src="imagens/jee7/estruturaspringmvc.png">
+<br>
+<p>Analisaremos cada um dos componentes ilustrados na Figura acima. A Figura abaixo ilustra o conteúdo do arquivo web.xml gerado.</p>
+<br>
+<img src="imagens/jee7/webxmlspring.png">
+<br>
+<p>Essa é a configuração típica para um aplicativo baseado no Spring MVC com uma declaração para o seguinte:</p>
+<br>
+<ul>
+<li>Spring’s ContextLoaderListener</li>
+<li>Spring’s DispatcherServlet</li>
+<li>Arquivo de configuração do Spring  root-context.xml</li>
+<li>Arquivo de configuração do Spring servlet-context.xml</li>
+<li>Mapeando a URL para Spring’s 	 DispatcherServlet</li>
+</ul>
+<br>
+<p>Veremos o uso de cada um deles, mas antes disso, modificaremos o web.xml. No projeto de modelo do Spring MVC, o arquivo web.xml gerado suporta o Servlet 2.5. Neste capítulo, usaremos Servlet 3.0 (o tcServer que acompanha o STS é construído sobre o Apache Tomcat 8, que suporta o Servlet 3.0), portanto, também precisamos alterar o cabeçalho XML de 2.5 para 3.0. O código abaixo mostra a tag < web-app> revisada.
+</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+   &ltweb-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi= 
+"http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+version="3.0">
+
+<!-- A definição do contêiner de Spring root compartilhada por todos os servlets e filtros
+ -->
+&ltcontext-param>
+&ltparam-name>contextConfigLocation&lt/param-name>
+ &ltparam-value>/WEB-INF/spring/root-context.xml&lt/param-value>
+&lt/context-param>
+
+ <!-- Cria o contêiner Spring compartilhado por todos os servlets e filtros -->
+&ltlistener>
+&ltlistener-class>org.springframework.web.context.ContextLoaderListener&lt/listener-class>
+&lt/listener>
+
+<!-- Processa solicitações de aplicativos -->
+&ltservlet>
+&ltservlet-name>appServlet&lt/servlet-name>
+&ltservlet-class>org.springframework.web.servlet.DispatcherServlet&lt/servlet-class>
+&ltinit-param>
+&ltparam-name>contextConfigLocation&lt/param-name>
+&ltparam-value>/WEB-INF/spring/appServlet/servlet-context.xml&lt/param-value>
+&lt/init-param>
+&ltload-on-startup>1&lt/load-on-startup>
+&lt/servlet>
+
+&ltservlet-mapping>
+&ltservlet-name>appServlet&lt/servlet-name>
+&lturl-pattern>/&lt/url-pattern>
+&lt/servlet-mapping>
+
+&lt/web-app>
+</pre>
+
+
+<ul>
+<li>Linhas 2 a 6: na tag &ltweb-app>, o atributo version e a URL correspondente são alterados para a versão 3.0 para indicar ao contêiner da web que o aplicativo da web usará o Servlet 3.0.</li>
+<li>Linhas 10 a 13: na tag &ltcontext-param>, é fornecido o parâmetro ConfigLocation de contexto, que define o local do arquivo de configuração WebApplicationContext raiz do Spring.</li>
+<li>Linhas 16 a 18: um ouvinte da classe org.springframework.web.context.
+ContextLoaderListener está definido. É para o Spring carregar a raiz WebApplicationContext.</li>
+<li>Linhas 21 a 29: Um servlet do expedidor (chamado appServlet) é definido. Usamos o gerado pelo projeto de modelo para a camada de apresentação do aplicativo. O WebApplicationContext para o servlet do expedidor está localizado em /src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</li>
+</ul>
+
+<p>O arquivo servlet-context.xml é carregado pelo DispatcherServlet da Spring, que recebe todas as solicitações que entram no aplicativo. O códgio seguinte ilustra servlet-context.xml.</p>
+
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans:beans xmlns="http://www.springframework.org/schema/mvc"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:beans="http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- DispatcherServlet Context: defines this servlet's request-processing
+14. infrastructure -->
+
+<!-- Enables the Spring MVC @Controller programming model -->
+< annotation-driven />
+
+<!-- Handles HTTP GET requests for /resources/** by efficiently serving up
+20. static resources in the ${webappRoot}/resources directory -->
+< resources mapping="/resources/**" location="/resources/" />
+
+<!-- Resolves views selected for rendering by @Controllers to .jsp resources
+24. in the /WEB-INF/views directory -->
+&ltbeans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+&ltbeans:property name="prefix" value="/WEB-INF/views/" />
+&ltbeans:property name="suffix" value=".jsp" />
+&lt/beans:bean>
+
+&ltcontext:component-scan base-package="com.alpis.alomundo />
+
+
+
+&lt/beans:beans>
+</pre>
+
+<ul>
+<li>Linha 17: &ltannotation-driven/> instrui a estrutura a usar uma abordagem baseada em anotações para verificar arquivos nos pacotes. Portanto, podemos usar a anotação @Controller para a classe controller em vez de declarar elementos XML.</li>
+<li>Linha 21: &ltresources mapping = ... /> mapeia recursos estáticos diretamente com solicitações HTTP GET. Por exemplo, recursos de imagens, JavaScript e CSS não precisam passar por controladores.</li>
+<li>Linhas 25 a 28: Esta declaração de bean informa à estrutura como localizar arquivos JSP físicos de acordo com os nomes lógicos de exibição retornados pelos controladores, anexando o prefixo e o sufixo a um nome de exibição. Por exemplo, se o método de um controlador retornar o nome da visualização lógica local, a estrutura encontrará um arquivo físico home.jsp no diretório /WEB-INF /views
+</li>
+<li>Linha 30: &ltcontext: component-scan ... /> informa à estrutura quais pacotes devem ser verificados ao usar uma estratégia baseada em anotações. Aqui, o framework varrerá todas as classes no pacote com.alpis.alomundo. Quando o aplicativo cresce, você pode adicionar mais configurações para business beans, DAOs, transações e assim por diante.</li>
+</ul>
+
+
+<br><p>Agora que temos a infraestrutura instalada para detectar o controlador que manipulará a solicitação, é hora de olhar para o controlador.</p>
+
+<pre class="brush:java">
+ package com.alpis.olamundo;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+ /**
+ * Handles requests for the application home page.
+ */
+ @Controller
+ public class HomeController {
+
+ private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+ /**
+ * Simply selects the home view to render by returning its name.
+ */
+ @RequestMapping(value = "/", method = RequestMethod.GET)
+ public String home(Locale locale, Model model) {
+
+logger.info("Welcome home! The client locale is {}.", locale);
+
+ Date date = new Date();
+DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, 
+DateFormat.LONG, locale);
+
+ String formattedDate = dateFormat.format(date);
+
+ model.addAttribute("serverTime", formattedDate );
+
+ return "home";
+ }
+
+ }
+</pre>
+<br>
+
+<ul>
+<li>Linha 17: A anotação @Controller é usada para especificar que essa classe é um controlador Spring. DispatcherServlet varre essas classes anotadas em busca de métodos manipuladores mapeados por meio das anotações @RequestMapping.</li>
+<li>Linha 25: a anotação @RequestMapping especifica que o método home() manipulará uma solicitação GET com a URL / (a ​​página padrão do aplicativo).</li>
+<li>Linha 26 a 38: O método home() cria um objeto String para armazenar a data atual com base na localidade atual e adiciona esse objeto ao modelo com o nome serverTime. E, finalmente, o método retorna uma visualização chamada home, que será resolvida pelo resolvedor de visualização especificado no arquivo servlet-context.xml, para localizar o arquivo de visualização real. Em uma classe de controlador, podemos escrever muitos métodos para lidar com URLs diferentes.</li>
+</ul>
+<br>
+<p>
+<b>@Controller</b> e <b>@RequestMapping</b> e várias outras anotações formam a base para a implementação do Spring MVC. Para definir uma classe de controlador no Spring 3.0 e mais recente, você deve marcar a classe com a anotação <b>@Controller</b>. Quando uma classe anotada pelo <b>@Controller</b> recebe uma solicitação, ela procura um método manipulador apropriado para lidar com a solicitação. Cada método para o qual a solicitação deve ser mapeada é decorado com a anotação <b>@RequestMapping</b>, tornando o método um método manipulador para o qual a solicitação é mapeada por meio de mapeamentos de manipulador.</p>
+<p>Como você viu anteriormente, o método <b>home()</b> no <b>HomeController</b> retorna uma visualização chamada home, que é resolvida pelo resolvedor de visualização especificado em servlet-context.xml. Agora é hora de olhar para a view, que é o arquivo <b>home.jsp</b> gerado no diretório <b>/WEB-INF/views</b>. O código abaixo ilustra <b>home.jsp</b> .</p>
+<pre class="brush:html">
+ &lt%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+&lt%@ page session="false" %>
+&lthtml>
+&lthead>
+&lttitle>Home&lt/title>
+&lt/head>
+&ltbody>
+&lth1>
+Hello world!
+&lt/h1>
+
+&ltP> The time on the server is ${serverTime}. &lt/P>
+&lt/body>
+&lt/html>
+</pre>
+<p> Este é um arquivo JSP simples que usa uma expressão EL na linha 12 para imprimir o valor da variável serverTime que é passada pelo controlador.
+Como você deve ter notado, o STS criou dois arquivos de configuração do Spring: <b>root-context.xml</b> e <b>servlet-context.xml</b>. Ainda não vimos o <b>root-context.xml</b> porque nosso aplicativo <b>Ola Mundo</b> não exige que esse arquivo exiba o conteúdo de home.jsp. Este arquivo está vazio por padrão, conforme ilustrado na  figura a seguir:</p>
+<br><img src="imagens/jee7/rootspring.png"><br>
+
+<p>Este arquivo, como o nome sugere, especifica a configuração raiz do contêiner Spring. O arquivo <b>root-context.xml</b> é carregado pelo <b>ContextLoaderListener</b> do Spring após a inicialização do aplicativo, como você aprendeu na seção anterior.</p>
+<p>Até agora, examinamos todos os arquivos gerados pelo modelo do Spring MVC Project, portanto você deve estar equipado o suficiente para mergulhar mais fundo, construindo o aplicativo bookstore ao longo do caminho.</p>
+</section>
+<section id="implapringweb">
+<h1>Implementando o Spring Web MVC no Aplicativo BookStore</h1>
+<p>Nesta seção, você aprenderá como desenvolver o aplicativo Web bookstore usando a estrutura do Spring Web MVC. O aplicativo bookstore é um sistema de livraria. Como mencionado anteriormente, todas as solicitações recebidas fluem através do DispatcherServlet. Portanto, como qualquer outro servlet em um aplicativo Java EE, o contêiner Java EE precisa ser informado para carregar esse servlet na inicialização via <b>web.xml</b>. Você deve criar um novo projeto Spring MVC primeiro. O código seguinte ilustra <b>web.xml</b> do aplicativo bookstore.</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&ltweb-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi= 
+"http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+version="3.0">
+<!-- Processes application requests -->
+<servlet>
+<servlet-name>bookstore</servlet-name>
+<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<init-param>
+<param-name>contextConfigLocation</param-name>
+<param-value>/WEB-INF/spring/appbookstore/appbookstore-servlet.xml</param-value>
+
+</init-param>
+ <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </init-param>
+    
+<load-on-startup>1</load-on-startup>
+</servlet>
+ 
+<servlet-mapping>
+    <servlet-name>bookstore</servlet-name>
+    <url-pattern>/</url-pattern>
+    <url-pattern>*.html</url-pattern>
+    <url-pattern>*.htm</url-pattern>
+  </servlet-mapping>
+
+<welcome-file-list>
+<welcome-file>/list_book.html</welcome-file>
+</welcome-file-list>
+&lt/web-app>
+
+</pre>
+
+<ul>
+<li>Linhas 9 a 10: DispatcherServlet é registrado como um servlet chamado booksotre.</li>
+<li>Linha 12 a 13: O arquivo de configuração do Spring pode ser explicitamente especificado no diretório
+contextConfig Parâmetro de servlet de localização para solicitar ao Spring que carregue as configurações além do  &ltservletname>-servlet.xml padrão</li>
+</ul>
+<br>
+<p>Logo abaixo o código do arquivo <b>appbookstore-servlet.xml</b>:</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans:beans xmlns="http://www.springframework.org/schema/mvc"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans= 
+"http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/
+beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/
+context/spring-context.xsd">
+
+<!-- DispatcherServlet Context: defines this servlet's request-processing
+10. infrastructure -->
+
+&ltbeans:bean name="/list_book.html" class="com.alpis.bookstore.controller.BookController" />
+
+ <!-- Resolves views selected for rendering by @Controllers to .jsp resources
+16. in the /WEB-INF/views directory -->
+&ltbeans:bean
+class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+&ltbeans:property name="prefix" value="/WEB-INF/views/" />
+&ltbeans:property name="suffix" value=".jsp" />
+&lt/beans:bean>
+&lt/beans:beans>
+
+</pre>
+
+<p>Assim que o usuário solicita uma lista de livros usando http://localhost:8080/bookstore, a solicitação atinge o mecanismo do servlet, que roteia a chamada para o aplicativo da web bookstore, que é implementado no contêiner do servlet. O arquivo web.xml mostrado fornece o arquivo de boas-vindas que deve atender à solicitação.</p>
+
+<pre class="brush:xml">
+&ltwelcome-file-list>
+&ltwelcome-file>/list_book.html&lt/welcome-file>
+&lt/welcome-file-list>
+</pre>
+
+<p>A URL no arquivo de boas-vindas corresponde ao padrão de URL que foi registrado para <b>DispatcherServlet</b> e a solicitação é roteada para ele. Com base na configuração disponível em <b>appbookstore-servlet.xml</b>, a solicitação é roteada para um controlador específico, ilustrado na linha 16 do código appbookstore-servlet.xml. Aqui, o arquivo list_book.html é declarado como um bean e mapeado para a classe BookController. Isso significa que se um URL com <b>/list_book.html</b> for solicitado, solicitará ao <b>BookController</b> para lidar com a solicitação. O próximo código ilustra o <b>BookController</b> baseado em interface. Mais tarde, você verá como substituir esse controlador baseado em interface por um controlador anotado.</p>
+<pre class="brush:java">
+package com.alpis.bookstore.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+import com.alpis.bookstore.service.BookService;
+
+ public class BookController implements Controller{
+
+ @Override
+ public ModelAndView handleRequest(HttpServletRequest arg0,
+ HttpServletResponse arg1) throws Exception {
+ BookService bookservice = new BookService();
+ModelAndView modelAndView = new ModelAndView("booklist");
+modelAndView.addObject("booklist", bookservice.getBookList());
+return modelAndView;
+}
+}
+</pre>
+
+<p>O controlador instancia o <b>BookService</b> responsável por retornar os dados do livro necessários.
+<b>ModelAndView("booklist")</b> chama a exibição chamada <b>booklist</b> passando <b>booklist</b> para a visualização Spring identificando qual visualização deve ser retornada ao usuário. Nesse caso, o BookController retorna um objeto <b>ModelAndView</b> chamado <b>booklist</b>. O fragmento do resolvedor de visualização em <b>appbookstore-servlet.xml</b>  é mostrado aqui:</p>
+<pre class="brush:xml">
+&ltbeans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+&ltbeans:property name="prefix" value="/WEB-INF/views/" />
+&ltbeans:property name="suffix" value=".jsp" />
+&lt/beans:bean> 
+</pre>
+
+<p>Com base na definição, o resolvedor de visualizações localiza o arquivo usando o seguinte mecanismo:</p>
+
+<pre>Prefix + ModelAndView nome + suffix, que traduz para : /WEB-INF/views/booklist.jsp</pre>
+
+<p><b>ModelAndView.addObject("booklist", bookService.getBookList ())</b> adiciona os dados do livro retornados por <b>getBookList()</b> ao modelo chamado <b>booklist</b>, que é formatado e renderizado pela view.</p>
+<p>Finalmente, o mecanismo do servlet renderiza a resposta por meio do JSP especificado ilustrado no código abaixo.</p>
+
+<pre class="brush:html">
+&lt%@page contentType="text/html" pageEncoding="UTF-8"%>
+&lt%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+&lt!DOCTYPE html>
+&lthtml>
+&lthead>
+&ltmeta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+&lttitle>Your Book store&lt/title>
+&lt/head>
+&ltbody>
+&lth1>Books List&lt/h1>
+&lttable border="1">
+&lttr>
+&ltth align="left">Author&lt/th>
+&ltth align="left">Book Title&lt/th>
+&lt/tr>
+&ltc:forEach items="${booklist}" var="book">
+&lttr>
+&lttd>${book.author.authorNome}&lt/td>
+
+&lttd>${book.bookTitle}&lt/td>
+&lt/tr>
+&lt/c:forEach>
+&lt/table>
+&lt/body>
+&lt/html>
+</pre>
+
+<p>A Figura abaixo ilustra a estrutura de diretórios do aplicativo bookstore e a saída da lista de Autores e Livros configurado na classe BookService, além do servidor TomCat8 com o aplicativo appbookstore funiconando.</p>
+<br>
+<img src="imagens/jee7/appbookstore.png">
+<br>
+<p>Até agora esse aplicativo funcionou com um controlador baseado em interfaces. Vamos substituí-lo   por um controlador baseado em anotações.O código seguinte ilustra o BookController baseado em anotações</p>
+
+<pre class="brush:java">
+package com.alpis.bookstore.controller;
+import com.alpis.bookstore.service.BookService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+@RequestMapping("/list_book.html")
+public class BookController {
+
+@RequestMapping(method = RequestMethod.GET)
+public ModelAndView bookListController() {
+ BookService bookManager = new BookService();
+ ModelAndView modelAndView = new ModelAndView("booklist");
+ modelAndView.addObject("booklist", bookManager.getBookList());
+ return modelAndView;
+ }
+ }
+</pre>
+<ul><li>Linha 8: em um aplicativo baseado em anotações, um controlador de formulário é criado usando o @Controller. O @Controller indica que uma classe específica desempenha o papel de um controlador. O @Controller também permite a detecção automática, alinhada com o suporte geral do Spring para detectar as classes de componentes no caminho da classe e registrar automaticamente as definições de bean para elas. Neste exemplo, a anotação @Controller indica que a classe <b>BookListControler</b> é uma classe de controlador.</li>
+<li>Linha 9: @RequestMapping é usado para mapear URLs como /list_book.html em uma classe inteira ou em um método de tratamento específico.  @RequestMapping no nível da classe indica que todos os métodos de manipulação neste controlador são relativos ao caminho /list_book.html.</li>
+<li>Line 12: @RequestMapping no nível do método indica que o método aceita apenas solicitações GET; em outras palavras, um HTTP GET para /list_book.html envolve bookListController().</li>
+</ul>
+<br>
+<p> O próximo código ilustra o <b>appbookstore-servlet.xml</b> modificado para que o <b>BookController</b> baseado em anotações seja descoberto.</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans:beans xmlns="http://www.springframework.org/schema/mvc"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans= 
+"http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- DispatcherServlet Context: defines this servlet's request-processing
+10. infrastructure -->
+
+&ltcontext:component-scan base-package="com.alpis.bookStore.controller" />
+
+ <!-- Resolves views selected for rendering by @Controllers to .jsp resources
+18. in the /WEB-INF/views directory -->
+&ltbeans:bean
+class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+&ltbeans:property name="prefix" value="/WEB-INF/views/" />
+&ltbeans:property name="suffix" value=".jsp" />
+&lt/beans:bean>
+&lt/beans:beans>
+</pre>
+
+<ul><li>
+Linha 16: &ltcontext: component-scan> do servlet do despachante registra @ classes anotadas pelo Controller como beans. A classe <b>BookListController</b> é descoberta e registrada automaticamente como um bean.
+</li></ul>
+
+<br>
+<section id="trabanot">
+<h1>Trabalhando com Formulários Usando Anotações</h1>
+
+<p>O processamento de formulários é bastante simplificado com a configuração orientada a anotações no Spring Web MVC.O Spring elimina a necessidade de manipulação tradicional de formulários por meio do mecanismo de ligação de dados que preenche automaticamente objetos Java do formulário enviado e suporta relatórios de validação e erro. A Figura abaixo ilustra os novos arquivos adicionados à estrutura de diretórios do bookstore.E o código seguinte demonstra o uso de um formulário e o processamento dos dados inseridos pelo usuário. </p>
+<br>
+<img src="imagens/jee7/addbookspring.png">
+<br>
+<p>É adicionado um novo controlador, AddBookController, que cuida de todo o processamento do formulário usando anotações. O código abaixo ilustra o <b>AddBookController</b>.</p>
+<pre class="brush:java">
+package com.alpis.bookstore.controller;
+ import java.util.List;
+ import org.springframework.stereotype.Controller;
+ import org.springframework.ui.ModelMap;
+ import org.springframework.validation.BindingResult;
+ import org.springframework.web.bind.WebDataBinder;
+ import org.springframework.web.bind.annotation.InitBinder;
+ import org.springframework.web.bind.annotation.ModelAttribute;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.bind.annotation.RequestMethod;
+ import org.springframework.web.bind.support.SessionStatus;
+ import org.springframework.web.context.request.WebRequest;
+
+ import com.alpis.bookstore.model.Author;
+ import com.alpis.bookstore.model.Book;
+ import com.alpis.bookstore.service.AuthorService;
+ import com.alpis.bookstore.service.BookService;
+
+ @Controller
+ @RequestMapping("/addBook.html")
+ public class AddBookController {
+ @RequestMapping(value="/addBook.html", method = RequestMethod.GET)
+ public String initForm(ModelMap model) {
+ Book book = new Book();
+ book.setBookTitle("Add Book :");
+ model.addAttribute("book", book);
+ return "addBook";
+ }
+
+ @InitBinder
+ public void initBinder(WebDataBinder binder, WebRequest request) {
+ binder.setDisallowedFields(new String[] {"author"});
+ Book book = (Book)binder.getTarget();
+ AuthorService authorService = new AuthorService();
+ Long authorId = null;
+ try {
+ authorId = Long.parseLong(request.getParameter("author"));
+ } catch (Exception e) {}
+ if (authorId != null) {
+ Author author = authorService.getAuthorById(authorId);
+ book.setAuthor(author);
+ }
+ }
+
+ @ModelAttribute("authorList")
+ public List&ltAuthor> populateAuthorList() {
+ AuthorService authorService = new AuthorService();
+ return authorService.getAuthorList();
+ }
+
+ @RequestMapping(method = RequestMethod.POST)
+ public String processSubmit(@ModelAttribute("book") Book book, BindingResult result, 
+ SessionStatus status) {
+ BookService bookService = new BookService();
+ bookService.createBook(book);
+ return "redirect:/list_book.html";
+ }
+ }
+
+</pre>
+
+<ul>
+<li>Linha 20: a classe AddBookController é anotada com @RequestMapping("/addBook.html"), o que significa que todos os métodos nesta classe manipularão a solicitação do URL "/addBook.html".</li>
+<li>Linha 22: A inicialização da ligação é feita anotando o nome do método com @RequestMapping(method= RequestMethod.GET).</li>
+<li>Linha 23: initForm() lida com o tipo de solicitação GET e mostra o formulário de adição de novo livro</li>
+<li>A linha 26: initForm() também adiciona uma nova instância ao mapa do modelo para que a nova instância possa ser associada ao formulário.</li>
+<li>Linha 30: A ligação é definida anotando o nome do método com @InitBinder.</li>
+<li>Anotar métodos do controlador com @InitBinder permite configurar a ligação de dados da web diretamente na classe do controlador. O @InitBinder identifica métodos que inicializam o WebDataBindert que é usado para preencher o comando e formar argumentos de objeto dos métodos manipuladores anotados. Esses métodos init-binder suportam todos os argumentos que o @RequestMapping suporta, exceto os objetos de comando/formulário e os objetos de resultado de validação correspondentes. Os métodos Init-binder declarados não devem ter um valor de retorno. Assim, eles geralmente são declarados como void.</li>
+<li>Linha 31: Os argumentos típicos incluem WebDataBinder em combinação com WebRequest ou java.util.Locale, permitindo que o código registre editores específicos do contexto.</li>
+<li>A ligação de dados é configurada usando a classe WebDataBinder. WebDataBinder é um DataBinder especial para ligação de dados de parâmetros de solicitação da web a objetos JavaBean</li>
+<li>O Spring injeta uma instância dessa classe em qualquer método do controlador que tenha sido anotado com @InitBinder. Este objeto é então usado para definir as regras de ligação de dados para o controlador.</li>
+<li>O WebRequest permite o acesso genérico a parâmetros de solicitação, bem como o acesso a atributos de solicitação / sessão sem vínculos com a API Servlet nativa.</li>
+<li>Linha 32: setDisallowedFields() registra os campos que não são permitidos para ligação.</li>
+<li>Linha 45: Os dados de referência são colocados no modelo para que a visualização do formulário possa acessá-los, anotando o nome do método com @ModelAttribute.</li>
+<li>Quando @ModelAttribute é colocado em um parâmetro de método, ele mapeia um atributo de modelo para o parâmetro de método anotado específico. É assim que o controlador obtém uma referência ao objeto que contém os dados inseridos no formulário.</li>
+<li>A anotação @ModelAttribute informa à estrutura do Spring MVC que a instância authorList deve ser atribuída como uma instância da classe Author e deve ser passada para preencher a AuthorList().</li>
+<li>Linha 51: o envio do formulário é tratado com o nome do método com @RequestMapping(method=RequestMethod.POST)</li>
+<li>Linha 52: processSubmit() aceita solicitações POST; isto é, um HTTP POST para /new_book.html chama processSubmit(). processSubmit() processa os dados do formulário. processSubmit() usa três parâmetros:</li><ul>
+<li>1º-> @ModelAttribute(value = "book") Book book: a anotação de atributo do modelo informa a estrutura do Spring MVC que a instância do modelo Book deve ser atribuída como uma instância da classe Book e passada ao método processSubmit().</li>
+<li>2º-> BindingResult result: Spring determina erros, se houver, durante a criação da classe Book. Se encontrar erros, sua descrição será passada para o método como uma instância BindingResult</li>
+<li>3º-> SessionStatus status: SessionStatus é um identificador de status para marcar o processamento do formulário como concluído.</li>
+</ul>
+	<li>Linha 56: O prefixo redirect na instrução de retorno aciona um redirecionamento HTTP de volta ao navegador. Isso é necessário ao delegar a resposta a outro controlador, em vez de apenas renderizar a visualização.</li>
+</ul>
+<br>
+<p>O próximo código ilustra a camada de serviço modificada do aplicativo bookstore para processamento de formulários.
+</p>
+<pre class="brush:java">
+package com.alpis.bookstore.service;
+import java.util.LinkedList;
+import java.util.List;
+import com.alpis.bookstore.model.Author;
+import com.alpis.bookstore.model.Book;
+public class BookService {
+private static List&ltBook> bookList;
+static {
+Author author1 = new Author();
+author1.setAuthorId((long) 1);
+author1.setAuthorName("Vishal Layka");
+Book book1 = new Book();
+book1.setBookId((long) 1);
+book1.setBookTitle("Beginning Groovy, Grails and Griffon");
+book1.setAuthor(author1);
+Book book2 = new Book();
+book2.setBookId((long) 2);
+book2.setBookTitle("Modern Java Web Development");
+book2.setAuthor(author1);
+bookList = new LinkedList&ltBook>();
+bookList.add(book1);
+bookList.add(book2);
+}
+public List&ltBook> getBookList() {
+return bookList;
+}
+public Book createBook(Book b) {
+Book book = new Book();
+book.setBookId((long)bookList.size() + 1);
+book.setAuthor(b.getAuthor());
+book.setBookTitle(b.getBookTitle());
+bookList.add(book);
+return book;
+}
+}
+</pre>
+<p>O código abaixo ilustra o <b>bookList.jsp</b> modificado do aplicativo bookstore para processamento de formulários.</p>
+
+<pre class="brush:html">
+&lt%@page contentType="text/html" pageEncoding="UTF-8"%>
+&lt%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+&lthtml>
+&lthead>
+&ltmeta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+&lttitle>Your Book store&lt/title>
+&lt/head>
+&ltbody>
+&lth1>Books List&lt/h1>
+&lttable border="1">
+&lttr>
+&ltth align="left">Author&lt/th>
+&ltth align="left">Book Title&lt/th>
+&lt/tr>
+&ltc:forEach items="${bookList}" var="book">
+&lttr>
+&lttd>${book.author.authorName}&lt/td>
+
+&lttd>${book.bookTitle}&lt/td>
+&lt/tr>
+&lt/c:forEach>
+&lt/table>
+&ltbr/>
+&lta href="addBook.html">Add books.&lt/a>
+&lt/body>
+&lt/html>
+</pre>
+
+<ul>
+	<li>Linha 25: O controlador de formulário é chamado usando addBook.html, que é mapeado nas linhas 20 e 22 do AddBookController .</li>
+	<li>O código abaixo ilustra a nova página JSP do aplicativo bookstore para processamento de formulários que será exibida quando o AddBookController for chamado usando &lta href="addBook.html"> Add books. &lt/a> na linha 25 de booklist.jsp. </li>
+	</ul>
+	<br>
+	<pre class="brush:html">
+&lt%@page contentType="text/html" pageEncoding="UTF-8"%>
+&lt%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+&lt%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+&lt!DOCTYPE html>
+&lthtml>
+&lthead>
+&ltmeta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+&lttitle>Your Book store&lt/title>
+&lt/head>
+&ltbody>
+&lth1>Add Book&lt/h1>
+&ltform:form method="post" commandName="book">
+Author&ltbr/>
+&ltform:select path="author">
+&ltform:options items="${authorList}" itemValue="authorId" itemLabel="authorName" />
+&lt/form:select>
+&ltbr/>&ltbr/>
+Book Name&ltbr/>
+&ltform:input path="bookTitle"/>&ltbr/>&ltbr />
+&ltbr/>
+&ltinput type="submit" value="Submit">
+&lt/form:form>
+&lt/body>
+&lt/html></pre>
+
+<p>O código acima ilustra o formulário exibido. Também mostra o uso de tags de formulário do Spring. E a figura abaixo mostra o autor e o titulo do livro adcionado no formulário.</p>
+<br>
+
+<img src="imagens/jee7/formnew.png">
+<br>
+<h1>Validação Baseada em Anotações</h1>
+
+<p>A seção a seguir demonstra como você pode validar os dados inseridos pelo usuário usando anotações.</p>
+<p>A figura abaixo ilustra os arquivos modificados e os arquivos adicionados recentemente no aplicativo.</p>
+<br>
+<img src="imagens/jee7/validatorbook.png">
+<br>
+<p><i> Arquivos modificados e novos arquivos na estrutura de diretórios para validação baseada em anotações</i></p><br>
+
+<p>Logo abaixo o código BookValidator:</p>
+<br>
+<pre class="brush:java">
+package com.alpis.bookstore.validator;
+
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+ 
+ import com.alpis.bookstore.model.Book;
+ 
+ @Component
+ public class BookValidator implements Validator {
+ @Override
+ public boolean supports(Class&lt?> clazz) {
+ return Book.class.equals(clazz);
+ }
+ 
+ @Override
+ public void validate(Object obj, Errors errors) {
+ Book book = (Book)obj;
+ ValidationUtils.rejectIfEmptyOrWhitespace(errors, "bookTitle", "field.required", "Campo exigido");
+ if(!errors.hasFieldErrors("bookTitle")) {
+ if(book.getBookTitle().isEmpty())
+ errors.rejectValue("Title", "", "Cannot be left empty!");
+ }
+ }
+ 
+ 
+ }
+</pre>
+<ul><li>Linhas 20 a 23: validações típicas no aplicativo</li></ul>
+<br>
+<p>O controlador chamado AddBookController é atualizado para a validação, conforme mostrado no código seguinte:</p>
+<pre class="brush:java">
+package com.alpis.bookstore.controller;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.WebRequest;
+
+import com.alpis.bookstore.model.Author;
+import com.alpis.bookstore.model.Book;
+import com.alpis.bookstore.service.AuthorService;
+import com.alpis.bookstore.service.BookService;
+import com.alpis.bookstore.validator.BookValidator;
+
+@Controller
+@RequestMapping("/addBook.html")
+public class AddBookController {
+  BookValidator bookValidator;
+
+@Autowired
+public AddBookController(BookValidator bookValidator) {
+this.bookValidator = bookValidator;
+   }
+
+@RequestMapping(method = RequestMethod.GET)
+public String initForm(ModelMap model) {
+Book book = new Book();
+book.setBookTitle("Add Book :");
+model.addAttribute("book", book);
+return "addBook";
+}
+
+@InitBinder
+public void initBinder(WebDataBinder binder, WebRequest request) {
+binder.setDisallowedFields(new String[] {"author"});
+Book book = (Book)binder.getTarget();
+binder.addValidators(bookValidator);
+AuthorService authorService = new AuthorService();
+Long authorId = null;
+try {
+authorId = Long.parseLong(request.getParameter("author"));
+} catch (Exception e) {}
+if (authorId != null) {
+Author author = authorService.getAuthorById(authorId);
+book.setAuthor(author);
+}
+}
+
+@ModelAttribute("authorList")
+public List&ltAuthor> populateAuthorList() {
+AuthorService authorService = new AuthorService();
+return authorService.getAuthorList();
+}
+
+@RequestMapping(method = RequestMethod.POST)
+public String saveBook( @ModelAttribute("book") @Validated Book book, BindingResult result, SessionStatus status) {
+if(result.hasErrors()) {
+  
+  return "addBook";
+  
+} if(!result.hasErrors()) {
+  
+  BookService bookService = new BookService();
+  bookService.createBook(book);
+
+}
+return "redirect:/list_book.html";
+
+}
+}
+
+</pre>
+
+<ul>
+<li>Linha 31: A classe BookValidator é injetada usando o método setter.</li>
+<li>Linha 63: No saveBook(), validate() do BookValidator é chamado para verificar se os detalhes do livro foram inseridos pelo usuário. validate() recebe o valor do modelo Book e do objeto BindingResult para conter erros, se houver.<li>
+<li>Linha 67 e 71: É feita uma verificação simples paraque não deixe o campo em branco. Se houver erros, o aplicativo exibirá a mesma página com as mensagens de erro.
+Se não houver erros, ou seja, o usuário inseriu todos os dados corretos, o aplicativo exibirá a lista dos detalhes do livro juntamente com os detalhes do livro recém-inseridos.
+</li>
+</ul>
+<br>
+</section>
+<section id="configvalid">
+<h2>Configurando Validador</h2>
+<p>Agora você deve declarar o validador do URL addBook.html em bookstore-servlet.xml, conforme ilustrado no código abaixo.</p>
+
+<pre class="brush:xml">
+ &lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans:beans xmlns="http://www.springframework.org/schema/mvc"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans= 
+"http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/
+schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/
+beans/spring-beans.xsd
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- DispatcherServlet Context: defines this servlet's request-processing
+10. infrastructure -->
+
+ &ltcontext:component-scan base-package="com.alpis.bookstore.controller" />
+&ltbeans:bean class="com.alpis.bookstore.validator.BookValidator" />
+
+ <!-- Resolves views selected for rendering by @Controllers to .jsp resources
+16. in the /WEB-INF/views directory -->
+ &ltbeans:bean
+ class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+&ltbeans:property name="prefix" value="/WEB-INF/views/" />
+&ltbeans:property name="suffix" value=".jsp" />
+&lt/beans:bean>
+&lt/beans:beans>
+</pre>
+<ul><li>Linha 17 A classe BookValidator está definida. O contêiner cria o
+Classe BookValidator chamando seu construtor.</li></ul>
+<br>
+<p>Logo abaixo veja como fica se mandarmos adcionar um livro com o campo em branco.. É exibido uma mensagem de erro! </p><br>
+<img src="imagens/jee7/validacaobook.png">
+</section>
+<p class="nav-arq" id="referencia"> Framework SpringMVC<a href="springmvc.html">&laquo; anterior | <a href="springboot.html">próximo >> Spring Boot  &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/frameworkspringmvc" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>

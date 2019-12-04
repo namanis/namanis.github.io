@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+
+<link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+ 
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+       <a class="w3-bar-item w3-button"  href="#localizationjv">18-LOCALIZAÇÃO </a>
+            <a class="w3-bar-item w3-button"  href="#localidadesjv">Localidades</a>
+          <a class="w3-bar-item w3-button"  href="#detaillocal">Obtendo Detalhes do Local e definindo Locais</a>
+          <a class="w3-bar-item w3-button"  href="#difemanecrobjloc">Diferentes Maneiras para Criar Obejtos Locale</a>
+          <a class="w3-bar-item w3-button" href="#resourcebundle">Pacotes(Bundles) de Recursos</a>
+          <a class="w3-bar-item w3-button" href="#usaproperty">Usando PropertyResourceBundle</a>
+       <a class="w3-bar-item w3-button"  href="#usalistresource">Usando ListResourceBundle</a>
+          <a class="w3-bar-item w3-button"  href="#loadingresource">Loading a Resource Bundle </a>
+          <a class="w3-bar-item w3-button"  href="#convnomenbundle">Convenção de Nomenclatura para Pacotes de Recursos</a>
+          
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+   
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top  w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header> 
+<section id="localizationjv">
+<h1>Localização</h1>
+
+<p>Computadores e software se tornaram tão comuns hoje em dia que são usados em todo o mundo para atividades humanas. Para que qualquer software seja relevante e útil para esses usuários, ele precisa ser localizado. O processo no qual adaptamos o software à língua e costumes locais é conhecido como localização.</p>
+<p>A localização é toda sobre como tornar o software relevante e utilizável para os usuários de diferentes culturas - em outras palavras, personalizar software para pessoas de diferentes países ou idiomas. Como você localiza um aplicativo de software? Duas orientações importantes devem ser consideradas quando você localizar um aplicativo de software:</p>
+<ul>
+<li>1- Não codifique o texto (como mensagens para os usuários, elementos textuais em GUIs, etc.) e separe-os em arquivos externos ou classes dedicadas. Com isso, normalmente há um esforço mínimo para adicionar suporte para um novo local em seu software.</li>
+<li>2- Lidar com aspectos específicos da cultura, como data, hora, moeda e números de formatação, com a localização em mente. Em vez de assumir uma localidade padrão, crie de tal maneira que a localidade atual seja buscada e personalizada.</li>
+</ul>
+ <p>Você aprenderá agora como localizar seu software. A localização envolve principalmente a criação de pacotes de recursos para diferentes localidades, além de tornar o software sensível à cultura, adaptando-o para uso em diferentes localidades. Você também aprenderá a criar e usar esses pacotes de recursos.</p>
+</section>
+<section id="localidadesjv">
+<h2>Localidades</h2>
+
+<p>Uma localidade é “um lugar que representa um país, idioma ou cultura”. Considere a localidade Canadá-França. O francês é falado em muitas partes do Canadá, e isso pode ser um local. Em outras palavras, se você deseja vender software personalizado para os canadenses que falam francês, então você precisa facilitar o seu software para essa localidade. Em Java, essa localidade é representada pelo código <b>fr_CA</b>, em que <b>fr</b> é a abreviação de <b>French</b> e <b>CA</b> é a abreviação de <b>Canada</b>; discutiremos o esquema de nomenclatura para localidades em mais detalhes posteriormente nesta seção.</p>
+
+<h3>A classe Locale</h3>
+<p>Em Java, a classe <b>java.util.Locale</b> fornece suporte de programação para códigos do idioma. A seguir os métodos importantes nesta classe.</p>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Métodos</th><th>Descrição</th></tr>
+<tr><td>static Locale[] getAvailableLocales()<td></td>Retorna uma lista de localidades disponíveis (isto é, localidades instaladas) suportadas pela JVM</td></tr>
+<tr><td>static Locale getDefault()</td><td>Retorna o código do idioma padrão da JVM.</td></tr>
+<tr><td>static void setDefault(Locale newLocale)</td><td>Define o código do idioma padrão da JVM.</td></tr>
+<tr><td>String getCountry()</td><td>Retorna o código do país para o objeto de localidade.</td></tr>
+<tr><td>String getDisplayCountry() </td><td>Retorna o nome do país para o objeto de localidade.</td></tr>
+<tr><td>String getLanguage()</td><td>Retorna o código do idioma para o objeto de localidade.</td></tr>
+<tr><td>String getDisplayLanguage()</td><td>Retorna o nome do idioma para o objeto de localidade.</td></tr>
+<tr><td>String getVariant()</td><td>Retorna o código da variante para o objeto de localidade.</td></tr>
+<tr><td>String getDisplayVariant()</td><td>Retorna o nome do código da variante para o objeto de localidade.</td></tr>
+<tr><td>String toString()</td><td>Retorna uma string composta dos códigos para o idioma, país, variante da localidade etc.</td></tr>
+</table>
+</div>
+
+<pre class="brush:java">
+//AvailableLocales.java
+import java.util.Locale;
+import java.util.Arrays ;
+class AvailableLocales {
+public static void main(String []args) {
+System.out.println("The default locale is: " + Locale.getDefault());
+Locale [] locales = Locale.getAvailableLocales();
+System.out.printf("No. of other available locales is: %d, and they are: %n",
+locales.length);
+Arrays.stream(locales).forEach(locale -> System.out.printf("Locale code: %s and it stands for %s %n",
+locale, locale.getDisplayName()));
+}
+}
+</pre>
+<p><b>Este código imprime o seguinte:</b></p>
+<pre>
+The default locale is: en_US
+No. of other available locales is: 160, and they are:
+Locale code: ms_MY and it stands for Malay (Malaysia)
+Locale code: ar_QA and it stands for Arabic (Qatar)
+Locale code: is_IS and it stands for Icelandic (Iceland)
+Locale code: sr_RS_#Latn and it stands for Serbian (Latin,Serbia)
+Locale code: no_NO_NY and it stands for Norwegian (Norway,Nynorsk)
+Locale code: th_TH_TH_#u-nu-thai and it stands for Thai (Thailand,TH)
+Locale code: fr_FR and it stands for French (France)
+Locale code: tr and it stands for Turkish
+Locale code: es_CO and it stands for Spanish (Colombia)
+Locale code: en_PH and it stands for English (Philippines)
+Locale code: et_EE and it stands for Estonian (Estonia)
+Locale code: el_CY and it stands for Greek (Cyprus)
+Locale code: hu and it stands for Hungarian
+[...rest of the output elided...]
+</pre>
+
+<p>Vamos analisar os métodos no programa antes de analisar a saída. Você usa o método <b>getDefault()</b> em <b>Locale</b> para obter o código da localidade padrão. Depois disso, use <b>getAvailableLocales()</b> na classe <b>Locale</b> para obter a lista de localidades suportados pela JVM. Agora, para cada localidade, você imprime o código da localidade e também imprime o nome descritivo usando o método <b>getDisplayName()</b> do <b>Locale</b>.</p>
+
+<p>O programa imprime a localidade padrão como <b>en_US</b> para esta JVM, o que significa que o padrão é o idioma inglês falado nos EUA. Em seguida, imprime uma lista muito longa de localidades disponíveis; para economizar espaço, mostramos apenas pequena parte da saída. A partir deste programa, você sabe que há muitos locais disponíveis e suportados, e há um código de idioma padrão associado a cada JVM.</p>
+<br>
+<p>Existem quatro tipos diferentes de códigos de idioma nesta saída:</p>
+<br>
+<ul>
+<li>1- “hu e significa húngaro”: apenas um código onde hu significa húngaro</li>
+<li>2- “ms_MY e significa Malay(Malásia)”: dois códigos separados por sublinhado em que ms significa Malaio e MY significa Malásia</li>
+<li>3- “no_NO_NY e significa norueguês(Noruega, Nynorsk)”: três códigos separados por sublinhados, como em no_NO_NY, onde no significa para norueguês, NO para a Noruega e NY para Nynorsk</li>
+<li>4- “th_TH_TH_ # u-nu-thai e significa Thai (Tailândia, TH)”: dois ou três códigos iniciais separados por sublinhados e o final por #or _ #, como em th_THTH_ # u-nu-thai, que vamos discutir agora.</li>
+</ul>
+<br>
+<p>Veja como esses nomes de localidade são codificados:</p>
+
+<pre class="brush:java">language + "_" + country + "_" + (variant + "_#" | "#") + script + "-" + extensions</pre>
+
+<p>Esse esquema de codificação de localidade permite combinar diferentes variações para criar uma localidade. Para o código de idioma "th_THTHTH # u-nu-thai",</p>
+<ul>
+<li> O código de idioma é "th" (tailandês) e é sempre escrito em letras minúsculas</li>
+<li> O código do país é "TH" (Tailândia) e é sempre escrito em maiúsculas</li>
+<li> O nome da variante é "TH"; aqui ele repete o código do país, mas pode ser qualquer string</li>
+<li>O nome do script é uma string vazia aqui; se fornecido, será uma string de quatro letras com a primeira letra em maiúscula e o restante em minúsculas (por exemplo, Latn)</li>
+<li> A extensão segue o caractere # ou _ # (já que o script é uma string vazia); é "u-nu-thai" neste exemplo</li>
+</ul>
+<br>
+<p><b>Para dar outro exemplo, considere o código de local "sr_RS_ # Latn",</b></p>
+<br>
+<ul>
+<li> O código do idioma é "sr" (sérvio)</li>
+<li> O código do país é "RS" (Sérvia)</li>
+<li> O nome da variante está vazio aqui</li>
+<li> O nome do script é "Latn" (latim), que é uma string de quatro letras com a primeira letra em maiúscula e o restante em minúsculas</li>
+<li> A extensão está vazia aqui</li>
+</ul>
+<p>Considere o inglês, que é falado em muitos países. Existem variações em inglês com base no país em que o idioma é falado. Todos sabemos que o inglês americano é diferente do inglês britânico, mas existem muitas versões desse tipo. Aqui está o código  que filtra apenas <b>locales</b> em inglês de todas as localidades disponíveis:</p>
+<pre class="brush:java">
+//AvailableLocalesEnglish.java
+import java.util.Locale;
+import java.util.Arrays;
+class AvailableLocalesEnglish {
+public static void main(String []args) {
+Arrays.stream(Locale.getAvailableLocales())
+.filter(locale -> locale.getLanguage().equals("en"))
+.forEach(locale ->
+System.out.printf("Locale code: %s and it stands for %s %n",
+locale, locale.getDisplayName()));
+}
+}
+</pre>
+<p><b>Imprime o seguinte (a saída e a ordem podem mudar na sua máquina):</b></p>
+<pre>
+Locale code: en_MT and it stands for English (Malta)
+Locale code: en_GB and it stands for English (United Kingdom)
+Locale code: en_CA and it stands for English (Canada)
+Locale code: en_US and it stands for English (United States)
+Locale code: en_ZA and it stands for English (South Africa)
+Locale code: en and it stands for English
+Locale code: en_SG and it stands for English (Singapore)
+Locale code: en_IE and it stands for English (Ireland)
+Locale code: en_IN and it stands for English (India)
+Locale code: en_AU and it stands for English (Australia)
+Locale code: en_NZ and it stands for English (New Zealand)
+Locale code: en_PH and it stands for English (Philippines)
+</pre>
+
+
+<p>A saída refere-se a diferentes localidades em inglês e utiliza apenas o código de idioma e o código do país. Usamos o método <b>getLanguage()</b> em <b>Locale</b>, que retorna o código de localidade. Quais são outros desses métodos? Vamos explorar os métodos disponíveis na classe <b>Locale</b> agora.</p>
+</section>
+<section id="detaillocal">
+<h3>Obtendo Detalhes do Local e definindo Locais</h3>
+<p>Os métodos <b>getter</b> na classe <b>Locale</b>, como os códigos de retorno <b>getLanguage()</b>, <b>getCountry()</b> e <b>getVariant()</b>, enquanto os métodos semelhantes <b>getDisplayCountry()</b>, <b>getDisplayLanguage()</b> e <b>getDisplayVariant()</b> retornam os nomes. O próximo exemplo ilustra como usar esses métodos para a localidade Locale.CANADA_FRENCH;</p>
+<pre class="brush:java">
+//LocaleDetails.java
+import java.util.Locale;
+public class LocaleDetails {
+public static void main(String args[]) {
+Locale.setDefault(Locale.CANADA_FRENCH);
+Locale defaultLocale = Locale.getDefault();
+System.out.printf("The default locale is %s %n", defaultLocale);
+System.out.printf("The default language code is %s and the name is %s %n",
+defaultLocale.getLanguage(), defaultLocale.getDisplayLanguage());
+System.out.printf("The default country code is %s and the name is %s %n",
+defaultLocale.getCountry(), defaultLocale.getDisplayCountry());
+System.out.printf("The default variant code is %s and the name is %s %n",
+defaultLocale.getVariant(), defaultLocale.getDisplayVariant());
+}
+}
+</pre>
+<p><b>Este imprime o seguinte:</b> </p>
+<pre>
+The default locale is fr_CA
+The default language code is fr and the name is français
+The default country code is CA and the name is Canada
+The default variant code is and the name is
+</pre>
+<p>Vamos entender o programa. O método <b>setDefault()</b> usa um objeto <b>Locale</b> como argumento. Neste programa, você define a localidade padrão como <b>Locale.CANADA_FRENCH</b> com esta declaração:</p>
+
+<pre class="brush:java">Locale.setDefault(Locale.CANADA_FRENCH);</pre>
+
+<p>A classe <b>Locale</b> tem muitos objetos <b>Locale</b> estáticos representando locais comuns para que você não precise instanciá-los e usá-los diretamente em seus programas. Nesse caso, <b>Locale.CANADA_FRENCH</b> é um objeto <b>Locale</b> estático.</p>
+<p>Em vez de usar este objeto <b>Locale</b> estático, você pode optar por instanciar um objeto <b>Locale</b>. Aqui está uma maneira alternativa de definir a localidade padrão criando um novo objeto de localidade do Canadá (francês):
+
+<pre class="brush:java">Locale.setDefault(new Locale("fr", "CA", ""));</pre>
+
+<p>O método <b>getDefault()</b> em <b>Locale</b> retorna o conjunto de objetos de código do idioma padrão na JVM. A próxima declaração usa métodos para obter informações relacionadas ao país. A diferença entre os métodos <b>getCountry()</b> e <b>getDisplayCountry()</b> é que o primeiro método retorna o código do país (que não é muito legível para nós), e o segundo retorna o nome do país, que é legível por humanos. O código do país é um código de duas ou três letras (esse código vem de um padrão internacional: ISO 3166).</p>
+
+<p>O comportamento de <b>getLanguage()</b> e <b>getDisplayLanguage()</b> é semelhante a obter detalhes do país. O código de idioma consiste em duas ou três letras (este código vem de outro padrão internacional: ISO 639).</p>
+
+<p>Não havia variante nessa localidade, então nada foi impresso quando você usou os métodos <b>getVariant()</b> e <b>getDisplayVariant()</b>. No entanto, para alguma outra localidade, poderia haver valores variantes e esses valores seriam impressos para essa localidade. A variante pode ser qualquer detalhe extra, como ambientes operacionais (como MAC para máquina Macintosh) ou o nome da empresa (como Sun ou Oracle). Além disso, você também tem métodos menos usados, como <b>getScript()</b> e <b>getDisplayCountry()</b> que retorna o código de script e o nome do país para a localidade.</p>
+<br>
+<p><i>em vez de chamar o método getDisplayCountry() da Locale, que não recebe argumentos, você pode escolher a versão sobrecarregada de getDisplayCountry(Locale), que usa um objeto Locale como um argumento. isso irá imprimir o nome do país como no local passado. Por exemplo, para a chamada Locale.GERMANY.getDisplayCountry(), você verá a saída "Deutschland" (é assim que os alemães se referem ao país deles); no entanto, para a chamada Locale.GERMANY.getDisplayCountry(Locale.ENGLISH), você obterá a saída "Germany" (é assim que os britânicos se referem ao nome do país Alemanha).</i></p>
+<br>
+</section>
+<section id="difemanecrobjloc">
+<h4>Diferentes Maneiras para Criar Obejtos Locale</h4>
+
+<p>Há muitas maneiras de obter ou criar um objeto Locale. Listamos quatro opções aqui para criar uma instância de localidade italiana que corresponda ao código de idioma dela.</p>
+
+<p>Opção 1: use o construtor da classe Locale: Locale (String language, String country, String variant):</p>
+
+<pre class="brush:java">Locale locale1 = new Locale ("it", "", "");</pre>
+
+<p>Opção 2: Use o método forLanguageTag(String languageTag) na classe Locale:</p> 
+<pre class="brush:java">Locale locale2 = Locale.forLanguageTag("it");</pre>
+
+<p>Opção 3: Crie um objeto Locale instanciando Locale.Builder e, em seguida, chame setLanguageTag() desse objeto:</p>
+
+<pre class="brush:java">Locale locale3=new Locale.Builder().SetLanguageTag("it").Build();</pre>
+
+<p>Opção 4: use as constantes finais estáticas predefinidas para localidades na classe Locale:</p>
+
+<pre class="brush:java">Locale locale4 = Locale.ITALIAN;</pre>
+
+<p>Você pode escolher o caminho para criar um objeto <b>Locale</b> com base em sua necessidade. Por exemplo, a classe <b>Locale</b> tem apenas algumas constantes predefinidas para localidades. Se você quiser um objeto <b>Locale</b> de um dos predefinidos, poderá usá-lo imediatamente ou terá que verificar qual outra opção usar.</p>
+</section>
+<section id="resourcebundle">
+<h1>Pacotes(Bundles) de Recursos</h1>
+
+<p>Na última seção, discutimos a classe Locale e a maneira de obter detalhes da localidade padrão e da lista de localidades disponíveis. Como você usa essas informações de localidade para personalizar o comportamento de seus programas?</p>
+<p>Vamos dar um exemplo simples de cumprimentar alguém: em inglês, você diz "Hello", mas se a localidade for diferente, como você altera essa saudação para, por exemplo, "Ciao" se a localidade for italiana (Itália)?</p>
+
+<p>Uma solução óbvia é obter a localidade padrão, verificar se a localidade é a Itália e imprimir “Ciao”. Isso funcionará, mas essa abordagem não é nem flexível nem extensível. Como sobre a personalização para outras localidades como a Arábia Saudita (árabe) ou Tailândia (tailandês)? Você precisa encontrar e substituir todas as strings específicas de localidade para personalização de cada localidade. Esta tarefa será um pesadelo se o seu aplicativo consistir em milhares dessas strings espalhadas por um milhão de linhas de código e houver muitos locais para suportar.</p>
+
+<p>Em Java, os pacotes de recursos fornecem uma solução para esse problema de como customizar o aplicativo para necessidades específicas de localidade. Então, o que é um pacote de recursos? Um pacote de recursos (Resource bundles)é um conjunto de classes ou arquivos de propriedades que ajudam a definir um conjunto de chaves e mapeiam essas chaves para valores específicos de localidade.</p>
+
+<p>A classe abstrata <b>java.util.ResourceBundle</b> fornece uma abstração de pacotes de recursos em Java. Ele possui duas classes derivadas: <b>java.util.PropertyResourceBundle</b> e <b>java.util.ListResourceBundle</b>.
+As duas classes derivadas fornecem suporte para pacotes de recursos usando dois mecanismos diferentes:</p>
+<ul>
+<li>A classe <b>PropertyResourceBundle</b> : Esta classe concreta fornece suporte para vários locales na forma de arquivos de propriedades. Para cada local, você especifica as chaves e os valores em um arquivo de propriedades para essa localidade. Para uma determinada localidade, se você usar o método <b>ResourceBundle.getBundle()</b>, o arquivo de propriedades relevante será carregado automaticamente. Claro, não há mágica nisso; você precisa seguir algumas convenções de nomenclatura para criar os arquivos de propriedade, os quais discutiremos na seção dedicado a discutir arquivos de propriedade. Você pode usar apenas seqüências de caracteres como chaves e valores quando você usa arquivos de propriedade.</li>
+
+<li>A classe <b>ListResourceBundle</b>: Para adicionar suporte a uma localidade, você pode estender essa classe abstrata. Em sua classe derivada, você deve substituir o método <b>getContents()</b>, que retorna um <b>Object[][]</b>. Esse array deve ter a lista de chaves e valores. As chaves devem ser Strings. Normalmente, os valores também são Strings, mas os valores podem ser qualquer coisa: clipes de som, videoclipes, URLs ou imagens.</li>
+</ul>
+<br>
+<img src="imagens/jee7/localidade.jpg">
+<p><i>ResourceBundle e suas classes derivadas</i></p>
+
+
+<ul>
+<li><b>ResourceBundle</b> -> Pacotes de recursos que fornecem suporte para vários códigos de idioma; essa classe abstrai a funcionalidade de localização</li>
+
+<li><b>ListResourceBundle</b> -> Gerencia recursos para um código de idioma como uma lista. Para cada localidade, estenda essa classe e sobrescreva o método getContents ().</li>
+
+<li><b>PropertyResourceBundle</b> -> Gerencia recursos para um código de idioma como arquivo de propriedades. Use o método ResourceBundle.getBundle() para carregar automaticamente o arquivo de propriedades relevantes para um código de idioma.</li>
+</ul>
+<p>Vamos dar uma rápida olhada nos métodos suportados pela classe abstrata <b>ResourceBundle</b>. Logo abaixo o resumo os métodos importantes desta classe. Agora, discutiremos o suporte à localização usando essas duas classes derivadas do <b>ResourceBundle</b>.</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Métodos</th><th>Descrição</th></tr>
+<tr><td>Object getObject(String key)</td><td>Retorna o valor mapeado para a chave dada. Lança um MissingResourceException se nenhum objeto para uma determinada chave for encontrado</td></tr>	
+<tr><td>static ResourceBundle getBundle (String baseName),static final ResourceBundle getBundle(String baseName, Locale locale)</td><td>Retorna o ResourceBundle para o baseName, o código de idioma e o controle fornecidos e lança um MissingResourceException se nenhum pacote de recursos correspondente for encontrado. O Parâmetro de controle serve para controlar ou obter informações sobre o processo de carregamento do pacote de recursos.
+</td></tr>
+<tr><td>final ResourceBundle getBundle (String baseName, Locale targetLocale, Control control)String getString(String key)</td><td>Retorna o valor mapeado para a chave dada; equivalente a converter o valor de retorno de getObject() para String. Lança um MissingResourceException se nenhum objeto para uma determinada chave for encontrado. Lança ClassCastException se o objeto retornado não for uma String.
+</td></tr>
+</table>
+</div>
+</section>
+<section id="usaproperty">
+<h2>Usando PropertyResourceBundle </h2>
+
+<p>Se você projetar seu aplicativo com a localização em mente usando arquivos de propriedades, poderá adicionar suporte para novos locais ao aplicativo sem alterar nada no código!</p>
+<p>Agora veremos um exemplo usando arquivos de recursos e ficará claro para você. Vamos começar com um programa muito simples que imprime "Hello" para o usuário. Este programa tem três pacotes de recursos de arquivo de propriedades:</p>
+<br>
+<ul>
+<li>1. O pacote de recursos padrão que assume o código do idioma inglês (EUA).</li>
+<li>2. Um pacote de recursos para o idioma árabe.</li>
+<li>3. Um pacote de recursos para a localidade italiana.</li>
+</ul>
+<br>
+<p>Como discutido acima, os arquivos de propriedades definem <b>strings</b> como pares de valores de chave em um arquivo. Aqui está um exemplo de um caminho de classe que pode ser mapeado para um caminho real em sua máquina: </p><pre>classpath = C:\Program Files\Java\jre8.</pre>
+<p>Os arquivos de propriedade geralmente contêm vários pares de valores-chave, com cada par em linhas separadas, como segue:</p>
+<pre>
+classpath=C:\Program Files\Java\jre8
+temp=C:\Windows\Temp
+windir=C:\Windows
+</pre>
+
+<p>No caso de localização, você usa arquivos de propriedades para mapear as mesmas chaves <b>strings</b> para valores <b>strings</b> diferentes. No programa, você indicará as sequências de chaves e, carregando o arquivo de propriedades correspondente da localidade, os valores correspondentes das chaves serão buscados nos arquivos de propriedades para uso no programa.</p>
+<p>A nomeação desses arquivos de propriedade é importante (você verá o motivo) e abaixo está o conteúdo desses pacotes. Para manter este exemplo simples, existe apenas um par de valores-chave nesses arquivos de propriedades; em programas do mundo real, pode haver algumas centenas ou mesmo milhares de pares presentes em cada arquivo de propriedade.</p>
+<pre>
+D:\> type ResourceBundle.properties
+Greeting=Hello
+D:\> type ResourceBundle_ar.properties
+Greeting=As-Salamu Alaykum
+D:\> type ResourceBundle_it.properties
+Greeting=Ciao
+</pre>
+<p>Como você pode ver, o pacote padrão é denominado <b>ResourceBundle.properties</b>. O pacote de recursos para o árabe é denominado <b>ResourceBundle_ar.properties</b>. Note o sufixo “_ar”, indicando o árabe como idioma local. Da mesma forma, o pacote de recursos para o italiano é denominado <b>ResourceBundle_it.properties</b>, que faz uso do sufixo "_it" para indicar o italiano como o idioma associado a esse arquivo de propriedades.</p>
+<pre class="brush:java">
+//LocalizedHello.java
+import java.util.Locale;
+import java.util.ResourceBundle;
+public class LocalizedHello {
+public static void main(String args[]) {
+Locale currentLocale = Locale.getDefault();
+ResourceBundle resBundle =
+ResourceBundle.getBundle("ResourceBundle", currentLocale);
+System.out.printf(resBundle.getString("Greeting"));
+}
+}
+</pre>
+<p>Obtendo strings relevantes de ResourceBundles com base na localidade:</p>
+
+<pre class="brush:java">
+//LocalizedHello.java
+ResourceBundle resBundle = ResourceBundle.getBundle("ResourceBundle", currentLocale);
+System.out.printf(resBundle.getString("Greeting"));
+</pre>
+<pre>
+<b>ResourceBundle.properies</b>
+Greeting=Hello
+</pre>
+<pre>
+<b>ResourceBundle_ar.properties</b>
+Greeting=As-Salamu Alaykum
+</pre>
+<pre>
+<b>ResourceBundle_it.properties</b>
+Greeting=Ciao
+</pre>
+<p>Existem duas opções para executar este programa da maneira desejada:</p>
+
+<p> <b>Opção I</b>: Altere a localidade padrão no programa chamando o método <b>setDefault()</b>:</p>
+<pre class="brush:java">Locale.setDefault(Locale.ITALY);</pre>
+
+<p>Esta opção não é recomendada, pois será necessário alterar o programa para definir a localidade.</p>
+
+<p><b> Opção II</b>: altere a localidade padrão ao invocar a JVM a partir da linha de comando (se você estiver invocando a JVM de um IDE, forneça os argumentos da linha de comando para a JVM nas configurações do IDE):</p>
+<pre>
+D:\> java -Duser.language=it -Duser.region=IT LocalizedHello
+</pre>
+<p>Vamos tentar o programa, definindo a localidade com a Opção II (passando argumentos para a linha de comando ao invocar a JVM).</p>
+<pre>
+D:\> java LocalizedHello
+Hello
+D:\> java -Duser.language=it LocalizedHello
+Ciao
+D:\> java -Duser.language=ar LocalizedHello
+As-Salamu Alaykum
+</pre>
+
+<p>Como você pode ver, dependendo da localidade que você definiu explicitamente (italiano ou árabe neste exemplo) ou da localidade padrão (inglês dos EUA neste exemplo), o arquivo de propriedades correspondente é carregado e a sequência de mensagens é resolvida.</p>
+
+ <p>Se você esquecer de criar arquivos de propriedades ou eles não estiverem no caminho(path), você receberá um <b>MissingResourceException</b>.</p>
+
+<p>No programa, primeiro você obtém a localidade atual na declaração.</p>
+
+<pre class="brush:java">Locale currentLocale = Locale.getDefault();</pre>
+
+<p>Depois disso, você carrega o pacote de recursos que começa com o nome <b>ResourceBundle</b> e passa a localidade para carregar o pacote de recursos.</p>
+
+<pre class="brush:java">ResourceBundle resBundle = ResourceBundle.getBundle("ResourceBundle", currentLocale);</pre>
+
+<p>Finalmente, do pacote de recursos, você procura a chave  “Greeting” e usa o valor dessa chave com base no pacote de recursos carregado.</p>
+
+<pre class="brush:java">System.out.printf(resBundle.getString("Greeting"));</pre>
+</section>
+<section id="usalistresource">
+<h2>Usando ListResourceBundle</h2>
+
+<p>O suporte para uma nova localidade pode ser adicionado usando <b>ListResourceBundle</b> estendendo-o. Ao estender o <b>ListResourceBundle</b>, você precisa sobrescrever o método abstrato <b>getContents()</b>, a assinatura deste método é:</p>
+
+<pre class="brush:java">protected Object[][] getContents();</pre>
+
+<p>Observe que as chaves são Strings, mas os valores podem ser de qualquer tipo, portanto, o tipo de array é Object; Além disso, o método retorna uma lista de pares chave e valor. Como resultado, o método <b>getContents()</b> retorna um array bidimensional de objetos.</p>
+<br>
+<p><i>Você cria pacotes de recursos estendendo a classe ListResourceBundle, enquanto que com PropertyResourceBundle, cria o pacote de recursos como arquivos de propriedades. Além disso, ao estender ListResourceBundle, você pode ter qualquer tipo de objetos como valores, enquanto os valores em um arquivo de propriedades podem ser apenas Strings.
+</i></p>
+
+<p>O exemplo abaixo mostra um exemplo de extensão do <b>ListResourceBundle</b>, que retorna o maior hit de filme de bilheteria para essa localidade específica. Ele define um pacote de recursos chamado <b>ResBundle</b>. Como o nome da classe não tem nenhum sufixo (como "_it" ou "_en_US"), é a implementação padrão do pacote de recursos. Ao procurar um <b>ResBundle</b> correspondente para qualquer localidade, essa implementação padrão será usada caso nenhuma correspondência seja encontrada.</p>
+<pre class="brush:java">
+ //ResBundle.java
+import java.util.ListResourceBundle;
+// default US English version
+public class ResBundle extends ListResourceBundle {
+public Object[][] getContents() {
+return contents;
+}
+static final Object[][] contents = {
+{ "MovieName", "Avatar" },
+{ "GrossRevenue", (Long) 2782275172L }, // in US dollars
+{ "Year", (Integer)2009 }
+};
+}
+</pre>
+<p>Agora, vamos definir um <b>ResBundle</b> para o idioma italiano. Você dá à classe o sufixo "_it_IT". O código de idioma "it" significa italiano e o código de país "IT" significa Itália.</p>
+<pre class="brush:java">
+//ResBundle_it_IT.java
+import java.util.ListResourceBundle;
+// Italian version
+public class ResBundle_it_IT extends ListResourceBundle {
+public Object[][] getContents() {
+return contents;
+}
+static final Object[][] contents = {
+{ "MovieName", "Che Bella Giornata" },
+{ "GrossRevenue", (Long) 43000000L }, // in euros
+{ "Year", (Integer)2011 }
+};
+}
+</pre>
+<p>Como você pode ver, as implementações para <b>ResBundle</b> e <b>ResBundle_it_IT</b> são semelhantes, exceto pelos valores mapeados para as chaves. Agora, como você sabe se seus pacotes de recursos estão funcionando ou não?</p>
+<pre class="brush:java">
+//LocalizedBoxOfficeHits.java
+import java.util.ResourceBundle;
+import java.util.Locale;
+public class LocalizedBoxOfficeHits {
+public void printMovieDetails(ResourceBundle resBundle) {
+String movieName = resBundle.getString("MovieName");
+Long revenue = (Long)(resBundle.getObject("GrossRevenue"));
+Integer year = (Integer) resBundle.getObject("Year");
+System.out.println("Movie " + movieName + "(" + year + ")" + " grossed "
++ revenue );
+}
+public static void main(String args[]) {
+LocalizedBoxOfficeHits localizedHits = new LocalizedBoxOfficeHits();
+// print the largest box-office hit movie for default (US) locale
+Locale locale = Locale.getDefault();
+localizedHits.printMovieDetails(ResourceBundle.getBundle("ResBundle", locale));
+// print the largest box-office hit movie for Italian locale
+locale = new Locale("it", "IT", "");
+localizedHits.printMovieDetails(ResourceBundle.getBundle("ResBundle", locale));
+}
+}
+</pre>
+<p><b>Esse progrmaa imprime o seguinte:</b></p>
+<pre>
+Movie Avatar (2009) grossed 2782275172
+Movie Che Bella Giornata (2011) grossed 43000000
+</pre>
+<p>Ele carregou os pacotes de recursos padrão e italiano com êxito. No entanto, existem problemas com essa saída. O valor 2782275172 é um valor em dólares americanos e o valor 43000000 é em Euros. Além disso, os números são impressos sem vírgulas, por isso é difícil dar sentido a esses números. É possível localizar a formatação desses valores monetários</p>.
+
+<p>Agora, considere a seguinte declaração deste programa:</p>
+
+<pre class="brush:java">Long revenue = (Long)(resBundle.getObject("GrossRevenue"));</pre>
+
+<p>Essa declaração retorna o mapeamento de valor para a chave chamada <b>GrossRevenue</b> no pacote de recursos. Você o definiu como um objeto <b>Long</b> nas classes <b>ResBundle</b> e <b>ResBundle_it_IT </b>- então funcionou. Se você converter os tipos incorretamente, por exemplo, como um Número inteiro, receberá um <b>ClassCastException</b>, como em:</p>
+<pre class="brush:java">
+Integer revenue = (Integer)(resBundle.getObject("GrossRevenue"));
+
+// Essa alteração de código resultará no lançamento desta exceção:
+// Exceção no encadeamento "main" java.lang.ClassCastException:
+// java.lang.Long não pode ser convertido para java.lang.Integer
+</pre>
+<p>Aqui está outra situação: se você digitar incorretamente GrossRevenu em vez de GrossRevenue como o nome da chave, o programa irá travar com esta exceção, como em:</p>
+<pre class="brush:java">
+
+Long revenue = (Long)(resBundle.getObject("GrossRevenu"));
+
+// Este código falha com esta exceção:
+// Exceção no segmento "main" java.util.MissingResourceException:
+// Não é possível encontrar recursos para o pacote ResBundle, chave GrossRevenu
+</pre>
+</section>
+<section id="loadingresource">
+<h1>Loading a Resource Bundle </h1>
+
+<p>Você já carregou pacotes de recursos nos programas que você escreveu usando o <b>ResourceBundle</b> ou suas duas classes derivadas. Porém, você precisa entender esse processo de carregamento completamente. Assim, abordaremos mais detalhadamente nesta seção.</p>
+<p>O processo de encontrar um pacote de recursos correspondente é o mesmo para classes estendidas de <b>ListResourceBundles</b> como para arquivos de propriedade definidos para <b>PropertyResourceBundles</b>.</p>
+<br>
+<p><i>Para os pacotes de recursos implementados como classes estendidas de ListResourceBundles, o Java usa o mecanismo de reflexão para localizar e carregar a classe. Você precisa ter certeza de que a classe é pública para que o mecanismo de reflexão encontre a classe.</i></p>
+<br>
+</section>
+<section id="convnomenbundle">
+<h2>Convenção de Nomenclatura para Pacotes de Recursos</h2>
+
+<p>	Java impõe uma convenção de nomenclatura predefinida a ser seguida para criar pacotes configuráveis de recursos. Somente através dos nomes dos pacotes de propriedades a biblioteca Java carrega as localidades relevantes. Portanto, é importante entender e seguir essa convenção de nomenclatura ao criar os pacotes de propriedades para localizar aplicativos Java.</p>
+<p>Você já viu como um nome de localidade é codificado. Compreender essa codificação de nome de localidade é importante para nomear os pacotes configuráveis de recursos porque ela faz uso do mesmo esquema de codificação. Um pacote de recursos totalmente qualificado possui o seguinte formato:</p>
+
+<pre class="brush:java">
+packagequalifier.bundlename + "_" + language + "_" + country + "_" + (variant + "_#" | "#") + 
+script + "-" + extensions</pre>
+
+
+<p>Aqui está a descrição dos elementos neste nome totalmente qualificado:</p>
+<br>
+<ul>
+<li> <b>packagequalifier</b>: o nome do pacote (ou subpacotes) no qual o pacote de recursos é fornecido.</li>
+<li> <b>bundlename</b>: o nome do pacote de recursos que você usará no programa para fazer referência e carregá-lo.</li>
+<li> <b>language</b>: uma abreviação de duas letras normalmente fornecida em letras minúsculas para o idioma do idioma local (em casos raros, pode haver três letras também).</li>
+<li> <b>country</b>: uma abreviação de duas letras geralmente fornecida em letras maiúsculas para o país do local (em casos raros, também pode haver três letras).</li>
+<li> <b>variant</b>: uma lista arbitrária de variantes (em letras minúsculas ou maiúsculas) para diferenciar localidades quando você precisa de mais de uma localidade para uma combinação de idioma e país.</li>
+</ul>
+<br>
+
+<p>Omitimos a descrição do script e a extensão, pois eles raramente são usados.</p>
+
+<p>Por exemplo, considere este nome totalmente qualificado:</p>
+
+<pre class="brush:java">
+localization.examples.AppBundle_ en_US_Oracle_exam</pre>
+
+
+
+<p>Nesse caso, <b>localization.examples</b> é o pacote, <b>AppBundle</b> é o nome do pacote de recursos, <b>en</b> é language (que significa inglês), <b>US</b> é o país e <b>Oracle_exam</b> é a variante.</p>
+<p>As duas (ou às vezes três) abreviações de letras para o idioma e o país do idioma são predefinidas, pois são baseadas em padrões internacionais. Não fornecemos a lista detalhada e também não é necessário saber ou lembrar de todos eles. Você pode examinar a documentação da classe <b>Locale</b> para entender isto.</p>
+
+<p>Considerando que pode haver muitos pacotes configuráveis ​​de recursos para um nome de pacote, qual é a seqüência de pesquisa para determinar o pacote de recursos a ser carregado? Para esclarecer, apresentamos a seqüência como uma série de etapas. a pesquisa começa na Etapa 1. Se, em qualquer etapa, a pesquisa encontrar uma correspondência, o pacote de recursos será carregado. Caso contrário, a pesquisa prossegue para o próximo passo.</p>
+<br>
+<p> Sequencia de pesquisa por ResourceBundles (Pacote de Recursos):</p>
+<ul>
+<li><b>Passo 1:</b> A pesquisa inicia procurando por uma correspondência exata pelo resource bundle com o full name</li>
+<li><b>PAsso 2:</b> O último compenente(a parte separada por _) é retirado e a pesquisa é repetida com o resultado do nome abreviado. Este processo é repetido até o que o último modificador de localidade é deixado</li>
+<li> <b>PAsso 3:</b> A pesquisa é reiniciada usando o full name do bundle para a localidade padrão</li>
+<li><b>Passo 4:</b>PEsquisar por resource bundle com somente o nome do bundle.</li>
+<li><b>Passo 5:</b> A falha de pesquisa lança um <b>MissingBundleException</b></li>
+</ul>
+<br>
+	<p>A pesquisa começa com os detalhes de localidade fornecidos e, se não for encontrada, prossegue com a verificação da localidade padrão, como em:</p>
+<pre class="brush:java">
+BundleName + "_" + language + "_" + country + "_" + variant
+BundleName + "_" + language + "_" + country
+BundleName + "_" + language
+BundleName + "_" + defaultLanguage + "_" + defaultCountry
+BundleName + "_" + defaultLanguage
+</pre>
+
+<p>Considere um exemplo para descobrir como o pacote de recursos correspondente é encontrado e ficará claro para você. Suponha que você tenha as cinco entradas a seguir no caminho de pesquisa e sua localidade padrão seja o inglês dos EUA:</p>
+<pre class="brush:java">
+ResourceBundle.properties -- Global bundle
+ResourceBundle_ar.properties -- Arabic language bundle
+ResourceBundle_en.properties -- English bundle (assuming en_US is the default locale)
+ResourceBundle_it.properties -- Italian language bundle
+ResourceBundle_it_IT_Rome.properties -- Italian (Italy, Rome) bundle
+</pre>
+<p>Como podemos descobrir qual é a sequência de localidades que o Java está procurando? Para isso, vamos estender a classe <b>ResourceBundle.Control</b> e substituir o método <b>getCandidateLocales()</b>: isso é para acessar programaticamente e imprimir a lista de localidades candidatas e, finalmente, exibir a localidade correspondente. Observe que "localidade candidata" refere-se a localidades sendo consideradas pelo Java durante o processo de pesquisa. Suponha que os arquivos de propriedades denominados <b>ResourceBundle_it_IT_Rome.properties</b> e <b>ResourceBundle_en.properties</b> estejam disponíveis.</p>
+<pre class="brush:java">
+//CandidateLocales.java
+import java.util.ResourceBundle;
+import java.util.List;
+import java.util.Locale;
+// Estende ResourceBundle.Control e substitui o método getCandidateLocales
+// para obter a lista de códigos de idioma candidatos que o Java procura
+class TalkativeResourceBundleControl extends ResourceBundle.Control {
+// sobrescreve o método getCandidateLocales padrão para imprimir
+// as localidades candidatas primeiro
+public List&ltLocale> getCandidateLocales(String baseName, Locale locale) {
+List&ltLocale> candidateLocales = super.getCandidateLocales(baseName, locale);
+System.out.printf("Candidate locales for base bundle name %s and locale %s %n",
+baseName, locale.getDisplayName());
+candidateLocales.forEach(System.out::println);
+return candidateLocales;
+}
+}
+// Use um método auxiliar loadResourceBundle para carregar um pacote configurável, com o nome e a localidade do pacote configurável
+class CandidateLocales {
+public static void loadResourceBundle(String resourceBundleName, Locale locale) {
+/ Passa uma instância de TalkativeResourceBundleControl
+// para imprimir localidades candidatas
+ResourceBundle resourceBundle = ResourceBundle.getBundle(resourceBundleName,
+locale, new TalkativeResourceBundleControl());
+String rbLocaleName = resourceBundle.getLocale().toString();
+// se o nome do código do idioma do pacote de recursos estiver vazio,
+// significa arquivo de propriedades padrão
+if(rbLocaleName.equals("")) {
+System.out.println("Loaded the default property file with name: "
++ resourceBundleName);
+} else {
+System.out.println("Loaded the resource bundle for the locale: "
++ resourceBundleName + "." + rbLocaleName);
+}
+}
+public static void main(String[] args) {
+// trace how ResourceBundle_it_IT_Rome.properties is resolved
+loadResourceBundle("ResourceBundle", new Locale("it", "IT", "Rome"));
+}
+}
+</pre>
+<p><b>Este programa imprime o seguinte:</b></p>
+
+<pre>Candidate locales for base bundle name ResourceBundle and locale Italian (Italy, Rome)
+it_IT_Rome
+it_IT
+it
+</pre>
+<p>Agora, antes de tentar com outras localidades, considere como o programa funciona. Para rastrear como o Java resolve o pacote de recursos a ser finalmente carregado, você precisa obter a lista de localidades candidatas. Com o método <b>ResourceBundle.getBundle()</b>, você pode passar um argumento adicional que seja uma instância da classe <b>ResourceBundle.Control</b>. Por esse motivo, você define a classe <b>TalkativeResourceBundleControl</b>.
+<p>A classe <b>TalkativeResourceBundleControl</b> estende a classe <b>ResourceBundle.Control</b> e sobrescreve o método <b>getCandidateLocales()</b>. Esse método <b>getCandidateLocales()</b> retorna uma instância <b>List&ltLocale></b> que contém a lista de localidades candidatas para a localidade especificada. Você invoca <b>super.getCandidateLocales()</b> e percorre o objeto <b>List&ltLocale></b> resultante para imprimir a localidade candidata para que você possa examinar a saída posteriormente. A partir desse método <b>getCandidateLocales()</b> substituído, você simplesmente retorna este objeto <b>List&ltLocale></b>. Assim, o comportamento de <b>TalkativeResourceBundleControl</b> é idêntico ao <b>ResourceBundle.Control</b>, exceto que o <b>getCandidateLocales()</b> sobrescrito em </b>TalkativeResourceBundleControl</b> imprime as localidades candidatas.</p>
+<p>A classe <b>CandidateLocales</b> faz uso do <b>TalkativeResourceBundleControl</b>. Tem um método auxiliar chamado <b>loadResourceBundle()</b> que usa o nome do pacote de recursos e o nome da localidade como argumentos. Esse método simplesmente passa esses valores de argumento para o método <b>ResourceBundle.getBundle()</b>; Além disso, instancia <b>TalkativeResourceBundleControl</b> e passa esse objeto como o terceiro argumento para esse método. O método <b>getBundle()</b> retorna um objeto <b>ResourceBundle</b>. Se a localidade do nome de <b>ResourceBundle.getLocale()</b> está vazio, isso significa que o Java carregou o pacote de recursos global. (Lembre-se de que o pacote configurável de recursos globais para esse nome de pacote não possui detalhes de código de idioma associados.) Se o nome do código do idioma não estiver vazio, significa que o Java resolveu esse código de idioma específico.</p>
+
+<p>Agora, considere o código no método <b>main()</b>. Ele chama <b>loadResourceBundle()</b> para a localidade it_IT_Rome. Há três localidades candidatas e de que ele carregou corretamente o arquivo de propriedades correspondente para a localidade it_IT_Rome. Então você sabe que carregou corretamente o arquivo de propriedades <b>ResourceBundle_it_IT_Rome.properties</b>. Para continuar esta experiência, vamos alterar o código dentro do método <b>main()</b> do exemplo antrerior para este código:</p>
+
+<pre class="brush:java">loadResourceBundle("ResourceBundle", new Locale("fr", "CA", ""));</pre>
+
+<p><b>Agora este programa imprime assim:</b></p>
+<pre>
+Candidate locales for base bundle name ResourceBundle and locale French (Canada)
+fr_CA
+fr
+Candidate locales for base bundle name ResourceBundle and locale English (United States)
+en_US
+en
+Loaded the resource bundle for the locale: ResourceBundle.en
+</pre>
+<p>Por que o programa imprime a saída acima? Observe que não há nenhum arquivo de propriedades correspondente para o código de idioma <b>fr_CA</b> na lista de arquivos de propriedades. Portanto, a pesquisa continua a verificar os arquivos de propriedade para o código de idioma padrão. Nesse caso, a localidade padrão é <b>en_US</b> e existe um arquivo de propriedades para a localidade <b>en</b> (inglês). Assim, a partir dos locais candidatos, o Java resolve carregar o arquivo de propriedades <b>ResourceBundle_en.properties</b> corretamente.</p>
+<p>Aqui está o último exemplo. Substitua o código no método main() por esta declaração:</p>
+
+<pre class="brush:java">loadResourceBundle("ResBundl", Locale.getDefault());</pre>
+
+<p><b>Este programa imprime assim:</b></p>
+<pre>
+Candidate locales for base bundle name ResBundl and locale English (United States)
+en_US
+en
+The exception in thread "main" java.util.MissingResourceException: Can't find bundle for 
+base name ResBundl, locale en_US
+[... thrown stack trace elided ...]
+</pre>
+<p>Você não tem nenhum pacote de recursos chamado <b>ResBundl</b> e que você forneceu a localidade padrão (neste caso, en_US). O Java procura o <b>bundle</b> para esta localidade e você sabe que não forneceu nenhum pacote com o nome <b>ResBundl</b>. Então, o programa trava depois de lançar um <b>MissingResourceException</b>.</p>
+
+<p class="nav-arq" id="referencia"> Construindo Aplicações com Banco de Dados JDBC: <a href="jdbcaplication.html">&laquo; anterior | <a href="javaee.html">próximo  Java EE com Struts 2 &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/localizacao" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+</body>
+	</html>

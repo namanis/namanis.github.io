@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+   <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+ <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+
+
+<!-- Top Navigation Menu -->
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+   <a class="w3-bar-item w3-button" href="#solpratrec">21- SOLUÇÕES PRÁTICA USANDO PADRÕES</a>
+          <a class="w3-bar-item w3-button" href="#intfilter">Intercepting Filter</a>
+          <a class="w3-bar-item w3-button"href="#froncontrl">Front Controller</a>
+          <a class="w3-bar-item w3-button"href="#contrll">Controller</a>
+          <a class="w3-bar-item w3-button"href="#vwisu">View</a>
+          <a class="w3-bar-item w3-button"href="#vwhelp">View Helper em geral</a>
+          <a class="w3-bar-item w3-button" href="#vlphl">View definição</a>
+          <a class="w3-bar-item w3-button"href="#vlphutil">View Helper utilidades</a>
+          <a class="w3-bar-item w3-button" href="#compview">Composite View</a>
+          <a class="w3-bar-item w3-button"href="#dispview">Dispatcher View</a>
+          <a class="w3-bar-item w3-button"href="#froncontrol">Front Controller</a>
+          <a class="w3-bar-item w3-button"href="#dispat">Dispatcher</a>
+          <a class="w3-bar-item w3-button"href="#helpr">Helper</a>
+          <a class="w3-bar-item w3-button" href="#vwie">View</a>
+          <a class="w3-bar-item w3-button"href="#srvcwork">Service to Worker</a>
+
+
+          <a class="w3-bar-item w3-button"href="#frncontr">Front Controller</a>
+          <a class="w3-bar-item w3-button"href="#disptchr">Dispatcher</a>
+          <a class="w3-bar-item w3-button"href="#hlp">Helper</a>
+          <a class="w3-bar-item w3-button" href="#frmweb">Java Web Frameworks</a>
+          <a class="w3-bar-item w3-button"href="#pqusefrm">Por que usar um Framework?</a>
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+   
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class=" w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA EE </h1>
+</header>
+<section id="solpratrec">
+<h1>Soluções de práticas recomendadas: Usando Padrões</h1>
+<p>Embora o Java EE faça um ótimo trabalho de padronização da infraestrutura corporativa, de fornecer um modelo de aplicativo e de componentes adequados para desenvolver aplicativos da Web, a interação direta com os componentes do Java EE geralmente resulta em grandes quantidades de código padrão e até redundância de código. O uso do Java EE não leva naturalmente à arquitetura e design das melhores práticas.</p>
+<p>Nesta seção, você será apresentado aos padrões Java EE no nível da web estabelecido por Alur, Crupi e Malks.</p><br>
+<p>A camada da Web encapsula a lógica de apresentação necessária para fornecer o serviço aos clientes. A camada de apresentação faz o seguinte:</p>
+<br>
+<ul>
+<li>Intercepta as solicitações do cliente</li>
+<li>Fornece funcionalidades como autenticação, autorização, criptografia e gerenciamento de sessões, para citar alguns</li>
+<li>Acessa serviços de negócios</li>
+<li>Constrói a resposta</li>
+<li>Renderiza a resposta para o cliente</li>
+</ul>
+<br>
+<p>Em geral, o desenvolvimento de aplicativos da web exige que você resolva um conjunto comum de problemas.</p><br>
+<ul>
+	<li>Quando uma solicitação entra em um aplicativo Web, muitas vezes precisa ser pré-processada para fornecer determinadas funcionalidades, como autenticação, autorização e criptografia.</li>
+<li>A camada de apresentação e a lógica de negócios geralmente são misturadas. Isso dificulta a manutenção da camada de apresentação.</li>
+As views são frequentemente codificadas com a lógica de navegação da view. Isso resulta em conteúdo de visualização misturado e navegação de visualização.</li>
+<li>Não há componente centralizado para o gerenciamento de visualizações, o que resulta em redundância de código e dispersão de código entre as visualizações.</li>
+</ul>
+<br>
+<p>
+Esta não é uma lista completa de problemas, mas estes são os mais comuns em um aplicativo Web.
+Felizmente, esses problemas em um aplicativo Web podem ser resolvidos usando padrões Java EE de camada da Web.
+Como usar esses padrões Java EE difere em cada problema. A Tabela a seguir descreve esses padrões.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Padrão da Camada de Apresentação</th><th> Descrição</th></tr>
+<tr><td>Intercepting Filter</td><td>Pré-processamento e Pós-Processamento de uma Solicitação e Resposta da Web do Cliente</td></tr>
+<tr><td>Front Controller</td><td>Ponto de acesso centralizado para manipulação de solicitações da camada de apresentação para suporte</td></tr>
+<tr><td>View Helper</td><td>Encapsular a lógica de negócios para que não fique entrelaçada com a lógica de apresentação</td></tr>
+<tr><td>Composite View</td><td>Gerenciando o layout da visualização, independentemente do conteúdo</td></tr>
+<tr><td>Service to Worker</td><td>Montagem de uma microframework do controlador front e do auxiliar de visualizaçãao com um componente despachante
+</td></tr>
+<tr><td>Dispatcher View</td><td>Montagem de uma microframework do controlador front e do auxiliar de visualizaçãao com um componente despachante</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="intfilter">
+<h2>Intercepting Filter</h2>
+
+<p>Um aplicativo Web recebe diferentes tipos de solicitações que requerem algum tipo de processamento, por exemplo, para verificar se o cliente precisa ser autenticado antes de prosseguir com a navegação. A melhor técnica para fornecer um mecanismo de processamento para solicitações é usar um componente de processamento chamado filtro. Os filtros são usados ​​quando você precisa fornecer funcionalidades de pré-processamento ou pós-processamento de solicitação. O padrão Intercepting Filter é fornecido com a introdução de filtros na especificação Servlet. Esse padrão usa um ou mais filtros conectados ao aplicativo atual para fornecer serviços como autorização, compactação, criptografia e criação de log.</p><br>
+<img src="imagens\jee7\filtro.jpg">
+<br>
+<p>O padrão Intercepting Filter é usado para pré-processamento e pós-processamento de solicitações de clientes e também as respostas interceptando solicitações e respostas. Os filtros são plugáveis ​​no sentido de que você pode adicioná-los ou removê-los sem alterar o código</p><br>
+<p>Um dos casos de uso para os quais o padrão Filtro de interceptação é considerado mais adequado é quando você deseja ativar o modo de documento IE9 do navegador por padrão. O IE tem dois modos: modo navegador e modo documento. O navegador sempre envia dados do modo navegador para o servidor, e sempre responde com dados do modo documento. Os dados do modo navegador consistem em uma sequência de agentes do usuário com
+uma versão e informações do token de tridente, enquanto os dados do modo de documento consistem em metatags que determinam o modo em que a resposta será renderizada no navegador.
+</p>
+<p><b>Filtro de resposta simples</b></p>
+<pre class="brush:java">
+package com.alpi.filters
+import javax.servlet.*;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Enumeration;
+
+/**
+ * filter for enabling IE9 document mode by default
+ *
+ */
+public class ResponseHeaderFilter implements Filter {
+ private FilterConfig filterConfig = null;
+
+ public void doFilter(ServletRequest aServletRequest, ServletResponse aServletResponse, 
+FilterChain chain)
+ throws IOException, ServletException {
+
+ HttpServletResponse response = (HttpServletResponse) aServletResponse;
+
+
+  // define os parâmetros de resposta HTTP fornecidos
+ for (Enumeration e = filterConfig.getInitParameterNames(); e.hasMoreElements();) {
+ String headerName = (String) e.nextElement();
+ response.addHeader(headerName, filterConfig.getInitParameter(headerName));
+ }
+
+// passa a solicitação / resposta em
+ chain.doFilter(aServletRequest, response);
+}
+
+ public void init(FilterConfig aFilterConfig) {
+ filterConfig = aFilterConfig;
+ }
+
+ public void destroy() {
+ filterConfig = null;
+ }
+}
+</pre>
+<br>
+<ul>
+
+<li>Linha 22: essa linha busca todos os parâmetros de inicialização do descritor de implantação.</li>
+<li>Linha 24: esta linha adiciona esses parâmetros à resposta</li>
+</ul>
+<br>
+<p><b>Configurando o filtro de resposta simples</b></p>
+<pre class="brush:xml">
+<filter>
+<filter-name>HTML5</filter-name>
+<filter-class>com.alpi.filters.ResponseHeaderFilter</filter-class>
+<init-param>
+<param-name>X-UA-Compatible</param-name>
+<param-value>IE=edge,chrome=1</param-value>
+</init-param>
+</filter>
+<filter-mapping>
+<filter-name>HTML5</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+</pre>
+<br>
+<ul><li>Linha 5 a 6: Essas linhas definem os parâmetros init.</li></ul><br>
+</section>
+<section id="froncontrl">
+<h2>Front Controller</h2>
+
+<p>Para que os aplicativos da Web sejam mantidos, todas as solicitações devem passar por um componente central comum. A falta de um mecanismo centralizado leva aos seguintes problemas:</p>
+<br>
+<ul>
+<li>Não há componente centralizado para o gerenciamento de visualizações, o que resulta em redundância de código e dispersão de código entre as visualizações.</li>
+<li>As visualizações geralmente são codificadas com a lógica de navegação da visualização. Isso resulta em conteúdo de visualização misturado e navegação de visualização.<li>
+</ul>
+<br>
+<p>O padrão Front Controller fornece um acesso centralizado para a manipulação de solicitações, para fornecer recuperação de conteúdo, exibir gerenciamento, navegação, validação, manipulação de erros, controle centralizado de segurança e assim por diante. O padrão do Front Controller é melhor implementado com um servlet. O uso de um servlet centralizado para lidar com todos os pedidos e respostas fornece as seguintes vantagens:</p>
+<br>
+<ul>
+<li>Ele fornece um único local para controlar as decisões relacionadas a autenticação e autorização.</li>
+<li>Todos os URLs com os quais o controlador frontal precisa lidar podem ser mapeados para este servlet.<li>
+<li>Ele fornece um ponto de acesso centralizado para dar suporte ao gerenciamento e navegação de visualizações.</li>
+<li>Você pode aplicar lógica comum a várias visualizações.</li>
+<li>Ele fornece a separação da lógica de apresentação da navegação e da lógica de negócios. Isso leva a um acoplamento frouxo entre os dois.</li>
+</ul>
+<br>
+<img src="imagens\jee7\froncontroller.jpg">
+<br>
+<p>Os componentes do padrão Front Controller são os seguintes:</p>
+<ul>
+<li>Controller</li>
+<li>Dispatcher</li>
+<li>View</li>
+</ul>
+</section>
+<section id="contrll">
+<h3>Controller</h3>
+<p>O controlador é o ponto inicial para manipular uma solicitação e coordenar com um componente despachante.</p>
+<p>O controlador gerencia o seguinte:</p>
+<br>
+<ul>
+<li>Manipulando a solicitação, incluindo a chamada de serviços de segurança, como autenticação e autorização</li>
+<li>Delegando ao serviço de negócio</li>
+<li>Manipulando erros</li>
+</ul>
+
+
+<p>O Dispatcher(Despachante) é responsável pelo gerenciamento e navegação da visualização.</p>
+</section>
+<section id="vwisu">
+<h3 >View</h3>
+<p>A visualização representa e exibe informações para o cliente.</p>
+<p>
+<b>Veja na figura o diagrama de sequencia do Front Controller</b></p>
+ <br>
+<img src="imagens\jee7\view.jpg">
+<br>
+</section>
+<section id="vwhelp">
+<h3>View Helper em geral</h3>
+<p>Em um aplicativo da web, o conteúdo da apresentação (ou seja, o conteúdo da página JSP) requer o processamento de conteúdo dinâmico. As alterações na camada de apresentação ocorrem com frequência e são difíceis de desenvolver e manter quando a lógica de negócios e a lógica de apresentação são misturadas. De fato, misturar a lógica de negócios e a lógica de apresentação torna a apresentação insustentável. O padrão de design do View Helper separa a camada de apresentação da camada de negócios e gera visualizações com base em um modelo. Os componentes no padrão View Helper são os seguintes:</p>
+<ul>
+<li>View</li>  
+<li>View helper</li>
+</ul>
+</section>
+<section id="vlphl">
+<h4>View definição</h4>
+<p>Uma view contém a lógica de formatação da apresentação e delega a lógica de processamento de negócios na apresentação para o assistente(helper).</p>
+</section>
+<section id="vlphutil">
+<h4>View Helper utilidades</h4>
+<p>O view helper faz o seguinte:</p>
+<ul>
+<li>Um view helper pode ser implementado como uma implementação JavaBean ou uma implementação de tag customizada.</li>
+<li>Helpers servem como modelo de dados intermediário da (view)visualização.</li>
+<li>Os (helpers)assistentes são responsáveis ​​por obter dados de um serviço de négócios.</li>
+<li>A lógica de negócios da apresentação é encapsulada no auxiliar</li>
+</ul>
+<p>A estrutura do padrão View Helper</p>
+<br><img src="imagens\jee7\compview.jpg">
+<br>
+</section>
+<section id="compview">
+<h2>Composite View</h2>
+<p>Em aplicativos da Web, as (views)visualizações geralmente são criadas incorporando o código de formatação diretamente a cada visualização.
+Isso dificulta a modificação do layout de várias visualizações. O padrão Composite View permite que uma visualização pai seja composta por subvisões. Portanto, a visão geral se torna uma composição de sub-visuallizações menores que são incluídas dinamicamente na visão geral.
+</p><br>
+<p>Os componentes do padrão Composite View são as seguitnes:</p>
+<ul>
+
+<li>Basic View: esta é a abstração básica da visualização.</li>
+<li>Composite View: é uma visualização composta por várias sub-visualizações.</li>
+<li>A view: Esta é uma visualização simples que não possui sub-visualizações.</li>
+</ul>
+<p><b>A estrutura do padrão Composite View</b></p>
+<br><img src="imagens\jee7\composite.jpg">
+<br>
+<p><b>E o uso do padrão Composite View</b></p>
+<br>
+<img src="imagens\jee7\compositeview.jpg">
+<br>
+</section>
+<section id="dispview">
+<h2>Dispatcher View</h2>
+<p>O padrão de design do Dispatcher View monta dois padrões, Front Controller e View Helper, em uma microframework com um componente despachante para utilizar os benefícios associados a cada padrão.
+No padrão Dispatcher View, o despachante é responsável por escolher e fornecer o mecanismo para apresentar estaticamente ou dinamicamente a visualização subsequente ao usuário.</p>
+
+<p>Os membros do padrão Dispatcher View,  são os seguintes:</p>
+<br>
+<ul>
+<li>Front controller </li>
+<li>Dispatcher </li>
+<li>Helper</li> 
+<li>View</li>  
+<li>View helper </li>
+</ul>
+<br>
+<img src="imagens\jee7\dispatcherview.jpg">
+<br>
+</section>
+<section id="froncontrol">
+<h4>Front Controller</h4>
+<p>O Front Controller faz o seguinte:</p>
+<ul>
+<li>Centraliza o processamento de solicitações</li>
+<li>Delega para a view usando o dispatcher</li>
+<li>Usa o assistente de exibição(view helper) para separar as preocupações da lógica de negócios das preocupações da lógica de apresentação</li>
+</ul>
+<br>
+</section>
+<section id="dispat">
+<h4>Dispatcher</h4>
+<p>Dispatcher faz o seguinte:</p>
+
+<br>
+
+
+<ul>
+<li>É responsável pelo gerenciamento e navegação da visualização</li>
+<li>Delegados para a view</li>
+<li>Usa um assistente(helper) para enviar dados para a view.
+</ul>
+<br>
+</section>
+<section id="helpr">
+<h4>Helper</h4>
+<p>O helper faz o seguinte:</p>
+<p>Ajuda a view ou o controller a concluir seu processamento</p>
+</section>
+<section id="vwie">
+<h4>View</h4>
+<p>O view faz o seguinte:</p>
+<ul>
+<li>Representa e exibe informações para o cliente</li>
+Puxa os dados da fonte de dados usando um view helper </li>
+</ul>
+<br>
+<p><b>o diagrama de sequência do padrão  Dispatcher View</b></p>
+
+<br>
+<img src="imagens\jee7\padraodview.jpg">
+<br>
+</section>
+<section id="srvcwork">
+<h4>Service to Worker</h4>
+<p>O padrão de design do Service to Worker reúne dois padrões, o Front Controller e o View Helper, em uma microframework com um componente despachante para utilizar os benefícios associados a cada padrão.</p><br>
+<p>O padrão Service to Worker é uma combinação de um disptacher com views e helpers para lidar com solicitações do cliente e gerar conteúdo dinâmico como resposta. O padrão Service to Worker pode ser usado em um aplicativo quando o aplicativo requer geração dinâmica de conteúdo</p>
+
+<p>Os membros do padrão Service to Worker, são os seguintes:</p>
+<br>
+<ul>
+<li>Front controller </li>
+<li>Dispatcher </li>
+<li>Helper</li> 
+<li>View</li>  
+<li>View helper </li>
+</ul>
+<br>
+
+
+
+<img src="imagens\jee7\servicework.jpg">
+<br>
+</section>
+<section id="frncontr">
+<h4>Front Controller</h4>
+<p>O Front Controller faz o seguinte:</p>
+<ul>
+<li>Centraliza o processamento de solicitações</li>
+<li>Delega para a view usando o dispatcher</li>
+<li>Usa o assistente de exibição(view helper) para separar as preocupações da lógica de negócios das preocupações da lógica de apresentação</li>
+</ul>
+<br>
+</section>
+<section id="disptchr">
+<h4>Dispatcher</h4>
+<p>Dispatcher faz o seguinte:</p>
+
+<br>
+
+
+<ul>
+<li>É responsável pelo gerenciamento e navegação da visualização</li>
+<li>Delegados para a view</li>
+<li>Usa um assistente(helper) para enviar dados para a view.
+</ul>
+<br>
+</section>
+<section id="hlp">
+<h4>Helper</h4>
+<p>O helper faz o seguinte:</p><br>
+<ul>
+<li>Ajuda a view ou o controller a concluir seu processamento</li>
+<li>Empurra os dados para a visualização</li>
+</ul><br>
+<p><b>O diagrama de sequência do padrão Service to Worker
+</b></p>
+
+
+
+<br>
+<img src="imagens\jee7\diagramservice.jpg">
+<br>
+
+<p>O padrão Service to Worker, como o padrão Dispatcher View, consiste em uma combinação de outros padrões do catálogo. Ambos os padrões de microframework descrevem a combinação de um controller e dispatcher com views e helpers, mas a diferença é que o padrão Dispatcher View atrasa a recuperação de conteúdo até a geração dinâmica de visualizações, enquanto o padrão Service to Worker faz a recuperação de conteúdo no front controller.</p>
+<br>
+
+<p>Acabamos de abordar todos os padrões de camadas da Web Java EE. Usando esses padrões, você pode resolver o problema do domínio arquitetônico e as áreas de problemas de negócios. No entanto, você também deve usar padrões OO para abordar o domínio do problema de arquitetura. Muitos padrões de design podem ser aplicados para obter reutilização, manutenção e extensibilidade. Por exemplo, você pode atingir essa trindade no aplicativo Web usando padrões OO, como os seguintes:</p>
+<br>
+<ul>
+<li>Abstract Factory</li>	
+<li>Builder</li>	
+<li>Decorator</li>	
+<li>Façade</li>	
+<li>Template Method</li>
+</ul>
+
+<br>
+</section>
+<section id="frmweb">
+<h1>Java Web Frameworks</h1>
+	<p>Você aprendeu que o MVC e os padrões da camada da web Java EE juntos facilitam a base arquitetônica para a criação de aplicativos da web reutilizáveis, manuteníveis e extensíveis. À medida que os desenvolvedores ganham mais experiência, começam a descobrir objetos genéricos que podem ser usados ​​repetidamente, e padrões começam a surgir. Depois de ter uma coleção desses objetos genéricos, um framework começa a emergir. Um framework é uma coleção de objetos genéricos e outras classes de suporte que fornecem a infraestrutura para o desenvolvimento de aplicativos. Frameworks são, essencialmente, uma coleção de padrões de projetos protegidos pelos princípios básicos do framework discutidos a seguir. Um framework Java usa dois tipos de padrões.</p>
+	<br>
+  <ul>
+  <li>Padrão OO</li>
+  <li>Padrão Java EE</li>
+</ul>
+<br>
+<p>Um framework usa padrões OO para sua própria construção para tratar do domínio do problema de arquitetura, como extensibilidade, capacidade de manutenção, reutilização, desempenho e escalabilidade. Os padrões OO e Java EE abordam as áreas de domínio dos problemas de negócios, como pedidos de processamento, autenticação, validação, gerenciamento de sessões e gerenciamento de exibição, entre outros. .Frameworks abordam essas duas principais áreas de problemas arquitetônicos e de negócios, fornecendo objetos genéricos e classes de suporte baseadas em padrões, bem guardados pelos seguintes princípios-chave:</p>
+<br>
+<ul>
+<li>Configurabilidade: configurabilidade é a capacidade do framework de poder usar os metadados para alterar o comportamento do framework.</li>
+<li>Inversão do controle: no estilo de programação tradicional, o código do domínio do problema controla o fluxo da execução do aplicativo. Inversão de controle refere-se à técnica em que o código reutilizável controla a execução do código de domínio do problema, controlando o fluxo da execução do aplicativo.</li>
+<li>Acoplamento fraco: esse princípio se refere à independência das classes colaboradoras no framework com a qual cada classe colaboradora pode ser alterada sem influenciar a outra classe colaboradora.</li>
+<li>Separação de preocupações: Este princípio refere-se à necessidade de classificar as áreas do domínio do problema e lidar com elas de maneira isolada, para que as preocupações de uma área do problema não influenciem as preocupações de outra área do problema. A arquitetura Java EE de várias camadas é orientada pelo princípio da separação de preocupações.</li>
+<li>Automatizando funcionalidades comuns: Um framework fornece mecanismos para soluções automatizadas para as funcionalidades mundanas do domínio.</li>
+</ul>
+<br>
+</section>
+<section id="pqusefrm">
+<h2>Por que usar um Framework?</h2>
+
+<p>Embora o Java EE faça um ótimo trabalho de padronização da infraestrutura corporativa e de fornecimento de um modelo de aplicativo, existem alguns problemas importantes associados a ele.</p>
+<br>
+<ul>
+<li>A interação direta com os componentes Java EE geralmente resulta em código clichê massivo e até em redundância de código.</li>
+<li>Você precisa escrever um código para lidar com problemas comuns no domínio do negócio.</li>
+<li>Você precisa escrever um código para resolver problemas de domínio arquitetural.</li>
+</ul>
+<br>
+
+<p>Você pode rolar seu próprio framework para resolver os problemas associados à criação de aplicativos da Web baseados em Java EE usando padrões OO e padrões Java EE. Mas escrever um framework interno implica esforços ortogonais aos objetivos de negócios do aplicativo; além disso, é improvável que o framework interno seja atualizado e as novas versões do framework interno nunca verão o sol, ao contrário dos frameworks convencionais que evoluem continuamente em vez de cair na entropia arquitetônica. Com isso em mente, é hora de examinar algumas das estruturas da Web baseadas em JVM disponíveis (consulte a Tabela a seguir). Esta tabela está longe de ser exaustiva; uma infinidade de estruturas está disponível.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Web Frameworks</th><th>Categoria</th><th>Linguagem</th><th>Download</th></tr>
+<tr><td>Struts 2</td><td>Framework baseado em solicitação</td><td>Java</td><td>http://struts.apache.org/
+download.cgi#struts2314</td></tr>
+<tr><td>Spring Web MVC</td><td>amework baseado em solicitação</td><td>Java</td><td>www.springsource.org/springcommunity-download</td></tr>
+<tr><td>JSF 2</td><td>Framework baseado em componentes</td><td>Java</td><td>www.oracle.com/technetwork/java/
+javaee/downloads/index.html</td></tr>
+</table>
+</div>
+<br>
+<p>Todas os frameworks da Web listadas na Tabela seguem a arquitetura MVC Model-2, o padrão arquitetural básico que você aprendeu anteriormente. Em um aplicativo Web típico, há várias tarefas que você deseja executar para cada solicitação recebida, como criptografia. Um único controlador para o aplicativo Web permite centralizar todas as tarefas que o controlador deve executar em um aplicativo Web, como o seguinte:</p>
+<br>
+
+<ul>
+
+<li>Centralizando a lógica para despachar solicitações para visualizações</li>
+<li>Verificando se o usuário que solicita uma operação possui autorização válida</li>
+</ul>
+<br>
+
+<p>À medida que o aplicativo Web baseado no MVC aumenta, com mais e mais visualizações a serem exibidas, o controlador no modelo de aplicativo MVC se torna um objeto de procedimento que toma muitas decisões para renderizar essas visualizações. Esse problema pode ser atenuado usando o front controller e os metadados de configuração, em vez de usar a arquitetura MVC pura.</p>
+<p><b>Na figura MVC com Front controller.</b></p>
+<br>
+<img src="imagens\jee7\mvcfront.jpg">
+<br>
+<p>Quando a solicitação HTTP chega do cliente, o front controller consulta o arquivo de metadados de configuração para decidir sobre o controlador de aplicativo correto que deve lidar com a solicitação HTTP. O controlador de aplicativo consiste nas invocações da lógica de negócios e nos controles da lógica de apresentação para a solicitação HTTP. A diferença entre usar o MVC puro e o padrão Front Controller com MVC é que o servlet do front controller pesquisa os metadados de configuração para descobrir o controlador de aplicativo que manipula o Processamento de solicitação HTTP em vez de decidir chamar objetos específicos do manipulador de solicitação HTTP.</p>
+<br><p>Em essência, esse é o padrão comum a muitos frameworks líderes da Web. Por exemplo, o Struts 2 e o Spring Web MVC são frameworks MVC baseadas em fron controller que delegam o controle ao
+controlador de aplicativo usando metadados de configuração armazenados em, por exemplo, um arquivo XML. No Struts 2, o ServletFilter é uma manifestação do front controller na . No JSF 2, é o FacesServlet; no Spring Web MVC, é DispatcherServlet.</p>
+</section>
+<p class="nav-arq" id="referencia"> Melhores Práticas<a href="mlpraticasjee.html">&laquo; anterior | <a href="webstrut.html">próximo >> Web Struts 2 &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/praticarecomendada" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+

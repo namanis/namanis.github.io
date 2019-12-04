@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+   <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+   <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+
+
+<!-- Top Navigation Menu -->
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+   <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+   <a class="w3-bar-item w3-button" href="#mlpratica" >20- PRÁTICAS RECOMENDADAS JAVA EE WEB</a>
+          <a class="w3-bar-item w3-button" href="#ataual">Se Atualizando</a>
+          <a class="w3-bar-item w3-button"href="#solpratic">Soluções práticas recomendadas: Usando EL e JSTL</a>
+          <a class="w3-bar-item w3-button"href="#expresslang">Expression Language</a>
+          <a class="w3-bar-item w3-button"href="#literal">Literais</a>
+          <a class="w3-bar-item w3-button"href="#palreserv">Palavras reservadas</a>
+          <a class="w3-bar-item w3-button" href="#operel">Operadores EL</a>
+          <a class="w3-bar-item w3-button"href="#oparitm">Operadores Aritmético</a>
+          <a class="w3-bar-item w3-button" href="#oprelacion">Operadores Relacionais</a>
+          <a class="w3-bar-item w3-button"href="#oplogico">Operadores Lógico</a>
+          <a class="w3-bar-item w3-button"href="#usarel">Usando EL</a>
+          <a class="w3-bar-item w3-button"href="#operadores">Os Operadores . e []</a>
+          <a class="w3-bar-item w3-button"href="#dentcolch">Dentro dos Colchetes</a>
+          <a class="w3-bar-item w3-button" href="#objimplicito">Objetos Implícito EL </a>
+          <a class="w3-bar-item w3-button"href="#usaobjimplel">Usando Objetos Implicitos EL</a>
+
+           <a class="w3-bar-item w3-button" href="#accessrequest">Acessando parâmetros de solicitação</a>
+          <a class="w3-bar-item w3-button"href="#accessheader">Acessando o cabeçalho(Header)</a>
+          <a class="w3-bar-item w3-button"href="#accessscop">Acessando um atributo de Escopo</a>
+          <a class="w3-bar-item w3-button"href="#jstl">JSTL</a>
+          <a class="w3-bar-item w3-button"href="#actiongen">Ação de propósito Geral</a>
+          <a class="w3-bar-item w3-button" href="#actionout">A Ação &ltc:out></a>
+          <a class="w3-bar-item w3-button"href="#definition">Definindo a propriedade de um objeto de destino especificado</a>
+          <a class="w3-bar-item w3-button" href="#actioncatch">A Ação &ltc:catch></a>
+          <a class="w3-bar-item w3-button"href="#condition">Condicionais</a>
+          <a class="w3-bar-item w3-button"href="#actionif">A Ação &ltc:if></a>
+          <a class="w3-bar-item w3-button"href="#actions">As ações &ltc:choose>, &ltc:when>, &ltc:otherwise></a>
+          <a class="w3-bar-item w3-button"href="#loopitera">Looping e Iteração</a>
+          <a class="w3-bar-item w3-button" href="#actionfor">A ação &ltforEach></a>
+          <a class="w3-bar-item w3-button"href="#actionfortok">A Ação &ltc:forTokens></a>
+
+
+          <a class="w3-bar-item w3-button" href="#actionrelurl">Ações Relacionando URL</a>
+          <a class="w3-bar-item w3-button"href="#actimport">A Ação &ltc:import></a>
+          <a class="w3-bar-item w3-button"href="#actparam">A Ação &ltc:param></a>
+          <a class="w3-bar-item w3-button"href="#acturl">A Ação &ltc:url></a>
+          <a class="w3-bar-item w3-button"href="#actredirect">A Ação &ltc:redirect></a>
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+     
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class=" w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA EE </h1>
+</header>
+
+<section id="mlpratica">
+<h1>Práticas recomendadas no desenvolvimento Java EE Web </h1>
+<br>
+<h4>Um breve de como surgiu</h4>
+<p>Um arquiteto chamado Christopher Alexander observou que os arquitetos tendem a resolver os mesmos problemas mais ou menos da mesma maneira. Essa percepção o levou a escrever um livro de padrões de design para arquitetos.
+Ele refletiu neste livro: “Um padrão de design descreve um problema que ocorre repetidamente e, em seguida, descreve o núcleo da solução para esse problema, de maneira que você possa usar essa solução um milhão de vezes, sem fazê-lo da mesma maneira duas vezes.</p><br>
+
+<p>Em 1994, o livro Design Patterns: Elements of Reusable Oriented Object Oriented, de Erich Gamma, Richard Helm, Ralph Johnson e John Vlissides (Addison-Wesley, 1994) (a “A Gang dos Quatro "ou" GoF "), aplicaram as idéias de Alexander ao software. Este livro expôs padrões de OO e introduziu uma onda de soluções de práticas recomendadas, abordando vários requisitos de design que surgiram ao longo dos anos com uma estratégia de design reutilizável entre aplicativos.</p><br>
+
+<p>À medida que os sistemas de servidores cresciam, surgia uma infraestrutura corporativa como o Java EE que fornecia abstrações de tecnologias e serviços. No entanto, o uso do Java EE não leva naturalmente à arquitetura e design das melhores práticas. John Crupi, Dan Malks e Deepak Alur estabeleceram primeiro os padrões de design do Java EE com base em sua experiência na arquitetura de sistemas corporativos.</p>
+<br>
+<p>A aplicação desses padrões de design do Java EE ao desenvolvimento de um aplicativo baseado em Java EE é necessária para alcançar a arquitetura e o design das melhores práticas. Dito isto, garantir a arquitetura e o design das melhores práticas não é suficiente para garantir software extensível e reutilizável. Mesmo com os padrões de design do Java EE em vigor, um projeto de software é frequentemente afetado por um fenômeno chamado entropia, uma medida do grau de desordem. De acordo com a Segunda Lei da Termodinâmica, tudo no universo se move da baixa entropia (um estado de ordem) para a alta entropia (desordem) e eventual caos. Tudo na natureza está sujeito a essa lei da física, e a natureza lida com essa lei irrevogável por meio da evolução.</p>
+<br>
+<p>Um projeto de software muitas vezes tende a passar de baixa entropia para alta entropia e, para lidar com o estado desordenado, ele precisa continuar evoluindo. Isso não quer dizer que a evolução do seu projeto substitua o gerenciamento e as metodologias do projeto; apesar do gerenciamento de projetos mais sofisticado, das metodologias mais precisas e de uma equipe com um senso de estilo aguçado, um projeto de software pode cair em um estado de alta entropia. A Figura abaixo apresenta as etapas evolutivas na camada da web do Java EE que ajudam a lidar com a entropia em projetos de software.</p>
+
+<br>
+<img src="imagens\jee7\evjavaee.jpg">
+<br>
+<p>Como você pode ver na Figura, não apenas as tecnologias na camada da web Java EE evoluíram, mas novas são adicionadas a cada nova versão. Se você ainda estiver usando o J2EE 1.4, por exemplo, não terá o EL (EL 2.1) unificado em sua caixa de ferramentas. É essencial acompanhar a evolução de qualquer tecnologia para não cair no eventual estado de alta entropia que pode afetar qualquer projeto de software.</p>
+<p>Esta sessão elucida a importância de evoluir gradualmente um projeto com quaisquer novas tecnologias disponíveis a cada novo release do Java EE e usá-las para lidar com alta entropia no projeto. E Discute também a importância dos padrões Java EE e explica como os aplicativos da Web podem ser reutilizáveis, manteníveis e extensíveis usando padrões da camada da Web Java EE.</p>
+</section>
+<section id="ataual">
+<h4>Se Atualizando</h4>
+<p>Antes a plataforma era conhecida como Java 2 Platform, Enterprise Edition ou J2EE da versão 1.2, até o nome ser alterado para Java Platform, Enterprise Edition ou Java EE na versão 1.5. A versão atual é chamada Jakarta EE 8.</p>
+
+<ul>
+    <li>J2EE 1.2 (12 de dezembro de 1999)</li>
+    <li>J2EE 1.3 (24 de setembro de 2001)</li>
+    <li>J2EE 1.4 (11 de novembro de 2003)</li>
+    <li>Java EE 5 (11 de maio de 2006)</li>
+    <li>Java EE 6 (10 de dezembro de 2009)</li>
+   <li> Java EE 7 (28 de maio de 2013,[3] - 5 de abril de 2013 de acordo com o documento de especificação)</li>
+    <li>Java EE 8 (31 de Agosto de 2017)</li>
+    <li>Jakarta EE 8 (September 10, 2019) - fully compatible with Java EE 8</li>
+</ul>
+
+<p>O Java EE foi mantido pela Oracle sob o Java Community Process. Em 12 de setembro de 2017, a Oracle Corporation anunciou que enviaria o Java EE para a Eclipse Foundation. O projeto de nível superior do Eclipse foi nomeado <b>Eclipse Enterprise for Java (EE4J)</b>. A Eclipse Foundation foi forçada a alterar o nome do Java EE porque a Oracle possui a marca registrada para o nome "Java".  Em 26 de fevereiro de 2018, foi anunciado que o novo nome do Java EE será Jakarta EE.</p>
+<br>
+
+
+
+
+
+<p>Na tentativa de limitar a área de cobertura dos contêineres da Web, tanto em termos físicos quanto conceituais, foi criado o perfil da Web, um subconjunto das especificações do Java EE. O perfil da web Java EE compreende o seguinte:</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+
+<tr><th>Especificação</th><th>Java EE 6</th><th>Java EE 7</th><th>Java EE 8</th></tr>
+<tr><td>Servlet</td><td>3.0</td><td>3.1</td><td>4.0</td></tr>
+<tr><td>JavaServerPages(JSP)</td><td>2.2</td><td>2.3</td><td>2.3</td></tr>
+<tr><td>Unified Expression Language (EL)</td><td>2.2</td><td>3.0</td><td>3.0</td></tr>
+<tr><td>Debugging Support for Other Languages (JSR-45)</td><td>1.0</td><td>1.0</td><td>1.0</td></tr>
+<tr><td>JavaServer Pages Standard Tag Library (JSTL)</td><td>1.0</td><td>1.2</td><td>1.2</td></tr>
+<tr><td>JavaServer Faces (JSF)</td><td>2.0</td><td>2.2</td><td>2.3</td></tr>
+<tr><td>Java API for RESTful Web Services (JAX-RS)</td><td>1.0</td><td>2.0</td><td>2.1</td></tr>
+<tr><td>Java API for WebSocket (WebSocket)</td><td>n/a</td><td>1.0</td><td>1.1</td></tr>
+<tr><td>Java API for JSON Processing (JSON-P)</td><td>n/a</td><td>1.0</td><td>1.1</td></tr>
+<tr><td>Common Annotations for the Java Platform (JSR-250)</td><td>1.1</td><td>1.2</td><td>1.3</td></tr>
+<tr><td>Enterprise JavaBeans (EJB)</td><td>3.1 Lite</td><td>3.2 Lite</td><td>3.2</td></tr>
+<tr><td>Java Transaction API (JTA)</td><td>1.1</td><td>1.2</td><td>1.2</td></tr>
+<tr><td>Java Persistence API (JPA)</td><td>2.0</td><td>2.0</td><td>2.1</td></tr>
+<tr><td>Bean Validation</td><td>1.0</td><td>1.1</td><td>2.0</td>
+</tr>
+<tr><td>Managed Beans</td><td>1.0</td><td>1.0</td><td>1.0</td></tr>
+<tr><td>Interceptors</td><td>1.1</td><td>1.2</td><td>1.2</td></tr>
+<tr><td>Contexts and Dependency Injection for the Java EE Platform</td><td>1.0</td><td>1.1</td><td>2.0</td></tr>
+<tr><td>Dependency Injection for Java</td><td>1.0</td><td>1.0</td><td>1.0</td></tr>
+</table>
+</div>
+<br>
+<p>A seguir, a próxima seção mostra como as estruturas da Web o dispensam do uso de padrões de camadas da Web Java EE, fornecendo soluções práticas recomendadas prontas para uso.</p>
+</section>
+<section id="solpratic">
+<h2>Soluções práticas recomendadas: Usando EL e JSTL</h2>
+
+<p>A Sun lançou a especificação Servlet em 1998. O único objetivo dos servlets era ajudar o servidor da Web Java a gerar conteúdo dinâmico para o cliente. O código abaixo ilustra como era o primeiro servlet.</p>
+<br>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+
+<pre class="brush:java">
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class Hello extends HttpServlet {
+public void doGet(HttpServletRequest req, HttpServletResponse res)
+throws ServletException, IOException {
+res.setContentType ("text/html");
+PrintWriter out = res.getWriter();
+out.println("&ltHTML>");
+out.println("&ltHEAD>&ltTITLE>Hello World&lt/TITLE>&lt/HEAD>");
+out.println("&ltBODY>");
+out.println("&ltBIG>Hello World&lt/BIG>");
+out.println("&lt/BODY>&lt/HTML>");
+}
+}
+</pre>
+
+
+<p>Servlets funcionaram bem na geração dinâmica de conteúdo, mas tiveram um grande problema. A visualização foi conectada ao servlet, como você pode ver nas linhas 13 a 17 . Para resolver esse problema, o JSP nasceu. O JSP remove a necessidade de conectar o código de visualização ao código de lógica de negócios. Essa separação da preocupação de visualização da preocupação de lógica de negócios depende dos atributos que serão mostrados nos codigos seguintes.</p>
+<p><b>Usando atributos para separação de código de apresentação(visualização) e do negócio (servlet)</b></p>
+<pre class="brush:java">
+public void doPost(HttpServletRequest request, HttpServletResponse response)
+throws IOException, ServletException {
+String name = request.getParameter("userName");
+request.setAttribute("name", name);
+RequestDispatcher view = request.getRequestDispatcher("/result.jsp");
+view.forward(request, response);
+}
+</pre>
+<br>
+<ul>
+<li><b>Linha 3</b>: recupera o nome do usuário da solicitação.</li>
+</li><b>Linha 4</b>: define o userName como um atributo na solicitação.</li>
+<li><b>Linha 5</b>: Isso recupera o RequestDispatcher da solicitação.</li>
+<li><b>Linha 6</b>: encaminha para a exibição, passando a solicitação e o objeto de resposta. Observe que este objeto de solicitação possui um atributo definido para o nome do usuário. A visualização agora pode fazer uso desse atributo.</li>
+</ul>
+<br>
+<p><b>O primeiro JSP</b></p>
+<pre class="brush:html">
+&lthtml>&ltbody> Ola
+<%= request.getAttribute("name") %>
+&lt/body>&lt/html>
+&lthtml>
+&ltbody>
+<% User u = (User) request.getAttribute("user"); %>
+User is: <%= u.getName() %>
+&lt/body>
+&lt/html>
+</pre>
+
+<p>A separação da visualização da lógica de negócios depende dos atributos. O JSP, dessa maneira, resolveu o problema da apresentação da lógica de negócio cruzada nos servlets. Mas como você pode ver no codigo abaixo, com os scriptlets (código Java) misturados no código de apresentação (JSP), agora a lógica de negócios cruza a preocupação da apresentação.</p>
+
+<pre class="brush:java">
+&lt% User u = new User(); %>
+User is: <%= u.getName() %>
+</pre>
+<br>
+<ul>
+
+<li><b>Linha 1</b>: O scriptlet cria uma instância de uma classe chamada Usuário.</li>
+<li><b>Linha 2</b>: gera o nome do usuário usando Expressão.</li>
+</ul>
+<br>
+
+<p>O que deu errado? Scriptlets e expressões trouxeram o código Java para o JSP. Antes do JSP, o código da apresentação cruzava o código de négócio. Com o JSP, o código de négócio  cruza o código da apresentação. Portanto, o JSP, inadvertidamente, não resolveu nada, mas virou o problema de cruzar a lógica de negócios e apresentação de cabeça para baixo. O scriptlet e a expressão no código anterior podem realmente ser facilmente substituídos por ações padrão JSP (&ltuseBean>), como mostra o próximo exemplo.</p>
+<p><b>Usando linguagem de expressão e ação padrão JSP</b></p>
+<pre class="brush:java">
+&ltjsp:useBean id="user" class="br.com.alpi.User"/>
+User is: ${user.name}</pre>
+
+<p>
+Este exemplo faz a mesma coisa que o anterior, mas sem usar nenhum código Java dentro da página JSP.</p>
+<br>
+<ul>
+<li><b>Linha 1</b>: essa linha cria a instância da classe User usando uma ação JSP padrão.</li>
+<li><b>Linha 2</b>: esta linha apresenta o recurso principal da Expression Language chamado expressão EL, que substitui o elemento de script denominado expression. A sintaxe mostrada na linha 2 será discutida em mais detalhes nas seções a seguir.</li>
+</ul>
+<br>
+
+<p>As ações padrão do JSP são, em geral, muito limitadas e, consequentemente, os desenvolvedores tiveram que recorrer ao uso de scriptlets para criar aplicativos da Web ricos em funções. O uso do código Java na forma de scriptlets no JSP leva a páginas JSP não mantidas. Como resultado, a especificação JSP evoluiu para suportar páginas JSP livres de Java. Esse suporte repousa principalmente na JSP Expression Language(EL) e na JSP Standard Tag Library(JSTL). Nas seções a seguir, examinaremos mais de perto o EL e o JSTL.</p>
+</section>
+<section id="expresslang">
+<h3>Expression Language</h3>
+<p>JSP sem Expression Language é um caos. O princípio subjacente da Expression Language é fornecer componentes JSP sem script. A linguagem de expressão é usada de duas maneiras.</p>
+<br>
+<ul>
+
+<li>Para recuperar objetos de atributos com escopo definido. Esses objetos são JavaBeans, mapas, arrays e listas que foram armazenadas como atributos em qualquer um dos quatro escopos . O EL pesquisa os atributos primeiro no menor escopo, que é o escopo da página; depois em solicitação e sessão; e finalmente no maior escopo, que é o escopo do aplicativo</li>.
+<li>Para acessar parâmetros de solicitação, cabeçalhos de solicitação, cookies, parâmetros de inicialização de contexto e objetos pageContext<li>
+</ul>
+<br>
+<p>Uma expressão EL é formada usando a construção <b>${expr}</b> ou <b>#{expr}</b>. Mesmo que ambas as construções sejam avaliadas da mesma maneira pelo EL, a construção <b>${expr}</b> é usada para avaliação imediata e a construção <b>#{expr}</b> é usada para avaliação adiada.</p>
+<br>
+<ul>
+<li><b>Avaliação imediata</b>: a expressão é compilada quando a página JSP é compilada e é executada quando a página JSP é executada.</li>
+<li><b>Avaliação adiada</b>: a expressão não é avaliada até que seu valor seja necessário pelo sistema</li>
+</ul>
+<br>
+
+<p>Nas seções a seguir, você examinará a sintaxe do EL e as palavras reservadas do idioma e verá como usá-lo em uma página JSP. Depois de aprender o básico, você aprenderá como usar o EL para ler valores do JavaBeans e, na seção final, aprenderá como usar as funções do EL.</p>
+</section>
+<section id="literal">
+<h3>Literais</h3>
+
+<p>Um literal EL pode ser dos seguintes tipos: Booleano, inteiro, ponto flutuante, string ou nulo. A Tabela abaixo mostra os valores válidos para cada tipo literal.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Tipo Literal</th><th>Valor Literal Valido</th></tr>
+<tr><td>Boolean</td><td>true ou false</td></tr>
+<tr><td>Integer</td><td>-11, 0, 12345</td></tr>
+<tr><td>Ponto flutuante </td><td>4.22 - -8.05 -1.0E25 </td></tr>
+<tr><td>String</td><td>Ambos validos: "Ola" e 'Ola'</td></tr>
+<tr><td>Null</td><td>null</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="palreserv">
+<h3>Palavras reservadas</h3>
+
+<p>Como em qualquer outro idioma, o EL possui palavras reservadas e não devem ser usadas como identificadores. A Tabela abaixo lista as palavras reservadas em EL. </p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><td>and</td><td>eq</td><td>gt</td><td>true</td></tr>
+<tr><td>instanceof</td><td>or</td><td>ne</td><td>le</td></tr>
+<tr><td>false</td><td>empy</td><td>not</td><td>lt</td></tr>
+<tr><td>ge</td><td>null</td><td>div</td><td>mod</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="operel">
+<h3>Operadores EL</h3>
+
+<p>As operações EL são necessárias para manipular manipulações de dados. O EL suporta vários operadores, como relacionais, aritméticos, lógicos e outros.</p>
+</section>
+<section id="oparitm">
+<h4>Operadores Aritmético</h4>
+
+<p>O código abixo ilustra alguns desses operadores. Você pode usar esse código em um arquivo JSP e executá-lo no servidor. </p>
+
+<pre class="brush:html">
+&lttable border="1">
+&lttr>
+&lttd>&ltb>Arithmetic Operator&lt/b>&lt/td>
+&lttd>&ltb>Boolean Result&lt/b>&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}2 + 2 }&lt/td>
+&lttd>${2 + 2}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}2 - 2 }&lt/td>
+&ltd>${2 - 2}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}2 * 2 }&lt/td>
+&lttd>${2 * 2}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}2 / 2 }&lt/td>
+&lttd>${2 / 2}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}2 mod 2 }&lt/td>
+&lttd>${2 mod 2}&lt/td>
+&lt/tr>
+&lt/table>
+</pre>
+
+<img src="imagens\jee7\oparitmetico.jpg">
+</section>
+<section id="oprelacion">
+<h3>Operadores Relacionais</h3>
+<p>Esses operadores incluem ==,! =, <,>, <=,> =, Eq, ne, lt, gt, le e ge.</p>
+<p>O código a seguir ilustra todos esses operadores. Você pode usar esse código em um arquivo JSP e executá-lo no servidor. A saída é ilustrada na Figura logo após o código abaixo.</p>
+
+<pre class="brush:html">
+&lttable border="1">
+&lttr>
+&lttd>&ltb>Relational Operator&lt/b>&lt/td>
+&lttd>&ltb>Boolean Result&lt/b>&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 &lt ; 20}&lt/td>
+&lttd>${10 < 20}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 &gt ; 20}&lt/td>
+&lttd>${10 > 20}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 &gt ;= 10}&lt/td>
+&lttd>${10 >= 10}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 &lt ;= 10}&lt/td>
+&lttd>${10 <= 10}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 == 10}&lt/td>
+&lttd>${10 == 10}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 != 20}&lt/td>
+&lttd>${10 != 20}&lt/td>
+&lt/tr>
+&lttr>
+&lttr>
+&lttd>${'${'}10 lt 20}&lt/td>
+&lttd>${10 lt 20}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 gt 20}&lt/td>
+&lttd>${10 gt 20}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 le 10}&lt/td>
+&lttd>${10 le 10}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 ge 10}&lt/td>
+&lttd>${10 ge 10}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 eq 10}&lt/td>
+&lttd>${10 eq 10}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}10 ne 20}&lt/td>
+&lttd>${10 ne 20}&lt/td >
+&lt/tr>
+&lt/table>
+</pre>
+<br>
+<img src="imagens\jee7\operatorrel.jpg">
+<br>
+</section>
+<section id="oplogico">
+<h3>Operadores Lógico</h3>
+
+<p>Logo abaixo ilustramos os operadores lógicos como <b>&&, || </b> e o operador <b>not</b> em ação. Você pode usar esse código em um arquivo JSP e executá-lo no servidor. A saída é ilustrada na Figura a seguir.</p>
+<pre class="brush:html">
+&lttable border="1">
+&lttr>
+&lttd>&ltb>Logical Operator&lt/b>&lt/td>
+&lttd><b>Result</b>&lt/td>
+ &lt/tr>
+&lttr>
+&lttd>${'${'}true && false}&lt/td>
+&lttd>${true && false}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}true || false}&lt/td>
+&lttd>${true || false}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${'${'}not true}&lt/td>
+&lttd>${not true}&lt/td>
+&lt/tr>
+&lt/table>
+</pre>
+<br>
+<img src="imagens\jee7\oplogico.jpg">
+<br>
+
+</section>
+<section id="usarel">
+<h3>Usando EL</h3>
+
+<p>Nesta seção, você criará um aplicativo simples com base no modelo de nosso aplicativo BookStore.
+Isso não apenas mostrará como usar o EL, mas também demonstrará seu significado. A Figura a seguir ilustra o relacionamento entre Book e Author no aplicativo, implementado nas Listagens dos códigos seguinte.</p>
+<br>
+<img src="imagens\jee7\relacionamento.jpg">
+<br>
+<pre class="brush:java">
+//Author.java
+package br.com.alpi.bookweb.model;
+
+public class Author {
+private String name;
+
+public String getName() {
+return name;
+}
+
+public void setName(String name) {
+this.name = name;
+}
+
+}
+</pre>
+<br>
+<pre class="brush:java">
+ // Book.java
+package br.com.alpi.bookweb.model;
+
+public class Book {
+
+private String bookTitle;
+private Author author;
+
+public String getBookTitle() {
+return bookTitle;
+}
+
+public void setBookTitle(String bookTitle) {
+this.bookTitle = bookTitle;
+}
+
+public Author getAuthor() {
+return author;
+}
+
+public void setAuthor(Author author) {
+this.author = author;
+}
+
+}
+</pre>
+
+<p>O objetivo do aplicativo é mostrar como acessar a propriedade de um atributo (a propriedade bookTitle de Book na Figura acima) e a propriedade de um atributo que é ele próprio uma propriedade do atributo (a propriedade name de Author na Figura) Você precisa exibir o valor da propriedade name do Author. Não é possível fazer isso usando ações padrão JSP, como você verá mais adiante nesta seção e, nesses casos, scriptlets foram usados. Foi assim que os scriptlets chegaram ao JSP. No entanto, você não deve usar scriptlets porque, com os scriptlets (código Java) misturados no código de apresentação (JSP); a lógica de negócios cruza a preocupação da apresentação, resultando em JSP não sustentável, conforme explicado anteriormente. Como as ações padrão JSP não podem acessar as propriedades de um atributo que é em si uma propriedade de um atributo e porque o uso de scriptlets resulta em JSPs não mantíveis, você deve usar o EL. Nesta seção, você aprenderá como usar o EL com a ajuda de um exemplo em que a classe Author é propriedade da classe Book. A Figura  mostra a relação entre Book e Autor.
+Você acessará a propriedade name de Author do Book sem usar scriptlets.
+</p>
+
+<p>O codigo <b>Author.java</b> ilustra o objeto <b>Author</b> com uma única propriedade chamada <b>name</b> com <b>getters</b> e <b>setters</b>.
+Você precisa gerar o valor da propriedade <b>name</b> de <b>Author</b>.</p>
+<p>O código <b>Book.java</b> ilustra o objeto <b>Book</b> com duas propriedades, <b>bookTitle</b> e <b>author</b>b, e seus <b>getters</b> e <b>setters</b>. A propriedade <b>author</b> em <b>Book</b> é a classe <b>Author</b>, ilustrada anteriormente no código <b>Author.java</b>. Você precisa acessar a propriedade <b>name</b> da propriedade <b>author</b>.</p>
+<p>Os objetos <b>Book</b> e <b>Author</b> servem como modelo do aplicativo MVC. O código a seguir  ilustra o controlador do aplicativo.</p>
+<pre class="brush:java">
+//BookController.java
+package br.com.alpi.bookweb.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.com.alpi.bookweb.model.Author;
+import br.com.alpi.bookweb.model.Book;
+
+public class BookController extends HttpServlet {
+
+protected void doGet(HttpServletRequest request,
+HttpServletResponse response) throws ServletException, IOException {
+Book book = new Book();
+book.setBookTitle("Learning Java Web");
+Author author = new Author();
+author.setName("Vishal Layka");
+book.setAuthor(author);
+
+request.setAttribute("bookAttrib", book);
+
+RequestDispatcher view = request.getRequestDispatcher("/book.jsp");
+view.forward(request, response);
+}
+
+}
+</pre>
+
+<p>O código <b>BookController.java</b> é a parte do controlador do padrão MVC. Como você aprendeu anteriormente, a separação entre a preocupação de visualização e a lógica de negócios depende dos atributos. Portanto, você deve salvar o objeto de modelo nos atributos para a visualização (JSP) para poder acessar o modelo por meio de atributos.</p>
+<br>
+<ul>
+<li><b>Linhas 19 a 22</b>: nessas linhas, você define as propriedades <b>bookTitle</b> e <b>author</b> do <b>Book</b>. Observe que a propriedade <b>name</b> de <b>Author</b> já está definida na linha 21.</li>
+<li><b>Linha 23</b>: define a propriedade <b>author</b> de <b>Book</b>.</li>
+<b>Linha 25</b>: define o objeto <b>Book</b> como um atributo na solicitação.</li>
+<li><b>Linhas 27 a 28</b>: A linha 27 agora deve ser familiar para você. Nesta linha, você envia a solicitação para <b>book.jsp</b>.</li>
+</ul>
+<br>
+<p>O código a seguir fornece o descritor de implementação para este aplicativo.</p>
+
+<pre class="brush:xml">
+ &lt?xml version="1.0" encoding="UTF-8"?>
+&ltweb-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+<display-name>capitulo3</display-name>
+<servlet>
+<servlet-name>BookController</servlet-name>
+<servlet-class>com.alpi.capitulo3.controller.BookController</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>BookController</servlet-name>
+<url-pattern>/book</url-pattern>
+</servlet-mapping>
+<welcome-file-list>
+<welcome-file>index.html</welcome-file>
+</welcome-file-list>
+&lt/web-app>
+</pre>
+
+<p>
+Agora, o único componente principal que está faltando nesse aplicativo Web é a página JSP, que é onde o código EL é realmente gravado. Antes de chegarmos à página JSP, examinaremos os dois principais operadores fornecidos pelo EL para acessar dados encapsulados: os operadores<b>[]</b> e <b>.</b> (Também chamados de pontos). Depois de aprender sobre os operadores <b>[]</b> e <b>.</b>, Você poderá escrever <b>book.jsp</b>. A Figura abaixo ilustra a estrutura de diretórios do aplicativo.</p>
+
+<img src="imagens\jee7\tabelajsp1.png">
+</section>
+<section id="operadores">
+<h2>Os Operadores . e []</h2>
+
+<p>Usar a notação. É um atalho para acessar a propriedade de um objeto. O operador de ponto  é mostrado no no trecho de cáodigo a seguir.</p>
+<pre class="brush:java">
+&ltjsp:useBean id="user" class="com.alpi.User"/>
+User is: ${user.name}
+</pre>
+
+<ul>
+<li><b>Linha 1</b>: Na Linha 1, a classe User é criada usando a ação &ltjsp: useBean>. O usuário foi definido como o atributo requestat no código do servlet.</li>
+<li><b>Linha 2</b>: Na Linha 2, o valor do nome, que é uma propriedade do objeto Usuário, é acessado usando $ {user.name}.</li>
+</ul>
+<p>A variável user na expressão <b>${user.name}</b> é um atributo armazenado no escopo da solicitação. A variável na expressão <b>EL</b> à qual o operador de ponto é aplicado pode ser de dois tipos.
+</p>
+<br>
+<ul>
+	<li>Um atributo que é armazenado em qualquer um dos quatro escopos, como neste caso.</li>
+    <li>Um objeto implícito do EL, conforme explicado mais adiante.</li>
+    </ul>
+    <br>
+    <p>Se essa variável é um objeto implícito do EL ou um atributo armazenado em qualquer um dos quatro escopos, pode ser um JavaBean ou um mapa. No trecho de código anterior, essa variável é um <b>JavaBean</b> que foi definido como um atributo no escopo do pedido e, portanto, <b>name</b> é a propriedade do <b>JavaBean</b> referenciado pelo usuário da variável. Se a variável do usuário fosse um mapa definido como um atributo em qualquer um dos quatro escopos, o nome seria a chave do mapa.</p><br>
+
+    <p><i>A variável na expressão EL à qual o operador de ponto é aplicado pode ser um conjunto de atributos em qualquer um dos quatro escopos ou um objeto implícito no EL. Além disso, independentemente de essa variável ser um atributo definido em qualquer um dos quatro escopos ou ser um objeto implícito do EL, pode ser um JavaBean ou um Map. Se a variável for um JavaBean, será seguida por sua propriedade logo após o operador ponto; se a variável for um Map, ela será seguida por sua chave logo após o operador de ponto.</i></p>
+<br>
+    <p>Portanto, agora deve ficar claro que a variável na expressão EL é um JavaBean ou um Mapa. Mas e se você quiser definir uma array como um atributo em qualquer um dos quatro escopos e acessar seus elementos usando uma expressão EL? Ou, se você quiser definir uma lista como um atributo em qualquer um dos quatro escopos e acessar seus elementos usando uma expressão EL? A resposta está no operador <b>[]</b> fornecido pela EL.</p>
+    <br>
+    <p>O operador <b>[]</b> é usado para acessar arrays, listas, JavaBeans e mapas. Ou seja, a variável à qual o operador <b>[]</b> é aplicado pode ser uma array, lista, JavaBean ou mapa.</p>
+</section>
+<section id="dentcolch">
+<h3>Dentro dos Colchetes</h3>
+    <p>Pode haver um dos seguintes dentro dos colchetes do operador <b>[ ]</b>:</p>
+<br>
+    <ul>
+<li>Um índice com ou sem aspas.<li>
+<li>Um literal String.</li>
+<li>Um objeto implícito do EL ou um atributo em qualquer um dos quatro escopos. O EL implícito
+objeto é explicado mais adiante </li>.
+<li>Uma expressão aninhada.</li>
+   </ul>
+<br>
+
+<p>Se houver um índice com ou sem aspas dentro dos colchetes do operador<b>[ ]</b>, a variável à qual o operador<b>[ ]</b>é aplicado é um array ou uma lista. O código a seguir ilustra como usar o operador <b>[ ]</b> com uma lista ou um array.</p> 
+
+
+<pre class="brush:java">
+algumArray["1"]
+algumArray[1]
+algumList["2"]
+algumList[2]
+</pre>
+
+<p><b>Definindo um array como um atributo no código do servlet</b></p>
+
+<pre class="brush:java">
+ String [] books = {"Clojure", "Groovy ", "Java" , "Scala"} ;
+ request.setAttribute("books", books);
+</pre>
+
+<p><b>Usando este operador []</b></p>
+<pre class="brush:java">
+Book: ${books[0]}
+</pre>
+
+<p>A saída será a seguinte:</p>
+<pre>
+Book: Clojure	
+</pre>
+
+<p>Se houver um literal String dentro dos colchetes do operador<b>[ ]</b>, a variável à qual o operador<b>[]</b> é aplicado é um JavaBean ou um Mapa. A seguir ilustramos o código para definir um Mapa como um atributo no Servlet.</p>
+<p><b>Fragmento de código para definir um mapa como um atributo no código do servlet:</b> </p>
+<pre class="brush:java">
+Map&ltString, String> bookMap = new HashMap&lt>();
+bookMap.put("Groovy", "Beginning Groovy");
+bookMap.put("Java", " Beginning Java");
+bookMap.put("Scala", " Beginning Scala");
+request.setAttribute("books", bookMap);
+</pre>
+<p>No trecho de código a seguir, o EL procura o atributo vinculado aos catálogos de nomes no escopo. No código anterior, <b>books</b> é um Mapa definido no atributo request. Portanto, o EL procura a chave <b>Groovy</b> transmitida no operador <b>[]</b>.</p>
+<p><b>Usando o operador []</b></p>
+<pre class="brush:java">Book : ${books["Groovy"] } </pre>
+<p>A saída mostrada será essa:</p>
+<pre>Book: Beginning Groovy</pre>
+
+<p>Ambos <b>.</b> e o operador <b>[]</b> podem ser usados ​​com JavaBeans ou Maps. Por exemplo, o exemplo anterior pode ser escrito usando o operador <b>.</b>  como mostrado aqui:</p>
+
+<pre class="brush:java">${books.Groovy}</pre>
+
+<p>Se não houver um literal String nem um índice com ou sem aspas dentro dos colchetes do operador <b>[ ]</b> e se o conteúdo dentro dos colchetes do operador <b>[ ]</b>  não for um objeto implícito EL, então o conteúdo é avaliado pesquisando um atributo com esse nome em qualquer um dos quatro escopos. </p>
+
+<p><b> Fragmento de código para definir um mapa como um atributo no código do servlet:</b></p>
+<pre class="brush:java">
+Map&ltString, String > bookMap = new HashMap&lt>();
+bookMap.put("Groovy", "Beginning Groovy");
+bookMap.put("Java", " Beginning Java");
+bookMap.put("Scala", " Beginning Scala");
+request.setAttribute("books", bookMap);
+request.setAttribute("java", "Java");
+</pre>
+<p><b>Usando o operador []</b></p>
+<pre class="brush:java">Book : ${books[java] }</pre>
+
+<p>Vamos ver como a avaliação funciona neste 2 ultimos trechos de código.</p><br>
+
+<ul>
+<li>No código ${books[java]}, o EL procura por um atributo vinculado pelo nome books nos escopos.</li>
+<li>O EL encontra esse atributo no escopo da solicitação, porque os livros foram definidos como um atributo de solicitação na linha 5 .</li>
+<li>O conteúdo do operador <b>[]</b> é java, que não é um literal String nem um objeto implícito EL; portanto, o EL procura por um atributo vinculado pelo nome java nos escopos e o encontra no escopo da solicitação, porque java foi definido como um atributo de solicitação na linha 6 </li>.
+<li>Usando o valor Java de java na linha 6 , a expressão EL agora se torna $ {books ["Java"]}.</li>
+<li>Agora, como o atributo books é um Mapa definido como um atributo de solicitação na linha 5 , o EL procura a chave Java, que está na linha 3 e imprime seu valor conforme mostrado na seguinte saída:
+</ul>
+<br>
+<pre>Book : Beginning Java</pre>
+<p>Se houver uma expressão EL dentro dos colchetes do operador<b>[]</b>, o conteúdo dentro dos colchetes, que é uma expressão EL nesse caso, será avaliado pelas mesmas regras aplicadas a qualquer expressão EL.
+Em outras palavras, se a expressão EL estiver usando o operador de ponto ou o operador <b>[]</b> e se for um operador <b>[]</b>, as mesmas regras explicadas anteriormente serão aplicadas.</p>
+<p><b>Fragmento de código para definir um mapa e uma array como atributos no código do servlet</b></p>
+<pre class="brush:java">
+Map&ltString, String> bookMap = new HashMap&lt>();
+bookMap.put("Groovy", "Beginning Groovy");
+bookMap.put("Java", " Beginning Java");
+bookMap.put("Scala", " Beginning Scala");
+request.setAttribute("books", bookMap);
+
+String[] categories = {"Groovy", "Java", "Scala"};
+request.setAttribute("category", categories);>
+</pre>
+
+<p><b>Expessão EL Aninhada</b></p>
+<pre class="brush:java">Book : ${ books[category[1]] }</pre>
+
+<p>A saída é esta:</p>
+
+<pre>Book : Beginning Java</pre>
+
+<p>Agora que você aprendeu até onde pode ir com os operadores <b>.</b> e <b>[]</b> , é hora de ver por que o EL é tão importante. Agora você verá por que é tão importante concluindo o aplicativo que você começou a criar, especificamente, escrevendo a página JSP. O exemplo a seguir ilustra <b>book.jsp.</b> Esta página JSP usa elementos de script (scriptlets e expressões) e EL. A ideia é comparar os dois, ou seja, elementos scripts e EL.</p>
+<pre class="brush:html">
+<!--book.jsp-->
+&lt%@page import="com.alpi.capitulo3.model.Book"%>
+&lt%@page import="com.alpi.capitulo3.model.Author"%>
+&lt%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+&lt%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+&lthtml>
+&lthead>
+&lt/head>
+&ltbody>
+&lttable border="1">
+&lttr>
+&ltth width= "20px">Description&lt/th>
+&ltth>code&lt/th>
+&ltth>output&lt/th>
+&lt/tr>
+&lt%
+Book book = (Book) request.getAttribute("bookAttrib");
+Author author = book.getAuthor();
+%>
+&lttr>
+&lttd>Author's Name using <b>Scriptlet and Expression</b>
+&lt/td>
+&lttd>${fn:escapeXml("<%= author.getName() %>")}&lt/td>
+&lttd><%=author.getName()%>&lt/td>
+&lt/tr>
+
+&ltjsp:useBean id="bookAttrib" class="com.alpi.capitulo3.model.Book"
+scope="request"/>
+&lttr>
+&lttd>Author's Name using <b> jsp:getProperty action </b>
+&lt/td>
+&lttd>
+&lttable border="1">
+&lttr>
+&lttd>${fn:escapeXml("&ltjsp:getProperty name = \"bookAttrib \" property= \"author \" />")}&lt/td>
+&lt/tr>
+&lttr>
+&lttd>${fn:escapeXml("&ltjsp:getProperty name = \"bookAttrib \" property= \"author.name \" />")}&lt/td>
+&lt/tr>
+&lt/table>
+&lt/td>
+&lttd>
+&lttable border="1">
+&lttr>
+&lttd>&ltjsp:getProperty name="bookAttrib" property="author" />
+&lt/td>
+&lt/tr>
+&lttr>
+&lttd>
+&lt%-- &ltjsp:getProperty name ="bookId" property="author.name" />  este código produzirá exceção de tempo de execução--%>
+Not possible
+&lt/td>
+&lt/tr>
+&lt/table>
+&lt/td>
+&lt/tr>
+&lttr>
+&lttd>Author's Name using<b> EL </b>&lt/td>
+&lttd>${fn:escapeXml("${bookAttrib.author.name}")}&lt/td>
+&lttd>${bookAttrib.author.name&lt/td>
+&lt/tr>
+&lt/table>
+&lt/body>
+&lt/html>
+</pre>
+
+<ul>
+<li>Linha 24: gera o nome do autor usando expressões.</li>
+<li>Linha 50: Isso mostra que não é possível gerar o nome do autor usando uma ação padrão JSP.</li>
+<li>Linha 60: gera o nome do autor usando EL.</li>
+</ul>
+<br>
+<p> A próxima figura ilustra o que você verá quando executar este aplicativo (http://localhost:8080/capitulo3/book). Essencialmente, não é possível exibir o valor da propriedade do nome do Author usando uma ação JSP padrão; os elementos de script teriam sido a única maneira de fazê-lo, se não fosse pela EL.
+</p>
+<p><b>Comparando Scriptlets, Ações Padrão e EL</b></p>
+<br>
+<img src="imagens\jee7\tabelajsp.jpg">
+<br>
+</section>
+<section id="objimplicito">
+<h2>Objetos Implícito EL </h2>
+<p>Os scriptlets têm acesso a vários objetos implícitos da JSP, conforme explicado anteriormente. Esses objetos permitem o acesso a quaisquer variáveis ​​mantidas nos escopos JSP específicos. O EL também fornece seus próprios objetos implícitos chamados objetos implícitos do EL. Objetos implícitos EL não são iguais aos objetos implícitos JSP (exceto para pageContext). Todos esses objetos implícitos do EL são mapas que mapeiam os respectivos nomes de atributos de escopo para seus valores. Por exemplo, usando os objetos implícitos <b>param</b> e <b>paramValues</b>, é possível acessar os parâmetros de solicitação HTTP. A tabela seguinte descreve os objetos implicitos EL.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Obejto implícito</th><th>Decrição</th></tr>
+<tr><td>cookie</td><td>Map:mapeia os nomes dos cookies para um único objeto Cookie. </td></tr>
+<tr><td>header</td><td>Map: contém os valores de cada nome de cabeçalho</td></tr>
+<tr><td>headerValues</td><td>Map: mapeia um nome de cabeçalho para um array de string de todos os valores possíveis para o cabeçalho</td></tr>
+<tr><td>initParam</td><td>Map: mapeia os nomes dos parâmetros de inicialização de contexto para seu valor de parâmetro de sequência</td></tr>
+<tr><td>param</td><td>Map: contém os nomes dos parâmetros para uma página.</td></tr>
+<tr><td>paramValues</td><td>Map: mapeia um nome de parâmetro para um array de string de todos os valores para o parâmetro.</td></tr>
+<tr><td>pageContex</td><td>O objeto PageContext</td></tr>
+<tr><td>applicationScope</td><td>Map: contém todas as variáveis ​​de escopo do aplicativo.</td></tr>
+<tr><td>pageScope</td><td>Map: contém todas as variáveis ​​no escopo da página.</td></tr>
+<tr><td>requestScope</td><td>Map: contém todas as variáveis ​​com escopo da solicitação</td></tr>
+<tr><td>sessionScope</td><td>Map: contém todas as variáveis ​​com escopo da sessão</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="usaobjimplel">
+<h2>Usando Objetos Implicitos EL</h2>
+
+
+<p>Dos objetos implícitos do EL listados na Tabela anterior, o escopo do aplicativo, o <b>pageScope</b>, o <b>requestScope</b> e o <b>sessionScope</b> destinam-se a especificar o escopo. Eles são usados ​​para acessar atributos com escopo, ou seja, para acessar dados do JavaBeans, mapas, arrays e listas que foram armazenadas como atributos em qualquer um dos quatro escopos: página, solicitação, sessão e aplicativo.</p>
+<br>
+<p>Os outros objetos implícitos listados na Tabela são usados ​​para acessar parâmetros de solicitação, cabeçalhos de solicitação, cookies, parâmetros de inicialização de contexto e objetos pageContext. Esta seção ilustra o uso de alguns dos objetos implícitos do EL.</p>
+
+<pre class="brush:html">
+<!--form.jsp-->
+&ltbody>
+&ltform action="books" method="post">
+&ltinput type="hidden" name="action" value="books"/>
+&ltp>Book Title: &ltinput type="text" name="bookTitle">&lt/p>
+&ltp>Author 1 Name: &ltinput type="text" name="authorName">&lt/p>
+&ltp>Author 2 Name: &ltinput type="text" name="authorName">&lt/p>
+
+&ltinput type = "submit"/>
+&lt/form>
+&lt/body>
+</pre>
+</section>
+<section id="accessrequest">
+<h3>Acessando parâmetros de solicitação</h3>
+<p>O código a  seguir ilustra um formulário simples usado para enviar os parâmetros de solicitação por meio de <b>form.jsp</b>. E a a propriedade <b>name</b> da <b>tag &ltinput></b> é a mesma: <b>authorName</b>.</p><br>
+
+<p>O código a seguir ilustra o uso dos objetos implícitos EL <b>param</b> e <b>paramValues</b> ​​para recuperar a soliciação do parâmetro e exibir o resultado na página <b>result.jsp</b>.</p><br>
+<ul>
+<li>Linha 5: usa o parâmetro implícito do objeto EL para obter o título do livro.</li>
+<li>Linha 6 a Linha 7: esse código usa os parâmetros implícitos do objeto EL para obter os nomes Autor 1 e Autor 2.</li>
+</ul><br>
+</section>
+<section id="accessheader">
+<h3>Acessando o cabeçalho(Header)</h3>
+<p>Os objetos implícitos EL <b>header</b> e <b>headerValues</b> ​​fornecem acesso aos valores do cabeçalho que podem ser obtidos usando os métodos <b>request.getHeader()</b> e <b>request.getHeaders()</b>.</p>
+<p>A seguir ilustramos como acessar um cabeçalho chamado user-agent, usando a expressão
+<b>${header.user-agent}</b> ou <b>${header ["user-agent"]}.</b> 
+</p>
+<p><b>Usando Header do objeto implicito de EL</b></p>
+<pre class="brush:html"><span>${header["user-agent"]}</span></pre>
+<p>A saída é assim:</p>
+<pre>Mozilla/5.0 (Windows NT 6.1; rv:12.0) Gecko/20100101 Firefox/12.0</pre>
+<h3>Accessing Cookie</h3>
+<p>O cookie de objeto implícito El nos dá acesso ao cookie. Veja como o cookie armazenado no servlet por este código:</p>
+<pre class="brush:java">
+String userName = "vishal";
+Cookie c = new Cookie("userName", userName);
+c.setPath("/");
+response.addCookie(c);
+</pre>
+<p>Usando um objeto implicito EL para acessar o cookie na página JSP.</p>
+<pre class="brush:java">${cookie.userName.value}</pre>
+</section>
+<section id="accessscop">
+<h3>Acessando um atributo de Escopo</h3>
+<p>O objeto implícito <b>sessionScope</b> fornece acesso ao atributo armazenado no escopo da sessão.</p>
+<p>Veja atrav[es do código o atributo armazenado na sessão em um servlet.</p>
+<pre class="brush:java">
+HttpSession session = request.getSession();
+Book book = new Book();
+book.setBookTitle("Beginning Java");
+session.setAttribute("book", book);
+</pre>
+
+<p> Usando um objeto implícito do EL chamado sessionScope para acessar o título do livro na página JSP:</p>
+<pre class="brush:html"><span>Book title in Session Scope ${sessionScope.book.bookTitle}</span></pre>
+<h2>Funções EL</h2>
+<p>As funções EL permitem chamar o método Java a partir do JSP sem usar scripts. Uma função EL é mapeada para um método estático de uma classe Java. Esse mapeamento é especificado em um descritor de biblioteca de tags (TLD), explicado mais adiante nesta seção. O códiggo a seguir ilustra um método Java simples que retorna a data e hora atuais.</p>
+
+<pre class="brush:java">
+package com.alpi.capitulo3.elfunction;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class Now {
+
+public static String now() {
+Calendar currentDate = Calendar.getInstance();
+SimpleDateFormat formatter = new SimpleDateFormat(
+"yyyy/MMM/dd HH:mm:ss");
+String now = formatter.format(currentDate.getTime());
+
+return now;
+}
+}
+
+</pre>
+
+<p>O principal requisito para que um método Java seja usado em uma função EL é que o método seja público e estático. Os três principais participantes de uma função EL são os seguintes:</p>
+<br>
+<ul>
+<li>Um método Java definido em uma classe.</li>
+<li>Uma página JSP que chama o método Java usando EL.</li>
+<li>Um arquivo descritor da biblioteca de tags que mapeia o método Java na classe Java para o código JSP que chama esse método Java.</li></ul>
+<br>
+<p>O próximo código ilustra o arquivo do descritor da biblioteca de tags. Um TLD é um arquivo XML que declara uma biblioteca de tags.
+Este arquivo TLD contém as declarações e os mapeamentos de uma ou mais funções EL. Cada função recebe um nome e um método específico em uma classe Java que implementará a função.</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&lttaglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/webjsptaglibrary_2_1.xsd">
+&lttlib-version>1.&lt/tlib-version>
+&lturi>elFunction&lt/uri>
+&ltfunction>
+&ltname>now&lt/name>
+&ltfunction-class>
+com.alpi.capitulo3.elfunction.Now
+&lt/function-class>
+&ltfunction-signature>
+String now()
+&lt/function-signature>
+
+&lt/function>
+&lt/taglib> 
+</pre>
+<br>
+<ul>
+<li><b>Linha7</b>: A linha 7 é o URI da função que será usada na diretiva taglib na página JSP.</li>
+<li><b>Linhas 8 a 17</b>: essas linhas especificam o método Java que será chamado com a assinatura e a classe Java na qual esse método está definido.</li>
+</ul>
+<br>
+<p>Um método Java pode ser chamado a partir do JSP usando EL da seguinte maneira: $ {prefix: function-name).
+O prefixo do namespace é declarado usando a diretiva taglib na página JSP. A seguir é mostrado o código JSP.</p>
+<pre class="brush:html">
+&lt%@ taglib prefix="elf" uri="elFunction"%>
+&lthtml>
+
+&ltbody>${elf:now() }
+&lt/body>
+&lt/html>
+</pre>
+<ul>
+<li><b>Linha 1</b>: a linha 1 é uma diretiva taglib com o prefixo elf e um URI. O URI é definido no descritor da biblioteca de tags.</li>
+<li><b>Linha 4</b>: Utiliza o prefixo elf e invoca a função. Este nome da função é definido na descrição da biblioteca de tags.</li>
+</ul>
+<br>
+<p>Você pode criar esse aplicativo com base no primeiro aplicativo JSP que criamos. Quando esse aplicativo é executado (http://localhost:8080/capitulo3/elTest.jsp), ele fornece a saída mostrada:</p>
+<br>
+<img src="imagens\jee7\elfuncao.jpg">
+<br>
+</section>
+<section id="jstl">
+<h2>JSTL</h2>
+<p>O objetivo final da JSP Standard Tag Library (JSTL) é ajudar a simplificar o desenvolvimento de Java Server Pages. Conforme discutido na seção anterior, os scriptlets levam a  JSPs não mantíveis e podem ser substituídos por ações padrão do JSP. No entanto, ações padrão são muito limitadas; Uma abordagem ainda melhor é para desenvolvedores Java criarem suas próprias ações personalizadas. Ainda assim, criar uma ação personalizada é uma tarefa não trivial. O JSTL fornece essas ações customizadas que podem lidar com tarefas recorrentes comuns e o JSTL inclui uma ampla variedade de ações divididas em diferentes áreas funcionais.
+A tabela abaixo lista as áreas funcionais junto com os URIs usados ​​para referenciar as bibliotecas e os prefixos usados ​​na especificação JSTL.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Area Funcional</th> <th>URI</th><th>Prefix</th></tr>
+<tr><td>Core</td><td>http://java.sun.com/jsp/jstl/core</td><td>c</td></tr>
+<tr><td>Processar XML</td><td>http://java.sun.com/jsp/jstl/xml</td><td>x</td></tr>
+<tr><td>Formatação compatível com I18N</td><td>http://java.sun.com/jsp/jstl/fmt</td><td>fmt</td></tr>
+<tr><td>Acessar Banco de Dados Realcional</td><td>http://java.sun.com/jsp/jstl/sql</td><td>sql</td></tr>
+<tr><td>Funções</td><td>http://java.sun.com/jsp/jstl/functions</td><td>fn</td></tr>
+</table>
+</div>
+<br>
+<p>Muitas ações JSTL exportam variáveis ​​de escopo que você pode acessar facilmente através da Expression Language. Como vimos anteriormente, variáveis ​​com escopo definido são objetos armazenados em um dos escopos JSP: aplicativo, página, solicitação e sessão. Quando uma ação JSTL disponibiliza uma variável com escopo para uma ou mais páginas JSP, ela possui um atributo chamado var que permite especificar o nome dessa variável com escopo. A Listagem 3-34 ilustra a ação < c: set>, disponível na biblioteca de tags principal do JSTL, para definir o valor de uma variável com escopo definido.
+</p>
+<p><b> Usando &ltc:set></b></p>
+<pre class="brush:java">&ltc:set var="name" value="hello" scope="session"/></pre>
+<p>Este trecho de código acima define uma variável chamada <b>name</b> para o valor <b>hello</b> e permite que essa variável seja visível no escopo da sessão. Se o valor do escopo não for especificado, o escopo padrão será o escopo da página. Na seção a seguir, você aprenderá todas as ações em diferentes áreas funcionais fornecidas na biblioteca de tags principais</p>
+</section>
+<section id="tablibrary">
+<h2>A biblioteca das principais tags </h2>
+<p>A tabela descreve a ação principal na bibilioteca das princiapis tags.</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Ação</th><th>Descrição</th></tr>
+<tr><td>&ltc:catch></td><td>Captura exceções lançadas no corpo da ação</td></tr>
+<tr><td>&ltc:choose></td><td>Escolhe um dos muitos fragmentos de código</td></tr>
+<tr><td>&ltc:forEach></td><td>Repete uma coleção de objetos ou itera um número fixo de vezes</td></tr>
+<tr><td>&ltc:forTokens></td><td>Repete os tokens em uma string</td></tr>
+<tr><td>&ltc:if></td><td>Realiza condicionalmente algumas funcionalidades</td></tr>
+<tr><td>&ltc:import></td><td>Importa uma URL</td></tr>
+<tr><td>&ltc:otherwise></td><td>Especifica a funcionalidade padrão em uma ação < c:choose ></td></tr>
+<tr><td>&ltc:out></td><td>Envia a saída para o JspWriter atual</td></tr>
+<tr><td>&ltc:param></td><td>Especifica um parâmetro de URL para &ltc: import> ou &ltc: url> 
+</td></tr>
+<tr><td>&ltc:redirect></td><td>Redireciona uma resposta para um URL especificado</td></tr>
+<tr><td>&ltc:remove></td><td>Remove uma variável com escopo</td></tr>
+<tr><td>&ltc:set></td><td>Cria uma variável com escopo</td></tr>
+<tr><td>&ltc:url></td><td>Cria um URL, com a reescrita do URL, conforme apropriado</td></tr>
+<tr><td>&ltc:when></td><td>Especifica uma das várias condições em uma ação &ltc:choose></td></tr>
+</table>
+</div>
+<br>
+<p>A biblioteca principal JSTL pode ser dividida em quatro áreas funcionais distintas, conforme descrito na Tabela a seguir:</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Area Funcional</th><th>Descrição</th></tr>
+<tr><td>Ações de uso geral</td><td>Utilizadas para manipular as variáveis ​​de escopo</td></tr>
+<tr><td>Ações condicionais</td><td>Utilizadas para processamento condicional dentro de uma página JSP</td></tr>
+<tr><td>Ações do iterador</td><td>Usado para iterar através de coleções de objetos</td></tr>
+<tr><td>Ações relacionadas à URL</td><td>Usado para lidar com recursos de URL em uma página JSP</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="actiongen">
+<h2>Ação de propósito Geral</h2>
+<p>As ações de uso geral fornecem os meios para trabalhar com variáveis ​​de escopo. A próxima Tabela descreve as ações de uso geral na biblioteca de tags principal.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Ação</th><th>Descrição</th></tr>	
+<tr><td>&ltc: out ></td><td>Avalia uma expressão e gera o resultado no objeto JspWriter</td></tr>
+<tr><td>&ltc: set></td><td>Define o valor de uma variável com escopo definido ou uma propriedade de um objeto de destino</td></tr>
+<tr><td>&ltc: remove></td><td>Remove uma variável com escopo</td></tr>
+<tr><td>&ltc: catch></td><td>Captura um java.lang.Throwable lançado por qualquer uma de suas ações aninhadas</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="actionout">
+<h3>A Ação <b>&ltc:out></b></h3>
+<p>A ação &ltc: out> avalia uma expressão e exibe o resultado. É equivalente à sintaxe JSP <b><%= expressão %></b>.</p>
+<br>
+<p>Aqui está a sintaxe sem um corpo:</p>
+<pre class="brush:java">&ltc:out value="value" [escapeXml="{true|false}"][default="defaultValue"] /></pre>
+<p>Aqui está asintaxe com um corpo:</p>
+
+<pre class="brush:java">
+&ltc:out value="value" [escapeXml="{true|false}"]>
+default value
+&lt/c:out>Itens em colchetes são opcionais
+</pre>
+
+<p>A próxima Tabela descreve os atributos de &ltc: out>. Como este conteúdo aborda a JSTL de forma abrangente, eu recomendo que você leia a especificação da JSTL para obter um entendimento completo de como usar os atributos da JSTL.</p>
+<p>http://java.coe.psu.ac.th/J2EE/JSTL1.2/jstl-1_2-mrel2-spec.pdf</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>Value</td><td>Object</td><td>Esta é a expressão a ser avaliada</td></tr>
+<tr><td>escapeXML</td><td>boolean</td><td>Isso determina se os caracteres <,>, &, ', "na string resultante devem ser convertidos em seus códigos de entidade de caracteres correspondentes. O valor padrão é verdadeiro</td></tr>
+<tr><td>default</td><td>Object</td><td>Este é o valor padrão se o valor resultante for nulo.</td></tr>
+
+</table>
+</div>
+<br>
+<p>O valor a ser gravado no JspWriter é especificado como um atributo value. Você pode usar expressões no atributo value.</p>
+<br>
+<ul>
+<li><b>value</b>: a expressão a ser avaliada é fornecida pelo atributo value e o resultado é convertido em uma string antes de ser retornado como parte da resposta.</li>
+<li><b>default</b>: opcionalmente, você pode especificar um valor padrão que < c: out> envie para o JspWriter atual, se o valor especificado for nulo ou não for uma expressão válida. Você pode especificar o valor padrão com o atributo padrão ou no corpo da ação < c: out>.</li>
+<li><b>escapeXml</b>: O atributo escapeXml especifica se alguns caracteres serão convertidos nos códigos de entidade de caracteres HTML listados na Tabela a seguir. Por padrão, o atributo escapeXml está definido como true. Se você especificar false para o atributo escapeXml, < c: out> não converterá esses caracteres.
+</li>
+</ul>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Caracter</th><th>Código da entidade do Caracter</th></tr>
+<tr><td><</td><td>&amp;lt;</td></tr>
+<tr><td>></td><td>&amp;gt;</td></tr>
+<tr><td>&</td><td>&amp;amp;</td></tr>
+<tr><td>'</td><td>&amp;#039</td></tr>
+<tr><td>"</td><td>&amp;#034</td></tr>
+</table>
+</div>
+<br>
+<p>substituindo elementos de script pela ação < c: out>. O trecho de código a seguir compara < c:out> e Expressão:</p>
+
+<pre class="brush:java">
+&lt%= "hello" %> // Saída "hello" usando Expression
+&ltc:out value = "hello"/> // Saída "hello" usando &ltc:out> action
+</pre>
+<h2>A Ação &ltc:set></h2>
+<p>A tag set JSTL ou a ação &ltc: set> define o valor de uma variável com escopo definido ou uma propriedade de um objeto de destino. A ação &ltc: set> é uma alternativa melhor ao uso da ação JSP &ltjsp: setProperty>. Diferentemente de &ltjsp: setProperty>, que permite definir apenas a propriedade bean, a tag &ltc: set> pode fazer o seguinte:</p>
+<br>
+<ul>
+<li>Definir propriedades do bean</li>
+<li>Definir valores de Map</li>
+<li>Crie variáveis ​​com escopo na página, solicitação, sessão ou escopo do aplicativo.</li>
+</ul>
+<br>
+<p>A tabela abaixo descreve os atributos da ação &ltc: set></p>
+<br>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>Value</td><td>Objetct</td><td>Expressão para ser avaliada</td></tr>
+<tr><td>var</td><td>String</td><td>Nome da variável com escopo exportado para esperar o valor especificadao na ação </td></tr>
+<tr><td>Escopo</td><td>String</td><td>Escopo para var</td></tr> 
+<tr><td>target</td><td>Object</td><td>Objeto de destino cuja propriedade será definida. Isso deve ser avaliado em um objeto JavaBeans com a propriedade da propriedade setter ou em um objeto java.util.Map</td></tr> 
+<tr><td>property</td><td>String</td><td>Nome da propriedade a ser configurada no objeto de destino.</td></tr>
+</table>
+</div>
+<br>
+<p>A tag &ltc:set> é usada para fazer o seguinte:</p>
+<br>
+<ul>
+<li>Defina o valor de uma variável com escopo definido em qualquer escopo JSP.</li>
+<li>Defina uma propriedade de um objeto de destino especificado. O destino deve avaliar para um objeto JavaBean ou Map</li>
+</ul>
+<br>
+
+<p><b>Definir o Valor de uma Variável com Escopo em qualquer Escopo JSP</b></p>
+<p>Uma das tarefas da ação < c: set> é definir variáveis ​​que podem ser usadas por outras ações nas páginas.</p>
+<p>Aqui está a sintaxe:</p>
+<pre class="brush:java">
+&ltc:set value=""value""var=""varName" " [scope=""{page|request|session|application}""]/>
+</pre>
+<p>O próximo trecho de código mostra um exemplo do uso de &ltc: set> para definir o valor da variável com escopo helloVar.
+</p>
+<pre class="brush:java">&ltc:set var="helloVar" value="hello"/></pre>
+
+<p>Este código cria um atributo chamado <b>helloVar</b> com o valor <b>"hello"</b> no escopo padrão, que é o escopo da página. Você também pode criar atributos em outro escopo, como escopo de sessão; nesse caso, você precisa especificar o escopo com &ltc: set> escopo do atributo = "". O código a seguir cria uma variável no escopo da sessão usando &ltc: set> .</p>
+<pre class="brush:java">&ltc:set var="helloVar" value="hello" scope="session" /></pre>
+<p>Também poderíamos ter expressado isso fornecendo o valor no conteúdo do corpo da ação,</p>
+<pre class="brush:java">
+&ltc:set var="hello" scope="session">
+helloworld
+&lt/c:set>
+</pre>
+
+<p>O valor de uma variável também pode ser uma expressão EL, </p>
+
+<pre class="brush:java">&ltc:set var="titleVar" value="${book.title}" scope="session" /></pre>
+
+<p> a propriedade title do bean de book é configurada na variável titleVar.</p>
+
+<p>A código abaixo mostra o scriptlet equivalente a &ltc: set></p>
+
+<pre class="brush:java">
+&lt%
+String helloVar = "hello";
+pageContext.setAttribute("helloVar ", helloVar);
+%>
+</pre>
+</section>
+<section id="definition">
+<h3>Definindo a propriedade de um objeto de destino especificado</h3>
+
+<p>
+Para poder definir propriedades do bean ou mapear valores usando &ltc: set>, precisamos usar target e property, em vez de var, que definirá o bean e o nome da propriedade a serem configurados. Se o destino é um mapa, por exemplo, a propriedade é o nome da chave e o valor é o valor dessa chave.</p>
+<p>Aqui a sintaxe:</p>
+<pre class="brush:java">&ltc:set value="value" target="target" property="propertyName"/></pre>
+<ul>
+<li>Se estiver usando um objeto de destino, o destino deverá avaliar para um objeto JavaBean ou java.util.Map.</li>
+<li>Se o destino for um JavaBean, ele deverá conter os métodos getter / setter apropriados.</li>
+</ul>
+
+ <p>Configurando uma chave de mapa usando a tag &ltc: set></p>
+<pre class="brush:java">&ltc:set target="bookMap" property="id" value = "1"></pre>
+<p>Isso é equivalente a bookMap.put ("id", "1") ;. Você também pode fornecer o valor no corpo da tag &ltc:set>.</p>
+<p>Agora vamos ver como definir propriedades do bean usando a tag&ltc: set>.</p>
+<pre class="brush:java">&ltc:set target="book" property="book.title" value = "Learning Java Web"></pre>
+<p>Este código  define a propriedade title de um bean chamado book como Learning Java Web. Isso é equivalente a book.setTitle ("Learning Java Web");</p>. 
+<h3>A Ação &ltc:remove></h3>
+<p>
+A ação &ltc: remove> remove uma variável de um escopo específico. As variáveis ​​definidas por &ltc: set> em qualquer um dos escopos podem ser removidas usando a ação &ltc: remove> especificando o nome da variável no atributo var e no atributo scope.</p>
+<p>Aqui está a sintaxe:</p>
+
+<pre class="brush:java">&ltc:remove var="varName"[scope="{page|request|session|application}"]/></pre>
+<p>A tabela a seguir descreve os atributos da ação &ltc:remove>.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>var</td><td>String</td><td>Nome da variável como escopo para ser removido</td></tr>
+<tr><td>scope</td><td>String</td><td>Escopo para var</td></tr>
+</table>
+</div>
+<br>
+<p><b>Usando &ltc:remve></b></p>
+<pre class="brush:java">&ltc:remove var=" helloVar"/></pre>
+
+</section>
+<section id="actioncatch">
+<h3>A Ação &ltc:catch></h3>
+<p>A ação &ltc: catch> fornece uma maneira de capturar exceções java.lang.Throwable lançadas por qualquer ação aninhada. Esta ação possui um único atributo de variável que mantém uma referência a qualquer java.lang.
+Exceções que lançam, ocorrem durante a execução de qualquer uma das ações aninhadas.</p>
+<p>Aqui a sintax:</p>
+<pre class="brush:java">&ltc:catch [var="varName"]>
+...ações aninhada no corpo...
+&lt/c:catch>
+</pre>
+<p>A tabela seguinte descreve os atributos da ação &ltc:catch>.</p>
+
+<br>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>Var</td><td>String</td><td>Nome da variável com escopo exportada para lançar uma exceção de uma ação aninhada</td></tr>
+</table>
+</div>
+<br>
+<p>A ação &ltc: catch> pode manipular erros de qualquer ação, aninhando essas ações em &ltc: catch>.
+Quando uma exceção é lançada, ela é armazenada em uma variável no escopo da página que é identificada pelo atributo var da tag.</p>
+<pre class="brush:html">
+&ltbody>
+&ltc:catch var = "exception">
+&lt% int i = 1/0;%>
+&lt/c:catch>
+&ltc:if test = "${exception != null}">
+&ltspan> Exception : ${exception}&lt/span>
+&lt/c:if>
+&lt/body>
+</pre>
+
+<p><b>A saída será assim:</b></p>
+<pre>Exception : java.lang.ArithmeticException: / by zero</pre>
+</section>
+<section id="condition">
+<h3>Condicionais</h3>
+<p>As tags condicionais fornecidas pela biblioteca de tags principais JSTL fornecem uma alternativa ao uso de scriptlets para gerar conteúdo dinâmico com base nas condições. A Tabela descreve as ações nesta área funcional.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+
+<tr><th>Ação</th><th>Descrição</th></tr>
+<tr><td>&ltc:if></td><td>
+Avalia o conteúdo do corpo se a expressão especificada com o atributo de teste for verdadeira</td></tr>
+<tr><td>&ltc:choose></td><td> Fornece o contexto para execução condicional mutuamente exclusiva</td></tr>
+<tr><td>&ltc:when></td><td>Representa uma alternativa dentro de uma ação &ltc:choose></td></tr>
+<tr><td>&ltc:otherwise></td><td>Representa a última alternativa dentro de uma ação &ltc:choose></td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="actionif">
+<h3>A Ação &ltc:if></h3>
+
+<p>A ação &ltc:if> é usada para processamento condicional e avalia uma expressão, exibindo seu conteúdo do corpo somente se a expressão for avaliada como verdadeira.</p>
+
+<p>A sintax sem conteudo no corpo:</p>
+<pre class="brush:java">
+&ltc:if test="testCondition"
+var="varName" [scope="{page|request|session|application}"]/>
+</pre>
+<p>A sintax com contéudo no corpo</p>
+
+<pre class="brush:java">
+&ltc:if test="testCondition"
+[var="varName"] [scope="{page|request|session|application}"]>
+. . . Conteúdo no corpo . . .
+&lt/c:if>
+</pre>
+<p>Usando o atributo de teste, uma expressão EL booleana é avaliada. Se a condição de teste for avaliada como verdadeira, somente o corpo da ação será executado. O resultado booleano da avaliação da expressão é exportado para uma variável com escopo definido usando o atributo var. O escopo padrão da página varis, mas usando o atributo scope, o escopo pode ser configurado para qualquer um dos escopos JSP.</p>
+
+
+<p>A Tabela ilustra os atributos da acão &ltc:if></p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>test</td><td>Boolean</td><td>A condição de teste que determina se o conteúdo do corpo deve ser processado</td></tr>
+<tr><td>var</td><td>String</td><td>O nome da variável com escopo exportado para o valor resultante da condição de teste</td></tr>
+<tr><td>scope</td><td>String</td><td>Escopo para var</td></tr>
+</table>
+</div>
+<br>
+<p><b>Usando &ltc:if> com conteudo no corpo</b></p>
+<pre class="brush:java">
+&ltc:set var="number" value="9"/>
+&ltc:if test="${ number < 10}" >
+&ltc:out value ="number is less than 10"/>
+&lt/c:if>
+</pre>
+
+<p>A saída será essa:</p>
+<pre> number is less than 10</pre>
+</section>
+<section id="actions">
+<h3>As ações &ltc:choose>, &ltc:when>, &ltc:otherwise></h3>
+<p>A ação &ltc:choose> permite lidar com condições mutuamente exclusivas. Funciona como uma instrução switch Java e permite escolher entre várias alternativas, usando &ltc:when>
+de instruções case e &ltc:otherwise> para fornecer ação padrão, assim como a declaração de alternância faz com uma cláusula padrão.</p>
+<p>A sintax para ação &ltc:choose> é a seguinte:</p>
+<pre class="brush:html">
+&ltc:choose>
+body content (&ltc:when> and &ltc:otherwise>)
+&lt/c:choose>
+</pre>
+
+<p>Como você pode ver, a ação &ltc:choose> possui duas ações aninhadas possíveis que formam seu corpo: &ltc:when> e &ltc:otherwise>. A sintaxe para cada um é a seguinte:
+</p>
+<pre class="brush:html">
+&ltc:when test="testCondition">
+body
+&lt/c:when>
+&ltc:otherwise>
+body
+&lt/c:otherwise>
+</pre>
+<p>A tabela ilustra os atributos da ação &ltc:when>.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Desrição</th></tr>
+<tr><td>test</td><td>Boolean</td><td>O tete de condição que determina se o conteudo do corpo deve ser processado. </td></tr>
+</table>
+</div>
+<br>
+<p><b>Usando &ltc:choose></b></p>
+
+<pre class="brush:html">
+&ltc:when test="testCondition">
+body
+&lt/c:when>
+&ltc:otherwise>
+body
+&lt/c:otherwise>
+
+</pre>
+
+<p><b>A saída será essa:</b></p>
+
+<pre>Number is equal to 10</pre>
+</section>
+<section id="loopitera">
+<h3>Looping e Iteração</h3>
+
+<p>O JSTL oferece duas ações úteis para loop e iteração: < c: forEach> para dados gerais e < c: forTokens> para tokenização de string.</p>
+<p>A tabela a seguir mostra a ação para looping e iteração.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Ação</th><th>Descriçao</th></tr>
+<tr><td>&ltc:foreach></td><td>Itera sobre uma coleção de objetos</td></tr>
+<tr><td>&ltc:forTokens></td><td>Itera sobre tokens, separados pelos delimitadores fornecidos</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="actionfor">
+<h3>A ação &ltforEach></h3>
+<p>A ação &ltc:forEach> itera sobre uma coleção de objetos.</p>
+<p>Aqui está a sintaxe para iterar sobre uma coleção de objetos:</p>
+<pre class="brush:java">
+&ltc:forEach[var="varName"] items="collection"
+[varStatus="varStatusName"]
+[begin="begin"] [end="end"] [step="step"]>
+. . . body content . . . .
+&lt/c:forEach>
+</pre>
+<p>Aqui está a sintaxe para iterar um número fixo de vezes:</p>
+<pre class="brush:java">
+&ltc:forEach [var="varName"]
+[varStatus="varStatusName"]
+begin="begin" end="end" [step="step"]>
+. . . . body content . . .
+&lt/c:forEach>
+</pre>   
+<p>A tabela seguinte ilustra os atributos do &ltc:forEach>.</p>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>var</td><td>String</td><td>Nome da variável com escopo exportado para o item atual da iteração</td></tr>
+<tr><td>items</td><td>- Arrays, Colletion, Enumeração, Iterator, Map, String</td><td>Coleção de itens para iterar</td></tr>
+<tr><td>varStatus</td><td>String</td><td>Nome da variável com escopo exportado para o status da iteração. O objeto exportado é do tipo
+javax.servlet.jsp.jstl.core.LoopTagStatus.</td></tr>
+<tr><td>begin</td><td>int</td><td>Se itens forem especificados, a iteração começará no item localizado no índice especificado. O primeiro item da coleção possui o índice 0. Se os itens não forem especificados, a iteração começará com o índice definido no valor especificado.</td></tr>
+<tr><td>end</td><td>int</td><td>Se os itens principais forem usados, uma iteração selecionada no item localizado no índice especificado. O primeiro item da coleção possui o índice 0. Se os itens não estiverem em uso principal, uma iteração utilizada com o índice definido no valor especificado.</td></tr>
+<tr><td>step</td><td>int</td><td>A iteração processará apenas todos os itens da etapa, começando com o primeiro</td></tr>
+</table>   
+</div>
+<br>
+<p>Para iterar sobre uma coleção de objetos, use a seguinte sintaxe:</p>
+<pre class="brush:java">
+&ltc:forEach[var="varName"] items="collection" [varStatus="varStatusName"]
+...body content ....
+&lt/c:forEach>
+</pre>                                   
+<p>Para iterar um numero fixado de vezes, use a seguinte sintax:</p>
+<pre class="brush:java">
+&ltc:forEach [var="varName"] [varStatus="varStatusName"]
+begin="begin" end="end" [step="step"]>
+...body content ...
+&lt/c:forEach>
+</pre>
+
+<p><b>Usando &ltc:forEach></b></p>
+<pre class="brush:java">
+&ltbody>
+&ltc:forEach var="i" begin="1" end="3">
+Item &ltc:out value="${i}"/><p>
+&lt/c:forEach>
+&lt/body>
+</pre>
+<p><b>A saída será essa:</b></p>
+
+<pre>
+Item 1
+Item 2
+Item 3
+</pre>
+</section>
+<section id="actionfortok">
+<h3>A Ação &ltc:forTokens></h3>
+<p>A ação &ltc:forTokens> itera sobre uma sequência de tokens separados por um conjunto de delimitadores.</p>
+<p>Aqui está a sintax:</p>
+<pre class="brush:java">
+&ltc:forTokens items="stringOfTokens" delims="delimiters"
+[var="varName"] [varStatus="varStatusName"]
+[begin="begin"] [end="end"] [step="step"]>
+. . . body . . . . . . . . .
+&lt/c:forTokens>
+</pre>
+<p>A tabela abaixo descreve todos os atributos de &ltc:forTokens>.</p>
+<br>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>var</td><td>String</td><td>Nome da variável com escopo exportado para o item atual da iteração.</td></tr>
+<tr><td>items</td><td>String</td><td> tokens de String para iterar .</td></tr>
+<tr><td>delims</td><td>String</td><td>Conjunto de delimitadores (os caracteres que separam os tokens no string)</td></tr>
+<tr><td>varStatus</td><td>String</td><td> Nome da variável com escopo exportado para o status da iteração. O objeto exportado é do tipo javax.servlet.jsp.jstl.core.LoopTagStatus.</td></tr>
+<tr><td>begin</td><td>int</td><td>A iteração começa no token localizado no índice especificado. O primeiro token possui o índice 0.</td></tr>
+<tr><td>end</td><td>int</td><td>A iteração termina no token localizado no índice especificado (inclusive).</td></tr>
+<tr><td>step</td><td>int</td><td> A iteração processará apenas todos os tokens por etapa, começando com o primeiro.</td></tr>
+</table>
+</div>
+<br>
+<p>Usando &ltc:forEach> a tag funciona com uma string de caracteres separados por um delimitador, veja:</p>
+<pre class="brush:html">
+&ltbody>
+&ltc:forTokens items="Clojure,Groovy,Java, Scala" delims="," var="lang">
+&ltc:out value="${lang}"/>
+&lt/c:forTokens>
+&lt/body>
+</pre>
+
+<p><b>A saída será assim:</b></p>
+<pre>
+Cloujure
+Groovy
+Java
+Scala
+</pre>
+</section>
+<section id="actionrelurl">
+<h3>Ações Relacionando URL</h3>
+
+
+<p>As ações relacionadas à URL são para vincular, importar e redirecionar em aplicativos da web. A Tabela a nseguir descreve todas as ações relacionadas à URL na biblioteca principal.</p>
+<br>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Ação</th><th>Proposito</th></tr>
+<tr><td>&ltc:import></td><td>Importa o conteúdo de um recurso baseado em URL.</td></tr>
+<tr><td>&ltc:param></td><td>Adiciona parâmetros de solicitação a um URL. Esta é uma ação aninhada de &ltc:import>, &ltc:url> e &ltc:redirect>.</td></tr>
+<tr><td>< c:url></td><td>Cria uma URL com as regras de reescrita adequadas aplicadas.</td></tr>
+<tr><td>< c:redirect></td><td> Envia um redirecionamento HTTP para o cliente.</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="actimport">
+<h3>A Ação &ltc:import></h3>
+<p>A ação &ltc:import> importa o conteúdo de um recurso baseado em URL, fornecendo funcionalidade adicional sobre a ação &ltjsp:include>. A sintaxe da ação &ltc:import> é a seguinte:</p>
+<pre class="brush:java">
+&ltc:import url ="url [context="context"] [charEncoding="charEncoding"] 
+[scope="application|page|request|session"] [var= "varName"] >
+Optional body content for &ltc:param> sub tags
+&lt/c:import>
+</pre>
+<br>
+<ul>
+<li>O único atributo necessário é url, que é a URL do recurso a ser importado.</li>
+<li>A ação &ltc:param>, explicada a seguir, pode ser usada como uma marca aninhada no conteúdo do corpo da &ltc:import></li>
+</ul>
+<br>
+<p> A tabela abaixo descreve todos atributos usado com a ação &ltc:import>.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>url</td><td>Sring</td><td>URL do recurso a ser importado.</td></tr>
+<tr><td>context</td><td>String</td><td> Nome do contexto ao acessar um recurso de URL relativo que pertence a um contexto externo.</td></tr>
+<tr><td>var</td><td>String</td><td>Nome da variável com escopo exportado para o conteúdo do recurso.</td></tr>
+<tr><td>scope</td><td>String</td><td>  Escopo para var.</td></tr>
+<tr><td>charEncoding</td><td>String</td><td>Codificação de caracteres do conteúdo no recurso de entrada.</td></tr>
+<tr><td>varReader</td><td>String</td><td>Nome da variável com escopo exportado para o conteúdo do recurso.</td></tr>
+
+</table>
+</div>
+<br>
+<p>Jà vimos como a ação &ltjsp:include> nos permite encapsular a funcionalidade em uma página JSP e incluí-la em outra; por exemplo, você pode incluir um cabeçalho e rodapé, veja: </p>
+
+<pre class="brush:html">
+&ltbody>
+&ltjsp:include page='/WEB-INF/jsp/header.jsp'/>
+&lt%-- content -%>
+&ltjsp:include page='/WEB-INF/jsp/footer.jsp'/>
+&lt/body>
+</pre>
+<p>A ação &ltjsp:include> está limitada a incluir o recurso que pertence ao mesmo aplicativo da Web que a página de inclusão e especificado como um URL relativo.</p>
+<p>Você pode usar &ltc:import> em vez de &ltjsp:include> para importar recursos no mesmo aplicativo da web;
+Veja como usar &ltc: import> em vez de &ltjsp:include>.</p>
+
+<pre class="brush:html">
+&ltbody>
+&ltc:import url='/WEB-INF/jsp/header.jsp'/>
+&lt%-- content --%>
+&ltc:import url='/WEB-INF/jsp/footer.jsp'/>
+&lt/body>
+</pre>
+<p>Com a ação &ltc:import>, além de acessar recursos no mesmo aplicativo Web, você também pode acessar recursos ou recursos externos em um contexto externo. Para acessar um recurso externo, especifique uma URL absoluta para o atributo url e, para acessar um recurso em um contexto externo, especifique um valor para o atributo de contexto que represente um caminho de contexto para o contexto externo, juntamente com o atributo url, que representa um caminho relativo ao contexto para o recurso. Veja como usar a ação &ltc:import> para importar um recurso de um contexto externo.</p>
+<pre class="brush:java">
+&ltc:import url='/jsp/book.jsp' context='/foreigncontext'/>
+</pre>
+
+<br>
+<p><i>O atributo charEncoding é necessário ao acessar recursos absolutos de URL onde o protocolo não é HTTP e onde a codificação não é ISO-8859-1.</i></p><br>
+</section>
+<section id="actparam">
+<h3>A Ação &ltc:param></h3>
+<p>As ações &ltc:import>, &ltc:url> e &ltc:redirect> explicadas posteriormente nesta seção tratam de URLs.
+A ação &ltc:param> é usada para transmitir parâmetros de solicitação e é usada como uma marca aninhada no corpo da ação &ltc:import>, &ltc:url> ou &ltc:redirect>. A ação &ltc:param> também faz a codificação da URL.
+</p>
+<p>Aqui está a sintaxe com um valor de parâmetro especificado no valor do atributo.</p>
+<pre class="brush:java">&ltc:param name="name" value="value"/></pre>
+
+<p>Aqui está a sintaxe com um valor de parâmetro especificado no conteúdo do corpo.</p>
+
+<pre class="brush:java">
+&ltc:param name="name">
+parameter value
+&lt/c:param>
+</pre>
+<p>A tabela seguinte descreve os atributos de &ltc:param>.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>descrição</th></tr>
+<tr><td>name</td><td>String</td><td>Nome do parâmetro da string de consulta </td></tr>
+<tr><td>value</td><td>String</td><td>Valor do parâmetro</td></tr>
+</table>
+</div>
+
+<p>Já vimos como se pode usar &ltc:import> em vez de &ltjsp:include>. Você também pode especificar parâmetros de solicitação para arquivos incluídos com a ação &ltjsp:param>, conforme mostrado a seguir:</p>
+<pre class="brush:html">
+&ltbody>
+&ltjsp:include page='/WEB-INF/jsp/company/companyHeader.jsp'>
+&ltjsp:param name='user' value='<%=session.getAttribute("userName")%>'/>
+&lt/jsp:include>
+&lt%-- Page content goes here--%>
+&ltjsp:include page='/WEB-INF/jsp/company/companyFooter.jsp'/>
+</body>
+</pre>
+
+<p><b>Usando < c:param></b></p>
+
+<pre class="brush:java">
+&ltbody>
+&ltc:import url='/WEB-INF/jsp/header.jsp'>
+&ltc:param name='user'
+value='${sessionScope.userName}'/>
+&lt/c:import>
+&lt%-- body content --%>
+&ltc:import url='/WEB-INF/jsp/footer.jsp'/>
+&lt/body>
+</pre>
+</section>
+<section id="acturl">
+<h3>A Ação &ltc:url></h3>
+
+<p>
+A ação &ltc:url> cria uma URL com as regras de reescrita adequadas aplicadas. Ele pode formatar um URL e armazená-lo em uma variável especificada pelo atributo var.</p>
+
+<p>Aqui está a sintaxe sem conteúdo no corpo:</p>
+<pre class="brush:java">&ltc:url value [context] [var] [scope]></pre>
+
+<p>Aqui está a sintaxe com o conteúdo do corpo para especificar os parâmetros da string de consulta:</p>
+<pre class="brush:java">
+&ltc:url value [context] [var] [scope]>
+vc:param> actions
+&lt/c:url>
+</pre>
+<br>
+<ul>
+<li>O único atributo necessário é value, que é o URL a ser processado</li>
+
+<li>As sub-tags &ltc:param> também podem ser especificadas no corpo de &ltc:url> para adicionar aos parâmetros da string de consulta da URL, que serão codificados adequadamente, se necessário.</li>
+</ul>
+<br>
+
+<p>Os atributos do &ltc:url> são listados na tabela:</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>value</td><td>String</td><td>URL para ser processado</td></tr>
+<tr><td>context</td><td>String</td><td>Nome do context ao especificar um recurso de URL relativo que pertence a um context externo </td></tr>
+<tr><td>var</td><td>String</td><td>Nome da variável com escopo exportado para a URL processada.</td></tr>
+<tr><td>scope</td><td>String</td><td>Escopo para var</td></tr>
+</table>
+</div>
+<br>
+<p><b>Usando &ltc:url></b></p>
+<pre class="brush:java">
+&ltc:url var="homePage" scope="session"value="http://www.seubookstore.com"/>
+</pre>
+
+<p>
+Se você especificar um URL relativo ao contexto ou relativo à página para o atributo value, &ltc:url> precederá o caminho do contexto do aplicativo Web para o URL; por exemplo, se o caminho de contexto do aplicativo Web for /bookWeb/books, a ação &ltc:url> &ltc:url value='/book.jsp'/> resultará em url: /bookWeb/books/book. jsp.</p>
+</section>
+<section id="actredirect">
+<H3>A Ação &ltc:redirect></H3>
+
+<p>A ação &ltc:redirect> envia um redirecionamento HTTP para o cliente, redirecionando o navegador para um URL alternativo. A ação &ltc:redirect> fornece a reescrita da URL com um redirecionamento.</p>
+<p>Aqui a sintax do conteúdo:</p>
+<pre class="brush:java">&ltc:redirect url="value" [context="context"]/></pre>
+
+<p>Aqui está a sintaxe com o conteúdo do corpo para especificar os parâmetros da string de consulta:</p>
+
+<pre class="brush:java">
+&ltc:redirect url="value" [context="context"]>
+&ltc:param> subtags
+&lt/c:redirect>
+</pre>
+
+<p>A ação &ltc:redirect> possui dois atributos: a URL que será usada para redirecionar para e um contexto opcional. Os atributos de &ltc:redirect> estão listados na tabela.</p>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Nome</th><th>Tipo</th><th>Descrição</th></tr>
+<tr><td>url</td><td>String</td><td>A URL do recurso para o qual redirecionar</td></tr>
+
+<tr><td>context</td><td>String</td><td>O nome do contexto ao redirecionar para um recurso de URL relativo que pertence a um contexto externo</td></tr>
+</table>
+</div>
+<br>
+
+<p>O URL, relativo ou absoluto, segue as mesmas regras de reescrita de URL que &ltc:url>. O próxmo exemplo ilustra o redirecionamento para um recurso externo, que é um URL absoluto.</p>
+<pre class="brush:java">&ltc:redirect url="http://www.seubookstore.com" />
+</pre>
+<p>Você pode redirecionar para um recurso em um contexto externo usando o atributo context. O URL especificado deve começar com uma / como um URL relativo ao contexto e, conforme definido, o nome do contexto também deve começar com uma /.Veja como é o redirecionamento para um recurso externo em um contexto externo.</p>
+<pre class="brush:java">&ltc:redirect url="/foreignresource.html" context="/foreigncontext" /></pre>
+<p>Examinamos os detalhes da máquina Java EE na camada da Web: os componentes da Web (servlets e JSP), a Linguagem de Expressão rica em recursos e as ações personalizadas prontas para uso (JSTL) . Agora falaremos sobre soluções de práticas recomendadas usando padrões.</p>
+
+<p class="nav-arq" id="referencia"> Java EE 7<a href="javaee.html">&laquo; anterior | <a href="padroes.html">próximo >> Soluções usando padrões &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/praticarecomendada" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+  
+</body>
+</html>

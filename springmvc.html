@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="css/stylos.css">
+
+ <title> Programar em Java</title>
+   
+    <script type="text/javascript"src="js/efeitos.js"></script>
+     <link rel="stylesheet" href="css/stylew3.css">
+
+      <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ </head>
+
+   
+ <body>
+<!-- Simulate a smartphone / tablet look -->
+
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+  <a class="w3-bar-item w3-button" href="#springwebvc">24 - Construindo Aplicativos Web  com o Spring MVC</a>
+<a class="w3-bar-item w3-button" href="#visaogeral">Spring Framework Visão Geral</a>
+ <a class="w3-bar-item w3-button" href="#aopinstrument">AOP e Instrumentação</a>
+<a class="w3-bar-item w3-button" href="#corecontainer">Core Container</a>
+<a class="w3-bar-item w3-button" href="#integracaodados">Integração/Acessa Dados</a>
+  <a class="w3-bar-item w3-button" href="#mensagem">Mensagens</a>
+ <a class="w3-bar-item w3-button"href="#test">Teste </a>
+          <a class="w3-bar-item w3-button" href="#webspring">Web</a>
+    <a class="w3-bar-item w3-button" href="#springfundament">Spring Framework Fundamental</a>
+    <a class="w3-bar-item w3-button" href="#injecaodepend">Injeção de Dependência e Inversão de Controle</a>
+ <a class="w3-bar-item w3-button" href="#cenario">Cenários</a>
+
+ <a class="w3-bar-item w3-button" href="#convencaodpd">Convenções de gerenciamento de dependência e nomeação</a>
+  <a class="w3-bar-item w3-button" href="#dependspring">Dependências do Spring e Dependendo do Spring</a>
+          <a class="w3-bar-item w3-button"href="#zipdist">Arquivos zip de distribuição</a>
+          <a class="w3-bar-item w3-button" href="#logfile">Log</a>
+            <a class="w3-bar-item w3-button" href="#logcommonsnot">Não usando o log do Commons</a>
+ <a class="w3-bar-item w3-button" href="#slf4j">Usando SLF4J</a>
+ <a class="w3-bar-item w3-button" href="#uselog4j">Usando o Log4J</a>
+  <a class="w3-bar-item w3-button" href="#intbensioc">Introdução ao contêiner Spring IoC e beans</a>
+          <a class="w3-bar-item w3-button"href="#visaogeralcont">Container Visão geral</a>
+          <a class="w3-bar-item w3-button" href="#metadadosconfig">Metadados de configuração</a>
+            <a class="w3-bar-item w3-button" href="#dependenc">Aplicando e testando Injeção Dependência</a>
+ 
+ <a class="w3-bar-item w3-button" href="#dependfort">Dependência fortemente acoplada</a>
+  <a class="w3-bar-item w3-button" href="#aplicatincont">ApplicationContext</a>
+          <a class="w3-bar-item w3-button"href="#springfrm">Principais objetivos do Spring Framework</a>
+          <a class="w3-bar-item w3-button" href="#aoptransv">Abordando questões transversais usando AOP </a>
+            <a class="w3-bar-item w3-button" href="#removcod">Remoção de código padrão usando modelos</a>
+ 
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+    <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+<!--  <span id="myIntro" class="w3-hide">JAVA SE: Versão 8</span></p>-->
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+ <h1 class="w3-xxxlarge">JAVA EE</h1>
+</header>
+<section id="springwebvc">
+<h1>Construindo aplicativos da Web com o Spring Web MVC</h1>
+<p>O Spring Framework cresceu e se tornou um ecossistema de projetos; inclui muitos módulos distintos, integra inúmeras estruturas e bibliotecas e fornece uma gama variada de recursos em diversas áreas, como Flash, aplicativos corporativos, serviços da Web, armazenamentos de dados, OSGi e até .NET.</p>
+<br>
+<p>Os aplicativos Spring são suportados em todas as plataformas de nuvem populares, como <b>Cloud Foundry</b>, <b>Google App Engine</b> e <b>Amazon EC2</b>, e podem alavancar <b>RDBMSs</b> tradicionais, bem como novas soluções <b>NoSQL</b> e armazenamentos de dados como <b>PostgreSQL</b>, <b>MySQL</b>, <b>MongoDB</b> e <b>Redis</b>. Ao contrário de muitas outras estruturas, como o <b>Struts</b>, que se limita ao desenvolvimento de aplicativos da Web, o <b>Spring Framework</b> pode ser usado para criar aplicativos independentes, da Web e JEE. O Spring fornece suporte para a criação de aplicativos Web modernos, incluindo <b>REST</b>, <b>HTML5</b> e <b>Ajax</b>, bem como plataformas de clientes móveis, incluindo <b>Android</b> e <b>iPhone</b>. O <b>Spring Framework</b> mudou notavelmente o cenário Java corporativo para sempre, conectando componentes aos sistemas para que você não precise escrever o código do encanamento, permitindo que você se concentre nos negócios do aplicativo.</p>
+<br>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+</section>
+<section id="visaogeral">
+<h1>Spring Framework Visão Geral</h1>
+
+<p>O Spring Framework consiste em recursos organizados em cerca de 20 módulos. Esses módulos são agrupados em Container Principal, Acesso / Integração de Dados, Web, AOP (Programação Orientada a Aspectos), Instrumentação, Mensagens e Teste, conforme mostrado no diagrama a seguir.</p>
+
+<p> O Spring Framework consiste de recursos nestas categorias:</p>
+<br>
+<ul>
+	<li>Integração/Acesso a Dados</li>
+	<li>Web</li>
+<li> AOP , Aspectos, Instrumentação, Mensagens</li>
+<li>Core container</li>
+
+
+<li>Test</li>
+</ul>
+<br>
+<p>Os módulos em cada categoria são descrevidos nas seções seguintes.</p>
+</section>
+<section id="aopinstrument">
+<h2>AOP e Instrumentação</h2>
+<p>A categoria AOP e instrumentação consiste nos módulos AOP, Aspectos , Instrumentação e Mensagens, conforme descrito na tabela a seguir.</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Módulo</th><th>Descrição</th></tr>
+<tr><td>AOP</td><td>O módulo fornece uma implementação de programação orientada a aspectos compatível com a AOP Alliance, permitindo definir, por exemplo, interceptadores de métodos e cortes de pontos para desacoplar de maneira limpa o código que implementa a funcionalidade que deve ser separada. Usando a funcionalidade de metadados no nível da fonte, você também pode incorporar informações comportamentais ao seu código, de maneira semelhante à dos atributos do .NET.
+</td></tr>
+<tr><td>Spring-Aspects</td><td>O módulo Aspect fornece integração com o AspectJ</td></tr>
+<tr><td>Spring-Instrumentação</td><td>O módulo Instrumentação fornece suporte para instrumentação de classe e implementações de carregador de classe</td></tr>
+<tr><td>spring-tomcat</td><td>O módulo contém o agente de instrumentação da Spring para o Tomcat.</td></tr>
+</table>
+</section>
+<br>
+<section id="corecontainer">
+<h2>Core Container</h2>
+<p>
+O Core Container consiste nos módulos <b>spring-core</b>, <b>spring-beans</b>, </b>spring-context</b>, <b>spring-context-support</b> e <b>spring-expression</b> (Spring Expression Language).
+</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Modulo</th><th>Descrição</th></tr>
+<tr><td>Beans</td><td>O módulo Beans fornece recursos de IoC e injeção de dependência.
+</td></tr>
+<tr><td>Core</td><td>O módulo Core fornece recursos de IoC e injeção de dependência</td></tr>
+<tr><td>Context</td><td>O módulo Context baseia-se nos módulos Core e Beans e inclui suporte para internacionalização, propagação de eventos, carregamento de recursos, EJB e JMX.</td></tr>
+<tr><td>Expression Language</td><td>O módulo Expression Language fornece Linguagem de expressão Spring</td></tr>
+</table>
+<br>
+<p>O módulo <b>spring-expression</b> fornece uma linguagem de expressão poderosa para consultar e manipular um gráfico de objetos em tempo de execução. É uma extensão da linguagem de expressão unificada (EL unificado), conforme especificado na especificação JSP 2.1. O idioma suporta a configuração e a obtenção de valores de propriedade, atribuição de propriedade, invocação de método, acesso ao conteúdo de arrays, coleções e indexadores, operadores lógicos e aritméticos, variáveis ​​nomeadas e recuperação de objetos por nome do contêiner IoC do Spring. Ele também suporta projeção e seleção de listas, bem como agregações de listas comuns.</p>
+<p>
+A interface <b>ApplicationContext</b> é o ponto focal do módulo <b>Context</b>. O <b>spring-context-support</b> fornece suporte para integrar bibliotecas comuns de terceiros em um contexto de aplicativo Spring para cache (EhCache, Guava, JCache), mailing (JavaMail), agendamento (CommonJ, Quartz) e mecanismos de modelo (FreeMarker, JasperReports, Velocity) .</p>
+<br>
+</section>
+<section id="integracaodados">
+<h2>Integração/Acessa Dados</h2>
+
+<p>A camada de acesso/integração de dados consiste nos módulos <b>JDBC</b>, <b>ORM</b>, <b>OXM</b>, <b>JMS</b> e <b>Transaction</b>, conforme descrito na tabela:</p>
+
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Modulos</th><th>Descrição</th></tr>
+<tr><td>JDBC</td><td>O módulo JDBC fornece uma camada de abstração JDBC que elimina a necessidade de usar JDBC puro.
+</td></tr>
+<tr><td>ORM</td><td>O módulo ORM fornece integração para estruturas ORM, como JPA, JDO, Hibernate e iBatis</td></tr>
+<tr><td>OXM</td><td>O módulo OXM suporta implementações de mapeamento de objeto/XML para JAXB, Castor, XMLBeans, JiBX e XStream.</td></tr>
+<tr><td>JMS</td><td>O módulo JMS fornece recursos para produção e consumo de mensagens.</td></tr>
+<tr><td>Transaction</td><td>O módulo Transação suporta gerenciamento de transações programática e declarativa.</td></tr>
+<tr><td>Mensagem</td><td>
+O módulo spring-jms (Java Messaging Service) contém recursos para produzir e consumir mensagens. Desde o Spring Framework 4.1, ele fornece integração com o módulo de mensagens do spring.
+</td></tr>
+</table>
+<br>
+</section>
+<section id="mensagem">
+<h2>Mensagens</h2>
+<p>
+O Spring Framework 4 inclui um módulo de mensagens do spring com abstrações importantes do projeto Spring Integration, como Message, MessageChannel, MessageHandler e outros, para servir como base para aplicativos baseados em mensagens. O módulo também inclui um conjunto de anotações para mapear mensagens para métodos, semelhante ao modelo de programação baseado em anotação do Spring MVC.</p>
+<br>
+</section>
+<section id="test">
+<h2>Test</h2>
+<p>A categoria de teste consiste no módulo Teste, conforme descrito na Tabela:</p>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Modulos</th><th>Descrição</th></tr>
+<tr><td>Test</td><td>O módulo Teste suporta o teste de componentes Spring com JUnit ou TestNG</td></tr>
+</table>
+<br>
+</section>
+<section id="webspring">
+<h2>Web</h2>
+<p>A camada da web consiste nos módulos Web, Web-Servlet, Web-Struts e Web-Portlet, conforme descrito na Tabela.</p>
+
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Modulo</th><th>Descrição</th></tr>
+<tr><td>Web</td><td>O módulo Web da Spring fornece recursos básicos de integração orientada para a Web e um contexto de aplicativo orientado para a Web. Ele também fornece várias opções de comunicação remota, como RMI (Remote Method Invocation), Hessian, Burlap, JAX-WS e o próprio invocador HTTP da Spring</td></tr>
+<tr><td>Web-Servlet</td><td>
+O módulo Web-Servlet contém a implementação do MVC (Model-View-Controller) da Spring para aplicativos da Web</td></tr>
+<tr><td>Spring/Struts</td><td>O módulo Web-Struts fornece suporte para integrar uma camada da Web clássica do Struts em um aplicativo Spring. Observe que esse suporte agora está obsoleto a partir do Spring 3.0 . Para integrar o spring com strus visite está página -><a href="https://struts.apache.org/plugins/spring/"target="_blank">https://struts.apache.org/plugins/spring/</a></td></tr>
+<tr><td>Web-Portlet</td><td>O módulo Web-Portlet fornece a implementação MVC a ser usada em um ambiente de portlet.</td></tr>
+</table>
+<br>
+<p><i>O núcleo do Spring Framework é baseado no princípio de Inversão de Controle (IoC), que fornece injeção de dependências. No entanto, o Spring não é a única estrutura que oferece recursos de injeção de dependência; existem várias outras estruturas, como Seam, Google Guice e JEE6 e mais recentes, que oferecem injeção de dependência.</i></p>
+</br>
+</section>
+<section id="springfundament">
+<h1>Spring Framework Fundamental</h1>
+<p>Este guia de referência fornece informações detalhadas sobre o Spring Framework. Ele fornece documentação abrangente para todos os recursos, bem como alguns antecedentes sobre os conceitos subjacentes (como "Injeção de Dependências") adotados pelo Spring.</p>
+<br>
+<p>Se você está apenas começando o Spring, pode querer começar a usar o Spring Framework criando um aplicativo baseado no Spring Boot. O Spring Boot fornece uma maneira rápida (e opinativa) de criar um aplicativo Spring pronto para produção. Ele é baseado no Spring Framework, favorece as convenções sobre a configuração e foi projetado para colocar você em funcionamento o mais rápido possível.</p>
+<br>
+<p>Você pode usar o <a href="https://start.spring.io/"target="_blank">start.spring.io</a> para gerar um projeto básico ou seguir um dos guias "Introdução", como o Guia de introdução à Criação de um serviço da Web RESTful. Além de serem mais fáceis de digerir, esses guias são muito focados em tarefas e a maioria deles é baseada no Spring Boot. Eles também abrangem outros projetos do portfólio Spring que você pode considerar ao resolver um problema específico.
+</p>
+<br>
+<p>
+Um aplicativo é composto de componentes como componentes da Web e componentes de lógica de negócios. Esses componentes precisam colaborar entre si para cumprir os objetivos comerciais comuns do aplicativo, para que esses componentes dependam um do outro. Essa dependência, se não controlada, geralmente leva a um acoplamento rígido entre eles, resultando em um aplicativo não sustentável. Controlar esse acoplamento para que não resulte em um aplicativo fortemente acoplado é uma tarefa não trivial. Por outro lado, se um componente do aplicativo não depender de outro componente, ele não precisará procurá-lo, todos os componentes serão totalmente isolados e o aplicativo resultante será fracamente acoplado. Mas esse aplicativo não fará nada. Essencialmente, os componentes devem depender de outros componentes, mas não devem procurar esses componentes dos quais dependem. Em vez disso, essas dependências devem ser fornecidas aos componentes dependentes. Essa é a essência da inversão de controle. O Spring Framework é um desses framework IoC, que fornece as dependências para os componentes dependentes por meio de injeção de dependência.
+</p>
+<br>
+<p> Spring Framework é uma plataforma Java que fornece suporte abrangente à infraestrutura para o desenvolvimento de aplicativos Java. O Spring lida com a infraestrutura para que você possa se concentrar no seu aplicativo.</p>
+
+<p>O Spring permite criar aplicativos a partir de "objetos Java simples e simples" <i>(POJOs  são objetos Java que seguem um desenho simplificado em contraposição aos EJBs, por exemplo. Um JavaBean é um POJO que segue definições rígidas de estrutura (construtor default sem argumentos e métodos que seguem o padrão de getters e setters para seus atributos) )</i> e aplicar serviços corporativos de maneira não invasiva aos POJOs. Esse recurso se aplica ao modelo de programação Java SE e ao Java EE completo e parcial.</p>
+
+<p>Exemplos de você como desenvolvedor de aplicativos, pode se beneficiar da plataforma Spring:</p>
+<br>
+<ul>
+    <li> Execute um método Java em uma transação de banco de dados sem precisar lidar com APIs de transação.</li>
+     <li>Torne um método Java local um procedimento remoto sem precisar lidar com APIs remotas.</li>
+     <li>Torne um método Java local uma operação de gerenciamento sem precisar lidar com APIs JMX.</li>
+     <li>Torne um método Java local um manipulador de mensagens sem precisar lidar com APIs JMS.</li>
+</ul>
+<br> 
+</section>
+<section id="injecaodepend">
+<h2>Injeção de Dependência e Inversão de Controle</h2>
+
+<p>
+Um aplicativo Java - um termo genérico que executa toda a gama de aplicativos incorporados restritos a aplicativos corporativos do servidor de n camadas, geralmente consiste em objetos que colaboram para formar o aplicativo adequadamente. Assim, os objetos em um aplicativo têm dependências um do outro.
+</p>
+<br>
+<p>Embora a plataforma Java forneça uma grande variedade de funcionalidades de desenvolvimento de aplicativos, ela não possui os meios para organizar os blocos de construção básicos em um todo coerente, deixando essa tarefa para arquitetos e desenvolvedores. Embora você possa usar padrões de design como Factory, Abstract Factory, Builder, Decorator e Service Locator para compor as várias classes e instâncias de objetos que compõem um aplicativo, esses padrões são simplesmente os seguintes: práticas recomendadas nomeadas, com uma descrição de o que o padrão faz, onde aplicá-lo, os problemas que ele aborda etc. Padrões são práticas recomendadas formalizadas que você deve implementar em seu aplicativo.
+</p>
+<br>
+<p>
+O componente Spring Framework Inversion of Control (IoC) aborda essa preocupação, fornecendo um meio formalizado de compor componentes díspares em um aplicativo totalmente funcional, pronto para uso. O Spring Framework codifica os padrões de design formalizados como objetos de primeira classe que você pode integrar aos seus próprios aplicativos. Várias organizações e instituições usam o Spring Framework dessa maneira para projetar aplicativos robustos e de manutenção.
+</p>
+<br>
+</section>
+<section id="cenario">
+<h2>Cenários</h2>
+<p>Os blocos de construção descritos anteriormente tornam o Spring uma escolha lógica em muitos cenários, desde aplicativos incorporados executados em dispositivos com recursos limitados até aplicativos corporativos completos que usam a funcionalidade de gerenciamento de transações do Spring e a integração da estrutura da web.</p>
+<br>
+<img src="imagens/jee7/overview-full.png"/>
+<br>
+<p>Os recursos declarativos de gerenciamento de transações da Spring tornam o aplicativo Web totalmente transacional, exatamente como seria se você usasse transações gerenciadas por contêiner EJB. Toda a sua lógica de negócios personalizada pode ser implementada com POJOs simples e gerenciada pelo contêiner de IoC da Spring. Os serviços adicionais incluem suporte ao envio de email e validação independente da camada da web, que permite escolher onde executar as regras de validação. O suporte <b>ORM</b> do Spring é integrado ao <b>JPA</b>, <b>Hibernate</b> e </b>JDO; por exemplo, ao usar o <b>Hibernate</b>, você pode continuar usando os arquivos de mapeamento existentes e a configuração padrão do <b>Hibernate SessionFactory</b>. Os controladores de formulário integram perfeitamente a camada da web ao modelo de domínio, eliminando a necessidade de <b>ActionForms</b> ou outras classes que transformam parâmetros HTTP em valores para o seu modelo de domínio.</p>
+<br>
+<p>
+ A imagem abaixo representa a Camada intermediária do Spring usando uma estrutura da web de terceiros</p>
+<br>
+ <img src="imagens/jee7/overview-thirdparty-web.png"/>
+ <br>
+ <p>Às vezes, as circunstâncias não permitem que você alterne completamente para uma estrutura diferente. O Spring Framework não força você a usar tudo dentro dele; não é uma solução do tipo tudo ou nada. Os front-ends existentes criados com <b>Struts</b>, <b>Tapestry</b>, <b>JSF</b> ou outras estruturas de interface do usuário podem ser integrados a uma camada intermediária baseada no Spring, que permite usar os recursos de transação do Spring. Você só precisa conectar sua lógica de negócios usando um <b>ApplicationContext</b> e um <b>WebApplicationContext</b> para integrar sua camada da web.
+</p>
+
+<br>
+
+</section>
+<section id="convencaodpd">
+<h1>Convenções de gerenciamento de dependência e nomeação</h1>
+<br>
+<p>Gerenciamento de dependência e injeção de dependência são coisas diferentes. Para obter esses recursos interessantes do Spring em seu aplicativo (como injeção de dependência), você precisa reunir todas as bibliotecas necessárias (arquivos jar) e colocá-las no caminho de classe em tempo de execução e, possivelmente, em tempo de compilação. Essas dependências não são componentes virtuais injetados, mas recursos físicos em um sistema de arquivos (normalmente). O processo de gerenciamento de dependências envolve localizar esses recursos, armazená-los e adicioná-los aos caminhos de classe. Dependências podem ser diretas (por exemplo, meu aplicativo depende do Spring em tempo de execução) ou indiretas (por exemplo, meu aplicativo depende do commons-dbcp, que depende do commons-pool). As dependências indiretas também são conhecidas como "transitivas" e são as dependências que são mais difíceis de identificar e gerenciar.</p>
+<br>
+<p>
+Se você for usar o Spring, precisará obter uma cópia das bibliotecas jar que compreendem as partes do Spring necessárias. Para facilitar isso, o Spring é compactado como um conjunto de módulos que separam as dependências o máximo possível. Por exemplo, se você não deseja gravar um aplicativo da Web, não precisa dos módulos do Spring. Para consultar os módulos da biblioteca Spring neste guia, usamos uma convenção de nomenclatura abreviada spring-* ou spring-*.jar, onde * representa o nome abreviado do módulo (por exemplo, spring-core, spring-webmvc, spring-jms, etc. ) O nome real do arquivo jar que você usa normalmente é o nome do módulo concatenado com o número da versão (por exemplo, spring-core-4.2.9.RELEASE.jar).</p>
+<br><p>Cada versão do Spring Framework publicará artefatos nos seguintes locais:</p>
+<br>
+
+<ul>
+<li>
+    Maven Central, que é o repositório padrão que o Maven consulta e não requer nenhuma configuração especial para usar. Muitas das bibliotecas comuns das quais o Spring depende também estão disponíveis no Maven Central e uma grande parte da comunidade do Spring usa o Maven para gerenciamento de dependências, portanto, isso é conveniente para eles. Os nomes dos jars aqui estão no formato spring-*-< versão >.jar e o Maven groupId é org.springframework.</li>
+    <li>Em um repositório público do Maven hospedado especificamente para o Spring. Além das versões finais do GA, este repositório também hospeda milestone ou snapshots(instantâneos) de desenvolvimento. Os nomes dos arquivos jar estão na mesma forma que o Maven Central, portanto, este é um local útil para obter versões de desenvolvimento do Spring para uso com outras bibliotecas implantadas no Maven Central. Este repositório também contém um arquivo zip de distribuição de pacote configurável que contém todos os jars Spring agrupados para facilitar o download.
+
+
+</li>
+</ul>
+<br>
+
+<p>Portanto, a primeira coisa que você precisa decidir é como gerenciar suas dependências: geralmente recomendamos o uso de um sistema automatizado como Maven(utilizaremos esse), Gradle ou Ivy, mas você também pode fazê-lo manualmente fazendo o download de todos os jars.</p>
+<br>
+<p>Logo abaixo a tabela mostra os artefatos do Spring Framework </p>
+<br>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<th>Grupo Id</th><th>ArtifactId</th><th>Descrição</th>
+<tr><td>org.springframework</td><td>spring-aop</td><td>Suporte AOP baseado em Proxy</td></tr> 
+<tr><td>org.springframework</td><td>spring-aspects</td><td>AspectJ com base em aspectos </td></tr>
+<tr><td>org.springframework</td><td>spring-beans</td><td>Supore Beans, incluindo Groovy</td></tr>
+<tr><td>org.springframework</td><td>spring-contex</td><td>
+Tempo de execução do contexto do aplicativo, incluindo agendamento e abstrações remotas</td></tr>
+<tr><td>org.springframework</td><td>spring-context-support</td><td>Suporte a classes para integrar bibliotecas comuns de terceiros em um contexto de aplicativo Spring</td></tr>
+<tr><td>org.springframework</td><td>spring-core</td><td>Utilitários principais, usados por muitos outros módulos Spring</td></tr>
+<tr><td>org.springframework</td><td>	
+spring-expression</td><td>Spring Expression Language (SpEL)</td></tr>
+<tr><td>org.springframework</td><td>spring-instrument</td><td>Instrumentation agent for JVM bootstrapping</td></tr>
+<tr><td>org.springframework</td><td>spring-instrument-tomcat</td><td>Instrumentation agent for Tomcat</td></tr>
+<tr><td>org.springframework</td><td>spring-jdbc</td><td>Pacote de suporte JDBC, incluindo configuração de DataSource e suporte a acesso JDBC</td></tr>
+<tr><td>org.springframework</td><td>spring-jms</td><td>Pacote de suporte JMS, incluindo classes auxiliares para enviar e receber mensagens JMS</td></tr>
+<tr><td>org.springframework</td><td>spring-messaging</td><td>Suporte para arquiteturas e protocolos de mensagens</td></tr>
+<tr><td>org.springframework</td><td>spring-orm</td><td>Mapeamento de Objeto / Relacional, incluindo suporte a JPA e Hibernate</td></tr>
+<tr><td>org.springframework</td><td>spring-oxm</td><td>Mapeamento de Objetos / XML</td></tr>
+<tr><td>org.springframework</td><td>spring-test</td><td>Suporte para teste de unidade e teste de integração de componentes Spring</td></tr>
+<tr><td>org.springframework</td><td>spring-tx</td><td>Infraestrutura de transação, incluindo suporte a DAO e integração JCA</td></tr>
+<tr><td>org.springframework</td><td>spring-web</td><td>Pacotes de suporte da Web, incluindo comunicação remota com cliente e Web</td></tr>
+<tr><td>org.springframework</td><td>spring-webmvc</td><td>
+Serviços da Web REST e implementação de controlador de exibição de modelo para aplicativos da web</td></tr>
+<tr><td>org.springframework</td><td>spring-webmvc-portlet</td><td>Implementação do MVC a ser usada em um ambiente de Portlet</td></tr>
+<tr><td>org.springframework</td><td>spring-websocket</td><td>Implementações WebSocket e SockJS, incluindo suporte a STOMP</td></tr>
+
+</table>
+<br>
+</section>
+<section id="dependspring">
+<h2>Dependências do Spring e Dependendo do Spring</h2>
+
+<p>Embora o Spring forneça integração e suporte para uma grande variedade de ferramentas corporativas e outras ferramentas externas, ele intencionalmente mantém suas dependências obrigatórias em um mínimo absoluto: você não precisa localizar e fazer download (mesmo automaticamente) de um grande número de bibliotecas jar para poder use Spring para casos de uso simples. Para injeção de dependência básica, existe apenas uma dependência externa obrigatória e é para registro em log (veja abaixo uma descrição mais detalhada das opções de registro).</p>
+
+<p>A seguir, descrevemos as etapas básicas necessárias para configurar um aplicativo que depende do Spring com o Maven . Em todos os casos, se algo não estiver claro, consulte a documentação do seu sistema de gerenciamento de dependências ou observe algum código de amostra - o Spring propriamente usa o Gradle para gerenciar dependências quando está construindo, e nossos exemplos usamos principalmente  o Maven.
+</p>
+
+<p>Se você estiver usando o Maven para gerenciamento de dependências, não precisará fornecer explicitamente a dependência de log. Por exemplo, para criar um contexto de aplicativo e usar injeção de dependência para configurar um aplicativo, suas dependências do Maven terão a seguinte aparência:</p>
+
+<pre class="brush:xml">
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId >
+        <artifactId>spring-context</artifactId>
+        <version>4.2.9.RELEASE</version>
+        <scope>runtime</scope>
+    </dependency>
+</dependencies>
+</pre>
+
+<p>
+É isso aí. Observe que o escopo pode ser declarado como tempo de execução, se você não precisar compilar com as APIs do Spring, que normalmente é o caso dos casos de uso básicos de injeção de dependência.
+
+O exemplo acima funciona com o repositório Maven Central. Para usar o repositório Spring Maven (por exemplo, para milestone ou snapshots de desenvolvedor), você precisa especificar o local do repositório na sua configuração do Maven. Para lançamentos completos:
+</p>
+
+<pre class="brush:xml">
+<repositories>
+    <repository>
+        <id>io.spring.repo.maven.release</id>
+        <url>http://repo.spring.io/release/</url>
+        <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+</repositories>
+</pre>
+
+<p>Para milestones:</p>
+
+<pre class="brush:xml">
+<repositories>
+    <repository>
+        <id>io.spring.repo.maven.milestone</id>
+        <url>http://repo.spring.io/milestone/</url>
+        <snapshots><enabled> false </enabled></snapshots>
+    </repository>
+</repositories>
+</pre>
+
+<p>E para snapshots:</p>
+
+<pre class="brush:xml">
+<repositories>
+    <repository>
+        <id>io.spring.repo.maven.snapshot</id>
+        <url>http://repo.spring.io/snapshot/</url>
+        <snapshots><enabled> true </enabled></snapshots>
+    </repository>
+</repositories>
+</pre>
+<br>
+<section id="mavenlist">
+<h2>Dependência da "Lista de materiais" do Maven</h2>
+<br>
+<p>É possível misturar acidentalmente diferentes versões dos JARs do Spring ao usar o Maven. Por exemplo, você pode achar que uma biblioteca de terceiros, ou outro projeto Spring, gera uma dependência transitiva para uma versão mais antiga. Se você esquecer de declarar explicitamente uma dependência direta, todos os tipos de problemas inesperados poderão surgir.</p>
+<br>
+
+<p>Para superar esses problemas, o Maven apóia o conceito de dependência da "lista de materiais" (BOM). Você pode importar o <b>spring-framework-bom</b> na seção <b>dependencyManagement</b> para garantir que todas as dependências do spring (diretas e transitivas) estejam na mesma versão.</p>
+
+
+<pre class="brush:xml">
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-framework-bom</artifactId>
+            <version>4.2.9.RELEASE</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+</pre>
+
+<p>Um benefício adicional do uso da BOM é que você não precisa mais especificar o atributo < versão > quando depende dos artefatos do Spring Framework:</p>
+
+<pre class="brush:xml">
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+    </dependency>
+<dependencies>
+</pre>
+</section>
+<section id="zipdist">
+<h2>Arquivos zip de distribuição</h2>
+<p>Embora o uso de um sistema de compilação que suporte o gerenciamento de dependências seja a maneira recomendada de obter o Spring Framework, ainda é possível fazer o download de um arquivo zip de distribuição.</p>
+
+<p>Os zips de distribuição são publicados no Repositório do Spring Maven (isso é apenas para nossa conveniência, você não precisa do Maven ou de qualquer outro sistema de compilação para fazer o download).</p>
+
+<p>Para baixar um zip de distribuição, abra um navegador da web em <a href="http://repo.spring.io/release/org/springframework/spring"target="_blank">http://repo.spring.io/release/org/springframework/spring</a> e selecione a subpasta apropriada para a versão que você deseja. Os arquivos de distribuição finalizam <b>-dist.zip</b>, por exemplo, <b>spring-framework-{spring-version}-RELEASE-dist.zip</b>. Também são publicadas distribuições para marcos e capturas instantâneas.</p>
+</section>
+<section id="logfile">
+<h2>Log</h2>
+<br>
+<p>O registro em log é uma dependência muito importante para o Spring porque:</p><br>
+<ul>
+   <li> é a única dependência externa obrigatória; </li>
+ <li> todo mundo gosta de ver alguma saída das ferramentas que está usando; 
+  <li> o Spring se integra a muitas outras ferramentas que também foram criadas uma opção de dependência de log.</li/>
+  </ul>
+<br>
+  <p> Um dos objetivos de um desenvolvedor de aplicativos geralmente é ter o log unificado configurado em um local central para todo o aplicativo, incluindo todos os componentes externos. Isso é mais difícil do que poderia ter sido, pois existem muitas opções de estrutura de log.
+</p>
+<br>
+<p>
+A dependência de registro obrigatória no Spring é a Jakarta Commons Logging API(JCL). Compilamos o JCL e também tornamos os objetos de log da JCL visíveis para classes que estendem o Spring Framework. É importante para os usuários que todas as versões do Spring usem a mesma biblioteca de log: a migração é fácil porque a compatibilidade com versões anteriores é preservada, mesmo com aplicativos que estendem o Spring. A maneira como fazemos isso é fazer com que um dos módulos do Spring dependa explicitamente do log comum (a implementação canônica da JCL) e faça com que todos os outros módulos dependam disso no momento da compilação. Se você estiver usando o Maven, por exemplo, e se perguntando onde detectou a dependência do log comum, então é do Spring e, especificamente, do módulo central chamado spring-core.</p>
+<br>
+<p>O bom do log comum é que você não precisa de mais nada para fazer seu aplicativo funcionar. Ele possui um algoritmo de descoberta em tempo de execução que procura outras estruturas de registro em locais bem conhecidos no caminho de classe e usa uma que julga apropriada (ou você pode dizer qual, se necessário). Se nada mais estiver disponível, você obterá registros de aparência bastante agradável apenas no JDK (java.util.logging ou JUL). Você deve achar que seu aplicativo Spring funciona e efetua logon com facilidade no console imediatamente na maioria das situações, e isso é importante.</p>
+<br>
+<section id="logcommonsnot">
+<h2>Não usando o log do Commons</h2>
+
+<p>Infelizmente, o algoritmo de descoberta de tempo de execução no log comum, embora conveniente para o usuário final, é problemático. Se pudéssemos voltar o relógio e iniciar o Spring agora como um novo projeto, ele usaria uma dependência de log diferente. A primeira opção provavelmente seria o SLF4J (Simple Logging Facade for Java), que também é usado por muitas outras ferramentas que as pessoas usam com o Spring em seus aplicativos.</p>
+<br>
+<p>Existem basicamente duas maneiras de desativar o log comum:</p>
+<br>
+<ul>
+    <li>Excluir a dependência do módulo spring-core (pois é o único módulo que depende explicitamente do log comum)</li>
+    <li>Dependa de uma dependência especial de log comum que substitua a biblioteca por um jar vazio (mais detalhes podem ser encontrados no FAQ do SLF4J)</li>
+</ul>
+<br>
+<p>Para excluir o registro comum, adicione o seguinte à seção <b>dependencyManagement</b>:</p>
+
+<pre class="brush:xml">
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>4.2.9.RELEASE</version>
+        <exclusions>
+            <exclusion>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+</dependencies>
+</pre>
+
+<p>Agora, esse aplicativo provavelmente está quebrado porque não há implementação da API JCL no caminho da classe; portanto, para corrigir, é necessário fornecer um novo. Na próxima seção, mostramos como fornecer uma implementação alternativa da JCL usando o SLF4J como exemplo.</p>
+</section>
+<section id="slf4j">
+<h2>Usando SLF4J</h2>
+<br>
+<p>O SLF4J é uma dependência mais limpa e mais eficiente em tempo de execução do que o log comum, porque usa ligações em tempo de compilação em vez da descoberta em tempo de execução de outras estruturas de log integradas. Isso também significa que você precisa ser mais explícito sobre o que deseja que aconteça no tempo de execução e declará-lo ou configurá-lo de acordo. O SLF4J fornece ligações para muitas estruturas de log comuns, para que você possa geralmente escolher uma que você já usa e vincular a essa para configuração e gerenciamento.</p>
+<br>
+<p>O SLF4J fornece ligações para muitas estruturas de log comuns, incluindo JCL, e também faz o contrário: pontes entre outras estruturas de log e ele próprio. Portanto, para usar o SLF4J com o Spring, é necessário substituir a dependência do log de bens comuns pela ponte SLF4J-JCL. Depois de fazer isso, o registro de chamadas do Spring será convertido em chamadas para a API do SLF4J; portanto, se outras bibliotecas em seu aplicativo usarem essa API, você terá um único local para configurar e gerenciar o log.</p>
+<br>
+<p>Uma escolha comum pode ser conectar o Spring ao SLF4J e fornecer ligação explícita do SLF4J para o Log4J. Você precisa fornecer 4 dependências (e excluir o log comum existente): a ponte, a API SLF4J, a ligação ao Log4J e a própria implementação do Log4J. No Maven, você faria isso assim:</p>
+
+<pre class="brush:xml">
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId >
+        <version>4.2.9.RELEASE</version>
+        <exclusions>
+            <exclusion>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>1.5.8</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.5.8</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.5.8</version>
+    </dependency>
+    < dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.14</version>
+    </dependency>
+</dependencies>
+</pre>
+</section>
+<section id="uselog4j">
+<h2>Usando o Log4J</h2>
+
+<p>Muitas pessoas usam o Log4j como uma estrutura de registro para fins de configuração e gerenciamento. É eficiente e bem estabelecido e, de fato, é o que usamos em tempo de execução quando construímos e testamos o Spring. O Spring também fornece alguns utilitários para configurar e inicializar o Log4j, portanto, ele possui uma dependência opcional do Log4j em tempo de compilação em alguns módulos.</p>
+
+<p>Para que o Log4j funcione com a dependência JCL padrão (log comum), basta colocar o Log4j no caminho de classe e fornecer um arquivo de configuração (log4j.properties ou log4j.xml na raiz do caminho de classe). Portanto, para usuários do Maven, esta é sua declaração de dependência:</p>
+
+<pre class="brush:xml">
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>4.2.9.RELEASE</version>
+    </dependency>
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.14</version>
+    </dependency>
+</dependencies>
+</pre>
+
+<p>E aqui está um exemplo de log4j.properties para fazer logon no console:</p>
+
+<pre class="brush:xml">
+log4j.rootCategory=INFO, stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{ABSOLUTE} %5p %t %c{2}:%L - %m%n
+log4j.category.org.springframework.beans.factory=DEBUG</pre>
+</section>
+<section id="intbensioc">
+<h1>Introdução ao contêiner Spring IoC e beans</h1>
+<br>
+<p>Esta seção aborda a implementação do Spring Framework do princípio de Inversão de controle(IoC). A IoC também é conhecida como injeção de dependência(DI). É um processo pelo qual os objetos definem suas dependências, ou seja, os outros objetos com os quais trabalham, apenas por meio de argumentos do construtor, argumentos para um método de fábrica ou propriedades que são definidas na instância do objeto após serem construídas ou retornadas a partir de um método de fábrica. O contêiner injeta essas dependências quando cria o bean. Esse processo é fundamentalmente o inverso, daí o nome Inversion of Control (IoC), do próprio bean que controla a instanciação ou localização de suas dependências usando a construção direta de classes ou um mecanismo como o padrão Service Locator.</p>
+<br>
+<p>Os pacotes org.springframework.beans e org.springframework.context são a base do contêiner de IoC do Spring Framework. A interface BeanFactory fornece um mecanismo de configuração avançado capaz de gerenciar qualquer tipo de objeto. ApplicationContext é uma sub-interface do BeanFactory. Ele adiciona uma integração mais fácil aos recursos de AOP do Spring; tratamento de recursos de mensagens (para uso em internacionalização), publicação de eventos; e contextos específicos da camada de aplicativos, como o WebApplicationContext, para uso em aplicativos da web.</p><bR>
+<p>Em resumo, o BeanFactory fornece a estrutura de configuração e a funcionalidade básica, e o ApplicationContext adiciona mais funcionalidades específicas da empresa. O ApplicationContext é um superconjunto completo do BeanFactory e é usado exclusivamente neste capítulo nas descrições do contêiner de IoC do Spring.</p>
+<br>
+<p>
+No Spring, os objetos que formam a espinha dorsal do seu aplicativo e gerenciados pelo contêiner Spring IoC são chamados de beans. Um bean é um objeto que é instanciado, montado e gerenciado por um contêiner Spring IoC. Caso contrário, um bean é simplesmente um dos muitos objetos em seu aplicativo. Os beans e as dependências entre eles são refletidos nos metadados de configuração usados ​​por um contêiner.</p>
+<br>
+<p><i>Use um <b>ApplicationContext</b>, a menos que você tenha um bom motivo para não fazer isso.
+
+Como o ApplicationContext inclui todas as funcionalidades do BeanFactory, geralmente é recomendado sobre o BeanFactory, exceto em algumas situações, como em aplicativos incorporados em execução em dispositivos com recursos limitados, onde o consumo de memória pode ser crítico e alguns kilobytes extras podem fazer a diferença. No entanto, para os aplicativos e sistemas corporativos mais comuns, o ApplicationContext é o que você deseja usar. O Spring faz uso intenso do ponto de extensão BeanPostProcessor (para efetuar proxy e assim por diante). Se você usar apenas um BeanFactory simples, uma quantidade razoável de suporte, como transações e AOP, não entrará em vigor, pelo menos não sem algumas etapas extras de sua parte. Essa situação pode ser confusa porque nada está realmente errado com a configuração.
+</i></p>
+<br>
+</section>
+<section id="visaogeralcont">
+<h1>Container Visão geral</h1>
+
+<p>
+A interface <b>org.springframework.context.ApplicationContext</b> representa o contêiner Spring IoC e é responsável por instanciar, configurar e montar os beans mencionados acima. O contêiner recebe instruções sobre quais objetos instanciar, configurar e montar lendo os metadados de configuração. Os metadados de configuração são representados em XML, anotações Java ou código Java. Ele permite que você expresse os objetos que compõem seu aplicativo e as interdependências ricas entre esses objetos</p>
+<br><p>
+Várias implementações da interface <b>ApplicationContext</b> são fornecidas prontas para uso com o Spring. Em aplicativos independentes, é comum criar uma instância de <b>ClassPathXmlApplicationContext</b> ou <b>FileSystemXmlApplicationContext</b>. Embora o XML tenha sido o formato tradicional para definir metadados de configuração, você pode instruir o contêiner a usar anotações ou código Java como formato de metadados, fornecendo uma pequena quantidade de configuração XML para declarar ativamente o suporte a esses formatos de metadados adicionais.</p>
+
+<br>
+<p>
+Na maioria dos cenários de aplicativos, o código explícito do usuário não é necessário para instanciar uma ou mais instâncias de um contêiner Spring IoC. Por exemplo, em um cenário de aplicativo da Web, apenas oito (mais ou menos) linhas de XML descritor da web padrão no arquivo web.xml do aplicativo normalmente são suficientes . Se você estiver usando o ambiente de desenvolvimento baseado em Eclipse do Spring Tool Suite, essa configuração padrão pode ser facilmente criada com apenas alguns cliques ou pressionamentos de tecla.
+</p>
+
+<br>
+<p>O diagrama a seguir é uma visão de alto nível de como o Spring funciona. Suas classes de aplicativos são combinadas com metadados de configuração para que, após a criação e a inicialização do <b>ApplicationContext</b>, você tenha um sistema ou aplicativo totalmente configurado e executável.
+</p>
+<br>
+<img src="imagens/jee7/container-magic.png">
+<br>
+</section>
+<section id="metadadosconfig">
+<h1>Metadados de configuração</h1>
+<p>
+Como o diagrama anterior mostra, o contêiner Spring IoC consome uma forma de metadados de configuração; esses metadados de configuração representam como você, como desenvolvedor de aplicativos, instrui o contêiner Spring a instanciar, configurar e montar os objetos em seu aplicativo.
+</p>
+<p>Os metadados de configuração são tradicionalmente fornecidos em um formato XML simples e intuitivo, que é usado na maior parte desta seção para transmitir os principais conceitos e recursos do contêiner Spring IoC.
+</p>
+<br>
+<ul>
+    <li>Configuração baseada em anotações: o Spring 2.5 introduziu suporte para metadados de configuração baseados em anotações.<li>
+    <li>Configuração baseada em Java: A partir do Spring 3.0, muitos recursos fornecidos pelo projeto Spring JavaConfig tornaram-se parte do Spring Framework principal. Assim, você pode definir beans externos para suas classes de aplicativos usando arquivos Java em vez de arquivos XML. Os novos recursos são as anotações @Configuration, @Bean, @Import e @DependsOn.</li>
+  </ul>
+<br>
+  <p>A configuração do Spring consiste em pelo menos uma e geralmente mais de uma definição de bean que o contêiner deve gerenciar. Os metadados de configuração baseados em XML mostram esses beans configurados como elementos < bean /> dentro de um elemento < beans /> de nível superior. A configuração Java normalmente usa métodos anotados <b>@Bean</b> dentro de uma classe <b>@Configuration</b>.</p>
+<br>
+<p>
+Essas definições de bean correspondem aos objetos reais que compõem seu aplicativo. Normalmente, você define objetos da camada de serviço, DAOs (Data Access Objects), objetos de apresentação, como instâncias do Struts Action, objetos de infraestrutura, como Hibernate SessionFactories, JMS Queues, etc. Normalmente, não é possível configurar objetos de domínio de baixa granularidade no contêiner, porque geralmente é de responsabilidade dos DAOs e da lógica de negócios criar e carregar objetos de domínio. No entanto, você pode usar a integração do Spring com o AspectJ para configurar objetos que foram criados fora do controle de um contêiner de IoC. 
+    </p>
+    <br><p>O exemplo a seguir mostra a estrutura básica dos metadados de configuração baseados em XML:</p>
+
+    <pre class="brush:xml">
+      &lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="..." class="...">
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+    <bean id="..." class="...">
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+    <!-- more bean definitions go here -->
+
+&lt/beans>
+    </pre>
+
+    <p>O atributo id é uma sequência usada para identificar a definição individual do bean. O atributo class define o tipo do bean e usa o nome completo da classe. O valor do atributo id refere-se a objetos de colaboração. </p>
+
+    <br>
+    </section>
+    <section id="dependenc">
+    <h1>Aplicando e testando Injeção Dependência</h1>
+<p>Um aplicativo corporativo típico não consiste em um único objeto (ou bean na linguagem Spring). Até o aplicativo mais simples possui alguns objetos que trabalham juntos para apresentar o que o usuário final vê como um aplicativo coerente. Esta próxima seção explica como você define um número de definições de bean que são independentes para um aplicativo totalmente realizado no qual os objetos colaboram para atingir um objetivo.</p>
+<br>
+<p>
+A injeção de dependência (DI) é um processo pelo qual os objetos definem suas dependências, ou seja, os outros objetos com os quais trabalham, apenas por meio de argumentos do construtor, argumentos para um método de fábrica ou propriedades que são definidas na instância do objeto após sua construção ou retorno. de um método de fábrica. O contêiner injeta essas dependências quando cria o bean. Esse processo é fundamentalmente o inverso, daí o nome Inversion of Control (IoC), do próprio bean que controla a instanciação ou a localização de suas dependências por conta própria, usando a construção direta de classes ou o padrão Service Locator.</p>
+<br>
+<p>O código é mais limpo com o princípio DI e o desacoplamento é mais eficaz quando os objetos são fornecidos com suas dependências. O objeto não procura suas dependências e não conhece o local ou a classe das dependências. Dessa forma, suas classes se tornam mais fáceis de testar, principalmente quando as dependências estão em interfaces ou classes básicas abstratas, o que permite que implementações stub ou simuladas sejam usadas em testes de unidade.
+</p>
+</section>
+<section id="dependfort">
+ <h2>Dependência fortemente acoplada</h2>
+   <br>
+   <p>Em termos de implementação, o contêiner Spring pode injetar objetos em argumentos de instância e métodos estáticos e injetar construtores via injeção de dependência. Digamos que você tenha um aplicativo que tenha um componente chamado ClassA que depende da ClassB. Em outras palavras, ClassB é a dependência.</p>
+  
+  <pre class="brush:java">
+public class ClassA {
+private ClassB classB;
+public ClassA() {
+classB = new ClassB();
+}
+}
+  </pre>
+
+  <p>Criamos uma dependência entre ClassA e ClassB na linha 3-4 do código acima. Isso une firmemente a ClassA à ClassB. Esse acoplamento rígido pode ser contornado usando IoC e, para isso, primeiro precisamos alterar o código acima  para o próximo código logo abaixo:</p>
+  <pre class="brush:java">
+  	//Remoção do acoplamento rígido entre ClassA e ClassB
+
+ public class ClassA {
+ private ClassB classB;
+ public ClassA(ClassB classB) {
+ this.classB = classB;
+  }
+}
+</pre>
+
+<p>Como você pode ver, a ClassB é implementada de forma independente, e o contêiner Spring fornece essa implementação da ClassB para a ClassA no momento da instanciação da ClassA, e a dependência (em outras palavras, a classe ClassB) é injetada na classe ClassA através de um construtor. Portanto, o controle foi removido da ClassA e mantido em outro local (ou seja, em um arquivo de configuração XML,que será mostrado a seguir) e, portanto, "invertido" pela injeção de dependência(DI) porque a dependência é delegada a um sistema externo, ou seja, os metadados de configuração.</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="..." class="...">
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+
+
+    <!-- more bean definitions go here -->
+
+</beans>
+</pre>
+
+<ul>
+<li>Linha 2: Para usar tags como &ltbeans>, &ltbean> e assim por diante, determinados namespaces precisam ser declarados. O Spring Framework principal vem com dez namespaces de configuração. Por enquanto, vamos nos concentrar no namespace do bean; À medida que avança no estudo, outros namespaces  serão usados. No entanto, de início, exigimos apenas os esquemas AOP, Beans e Contexto. Portanto, se você estiver interessado em usar outras pessoas, poderá encontrá-las em <a href="https://docs.spring.io/spring/docs/4.2.4.RELEASE/spring-framework-reference/html/xsd-configuration.html#xsd-config-body"target="_blank">https://docs.spring.io/spring/docs/4.2.4.RELEASE/spring-framework-reference/html/xsd-configuration.html#xsd-config-body</a></a></li>
+<li>
+Linha 2: ao descrever beans em uma configuração baseada em XML, o elemento raiz do arquivo XML é &ltbeans> do esquema de beans do Spring. Toda a configuração do Spring, incluindo as declarações &ltbean>, é colocada nos &ltbeans> de nível superior.
+</li>
+<li>Linha 7: &ltbean> é a unidade de configuração mais básica do Spring. Diz ao Spring para criar um objeto para o aplicativo. Essas definições &ltbean> correspondem aos objetos reais que compõem o aplicativo</li>
+<li>Linha 7: o atributo id é uma sequência que ajuda a identificar a definição individual do bean. O atributo class define o tipo do bean e usa o nome completo da classe. O valor do atributo id refere-se aos objetos de colaboração.
+</li>
+</ul>
+<br>
+<p>O póximo código mostra a definição de bean que deve ser incluída no arquivo de metadados de configuração ilustrado no codigo acima  para injetar a dependência da classe B no código anterior.</p>
+<p><b>Configuração de dependência</b></p>
+<pre class="brush:xml">
+	<!-- Definition for classA bean -->
+<bean id="classA" class="ClassA">
+&ltconstructor-arg ref="classB"/>
+</bean>
+
+ <!-- Definition for classB bean -->
+<bean id="classB" class="ClassB">
+</bean>
+</pre>
+
+<ul>
+	<li>Linha 2: especifica o bean classA a ser criado e gerenciado pelo contêiner Spring.
+</li>
+<li>
+Linha 3: &ltconstructor-arg> configura propriedades do bean via injeção do construtor declarando-as nos elementos</li>
+<li>
+Linha 7: especifica que bean classB deve ser criado e gerenciado pelo contêiner Spring.</li>
+</ul>
+<br>
+
+<p>A injeção de dependência representada no código da confguração de dependência acima, é chamada de injeção de dependência baseada em construtor. O DI baseado em construtor é realizado quando o contêiner chama um construtor de classe com vários argumentos, cada um representando uma dependência de outra classe. Há outra variante do DI denominada injeção de dependência baseada em setter. Na DI baseada em setter, o contêiner, depois de chamar um método estático de fábrica ou sem argumento para instanciar seu bean, chama os métodos setter em seus beans.</p>
+<pre class="brush:java">
+//Método Setter para injetar dependência
+public class ClassA{
+private ClassB classB;
+
+ //Método Setter para injetar dependência
+ public void setClassB(ClassB classB) {
+ this.classB = classB;
+ }
+ // um método getter para retornar classB
+ public ClassB getClassB() {
+ return classB;
+ }
+
+ }
+</pre>
+
+<p>No código acima, o DI ocorre através dos métodos setter da classe ClassA na qual a instância ClassB é criada, e essa instância é usada para chamar métodos setter para inicializar as propriedades da ClassA.</p>
+<p>O próximo código ilustra a definição de bean que deve ser incluída no arquivo de metadados de configuração para obter a injeção de dependência baseada em setter necessária.</p>
+
+<p>Configurando dependência por meio de DI baseada em setter</p>
+<pre class="brush:xml">
+<bean id="classA" class="ClassA">
+&ltproperty name="classB" ref="classB" />
+</bean>
+&ltbean id="classB" class="ClassB" />
+</pre>
+
+<p>
+A tag &ltproperty> define uma propriedade para injeção de dependência.O código acima pode ser traduzida no código Java para o próximo código:
+</p>
+<pre class="brush:java">
+ClassA classA = new ClassA();
+ClassB classB = new ClassB();
+classA.setClassB(classB);
+</pre>
+<br><p><i>O DI baseado em construtor e em setter pode ser usado simultaneamente, mas é recomendável usar
+argumentos do construtor para dependências obrigatórias e setters para dependências opcionais</i></p><br>
+<p>O contêiner Spring é essencialmente uma fábrica que cria objetos que encapsulam a criação de objetos e configura esses objetos usando os metadados de configuração que contêm informações sobre os objetos de colaboração no aplicativo que devem ser criados. O Spring fornece dois tipos de implementação de contêiner IoC.</p><br>
+<ul>
+<li>Beans Factory(definido pelo org.springframework.beans.factory.
+Interface BeanFactory)</li>
+<li>Application contexts  (definidos pelo org.springframework.context.
+Interface ApplicationContext)
+</li>
+</ul><br>
+
+<p>As Beans Factory são os recipientes mais simples e fornecem suporte básico para DI. ApplicationContext
+é uma subinterface do BeanFactory que fornece serviços de estrutura de aplicativos, como os seguintes:</p>
+<br>
+<ul>
+<li>A capacidade de resolver mensagens de texto de um arquivo de propriedades</li>
+<li>A capacidade de publicar eventos de aplicativos para ouvintes de eventos interessados</li>
+<li>Os contextos específicos da camada de aplicativo, como o WebApplicationContext, a serem usados ​​na camada da web</li>
+
+</ul>
+<br>
+<p><i>Os aplicativos da Web têm seu próprio WebApplicationContext.</i></p>
+<br>
+</section>
+<section id="aplicatincont">
+<h1>ApplicationContext</h1>
+<p>O Spring vem com várias implementações da interface ApplicationContext prontas para uso. Os três mais usados ​​são os seguintes:</p>
+<br>
+<ul>
+	<li></li>ClassPathXmlApplicationContext: Carrega uma definição do contexto de um arquivo XML localizado no camindo(path) da classe </li>
+<li>FileSystemXmlApplicationContext: Carrega uma definição do contexto de um arquivo XML no arquivo do sistema</li>
+<li>XmlWebApplicationContext: Carrega uma definição do contexto de um arquivo XML dentro de um aplicativo web</li>
+	</ul>
+  <br>
+	<p>Em aplicativos independentes, é comum criar uma instância de ClassPathXmlApplicationContext ou FileSystemXmlApplicationContext.</p>
+	<p>você precisa instanciar o contêiner Spring IoC (ApplicationContext) para criar instâncias de bean lendo suas configurações (metadados de configuração). Em seguida, você pode obter as instâncias de bean do contêiner de IoC.</p>
+	<br>
+	<p>O código seguinte mostra a instanciação do <b>ClassPathXmlApplicationContext</b>, uma implementação
+do ApplicationContext. A implementação <b>ClassPathXmlApplicationContext</b> cria um contexto de aplicativo carregando um arquivo de configuração XML a partir do caminho da classe</p>
+
+<pre class="brush:java">
+	<!--Instanciação de ClassPathXmlApplicationContext-->
+	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");</pre>
+
+	<p>O trecho de código seguinte mostra a instanciação do <b>FileSystemXmlApplicationContext</b>.</p>
+
+	<pre class="brush:java">ApplicationContextcontext=new FileSystemXmlApplicationContext("c:/beans.xml");</pre>
+	<br><p><i>
+O FileSystemXmlApplicationContext procura beans.xml em um local específico no sistema de arquivos, enquanto ClassPathXmlApplicationContext procura beans.xml em qualquer lugar do caminho da classe (incluindo arquivos JAR).</i></p><br>
+<p>Na seção a seguir, você aprenderá como usar o contexto do aplicativo ao criar seu primeiro aplicativo independente baseado em Spring.</p>
+</section>
+<section  id="springfrm">
+<h1>Principais objetivos do Spring Framework</h1>
+<p>A injeção de dependência não é o único benefício principal do uso do Spring Framework. O objetivo do Spring Framework é simplificar a complexidade do desenvolvimento de um aplicativo corporativo. Essa complexidade se manifesta em um aplicativo corporativo de várias maneiras, e a maioria dos aplicativos corporativos anteriores ao Spring Framework foram inadvertidamente afetados por poucas ou mesmo todas as seguintes tribulações:</p>
+<br>
+<ul>
+<li>Acoplamento forte(rígido)</li>
+<li>Preocupações transversais</li>
+<li>Código padrão</li>
+</ul>
+<br>
+
+<p>
+Fundamentalmente, o Spring permite criar aplicativos a partir de POJOs(
+ <i>são objetos Java que seguem um desenho simplificado em contraposição aos EJBs, por exemplo. Um JavaBean é um POJO que segue definições rígidas de estrutura (construtor default sem argumentos e métodos que seguem o padrão de getters e setters para seus atributos</i>) e aplicar serviços corporativos de maneira não invasiva aos POJOs, para que o modelo de domínio não tenha dependências da própria estrutura.
+Portanto, a força motriz por trás do Spring Framework foi promover as melhores práticas no desenvolvimento Java EE, permitindo um modelo de programação baseado em POJO.</p><br>
+<h2>Lidando com acoplamentos rígidos usando injeção de dependência</h2>
+<p>Agora vamos ver como o Spring permite um acoplamento flexível através da injeção de dependência com a ajuda de um aplicação autônoma simples. </p>
+
+<pre class="brush:java">
+public interface Veiculo {
+public String dirige();
+</pre>
+
+<pre class="brush:java">
+public class Bike implements Veiculo{
+public String dirige() {
+return " pedalando uma bike";
+}
+}
+</pre>
+
+<pre class="brush:java">
+public class Carro implements Veiculo {
+public String dirige() {
+return " dirigindo um carro";
+}
+}
+</pre>
+<p>Esses objetos do provedor de serviços são usados pela classe VeiculoService, conforme ilustrado no próximo código, que é então usada pelo objeto cliente veiculoApp.
+
+<pre class="brush:java">
+public class VeiculoService {
+
+private Veiculo veiculo = new Bike();
+
+public void dirigir() {
+System.out.println(veiculo.dirige());
+
+ }
+
+ }
+</pre>
+<ul>
+<li>Linha 3: No código acima, a classe Bike é a dependência da classe VeiculoService e é instanciada na linha 3. Este é um caso de acoplamento rígido porque a classe VeiculoService reconhece a implementação do objeto Veiculo, que é Bike neste caso.</li>
+</ul>
+<p>O proximo código  ilustra o VeiculoApp independente.</p>
+
+<pre class="brush:java">
+ public class VeiculoApp {
+ public static void main(String[] args) {
+ VeiculoService service = new VeiculoService();
+ service.dirigir();
+ }
+ }</pre>
+
+<p>Conforme ilustrado no código acima, o VeiculoService reconhece a implementação do objeto Veiculo e, portanto, está fortemente acoplado a ele. Agora vamos desacoplar esse aplicativo por meio do DI do Spring Framework.
+A primeira etapa é criar um projeto Java usando o IDE Eclipse. Selecione File➤New➤Project e, em seguida, selecione Java Project Wizard na lista de assistentes. Nomeie seu projeto com desacloparApplication usando o assistente, conforme ilustrado na Figura abaixo.</p>
+<br>
+<img src="imagens/jee7/desacaplic.png">
+<br>
+<p>Agora você precisa adicionar as bibliotecas Spring Framework e API de log comum ao seu projeto.
+Você pode baixar as bibliotecas do Spring Framework em <a href="http://projects.spring.io/spring-framework/"target="_blank">http://projects.spring.io/spring-framework/</a>. Você pode usar o Maven, conforme explicado na seção anterior, para configurar o Spring Framework em seu projeto. Ao usar o Maven, você precisa adicionar o seguinte ao seu arquivo pom.xml</p>
+<pre class="brush:xml">
+<dependencies>
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-context</artifactId>
+<version>4.2.4.RELEASE</version>
+</dependency>
+</dependencies>
+</pre>
+<p>Usar o Maven é muito mais fácil, mas para saber quais bibliotecas de chaves são usadas para os três aplicativos que você fará nesta seção, você pode configurar manualmente as bibliotecas no Eclipse. Essas bibliotecas estão disponíveis no arquivo disponível para download, disponível na guia Código-fonte/Download, na guia</p>
+
+<p>
+Para adicionar o Spring Framework ao seu projeto, clique com o botão direito do mouse no projeto e selecione Build Path ➤ Configure Build Path para exibir a janela Java Build Path. Agora adicione o externo JARs que você baixou em seu sistema de arquivos</p>
+<br>
+<img src="imagens/jee7/buildpath.png">
+
+<br>
+<p>Agora, vamos criar arquivos de origem reais no projeto <b>descacoplarAplication</b>. Primeiro, precisamos criar um pacote chamado com.alpi.desacoplar. Para fazer isso, clique com o botão direito do mouse em src na seção Package Explorer, selecione New ➤Package e crie o pacote com.alpi.desacoplar. Em seguida, crie Veiculo.java, Carro.java e Bike.java, que são os nomes das classes que ilustrarão os próximos códigos, no pacote com.alpi.desacoplar</p>
+<pre class="brush:java">
+package com.alpi.desacoplar;
+
+public class VeiculoService {
+	
+  private Veiculo veiculo;
+	
+  public void setVeiculo(Veiculo veiculo){
+		this.veiculo=veiculo;
+	}
+	
+	public void dirigir(){
+		System.out.println(veiculo.dirige());
+	}
+
+}
+</pre>
+
+<p>
+Linha 7: removemos o controle total da classe VeiculoService e o manteve no arquivo de configuração XML, e a dependência está sendo injetada na classe VeiculoService através de um método setter na linha 7.
+Agora crie uma classe de cliente VeiculoApp, conforme ilustrado abaixo.</p>
+
+<pre class="brush:java">
+package com.alpi.desacoplar;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class VeiculoApp {
+	
+  public static void main(String[] args) {
+		 ApplicationContext context = new ClassPathXmlApplicationContext( "beans.xml");
+		 VeiculoService contestService = (VeiculoService)context.getBean("veiculoService");
+		 contestService.dirigir();
+		 }
+		
+		 }
+
+		</pre>
+		<ul>
+<li>Linhas 8 a 9: essas linhas instanciam o contexto do aplicativo e passam o arquivo de configuração.</li>
+<li>Linhas 10 a 11: essas linhas obtêm o bean do arquivo de configuração. Para obter um bean declarado de uma fábrica de beans ou de um contexto de aplicativo, faça uma chamada para o método getBean(), transmita o nome exclusivo do bean e transmita o tipo de retorno ao seu tipo real antes de usá-lo.</li>
+		</ul>
+<br>
+		<p>
+Agora, você precisa criar um arquivo de configuração de bean, que é um arquivo XML , que conecta os beans.</p>
+
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation=" http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+&ltbean id="carro" class="com.alpi.desacoplar.Carro"/>
+&ltbean id="bike" class="com.alpi.desacoplar.Bike"/>
+&ltbean id="veiculoService" class="com.alpi.desacoplar.VeiculoService">
+&ltproperty name="veiculo">
+&ltref bean="bike"/>
+&lt/property>
+&lt/bean>
+&lt/beans>
+</pre>
+<p>
+Você pode escolher qualquer nome para <b>beans.xml</b>. Você deve certificar-se de que este arquivo esteja disponível no CLASSPATH e use o mesmo nome no aplicativo principal ao criar o contexto do aplicativo, conforme mostrado no arquivo VeiculoApp.java. A Figura abaixo mostra a estrutura de diretórios do aplicativo no lado esquerdo e as referidas bibiliotecas. No lado superior direito está a classe VeiculoApp que quando  executada   mostra a saída no console <b>"Pedalando uma Bike"</b>.</p>
+<br>
+<img src="imagens/jee7/desaclopargeral.png">
+<br>
+</section>
+<section id="aoptransv">
+<h1>Abordando questões transversais usando AOP</h1>
+
+<p>Uma separação de preocupações é alcançada no Spring por meio de programação orientada a aspectos (AOP).
+O AOP encapsula as preocupações transversais em componentes reutilizáveis ​​separados chamados aspectos e os adiciona ao aplicativo. Esse processo é chamado de (weaving)tecelagem. Isso resulta em componentes coesos que se concentram nas funções de negócios e não têm conhecimento dos serviços do sistema, como log, segurança, transação e assim por diante. Para entender como os aspectos podem ser aplicados no Spring, você agora criará um <b>BookService</b> simples que recupera uma lista de todos os livros, adicionando um aspecto básico de registro ao BookService. O código para este aplicativo está disponível em um arquivo para download no git. AO código seguinte ilustra o BookService.</p>
+
+<pre class="brush:java">
+package com.alpi.aop;
+
+
+import java.util.List;
+
+public interface BookService {
+public List&ltBook> getAllBooks();
+}
+</pre>
+<p>A seguir o código BookServiceImpl implementando Bookservice:</p>
+<pre class="brush:java">
+
+package com.alpi.aop;
+
+import java.util.ArrayList;
+import java.util.List;
+
+ public class BookServiceImpl implements BookService{
+ private static List&ltBook> bookList;
+ static {
+
+ Book book1 = new Book();
+ book1.setId((long)1);
+ book1.setBookTitle("Modern Java");
+
+ Book book2 = new Book();
+ book2.setId((long)2);
+ book2.setBookTitle("Beginning Groovy");
+
+ Book book3 = new Book();
+ book3.setId((long)2);
+ book3.setBookTitle("Beginning Scala");
+
+ bookList = new ArrayList &ltBook>();
+ bookList.add(book1);
+ bookList.add(book2);
+ bookList.add(book3);
+ }
+
+
+ public List&ltBook> getAllBooks() {
+ for(Book b: bookList){
+ System.out.println("Books:"+b.getBookTitle());
+ }
+ return bookList;
+ }
+ }
+</pre>
+<p>
+O log não é uma preocupação do BookServiceImpl. Para registro, crie um aspecto, conforme ilustrado no código abaixo, que será entrelaçado no objeto BookService, fornecendo o registro sempre que necessário.</p>
+<pre class="brush:java">
+package com.alpi.aop;
+
+public class LoggingAspect {
+	public void logBefore() {
+		
+		 System.out.println("Before calling getAllBooks");
+		 }
+		
+		 public void logAfter() {
+		 System.out.println("After calling getAllBooks");
+		 }
+		 }
+
+</pre>
+
+<br>
+<ul>
+<li>Linha 3: LoggingAspect é uma classe simples com dois métodos.</li>
+<li>Linha 4: O método logBefore() que deve ser chamado antes que getAllBooks() seja chamado.</li>
+<li>Linha 9: o método logAfter() que deve ser chamado depois que o getAllBooks() é chamado</li>
+
+</ul>
+<br>
+<p>O <b>LoggingAspect</b> executa seu trabalho sem que o <b>BookServiceImpl</b> solicite. Além disso, como o <b>BookServiceImpl</b> não precisa saber sobre o <b>LoggingAspect</b>, não é necessário injetar o <b>LoggingAspect</b> no </b>BookServiceImpl</b>. Isso remove as desnecessárias complexidade do código <b>BookServiceImpl</b> de injetar <b>LoggingAspect</b> e verificar se <b>LoggingAspect</b> é nulo. Como você deve ter notado, o <b>LoggingAspect</b> é um POJO. Se torna um aspecto quando declarado como um aspecto no contexto do Spring. <b>LoggingAspect</b> pode ser aplicado ao <b>BookServiceImpl</b> sem que o <b>BookServiceImpl</b> precise chamá-lo explicitamente. De fato, <b>BookServiceImpl</b> permanece totalmente inconsciente da existência do <b>LoggingAspect</b>. Para que o <b>LoggingAspect</b> funcione como um aspecto, tudo o que você precisa fazer é declará-lo como um no arquivo de configuração do Spring</p>
+<p>O código seguinte ilustra o arquivo XML de contexto do aplicativo que declara LoggingAspect como um aspecto.</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+ http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
+  
+  <!-- bean definitions here -->
+
+&ltbean id="bookService" class="com.alpi.aop.BookServiceImpl"/>
+
+ &ltbean id="logAspect" class="com.alpi.aop.LoggingAspect"/>
+
+ &ltaop:config>
+ &ltaop:aspect ref="logAspect">
+ &ltaop:pointcut id = "log"
+ expression="execution(* *.getAllBooks())" />
+ &ltaop:before pointcut-ref = "log"
+ method="logBefore" />
+ &ltaop:after pointcut-ref = "log"
+ method="logAfter" />
+ &lt/aop:aspect>
+ &lt/aop:config>
+ &lt/beans>
+
+</pre>
+
+<ul>
+<li>Linhas 5 a 7: você usa o namespace de configuração automática do Spring para declarar que o bean LoggingAspect é um aspecto.</li>
+<li>Linha 14: você declara o LoggingAspect como um bean. Mesmo se o Spring Framework transformar um POJO em um aspecto, declarando-o como um aspecto no contexto, ele ainda precisará ser declarado como um Spring &ltbean>.</li>
+<li>Linha 17: Então você se refere a esse bean no elemento &ltaop: aspect>.</li>
+<li>Linhas 18 a 19: O ponto de corte é definido no elemento &ltpointcut> anterior com um atributo de expressão definido para selecionar onde o aviso deve ser aplicado. A sintaxe da expressão é a linguagem de expressão pointcut do AspectJ.</li>
+<li>Linhas 20 a 21: Você declara (usando &ltaop: before>)  antes que o método getAllBooks() seja executado, o método logBefore do LoggingAspect deve ser chamado.Isso é chamado conselho antes ou before advice. O pointcut-ref attribute refere-se a um pointcut chamado log.</li>
+<li>Linhas 22 a 23: Você (usando &ltaop: after>) declara que o método logAfter deve ser chamado após a execução de getAllBooks (). Isso é conhecido como conselho após ou after advice. O atributo pointcut-ref refere-se a um pointcut chamado log.
+
+</ul>
+<br>
+<p><b>Aplicativo java independente</b></p>
+<pre class="brush:java">
+package com.alpi.aop;
+
+
+ import org.springframework.context.ApplicationContext;
+ import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+ public class Driver {
+
+ public static void main(String...args){
+ ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+
+ BookService bookService = (BookService)context.getBean("bookService");
+ bookService.getAllBooks();
+
+ }
+ }</pre>
+<br>
+<p>A Figura abaixo ilustra a estrutura de diretórios e suas bibliotecas no lado direito a classe Drive na parte superior direita e a saída no console.</p>
+<br>
+ <img src="imagens/jee7/estruturaprojetoaop.png">
+
+ <br>
+ <p>Assim, o Spring AOP pode ser empregado para fornecer serviços como transações e segurança declarativamente, sem emaranhar seu código que, em primeiro lugar, deve permanecer preocupado apenas com suas funções de negócios.</p>
+</section>
+<section id="removcod">
+ <h1>Remoção de código padrão usando modelos</h1>
+
+ <p>Já tinhamos criado anteriormente a camada de acesso a dados do aplicativo bookstore e usamos JDBC puro no BookDAOImpl para conectar-se ao banco de dados. Nesta seção, você verá como o Spring Framework, por meio do JDBC Template da Spring, transforma o BookDAOImpl, eliminando o código padrão resultante do uso do JDBC puro para obter uma conexão com um armazenamento de dados e limpa os recursos. O código para este aplicativo está disponível no arquivo para download no repostorio git. O código seguinte  ilustra o BookService.</p>
+
+<pre class="brush:java">
+package com.alpi.books.service;
+import java.util.List;
+import com.alpi.books.model.Book;
+
+public interface BookService {
+	public List&ltBook> getAllBooks();
+
+}
+</pre>
+<p>A seguir o BookServiceImpl:</p>
+<pre class="brush:java">
+package com.alpi.books.service;
+import java.util.List;
+import com.alpi.books.dao.BookDAO;
+import com.alpi.books.model.Book;
+public class BookServiceImpl implements BookService {
+	private BookDAO bookDao ;
+	public void setBookDao(BookDAO bookDao) {
+	this.bookDao = bookDao;
+	}
+	public List&ltBook> getAllBooks() {
+	List&ltBook> bookList = bookDao.findAllBooks();
+	return bookList;
+	}
+	}
+
+
+</pre>
+<p>Depois o código BookDAO:</p>
+
+
+<pre class="brush:java">
+package com.alpi.books.dao;
+
+
+	import java.util.List;
+	import com.alpi.books.model.Book;
+	import com.alpi.books.model.Category;
+	
+	public interface BookDAO{
+	public List&ltBook> findAllBooks();
+	}
+
+
+</pre>
+
+<p>O código seguinte é o BookDAOImpl:</p>
+
+<pre class="brush:java">
+package com.alpi.books.dao;
+
+  import java.sql.Connection;
+  import java.sql.DriverManager;
+	import java.sql.PreparedStatement;
+	import java.sql.ResultSet;
+	import java.sql.SQLException;
+	import java.sql.Statement;
+	import java.util.ArrayList;
+	import java.util.List;
+	
+	import javax.sql.DataSource;
+	
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.jdbc.core.JdbcTemplate;
+	
+	import com.alpi.books.model.Author;
+	import com.alpi.books.model.Book;
+	import com.alpi.books.model.Category;
+	
+	public class BookDAOImpl implements BookDAO {
+	
+	DataSource dataSource;
+	
+	public void setDataSource(DataSource dataSource) {
+	 this.dataSource = dataSource;
+	 }  
+	 
+	public List&ltBook> findAllBooks() {
+	 List&ltBook> bookList = new ArrayLis&lt>();
+	
+	 String sql = "select * from book inner join author on book.id = author.book_id";
+	
+	 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+	 bookList = jdbcTemplate.query(sql, new BookRowMapper());
+	 return bookList;
+	 }
+	
+	 }
+</pre>
+
+<p>Compare este método <b>findAllBooks()</b> do <b>BookDAOImpl</b> com o método <b>findAllBooks()</b> do feito anteriormente e você verá que o <b>JDBCTemplate</b> elimina o código padrão resultante do uso de <b>JDBC</b> puro para obter uma conexão com nosso armazenamento de dados e limpa os recursos</p>
+<br>
+<ul>
+<li>Linha 34: Isso cria um JDBCTemplate usando a fonte de dados passada para ele.
+Observe que o modelo JDBC é instanciado dessa maneira por uma questão de explicação. Em um aplicativo pronto para produção, você deve injetar o JDBC Template como uma dependência, como qualquer outra dependência, conforme explicado anteriormente na classe VeiculoService.</li>
+<li>Linha 35: Uma implementação do mapeador de linhas é usada. O BookRowMapper é explicado a seguir.
+</li>
+</ul>
+<br>
+
+<p>O código a seguir ilustra o objeto BookRowMapper para consultar uma ou mais linhas e transformar cada linha no objeto de domínio correspondente em vez de recuperar um único valor.</p>
+<pre class="brush:java">
+	package com.alpi.books.dao;
+
+	import java.sql.ResultSet;
+	import java.sql.SQLException;
+	
+	import org.springframework.jdbc.core.RowMapper;
+	
+	import com.alpi.books.model.Book;
+	
+	public class BookRowMapper implements RowMapper< Book > {
+	
+	@Override
+	public Book mapRow(ResultSet resultSet, int line) throws SQLException {
+	BookExtractor bookExtractor = new BookExtractor();
+	return bookExtractor.extractData(resultSet);
+	}
+	
+	 }
+</pre>
+
+<br>
+
+<ul>
+<li>Linha 10: interface RowMapper&ltT> do Spring (sob o pacote
+org.springframework.jdbc.core) fornece uma maneira simples de executar o mapeamento de um conjunto de resultados JDBC para POJOs.</li>
+<li>Linha 14: Isso usa o BookExtractor para extrair os dados.</li>
+
+</ul>
+
+<br><p>O próximo código ilustra o objeto BookExtractor.</p>
+
+<pre class="brush:java">
+import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.ResultSetExtractor;
+
+import com.alpi.books.model.Author;
+import com.alpi.books.model.Book;
+
+public class BookExtractor implements ResultSetExtractor&ltBook> {
+
+public Book extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+
+Book book = new Book();
+Author author = new Author();
+List&ltAuthor> authorList = new ArrayList&lt>();
+
+book.setId(resultSet.getLong(1));
+book.setCategoryId(resultSet.getLong(2));
+book.setBookTitle(resultSet.getString(3));
+book.setPublisherName(resultSet.getString(4));
+book.setAuthorId(resultSet.getLong(5));
+author.setBookId(resultSet.getLong(6));
+author.setFirstName(resultSet.getString(7));
+author.setLastName(resultSet.getString(8));
+authorList.add(author);
+book.setAuthors(authorList);
+
+return book;
+ }
+
+ }
+</pre>
+
+<br>
+<ul>
+<li>
+Linha 9: BookExtractor implementa o ResultSetExtractor fornecido pelo Spring (no pacote org.springframework.jdbc.core). O RowMapper é adequado apenas para mapeamento para um único objeto de domínio. Mas como estamos juntando duas tabelas no código BookDAOImpl na linha 32, precisamos usar a interface ResultSetExtractor para transformar os dados em um objeto de domínio aninhado.
+</li>
+</ul>
+<br><p>O próximo código ilustra o arquivo de configuração para este aplicativo independente(stand alone).</p>
+
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8"?>
+&ltbeans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+ http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
+  
+  <!-- telling container to take care of annotations stuff -->
+ &ltcontext:annotation-config />
+
+ <!-- declaring base package -->
+ &ltcontext:component-scan base-package="com.alpi.books" />
+
+
+ &ltbean id="dao" class="com.alpi.books.dao.BookDAOImpl" >
+ &ltproperty name="dataSource" ref="dataSource">
+ &lt/property>
+ &lt/bean>
+
+ &ltbean id="service" class="com.alpi.books.service.BookServiceImpl">
+ &ltproperty name="bookDao" ref="dao">
+ &lt/property>
+ &lt/bean>
+
+ &ltbean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ &ltproperty name="driverClassName" value="com.mysql.jdbc.Driver" />
+ &ltproperty name="url" value="jdbc:mysql://localhost:3306/book" />
+ &ltproperty name="username" value="alans" />
+ &ltproperty name="password" value="12345" />
+ &lt/bean>
+&lt/beans>
+</pre>
+
+<p>Linha 18: configura o <b>dao</b> com a fonte de dados(datasource).
+</p>
+<br>
+<p>Dessa maneira, o Spring Framework elimina o código padrão. Agora, com um aplicativo Java independente, você pode consultar a nova camada de acesso a dados que criamos usando o Spring Framework.</p>
+<p>O código seguinte ilustra o aplicativo Java independente que consulta o acesso aos dados por meio do componente BookService da camada de serviço.</p>
+<pre class="brush:java">
+package com.alpi.books.client;
+
+import java.util.List;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.alpi.books.model.Book;
+import com.alpi.books.service.BookService;
+
+public class BookApp {
+public static void main(String[] args) {
+ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+BookService bookService =(BookService) context.getBean("service");
+// List all books
+System.err.println("Listing all Books:");
+List&ltBook> bookList= bookService.getAllBooks();
+
+for(Book b: bookList){
+System.out.println(b.getId()+"--"+b.getBookTitle());
+}
+}
+}
+</pre>
+<p>A seguir a figura mostra a estrutura das pastas,  o arquivo BookApp.java e a sáida da consulta via template datasource no console.</p>
+<br><img src="imagens/jee7/usandotemplate.png">
+<p>Nesta seção, você aprendeu os principais objetivos do Spring Framework, que visa simplificar a complexidade que entra em qualquer aplicativo corporativo por meio de acoplamento rígido, preocupações transversais e código padrão. Na próxima seção, implementaremos a camada da Web usando o módulo Web MVC do Spring Framework.
+</p>
+</section>
+
+<p class="nav-arq" id="referencia"> Aplicativo Web Bookstore com Struts2<a href="appbook.html">&laquo; anterior | <a href="springwebmvc.html">próximo >> Construindo App com spring web mvc &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/springmvcsts" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>

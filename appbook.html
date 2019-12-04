@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+   <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+<link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+
+
+<!-- Top Navigation Menu -->
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+   <a class="w3-bar-item w3-button" href="#appbookstore">23- APLICATIVO WEB BOOKSTORE COM STRUTS2</a>
+          <a class="w3-bar-item w3-button" href="#devtemplate">Desenvolvendo Templates</a>
+          <a class="w3-bar-item w3-button"href="#intgacessdado">Integrar a camada de Acesso aos Dados</a>
+          <a class="w3-bar-item w3-button"href="#logbd">Login Usando Banco de Dados</a>
+          <a class="w3-bar-item w3-button"href="#showcateg">Mostrando Categorias Recuperadas do Banco de Dados</a>
+          <a class="w3-bar-item w3-button"href="#listcateg">Listando Livros por Categoria</a>
+          
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class=" w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA EE </h1>
+</header>
+<section id="appbookstore">
+<h1>Aplicativo Web Bookstore com Struts2</h1>
+
+<p>Nesta seção, você desenvolverá progressivamente o aplicativo bookstore, incluindo as seguintes funcionalidades:</p>
+<ul>
+<li>A funcionalidade de login</li>
+<li>Integração de modelos com a camada de acesso a dados</li>
+<li>Login via banco de dados</li>
+<li>Seleção de categorias de um banco de dados</li>
+</li>Listando livros por categoria</li>
+</ul>
+<br>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+<h2>A Funcionalidade de Login</h2>
+<br> 
+<img src="imagens\jee7\estruturalogin.jpg">
+<br> 
+<p>Você pode fazer o download do código-fonte do aplicativo no site do git e, à medida que avança em cada seção, pode consultar a fonte para importações e outros artefatos.</p>
+
+<br>
+<img src="imagens\jee7\loginvalid.jpg">
+<br>
+<p>
+Você pode adicionar a dependência de struts2-core ao seu arquivo pom.xml, conforme ilustrado na Listagem</p>
+<pre class="brush:xml">
+<dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts2-core</artifactId>
+    <version>2.3.35</version>
+    <type>jar</type>
+<scope>compile</scope>
+</dependency>
+</pre>
+<p>Você pode usar o mesmo arquivo web.xml usado anteriormente no projeto OlaMundo. Modifique o arquivo  welcome-file-list e adcionando esse trecho de código:</p>
+<pre class="brush:xml">
+<welcome-file-list>
+<welcome-file>login.jsp</welcome-file>
+</welcome-file-list>
+</pre>
+<p>Vamos mostrar agora como fica o login.jsp</p>
+<pre class="brush:html">
+&lt%@ page contentType="text/html; charset=UTF-8"%>
+&lt%@ taglib prefix="s" uri="/struts-tags"%>
+&lthtml>
+&lthead>
+&lttitle>Bookstore Login&lt/title>
+&lt/head>
+&ltbody>
+&lth3>Login Bookstore&lt/h3>
+&lts:actionerror/>
+&lts:form action="login.action" method="post">
+&lts:textfield name="username" key="label.username" size="30"/>
+&lts:password name="password" key="label.password" size="30"/>
+&lts:submit method="execute" align="center" />
+&lt/s:form>
+&lt/body>
+&lt/html>
+</pre>
+<br>
+<p>O código acima ilustra o uso de várias tags do Struts 2. Este é um formulário de login que permite ao usuário inserir um nome de usuário e senha. Na linha 10, o nome da ação de logon é enviado ao contêiner quando o usuário envia o formulário. Esse nome de ação é mapeado para LoginAction via struts.xml, conforme ilustrado na Listagem abaixo:</p>
+
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8" ?>
+&lt!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+&ltconstant name="struts.enable.DynamicMethodInvocation" value="false"/>
+&ltconstant name="struts.devMode" value="true"/>
+&ltconstant name="struts.custom.i18n.resources" value="ApplicationResources"/>
+
+<package name="default" extends="struts-default" namespace="/">
+<action name="login" class="br.com.alpi.loginbook.action.LoginAction">
+<result name="success">view/home.jsp</result>
+<result name="error">login.jsp</result>
+</action>
+</package>
+</struts>
+</pre>
+
+<p> A linha 12 mapeia a classe <b>LoginAction</b> de nome <b>login</b> para o URL e a linha 13 renderiza <b>home.jsp</b> quando a String <b>success</b> é retornada pela classe <b>LoginAction</b>. Se a classe </b>LoginAction</b> retornar o erro String, o <b>login.jsp</b> será renderizado novamente com a mensagem de erro.</p>
+
+<p>Vamos ver agora como fica a classe LoginAction:</p>
+<pre class="brush:java">
+package br.com.alpi.loginbook.action;
+import com.opensymphony.xwork2.ActionSupport;
+public class LoginAction extends ActionSupport {
+private String username;
+private String password;
+public String execute() {
+if (this.username.equals("alan") && this.password.equals("password")) {
+return "success";
+} else {
+addActionError(getText("error.login"));
+return "error";
+}
+}
+public String getUsername() {
+return username;
+}
+public void setUsername(String username) {
+this.username = username;
+}
+
+public String getPassword() {
+return password;
+}
+
+public void setPassword(String password) {
+this.password = password;
+}
+}
+</pre>
+
+<p>Nas linhas 7 a 9 , o nome de usuário e a senha são codificados. Mais tarde, você verá como se autenticar em um banco de dados. Se o nome de usuário ou senha for inválido, o método <b>addActonError</b> na linha 10 obtém a mensagem <b>error.login</b> mapeada para </b>ApplicationResources.properties</b>, e retornará o erro String. Veja o código abaixo:</p>
+<pre class="brush:java">
+label.username= Username
+label.password= Password
+error.login= Invalid Username/Password
+</pre>
+<p>Vamos ilustrar <b>home.jsp</b>, que é renderizado quando a classe <b>LoginAction</b> retorna o sucesso String</p>
+<pre class="brush:html">
+&lt%@ page contentType="text/html; charset=UTF-8"%>
+&lt%@ taglib prefix="s" uri="/struts-tags"%>
+&lthtml>
+&lthead>
+&lttitle>Home&lt/title>
+&lt/head>
+&ltbody>
+&lts:property value="username" />
+&lt/body>
+&lt/html>
+</pre>
+
+<p>Este código eexibe o nome de usuário usando a tag <b>s:property</b> quando <b>LoginAction</b> retorna o sucesso da String.</p>
+</section>
+<section id="devtemplate">
+<h1>Desenvolvendo Templates</h1>
+<p>Nesta seção, você verá como integrar a estrutura do <b>Tiles</b> ao <b>Struts 2</b>. Adicionaremos o suporte do Tiles ao aplicativo OlaMundo Struts criado na seção anterior. Tiles é um sistema de templates que
+reduz a duplicação de código e mantém uma aparência consistente em todas as páginas de um aplicativo da web. Com o Tiles, você define um layout comum em um arquivo de configuração, e esse layout é estendido por todas as páginas da aplicação web. Isso significa que você pode alterar a aparência de todas as páginas de um aplicativo Web, alterando apenas o arquivo de modelo, em vez de alterar todas as páginas. Para o aplicativo BookStore, você adicionará um cabeçalho e um menu, conforme ilustrado na Figura:</p>
+
+<br> 
+<img src="imagens\jee7\template.jpg">
+<br> 
+
+<p>A Figura seguinte ilustra a tela de login com o cabeçalho. Quando a autenticação é bem-sucedida, o usuário faz logon e a página inicial com a barra de menus é renderizada, conforme ilustrado na Figura 4-20.
+Se o nome de usuário ou senha for inválido, o usuário permanecerá na tela de login e uma mensagem de erro será exibida, conforme ilustrado na Figura subsequente.</p>
+<br> 
+<img src="imagens\jee7\loginlink.jpg">
+<br> 
+<p>Quando o usuário está logado, o nome do usuário é exibido no cabeçalho e o menu aparece, conforme ilustrado na Figura abaixo:
+</p>
+
+<br> 
+<img src="imagens\jee7\loginlink2.jpg">
+<br> 
+<p>Falha no login com cabeçalho é exibido na figura abaixo:</p>
+<br> 
+<img src="imagens\jee7\loginlink3.jpg">
+<br> 
+
+<p>Você precisa modificar o arquivo pom.xml com struts 2-tiles3-plugin e slf4j-log4j12, conforme ilustrado no código abaixo. Esses plug-ins são necessários para integrar o Tiles ao Struts 2.</p>
+<pre class="brush:xml">
+<dependency>
+<groupId>org.apache.struts</groupId>
+<artifactId>struts2-tiles3-plugin</artifactId>
+<version>2.3.15.1</version>
+</dependency>
+<dependency>
+<groupId>org.slf4j</groupId>
+<artifactId>slf4j-log4j12</artifactId>
+<version>1.5.6</version>
+</dependency>
+</pre>
+
+<p>Agora o código abaixo ilustra o struts.xml</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8" ?>
+&lt!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+
+<struts>
+&ltconstant name="struts.enable.DynamicMethodInvocation" value="false" />
+&ltconstant name="struts.devMode" value="true" />
+&ltconstant name="struts.custom.i18n.resources" value="ApplicationResources" />
+
+&ltpackage name="default" extends="struts-default" namespace="/">
+&ltresult-types>
+&ltresult-type name="tiles"
+class="org.apache.struts2.views.tiles.TilesResult" />
+&lt/result-types>
+&ltaction name="*Link" method="{1}"
+class="br.com.alpi.bookstore.action.LinkAction">
+&ltresult name="login" type="tiles">login&lt/result>
+&ltresult name="allBooks" type="tiles">allBooks&lt/result>
+&lt/action>
+&ltaction name="login" class="br.com.alpi.bookstore.action.LoginAction">
+&ltresult name="success" type="tiles">home&lt/result>
+&ltresult name="error" type="tiles">login&lt/result>
+&lt/action>
+&ltaction name="logout">
+&ltresult name="success" type="tiles">logout&lt/result>
+&lt/action>
+&lt/package>
+&lt/struts>
+</pre>
+
+<p>Linhas 19, 20, 23, 24 e 27: essas linhas definem o tipo de resultado como Tiles e o nome do tile, como home e login, definido em tiles.xml. Dependendo da sequência de resultados retornada pela ação, em outras palavras, erro sucessor, o arquivo JSP correspondente definido em tiles.xml é mapeado com o nome da definição em tiles.xml para o nome do bloco em struts.xml</p>
+
+<p>Depois de conhecer o struts.xml é a vez do tiles.xml que será representodo pelo código abaixo:</p>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8" ?>
+&lt!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD
+ Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+&lttiles-definitions>
+&ltdefinition name="baseLayout" template="/template/baseLayout.jsp">
+&ltput-attribute name="title" value="Template" />
+&ltput-attribute name="header" value="/template/header.jsp" />
+&ltput-attribute name="menu" value="/template/menu.jsp" />
+&ltput-attribute name="body" value="/template/body.jsp" />
+&lt/definition>
+
+&ltdefinition name="login" extends="baseLayout">
+&ltput-attribute name="title" value="Log in" />
+&ltput-attribute name="menu" value="" />
+&ltput-attribute name="body" value="/login.jsp" />
+&lt/definition>
+&ltdefinition name="error" extends="baseLayout">
+&ltput-attribute name="title" value="Log in" />
+&ltput-attribute name="menu" value="" />
+&ltput-attribute name="body" value="/login.jsp" />
+&lt/definition>
+&ltdefinition name="home" extends="baseLayout">
+&ltput-attribute name="title" value="Log in" />
+&ltput-attribute name="menu" value="/template/menu.jsp" />
+&ltput-attribute name="body" value="/view/home.jsp" />
+&lt/definition>
+&ltdefinition name="logout" extends="baseLayout">
+&ltput-attribute name="title" value="Log in" />
+&ltput-attribute name="menu" value="" />
+&ltput-attribute name="body" value="/login.jsp" />
+&lt/definition>
+
+&ltdefinition name="allBooks" extends="baseLayout">
+&ltput-attribute name="title" value="All Books" />
+&ltput-attribute name="body" value="/allBooks.jsp" />
+&lt/definition>
+
+&lt/tiles-definitions>
+</pre>
+
+<p>O código seguinte ilustra o arquivo <b>baselayout.jsp</b>, que define onde o cabeçalho, rodapé e conteúdo do corpo devem ser inseridos.</p>
+<pre class="brush:html">
+&lt%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+&lt!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+&lthtml>
+&lthead>
+&ltmeta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+&ltlink rel="stylesheet" href="css/bookstore.css" type="text/css" />
+&ltscript type="text/javascript" src="js/jquery-1.9.1.js">&lt/script>
+&ltscript src="js/bookstore.js">&lt/script>
+&lttitle>&lttiles:insertAttribute name="title" ignore="true" />&lt/title>
+&lt/head>
+&ltbody>
+&ltdiv id="centered">
+
+
+&lttiles:insertAttribute name="header" />
+
+&lttiles:insertAttribute name="menu" />
+
+&lttiles:insertAttribute name="body" />
+
+
+&lt/div>
+&lt/body>
+&lt/html>
+</pre>
+
+<p>O próximo código refere a header.jsp:</p>
+<pre class="brush:html">
+&lt%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+&lt%@ taglib prefix="s" uri="/struts-tags"%>
+
+&ltdiv class="header">
+&lth2>
+&ltspan style="margin-left: 15px; margin-top: 15px;" class="label">BOOK
+&ltspan style="color: white;">STORE&lt/span>
+&lt/span>
+&lt/h2>
+&ltspan style="color: black; margin-left: 15px;">
+
+&lts:if test="%{username!=null && !hasActionErrors() }">Welcome &lts:property value="username" /> | 
+&lta href='&lts:url action="logout.action"/>'>Log out&lt/a>&lt/s:if>
+&lts:else>
+Login
+&lt/s:else>
+
+&lt/span>
+&lt/div>
+
+</pre>
+
+<p>As linhas 14 a 17 usam as tags de propriedade Struts 2 <b>s:if</b>, <b>s:else</b> e <b>s:property</b> para dar as boas-vindas ao usuário quando logado e permitir que ele saia. Como esse código está no cabeçalho, essa funcionalidade estará disponível para todas as páginas do aplicativo.</p>
+<p>Vamos ilusrar agora o arquivo web.xml:</p>
+<pre class="brush:xml">
+&lt!DOCTYPE web-app PUBLIC
+"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+&ltweb-app>
+<display-name>Archetype Created Web Application </display-name>
+<context-param>
+<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+<param-value>/WEB-INF/tiles.xml</param-value>
+</context-param>
+
+<filter>
+<filter-name>struts2</filter-name>
+<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+</filter>
+<filter-mapping>
+<filter-name>struts2</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+<listener>
+<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+</listener>
+<welcome-file-list>
+<welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+
+&lt/web-app>
+</pre>
+
+<p>As linhas 7 a 10 e 21 a 22 são necessárias para configurar o Tiles com o Struts 2.</p>
+</section>
+<section id="intgacessdado">
+<h1>Integrar a camada de Acesso aos Dados</h1>
+<p>Nesta seção, você integrará o aplicativo Web criado com a camada de acesso a dados. Você pode usar a camada de acesso a dados criada . Em seguida, você autenticará o usuário contra o banco de dados. Em seguida, você mostrará as categorias no banco de dados de bookstore na barra de menus. Em seguida, você recuperará a lista de livros do banco de dados por categoria. </p>
+
+<br>
+<p>Como você pode ver na estrutura de diretórios, existe um único BookController no aplicativo.
+Os métodos neste controlador são ilustrados a seguir:</p>
+<pre class="brush:java">
+public class BookController extends ActionSupport {
+
+ //properties
+
+ public String login() {}
+
+ public String executelogin() {}
+
+ public String error() {}
+
+ public String allBooks() {}
+
+ public String booksByCategory() {}
+
+ public String searchByKeyword() {}
+
+ public String home() {}
+
+ public String selectedBooks(){}
+
+ public String logout() {}
+
+ // getters and setters
+
+ }	
+</pre>
+<br>
+<ul>
+<li>Linha 5: responsável por exibir o formulário de login.</li>
+<li>Linha 7: autentica o usuário no banco de dados.</li>
+<li>Linha 9: exibe a mensagem de erro, por exemplo, se o usuário é inválido.</li>
+<li>Linha 11: lista todos os livros de bookstore.</li>
+<li>Linha 13: lista os livros por categoria.</li>
+<li>Linha 15: permite ao usuário pesquisar os livros por palavra-chave: título do livro ou nome do autor.</li>
+<li>Linha 17: exibe a página inicial quando clicada no link inicial.</li>
+<li>Linha 19: exibe a lista de livros selecionados.</li>
+<li>Linha 21: permite que o usuário efetue logout.</li>
+
+</ul>
+<br>
+</section>
+<section id="logbd">
+<h2>Login Usando Banco de Dados</h2>
+
+<p>A Listagem 4-40 ilustra o método execute login () responsável pela autenticação do usuário no banco de dados. Para isso, você precisa adicionar a tabela USER ao modelo de dados desenvolvido antes usando a seguinte DDL.</p>
+
+<pre class="brush:sql">
+CREATE TABLE USER(
+ID INT NOT NULL AUTO_INCREMENT,
+FIRST_NAME VARCHAR(60) NOT NULL,
+LAST_NAME VARCHAR(60) NOT NULL,
+USERNAME VARCHAR(60) NOT NULL,
+PASSWORD VARCHAR(60) NOT NULL,
+PRIMARY KEY (ID)
+);
+</pre>
+
+<p><br>Executar o método executelogin() em BookController:</p>
+<pre class="brush:java">
+ public String executelogin() {
+ String executelogin = "failed";
+ session = ActionContext.getContext().getSession();
+ dao = new BookDAOImpl();
+ user = new User();
+ user.setUserName(getUsername());
+ user.setPassword(getPassword());
+ setUser(user);
+ if (dao.isUserAllowed(user)) {
+
+ setCategoryList(dao.findAllCategories());
+ session.put("username", username);
+ session.put("categoryList", getCategoryList());
+ executelogin = "success";
+ }
+ else {
+ addActionError(getText("error.login"));
+ return "error";
+ }
+ // return result;
+ return "executelogin";
+}
+</pre>
+<br>
+<ul>
+<li>Linha 9: O usuário é autenticado no banco de dados. Como você pode ver na Linha 9, substitui o nome de usuário e a senha codificados  chamando isUserAllowed() no DAO. O método isUserAllowed() seleciona o nome de usuário e a senha da tabela USER no resultset com base no nome de usuário e senha digitados no formulário de login.</li>
+<li>Linha 11-14: Se o usuário é válido, as categorias são recuperadas do banco de dados e a lista de categorias é armazenada na sessão.</li>
+<li>Linhas 16-19: A linha 16 define a variável booleana válida como true se o resultset contiver o nome de usuário e a senha. Se o usuário não for válido, o erro String será retornado.</li>
+</ul>
+<br>
+</section>
+<section id="showcateg">
+<h2>Mostrando Categorias Recuperadas do Banco de Dados</h2>
+
+<p>O código de menu.jsp ilustra o menu que mostra as categorias retornadas do banco de dados. Na declaração do BookController em struts.xml, você recuperou as categorias e as armazenou na sessão para um usuário válido. Essas categorias serão exibidas em menu.jsp.</p>
+
+<pre class="brush:html">
+&ltli>&ltdiv>
+&ltspan class="label" style="margin-left: 15px;">
+&lta href="&lts:url action=""/>">Categories&lt/a>&lt/span>
+&lt/div>
+&ltul>
+&ltli>&lts:form action=" booksByCategoryLink">
+
+&lts:select name="category" list="#session['categoryList']"
+listValue="categoryDescription" listKey="id" />
+&lts:submit value="Select" />
+&lt/s:form>&lta class="label" href="">&ltspan class="label"
+style="margin-left: 30px;">&lt/span>&lt/a>v/li>
+
+&lt/ul>&lt/li>
+</pre>
+
+<br>
+
+<ul>
+<li>Linhas 8 a 9: essas linhas exibem as categorias na lista que foi armazenada na sessão no LoginAction usando a Linguagem de expressão(EL) do Struts 2.</li>
+Linha 10: quando o usuário clica no botão de seleção, a categoria selecionada e o nome da ação na linha 6, booksByCategoryLink, são enviados para o contêiner e mapeados via struts.xml para a ação, que recupera a lista de livros.
+</ul>
+<br>
+</section>
+<section id="listcateg">
+<h2>Listando Livros por Categoria</h2>
+
+<p>Nesta seção, você recuperará a lista de livros por categoria do banco de dados. A categoria selecionada e os livros de nome da ação ByCategoryLink são enviados para o contêiner e, em seguida, mapeados via struts.xml para BookController. A seguir é ilustrado o fragmento de código de struts.xml.</p>
+<pre class="brush:xml">
+ <action name="*Link" method="{1}"
+ class="com.alpi.bookstore.controller.BookController">
+<result name="login" type="tiles">login</result>
+<result name="allBooks" type="tiles">booklist</result>
+<result name="booksByCategory" type="tiles">booklist</result>
+<result name="searchByKeyword" type="tiles">booklist</result>
+<result name="home" type="tiles">home</result>
+<result name="executelogin" type="tiles">executelogin</result>
+<result name="selectedBooks" type="tiles">selectedBooks</result>
+<result name="logout" type="tiles">logout</result>
+<result name="error" type="tiles">error</result>
+</action>
+</pre>
+
+<p>O * na Linha 1 é o caractere curinga. Qualquer valor de nome de ação que termine no Link será tratado por esse mapeamento de ação. Qualquer que seja o valor anterior ao Link, será o valor usado para o atributo do método (o espaço reservado {1} será substituído por esse valor). Portanto, em vez de escrever nove nós de mapeamento de ação separados no arquivo de configuração para este aplicativo simples, você pode simplesmente
+use o caractere curinga * no valor do seu nome e um espaço reservado para o valor do atributo ({1}) para o valor do método. Isso permite que a estrutura do Struts 2 selecione dinamicamente o método correto para chamar em tempo de execução. A seguir o código ilustra booksByCategory ().</p>
+<pre class="brush:java">
+public String booksByCategory() {
+dao = new BookDAOImpl();
+setBookList(dao.findBooksByCategory(category));
+return "booksByCategory";
+}
+</pre>
+
+<p>Quando booksByCategory() retorna, ele é mapeado para o nome booklist conforme ilustrado na Linha 5 . Ele é mapeado para booklist definido no tiles.xml, que renderiza o arquivo booklist.jsp. 
+a seguir ilustra o fragmento de código em tiles.xml.</p>
+
+<pre class="brush:xml">
+&ltdefinition name="booklist" extends="baseLayout">
+&ltput-attribute name="title" value="Log in"/>
+&ltput-attribute name="menu" value="/menu.jsp"/>
+&ltput-attribute name="body" value="/view/bookList.jsp"/>
+&lt/definition>
+</pre>
+
+<p>Agora vamos ilustrar o código de booklist.jsp:</p>
+<pre class="brush:html">
+&lt%@ taglib uri="/struts-tags" prefix="s"%>
+&ltbody>
+&ltdiv id="centered">
+&lts:form action=" selectedbooksLink" theme="simple">
+&ltcenter>
+&lttable id="grid">
+&ltthead>
+&lttr>
+&ltth id="th-title">Book Title&lt/th>
+&ltth id="th-author">Author&lt/th>
+&ltth id="th-price">Price&lt/th>
+&lt/tr>
+&lt/thead>
+&lttbody>
+&lts:iterator value="bookList" id="book">
+&lttr>
+&lttd>
+&lts:checkboxname="selectedBooks" fieldValue="%{bookId}" />
+&lts:propertyvalue="#book.bookTitle" />
+&lt/td>
+&lttd>
+&lts:iterator value="#book.authors" id="author">
+&lts:if test="%{#book.id == #author.bookId}">
+&lts:property value="#author.firstName" />
+&lts:property value="#author.lastName" />
+&lt/s:if>
+&lt/s:iterator>
+&lt/td>
+&lttd>&lts:property value="price" />&lt/td>
+&lt/tr>
+&lt/s:iterator>
+&lt/tbody>
+&lt/table>
+&lt/center>&ltbr>
+&lts:submit value="Add to the shopping cart" />
+&lt/s:form>
+
+&lt/div>
+&lt/body>
+</pre>
+
+<p>O código  anterior ilustra o uso das tags Struts 2 e como o Struts 2 OGNL é usado para navegar na propriedade bookTitle na linha 19 e nas propriedades firstName e lastName (do autor) nas linhas 24 e 25. A linha 22 ilustra o uso de um <b>s:iterator</b> simples e aninhado. A linha 18 permite que o usuário selecione livros para adicionar ao carrinho de compras. O usuário pode verificar os livros para selecioná-los e enviá-los clicando no botão na linha 35. Quando o usuário clica no botão Adicionar ao carrinho, o nome da ação selectedbooksLink na linha 4 e o bookId na linha 18 são enviados para o contêiner em seguida, mapeado para a ação AddToCart via struts.xml. A ação AddToCart, em seguida, armazena o livro no carrinho no banco de dados e a ação AddToCart retorna o sucesso String, que é mapeado por meio do mapeamento de ações em struts.xml e o bloco no arquivo tiles.xml na visualização selectedBooks.jsp. O usuário pode clicar no botão Comprar na página selectedBooks.jsp para chamar PurchaseAction da mesma maneira. Este capítulo esboçou uma breve visão geral do Struts 2. 
+</p>
+</section>
+<p class="nav-arq" id="referencia"> Aplicativo Web com Struts 2<a href="webstrut.html">&laquo; anterior | <a href="springmvc.html">próximo >> Construindo Aplicativos Web  com o Spring MVC  &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/aplicativowebstruts2" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+  
+</body>
+</html>

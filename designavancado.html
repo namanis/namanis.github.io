@@ -1,0 +1,1415 @@
+
+
+<!DOCTYPE html>
+ <html lang="pt-br">
+
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+
+ <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+ 
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+       <a class="w3-bar-item w3-button"  href="#designavancado">7 - PROJETO DE CLASSE I</a>
+            <a class="w3-bar-item w3-button"  href="#modificador">Modificadores de Acesso</a>
+          <a class="w3-bar-item w3-button"  href="#heranca">Herança</a>
+          <a class="w3-bar-item w3-button"  href="#polimorfismo">Polimorfismo</a>
+          <a class="w3-bar-item w3-button" href="#poliruntime">Polimorfismo em Runtime</a>
+          <a class="w3-bar-item w3-button"  href="#sobmetod">Sobrecargas de Métodos </a>
+          <a class="w3-bar-item w3-button"  href="#sobconstructor">Sobrecarga de Construtor </a>
+          <a class="w3-bar-item w3-button"  href="#resolsobrc">Resolução de sobrecarga </a>
+           <a class="w3-bar-item w3-button"  href="#sobrescmetd">Sobrescrevendo métodos na classe objeto</a>
+          <a class="w3-bar-item w3-button"  href="#sobresctostring">Sobrescrevendo Método toString()</a>
+           <a class="w3-bar-item w3-button"  href="#sobproblem">Sobrescrevendo Problemas </a>
+          <a class="w3-bar-item w3-button"  href="#sobmetequal">Sobrescrever o método equal() </a>
+           <a class="w3-bar-item w3-button"  href="#invoqsuperclasse">Invocando métodos da Superclasse</a>
+          <a class="w3-bar-item w3-button"  href="#compposicao">Composição de Objeto</a>
+          <a class="w3-bar-item w3-button"  href="#compheranca">Composição vs Herança</a>
+           <a class="w3-bar-item w3-button"  href="#singleton">Classes Imutável e Singleton</a>
+          <a class="w3-bar-item w3-button"  href="#singletonrealm">Assegurando que seu singleton é realmente um singleton </a>
+           <a class="w3-bar-item w3-button"  href="#imutavelcls">Classes imutável</a>
+          <a class="w3-bar-item w3-button"  href="#defimutavel">Definindo Classes Imutáveis</a>
+           <a class="w3-bar-item w3-button"  href="#palchavstatic">Usando a palavra chave Static</a>
+          <a class="w3-bar-item w3-button"  href="#blocstatic">Bloco Static</a>
+           
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top  w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+
+<section id="designavancado">
+<h1>Projeto de classe do Java</h1>
+
+<p><b>Objetivos</b></p>
+<ul>
+<li>
+Implmentar encapsulamento</li>
+<li>implementar herança incluindo visibilidade modificadores e composição</li>
+<li>implementar polimofismo</li>
+<li>Sobrescrever hashCode, equals and métodos toString da classe Object</li>
+<li>Criar e usar classe singleton e classes imutável</li>
+<li>Desenvolver códigos que use palvra chave static no bloco  de inicalização, variáveis, métodos, e classes
+</li>
+</ul>
+<p>Orientação Objetos(O O) é o núcleo da maioria  da linguagens convencionais de hoje. Para criar alta-qualidade de software e design, isto é importante para pegar um bom conhecimento dos conceitos de orientçaõ objeto. Este seção de design de classe e a proxima de design de classe avançada fornece a você um firme fundamento para criar designs de qualidade em java.</p>
+<br>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+<section id="encapsulamento">
+<h1>ENCAPSULAMENTO</h1>
+
+<p><b>Implementar Encapsulamento</b></p>
+
+<p>Programação Estruturada decomponhe as funcionalidade dos programas dentro de vários procedimentos(funções), sem se preocupar muito sobre como cada procedimentos dos dados possa funcianar. Funçoes são livres para operar e modificar os dados(geralmente global e sem proteção).</p>
+<p>Na programação orientada objetos(OOP), dados e comportamentos associados forma uma unica unidade, qual é referido como uma classe. O termo encapsulamento refere combinar dados e funções associado como uma única unidade. Por exemplo, em uma <b>classe Círculo</b>, <b>radius</b> e <b>center</b> são definidos como campo privado. Agor avocê pode adcionar métodos tal como <b>draw()</b> e <b>fillCollor()</b> assim como campos <b>radius</b> e <b>center</b>, desde que os campos e métodos sejam  relacionados de perto para outro. Todos os dados(campos) exigidos pelos métodos na classe são acessados de dentro da classe em si. Em outras palavras a classe encapsula os campos e os método juntos.</p><br>
+
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+
+</section>
+<section id="modificador">
+<h2>Modificadores de Acesso</h2>
+
+<p><b>Implementar herança incluindo visibilidade de modificadores e composição.</b></p>
+
+<p>Modificadores de Acesso determina o nível de visibilidade para uma entidade java(uma classe, método, ou campo). Modificadores de acesso habilita você para impor encapsulamento efetivo. Se todas variáveis membros de uma classe pode ser acessada de qualquer lugar, então não faz sentido colocar essas variáveis ​​em uma classe e não há propósito em encapsular dados e comportamentos juntos em uma classe.</p>
+<p>Java suporta quatro tipos de modificadores de acesso: <b>public, private, protected e default(nenhum modificador de acesso especificado).</b>Para ilustrar os quatros tipos de modificadores de acesso, vamos assumir que você tem as seguintes classes desenhada na aplicação: <b>classes Shape, Circle, e Canvas</b>. A classe Canvas está no pacote <b>appcanvas</b> e as outras três estão no pacote <b>graphicshape</b>.</p>
+
+<p><b>Listando:  Shape.java, Circle.java, Circles.java, e Canvas.java</b></p>
+<pre class="brush:java">
+// Shape.java
+package graphicshape;
+class Shape {
+protected int color;
+}
+// Circle.java
+package graphicshape;
+import graphicshape.Shape;
+public class Circle extends Shape {
+private int radius; // private field
+public void area() { // public method
+// acesso ao campo privado radius dentro da classe:
+System.out.println("area: " + 3.14 * radius * radius);
+}
+// O método fillColor tem acesso default (padrão)
+void fillColor() {
+//acesso ao campo protected, na subclasse:
+System.out.println("color: " + color);
+}
+}
+</pre>
+<pre class="brush:java">
+// Circles.java
+package graphicshape;
+class Circles {
+void getArea() {
+Circle circle = new Circle();
+// chame  método public area() dentro do pacote:
+circle.area();
+// chamar fillColor() com accesso default  dentro do pacote(package):
+circle.fillColor();
+}
+}
+</pre>
+<pre class="brush:java">
+// Canvas.java
+package appcanvas;
+import graphicshape.Circle;
+class Canvas {
+void getArea() {
+Circle circle = new Circle();
+circle.area(); // chamar método public area(), fora do pacote 
+}
+}
+</pre>
+</section>
+
+<h3>Modificador de Acesso Público</h3>
+<p>O modificador de acesso público é um dos maiores liberais. Se uma classe ou seus membros são declarados como <b>public</b>, eles podem ser acessados de qualquer outra classe dos limites do pacote. isto é comparável com um lugar publico no mundo real, assim como uma refeitório em que todos os empregados podem usar seus departamentos irrespectivamente. Como foi mostrado no exemplo anterior, o método <b>public area()</b> na <b>classe Circle</b> é acessado dentro do mesmo paacote, assim como também do lado de fora do pacote(na <b>classe Canvas</b>).</p>
+</section>
+
+<h3>Modificador de Acesso Privado</h3>
+
+<p>O modificador de acesso privadoe é o mais rigoroso modificador de acesso. Um membro da classe privada não pode ser acessado do exterior da classe; somente membros da mesma classe pode acessar membros privado.. É comparável a uma sala de cofre em um banco, que só pode ser acessada por um conjunto de funcionários autorizados e proprietários de cofres. No exemplo anterior o <b>radius</b> de campo privado da <b>classe Circle</b> é acessível apenas dentro da <b>classe Circle</b> e não em qualquer outra classe, independentemente do pacote incluído.
+</section>
+
+<h3>Modificadores de Acesso Protected e Default</h3>
+
+<p>Modificadores de accesso protected e default são bastante similares entre si. Se um membro do método ou campo é declarado como <b>protected</b> ou <b>default</b>, então o método ou campo pode ser acessado de dentro do pacote. Note que não existe palavra chave especifica para fornecer <b>acesso default</b>; de fato, quando nenhum modificador de acesso é especificado, o membro tem <b>acesso default</b>. Note que também <b>acesso defaut</b> é conhecido como um pacote de <b>aceesso protected</b>. <b>Protected e default</b> são comparávis para a situação em um escritório onde uma sala de conferência está acessível somente para um departamento. </p>
+<p>Qual a diferença entre <b>protected</b> e <b>acesso default</b>? Uma diferença significante entre esses dois modificadores de acesso surge quando nós falamos sobre subclasses além de outros pacotes que tem na superclasse. Neste caso, membro protected são acessível na subclasse, enquanto membros default não são.</p>
+
+<p><i>Uma classe (ou interface) não pode ser declarada como private ou protected. alem do mais, membros de métodos ou campos de uma interface não pode ser declarada como private ou protected.</i></p>
+<br>
+<p>Tabela dos modificadores de acesso e sua visibilidade:</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+  
+<tr><th>Modificadores/ Acessibilidade</th><th>Dentro da mesma class</th><th>Subclasse dentro do pacote</th><th>Subclasse fora do pacote</th><th>Outra classe dentro do pacote</td><th>
+Outra classe fora do pacote</td><td></tr>
+<tr><td>Public</td><td> Sim</td><td> Sim</td><td> Sim</td><td> Sim</td><td> Sim</td></tr>
+<tr><td>Private </td><td>Sim</td><td> Não</td><td> Não</td><td> Não </td><td>Não</td></tr>
+<tr><td>Protected</td><td> Sim</td> <td>Sim</td><td> Sim</td><td>Sim</td> <td>Não</td></tr>
+<tr><td>Default</td> <td>Sim</td> <td>Sim</td><td> Não</td><td> Sim</td> <td>Não</td></tr>
+</table>
+</div>
+</section>
+<section id="heranca">
+<h1>HERANÇA</h1>
+<p>Herança é um mecanismo de reusabilidade na programção orientado a objeto. Com herança, a propriedade de vários objetos são explorados para formar relacionamentos um com outro. As propriedades abstrata e comuns são fornecidos na superclasse, que está acessível para sublcasse mais especializada. Por exemplo, impressora colorida e uma impressora preto e branco são tipos de impressora(unica herança); uma impressora multifuncional é uma impressora, um scanner e uma fotocopiadora ( múltipla herança).</p>
+
+<p>Por que herança é um poderoso recurso? Porque ele suporta modelar classes em uma hierarquia, e tal modelo de hierarquia são fáceis de entender. Por exemplo, você pode categorizar logicamente veículos com duas rodas,três rodas, quatro rodas, e assim por diante. Na categoria quatro rodas, existe carros, vans, ônibus. Na categoria carros existe sedans, SUvs.. Quando categoriza hierarquicamente, torna-se mais fácil de entender, modelar e escrever programas.</p>
+<p>Considere um simples exemplo usado na seção mais cedo: <b>classe Shape</b> é uma classe base e <b>Circle</b> é uma classe derivada. Em outras palavras, um <b>Circle</b> é um <b>Shape</b>; similarmente, um <b>Square</b> é um <b>Shape</b>. Portando, uma relacionamento de herança pode ser referido como relação IS-A ou É-UM.</p>
+<p>Na biblioteca java você pode ver o uso extensivo de herança. No exemplo abaixo mostra uma hierarquia de herança parcial de <b>java.lang.library</b>. A <b>classe Number</b> abstrai vários tipos numéricos(referência) tal como <b>Byte, Integer, Float, Double, Short, e BigDEcimal</b>.</p>
+
+<img src="imagens/jee7/testnumber.jpg">
+
+<p>A <b>classe Number</b> tem método comuns que são herdados pelas classes derivadas. A <b>classe Number</b> possui muitos métodos comuns que são herdados pelas classes derivadas. As classes derivadas não precisam implementar os métodos comuns implementados pela <b>classe Number</b>. Além disso, você pode fornecer um tipo derivado onde o tipo base é esperado. Por exemplo, um <b>Byte</b> é um <b>Number</b>, o que significa que você pode fornecer um objeto de byte onde um objeto de número é esperado. Você pode escrever métodos de propósito geral (ou algorítmos) ao escrever métodos para o tipo base.</p>
+<pre class="brush:java">
+// Ilustra como abstrair diferentes tipos de números em uma hierarquia de números
+// torna-se útil na prática
+public class TestNumber {
+// pega um array de números e os soma
+public static double sum(Number [] nums) {
+double sum = 0.0;
+for(Number num : nums) {
+sum += num.doubleValue();
+}
+return sum;
+}
+public static void main(String []args) {
+// cria um array Number
+Number []nums = new Number[4];
+// assign derived class objects
+nums[0] = new Byte((byte)10);
+nums[1] = new Integer(10);
+nums[2] = new Float(10.0f);
+nums[3] = new Double(10.0f);
+// passa o array Number para somar e imprimir o resultado
+System.out.println("The sum of numbers is: " + sum(nums));
+}
+}
+</pre>
+<p><b>Este programa imprime isso:</b></p>
+<pre>The sum of numbers is: 40.0</pre>
+<p>NO <b>método main()</b>, você pode declarar <b>nums</b> como um <b>Number[]</b>. Uma referência <b>Number</b> pode esperar qualquer destes tipos derivados de objetos. Você está criando objetos do tipo <b>Byte, Integer, Float, e Double</b> com valor inicial de 10; o <b>array nums</b> espera estes elemeentos.(Note que você precisa de um cast explícito em new Byte((byte) 10) ao invés do planejado Byte(10) porque Byte leva argumento byte e 10 é um int).</p>
+<p>O método <b>sum</b> leva um <b>Number[]</b> como argumento e retorna a soma dos elementos <b>Number</b>. O tipo <b>double</b> pode esperar alcance de valores maiores, assim você ver <b>double</b> como um tipo de retorno. O método <b>sum.Number</b> tem um método <b>doubleValue()</b> e este método retorna o valor mantido pelo <b>Number</b> como um valor <b>double</b>. O <b>loopfor</b> atravessa o <b>array</b>, adcionam os valores <b>double</b>, e então retorna a soma.</p>
+<p>Como pode ver o <b>método sum()</B> é um método geral que pode manipular qualquer <b>Number[]</b>. Um exemplo semelhante pode ser fornecido a partir da biblioteca padrão Java, em que a classe <b>java.util.Arrays</b> possui um método estático <b>binarySearch()</b>.</p>
+
+<pre class="brush:java">static int binarySearch(Object[] a, Object key, Comparator c)</pre>
+
+<p>Esse método pesquisa uma determinada chave (um tipo de objeto) no determinado <b>array</b> de objetos. <b>Comparator</b> é uma interface que declara os métodos <b>equals</b> e <b>compare</b>. Você pode usar <b>binarySearchfor</b> para objetos de qualquer tipo de classe que implemente essa <b>interface Comparator</b>. Como você pode ver, a herança é um recurso poderoso e útil para escrever métodos de propósito geral.</p>
+</section>
+<section id="polimorfismo">
+<h1>Polimorfismo</h1>
+
+<p>Em programação orientada a objeto (OOP), uma mensagem pode ser interpretada de múltiplas maneiras(polimorfismo), dependendo do objeto.</p>
+<p>Polimorfismo pode ser de duas formas: dinnâmico e estático.</p>
+<ul>
+	<li>
+Quando formas diferentes de uma única entidade são resolvida durante o tempo de execução tal polimorfismo é chamado de polimorfismo dinâmico.</li>
+<li>Quando formas diferentes de uma entidade são resolvidas no temo de compilação tal polimorfismo é chamado de polimorfismo estático.   
+</li>
+</ul>
+
+<p>Note que os métodos abstratos usam o polimorfismo de tempo de execução.</p>
+</section>
+<section id="poliruntime">
+<h2>Polimorfismo Runtime</h2>
+<p>Você acabou de aprender que uma referência de classe base pode se referir a um objeto de classe derivada. Você pode invocar métodos desta referência de classe base; contudo, a invocação do método atual depende do tipo dinâmico do objeto apontado pela referência de classe base. O tipo da referência da classe base é conhecido como o tipo estático do objeto e o objeto real apontado pela referência em tempo de execução é conhecido como o tipo dinâmico do objeto.</p>
+<p>Quando o compilador ver a invocação do método de referência de classe base e se o método é um método que pode ser sobrescrito(um método não estático e não final, o compilador adia a determinação do método exato a ser chamado para o tempo de execução (ligação tardia). No tempo de execução, com base no tipo dinâmico real do objeto, um método apropriado é chamado. Esse mecanismo é conhecido como resolução de método dinâmico ou chamada de método dinâmico.</p>
+</section>
+
+<h3>Runtime Polimorfismo: Um exemplo</h3>
+
+<p>Considere que você tem o <b>método area()</b> na <b>classe Shape</b>. Dependendo da classe derivada - <b>Circle</b> ou <b>Square</b>, por exmplo - o <b>método area()</b> será implementado diferentemente, como é mostrado a seguir:</p>
+<pre class="brush:java">
+ //TestShape.java
+class Shape {
+public double area() { return 0; } // implementação default
+// outros membros
+}
+class Circle extends Shape {
+private int radius;
+public Circle(int r) { radius = r; }
+// outros construtores
+public double area() {return Math.PI * radius * radius; }
+// outras declarações
+}
+class Square extends Shape {
+private int side;
+public Square(int a) { side = a; }
+public double area() { return side * side; }
+// outras declarações
+}
+public class TestShape {
+public static void main(String []args) {
+Shape shape1 = new Circle(10);
+System.out.println(shape1.area());
+Shape shape2 = new Square(10);
+System.out.println(shape2.area());
+}
+}
+</pre>
+
+<p></b>Este programa imprime o seguinte:</b></p>
+
+<pre>
+314.1592653589793
+100.0
+</pre>
+
+<p>Este programa ilustra como o <b>método area()</b> é chamado baseado no tipo dinâmico de <b>Shape</b>. Neste código, a declaraçaõ <b>shape1.area()</b>; chama o <b>método area()</b> de <b>Cricle's</b> enquanto a declaração <b>shape2.area()</b>; chama o <b>método area()</b> de <b>Square</b> e consequentemente o resultado. Agora, vamos fazer uma pergunta mais fundamental: por que você precisa sobrescrever métodos? Em OOP, a idéia fundamental em herança é fornecer uma funcionalidade padrão ou comum na classe base; Espera-se que as classes derivadas forneçam funcionalidades mais específicas. Nesta classe base <b>Shape</b> e nas classes derivadas <b>Circle</b> e <b>Square</b>, a classe Shape forneceu a implementação padrão do <b>método area()</b>.
+As classes derivadas de <b>Circle e Square</b> definiram sua versão do <b>método area()</b> que sobrecreve o <b>método area()</b> da classe base. Portanto, dependendo do tipo de objeto derivado criado, a partir da referência da classe base, as chamadas para o <b>método area()</b> serão resolvidas para o método correto. Sobrescrever (isto é, o polimorfismo de tempo de execução) é uma idéia simples, mas poderosa, para estender a funcionalidade.<p>
+ <p>Vamos agora discutir o polimorfismo em tempo de compilação (sobrecarga).</p>
+<section id="sobmetod">
+<h2>Sobrecarga de métodos</h2>
+<p>Em Java, você pode definir vários métodos com o mesmo nome, desde que as listas de argumentos sejam diferentes umas das outras. Em outras palavras, se você fornecer diferentes tipos de argumentos, diferentes números de argumentos ou ambos, poderá definir vários métodos com o mesmo nome. Esse recurso é chamado sobrecarga de método. O compilador resolverá a chamada para um método correto, dependendo do número real e / ou dos tipos dos parâmetros transmitidos. </p>
+<p>Vamos implementar um método na <b>classe Circle</b> chamado <b>fillColor()</b> que preenche um objeto circular com cores diferentes. Quando você especifica uma cor, você precisa usar um esquema de cores, e vamos considerar dois esquemas - esquema RGB e esquema HSB.</p>
+
+	
+<p>1. Quando você representa uma cor combinando componente de cores REd (Vermelho), Green(Verde), e Blue(Azul), isto é conhecido como esquema RGB. Por convenção, cada valor das cores é fornecido tipicamente no alcance de 0 à 255.</p>
+
+<p>2. Quando você representa uma cor combinando valores Hue(contrataste), Saturation(Saturação), e Brightness(Brilho) este esquema é conhecido como HSB. Por convenção cada valor é tipicamente fornecido no alcance de 0.0 à 1.0.</p>
+<p>Desde que valores RGB são inteiros e HSB são valores ponto flutuante, como suportar ambos esquemas para chamar o método fillColor()?</p>
+
+
+<pre class="brush:java">
+class Circle {
+// outros membros
+public void fillColor(int red, int green, int blue) {
+/* colorir o círculo usando valores de cores RGB - código real omitido */
+}
+public void fillColor (float hue, float saturation, float brightness) {
+/* colorir o círculo usando valore HSB  – código real  omitido */
+}
+}
+</pre>
+<p>Como você pode ver, ambos <b>métodos fillCollor()</b> tem exatamente o mesmo nome e ambos levam três argumentos; contudo, o tipos de argumentos são diferentes. Baseado no tipo de argumento usado enquanto chamar o <b>método fiilColor()</b> em <b>Circle</b>, o compilador irá decidir exatamente qual o método chamar. Para instância, considere o chamado dos seguinte métodos:</p>
+<pre class="brush:java">
+Circle c1 = new Circle(10, 20, 10);
+c1.fillColor(0, 255, 255);
+Circle c2 = new Circle(50, 100, 5);
+c2.fillColor(0.5f, 0.5f, 1.0f);
+</pre>
+
+<p>Nesse código, para o objeto <b>c1</b>, a chamada para <b>fillColor()</b> tem argumentos inteiros 0, 255 e 255. Portanto, o compilador resolve essa chamada para o <b>método fillColor(int vermelho, int verde, int azul)</b>. Para o objeto <b>c2</b>, a chamada para <b>fillColor()</b> possui os argumentos 0.5f, 0.5f e 1.0f; daí resolve a chamada para <b>fillColor(float hue, float saturation, float brightness)</b>.</p>
+<p>No exemplo acima, o <b>método fillColor()</b> é um método sobrecarregado. O método tem o mesmo nome e o mesmo número de argumentos, mas os tipos dos argumentos são diferentes. Também é possível sobrecarregar métodos com diferentes números de argumentos.</p>
+<p>Esses métodos sobrecarregados são úteis para evitar a repetição do mesmo código em diferentes funções. Vamos ver um exemplo simples.</p>
+<pre class="brush:java">
+//HappyBirthday.java
+class HappyBirthday {
+// método wish sobrecarregado com String como argumento
+public static void wish(String name) {
+System.out.println("Happy birthday " + name + "!");
+}
+// método wish sobrecarregado com nenhum argumento;
+// este metodo por sua vez invoca o método wish(String) 
+public static void wish() {
+wish("to you");
+}
+public static void main(String []args) {
+wish();
+wish("dear James Gosling");
+}
+}
+</pre>
+
+<p></b>Este programa imprime o seguinte:</b></p>
+<pre>
+Happy birthday to you!
+Happy birthday dear James Gosling!
+</pre>
+
+<p>Aqui, o método desejado (String name) serve para desejar “Happy birthday” quando o nome da pessoa é conhecido. O método padrão <b>wish()</b> é para desejar “Happy birthday” a qualquer pessoa. Como você pode ver, você não precisa escrever <b>System.out.println</b> novamente no <b>método wish()</b>; você pode simplesmente reutilizar a definição do método wish(String) passando o valor padrão “to you” como argumento para <b>wish()</b>. Essa reutilização é eficaz para definições de métodos grandes e relacionadas, já que economiza tempo escrevendo e testando o mesmo código.</p>
+</section>
+<section id="sobconstructor">
+<h2>Sobrecarga de Construtor</h2>
+<p>Um construtor padrão é útil para criar objetos com um valor de inicialização padrão. Quando você quer inicializar os objetos com diferentes valores em diferentes inicializações, você pode passá-los como argumento para os construtores. Você pode ter múltiplos construtores em uma classe, que é sobrecarga de construtor. Em uma classe, o construtor padrão pode inicializar o objeto com valores iniciais padrão, enquanto outro construtor pode aceitar arguments que necessita para ser usado para instanciação do objeto.</p>
+<p>A seguir um exemplo da clasee Circle que tem construtores sobreccarregado.</p>
+<pre class="brush:java">
+public class Circle {
+private int xPos;
+private int yPos;
+private int radius;
+// três construtores sobrecarregados para Circle
+public Circle(int x, int y, int r) {
+xPos = x;
+yPos = y;
+radius = r;
+}
+public Circle(int x, int y) {
+xPos = x;
+yPos = y;
+radius = 10; //  radius padrão
+}
+public Circle() {
+xPos = 20; // assume algum valor padrão  para xPos e yPos
+yPos = 20;
+radius = 10; // radius padrão
+}
+public String toString() {
+return "center = (" + xPos + "," + yPos + ") and radius = " + radius;
+}
+public static void main(String[]s) {
+System.out.println(new Circle());
+System.out.println(new Circle(50, 100));
+System.out.println(new Circle(25, 50, 5));
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+center = (20,20) and radius = 10
+center = (50,100) and radius = 10
+center = (25,50) and radius = 5
+</pre>
+<p>Como você pode ver, o compilador resolveu as chamadas do construtor dependendo do número de argumentos. O construtor padrão não leva argumentos e neste caso temos assumido algum valor padrão para <b>xPos, yPos, e radius</b>(com valores 20,20 e 10 respectivamente). O <b>construtor Circle</b> com dois argumentos(int x e int y) definem a posiçaõ de <b>xPos e yPos</b> baseado nos valores dos argumentos passado e valores padrão de 10 assumido para o membro <b>radius</b>. O <b>construtor Circle </b>que leva todos os três argumentos definem os campos correspondentes na <b>classe Circle</b>.</p>
+<p>Você percebeu que está duplicando o código dentro desses três construtores? Para evitar essa duplicação de código - e reduzir seu esforço de digitação - você pode invocar um construtor de outro construtor. Dos três construtores, o construtor tomando posição x, posição y e radius é o construtor mais geral.</p>
+<p>Os outros dois construtores podem ser reescritos em termos de chamar os construtores de três argumentos, assim:</p>
+
+<pre class="brush:java">
+public Circle(int x, int y, int r) {
+xPos = x;
+yPos = y;
+radius = r;
+}
+public Circle(int x, int y) {
+this(x, y, 10); // passando 10 para radius padrão 
+}
+public Circle() {
+this(20, 20, 10);
+// assume alguns  valores padrão para xPos, yPos e radius
+}
+</pre>
+
+<p>A saída é exatamente a mesma do programa anterior, mas este programa é mais curto. Neste caso, você usou a palavra chave <b>this</b>(que refere ao objeto atual) para chamar um construtor de outros construtor da mesma classe.</p>
+</section>
+<sectionid id="resolsobrc">
+<h2>Resolução de sobrecarga </h2>
+<p>Quando você define sobrecarga de métodos, como o compilador sabe que método chamar? Pode você advinhar a saída deste código abaixo:</p>
+<pre class="brush:java">
+class Overloaded {
+public static void aMethod (int val) { System.out.println ("int"); }
+public static void aMethod (short val) { System.out.println ("short"); }
+public static void aMethod (Object val) { System.out.println ("object"); }
+public static void aMethod (String val) { System.out.println ("String"); }
+public static void main(String[] args) {
+byte b = 9;
+aMethod(b); // primeira chamada
+aMethod(9); // segunda chamada
+Integer i = 9;
+aMethod(i); // terceira chamada
+aMethod("9"); // quarta chamada
+}
+}
+</pre>
+<p><b>A saída é assim:</b></p>
+<pre>
+short
+int
+object
+String 
+</pre>
+
+<p>Aqui é como o compilador resolve este chamado:</p>
+<p>1. No primeiro método chamado, a declaração é <b>isMethod(b)</B> onde a variável <b>b</b> é do tipo </b>byte</b>. Não existe definição de <b>aMethod</b> que leve byte como um argumento. O tipo mais perto(em tamanho) é o tipo <b>short</b> e o tipo <b>int</b>, assim o compilador resolve o chamado <b>aMethod(b)</b> para a definição <b>aMethod(short val)</b>.</p>
+
+<p>2. No segundo método chamado, a declaração é <b>aMethod(9)</b>. O valor constante 9 é do tipo <b>int</b>. O mais perto  correspondente é <b>aMethod(int)</b>, assim o compilador resolve o chamado <b>aMethod(9)</b> para definição <b>aMethod(int val)</b>.</p>
+
+<p>3. O terceiro método chamado é <b>aMethod(i)</b>, onde a variável <b>i</b> é do tipo <b>Integer</b>. Não existe uma definição de <b>aMethod</b> que leve <b>Integer</b> como um argumento. O mais próximo que corresponde é <b>aMethod(objetc val)</b>, assim ele é chamado. Por que não <b>aMethod(int val)</b>? Para encontrar o mais correspondente, o compilador permite upcasts implicito, downcast não, assim <b>aMethod(int val)</b> não é considerado.</p>
+
+<p>4. O último método chamado é <b>aMethod("9")</b>. O argumeto é um tipo de <b>String</b>. Desde que exista um correspondente exato, <b>aMethod(String val)</b> é chamado.</p>
+
+
+<p>Este processo do compilador tentar resolver o método chamdao de fornecer definição de métodos sobrecarregados é chamado de resolução de sobrecarga. Para resolver um chamado do método, ele primeiro procura pelo correspondente exato - a definição do método com exatamente o mesmo número e tipos de parâmetros. Se ele não pode encontrar um corresondente exato, ele procura por um correspondente mais próximo usando upcasts. Se o compilador não pode encontrar  qualquer que corresponda, então você irá obter um erro como você vai ver a seguir:</p>
+<pre class="brush:java">
+class OverloadingError {
+public static void aMethod (byte val ) { System.out.println ("byte"); }
+public static void aMethod (short val ) { System.out.println ("short"); }
+public static void main(String[] args) {
+aMethod(9);
+}
+}
+</pre>
+<p><b>Aqui está o erro do compilador:</b></p>
+<pre>
+OverloadingError.java:6: error: no suitable method found for aMethod(int)
+aMethod(9);
+^
+method OverloadingError.aMethod(byte) is not applicable
+(argument mismatch; possible lossy conversion from int to byte)
+method OverloadingError.aMethod(short) is not applicable
+(argument mismatch; possible lossy conversion from int to short)
+1 error
+</pre>
+
+<p> Para o sucesso da resolução de sobrecarga, você precisa definir métodos tal que o compilador encontre um correspondente exato. Se o compilador não encontrar um correspondente para você chamar ou se o correspondente é ambiguo, a resolução de sobrecarga falha e o compilador lança um erro.</p>
+
+ <p><i>A assinatura de um método é composta pelo nome do método, número de argumentos e tipos de argumentos. Você pode sobrecarregar métodos com o mesmo nome, mas com assinaturas diferentes. Como o tipo de retorno e a especificação de exceção não fazem parte da assinatura, não é possível sobrecarregar os métodos com base no tipo de retorno ou na especificação de exceção.</i></p>
+</section>
+<section id="sobrescmetd">
+<h1>Sobrescrevendo métodos na classe objeto</h1>
+
+<p>Vamos agora comprender como sobrecrever alguns métodos na classe Object. Você pode sobrescrever métodos <b>clone(), equals(), hashCode(), toString(), e finalize()</b> em suas classes. Você não pode sobrescrever estes métodos <b>getClass(), notify(), notifyAll(),</b> e a versão sobrecarregada  do método <b>ofWait()</b> que são declarado <b>final</b>.</p>
+
+<p>Por que devemos sobrescrever métodos na classe Object? Para responder a essa pergunta, vamos discutir o que acontece quando não sobrescrevemos o <b>método toString()</b></p>
+<pre class="brush:java">
+class Point {
+private int xPos, yPos;
+public Point(int x, int y) {
+xPos = x;
+yPos = y;
+}
+public static void main(String []args) {
+// Passando um Objeto Point para println
+// invoca o método toString() automaticamente
+System.out.println(new Point(10, 20));
+}
+}
+</pre>
+<p><b>Imprime isto:</b></p>
+
+<pre>Point@19821f (Actual address might differ on your machine, but a similar string will show up)</pre>
+
+<p>O <b>método toString()</b> é definido na classe <b>Object</b>, que é herdado por todas as classes em java. Aque é uma visão global do método toString() de como é definido na classe Object.</p>
+
+<h3>public String toString()</h3>
+
+<p>O <b>método toString()</b> não leva argumento e retorna a representação do <b>objeto String</b>. A implementaç]ao padrão deste método retorna versão <b>ClassName@hex do hashCode()</b>. Isto é o porque de obter essa saída inelegível. Note que este valor hexadecimal será diferente por cada instante, assim se você tentar este programa, você irá obter um hexadecimal diferente no valor de saída..</p>
+</section>
+<section id="sobresctostring">
+ <h2>Sobrescrevendo Método toString()</h2>
+
+ <p>Quando você cria novas classes, espera-se que você substitua esse método para retornar a representação textual desejada de sua classe.  O exemplo a seguir mostra uma versão melhorada da classe Point com a versão sobrescrita do <b>método toString()</b>.</p>
+<pre class="brush:java">
+ // Versão melhorada da classe Point com  método toString sobrescrevendo 
+class Point {
+private int xPos, yPos;
+public Point(int x, int y) {
+xPos = x;
+yPos = y;
+}
+// este método toString  sobrescreve a implementação do método toString padrão (default)
+// fornecido na classe base Object
+public String toString() {
+return "x = " + xPos + ", y = " + yPos;
+}
+public static void main(String []args) {
+System.out.println(new Point(10, 20));
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+x = 10, y = 20
+</pre>
+
+<p>Isso é muito mais limpo, como seria de esperar. Para deixar claro, aqui está uma versão ligeiramente diferente do <b>método main()</b> nesta implementação da <b>classe Point</b>:</p>
+
+<pre class="brush:java">
+public static void main(String []args) {
+Object obj = new Point(10, 20);
+System.out.println(obj);
+}
+</pre>
+
+<p><b>Este programa imprime:</b></p>
+<pre>
+x = 10, y = 20
+</pre>
+
+<p>Aqui, o tipo estático da variável <b>obj</b> é a <b>classe Object</b> e o tipo dinâmico de object é <b>Point</b>.</p>
+<p>A declaração <b>println</b> invoca o método <b>toString()</b> da variável <b>obj</b>. Aqui, o método <b>toString()</b> da classe derivada - o método <b>toString()</b> de <b>Point</b> - é invocado devido ao polimorfismo de tempo de execução.</p>
+
+</section>
+<section id="sobproblem">
+	<h3>Sobrescrevendo Problemas</h3>
+  <p>Enquanto sobrescrever, você precisa ser cuidado sobre os niveis de acesso, o nome do método, e a assinatura.</p>
+  <p>Aqui é o método toString() na classe Point:</p>
+ <pre class="brush:java">
+public String toString() {
+return "x = " + xPos + ", y = " + yPos;
+}
+</pre>
+<p>Se usar acesso protected especifico ao inves de public nesta definição de método irá funcionar?</p>
+<pre class="brush:java">
+protected String toString() {
+return "x = " + xPos + ", y = " + yPos;
+}
+</pre>
+<p>Assim não compila! Após esta mudança o compilador reclama.</p>
+<pre>
+Point.java:12: error: toString() in Point cannot override toString() in Object
+protected String toString() {
+^
+attempting to assign weaker access privileges; was public
+1 error
+</pre>
+
+<p>Neste caso, você tem um erro de compilador por incompatibilidade, porque o tipo de retorno no método sobrescrito deve ser exatamente o mesmo que o método de classe base.</p>
+<p>Aqui é outro exemplo:</p>
+<pre class="brush:java">
+public String ToString() {
+return "x = " + xPos + ", y = " + yPos;
+}
+</pre>
+<p>Agora o compilador não reclama. Mas este é um novo método chamado <b>To String</b> e não tem nada a ver com o <b>método toString em Object</b>. Portanto, esse método <b>ToString</b> não substitui o <b>método toString</b>.</p>
+<p>Lembre-se dos pontos a seguir para sobrescrever corretamente.<p>
+<ul>
+<li> 
+<li> Deve ter o mesmo tipos de listas de argumento(ou tipos compatíveis) com a versão base.</li>
+<li>  Deve ter o mesmo tipo de retorno.</li>
+<li>  Não deve ter um modificador de acesso mais restritivo que a versão base.</li>
+ <li> Mas pode ter um modificador de acesso menos restritivo.</li>
+ <li> Não deve lançar exceções checked novas ou mais amplas.</li>
+ <li> Mas pode lançar exceções checked menos ou mais estreitas ou qualquer exceção não verificada.</li>
+ <li> E, os nomes devem corresponder exatamente!</li>
+</ul>
+
+
+<h3>Tipos de Retorno Covariant</h3>
+<p>Você  sabe que os tipos de retorno deve corresponder extamente quando sobrescreve métodos. Portanto, com o tipo de retorno covariant recurso introduzido no java 5, você pode fornecer uma classe derivada do tipo de retorno no método sobrescrito. Mas por que precisamos desse recurso? Verifique a saída deste método sobrescrito como o mesmo tipo de retorno:</p>
+<pre class="brush:java">
+abstract class Shape {
+// outros métodos omitido
+public abstract Shape copy();
+}
+class Circle extends Shape {
+//outros métodos omitido
+public Circle(int x, int y, int radius) { /* inicialize campos aqui */ }
+public Shape copy() { /* retorne uma cópia deste objeto */ }
+}
+
+class Test {
+public static void main(String []args) {
+Circle c1 = new Circle(10, 20, 30);
+Circle c2 = c1.copy();
+}
+}
+</pre>
+
+<p>Este código dará um erro no compilador de "incompatible types: Shape cannot be converted to Circle". Isto é porque da falta de um downcast explicito de Shape para Circle na atribuição:</p> 
+<pre class="brush:java">circle c2 = c1.copy();</pre>
+
+<p>Como você sabe claramente que vai atribuir um objeto Circle retornado pelo método cópy de Circle, é possível fornecer uma conversão explícita para corrigir o erro do compilador:</p>
+
+<pre class="brush:java">Circle c2 = (Circle) c1.copy();</pre>
+
+<p>uma vez que é tedioso fornecer tais downcasts (que são mais ou menos sem sentido), Java fornece tipos de retorno covariant onde você pode dar a classe derivada o tipo de retorno no método sobescrito.</p>
+<p>Em outras palavras, você pode alterar a definição do método copy na classe Circle da seguinte maneira:</p>
+
+<pre class="brush:java">public Circle copy() { /* retorna uma cópia deste objeto */ }</pre>
+<p>Agora a atribuição no método principal Circle c2 = c1.copy (); é válida e nenhum downcast explícito é necessário (o que é bom). </p>
+</section>
+<section id="sobmetequal">
+<h2>Sobrescrever o método equal()</h2>
+<p>Vamos agora sobrescrever o método <b>equals()</b> na classe <b>Point</b>. Antes disso , aqui está a assinatura do método equals() na classe Object:</p>
+<pre class="brush:java">public boolean equals(Object obj)</pre>
+
+<p>O <b>método equals()</b> na <b>classe Object</b> é o método que pode ser sobrescrito e que leva o tipo de <b>Object</b> como um argumento. Ele verifica se o conteúdo do objeto atual e o argumento <b>obj</b> passado são iguais. Se então, o <b>equals()</b> retorne <b>true</b>; de outra forma ele retorna </b>false</b>.</p>
+<p>Agora, vamos melhorar o código do exemplo anterior e sobrescrever o <b>método equals()</B> em uma classe chamada <b>Point</b>. Esta é uma implementação correta?</p>
+
+<pre class="brush:java">
+public class Point {
+private int xPos, yPos;
+public Point(int x, int y) {
+xPos = x;
+yPos = y;
+}
+
+// sobrescreve o método equals para executar
+// "profunda" comparação de dois objetos Point
+public boolean equals(Point other){
+if(other == null)
+return false;
+// dois pontos são iguais apenas se suas posições x e y forem iguais
+if( (xPos == other.xPos) && (yPos == other.yPos) )
+return true;
+else
+return false;
+}
+public static void main(String []args) {
+Point p1 = new Point(10, 20);
+Point p2 = new Point(50, 100);
+Point p3 = new Point(10, 20);
+System.out.println("p1 equals p2 is " + p1.equals(p2));
+System.out.println("p1 equals p3 is " + p1.equals(p3));
+}
+}
+</pre>
+<p><b>Este programa imprime isto:</b></p>
+<pre>
+p1 equals p2 is false
+p1 equals p3 is true 
+</pre>
+
+<p> A saída é a esperada, e esta não é a implementação <b>equals()</b> correta! Vamos fazer uma pequena modificação no <b>método main()</b>:</p>
+<pre class="brush:java">
+public static void main(String []args) {
+Object p1 = new Point(10, 20);
+Object p2 = new Point(50, 100);
+Object p3 = new Point(10, 20);
+System.out.println("p1 equals p2 is " + p1.equals(p2));
+System.out.println("p1 equals p3 is " + p1.equals(p3));
+}
+</pre>
+
+<p><b>Agora, este programa imprime isto:</b></p>
+<pre>
+p1 equals p2 is false
+p1 equals p3 is false
+</pre>
+
+<p>Por quê? Ambos os <b>métodos main()</b> são equivalentes. No entanto, esse <b>método main()</b> mais recente usa o <b>tipo Object</b> para declarar p1, p2 e p3. O tipo dinâmico dessas três variáveis é <b>Point</b>, por isso deve chamar o <b>método equals()</b> sobrescrito. No entanto, ele está sobrescrito errado: O <b>método equals()</b> deve ter <b>Object</b> como o argumento em vez do argumento Point! A implementação atual do <b>método equals()</B> na <b>classe Point</b> oculta (não sobrescreve) o <b>método equals()</b> da <b>classe Object</b>. Portanto, o <b>método main()</b> chama a versão base, que é a implementação padrão da <b>classe Point</b> em <b>Object</b>!</p>
+
+<p>Para superar os sútis problemas de sobrecarga, você pode usar <b>anotação @Override</b>, que foi introduzido no java 5. Esta anotação explicita expressa para o java a intenção do programado em usar método  sobrescrito. Neste caso o compilador não está satisfeito com seu método sobrescrito, ele irá reclamar um problema, que é útil para alarmar você. Também, a anotação faz o programa mais entendível, desde que a<b>anotação @Override</b> seja definida somente antes do método ajudar você a entender que você está sobrescrevendo um método.</p>
+<p>Aqui é o código com anotação @Override para o método equals:</p>
+<pre class="brush:java">
+@Override
+public boolean equals(Point other) {
+if(other == null)
+return false;
+// dois pontos são iguais apenas se suas posições x e y forem iguais
+if((xPos == other.xPos) && (yPos == other.yPos))
+return true;
+else
+return false;
+}
+</pre>
+
+<p>Você irá obter um erro de compilador agora neste código:</p>
+<pre>
+Point.java:11: error: method does not override or implement a method from a supertype
+@Override
+^
+1 error
+</pre>
+<p>Como corrigir isto? Você precisa passar o tipo Object para o argumento do método equals. A seguir é  mostrado como:</p>
+
+<pre class="brush:java">
+public class Point {
+private int xPos, yPos;
+public Point(int x, int y) {
+xPos = x;
+yPos = y;
+}
+// sobrescreve o método equals  para executar "profunda" comparação de dois objetos Point 
+@Override
+public boolean equals(Object other) {
+if(other == null)
+return false;
+
+// verifica se o tipo dinâmico de 'other' é Point
+// se 'other' é de qualquer outro tipo em vez de 'Point', os dois objetos não pode ser
+// igual se 'other' é do tipo Point (ou uma destas classes derivada ), então
+// downcast o objeto para tipo Point  e então compare membros por igualdade
+if(other instanceof Point) {
+Point anotherPoint = (Point) other;
+// dois pontos são iguais somente se suas posições x e y são iguais
+if((xPos == anotherPoint.xPos) && (yPos == anotherPoint.yPos))
+return true;
+}
+return false;
+}
+public static void main(String []args) {
+Object p1 = new Point(10, 20);
+Object p2 = new Point(50, 100);
+Object p3 = new Point(10, 20);
+System.out.println("p1 equals p2 is " + p1.equals(p2));
+System.out.println("p1 equals p3 is " + p1.equals(p3));
+}
+}
+</pre>
+<p><b>Este programa imprime isto:</b></p>
+<pre>
+p1 equals p2 is false
+p1 equals p3 is true
+</pre>
+<p>Esta é a saída esperada e com a correta implementação do método equals.</p>
+</section>
+<section id="invoqsuperclasse">
+<h3>Invocando métodos da Superclasse</h3>
+
+<p>Geralmente, é útil chamar o método da classe base dentro do método sobrescrito. Para fazer isso, você pode usar a palavra-chave <b>super</b>. Nos construtores de classe derivada, você pode chamar o construtor da classe base usando a palavra-chave <b>super</b>. Essa chamada deve ser a primeira declaração em um construtor, se for usada. Você pode usar a palavra-chave <b>super</b> para se referir aos membros da classe base também. Nesses casos, não é necessário que seja a primeira declaração no corpo do método. Vamos ver um exemplo.
+Você implementou uma <b>classe Point</b> que é um ponto 2D: tinha posições x e y. Você também pode implementar uma classe de ponto 3D com as posições x, y e z. Para isso, você não precisa começar a implementá-lo do zero: você pode estender o ponto 2D e adicionar a posição z na classe de ponto 3D. Primeiro, você renomeia a implementação simples da <b>classe Point</b> para <b>Point2D</b>. Em seguida, você criará a <b>classe Point3D</b> estendendo esse <b>Point2D</b>.</p>
+
+
+<pre class="brush:java">
+class Point2D {
+private int xPos, yPos;
+public Point2D(int x, int y) {
+xPos = x;
+yPos = y;
+}
+
+
+public String toString() {
+return "x = " + xPos + ", y = " + yPos;
+}
+public static void main(String []args) {
+System.out.println(new Point2D(10, 20));
+}
+}
+//  Point3D.java
+// Aqui é como nós podemos crias classe Point3D  extendendo a classe Point2D 
+public class Point3D extends Point2D {
+private int zPos;
+// fornece uns construtores public que leva três argumentos (x, y, and z values)
+public Point3D(int x, int y, int z) {
+// chama a superclass construtor com dois argumentos
+// i.e., chama Point2D(int, int) de Point2D(int, int, int) constructor)
+super(x, y); // note que super é a primeira declaração no metodo
+zPos = z;
+}
+// sobrescreve  método toString também
+public String toString() {
+return super.toString() + ", z = " + zPos;
+}
+// para testar se estendemos corretamente, chame o método toString de um objeto Point3D
+public static void main(String []args) {
+System.out.println(new Point3D(10, 20, 30));
+}
+}
+
+</pre>
+<p><b>Este programa imprime isto:</b></p>
+
+<pre>x = 10, y = 20, z = 30</pre>
+
+
+<p>Na <b>classe Point2D</b>, os membros da classe, <b>xPos e yPos</b> são privados, portanto você não pode acessá-los diretamente para inicializá-los no construtor <b>Point3D</b>. No entanto, você pode chamar o construtor da superclasse usando a palavra-chave <b>super</b> e passar os argumentos. Aqui, <b>super(x, y)</b> chama o construtor da classe base <b>Point2D (int, int)</b>. Essa chamada para o construtor da superclasse deve ser a primeira declaração; se você chamar depois de <b>zPos = z ;</b>, você receberá um erro do compilador:</p>
+<pre class="brush:java">
+public Point3D(int x, int y, int z) {
+zPos = z;
+super(x, y);
+}
+</pre>
+<p>Este erro ocorre porque super(x,z) não é a primeira declaração dentro do método</p>
+<pre>
+  Point3D.java:19: call to super must be first statement in constructor
+super(x, y);
+</pre>
+
+<p>Similarmente, você pode invocar o <b>método toString()</b> da classe base <b>Poin2D</b> na impementação <b>toString()</b> da classe derivada <b>Point3d</b> usando a palavra chave <b>super</b>.
+</section>
+
+<h3>Sobrescrevendo o Método hashCode()</h3>
+
+<p>Sobrescrever os métodos <b>equals</b> e <b>hashCode</b> corretamente é importante para usar com classes assim como <b>HashMap</b> e <b>HashSet</b>, que discutiremos mais adiante. A seguir um exemplo simples da classe Circle para você entender o que pode sair ir errado quando usar coleções tal como <b>HashSets</b>.</p>
+
+<pre class="brush:java">
+// Este programa mostra a importancia de sobrescrever os métodos equals() e hashCode()
+import java.util.*;
+class Circle {
+private int xPos, yPos, radius;
+public Circle(int x, int y, int r) {
+xPos = x;
+yPos = y;
+radius = r;
+}
+public boolean equals(Object arg) {
+if(arg == null) return false;
+if(this == arg) return true;
+if(arg instanceof Circle) {
+Circle that = (Circle) arg;
+if( (this.xPos == that.xPos) && (this.yPos == that.yPos)&& (this.radius == that.radius )) {
+return true;
+}
+}
+return false;
+
+}
+}
+class TestCircle {
+public static void main(String []args) {
+Set&ltCircle> circleList = new HashSet&ltCircle>();
+circleList.add(new Circle(10, 20, 5));
+System.out.println(circleList.contains(new Circle(10, 20, 5)));
+}
+}
+</pre>
+
+<p>Imprime falso (não é verdade)! Por quê? A <b>classe Circle</b> sobrecreve o <b>método equals()</b>, mas não sobrescreve o <b>método hashCode()</b>. Quando você usa objetos de <b>Circle</b> em contêineres padrão, isso se torna um problema. Para pesquisa rápida, os contêineres comparam o código hash dos objetos. Se o <b>método hashCode()</b> não for sobrescrito, então, mesmo se um objeto com o mesmo conteúdo for passado, o contêiner não encontrará esse objeto! assim você precisa sobrescrever o <b>método hashCode()</b>.</p>
+
+<p>Como sobrescrever o método hashCode? No caso ideal o <b>método hashCode()</b> deverá retornar único codigo hash para diferentes objetos.</p>  
+<p>O <b>método hasCode()</b> deve retornar o mesmo valor <b>hash</b> se o <b>método equals()</b> retorna verdadeiro. Se os ojetos são diferentes(assim que o <b>método equals()</b> retornar false)? este é melhor(apesar de não exigir) para o <b>hashCode()</b> retornar diferentes valores se os objetos são diferentes. A razão é que isto é dificil para escrever um método hashCode que forneça um único valor para cada objeto diferente. </p> 
+
+<p>Quando implementar o <b>método hashCode()</b>, você pode usar os valores do membro de instância da classe para criar um valor <b>hash</b>. Aqui é uma simples implementação do <b>método hashCode()</b> da <b>classe Circle</b>:</p>
+<pre class="brush:java">
+public int hashCode() {
+// use operadores de manipulação de bits como ^ para gerar valores próximos de exclusivos
+// códigos hash aqui, estamos usando os números mágicos 7, 11 e 53,
+// mas você pode usar qualquer número, de preferência números primos
+return (7 * xPos) ^ (11 * yPos) ^ (53 * yPos);
+}
+</pre>
+
+<p>Agora se você executa o <b>método main()</b>, ele imprime "true". Neste implemetação do <b>método hashCode()</b>, você multiplicou os valores por um número primo bem como <b>operação bit-wise</b>. Você pode escrever código complexo para <b>hashCode()</b> se você quer melhorar uma <b>função hashing</b>, mas esta implementação é suficente para prática porposta.</p>
+<p>Você pode usar <b>operadores bitwise</b> para valores <b>int</b>.  Para valores ponto flutuante veremos um exemplo implementando um <b>hashCode</b> do <b>java.awt.Point2D</b>, que tem valores ponto flutuante x e y. Os métodos getX() e getY() retorna os valores x e y respecivamente:</p>
+<pre class="brush:java">
+public int hashCode() {
+long bits = java.lang.Double.doubleToLongBits(getX());
+bits ^= java.lang.Double.doubleToLongBits(getY()) * 31;
+return (((int) bits) ^ ((int) (bits >> 32)));
+}
+</pre>
+<p>Esse método usa o método <b>doubleToLongBits()</b>, que recebe um valor double e retorna um valor long. Para valores de ponto flutuante x e y (retornados pelos métodos getX e getY), você obtém valores long em bits e você usa manipulação de bits para obter hashCode ().</p>
+<p>Agora, como você faz para implementar o <b>método hasCode()</b> se a classe tem memmbros do tipo de referência? Por exemplo, considere usar uma instância da <b>classe Point</b> como um membro ao invés de <b>xPos e yPos</b>, que são campos do tipo primitivo:</p>
+
+  
+<p>Neste caso, você pode usar o método hashCode() para implementar método hasCode de circle's.</p>
+<pre class="brush:java">
+class Circle {
+private int radius;
+private Point center;
+// outros membros omitidos
+}
+
+public int hashCode() {
+return center.hashCode() ^ radius;
+}
+
+</pre>
+</section>
+<section id="compposicao">
+<h2>Composição de Objeto</h2>
+
+<p>As abstrações individuais oferecem certas funcionalidades que precisam ser combinadas com outros objetos para representar uma abstração maior: um objeto composto que é composto de outros objetos menores. Você precisa fazer esses objetos compostos para resolver problemas de programação da vida real. Nesses casos, o objeto composto compartilha as relações do HAS-A (TEM-UM) com os objetos contidos e o conceito subjacente é chamado de composição do objeto.</p>
+<p>Por analogia, um computador é um objeto composto que contém outros objetos, como CPU, memória e disco rígido. Em outras palavras, o objeto de computador compartilha um relacionamento do HAS-A (TEM-UM) com outros objetos.</p>
+<p>O exemplo a seguir define uma classe Circle que usa um objeto Point para definir o centro do Circle.</p>
+<pre class="brush:java">
+// Point é uma classe independente e aqui estamos usando-o com a classe Circle
+class Point {
+private int xPos;
+private int yPos;
+public Point(int x, int y) {
+xPos = x;
+yPos = y;
+}
+public String toString() {
+return "(" + xPos + "," + yPos + ")";
+}
+}
+// Circle.java
+public class Circle {
+private Point center; // Circle "contém" um objeto Point 
+private int radius;
+
+public Circle(int x, int y, int r) {
+center = new Point(x, y);
+radius = r;
+}
+public String toString() {
+return "center = " + center + " and radius = " + radius;
+}
+public static void main(String []s) {
+System.out.println(new Circle(10, 10, 20));
+}
+// outros membros (construtores,método area, etc) são omitidos ...
+}
+</pre>
+
+<p>Neste exemplo, Circle possui um objeto Point. Em outras palavras, Círcle e Point compartilham um relacionamento que <b>Tem Um </b>; Em outras palavras, Circle é um objeto composto contendo um objeto Point. Esta é uma solução melhor do que ter membros inteiros independentes xPos e yPos. Por quê? Você pode reutilizar a funcionalidade fornecida pela classe Point. Observe o método toString() na classe Circle:</p>
+<pre class="brush:java">
+public String toString() {
+return "center = " + center + " and radius = " + radius;
+// Aqui, o uso da variável center se expande para center.toString()
+// e, portanto, o método toString de Point
+// pode ser reutilizado no método toString do Circle.
+
+}
+
+</pre>
+
+</section>
+<section id="compheranca">
+<h2>Composição vs Herança</h2>
+
+<p>Você agora está equipado com conhecimento do composição tão bem quanto herança. Em algumas situações , é dificil escolher entre os dois.  É importante lembrar que nada é uma bala de prata - você não pode resolver todos os problemas com um construtor. Você precisa analisar cada situação com cuidado e decidir qual construção é mais adequada para isso.</p>
+
+<p>Uma regra é usar as frases HAS-A(TEM UM) e IS-A(É UM) para composição e herança, respectivamente. Por exemplo,</p>
+<ul>
+	<li>
+   <li>  Um computatdor HAS-A(TEM UM) CPU.</li>
+	<li> Um circulo(circle) é(IS-A) uma forma(shape)  .</li>
+	<li> Um circulo TE-UM  ponto.</li>
+	<li> Um laptop É-UM computer.</li>
+	 <li>Um vetor É-UMA lista.</li>
+</ul>
+
+<p>Essa regra pode ser útil para identificar relacionamentos errados. Por exemplo, a relação do pneu do carro É-UM está completamente errada, o que significa que você não pode ter uma relação de herança entre as classes <b>Carro</b> e <b>Pneu</b>. No entanto, o relacionamento do pneu do carro TEM-UM (ou seja, o carro tem um ou mais pneus) está correto - você pode compor um objeto <b>Carro</b> contendo objetos do pneu.</p>
+
+<p>Por exemplo, pegue um conjunto de classes <b>DynamicDataSet</b> e <b>SnapShotDataSet</b> que exigem uma funcionalidade comum - digamos, classificação. Agora, pode-se derivar essas classes de conjuntos de dados de uma implementação de classificação</p>
+
+<pre class="brush:java">
+import java.awt.List;
+public class Sorting {
+public List sort(List list) {
+// sort implementation
+return list;
+}
+}
+class DynamicDataSet extends Sorting {
+// DynamicDataSet implementation
+}
+class SnapshotDataSet extends Sorting {
+// SnapshotDataSet implementation
+}
+</pre>
+
+<p>O exemplo acima não é uma boa solução pela seguinte razão:</p>
+
+<p>A  regra geral não é válida aqui. <b>DinamicDataSet</b> não é um tipo <b>Sorting</b>. Se você faz tal mistura no projeto de classe, ele pode ser muito custoso- e você pode não ser capaz de corrigi-lo mais tarde se houver muito código acumulado que faça o uso errado de relacionamentos de herança. Por exemplo, Stack(pilha) estende o Vector na biblioteca Java. No entanto, uma pilha claramente não é um vetor, por isso não só cria problemas de compreensão, mas também leva a erros. Ao criar um objeto da classe Stack fornecido pela biblioteca Java, você pode adicionar ou excluir itens de qualquer lugar no contêiner, porque a classe base é Vector, que permite excluir de qualquer lugar no vetor.</p>
+
+<p>E se esses dois tipos de classes de conjuntos de dados tiverem uma classe base genuína, <b>DataSet</b>? Nesse caso, ou <b>Sorting</b> será a classe base do <b>DataSet</b> ou pode-se colocar a <b>classe Sorting</b> entre <b>DataSet</b> e dois tipos de conjuntos de dados. Ambas as soluções estariam erradas.</p>
+
+<p>Há outro problema desafiador: e se uma <b>classe DataSet</b> quiser usar um algoritmo de classificação (digamos, MergeSort) e outra classe de conjunto de dados quiser usar um algoritmo de classificação diferente (digamos, QuickSort)? Você herdará de duas classes implementando dois algoritmos de ordenação diferentes? Primeiro, você não pode herdar diretamente de várias classes, já que o Java não suporta herança de múltiplas classes. Segundo, mesmo se você fosse capaz de herdar de duas classes diferentes de classificação (o MergeSort estende o QuickSort, o QuickSort estende o DataSet), isso seria um projeto ainda pior.</p>
+<p>Nesse caso, é melhor usar composição - em outras palavras, use um relacionamento HAS-A em vez de um relacionamento IS-A.</p>
+
+<pre class="brush:java">
+import java.awt.List;
+interface Sorting {
+List sort(List list);
+}
+class MergeSort implements Sorting {
+public List sort(List list) {
+// sort implementation
+return list;
+}
+}
+class QuickSort implements Sorting {
+public List sort(List list) {
+// sort implementation
+return list;
+}
+}
+class DynamicDataSet {
+Sorting sorting;
+public DynamicDataSet() {
+sorting = new MergeSort();
+}
+// DynamicDataSet implementation
+}
+class SnapshotDataSet {
+Sorting sorting;
+public SnapshotDataSet() {
+sorting = new QuickSort();
+}
+// SnapshotDataSet implementation
+}
+</pre>
+<p>Use herança quando uma subclasse especificar uma classe base, para que você possa explorar o polimorfismo dinâmico. Em outros casos, use a composição para obter um código que seja fácil de alterar e fracamente acoplado. Em resumo, favorecer a composição sobre herança.</p>
+</section>
+<section id="singleton">
+<h1>Classes Imutável e Singleton</h1>
+
+
+<p>Há cenários nos quais você deseja garantir que apenas uma instância esteja presente para uma determinada classe. Por exemplo, suponha que você definiu uma classe que modifica um registro ou implementou uma classe que gerencia spool de impressora ou implementou uma classe de gerenciador de pool de threads. Em todas essas situações, você pode querer evitar erros difíceis de encontrar, instanciando não mais do que um objeto de tais classes. Nestas situações, você poderia criar uma classe singleton.</p>
+<p>Uma classe singleton garante que somente uma instância desta classe seja criada. Para garantir o ponto de acesso, a classe controla a instanciação destes objetos. Classes Singleton são encontradas em muitos lugares em Java Development Kit (JDK) tal como java.lang.Runtime. Veja o diagrama singleton abaixo:</p>
+<br>
+<img src="imagens/jee7/diagrama.jpg">
+<br>
+
+<p>A <b>classe Singleton</b> oferece duas coisas: uma e somente uma instância da classe, e um ponto único global de acesso deste objeto.</p>
+<p>Suponha que você deseja implementar uma classe para registrar detalhes do aplicativo para rastrear a execução do aplicativo para depuração. Para este objetivo, você pode querer garantir que apenas uma instância da <b>classe Logger</b> exista em sua aplicação e, portanto, você pode fazer da <b>classe Logger</b> uma <b>classe singleton</b>.</p>
+<pre class="brush:java">
+/ A classe Logger deve ser instanciada apenas uma vez no aplicativo;
+// é garantir que todo o aplicativo use a mesma instância do criador de logs
+public class Logger {
+ //declara o construtor privado para impedir os clientes
+// de instanciar diretamente um objeto dessa classe
+private Logger() { }
+// por padrão, este campo é inicializado como nulo
+// o método estático a ser usado pelos clientes para obter a instância da classe Logger
+private static Logger myInstance;
+public static Logger getInstance() {
+if(myInstance == null) {
+// é a primeira vez que esse método é chamado,
+// e é por isso que myInstance é nulo
+myInstance = new Logger();
+}
+//retorna a mesma referência de objeto a qualquer momento e
+//toda vez que getInstance é chamado
+return myInstance;
+}
+public void log(String s) {
+// uma implementação trivial do log em que
+// passamos a string a ser registrada no console
+System.err.println(s);
+}
+}
+</pre>
+<p>Veja a implementação singleton da classe Logger. O construtor da classe é declarado como privado, então você não pode simplesmente criar uma nova instância da classe Logger usando o novo operador. A única maneira de obter uma instância dessa classe é chamar o método de membro estático da classe por meio do método getInstance(). Este método verifica se um objeto Logger já existe ou não. Caso contrário, cria uma instância de Logger e a atribui à variável de membro estático. Dessa forma, sempre que você chamar o método getInstance(), ele sempre retornará o mesmo objeto da classe Logger.</p>
+</section>
+<section id="singletonrealm">
+<h3>Assegurando que seu singleton seja realmente um singleton</h3>
+
+<p>É muito importante (assim como difícil) garantir que sua implementação singleton permita apenas uma instância da classe. Por exemplo, a implementação fornecida no exemplo anterior  funciona somente se seu aplicativo tiver um único encadeamento. No caso de vários encadeamentos, tentar obter um objeto singleton pode resultar na criação de vários objetos, o que naturalmente anula o propósito de implementar um singleton. A seguir é mostrado uma versão da classe Logger que implementa o padrão de design singleton em um ambiente multi-thread.</p>
+
+<pre class="brush:java">
+public class Logger {
+private Logger() {
+// construtor privado para evitar instanciação direta
+}
+private static Logger myInstance;
+public static synchronized Logger getInstance() {
+if(myInstance == null)
+myInstance = new Logger();
+return myInstance;
+}
+public void log(String s){
+// log implementation
+System.err.println(s);
+}
+}
+</pre>
+
+<p>Observe o uso da palavra-chave <b>synchronized</b> nessa implementação. Essa palavra-chave é um mecanismo de concorrência Java para permitir apenas um <b>thread</b> por vez no escopo sincronizado. Você aprenderá mais sobre sobre concorrência nas seções adiante. Então, você fez todo o método sincronizado para torná-lo acessível apenas por um thread de cada vez. Isso faz com que seja uma solução correta, mas há um problema: desempenho ruim. Você queria tornar esse método sincronizado apenas na primeira vez que o método é chamado, mas desde que você declarou todo o método como sincronizado, todas as chamadas subseqüentes a esse método o tornam um gargalo de desempenho. O exemplo a seguir mostra outra implementação da Classe do Logger que é baseada no idioma “inicializador de demanda on demand”. Esse idioma usa classes internas e não usa nenhuma construção de sincronização. Ele explora o fato de que classes internas não são carregadas até que sejam referenciado.</p>
+<pre class="brush:java">
+public class Logger {
+private Logger() {
+// private constructor
+}
+public static class LoggerHolder {
+public static Logger logger = new Logger();
+}
+public static Logger getInstance() {
+return LoggerHolder.logger;
+}
+public void log(String s) {
+// log implementation
+System.err.println(s);
+}
+}
+</pre>
+<p>Esta é uma solução de trabalho eficiente para singletons que funciona bem para aplicativos multi-threaded também. No entanto, antes de fecharmos essa discussão sobre singletons, duas palavras de despedida de cautela. Primeiro, use singletons onde for apropriado, mas não o use excessivamente. Em segundo lugar, certifique-se de que sua implementação de singleton garanta a criação de apenas uma instância, mesmo que seu código seja multi-thread.</p>
+</section>
+<section id="imutavelcls">
+<h2>Classe imutável</h2>
+
+<p>O que é um objeto imutável? Quando um objeto é criado e inicializado, não pode ser modificado. Podemos chamar métodos de acesso (ou seja, métodos getter), copiar os objetos ou passar os objetos por perto - mas nenhum método deve permitir modificar o estado do objeto. As classes wrapper (como Integer e Float) e a classe String são exemplos bem conhecidos de classes que são imutáveis.</p>
+<p>Vamos agora discutir a classe String. String é imutável: depois de criar um objeto String, você não poderá modificá-lo. Se houver algum caractere de espaço em branco à esquerda ou à direita, o método trim os removerá e retornará um novo objeto String em vez de modificar esse objeto String.</p>
+<p>Existem muitas vantagens criando objetos imutáveis:</p>
+<ul>
+	<li>
+Objetos imutáveis são mais seguro para usar do mutáveis.</li>
+<li>Depois de verificar o seu valor, você pode ter certeza de que permanece o mesmo e não é modificado .</li>
+<li>Objetos imutáveis ​​são thread-safe. Por exemplo, um thread pode acessar um objeto String sem se preocupar se qualquer outro thread o alterasse quando estivesse acessando o objeto - isso não pode acontecer porque um objeto String é imutável.</li>
+ <li>Objetos imutáveis ​​que possuem o mesmo estado podem economizar espaço compartilhando o estado internamente. Por exemplo, quando o conteúdo é o mesmo, os objetos String compartilham o mesmo conteúdo (conhecido como “string interning”).</li>
+ </ul> 
+ <p>Você pode usar o método intern () para verificar se:</p>
+<pre class="brush:java">
+String str1 = new String("contents");
+String str2 = new String("contents");
+System.out.println("str1 == str2 is " + (str1 == str2));
+System.out.println("str1.intern() == str2.intern() is " + (str1.intern() == str2.intern()));
+</pre>
+<p><b>Este código imprime isto:</b></p>
+
+<pre>
+str1 == str2 is false
+str1.intern() == str2.intern() is true
+</pre>
+
+<p>“As classes devem ser imutáveis ​​a menos que haja uma boa razão para torná-las mutáveis… Se uma classe não pode ser imutável, você deve ainda limitar a sua mutabilidade, tanto quanto possível.</p>
+</section>
+<section id="defimutavel">
+<h3>Definindo Classes Imutáveis</h3>
+
+<p>Fazer os campos final e iniciá-los no construtor. Para tipos primtivos os valores dos campos são final, não existe nehuma possibilidade de mudança de estado depois  de ter inicido. Para tipos de referência, você não pode mudar a referencia. </p>
+
+<p>Para tipos de referÊncias que são mutáveis, você precisa considerar mais algunl aspectos para garantir imutabilidade.</p>
+<ul>
+<li>Tenha certeza que os métodos não mudam o conteúdo de dentro destes objetos mutáveis.</li>
+<li>Não compartilhe as referências fora da classes, por exemplo, como um valor de retorno dos métodos dessa classe. Se as referências a campos que são mutáveis são acessíveis a partir do código fora da classe, elas podem acabar modificando o conteúdo do objeto.</li>
+ <li>Se você precisar retornar uma referência, retorne a cópia profunda do objeto (para que o conteúdo original permaneça intacto mesmo se o conteúdo dentro do objeto retornado for alterado).</li>
+ <li>Forneça apenas métodos de acesso (ou seja, métodos getter), mas não forneça métodos de mutação (por exemplo, métodos setter).</li>
+ <li>Caso sejam necessárias alterações no conteúdo do objeto, crie um novo objeto imutável com as alterações necessárias e retorne essa referência.</li>
+ <li>Declare a classe final. Por quê? Se a classe é herdável, os métodos em sua classe derivada podem substituí-los e modificar os campos.</li>
+</ul>
+<p>Vamos agora rever a classe String para entender como esses aspectos de cuidado em sua implementação:</p>
+<li> Todos os seus campos são privados. Os construtores String inicializam os campos.</li>
+<li> Existem métodos como trim, concat e substring que precisam alterar o conteúdo do objeto String. Para garantir a imutabilidade, esses métodos retornam novos objetos String com conteúdo modificado.</li>
+<li> A classe String é final, então você não pode estendê-la e sobrescrever seus métodos.</li>
+<p>Aqui está da classe Circle que é imutável. Por uma questão de brevidade, este exemplo mostra apenas os métodos relevantes para ilustrar como definir uma classe imutável</p>
+<pre class="brush:java">
+// Point is a mutable class
+class Point {
+private int xPos, yPos;
+public Point(int x, int y) {
+xPos = x;
+yPos = y;
+}
+public String toString() {
+return "x = " + xPos + ", y = " + yPos;
+}
+
+int getX() { return xPos; }
+int getY() { return yPos; }
+}
+// ImmutableCircle é uma classe imutável - o estado de seus objetos
+// não pode ser modificado depois que o objeto é criado
+public final class ImmutableCircle {
+private final Point center;
+private final int radius;
+public ImmutableCircle(int x, int y, int r) {
+center = new Point(x, y);
+radius = r;
+}
+public String toString() {
+return "center: " + center + " and radius = " + radius;
+}
+public int getRadius() {
+return radius;
+}
+public Point getCenter() {
+
+// retorna uma cópia do objeto para evitar
+// o valor do centro mudou do código fora da classe
+
+return new Point(center.getX(), center.getY());
+}
+public static void main(String []s) {
+System.out.println(new ImmutableCircle(10, 10, 20));
+}
+// outros membros são omitidos ...
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+center: x = 10, y = 10 and radius = 20 
+</pre>
+
+
+<p>Observe os seguintes aspectos na definição da classe <b>ImmutableCircle</b>:</p>
+<ul>
+	<li> A classe é declarada final para evitar herança e que sobrescreva seus métodos</li>
+<li>A turma possui apenas membros de dados final e são particulares</li>
+<li> Como center é um campo mutável, o método getter, <b>getCenter()</b>, retorna uma cópia do objeto Point.</li>
+</ul>
+
+<p>Objetos imutáveis também têm certas desvantagens. Para garantir a imutabilidade, métodos em classes imutáveis podem acabar criando várias cópias dos objetos. Por exemplo, toda vez que <b>getCenter()</b> é chamado na classe <b>ImmutableCircle</b>, esse método cria uma cópia do objeto <b>Point</b> e o retorna. Por esse motivo, podemos precisar definir uma versão mutável da classe, por exemplo, uma classe Circle mutável.</p>
+<p>A classe String é útil na maioria dos cenários, se chamarmos métodos como <b>trim, concat ou substring</b> em um <b>loop</b>, é provável que esses métodos criem numerosos objetos <b>String</b> (temporários). Felizmente, o Java fornece Classes <b>StringBuffer e StringBuilder</b> que não são mutáveis. Eles fornecem funcionalidade semelhante a String, mas você pode alterar o conteúdo dentro dos objetos. Assim, dependendo do contexto, podemos optar por usar a classe <b>String</b> ou uma das classes <b>StringBuffer ou StringBuilder</b>.</p>
+</section>
+<section id="palchavstatic">
+<h2>Usando a palavra chave Static</h2>
+
+<p>Vamos aprender a desenvolver códigos que usa palavra chave static no bloco de inicialização, variáveis, métodos, e classes:</p>
+<pre class="brush:java">
+// Classe Counter deve contar o número de instâncias criadas a partir dessa classe
+public class Counter {
+private int count; // variável para armazenar o número de objetos criados
+// para cada objeto Counter criado, o construtor padrão será chamado;
+// então, atualize o valor do contador dentro do construtor padrão
+public Counter() {
+count++;
+}
+public void printCount() { 
+// método para imprimir o valor do contador até o momento
+System.out.println("Number of instances created so far is: " + count);
+}
+public static void main(String []args) {
+Counter anInstance = new Counter();
+anInstance.printCount();
+Counter anotherInstance = new Counter();
+anotherInstance.printCount();
+}
+}
+</pre>
+<p><b>Este programa imprime essa saída:</b></p>
+<pre>
+Number of instances created so far is: 1
+Number of instances created so far is: 1
+</pre>
+
+<p>A partir da saída, fica claro que a classe não acompanha o número de objetos criados.O que aconteceu? Você usou a variável de instância <b>count</b> para acompanhar o número de objetos criados a partir dessa classe.
+Como cada instância da classe tem um valor de <b>count</b>, ele sempre imprime 1! O que você precisa é de uma variável que possa ser compartilhada em todas as suas instâncias. Isto pode ser conseguido declarando uma variável estática. Uma variável estática está associada à sua classe em vez de seu objeto ou instância; daí eles são conhecidos como variáveis de classe. Uma variável estática é inicializada apenas uma vez quando a execução do programa é iniciada. Uma variável estática compartilha seu estado com todas as instâncias da classe. Você acessa uma variável estática usando seu nome de classe (em vez de uma instância). O exemplo a seguir
+mostra a implementação correta da classe <b>Counter</b> com a variável <b>count</b> e o método <b>printCount</b> declarado <b>static</b>.</p>
+<pre class="brush:java">
+// Classe de contador deve contar o número de instâncias criadas a partir dessa classe
+public class Counter {
+private static int count; //variável para armazenar o número de objetos criados
+// para cada objeto Counter criado, o construtor padrão será chamado;
+// então, atualize o valor do contador dentro do construtor padrão
+public Counter() {
+count++;
+}
+public static void printCount() { // método para imprimir o valor do contador até o momento
+System.out.println("Number of instances created so far is: " + count);
+}
+public static void main(String []args) {
+Counter anInstance = new Counter();
+
+// note que chamamos printCount usando o nome da classe
+// em vez do nome da variável da instância
+
+Counter.printCount();
+Counter anotherInstance = new Counter();
+Counter.printCount();
+}
+}
+</pre>
+<p><b>Este progrma imprime:</b></p>
+<pre>
+Number of instances created so far is: 1
+Number of instances created so far is: 2
+</pre>
+
+
+<p>Aqui, a variável estática <b>count</b> é inicializada quando a execução é iniciada. No momento da criação do primeiro objeto, a contagem é incrementada para um. Da mesma forma, quando o segundo objeto foi criado, o valor de <b>count</b> tornou-se 2. Como a saída do programa mostra, ambos os objetos atualizaram a mesma cópia da variável <b>count</b>.</p>
+<p>Observe como mudamos a chamada para <b>printCount()</b> para usar o nome da classe <b>Counter</b>, como em <b>Counter.printCount()</b>. O compilador aceitará as duas chamadas anteriores de  <b>anInstance.printCount()</b> e <b>anotherInstance.printCount()</b>, pois não há diferença semântica entre chamar um método estático usando um nome de classe ou um nome de variável de instância. No entanto, usar variáveis ​​de instância para chamar métodos estáticos não é recomendado. É uma prática convencional chamar métodos de instância usando variáveis ​​de instância e chamar métodos usando nomes de classes.</p>
+<p>Um método estático só pode acessar variáveis ​​estáticas e pode chamar somente métodos estáticos. Por outro lado, um método de instância (não estático) pode chamar um método estático ou acessar uma variável estática.</p>
+</section>
+<section id="blocstatic">
+<h3>Bloco Static</h3>
+
+<p>Além de variáveis ​​e métodos estáticos, você também pode definir um bloco estático na sua definição de classe.</p><p> Este bloco estático será executado pela JVM quando carregar a classe na memória. No exemplo anterior, você pode definir um bloco estático para inicializar a variável <b>count</b>  para o padrão 1, em vez do valor padrão 0, como mostra o exemplo a seguir:</p>
+<pre class="brush:java">
+public class Counter {
+private static int count;
+static {
+
+// código neste bloco estático será executado quando
+// a JVM carrega a classe na memória
+count = 1;
+}
+public Counter() {
+count++;
+}
+public static void printCount() {
+System.out.println("Number of instances created so far is: " + count);
+}
+public static void main(String []args) {
+Counter anInstance = new Counter();
+Counter.printCount();
+Counter anotherInstance = new Counter();
+Counter.printCount();
+}
+}
+</pre>
+<p><b>Este programa  imprime:</b></p>
+<pre>
+Number of instances created so far is: 2
+Number of instances created so far is: 3
+</pre>
+<p>Não confunda um bloco estático com um construtor. Um construtor será chamado quando uma instância da classe for criada, enquanto o bloco estático será chamado quando a JVM carregar a classe correspondente</p>
+
+</section>
+<p class="nav-arq" id="referencia">Exceção: <a href="excecao.html">&laquo; anterior | <a href="designdeclasseavancado.html">próximo &raquo;</a>Projeto de Classe Avançado </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/designdeclasseum" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+</body>
+	</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

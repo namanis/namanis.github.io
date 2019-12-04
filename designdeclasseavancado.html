@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+ <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+ 
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+       <a class="w3-bar-item w3-button"  href="#designavancado">8 - PROJETO DE CLASSE AVANÇADO</a>
+            <a class="w3-bar-item w3-button"  href="#palavchavefin">Usando a palavra chave final</a>
+          <a class="w3-bar-item w3-button"  href="#metvarfin">Métodos e Variáveis Final</a>
+          <a class="w3-bar-item w3-button"  href="#classeanin">Classes Aninhadas</a>
+          <a class="w3-bar-item w3-button" href="#clasaninint">Classes Aninhada Estática(ou Interfaces)</a>
+          <a class="w3-bar-item w3-button"  href="#classinterlocal">Classe Interna Local</a>
+          <a class="w3-bar-item w3-button"  href="#classanonima">Classes Interna Anônima </a>
+          <a class="w3-bar-item w3-button"  href="#tipdadoenum">Tipos de Dados Enum </a>
+           <a class="w3-bar-item w3-button"  href="#intercafes">Interfaces</a>
+          <a class="w3-bar-item w3-button"  href="#abstvsinterf">Classes Abstrata vs. Interfaces</a>
+           <a class="w3-bar-item w3-button"  href="#metape">Métodos abstratos, padrão e estáticos</a>
+          <a class="w3-bar-item w3-button"  href="#metdefault">Métodos default </a>
+           <a class="w3-bar-item w3-button"  href="#probdiamante">O problema Diamante</a>
+          <a class="w3-bar-item w3-button"  href="#intfuncional">Interfaces Funcional</a>
+          <a class="w3-bar-item w3-button"  href="#funcinterface">Anotação @FunctionalInterface</a>
+           <a class="w3-bar-item w3-button"  href="#funclamda">Funções Lambda</a>
+          <a class="w3-bar-item w3-button"  href="#stfunclambda">Sintax: Funçoes Lambda </a>
+           <a class="w3-bar-item w3-button"  href="#bloclambda">Bloco Lambda</a>
+          <a class="w3-bar-item w3-button"  href="#clasiexplam">Classes Anônimas Interna vs Expressões Lambda</a>
+           <a class="w3-bar-item w3-button"  href="#varfinal">Variável Efetivamente Final</a>
+          
+           
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+      
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top  w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+
+<section id="designavancado">
+<h1>Projeto de Classe Avançado</h1>
+
+<p><b>Objetivos</b></p>
+<ul>
+<li>Desenvolver código que usa métodos e classes abstratas</li>
+<li>Desenvolver códigos que usa palavra chave final</li>
+<li>Criar classes internas incluindo classe interna statica, classe local, classe aninhada, e classe anônimas</li>
+<li>Usar tipos enumerado incluindo construtores e métodos em um tipo enum</li>
+<li>Desenvolver código que declare, implemente, e/ ou estenda interfaces e use anotação Override</li>
+<li>Criar e usar expressão Lambda</li>
+</ul>
+
+<p>Em muitas situações de programação, você deseja especificar uma abstração sem especificar detalhes no nível da implementação. Nesses casos, você pode usar classes abstratas ou interfaces. Classes abstratas são usadas quando você deseja definir uma abstração com alguma funcionalidade comum.</p>
+<p>Considere a <b>classe Shape</b> que fornece uma abstração das diferentes formas que você pode desenhar em um aplicativo de desenho.</p>
+<br>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+<pre class="brush:java">
+abstract class Shape {
+public double area() { return 0; } // implementação padrão
+//outros membros
+}
+</pre>
+<p>Você prefixa a palavra-chave <b>abstract</b> antes da definição da classe para declará-la como uma classe abstrata. Você pode criar objetos de <b>Shapes</b>  como <b>Square e Circle</b>, mas faz sentido criar um objeto da própria <b>classe Shape</b> diretamente? Não, não há objeto do mundo real chamado <b>Shape</b>. Se você tentar criar uma instância de uma <b>classe Shape</b>, o compilador dará um erro porque as classes abstratas não podem ser instanciadas.</p>
+<p>Na definição da <b>classe Shape</b>, existe um método chamado <b>area()</b> que retorna a área de uma determinada forma(Shape). Esse método é aplicável a todas as formas, e é por isso que está nessa classe base Shape.  No entanto, qual deve ser a implementação do método area() na classe Shape?
+Você não pode fornecer uma implementação padrão; implementar este método como retorno 0; é uma solução ruim, embora o compilador aceite isso com satisfação. Uma solução melhor é declará-lo como um método abstrato, da seguinte forma:</p>
+
+<pre class="brush:java">
+public abstract double area(); 
+// note: sem implementação (i.e., sem definição no corpo do método)
+</pre>
+
+<p>Semelhante a declarar uma classe abstrata, você declara o método area() como abstrato, prefixando o método com a palavra-chave abstract. A principal diferença entre um método normal e um método abstrato é que você não fornece um corpo para um método abstrato. Se você fornecer um corpo, isso se tornará um erro, assim:</p>
+
+<pre class="brush:java">public abstract double area() { return 0; } // compiler error!</pre>
+
+<p>Você recebe um erro do compilador para esta definição:  "abstract methods cannot have a body". Uma declaração de método abstrata força todas as subclasses a fornecer uma definição desse método abstrato e é por isso que ele não pode ser definido na própria classe abstrata. Se uma classe derivada não implementar todos os métodos abstratos definidos na classe base, essa classe derivada deve ser declarada como uma classe abstrata, como no exemplo a seguir:</p>
+<pre class="brush:java">
+abstract class Shape {
+public abstract double area(); // sem implementação
+// outros membros
+}
+class Rectangle extends Shape { }
+</pre>
+<p>Este trecho de código resulta em um erro no compilador  <b>"Rectangle is not abstract and does not override abstract method area() in Shape"</b>. Para corrigir isso, você precisa declarar a classe abstract derivada ou fornecer uma definição do método <b>area()</b> na classe derivada. Não faz sentido declarar o Rectangle como abstrato; então você pode definir o método <b>area()</b> da seguinte forma:</p>
+<pre class="brush:java">
+class Rectangle extends Shape {
+private int length, height;
+public double area() { return length * height; }
+// outros membros ...
+}
+</pre>
+<p>Revisando os seguintes pontos sobre classes abstratas e métodos abstratos:</p>
+<ul>
+<li>A palavra-chave abstrata pode ser aplicada a uma classe ou a um método não estático.</li>
+<li> Uma classe abstrata pode ter métodos ou campos declarados estáticos. No entanto, a palavra-chave abstract não pode ser aplicada a campos ou métodos estáticos.</li>
+<li> Uma classe abstrata pode estender outra classe abstrata ou implementar uma interface.</li>
+<li> Uma classe abstrata pode ser derivada de uma classe concreta! Embora a linguagem permita, não é uma boa ideia fazê-lo.</li>
+<li>Uma classe abstrata não precisa declarar um método abstrato, o que significa que não é necessário que uma classe abstrata tenha qualquer método declarado como abstrato. No entanto, se uma classe tiver um método abstrato, ela deverá ser declarada como uma classe abstrata.</li>
+<li>Uma subclasse de uma classe abstrata precisa fornecer implementação de todos os métodos abstratos; caso contrário, você precisará declarar essa subclasse como uma classe abstrata.</li>
+</ul>
+</section>
+<section id="palavchavefin">
+<h2>Usando a palavra chave final</h2>
+
+<p>Uma classe <b>final</b> é uma classe não herdável - isto é, se você declara uma classe como final, você não pode subclassificá-la.</p>
+<p>Dois motivos importantes que você pode não querer permitir que uma classe seja subclasse são:</p>
+
+<p>Para evitar uma mudança de comportamento pela subclasse. Em alguns casos, você pode pensar que a implementação da classe está completa e não deve ser alterada. Se sobescrever for permitido, o comportamento dos métodos poderá ser alterado. Você sabe que um objeto derivado pode ser usado onde um objeto de classe base é necessário, e você pode não preferir em alguns casos. Por fazer uma <b>classe final</b>, os usuários da classe são assegurados do comportamento inalterado.</p>
+
+<p>Performance melhorada. Todas as chamadas de método de uma <b>classe final</b> podem ser resolvidas no próprio tempo de compilação. Como não há possibilidade de sobrescrever os métodos, não é necessário resolver a chamada real em tempo de execução para as classes finais, o que se traduz em desempenho aprimorado. Pela mesma razão, as classes finais encorajam o <b>inlining</b> dos métodos. Com <b>inlining</b>, um corpo de método pode ser expandido como parte do próprio código de chamada, evitando assim a sobrecarga de fazer uma chamada de função. Se as chamadas precisarem ser resolvidas em tempo de execução, elas não poderão ser inlined.</p>
+
+<p>Na biblioteca Java, muitas classes são declaradas como finais; por exemplo, as <b>classes String (java.lang.String) e System (java.lang.System)</b>. Essas classes são usadas extensivamente em programas Java. Se essas duas classes não forem declaradas finais, é possível que alguém altere o comportamento dessas classes pela subclasse e, em seguida, todo o programa pode começar a se comportar de maneira diferente. Para evitar tal problema, amplamente
+classes usadas como essas e classes de wrapper, como Number e Integer, são final na biblioteca Java.</p>
+</section>
+<section id="metvarfin">
+<h3>Métodos e Variáveis Final</h3> 
+
+<p>Em uma classe, você pode declarar um método final. O método final não pode ser sobrescrito. Portanto, se você declarou um método como final em uma classe não final, poderá estender a classe, mas não poderá sobrescrever o método final. No entanto, outros métodos não-final na classe base podem ser sobrescritos na implementação da classe derivada.</p>
+<p>Considere os métodos setParentShape() e getParentShape() na classe Shape:</p>
+<pre class="brush:java">
+public abstract class Shape {
+// other class members elided
+final public void setParentShape(Shape shape) {
+// corpo do método
+}
+public Shape getParentShape() {
+// corpo do método
+}
+}
+</pre>
+
+<p>Nesse caso, a <b>classe Circle (subclasse de Shape)</b> pode sobrescrever apenas <b>getParentShape()</b>; Se você tentar sobrescrever o método final, você receberá o seguinte erro:  "Cannot override the final method from Shape".</p>
+<p>Variáveis ​​final são como CD-ROMs: uma vez que você escreve alguma coisa nelas, você não pode escrever novamente. Na programação, constantes como PI podem ser declaradas como final, pois você não quer que ninguém modifique seus valores. Se você tentar alterar uma variável final após a inicialização, você receberá um erro do compilador.</p>
+</section>
+<section id="classeanin">
+<h2>Classes Aninhadas</h2>
+
+<p>Criar classes internas incluindo membros estáticos, classe local, classes aninhada, e classes interna anônimas.</p>
+
+<p>Classes definidas no corpo de outra classe (ou interface) são conhecidas como classes aninhadas. Normalmente, você define uma classe, que é uma classe de nível superior pertencente diretamente a um pacote. Em contraste, as classes aninhadas são classes contidas em outra classe ou interface.</p>
+
+<p>Qual é o benefício de criar classes dentro de outra classe ou interface? Existem vários benefícios. Primeiro, você pode colocar classes relacionadas juntas como um único grupo lógico. Em segundo lugar, as classes aninhadas podem acessar todos os membros de classe da classe envolvente, o que pode ser útil em certos casos. Em terceiro lugar, as classes aninhadas simplificam o código.</p>
+<p>Por exemplo, classes internas anônimas são úteis para escrever código de manipulação de eventos mais simples com AWT / Swing.</p>
+
+
+<p>Existem quaro tipos de classes aninhadas no java:</p>
+<ul>
+<li> Classe aninhada estática</li>
+<li> Classe interna</li>
+<li> Classe interna local</li>
+<li>Classe interna anônima</li>
+</ul>
+
+</section>
+<section id="clasaninint">
+<h3>Classes Aninhada Estática(ou Interfaces)</h3>
+
+<p>Você pode definir uma classe(ou uma interface) como membro estático dentro de outra classe(ou interface). Desde que o tipo externo pode ser uma classe ou interface a interna pode ser também uma classe ou interface, existem quatro combinações. A seguir exemplos destes quatro tipos: </p>
+<pre class="brush:java">
+class Outer { // uma outra classe tem uma classe aninhada estática
+static class Inner {}
+}
+interface Outer { // uma outra interface tem uma classe aninhada estática
+static class Inner {}
+}
+class Outer { // uma outra classe tem uma interface aninhada estátic
+static interface Inner {}
+}
+interface Outer { // uma outra interface tem uma interface aninhada estática
+static interface Inner {}
+}
+</pre>
+<p>Você não precisa usar explicitamente a palavra-chave <b>static</b> com uma interface aninhada, pois ela é implicitamente estática. Agora, vamos ver um exemplo que cria e usa classes aninhadas estáticas.</p>
+<p>Considere a <b>classe Color</b>, logo baixo, com os campos <b>m_red</b>, <b>m_green </b>e <b>m_blue</b>. Como todas as formas podem ser coloridas, você pode definir a classe Color dentro de uma <b>classe Shape</b>.</p>
+<pre class="brush:java">
+abstract class Shape {
+public static class Color {
+int m_red, m_green, m_blue;
+public Color() {
+// chame o outro construtor Color sobrecarregado passando valores padrão
+this(0, 0, 0);
+}
+public Color(int red, int green, int blue) {
+m_red = red; m_green = green; m_blue = blue;
+}
+public String toString() {
+return " red = " + m_red + " green = " + m_green + " blue = " + m_blue;
+}
+// outros mebros de Color omitidos
+}
+// outros membros de Shap omitidos
+}
+
+public class TestColor {
+public static void main(String []args) {
+// como Color é uma classe aninhada estática,
+// acessamos usando o nome da classe externa, como em Shape.Color
+// note que não instanciamos (e não podemos) instanciar a classe Shape para usar a classe Color
+Shape.Color white = new Shape.Color(255, 255, 255);
+System.out.println("White color has values:" + white);
+}
+}
+</pre>
+<p><b>Este programa imprime o seguinte:</b></p>
+<pre>White color has: red = 255 green = 255 blue = 255</pre>
+
+<p>Nesse código, a <b>classe Shape</b> é declarada abstrata. Você pode ver a <b>classe Color</b> definida como uma classe estática pública definida na <b>classe Shape</b>. A <b>classe TestColor</b> usa a sintaxe <b>Shape.Color</b> para se referir a essa classe. Além dessa pequena diferença, a <b>classe Color</b> não parece diferente de definir a <b>classe Color</b> fora da <b>classe Shape</b>. Portanto, uma classe aninhada estática é tão boa quanto uma classe definida como uma classe externa com uma diferença - ela é fisicamente definida dentro de outra classe!</p>
+
+</section>
+<section id="classinterna">
+<h3>Classes Internas</h3>
+
+<p>Você pode definir uma classe (ou uma interface) como um membro não estático dentro de outra classe. Que tal declarar uma classe ou uma interface dentro de uma interface?  Quando você define uma classe ou uma interface dentro de uma interface, ela é implicitamente estática. Portanto, não é possível declarar uma interface interna não estática! Isso deixa duas possibilidades:</p>
+
+
+
+<p>Vamos criar uma <b>classe Point</b> para implementar o centro de um círculo. Já que você quer associar cada Círculo com um ponto central, é uma boa idéia fazer de <b>Point</b> uma classe interna de <b>Circle</b>.</p>
+<pre class="brush:java">
+public class Circle {
+// define Point como uma classe interna dentro da classe Circle
+class Point {
+private int xPos;
+private int yPos;
+// você pode fornecer construtor para uma classe interna como esta
+public Point(int x, int y) {
+xPos = x;
+yPos = y;
+}
+// a classe interna é como qualquer outra classe - você pode sobrecrever métodos aqui
+public String toString() {
+return "(" + xPos + "," + yPos + ")";
+}
+}
+// faça uso da classe interna para declarar um campo
+private Point center;
+private int radius;
+public Circle(int x, int y, int r) {
+// note como fazer uso da clsse interna para instanciá-la
+center = this.new Point(x, y);
+radius = r;
+}
+public String toString() {
+return "mid point = " + center + " and radius = " + radius;
+}
+public static void main(String []s) {
+System.out.println(new Circle(10, 10, 20));
+}
+// outros métodos tal como area são omitidos
+}
+</pre>
+
+<p>Nesta implementação, você definiu o <b>Point</b> como um membro particular de <b>Circle</b>. Observe como você está instanciando a classe interna:</p>
+
+<pre class="brush:java">center = this.new Point(x, y);</pre>
+
+
+<p>Você pode estar se perguntando por que você não pode a declaração new usual</p>
+
+<pre class="brush:java">center = new Point(x, y);</pre>
+
+
+<p>Você precisa prefixar a referência do objeto da classe externa para criar uma instância da classe interna. Neste caso, é uma referência, então você está prefixando isso com <b>this</b> antes do operador <b>new</b>.</p>
+
+<p>As classes externa e interna compartilham um relacionamento especial, como amigos ou membros da mesma família.
+Os acessos de membros são válidos independentemente dos especificadores de acesso, como <b>private</b>. No entanto, existe uma diferença sutil. Você pode acessar membros de uma classe externa dentro de uma classe interna sem criar uma instância; mas este não é o caso de uma classe externa. Você precisa criar uma instância de classe interna para acessar os membros (membros, incluindo membros particulares) da classe interna.</p>
+<p>Uma limitação das classes internas é que você não pode declarar membros estáticos em uma classe interna, assim:</p>
+<pre class="brush:java">
+class Outer {
+class Inner {
+static int i = 10;
+}
+}
+</pre>
+<p>Se você tentar fzer assim o compilador enviará o seguinte erro:</p>
+
+<pre>Outer.java:3: inner classes cannot have static declarations
+static int i = 10
+</pre>
+
+</section>
+<section id="classinterlocal">
+<h2>Classe Interna Local</h2>
+
+<p>uma classe interna local é definida em um bloco de código (digamos, em um método, construtor ou bloco de inicialização). Ao contrário das classes aninhadas estáticas e das classes internas, as classes internas locais não são membros de uma classe externa; eles são apenas locais para o método ou código no qual eles são definidos.</p>
+<p>Aqui está um exemplo da sintaxe geral de uma classe local:</p>
+<pre class="brush:java">
+class SomeClass {
+void someFunction() {
+class Local { }
+}
+}
+</pre>
+
+<p>Como você pode ver neste código, <b>Local</b> é uma classe definida em <b>someFunction</b>. Não está disponível fora de <b>someFunction</b>, nem mesmo para os membros do <b>SomeClass</b>. Desde que você não pode declarar uma variável local estática, você também não pode declarar uma classe local estática.</p>
+<p>Como você não pode definir métodos em interfaces, não pode ter classes ou interfaces locais dentro de uma interface. Nem você pode criar interfaces locais. Em outras palavras, você não pode definir interfaces dentro de métodos, construtores e blocos de inicialização.</p>
+
+<p>Agora que você entende a sintaxe, vamos dar um exemplo prático.</p>
+<pre class="brush:java">
+abstract class Shape {
+public static class Color {
+int m_red, m_green, m_blue;
+public Color() {
+this(0, 0, 0);
+}
+public Color(int red, int green, int blue) {
+m_red = red; m_green = green; m_blue = blue;
+}
+public String toString() {
+return " red = " + m_red + " green = " + m_green + " blue = " + 
+m_blue;
+}
+// outros membros de color são omitidos
+}
+// outros membros de Shape são omitidos
+}
+</pre>
+
+<p>Agora, este método <b>toString()</b> exibe uma representação de string de Color. Suponha que você deseja exibir a seqüência de cores no seguinte formato: "Você selecionou uma cor com valores RGB vermelho = 0 verde = 0 azul = 0". Para isso, você deve definir um método chamado <b>getDescriptiveColor()</b> na classe <b>StatusReporter</b>. Em <b>getDescriptiveColor()</b>, você deve criar uma classe derivada de <b>Shape.Color</b> na qual o método <b>String</b> retorna essa mensagem descritiva. </p>
+
+
+
+<pre class="brush:java">
+class StatusReporter {
+// importante notar que o argumento "color" é declarado final
+static Shape.Color getDescriptiveColor(final Shape.Color color) {
+// local class DescriptiveColor that extends Shape.Color class
+class DescriptiveColor extends Shape.Color {
+public String toString() {
+return "You selected a color with RGB values" + color;
+}
+}
+return new DescriptiveColor();
+}
+public static void main(String []args) {
+Shape.Color descriptiveColor =
+StatusReporter.getDescriptiveColor(new Shape.Color(0, 0, 0));
+System.out.println(descriptiveColor);
+}
+}
+</pre>
+<p>O método principal verifica se o <b>StatusReporter</b> funciona bem. Este programa imprime:</p>
+<pre>You selected a color with RGB values red = 0 green = 0 blue = 0</pre>
+
+<p>Vamos ver como a classe local foi definida. O método <b>getDescriptiveColor()</b> pega o objeto de <b>classe Shape.Color</b> e retorna um objeto <b>Shape.Color</b>. Dentro do método <b>getDescriptiveColor()</b>, você definiu a classe <b>DescriptiveColor</b>, que é local para este método. Este <b>DescriptiveColor</b> é uma classe derivada de <b>Shape.Color</b>. Dentro da classe <b>DescriptiveColor</b>, o único método definido é o método <b>toString()</b>, que sobrescreve o método da classe base <b>Shape.Color toString()</b>. Após a definição da classe <b>DescriptiveColor</b>, <b>getDescriptiveColor</b> cria um objeto da classe <b>DescriptiveColor</b> e o retorna.</p>
+
+<p>Na <b>classe Testclass</b>, você pode ver um <b>método main()</b> que apenas chama o método <b>StatusReporter.getDescriptiveColor()</b> e armazena o resultado em uma referência <b>Shape.Color</b>. Você notará que o método <b>getDescriptiveColor()</b> retorna um objeto <b>DescriptiveColor</b>, que deriva de <b>Shape.Color</b>, portanto, a inicialização da variável descriptiveColor funciona bem. No <b>println</b>,o tipo dinâmico de <b>descriptiveColor</b> é um objeto <b>DescriptiveColor</b> e, portanto, a descrição detalhada do objeto de cor é impressa.</p>
+
+
+<p>Você notou outro recurso no método <b>getDescriptiveColor()</b>? Seu argumento é declarado <b>final</b>.</p>
+<p>Mesmo se você não fornecer a palavra-chave <b>final</b>, o compilador tratará com a mesma eficácia final, o que significa que você não pode atribuir à variável que está acessando na classe local. Se você fizer isso, você receberá um erro do compilador, como em:</p>
+
+<pre class="brush:java">
+static Shape.Color getDescriptiveColor(Shape.Color color) {
+// classe local DescriptiveColor que estende a classe Shape.Color 
+class DescriptiveColor extends Shape.Color {
+public String toString() {
+return "You selected a color with RGB values" + color;
+}
+}
+color = null; // note this assignment – will NOT compile
+return new DescriptiveColor();
+}
+</pre>
+<p><b>Você receberá o seguinte erro do compilador:</b></p>
+<pre>
+StatusReporter.java:8: error: local variables referenced from an inner class must be final 
+or effectively final
+return "You selected a color with RGB values" + color;
+^
+1 error
+</pre>
+<p>Por causa da atribuição à variável <b>color</b>, ela não é mais <b>final</b> e, portanto, o compilador dá um erro quando a classe interna local tenta acessar essa variável.</p>
+</section>
+<section id="classanonima">
+<h2>Classes Interna Anônima</h2>
+
+<p>Como o nome indica, uma classe interna anônima não tem um nome. A declaração da classe deriva automaticamente da expressão de criação de instância. Eles também são referidos simplesmente como classes anônimas.</p>
+<p>Uma classe anônima é útil em quase todas as situações em que você pode usar uma classe interna local. Uma classe interna local tem um nome, enquanto uma classe interna anônima não tem - e essa é a principal diferença.
+Uma diferença adicional é que uma classe interna anônima não pode ter nenhum construtor explícito. Um construtor é nomeado após o nome da classe e, como uma classe anônima não tem nome, não é possível definir um construtor. A seguir a sintxe da classe:</p>
+<pre class="brush:java">
+class SomeClass {
+void someFunction() {
+new Object() { };
+}
+}
+</pre>
+
+<p>Este código parece enigmático, não é? O que está acontecendo aqui? Na instrução <b>new Object () {} ;</b>, você está declarando uma classe derivada de <b>Object</b> diretamente usando a palavra-chave <b>new</b>. Ele não define nenhum código e retorna uma instância desse objeto derivado. O objeto criado não é usado em qualquer lugar, por isso é ignorado. A  expressão <b>new</B> invoca o construtor padrão aqui; você poderia escolher invocar um construtor de múltiplos argumentos da classe base passando argumentos na expressão <b>new</b>.</p>
+
+<p>Vamos agora olhar para um exemplo mais prático. No exemplo anterior , você viu a classe <b>DescriptiveColor</b> definida dentro do método <b>getDescriptiveColor</b> na classe <b>StatusReporter</b>. Você pode simplificar o código convertendo a classe local em uma classe anônima, como mostra  o exemplo  a seguir.</p>
+<pre class="brush:java">
+class StatusReporter {
+static Shape.Color getDescriptiveColor(final Shape.Color color) {
+// note o uso das classes interna anônimas aqui 
+// -- especilamente, não existe nome para a classe e construímos
+// e usamos a classe "on the fly"na declaração return!
+return new Shape.Color() {
+public String toString() {
+return "You selected a color with RGB values" + color;
+}
+};
+}
+public static void main(String []args) {
+Shape.Color descriptiveColor =
+StatusReporter.getDescriptiveColor(new Shape.Color(0, 0, 0));
+System.out.println(descriptiveColor);
+}
+}
+</pre>
+<p><b>imprime:</b></p>
+<pre>You selected a color with RGB values red = 0 green = 0 blue = 0 </pre>
+ 
+<p>Isso é bom. O resto do programa, incluindo o <b>método main()</b>, permanece o mesmo e o método <b>getDescriptiveColor()</b> ficou mais simples! Você não criou explicitamente uma classe com um nome (que era DescriptiveColor); em vez disso, você acabou de criar uma classe derivada de <b>Shape.Color</b> "on the fly" na declaração de retorno. Observe que a de palavras-chave <b>class</b> também não é necessária.</p>
+</section>
+<section id="tipdadoenum">
+<h1>Tipos de Dados Enum</h1>
+
+<p><b>Usar tipos enumerados inlcuindo métodos, e construtores  tipo <b>enum</b>.</b></p>
+
+<p>Considere que você deseja que o usuário escolha entre um conjunto de constantes que definem vários tipos de impressoras:</p>
+
+<pre class="brush:java">
+public static final int DOTMATRIX = 1;
+public static final int INKJET = 2;
+public static final int LASER= 3;
+</pre>
+<p>A solução funciona. Neste caso, no entanto, você poderia passar qualquer outro inteiro (digamos 10), e o compilador ficaria feliz em pegá-lo. Portanto, essa solução não é uma solução de tipo seguro. O Java 5 introduziu o tipo de dados <b>enum</b> para ajudá-lo em tais situações.</p>
+
+<pre class="brush:java">
+// definir uma enumeração para classificar os tipos de impressora
+enum PrinterType {
+DOTMATRIX, INKJET, LASER
+}
+// test the enum now
+public class EnumTest {
+PrinterType printerType;
+public EnumTest(PrinterType pType) {
+printerType = pType;
+}
+public void feature() {
+// alternar com base no tipo de impressora passado no construtor
+switch(printerType){
+case DOTMATRIX:
+System.out.println("Dot-matrix printers are economical and almost 
+obsolete");
+break;
+case INKJET:
+System.out.println("Inkjet printers provide decent quality prints");
+break;
+case LASER:
+System.out.println("Laser printers provide best quality prints");
+break;
+}
+}
+
+public static void main(String[] args) {
+EnumTest enumTest = new EnumTest(PrinterType.LASER);
+enumTest.feature();
+}
+}
+</pre>
+<p><b>Imprime assim:</b></p>
+<pre>Laser printers provide best quality prints</pre>
+
+<p>Vamos revisar este exempo com mais detalhes.</p>
+<ul>
+<li> Em uma declaração <b>switch-case</b>, você não precisa fornecer o nome completo para os elementos <b>enum</b>. Isso ocorre porque o <b>switch</b> usa uma instância do tipo <b>enum</b> e, portanto, o caso de <b>switch</b> entende o contexto (tipo) no qual você está especificando elementos <b>enum</b>.<li>
+<li>Fornecemos o valor <b>PrinterType.LASER</b> ao criar o objeto <b>enum EnumTest</b>. Se fornecermos outros valores que não sejam valores de enumeração, você receberá um erro do compilador. Em outras palavras, as enumerações são do tipo seguro.</li>
+<li>Note que você pode declarar um <b>enum</b> (PrinterType neste caso) em um arquivo separado, assim como você pode declarar qualquer outra classe normal de Java.</li>
+</ul>
+<p>Vamos agora olhar para um exemplo mais detalhado no qual você define atributos e métodos de membro em um tipo de dado <b>enum</b>.</p>
+<pre class="brush:java">
+enum PrinterType {
+DOTMATRIX(5), INKJET(10), LASER(50);
+private int pagePrintCapacity;
+private PrinterType(int pagePrintCapacity) {
+this.pagePrintCapacity = pagePrintCapacity;
+}
+public int getPrintPageCapacity() {
+return pagePrintCapacity;
+}
+}
+public class EnumTest {
+PrinterType printerType;
+public EnumTest(PrinterType pType) {
+printerType = pType;
+}
+public void feature() {
+switch (printerType) {
+case DOTMATRIX:
+System.out.println("Dot-matrix printers are economical");
+break;
+
+case INKJET:
+System.out.println("Inkjet printers provide decent quality prints");
+break;
+case LASER:
+System.out.println("Laser printers provide the best quality prints");
+break;
+}
+System.out.println("Print page capacity per minute: " +
+printerType.getPrintPageCapacity());
+}
+public static void main(String[] args) {
+EnumTest enumTest1 = new EnumTest(PrinterType.LASER);
+enumTest1.feature();
+EnumTest enumTest2 = new EnumTest(PrinterType.INKJET);
+enumTest2.feature();
+}
+}
+</pre>
+
+<p><b>A saída do programa acima é dada abaixo:</b></p>
+<pre>
+Laser printers provide the best quality prints
+Print page capacity per minute: 50
+Inkjet printers provide decent quality prints
+Print page capacity per minute: 10
+</pre>
+
+<p>Neste programa, você definiu um novo atributo, um novo construtor e um novo método para a <b>classe enum</b>. O atributo <b>pagePrintCapacity</b> é definido pelos valores iniciais especificados com elementos <b>enum</b> (como
+LASER (50)), que chama o construtor da <b>classe enum</b>. No entanto, a <b>classe enum</b> não pode ter um construtor público, ou o compilador irá reclamar com a seguinte mensagem:  "Illegal modifier for the enum 
+constructor; only private is permitted".</p>
+
+<p>Os enums são declarados implicitamente como públicos, estáticos e finais, o que significa que você não pode estendê-los.</p>
+<ul>
+
+<li> Quando você define uma enumeração, ela herda implicitamente de java.lang.Enum. Internamente, as enumerações são convertidas em classes. Além disso, as constantes de enumeração são instâncias da classe de enumeração para as quais a constante é declarada como um membro.</li>
+<li> Você pode aplicar os métodos valueOf() e name() ao elemento enum para retornar o nome do elemento enum.</li>
+<li> Se você declarar um enum dentro de uma classe, então é por padrão estático.</li>
+<li>Você não pode usar o  operador new em tipos de dados enum, mesmo dentro da classe enum.</li>
+<li> Você pode comparar duas enumerações para igualdade usando o operador ==.</li>
+<li> Se as constantes de enumeração forem de duas enumerações diferentes, o método equals() não retornará verdadeiro.</li>
+<li>Quando o método toString() de uma constante de enumeração é chamado, ele imprime o nome da constante de enumeração.</li>
+<li>O método estático values() na classe Enum retorna um array das constantes de enumeração quando chamado em um tipo de enumeração.</li>
+<li> As constantes de enumeração não podem ser clonadas. Uma tentativa de fazer isso resultará em um CloneNotSupportedException.</li>
+</ul>
+</section>
+<section id="intercafes">
+<h1>Interfaces</h1>
+
+<p>Uma interface é um conjunto de métodos abstratos que define um protocolo (ou seja, um contrato de conduta).</p> <p>Classes que implementam uma interface devem implementar os métodos especificados na interface. Uma interface define um protocolo e uma classe que implementa a interface respeita o protocolo. Em outras palavras, uma interface promete certa funcionalidade para seus clientes definindo uma abstração. Todas as classes que implementam a interface fornecem suas próprias implementações para a funcionalidade prometida.</p>
+
+<p>Agora é hora de implementar sua própria interface para objetos de shape. Alguns objetos de forma circular (como Circle e Ellipse) podem ser rolados para um determinado grau. Você pode criar uma <b>interface Rollable</b> e declarar um método chamado <b>roll()</b>:</p>
+<pre class="brush:java">
+interface Rollable {
+void roll(float degree);
+}
+</pre>
+
+<p>Como você pode ver, você define uma interface usando a palavra-chave <b>interface</b> que declara um método chamado <b>roll()</b>. O método leva um argumento: o grau de rolamento. Agora vamos implementar essa interface em uma classe Circle:</p>
+<pre class="brush:java">
+// Shape é a classe base para todos os objetos de shape; objetos de shape associados a
+// um objeto de shape pai é lembrado no campo parentShape
+abstract class Shape {
+abstract double area();
+private Shape parentShape;
+public void setParentShape(Shape shape) {
+parentShape = shape;
+}
+public Shape getParentShape() {
+return parentShape;
+}
+}
+// Rollable interface pode ser implentada por circular shapes assim como Circle
+interface Rollable {
+void roll(float degree);
+}
+abstract class CircularShape extends Shape implements Rollable { }
+// Circle é uma classe concreta que é-um subtipo de CircularShape;
+// você pode rolar e, portanto, implementar Rollable através da classe base CircularShape
+public class Circle extends CircularShape {
+private int xPos, yPos, radius;
+public Circle(int x, int y, int r) {
+xPos = x;
+yPos = y;
+radius = r;
+}
+public double area() { return Math.PI * radius * radius; }
+@Override
+public void roll(float degree) {
+
+// implementa a funcionalidade de rolagem aqui ...
+// por enquanto, basta imprimir o grau de rolagem no console
+
+System.out.printf("rolling circle by %f degrees", degree);
+}
+public static void main(String[] s) {
+Circle circle = new Circle(10,10,20);
+circle.roll(45);
+}
+}
+</pre>
+
+<p>Neste caso, <b>CircularShape</b> implementa a interface rolável e estende a classe abstrata Shape.</p>
+<p>Agora, uma classe concreta, como a Circle pode estender essa classe abstrata e define o método roll(). Alguns pontos importantes a serem observados neste exemplo são:</p>
+<ul>
+<li> A classe abstrata CircularShape implementa a interface Rollable, mas não precisa definir o método roll(). A classe concreta Circle que estende o CircularShape define esse método mais tarde.</li>
+
+<li>Você usa a palavra-chave implements para implementar uma interface. Observe que o nome do método, seu argumento e o tipo de retorno na definição da classe devem corresponder exatamente àquele fornecido na interface; Se eles não corresponderem, a classe não é considerada para implementar essa interface.</li>
+
+
+<li>Opcionalmente, você pode usar a anotação @Override para indicar que um método está sobrescrevendo um método de seu (s) tipo (s) de base. Nesse caso, o método roll é sobrescrito na classe Circle e faz uso da anotação @Override.</li>
+</ul>
+<p>Uma classe também pode implementar várias interfaces ao mesmo tempo - direta e indiretamente, por meio de suas classes base. Por exemplo, a <b>classe Circle</b> também pode implementar a interface padrão <b>Cloneable</b> (para criar cópias do objeto Circle) e a interface Serializable (para armazenar o objeto em arquivos para recriar o objeto mais tarde, etc.), como assim:</p>
+<pre class="brush:java">
+class Circle extends CircularShape implements Cloneable, Serializable {
+/* definição de métodos tal como clone aqui*/
+}
+</pre>
+<ul>
+<li> Uma interface não pode ser instanciada. Uma referência a uma interface pode se referir a um objeto de qualquer um dos seus tipos derivados implementando-o.</li>
+<li> Uma interface pode estender outra interface. Use a palavra-chave extends (e não os implementos) para estender outra interface.</li>
+<li>Interfaces não podem conter variáveis ​​de instância. Se você declarar um membro de dados em uma interface, ele deverá ser inicializado e todos os membros de dados serão implicitamente tratados como membros “public static final”.</li>
+<li>Uma interface pode ter três tipos de métodos: métodos abstratos, métodos padrão e métodos estáticos.</li>
+<li>Uma interface pode ser declarada com corpo vazio (isto é, uma interface sem nenhum membro). Por exemplo, java.util define a <b>interface EventListener</b> sem um corpo.</li>
+<li> Uma interface pode ser declarada em outra interface ou classe; Essas interfaces são conhecidas como interfaces aninhadas.</li>
+<li> Ao contrário das interfaces de nível superior que podem ter acesso apenas público ou padrão, uma interface aninhada pode ser declarada públic, protected ou private.</li>
+<li> Se você está implementando uma interface em uma classe abstrata, a classe abstrata não precisa definir o método. Mas, em última análise, uma classe concreta tem que definir o método abstrato declarado na interface.</li>
+<li> Você pode usar a <b>anotação @Overridean</b> para um método para indicar que está substituindo um método de seu (s) tipo (s) de base.</li>
+</ul>
+</section>
+<section id="abstvsinterf">
+<h2>Classes Abstrata vs. Interfaces</h2>
+<p>Classes e interfaces abstratas têm muito em comum. Por exemplo, ambos podem declarar métodos que todas as classes derivadas devem definir. Eles também são semelhantes no que diz respeito a que você não pode criar instâncias nem de uma classe abstrata nem de uma interface. Então, quais são as diferenças entre classes abstratas e interfaces?</p>
+<p>A Tabela abaixolista algumas das diferenças importantes</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+  <tr><th></th><th>Classes Abstratas</th><th>Interfaces</th></tr>
+  <tr><td>Palavra-chave usada</td><td>Use as palavras-chave abstract e class para definir uma classe.</td><td>Use a palavra-chave interface para definir uma interface.</td></tr>
+  <tr><td>Palavra-chave usada para implemenar uma classe</td><td>Use a palavra-chave extends para herdar de uma classe abstrata.</td><td>Use a palavra-chave implements para implementar uma interface</td></tr>
+  <tr><td>Campos</td><td>Uma classe abstrata pode ter campos estáticos e não estáticos.</td><td>Você não pode ter campos não estáticos (variáveis ​​de instância) em uma interface; todos os campos são públicos estáticos finais por padrão (ou seja, constantes, conforme discutido no próximo item)</td></tr>
+  <tr><td>Constantes</td><td>Uma classe abstrata pode ter constantes estáticas e não estáticas</td><td>Interfaces podem ter apenas constantes estáticas. Se você declarar um campo, ele deve ser inicializado. Todos os campos são implicitamente considerados público estático e final</td></tr>
+  <tr><td>Construtores</td><td>Você pode definir um construtor em uma classe abstrata (o que é útil para inicializar campos, por exemplo)</td><td>Você não pode declarar / definir um construtor em uma interface.</td></tr>
+  <tr><td>Especificadores de Acesso</td><td>Você pode ter membros privados e protegidos em uma classe abstrata</td><td>Você não pode ter nenhum membro privado ou protegido em uma interface; todos os membros são públicos por padrão</td></tr>
+  <tr><td>Herança Unica vs Multipla</td><td>Uma classe pode herdar apenas uma classe (que pode ser uma classe abstrata ou concreta)</td><td>Uma classe pode implementar qualquer número de interfaces</td></tr>
+  <tr><td>Propósito</td><td>Uma classe base abstrata fornece um protocolo; além disso, serve como uma classe base em um relacionamento é-um.</td><td>Uma interface fornece apenas um protocolo. Ele especifica a funcionalidade que deve ser fornecida pelas classes que o implementam.</td></tr>
+</table>
+</div>
+</section>
+<section id="metape">
+<h3>Métodos abstratos, padrão e estáticos</h3>
+
+<p>O exemplo <b>Rollable</b> que você viu tem apenas um método - <b>roll()</b>. No entanto, é comum que as interfaces tenham vários métodos. Por exemplo, <b>java.util</b> define a <b>interface Iterator</b> da seguinte maneira:</p>
+<pre class="brush:java">
+public interface Iterator&ltE> {
+boolean hasNext();
+E next();
+default void remove() {
+throw new UnsupportedOperationException("remove");
+}
+default void forEachRemaining(Consumer&lt? super E&gt action) {
+Objects.requireNonNull(action);
+while (hasNext())
+action.accept(next());
+}
+}
+</pre>
+<p>Essa interface é destinada a percorrer uma coleção. (Não se preocupe com o “&ltE>” no Iterador&ltE>. Ele se refere ao tipo de elemento e se encaixa em genéricos, que abordaremos em detalhes no próximo capítulo). Ele declara dois métodos <b>hasNext() e next ()</b> - as classes que implementam essa interface devem definir esses dois métodos.</p>
+<p>Não há necessidade de usar a palavra-chave <b>abstract</b> (mas, se desejar, você pode fornecer a palavra-chave <b>abstract</b>) porque os métodos sem um corpo são implicitamente considerados abstratos.</p>
+<p>A interface também possui definições de métodos para <b>remove() e forEachRemaining()</b>. Esses métodos são conhecidos como <b>métodos default</b> e são qualificados usando a palavra-chave <b>default</b>. As classes que implementam a <b>interface Iterator</b> herdam esses dois métodos e podem optar por sobrescrevê-los.</p>
+<p>Uma interface também pode conter métodos estáticos. Por exemplo, o <b>java.util.stream.Stream</b> possui o construtor de métodos static, empty, of, iterate, generate, e concat.</p>
+</section>
+<section id="metdefault">
+<h3>Métodos default</h3>
+
+<p>Nas interfaces, os <b>métodos default</b> são os métodos definidos com um corpo de método usando a palavra-chave <b>default</b>. Métodos default são métodos de instância. Dentro dos métodos default, esta palavra-chave se refere à interface declarante. Os métodos default podem chamar métodos das interfaces nas quais eles são colocados.</p>
+
+
+ <p>Java 8 adicionou métodos default às interfaces para apoiar expressões lambda (discutiremos lambdas na próxima seção). Os métodos default facilitam a evolução de interfaces.  Antes do Java 8, você não podia definir métodos - você só podia declará-los. Portanto, se você adicionar um novo método em uma interface existente, essa adição quebraria as classes que implementam a interface, já que elas não terão definido esse método. Mas no Java 8, com métodos default, é possível evoluir interfaces com mais facilidade.</p>
+<p>Considere a interface <b>java.lang.Iterable</b>, por exemplo. Antes do Java 8, ele tinha apenas um método:</p>
+
+<pre class="brush:java">Iterator&ltT> iterator();</pre>
+
+<p>Com o Java 8, a <b>interface Iterable</b> foi estendida com mais dois métodos: os métodos <b>forEach e spliterator</b>. Para evitar a quebra de classes que implementam essa interface, esses métodos são definidos como <b>métodos default</b>. Portanto, todas as classes que implementam a <b>interface Iterable</b> (assim como a classe <b>ArrayList</b>) agora também têm esses dois métodos. Aqui está a definição de interface Iterable sem comentários de documentação.</p>
+<pre class="brush:java">
+public interface Iterable&ltT> {
+Iterator&ltT> iterator();
+default void forEach(Consumer&lt? super T> action) {
+Objects.requireNonNull(action);
+for (T t : this) {
+action.accept(t);
+}
+}
+default Spliterator&ltT> spliterator() {
+return Spliterators.spliteratorUnknownSize(iterator(), 0);
+}
+}
+</pre>
+<p>A adição de métodos de <b>spliterator e forEach</b> nessa interface não quebra as classes existentes que implementam a <b>interface Iterator</b> porque elas são <b>métodos default</b>. Desta forma, os métodos default auxiliam na evolução das interfaces. Os métodos default também simplificam sua vida, pois agora podem ser fornecidas definições concretas nas interfaces, para que você não precise substituí-las.</p>
+<p>Muitas das classes na biblioteca existente (especialmente Coleções) foram adicionadas com métodos default no Java 8. Por exemplo, a interface List em Java possui estes três métodos que foram incluídos no Java 8:</p>
+<pre class="brush:java">
+default void sort(Comparator&lt? super E> c)
+default Spliterator&ltE> spliterator()
+default void replaceAll(UnaryOperator&ltE> operator)
+</pre>
+<ul>
+<li>Você não pode declarar membros como protected ou private. Somente o acesso público é permitido para membros de uma interface. Como todos os métodos são públicos por padrão, você pode omitir a palavra-chave pública.</li>
+<li> Todos os métodos declarados em uma interface (ou seja, sem um corpo de método) são implicitamente considerados abstratos. Se desejar, você pode usar explicitamente o qualificador abstract para o método.</li>
+<li>Métodos default devem ter um corpo de método. Os métodos padrão devem ser qualificados usando a palavra-chave default. As classes que implementam a interface herdam as definições de método default e podem ser sobrescrita.</li>
+<li> Um método default pode ser sobrescrito em uma classe derivada como um método abstrato; para sobrescrever, uma anotação @Override também pode ser usada.</li>
+<li>Você não pode qualificar os métodos padrão como sincronizados ou finais.</li>
+<li> Os métodos estáticos devem ter um corpo de método e são qualificados usando a palavra-chave estática.</li>
+<li>Você não pode fornecer a palavra chave abstract para métodos estáticos: lembre-se de que não é possível substituir métodos estáticos em classes derivadas, portanto, conceitualmente não é possível deixar os métodos estáticos abstratos, não fornecendo um corpo de método.</li>
+<li> Você não pode usar a palavra-chave default para métodos estáticos porque todos os métodos default são métodos de instância.</li>
+</ul>
+</section>
+<section id="probdiamante">
+<h2>O problema Diamante</h2>
+
+<p>Em Java, uma interface ou classe pode estender várias interfaces. Por exemplo, aqui está uma hierarquia de classes do pacote <b>java.nio.channels</b>. A interface base é <b>Channel</b>. Duas interfaces,
+<b>ReadableByteChannel e WriteableByteChannel</b>, estenda essa interface base. Finalmente, a interface <b>ByteChannel</b> estende <b>ReadableByteChannel e WriteableByteChannel</b>. Observe que a forma resultante da hierarquia de herança se parece com um "diamante".</p>
+
+<img src="imagens/jee7/diamante.jpg">
+
+<p>Nesse caso, o canal da interface base não possui nenhum método. A interface <b>ReadableByteChannel</b> declara o método <b>read</b> e a interface <b>WriteableByteChannel</b> declara o método <b>write</b>; 
+A interface <b>ByteChannel</b> herda os métodos <b>read  e write</b> desses tipos base. Como esses dois métodos são diferentes, não temos um conflito e, portanto, essa hierarquia é adequada. Mas e se tivermos duas definições de método nos tipos base que possuem a mesma assinatura; qual método a interface <b>ByteChannel</b> herdaria? Quando esse problema ocorre, é conhecido como “problema do diamante”. Antes de discutirmos um exemplo prático de como lidar com o problema do diamante, vamos primeiro entender claramente quando e como o problema do diamante ocorre em Java.</p>
+
+<ul>
+	<li> Em Java, você não pode estender várias classes; Portanto, o problema do diamante não pode ocorrer devido à extensão de duas classes base. No entanto, o problema de diamante pode ocorrer na classe derivada quando uma classe abstrata e uma interface definem um método com a mesma assinatura.</li>
+<li> Quando duas interfaces de base possuem métodos abstratos com a mesma assinatura, ela não causa realmente o “problema de diamante” porque são declarações de método e não definições (como no caso anterior ao Java 8).</li>
+<li> Interfaces só podem definir métodos e não campos (eles podem conter apenas constantes). Portanto, o problema do diamante não ocorre nos campos nas interfaces; ocorre apenas para definições de métodos.</li>
+</ul>
+
+<p>Felizmente, as regras estão disponíveis para resolver métodos quando um tipo derivado herda definições de método com o mesmo nome de diferentes tipos de base. Vamos discutir dois cenários importantes aqui.</p>
+<p>Cenário 1: Se duas super interfaces definirem métodos com a mesma assinatura, o compilador emitirá um erro. Temos que resolver o conflito manualmente.</p>
+<pre class="brush:java">
+interface Interface1 {
+default public void foo() { System.out.println("Interface1's foo"); }
+}
+interface Interface2 {
+default public void foo() { System.out.println("Interface2's foo"); }
+}
+public class Diamond implements Interface1, Interface2 {
+public static void main(String []args) {
+new Diamond().foo();
+}
+}
+</pre>
+<pre>
+Error:(9, 8) java: class Diamond inherits unrelated defaults for foo() from types Interface1 
+and Interface2
+</pre>
+
+<p>Nesse caso, resolva o conflito manualmente usando a palavra-chave <b>super</b> na classe <b>Diamond</b> para mencionar explicitamente a definição de método a ser usada:</p>
+
+<pre class="brush:java">public void foo() { Interface1.super.foo(); }</pre>
+
+<p>Depois que essa definição de método é adicionada na classe Diamond e executada, esse programa imprime:</p>
+
+<pre>Interface1's foo</pre>
+
+<p>Cenário 2: Se uma classe base e uma interface base definirem métodos com a mesma assinatura, a definição do método na classe será usada e a definição da interface será ignorada.</p>
+<pre class="brush:java">
+class BaseClass {
+public void foo() { System.out.println("BaseClass's foo"); }
+}
+interface BaseInterface {
+default public void foo() { System.out.println("BaseInterface's foo"); }
+}
+public class Diamond extends BaseClass implements BaseInterface {
+public static void main(String []args) {
+new Diamond().foo();
+}
+}
+</pre>
+<p>Nenhum erro do compilador neste caso: o compilador resolve a definição na classe e a definição da interface é ignorada. Este programa imprime “Base foo”. Isso pode ser considerado como regra de "class wins(Classe vencedora)". Esta regra ajuda a manter a compatibilidade com versões anteriores ao Java 8. Como? Quando um novo método padrão é adicionado em uma interface, ele pode ter a mesma assinatura de um método definido em uma classe base. Ao resolver o conflito pela regra de "class wins", o método da classe base sempre será selecionado.</p>
+</section>
+<section id="intfuncional">
+<h3>Interfaces Funcional</h3>
+
+<p>Existem inúmeras interfaces na biblioteca Java que declaram um único método abstrato; Algumas dessas interfaces são:</p>
+<pre class="brush:java">
+// no pacote java.lang 
+interface Runnable { void run(); }
+// no pacote java.util 
+interface Comparator&ltT> { boolean compare(T x, T y); }
+// no pacote java.awt.event :
+interface ActionListener { void actionPerformed(ActionEvent e); }
+// no pacote java.io 
+interface FileFilter { boolean accept(File pathName); }
+</pre>
+
+<p>O Java 8 introduziu o conceito de “interfaces funcionais” que formaliza essa idéia. Uma interface funcional especifica apenas um método abstrato. Como as interfaces funcionais especificam apenas um método abstrato, elas às vezes são conhecidas como tipo ou interface de Método abstrato único (SAM).</p>
+<p><i>Nota: As interfaces funcionais podem ter parâmetros genéricos, como nas interfaces Comparator&ltT> e Callable &ltT> nos exemplos acima. Aprederemos mais sobre genéricos.</i></p>
+
+<p>Para uma interface ser tratada como uma interface funcional, ela deve ter apenas um método abstrato.
+No entanto, ele pode ter qualquer número de métodos padrão ou estáticos definidos nele. Vamos ver alguns exemplos da biblioteca Java para entender isso.</p>
+<p>Aqui está a definição da interface <b>java.util.function.IntConsumer</b> (sem anotações e comentários do javadoc)</p>
+<pre class="brush:java">
+public interface IntConsumer {
+void accept(int value);
+default IntConsumer andThen(IntConsumer after) {
+Objects.requireNonNull(after);
+return (int t) -> { accept(t); after.accept(t); };
+}
+}
+</pre>
+<p>Embora essa interface tenha dois membros, o método <b>andThen</b> é um método padrão e somente o método <b>accept</b> é um método abstrato. Portanto, a interface <b>IntConsumer</b> é uma interface funcional.</p>
+<p>Para dar outro exemplo, <b>java.util.function.Predicate</b> é uma interface funcional porque possui apena um método abstrato:</p>
+
+
+<pre class="brush:java">boolean test(T t)</pre>
+
+<p>Mas é importante observar que o Predicate também possui as seguintes definições de método default:</p>
+<pre class="brush:java">
+default Predicate&ltT> and(Predicate&lt? super T> other)
+default Predicate&ltT> negate()
+default Predicate&ltT> or(Predicate&lt? super T> other)
+</pre>
+
+<p>Além disso, também tem a definição de um método estático isEqual:</p>
+<pre class="brush:java">static&ltT> Predicate&ltT> isEqual(Object targetRef)</pre>
+
+<p>Considerando todas essas definições de métodos, o <b>Predicate</b> ainda é uma interface funcional porque possui apenas um teste de método abstrato.</p>
+</section>
+<section id="funcinterface">
+<h3>Anotação @FunctionalInterface</h3>
+
+<p>O compilador Java infere qualquer interface com um único método abstrato para ser uma interface funcional. No entanto, você pode marcar a interface funcional com a <b>anotação @FunctionalInterface</b> para confirmar isso. É uma prática recomendada fornecer <b>@FunctionalInterface</b> a interfaces funcionais, porque o compilador pode fornecer melhores erros/avisos quando você tem esta anotação. Aqui está um exemplo de uso de <b>@FunctionalInterfacet</b> que possui um método abstrato, então ele compilará de forma limpa:</p>
+
+<pre class="brush:java">
+@FunctionalInterface
+public abstract class AnnotationTest {
+abstract int foo();
+}
+</pre>
+<p>Que tal um deste?</p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface AnnotationTest {
+default int foo() {};
+}
+</pre>
+<p>isso resulta em um erro do compilador “nenhum método abstrato encontrado na interface” porque ele possui apenas um método default fornecido, mas não possui nenhum método abstrato. </p>
+
+<p>Que tal este?</p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface AnnotationTest { /* sem metodos fornecido */ }</pre>
+
+<p>Esta interface não possui métodos. Como ele não possui um método abstrato, mas é anotado com @FunctionalInterface, resulta em um erro do compilador.</p>
+
+<p>Aqui também é outra variação:</p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface AnnotationTest {
+int foo();
+int bar();
+</pre>
+<p>Esse código também resulta em um erro do compilador "vários métodos abstratos não predominantes encontrados" porque ele possui mais de um método abstrato quando uma interface funcional requer o fornecimento de exatamente um método abstrato.</p>
+
+<h3>MÉTODOS DE CLASSES DE OBJETOS EM INTERFACES FUNCIONAIS </h3>
+
+<p>De acordo com a especificação de linguagem Java (versão 8.0), “as interfaces não herdam de Object, mas implicitamente declaram muitos dos mesmos métodos de Object.” Se você fornecer um método abstrato da classe Object na interface, ele continuará sendo uma interface funcional.</p>
+<p>Por exemplo, considere a interface Comparator que declara dois métodos abstratos:</p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface Comparator&ltT> {
+int compare(T o1, T o2);
+boolean equals(Object obj);
+// outros métodos são métodos padrão ou métodos estáticos e são OMITIDOS
+}
+</pre>
+<p>Esta interface é uma interface funcional, embora declare dois métodos abstratos: <b>métodos compare() e equals()</b>. Como é uma interface funcional quando tem dois métodos abstratos? Como a assinatura do método <b>equals()</b> corresponde a <b>Object</b>, e o método <b>compare()</b> é o único método abstrato restante e, portanto, a interface Comparator é uma interface funcional.</p>
+
+<p>E sobre esta definição de interface aqui?</p>
+<pre class="brush:java">
+@FunctionalInterface
+interface EqualsInterface {
+boolean equals(Object obj);
+}
+</pre>
+<p>O compilador dá error: “EqualsInterface is not a functional interface: no abstract 
+method found in interface EqualsInterface”. como o método equals é de Object, ele não é considerado como uma interface funcional.</p>
+
+
+</section>
+<section id="funclamda">
+<h1>Funções Lambda</h1>
+
+
+<p>Um dos principais novos recursos de linguagem do Java 8 é a função lambda. Na verdade, é uma das maiores mudanças desde o lançamento do Java 1. Lambdas são amplamente utilizados no mundo da linguagem de programação, incluindo linguagens que compilam para a plataforma Java. Por exemplo, a linguagem Groovy é compilada para a plataforma Java e tem um suporte muito bom para funções lambda (também conhecidas como closures). A Oracle decidiu trazer lambdas para o idioma principal na JVM - a própria linguagem Java - com o Java 8</p>
+
+<h2>Funções Lambda relacionada a mudança em Java 8</h2>
+
+ <p>Introdução de lambdas exigiu mudanças coordenadas na linguagem, na biblioteca e na implementação do JVM:</p>
+ <ul>
+
+<li> o operador de seta (“->”) para definir funções lambda, o operador de dois pontos (“::”) usado para referências de métodos e a palavra-chave padrão</li>
+<li> a biblioteca de fluxos e a integração da biblioteca de coleções com fluxos</li>
+<li> funções lambda são implementadas usando a instrução dinâmica invocada introduzida no Java 7.</li>
+</ul>
+<p>Lambdas pode mudar significativamente a maneira de projetar e escrever código. Por quê? Os lambdas apóiam o paradigma de programação funcional - isso significa aprender e usar lambdas significaria uma mudança de paradigma para você. Mas você não precisa se preocupar em fazer uma grande mudança - o Java integra perfeitamente recursos funcionais aos recursos orientados a objetos existentes e você pode mudar gradualmente para o uso de recursos cada vez mais funcionais em seus programas.</p>
+
+<p>No paradigma de programação funcional, as funções lambda podem ser armazenadas em variáveis, passadas como argumentos para outras funções ou retornadas de outras funções como tipos primitivos e variáveis ​​de referência. Como “funções lambda” são pedaços de código que podem ser passados, você pode considerar que o paradigma funcional suporta “código-como-dados”. A capacidade de transmitir “segmentos de código executáveis” aumenta o poder expressivo de Java.</p>
+</section>
+<section id="stfunclambda">
+<h2>Sintax: Funçoes Lambda</h2>
+
+<p>Uma função lambda consiste em parâmetros opcionais, o token de seta e o corpo: <b>LambdaParameters -> LambdaBody</b></p>
+<ul>
+
+<li> LambdaParameters são parâmetros para a função lambda que são passados ​​dentro do parêntese de abertura “(“ e parêntese de fechamento ”)”. Quando mais de um parâmetro é passado, eles são separados por vírgulas.</li>
+<li> O operador de seta. Para suportar lambdas, o Java introduziu um novo operador “->”, também conhecido como operador lambda ou operador de seta. Este operador de seta é necessário porque precisamos separar sintaticamente o parâmetro do corpo.</li>
+<li> LambdaBody pode ser uma expressão ou um bloco. O corpo pode consistir em uma única declaração (nesse caso, não são necessárias chaves explicitamente definidas para definir um bloco); tal corpo lambda é conhecido como "expressão lambda". Se houver muitas declaração em um corpo lambda, elas precisam estar em um bloco de código; tal corpo lambda é conhecido como “Bloco lambda.”</li>
+</ul>
+<p>Compilador executa inferência de tipos para expressões lambda:</p>
+<ul>
+<li>O compilador infere o tipo dos parâmetros se você não especificar os parâmetros de tipo em uma definição de função lambda. Quando você especifica o tipo de parâmetros, você precisa especificar todos ou nenhum; senão você receberá um erro do compilador.</li>
+<li> Você pode omitir os parênteses se houver apenas um parâmetro. Mas neste caso, você não pode fornecer o tipo explicitamente. Você deve deixar para o compilador inferir o tipo desse único parâmetro.</li>
+<li> O tipo de retorno da função lambda é inferido do corpo. Se algum código no lambda retornar um valor, todos os caminhos devem retornar um valor; senão você receberá um erro do compilador.</li>
+</ul>
+<p>Alguns exemplos de expressões lambda válidas (supondo que interfaces funcionais relevantes estejam disponíveis):</p>
+<pre class="brush:java">
+(int x) -> x + x
+x -> x % x
+() -> 7
+(int arg1, int arg2) -> (arg1 + arg2) / (arg1 – arg2)
+</pre>
+<p>Exemplos de lambdas inválido:</p>
+<pre class="brush:java">
+-> 7
+// se nenhum parâmetro , então um parênteses vazio () deve ser fornecido
+(arg1, int arg2) -> arg1 / arg2
+// se tipos de argumentos são fornecidos, então este deve ser fornecido
+// para todos os argumentos, ou nenhum deles
+</pre>
+<h2>Função Lambda- um Exemplo</h2>
+<pre class="brush:java">
+interface LambdaFunction {
+void call();
+}
+class FirstLambda {
+public static void main(String []args) {
+LambdaFunction lambdaFunction = () -> System.out.println("Hello world");
+lambdaFunction.call();
+}
+}
+</pre>
+<p><b>Quando executado , este programa imprime :</b></p>
+<pre>
+Hello world
+</pre>
+
+<p>Neste programa, a <b>interface LambdaFunction</b> declara um método abstrato chamado <b>call()</b>; Por isso, é uma interface funcional. Dentro do método main na <b>classe FirstLambda</b>, uma função lambda é atribuída a uma variável do tipo de interface funcional <b>LambdaFunction.</b></p>
+<pre class="brush:java">
+LambdaFunction lambdaFunction = () -> System.out.println("Hello world");
+</pre>
+<p>Esta expressão, aqui () -> System.out.println("Hello world") é uma expressão lambda.</p>
+<ul>
+<li>A sintaxe () indica nenhum parâmetro.</li>
+<li> O operador de seta "->" separa os parâmetros do método do corpo lambda.</li>
+<li> A declaração System.out.println ("Hello world") é o corpo da expressão lambda.</li>
+</ul>
+<p>Como a expressão lambda se relaciona com a interface funcional LambdaFunction? É através do único método abstrato dentro da interface do LambdaFunction: void call(). A assinatura deste método abstrato e a expressão lambda devem corresponder:</p>
+<ul>
+<li> A expressão lambda tem () indicando que não possui parâmetros - combina com o método de chamada que não usa parâmetros.</li>
+<li>A declaração System.out.println ("Hello world") é o corpo da expressão lambda. Este corpo serve como uma implementação da função lambda.</li>
+<li>Não há instrução de retorno neste corpo de expressão lambda e, portanto, o compilador infere o tipo de retorno dessa expressão como tipo void - que corresponde ao tipo de retorno do método call.</li>
+</ul>
+<p>Por que o tipo de função da função lambda deve corresponder ao do método abstrato na interface funcional fornecida? É para verificação de tipo. Se os tipos não corresponderem, você receberá um erro do compilador, como em:</p>
+
+<pre class="brush:java">LambdaFunction lambdaFunction = (int i) -> System.out.println("Hello world");</pre>
+
+<p>Como essa expressão lambda possui um argumento inteiro, o método call() no LambdaFunction não recebe nenhum argumento, o compilador apresenta um erro:  “incompatible types: "incompatible parameter 
+types in lambda expression".</p>
+</section>
+<section id="bloclambda">
+<h3>Bloco Lambda</h3>
+
+<p>Um bloco lambda é colocado dentro de um bloco de código dentro de “{“ e ”}”, como em:</p>
+<pre class="brush:java">
+LambdaFunction lambdaFunction = (int i) -> {System.out.println("Hello world"); }
+</pre>
+<p>Block lambdas são úteis quando você deseja fornecer mais de uma declaração no corpo do lambda (em uma expressão lambda, você pode ter apenas uma declaração). Além disso, em um bloco lambda, você pode fornecer uma declaração de retorno explícita:</p>
+<pre class="brush:java">
+class BlockLambda {
+interface LambdaFunction {
+String intKind(int a);
+}
+public static void main(String []args) {
+LambdaFunction lambdaFunction =
+(int i) -> {
+if((i % 2) == 0) return "even";
+else return "odd";
+};
+System.out.println(lambdaFunction.intKind(10));
+}
+}
+</pre>
+<p><b>Este código imprime:</b></p>
+<pre>even</pre>
+
+<p>Neste código, definimos um bloco lambda. Estamos retornando um String deste bloco lambda e estamos usando declarações de retorno explícitas. Ao definir o bloco lambdas, devemos assegurar que as declaraçoes de retorno sejam fornecidas para todos os caminhos, como neste caso (caso contrário, você receberá um erro do compilador). As declarações de retorno devem corresponder ao tipo de retorno para o método abstrato definido na interface funcional correspondente (neste caso, é o tipo de retorno String para a função intKind na interface LambdaFunction).</p>
+</section>
+<section id="clasiexplam">
+<h3>Classes Anônimas Interna vs Expressões Lambda</h3>
+
+<p>Antes do Java 8, como programadores Java, estamos acostumados a escrever classes internas anônimas. O exemplo a seguir é equivalente ao programa anterior sobre lambda exceto pelo fato de usar classes internas anônimas em vez de funções lambda.</p>
+<pre class="brush:java">
+//AnonymousInnerClass.java
+interface Function {
+void call();
+}
+class AnonymousInnerClass {
+public static void main(String []args) {
+Function function = new Function() {
+public void call() {
+System.out.println("Hello world");
+}
+};
+function.call();
+}
+}
+</pre>
+<p>A funcionalidade é a mesma  mas o uso de classes internas anônimas resulta em um código detalhado, enquanto as expressões lambda são concisas.</p>
+
+<p><i>Uma forma de pensar em lambdas é “função anônima” ou “função sem nome”: são funções sem nome e não estão associadas a nenhuma classe. Especificamente, eles são não-estáticos ou membros de instância da classe na qual eles são definidos. Se você usar palavra-chave <b>this</b> dentro de uma função lambda, ela se refere ao objeto no escopo no qual o lambda é definido.</i></p>
+</section>
+<section id="varfinal">
+<h3>Variável Efetivamente Final</h3>
+
+<p>As funções lambda podem se referir a variáveis ​​locais do escopo incluído. A variável precisa ser explicitamente declarada final ou essa variável será tratada como efetivamente final. Efetivamente final significa que o compilador trata a variável como uma variável final e emitirá um erro se tentarmos modificá-la dentro da função lambda ou no resto da função. Esse comportamento de lambdas é semelhante ao acesso a variáveis ​​no escopo externo de classes locais e anônimas. As variáveis ​​que eles acessam também são consideradas efetivamente finais .</p>
+
+<p>Aqui está um exemplo. Você já ouviu falar de "Pig Latin"? É um jogo que as crianças brincam alterando as palavras ou adicionando sufixos para criar palavras que soem estranhas. Neste exemplo, vamos simplesmente adicionar o sufixo "ay" a uma palavra:</p>
+
+<pre class="brush:java">
+//PigLatin.java
+interface SuffixFunction {
+void call();
+}
+class PigLatin {
+public static void main(String []args) {
+String word = "hello";
+SuffixFunction suffixFunc = () -> System.out.println(word + "ay");
+suffixFunc.call();
+}
+}
+</pre>
+<p><b>este programa imprime:</b></p>
+<pre>helloay</pre>
+
+<p>Dentro da expressão lambda, estamos usando a palavra variável local. Por ser usado em uma expressão lambda, essa variável é considerada final (embora não seja declarada explicitamente como final). Tente este código que tem uma instrução adicional que atribui ao sufixo (mesmo antes de chamar a função lambda):</p>
+<pre class="brush:java">
+String word = "hello";
+SuffixFunction suffixFunc = () -> System.out.println(word + "ay");
+word = "e";
+suffixFunc.call();
+</pre>
+<p>O compilador emite um erro para este segmento de código:</p>
+<pre>
+PigLatin.java:11: error: local variables referenced from a lambda expression must be final 
+or effectively final
+SuffixFunction suffixFunc = () -> System.out.println(word + "ay");
+^
+1 error
+</pre>
+<p>Isso ocorre porque o sufixo é atribuído a “e” após ser inicializado e, portanto, o compilador não pode tratá-lo como uma variável final. Por que as variáveis ​​locais são consideradas efetivamente final quando são acessadas em expressões lambda? A razão é que essa mutação não é thread-safe. Observe que essa restrição não se aplica a membros de dados e membros da classe. Portanto, você pode estar em risco quando vários segmentos modificam simultaneamente variáveis ​​dentro de uma expressão lambda. Além disso, efetivamente final aplica-se apenas às referências e não aos valores apontados pelas referências. Portanto, você pode transformar os valores dentro de um array local de uma função lambda - não é seguro, mas é possível.</p>
+<ul>
+
+<li> As expressões lambda podem ocorrer apenas nos contextos em que a atribuição, as chamadas de função ou os lançamentos podem ocorrer.</li>
+<li> Uma função lambda é tratada como um bloco aninhado. Portanto, assim como um bloco aninhado, não podemos declarar uma variável com o mesmo nome de uma variável local no bloco delimitador.</li>
+<li> As funções Lambda devem retornar valores de todas as ramificações - caso contrário, isso resultará em um erro do compilador.</li>
+<li> Quando os tipos de argumento são declarados, o lambda é conhecido como “explicitamente digitado”; se eles são inferidos, é "implicitamente digitado".</li>
+<li> O que acontece se uma expressão lambda lançar uma exceção? Se for uma exceção checked, o método na interface funcional deve declarar isso; caso contrário, isso resultará em um erro do compilador</li>
+</ul>
+</section>
+<p class="nav-arq" id="referencia">Projeto de Classe I: <a href="designavancado.html">&laquo; anterior | <a href="colecaogeneric.html">próximo &raquo;</a> Generics e Collection</p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/designdeclasseavancado" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+</body>
+	</html>

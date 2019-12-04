@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_1.dtd" >
+<taglib>
+<tlibversion>1.7</tlibversion>
+  <jspversion>1.7</jspversion>
+  <shortname>olaTag</shortname>
+  <tag>
+  <name>ola</name>
+    <tagclass>br.alpi.tagext.OlaTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>Simple example</info>
+   </tag>
+</taglib>
+

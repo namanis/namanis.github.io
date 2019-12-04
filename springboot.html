@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="css/stylos.css">
+
+ <title> Programar em Java</title>
+   
+    <script type="text/javascript"src="js/efeitos.js"></script>
+     <link rel="stylesheet" href="css/stylew3.css">
+
+      <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ </head>
+
+   
+ <body>
+<!-- Simulate a smartphone / tablet look -->
+
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+  <a class="w3-bar-item w3-button" href="#evservico">26 - Evolução dos Serviços</a>
+<a class="w3-bar-item w3-button" href="#springboot">Spring Boot </a>
+ <a class="w3-bar-item w3-button" href="#entspringboot">Entrando no SpringBoot</a>
+<a class="w3-bar-item w3-button" href="#arquitspring">Arquitetura do SpringBoot</a>
+<a class="w3-bar-item w3-button" href="#ferrament">A Ferramenta</a>
+  <a class="w3-bar-item w3-button" href="#firstprogram">Primeiro Programa</a>
+ <a class="w3-bar-item w3-button"href="#firstapp">Primeiro Aplicativo </a>
+          <a class="w3-bar-item w3-button" href="#starter">Sobre os starters</a>
+    <a class="w3-bar-item w3-button" href="#analdata">Análise de Dados</a>
+    <a class="w3-bar-item w3-button" href="#consoleh2">Conhecendo o console H2</a>
+ <a class="w3-bar-item w3-button" href="#requisitos">Requisitos de Negocio</a>
+
+ <a class="w3-bar-item w3-button" href="#pojectinit">Iniciando o Projeto</a>
+  <a class="w3-bar-item w3-button" href="#classdominio">Criando Classes de Domínio</a>
+          <a class="w3-bar-item w3-button"href="#reposity">Repositórios</a>
+          <a class="w3-bar-item w3-button" href="#chargeinit">Realizando uma Carga Inicial</a>
+            <a class="w3-bar-item w3-button" href="#templat">Templates</a>
+ <a class="w3-bar-item w3-button" href="#springbootconv">Convenções do Spring Boot</a>
+ <a class="w3-bar-item w3-button" href="#layout">Layout</a>
+  <a class="w3-bar-item w3-button" href="#crud">CRUD</a>
+          <a class="w3-bar-item w3-button"href="#devprodutivo">Desenvolvimento Produtivo</a>
+          <a class="w3-bar-item w3-button" href="#devtools">DEVTOOLS</a>
+            <a class="w3-bar-item w3-button" href="#livereload">LiveReload</a>
+ <a class="w3-bar-item w3-button" href="#custerro">Customizando Páginas de Erro</a>
+ <a class="w3-bar-item w3-button" href="#actuador">Actuator</a>
+  <a class="w3-bar-item w3-button" href="#apiservioc">Construindo API de Serviço</a>
+  <a class="w3-bar-item w3-button" href="#hateos">HATEOAS</a>
+          <a class="w3-bar-item w3-button"href="#angularrest">Angular Acessando REST</a>
+          <a class="w3-bar-item w3-button" href="#testapp">Testando o Aplicativo </a>
+            <a class="w3-bar-item w3-button" href="#testintegrac">Testes de Integração</a>
+
+
+            <a class="w3-bar-item w3-button"href="#pktapp">Empocotando e Disponiblizando o Aplicativo</a>
+          <a class="w3-bar-item w3-button" href="#devtools">DEVTOOLS</a>
+            <a class="w3-bar-item w3-button" href="#jarexe">Jar Executável</a>
+ <a class="w3-bar-item w3-button" href="#pktwar">War</a>
+ <a class="w3-bar-item w3-button" href="#tomcatundjett">TomCat/Jetty/Underflow</a>
+  <a class="w3-bar-item w3-button" href="#subirnuvem">Subindo para Nuvem</a>
+          <a class="w3-bar-item w3-button"href="#perfil">Profiles</a>
+          <a class="w3-bar-item w3-button" href="#envemail">Enviar Emails </a>
+            <a class="w3-bar-item w3-button" href="#perfilherok">Usando Profiles para Heroku</a>
+            <a class="w3-bar-item w3-button" href="#herok">Heroku</a>
+ 
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+    <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+
+
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+<!--  <span id="myIntro" class="w3-hide">JAVA SE: Versão 8</span></p>-->
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+ <h1 class="w3-xxxlarge">JAVA EE</h1>
+</header>
+<section id="evservico">
+<h1>Evolução dos Serviços</h1>
+<p>Na virada do século começaram os serviços(internos e externos) usando um padrão de comunicação via XML, chamado SOAP( Simple Object Access Protocol) . Após isso, os	 sistemas começaram	a trocar informações de	 diferentes linguagens e sistemas operacionais.	
+Com essa revolução começava a era da	arquitetura	orientada a	serviços, conhecida
+como SOA, que padronizava essa comunicação	entre os diferente serviços. O problema	 desse padrão SOAP é sua complexidade em fazer	 qualquer coisa, por exemplo, para	um	serviço	 de consulta que retorna um	 simples valor.	Isso tem muita abstração envolvida,	com	servidor	de um lado e obrigatoriamente um cliente do	serviço	do outro, trafegando XML	para	ambos os lados.	E tudo isso	em cima	do protocolo usado na internet (HTTP).</p>
+<br>
+<img src="imagens/jee7/soap.png">
+<br>
+
+<p>Muitos serviços SOAP	sendo usados por	 vários	 sistemas apareciam	 rapidamente	 como a	principal causa	 de	lentidão,
+obrigando os programadores a procurarem	por	alternativas: trocar o serviço SOAP por um acesso direto ao	banco de dados ou a	um servidor	Active	Directory.</p>
+
+<p>Com	esse cenário, Roy Thomas, um dos	fundadores do projeto Apache HTTP,	 defendeu uma tese de doutorado	com	uma alternativa	bem	simples, o famoso Representational State Transfer (Transferência de	Estado Representacional), ou simplesmente REST (ou	 ReST).	 Essa simples alternativa ao SOAP	 aproveita	os métodos existentes no	 protocolo HTTP	para fazer as operações
+mais comuns	existentes	nos	serviços, como busca e cadastro.</p>
+<br>
+<img src="imagens/jee7/request.png">
+<br>
+
+<p>
+Pela simplicidade e	rapidez, esse padrão	 foi rapidamente adotado pelo mercado.Os	sistemas que usam ReST têm diferentes
+níveis de implementação, não muito bem	definidos pelo mercado.
+Algo mais próximo que existe de	um	padrão	de classificação é o trabalho de Leonard	 Richardson, que definiu quatro	níveis de
+maturidade	de	um	sistema	em	ReST.</p>
+
+<br>
+<img src="imagens/jee7/gloriarest.png">
+<br>
+
+<p>Mesmo com os	serviços em	ReST,as	aplicações continuam a empacotar todas as funcionalidades em um	lugar só, sendo classificadas como aplicações monolíticas.</p>
+
+<p>Para	resolver esse problema, destaca-se um subconjunto da arquitetura SOA, chamado	 microsserviços	 (microservices), que
+abraça a solução ReST com o	objetivo de	 fornecer uma solução separada	e	independente para um problema.</p>
+<br>
+<img src="imagens/jee7/microservices.png">
+<br>
+
+<p>O ideal de uma aplicação	é separar suas	 funcionalidades e se adequar conforme o cenário. Com o	conceito de	 microsserviços, cada funcionalidade é independente	 e podemos crescer a sua quantidade	conforme a demanda	de nosso cenário.</p>
+</section>
+<section id="springboot">
+<h1>Spring Boot </h1>
+<p>A primeira versão do	Spring Boot saiu em	abril de 2014. Josh	Long, desenvolvedor Spring na Pivotal, afirma que a ideia inicial do	Spring	Boot veio da necessidade de	o Spring Framework ter suporte a servidores	 web embutidos.</p>
+<br>
+<p>Depois, a equipe	do	Spring percebeu	 que existiam outras pendências	também, como fazer aplicações prontas para	nuvem (cloud-ready	applications).	Mais tarde,	a anotação	 	@Conditional foi criada	no Spring Framework	4, e isso foi a	base para que o Spring	Boot fosse criado.</p>
+<br>
+<p>Portanto, o Spring Boot é uma maneira	 eficiente e eficaz	 de criar uma aplicação	 em	 Spring	 e facilmente colocá-la	 no	 ar,
+funcionando	sem	depender de	um	servidor de	aplicação.	O Spring Boot criou	 um	 conceito novo que	não	 existe	 até o momento na especificação	JEE, que acelera o desenvolvimento e simplifica bastante a vida	 de	quem trabalha com aplicações do Spring
+Framework,	mas	não	ajuda em nada quem desenvolve com a especificação oficial(com	EJB, CDI ou	JSF).
+Na	próxima	seção,	vamos	conhecer	mais detalhes sobre	essa revolucionária	ferramenta.</p>
+</section>
+<section id="entspringboot">
+<h2>Entrando no SpringBoot</h2>
+<p>O ecossistema Spring	cresceu	muito desde 2003. Do ponto de vista	do desenvolvedor, isso é bom, pois aumenta a gama de opções	para usar, e ele mesmo	não	precisa	implementar.
+Para adicionar	uma	autenticação na	aplicação, podemos	usar o Spring Security;	para autenticar	no	Facebook ou	Google,	podemos
+usar o Spring Social. Já se	existir	uma necessidade	de	criar muitos processos	com	horário	agendado, temos	o Spring Batch.	E	essa lista é enorme.
+Esse crescimento do	Spring trouxe alguns	 problemas:	com muitos módulos,	vieram muitas	dependências, e	a configuração já não é	tão	simples	como antes.	O Spring Boot,	além de	impulsionar o desenvolvimento para microsserviços, ajuda na	 configuração também importando	 e configurando automaticamente	 todas	as dependências, como veremos nas próximas	seções.</p><br>
+<p>Algumas	vezes,	ele	é confundido com um	simples	framework, mas na verdade ele é	um	conceito totalmente	 novo de criar aplicações web.	 No	conceito de	Java Web Container,	 temos o framework	Spring,	controlando	 as	suas regras	 de	 negócio empacotadas em	 um	 JAR,	 e	 ele deverá	 obedecer aos padrões (servlet, filter, diretório	WEB-INF	etc.)</p>
+<p>No conceito	novo, temos	 o	 Spring	 Boot no controle total, providenciando	 o	servidor web e	controlando	 as	 suas regras de negócio.</p>
+</section>
+<section id="arquitspring">
+<h2>Arquitetura do SpringBoot</h2>
+A	arquitetura	do	Spring	Boot	é	formada	pelos	componentes:</p>
+
+<ol>
+<li>CLI	—	o Spring Boot CLI é	uma	ferramenta de linha de comando	que	 facilita a criação	 de	protótipos através	de	scripts	em	Groovy;</li>
+<li>Starters —	é um conjunto de componentes de
+dependências que podem ser adicionados aos	 nossos sistemas;</li>
+<li>Autoconfigure —	configura automaticamente os componentes carregados;</li>
+<li>Actuator — ajuda a monitorar e gerenciar as
+aplicações	publicadas	em	produção;</li>
+<li>Tools —	é uma IDE customizada para o desenvolvimento com Spring	Boot;</li>
+<li>Samples	— dezenas de implementações	de	 exemplos disponíveis para uso.</li>
+
+</ol>
+<br>
+<p>Veremos os componentes com detalhes no decorrer.	A seguir, veremos mais sobre	o componente Tools.</p>
+</section>
+</section>
+<section id="ferrament">
+<h2>A Ferramenta</h2>
+
+<p>O Spring	Tools Suite	é um conjunto de	 ferramentas baseadas no Eclipse para desenvolvimento de aplicações	Spring.	 Ele	 se encontra disponível	em	<a href="https://spring.io/tools"target="_blank">https://spring.io/tools</a>.</p>
+
+<p>Existe a	opção da ferramenta	completa	 pronta	para uso, ou a instalação	de	um	plugin	para um	Eclipse	já	instalado. Vamos usar a primeira, por ser a mais simples. Se	já possuir o Eclipse instalado,	pode usar a segunda	opção, o resultado	final será o mesmo.</p>
+
+<p>A instalação	não	 tem mistério, é só	 descompactar o	arquivo (não tem instalador)	e usar. Apenas	uma	breve	explicação	para o conteúdo	do	pacote,	nele temos	três	diretórios:</p>
+<br>
+<ul>
+<li>1.legal	— Contém	 arquivos	 texto	 com as	 licenças open source;</li>
+<li>2. pivotal	— Contém o Pivotal TC	 Server, uma versão	 do Tomcat	customizada	para o Spring;</li>
+<li>3. sts — Contém	o Spring Tools Suite.</li>
+</ul>
+<br>
+
+<p>O Pivotal TC	Server	é um produto pago em sua versão corporativa, mas	a versão developer instalada é gratuita.</p>
+
+<p>Dentro do diretório sts,	execute	o	executável chamado STS.	</p>
+
+<br>
+<img src="imagens/jee7/springsts.png">
+<br>
+<p>Além	 de	 ter suporte integrado	a todo	 ecossistema do	 Spring, ele já está	integrado ao Maven, Gradle e Git. Veja mais detalhes em <a href="https://spring.io/tools/sts"target="_blank">https://spring.io/tools/sts</a> .</p>
+</section>
+<section id="firstprogram">
+<h1>Primeiro Programa</h1>
+
+<p>Vamos criar uma	aplicação web mais	 simples possível e analisar o seu	resultado.	Para criar	um	novo	projeto,	acessamos a
+opção File,	New	 e	Spring	Starter	Project	 .</p>
+<br>
+<img src="imagens/jee7/demospring.png">
+<br>
+<p>Nessa parte,	temos o	diferencial:	 escolhemos	 as	 dependências
+de	que	o	nosso	projeto	precisa	para	funcionar.	Ao	digitarmos	no
+campo destacado	web, são exibidas todas	as	opções	relacionadas.
+Como o	nosso	exemplo	é	bem	simples,	vamos	selecionar	apenas	a
+opção Web; em	outros	exemplos	usaremos outras	opções.</p>
+
+<br>
+<img src="imagens/jee7/webspri.png">
+<br>
+<p>Clicando	 em	 Finish, o projeto será criado. Mas existe	a opção Next , que	exibe o	 link com	 alguns parâmetros.</p> 
+<br>
+<img src="imagens/jee7/startspring.png">
+<br>
+  <p>Na verdade,	o que o	Eclipse	faz	é chamar esse site	passando os parâmetros,	 e	 baixar	 o projeto compactado. É possível fazer	 a mesma coisa	acessando	o	link	via	web	browser-><a href="http://start.spring.io"target="_blank">http://start.spring.io</a> .</p>
+<p>Vamos subir o projeto criado. Para tal, use a opção no projeto Run	 As	, e depois	 Spring	Boot App. Outra	alterna tiva	mais simples é selecionar a	aplicação no	 dashboard e clicar	 no	 botão Start.</p>
+<br>
+<img src="imagens/jee7/dashboard.png">
+<br>
+<p>Ao subir	o projeto, aparece no log que uma instância	 do Apache Tomcat	está no	ar	na	porta 8080.</p>
+<br>
+<img src="imagens/jee7/serverport.png">
+<br>
+<p>Abrindo   o   endereço  http://localhost:8080   no  web   browser,
+percebemos   uma   mensagem  de  página  não   encontrada  (o  que   é
+esperado, já  que não definimos nenhuma).</p>
+<p>Vamos  agora criar nossa página  inicial,  adicionando ao  projeto
+a seguinte  classe:</p>
+
+<pre class="brush:java">
+package com.alpi.demonstracao;
+import  org.springframework.web.bind.annotation.*;
+
+@RestController
+public class PrimeiraPagina {
+@RequestMapping("/")
+String  home()  {
+return  "Olá Spring Boot, cheguei!!";
+  }
+}</pre>
+
+<p>Se a porta 8080 padrão estiver usando outro serviço ou se você quer utilizar outra porta por algum motivo. O spring boot disponibiliza o arquivo <b>application.properties</b> onde podemos customizar nosso serviço. Por exemplo, alterar nossa porta de 8080 para 9000. Repare na figura além do arquivo de propriedades, a estrutura das pastas, a classe <b>PrimeiraPagina</b> que foi criada, o DashBoard para executar e o console exibindo o aplicativo sendo disponibilizado.  </p>
+<br>
+<img src="imagens/jee7/serverport1.png">
+
+<p><i> Isso é feito adicionando o parâmetro <b>server.port=9000</b> no arquivo <b>application.properties</b>, localizado no diretório <b>src/main/resources</b> do projeto.</i></p><br>
+<p>Outra	alternativa	para	subir	o	projeto	fora	do	Eclipse	é	usando
+o	Maven,	com	o	comando		mvn	spring-boot:run. Repare que a porta está alterada para 9000 tanto na figura acima quanto a abaixo.</p>
+
+<br>
+<img src="imagens/jee7/springdos.png">
+<br>
+
+
+<br>
+<p> Agora vamos acessar nossa página através de localhost:9000. A figura abaixo mostra a estrutra de pasta e arquivos, o dashboord para executar o springboot, a pagina web e o console.</p>
+<br>
+<img src="imagens/jee7/springbootport.png">
+<br>
+
+<img src="">
+</section>
+<section id="firstapp">
+<h1>Primeiro Aplicativo</h1>
+<p>Querendo saber sobre as configurações de produtividade do Spring Boot vamos criar um aplicativo simples que consulta as propriedades existentes em uma tela simples.
+
+Teremos um escopo de banco de dados(das propriedades)exposto via serviços, sendo consumindo na tela web, via javascript.</p>
+</section>
+<section id ="starter">
+<h2>Sobre os starters</h2>
+<p>Os starters	são	 configurações	 pré-definidas	 da	 tecnologia
+desejada para usar	em	seu	projeto.	O	uso	do	starter	facilita muito	o
+desenvolvimento, pois ajusta automaticamente todas as bibliotecas e	versões, livrando o	desenvolvedor  dessa tarefa trabalhosa.
+Não	devemos nos preocupar como que eles funcionam, nós apenas usamos e é garantido	que	não	ocorrerá nenhum	problema de	biblioteca.
+No	exemplo	inicial, usamos	o <b>starter	web</b>	, que nos proporciona	 apenas	 uma
+aplicação	web	simples. Para mais	opções,	será necessário	usar mais starters.</p>
+<br>
+<p>Com	o	nosso	escopo	definido	(se	fosse	em	uma	aplicação	Java
+web	tradicional,	sem	nenhum	framework),	a	implementação	seria
+com:</p>
+<ul><li>Java Servlets para os serviços	ReST;</li>
+	<li>JDBC	para	acessar	o	banco	de	dados</li>
+	<li>Manualmente	converter	os	dados	em	JSON;</li>
+	<li>Manualmente	 carregar	 os	 dados	 para	 o	 banco	 de
+dados;</li>
+	<li>JSP	com	Bootstrap	para	layout;</li>
+	<li>JSP	com	JQuery	para	chamar	os	serviços	ReST;</li>
+	<li>Servlet	Contêiner	para	rodar	a	aplicação.</li>
+</ul>
+
+<br>
+<img src="imagens/jee7/springtradicional.png">
+<br>
+<p>Com Spring Framework a lista seria assim:</p>
+<ul>
+	<li>Spring MVC para	os serviços ReST</li>
+	<li>Spring	MVC	para converter	os	dados	em	JSON;</li>
+	<li>Spring	Data para acessar ao	banco	de	dados;</li>
+	<li>Spring	Data para carregar	 os	 dados	 para	 o	 banco	 de
+dados;</li>
+	<li>JSP	com	Bootstrap	para	layout;</li>
+	<li>JSP	com	JQuery	para	chamar	os	serviços	ReST;</li>
+	<li>Servlet	Contêiner	para	rodar	a	aplicação.</li>
+
+</ul>
+
+<br>
+
+
+<p>SPRING	 MVC	 é	 o	 projeto	 que	 implementa	 o	 padrão	 MVC,
+além	 de	 fornecer	 suporte	 à	 injeção	 de	 dependência,	 JPA,
+JDBC,	 entre	 outras	 opções.	 Veja	 mais	 informações	 em
+<a href="http://projects.spring.io/spring-framework"target="_blank">http://projects.spring.io/spring-framework</a>
+	.</p>
+	<br>
+	<p>Já	 o	 Spring	 Data	 fornece	 um	 modelo	 de	 programação
+consistente	 e	 familiar,	 baseado	 no	 Spring,	 para	 acesso	 aos
+dados.	 Veja	 mais	 informações	 em
+<a href="http://projects.spring.io/spring-data/"target="_blank">http://projects.spring.io/spring-data/</a>.</p>
+<br>
+<p>Com o spring Boot, para fazer as operações da lista, vamos usar os seguintes starters:</p>
+<br>
+<ul>
+	<li>	spring-boot-starter-web	(Spring Web)</li>
+	<li>spring-boot-starter-data-jpa(Spring Data Jpa)</li>
+	<li>spring-boot-starter-data-rest( Rest Repositories )</li>
+	<li>	spring-boot-starter-tomcat(Spring Web)</li>
+</ul>
+
+<p>Iniciamos criando um	novo projeto como o	exemplo anterior. Então, acessamos	a	opção	File,	 	 New e Spring Starter Project. Em seguida, informamos valores para o projeto.</p>
+
+<br><img src="imagens/jee7/sprinprpop.png">
+<br>
+<p>Essas são as opções que escolheremos:</p>
+<br><img src="imagens/jee7/starter.png">
+<br>
+</section>
+<section id="analdata">
+<h2>Análise de Dados</h2>
+<p>Após ter criado o projeto vamos analisar os dados. Vamos trabalhar com as propriedades da seguine maneira:</p>
+<ul>
+<li>Uma categoria tem varias subcategorias que tem várias propriedades.</li>
+<li>Cada propredade tem um nome, uma valor e uma descrição.</li></ul>
+<p>Da maneira que que fizemos anteriormente configurando  o server.port iremos fazer com com a carga que daremos no banco de dados: </p>
+<pre class="brush:sql">
+insert	into	propriedade
+	(categoria,subcategoria,nome,valor,descricao)	values	
+	('WEB	PROPERTIES','EMBEDDED	SERVER	CONFIGURATION','server.port',
+	'8080','Server	HTTP	port');
+</pre>
+
+<p> Fazendo essa análise podemos agora criar a classe de domínio representando as informações da seguinte forma:</p>
+
+<pre class="brush:java">
+@Entity
+public	class	Propriedade	{
+@Id
+private	String	nome;
+private	String	valor;
+private	String	descricao;
+private	String	categoria;
+private	String	subcategoria;
+/*	getters	e	setters	*/
+</pre>
+
+<p>Automaticamente	 o	 Spring	 Boot  fará a carga	inicial,	 precisamos	 apenas	 colocar o	arquivo	 SQL de	 carga	 chamado <b>data.sql</b>,	no	diretório resources.</p>
+<P>Vamos usar o banco de dados em memória e colocar as propriedades a seguir no arquivo de propriedades <b>application.properties</b>.</P>
+<br>
+<pre class="brush:java">
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:mydatabase
+</pre>
+<br>
+<p>	Será criada	uma rotina	de	busca	pelo nome,	categoria	ou	subcategoria com Spring Data. Este serviço será chamado pela tela Web:</p>
+<pre class="brush:java">
+public interface PropriedadeRepository extends PagingAndSortingRepository&ltPropriedade,	String>	{
+
+@Query("Select c from Propriedade c where c.nome like %:filtro% order by categoria,subcategoria,nome")	
+public List&ltPropriedade>findByFiltro(@Param("filtro")	String	filtro);				
+}
+</pre>
+
+<p>E criamos um controller ReST do Spring	MVC	para repassar a	chamada e chamar esse serviço:</p>
+
+<pre class="brush:java">
+@RestController
+@RequestMapping("/api")
+public class PropriedadeController	{
+@Autowired
+private	PropriedadeRepository repository;
+@RequestMapping(value="/find/{filtro}",method=RequestMethod.GET)
+List&ltPropriedade>findByFiltro
+(@PathVariable("filtro")String filtro)	{
+return repository.findByFiltro(filtro);
+}
+}</pre>
+
+<p>A parte back-end	 da	 aplicação em Java terminou, agora precisamos fazer	o front-end	em HTML, que chamará os serviços usando	JavaScript.</p>
+
+<p>O arquivo index.html	deverá ficar dentro do	diretório resources/static,	pois o	Spring Boot espera	 por convenção que	 esses	arquivos estejam lá. Dentro	do diretório, teremos uma rotina JavaScript	que	chama o	serviço	de	busca de propriedades e monta o	HTML dinamicamente	na tela com o resultado:</p>
+
+<pre class="brush:html">
+function propertiesService(filter)	{
+	$.ajax({
+		type:"GET",
+		url:"/api/find/"+filter,
+		data:'$format=json',
+		dataType:'json',
+		success:function(data)	{
+		         var total=0;
+		         $.each(data,function(d,	results)	{
+		         $("#propTable	tbody").append(
+		         "&lttr>"
+		         +	"&lttd	class=\"text-nowrap\">"	
+		         +	results.categoria
+		         +	"&lt/td>"	+	"&lttd	class=\"text-nowrap\">"
+		         +	results.subcategoria
+		         	+	"&lt/td>"	+	"&lttd	class=\"text-nowrap\">"
+		         	+	results.nome
+		         	+	"&lt/td>"	+	"&lttd	class=\"text-nowrap\">"
+		         	+	results.valor
+		         	+	"&lt/td>"	+	"&lttd	class=\"text-nowrap\">"
+		         	+	results.descricao
+		         	+	"&lt/td>"
+		         	+	"&lt/tr>")
+		         	total++;
+		         	})
+				$("#results").text(total+"	found");
+			}
+		});
+			};
+
+</pre>
+
+<p>E finalmente, para informar ao Spring Boot que usaremos	uma aplicação web	 baseada em	 Servlets, na nossa	 classe <b>SpringbootpropertiesApplication</b>	 usamos	a herança da	classe <b>SpringBootServletInitializer</b>, e adicionamos uma implementação para	identificar	os arquivos da	pasta resources.</p>
+
+<pre class="brush:java"> 
+@SpringBootApplication
+public	class	SpringbootpropertiesApplication	
+	extends	SpringBootServletInitializer{
+public static void	main(String[]args){
+	SpringApplication.run(SpringbootpropertiesApplication.class,args);
+}
+@Override
+protected SpringApplicationBuilder configure(SpringApplicationBuilder application)	{ 
+return application.sources(SpringbootpropertiesApplication.class);
+}
+}
+</pre>
+
+<p>E adicionaremos as novas	dependências ao arquivo	pom.xml	:</p>
+
+<p><i>O	APACHE MAVEN é uma ferramenta usada para gerenciar as dependências e automatizar seus builds. Veja mais informações	em</i> <a href="http://maven.apache.org"target="_blank">http://maven.apache.org</a>.</p>
+
+<pre class="brush:xml">
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-tomcat</artifactId>
+<scope>provided</scope>
+</dependency>
+<dependency>
+	<groupId>com.h2database</groupId>
+	<artifactId>h2</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>bootstrap</artifactId>
+	<version>3.3.7-1</version>
+</dependency>
+<dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>jquery</artifactId>
+	<version>3.1.1</version>
+</dependency>
+</pre>
+
+
+<p>Os WEBJARS são bibliotecas web(como	jQuery ou Bootstrap),empacotadas em	 arquivos JAR. Eles	são	uma	opção interessante	para aplicações	sem	acesso	à internet,	pois não é necessário nenhum download. Usamos no nosso projeto algumas.	Veja mais opções em <a href="http://www.webjars.org"target="_blank">http://www.webjars.org</a>.</p>
+<h1>Executando o Aplicativo</h1>
+<p>Depois de subir o aplicativo	pelo	Eclipse (ou	manualmente	com mvn	 spring-boot:run) observemos na figura abaixo as configurações no console em seguida a tela web e o campo de busca que será acionado após apertar enter e o resultado aparecerá sem reload da página.</p>
+<br>
+<img src="imagens/jee7/springteste.png">
+<br>
+</section>
+<section id="consoleh2">
+<h2>Conhecendo o console H2</h2>
+<p>Ao buscarmos	por h2,	notamos	 que	 existe	 a	propriedade spring.h2.console.enabled,	que	tem	 como	valor padrão
+false.	Mas	 no	 nosso arquivo de	 propriedades <b>application.properties</b>, já	ajustamos essa	 propriedade para
+true .</p>
+<br>
+<p>Vamos acessar o	console	 H2	 para	 conseguirmos executar comandos SQL no	banco de dados	em	memória, através da	URL http://localhost:8080/h2-console/. Esse	caminho	pode ser alterado com a	propriedade	spring.h2.console.path.</p>
+<br>
+<p>Preenchendo o campo de JDBC URL com	o mesmo	valor que colocarmos	nas	propriedades(jdbc:h2:mem:mydatabase),
+conseguimos	acessar	os	dados depois de conectar:</p>
+<br>
+<img src="imagens/jee7/h2-console.png">
+<br>
+<p>Dentro do console, podemos fazer	 consultas em SQL, como por	exemplo, listar	as	propriedades que começam com spring.h2	 </p>
+<br>
+<img src="imagens/jee7/h2conect.png">
+<br>
+<p>Agora vamos criar um sistema mais robusto e com uma arquitetura mais complexa</p>
+</section>
+<section id="requisitos">
+<h2>Requisitos de Negocio</h2>
+<p>Com o Spring Boot é possível fazer muita coisa com pouco código. Vamos começar a planejar o aplicativo e os principais requsitos do negócio são:</p>
+<br>
+<ul>
+<li>Tela de	cadastro de	clientes;</li>
+<li>Tela de	cadastro de	itens;</li>
+<li>Tela de	cadastro  de pedidos;</li>
+<li>Tela de	fazer pedido com opção	de	oferta;</li>
+<li>Notificar o	cliente	do novo pedido	recebido.</li>
+</ul>
+<br>
+
+<p>Os requisitos técnicos são:</p>
+<br>
+<ul>
+<li>Ser	um	projeto	100% web;</li>
+<li>Usar um	banco de dados MySQL;</li>
+<li>Expor serviços via	ReST;</li>
+<li>Alta disponibilidade para fazer	novos pedidos;</li>
+<li>Tela para validar se o ambiente	está ok;</li>
+<li>Uso	de AngularJS na tela de	novo pedido.</li>
+</ul>
+<br>
+<p>Esse	 diagrama mostra a clássica	regra de um	 conjunto	de clientes, em	 que	 cada um deles	 pode	 fazer	 um	 pedido, e cada pedido	pode	conter	um	ou	mais itens.</p>
+<br>
+<img src="imagens/jee7/tabelarel.png">
+<br>
+</section> 
+<section id="pojectinit">
+<h1>Iniciando o Projeto</h1>
+<p>Precisaremos	de	banco de dados,	então	vamos	usar a	opção	de	JPA. Vamos	também	precisar de	templates para	gerar as páginas dinâmicas. Para	 tal, ficamos com a	engine recomendada pela	 equipe	 do	 Spring, o Thymeleaf, que veremos com  detalhes	 mais adiante. Agora, detalharemos a implementação	do	back-end</p>
+<br><p><i>O	Java Persistence API(ou	 simplesmente JPA)é	 uma API padrão	da	linguagem Java que	descreve uma interface comum para frameworks de	persistência de	 dados.	 Veja mais informações	em </i>-><a href="http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html"target="_blank">http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html</a>.</p>
+<br>
+<p>No nosso	 projeto do	Eclipse	 	<b>springbootdelivery</b>, vamos	escolher	essas duas	opções e também	a opção	de	Rest Repositories. Se tudo deu certo, o projeto	terá dentro do seu pom.xml os seguintes starters:</p>
+<pre class="brush:xml">
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-data-rest</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-test</artifactId>
+<scope>test</scope>
+</dependency>
+</pre>
+
+<section id="classdominio">
+<h2>Criando Classes de Domínio</h2>
+<p>Conforme	o diagrama de classes, criamos três	 classes de domínio, já	com	as anotações de validação.	A classe pai	de todo o sistema é a de clientes, que	contém:	nome, endereço	e uma lista	de
+pedidos.</p>
+
+<pre class="brush:java">
+@Entity
+public	class Cliente{
+@Id
+@GeneratedValue (strategy=GenerationType.IDENTITY)
+private	Long id;
+@NotNull
+@Length(min=2, max=30,message= "O tamanho do nome deve ser entre{min} e	{max} caracteres")
+private	String nome;
+@NotNull
+@Length(min=2,	max=300,message="O	tamanho	do endereço	deve ser entre{min}	e {max}	caracteres")
+private	String endereco;
+@OneToMany(mappedBy	= "cliente",fetch=	FetchType.EAGER)
+@Cascade(CascadeType.ALL)
+private	List&ltPedido> pedidos;
+</pre>
+
+<p>A classe	de	pedidos	está ligada	ao	cliente	e tem, além	da data	e o	valor,	uma lista de itens:</p>
+
+<pre class="brush:java">
+@Entity
+public class Pedido{
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
+@ManyToOne(optional = true)
+private Cliente cliente;
+@ManyToMany
+@Cascade(CascadeType.MERGE)
+private	List&ltItem> itens;
+@DateTimeFormat(pattern	=	"dd-MM-yyyy")
+private	Date data;
+@Min(1)
+private	Double valorTotal
+</pre>
+<p>Finalmente a	classe Item, com o	nome e o preço:</p>
+
+<pre class="brush:java">
+@Entity
+public class Item{
+@Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+private	Long id;
+@NotNull
+@Length(min=2, max=30, message="O tamanho do nome deve ser	entre{min}	e {max}	caracteres")
+private	String nome;
+@NotNull
+@Min(value=20,message="O valor mínimo deve ser {value}	reais")
+private	Double	preco;
+</pre>
+</section>
+<section id="reposity">
+<h2>Repositórios</h2>
+
+<p>Com as classes de domínio, criaremos	as classes	de	repositório.
+Com	 a facilidade do Spring	Data,	 precisar gerenciar	 conexão, chamar	PreparedStatement e	fazer um loop para	 atribuir o ResultSet para um objeto são coisas	 do	 passado; tudo isso	é implementado	e	usamos	apenas	interfaces.</p>
+
+<pre class="brush:java">
+@Repository
+public interface ClienteRepository
+extends	JpaRepository&ltCliente, Long>	{
+}
+@Repository
+public interface PedidoRepository
+extends	JpaRepository&ltPedido,	Long>	{
+}
+@Repository
+public interface ItemRepository
+extends JpaRepository&ltItem,	Long>	{
+}
+</pre>
+
+<p>A anotação @Repository foi colocada	 por motivos didáticos, pois o Spring	 Boot já reconhece que as interfaces
+estendem JpaRepository e carrega todos os repositórios automaticamente.</p>
+</section>
+<section id="chargeinit">
+<h2>Realizando uma Carga Inicial</h2>
+<p>Como	 vimos	no projeto anterior	 das propriedades do Spring Boot, ele executa	facilmente	scripts SQL. Mas nesse projeto,
+faremos	a carga	via Java para aprendermos a	usar essa opção no Spring Boot.</p>
+<br>
+<p>Criaremos uma classe	 RepositoryTest	para fazer a mesma coisa em	Java.	Inicialmente, para organizarmos	os	IDs	do sistema, vamos definir algumas	constantes para cliente, item e	pedido:</p>
+
+<pre class="brush:java">
+private	static	final	long	ID_CLIENTE_ALAN	=	11l;
+private	static	final	long	ID_CLIENTE_IZA	=	22l;
+private	static	final	long	ID_ITEM1	=	100l;
+private	static	final	long	ID_ITEM2	=	101l;
+private	static	final	long	ID_ITEM3	=	102l;
+
+private	static	final	long	ID_PEDIDO1	=	1000l;
+private	static	final	long	ID_PEDIDO2	=	1001l;
+private	static	final	long	ID_PEDIDO3	=	1002l;
+</pre>
+<p>Depois, declaramos o	repositório	de	cliente	e o	método	run, que o Spring Boot chamará	para ser executado:</p>
+
+<pre class="brush:java">
+@Autowired
+private	ClienteRepository	clienteRepository;
+@Override
+public void run(ApplicationArguments	applicationArguments) throws Exception	{
+</pre>
+<p>Iniciamos declarando os clientes:</p>
+<pre class="brush:java">
+System.out.println(">>>	Iniciando	carga	de	dados...");
+Cliente	alan = new	Cliente(ID_CLIENTE_ALAN, "Alan	Santos","Sao Caetano");
+Cliente	iza = new	Cliente(ID_CLIENTE_IZA, "Iza","Itapoa");
+</pre>
+
+<p>Depois os três itens	disponíveis	para venda:</p>
+
+<pre class="brush:java">
+Item bolo1=new	Item(ID_ITEM1,"Bolo de Chocolate",25d);
+Item	bolo2=new	Item(ID_ITEM2,"Bolo de Laranja	",27d);
+Item	doce1=new	Item(ID_ITEM3,"Caixa de brigdeiros 	",30d);
+</pre>
+<p>Em seguida, a lista de pedidos:</p>
+<pre class="brush:java">
+List&ltItem>	listaPedidoAlan1 = new	ArrayList&ltItem>();
+listaPedidoAlan1.add(bolo1);
+List&ltItem>	listaPedidoDaIza1 =	new	ArrayList&ltItem>();
+listaPedidoDaIza.add(bolo2);
+listaPedidoDaIza.add(doce1);</pre>
+
+<p>Depois, montamos	as listas nos objetos de pedido:</p>
+<pre class="brush:java">
+Pedido pedidoDoAlan = new Pedido(ID_PEDIDO1,alan, listaPedidoAlan1,bolo1.getPreco());
+alan.novoPedido(pedidoDoAlan);
+Pedido	pedidoDaIza = new	Pedido(ID_PEDIDO2,iza, listaPedidoIza1,	bolo2.getPreco()+doce1.getPreco());
+darinha.novoPedido(pedidoIza);
+System.out.println(">>> Pedido 1 - Alan : " + pedidoDoAlan);
+System.out.println(">>> Pedido 2 - Iza: " +	pedidoDaIza);
+</pre>
+
+<p>É interessante notar	que	 a classe	 ClienteRepository não tem nenhum	método. Ela herdou o método	saveAndFlush da classe JpaRepository, que faz parte	do	Spring Data.</p>
+
+<p>Nesse projeto, usaremos inicialmente	 a base	de dados em memória	 H2, e depois o	 MySQL.	 Mas para facilitar o desenvolvimento, adicionaremos ao	arquivo pom.xml dependências dos dois:</p>
+
+<pre class="brush:xml">
+<dependency>
+<groupId>mysql</groupId>
+<artifactId>mysql-connector-java</artifactId>
+</dependency>
+<dependency>
+<groupId>com.h2database</groupId>
+<artifactId>h2</artifactId>
+</dependency>
+</pre>
+
+<p>Para	verificar se a	carga foi feita, adicionamos ao	arquivo application.properties	os	valores	do	H2	console:</p>
+
+<pre class="brush:java">
+#h2
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+#jpa
+spring.jpa.show-sql=true
+spring.datasource.url=jdbc:h2:mem:docesalgados
+</pre>
+
+<p>Executando o	projeto, verificamos	 no console o Hibernate executando	os	comandos SQL. Acessando	o console no	 endereço http://localhost:8080/h2/,	 informamos	o novo banco no JDBC URL:</p>
+<br>
+<img src="imagens/jee7/h2doces.png">
+<br>
+
+<p>E podemos verificar	na figura abaixo que	a carga foi	feita com sucesso:</p>
+<br>
+<img src="imagens/jee7/selecth2.png">
+<br>
+
+</section>
+<section id="templat">
+<h1>Templates</h1>
+<p>Agora precisamos	criar uma página web para fazer	os cadastros de	clientes, itens	e pedidos.</p>
+<p>Thymeleaf é uma biblioteca Java que	 trabalha com templates XHTML/HTML5	 para	 exibir	dados sem	quebrar	 a estrutura/
+layout	do	documento.	Essa capacidade	de manter o	layout é o que caracteriza o Thymeleaf como	template natural, algo que	as engines	JSP, Velocity e	FreeMarker não têm.</p>
+<p>O Thymeleaf trabalha	com	os seus	argumentos	dentro	de	atributos th, que o	browser	ignora,	e mantém o layout intacto.</p>
+<br>
+<p><b>Os principais	atributos do	Thymeleaf são:</b></p>
+<br>
+<ul>
+<li>th:text	 —	Exibe o conteúdo de	 uma variável ou expressão,	como th:text="${cliente.id}";</li>
+<li>th:href	 —	Monta um link relativo,	 exemplo: th:href="@{/clientes/}" ;</li>
+<li>th:src — Monta link	relativo para	atributo src, como	 th:src="@{/img/oferta.png}";</li>
+<li>th:action —	Monta link relativo	para tag atributo action de	 formulário,	 dessa forma: th:action="@{/pedidos/(form)}";</li>
+<li>th:field e th:object — Relaciona um	 objeto	 a um campo	 do	 formulário,	 como por exemplo: th:object="${cliente}"	 e	th:field="*{id}";</li>
+<li>th:value — Mostra o	valor	do	atributo value	do formulário,	por exemplo th:value="${cliente.id}";</li>
+<li>th:if —	Mostra conteúdo	 conforme	 resultado	da expressão, como: th:if="${clientes.empty}"	</li>
+<li>th:each	— Mostra	 valores	 de	 uma lista,	 por exemplo:th:each="item	:	${itens}";</li>
+<li>th:class — Aplica o	estilo	se	a	expressão	for	válida, dessa forma:
+th:class="${#fields.hasErrors('id')}?
+'field-error'"	</li>
+</ul>
+<br>
+</section>
+<section id="springbootconv">
+<h2>Convenções do Spring Boot</h2>
+<p>Como	o Spring Boot gerencia o	 sistema e o servidor de aplicação,	não	podemos	colocar	nossas	páginas	do	Thymeleaf, ou melhor, nossos templates em qualquer lugar. O	Spring Boot oferece	 algumas convenções	 para as aplicações	 web, algo bem diferente do	conhecido	padrão JEE.</p>
+
+<br>
+<p>Dentro	do	diretório		src/main/resources	 ,	temos	três	opções:</p>
+<br>
+<ul>
+<li>public — Contém	páginas	de	erro	padrão;</li>
+<li>static — Contém	os	arquivos estáticos da aplicação (arquivos de estilo, JavaScript e imagens)</li>
+<li>templates —	Arquivos de	template do	Thymeleaf.</li>
+</ul>
+
+<br><img src="imagens/jee7/arquiteturaspb.png">
+<br>
+<section id="layout">
+<h2>Layout</h2>
+<p>O Thymeleaf oferece a opção de layout padrão, que é chamado em cada página e	pode ser usado para	colocar	os	scripts	comuns	de layout. Seguindo a convenção do	Spring Boot,	 dentro	 de src/main/resources,	criaremos	o arquivo layout.html.</p>
+<br>
+<p>Iniciando com o	cabeçalho do layout:</p>
+<pre class="brush:html">
+&lt!DOCTYPE html&gt
+&lthtml xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"&gt
+&lthead&gt
+ <title>Sabor&Arte Delivery</title>
+</pre>
+<p>Depois, fazemos os scripts do	Bootstrap e	do JQuery:</p>
+
+
+<pre class="brush:html">
+ <!-- Bootstrap -->
+ &ltlink rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"&gt
+ &ltlink rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"&gt
+ &ltscript src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"&gt 
+ &lt/script&gt
+ <!--  JQuery -->
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+ <style>
+   input.field-error, textarea.field-error { border: 1px solid #B94A48; }
+ </style>
+&lt/head>
+
+</pre>
+
+<p>Logo sem seguida o cabeçalho com o logo:</p>
+
+<pre class="brush:html">
+&ltbody>
+ <div class="container">
+ &ltnav class="navbar navbar-default navbar-static-top">
+   <div class="navbar-header">
+      <a class="navbar-brand" th:href="@{/}"><img src="../static/img/tumbl-log1.jpg" th:src="@{/img/tumbl-log1.jpg}"/></a>
+    </div>
+</pre>
+<p> E depois fazemos os links de menu:</p>
+<pre class="brush:html">
+<ul class="nav navbar-nav">
+    <li><a class="brand" href="http://www.alanpontoinfo.com.br">alanpontoinfo</a></li>
+    <li><a class="brand" href="https://projects.spring.io/spring-boot/">Spring Boot</a></li>
+    <li><a class="brand" href="https://github.com/ultraq/thymeleaf-layout-dialect">Thymeleaf Layout</a></li>
+  </ul>
+ </nav>
+</pre>
+
+
+<p>Por fim, os fragmentos do layout, onde	serão adicionadas as páginas dinâmicas:</p>
+
+<pre class="brush:html">
+ <h1 layout:fragment="header">cabeÃ§alho falso</h1>
+ <div layout:fragment="content">content falso</div>
+&lt/div>
+&lt/body&gt
+&lt/html&gt
+</pre>
+
+<p>Para	usarmos	 esse layout, usamos no	 cabeçalho do arquivo index.html a opção decorate. É ela que define	o nome do template que a página	está usando.</p>
+
+
+<pre class="brush:html">
+&lt!DOCTYPE html>
+&lthtml xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+&lthead>
+</pre>
+
+<p>Em seguida, especificamos o primeiro	 fragment(pedaço de template HTML):</p>
+
+<pre class="brush:html">
+&ltmeta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+&lt/head>
+&ltbody>
+  &lth1 layout:fragment="header">Sabor & Arte  <small>Painel de controle</small></h1>
+</pre>
+<p>Depois fazemos o segundo fragmento:</p>
+<pre class="brush:html">
+&ltdiv layout:fragment="content" class="container">
+   &ltdiv class="jumbotron">
+    &lta th:href="@{/ambiente/}" class="btn btn-lg btn-info">Ambiente</a>
+      &lta th:href="@{/h2}" class="btn btn-lg btn-info">H2 Console</a>
+      &lta th:href="@{/api/browser/index.html#/api/}" class="btn btn-lg btn-info">HAL-REST Browser</a>
+&lt/div>
+&lt/div>
+&lt/body>
+&lt/html>
+</pre>
+
+
+<p>Spring Boot carrega a versão	2. Para	especificarmos	uma	versão do Thymeleaf,	adicionamos	nas	propriedades do	 pom.xml</p>
+<pre class="brush:xml">
+<properties>
+<thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
+<thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
+</properties>
+</pre>
+<br>
+<img src="imagens/jee7/greendog.png">
+<br>
+</section>
+<section id="crud">
+<h2>CRUD</h2>
+
+<p>As rotinas de CRUD (Create, Retrieve,	Update,	Delete)	existem na	maioria	 dos	 sistemas: no nosso	teremos	o cadastro	de	clientes, itens	e pedidos.	Como o procedimento é bem	semelhante,	detalharemos apenas	 o cadastro de	clientes.</p>
+<br>
+<p>O CRUD de cliente tem três componentes	básicos: a classe de domínio Cliente, a	 classe	 controller	 ClienteController,	e três arquivos	de	template do	Thymeleaf: form, view e list.</p>
+<br>
+
+<p>Observe como fica o nosso roteiro:</p>
+<br>
+<ul>
+<li>Listar	clientes: o	método <b>ClienteController.list</b> chama o template <b>list.html</b>;</li>
+<li>Cadastrar cliente: o método <b>ClienteController.createForm</b> chama	o	template <b>form.html</b>,	que	chama o	método <b>ClienteController.create</b>;</li>
+<li>Exibir	cliente:o método <b>ClienteController.view</b>	chama o	template <b>view.html</b>;</li>
+<li>Alterar	 cliente: o	template <b>view.html</b>	 chama o método	 <b>ClienteController.alterarForm</b>, que chama o	template form.html.	 Este, por sua vez, chama o	método <b>ClienteController.create</b>	</li>
+<li>Remover	 cliente: o	template <b>view.html</b> chama o método <b>ClienteController.remover</b>	</li>
+</ul>
+
+<p>Vamos detalhar todos	os	componentes envolvidos.</p>
+<p>Na classe de	domínio, temos os campos de id, nome, endereço e pedidos, com	suas validações:</p>
+
+<pre class="brush:java">
+@Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+private	Long id;
+@NotNull
+@Length(min=2, max=30,message="O tamanho do nome deve ser entre{min} e {max} caracteres")
+private	String nome;
+@NotNull
+@Length(min=2, max=300, message="O tamanho do endereço deve ser entre{min} e {max} caracteres")
+private	String endereco;
+@OneToMany(mappedBy	="cliente",fetch = FetchType.EAGER)
+@Cascade(CascadeType.ALL)
+private	List&ltPedido>pedidos
+</pre>
+<p>A classe	ClienteController usa o	 	clienteRepository para	suas operações de	banco de dados.</p>
+
+<pre class="brush:java">
+@Controller
+@RequestMapping("/clientes")
+public	class ClienteController	{
+private	final ClienteRepository	clienteRepository;
+</pre>
+
+<p>A tela inicial retorna uma lista	dos	clientes cadastrados:</p>
+
+<pre class="brush:java">
+@GetMapping("/")
+public	ModelAndView list(){
+Iterable&ltCliente> clientes=this.clienteRepository.findAll();
+return	new	ModelAndView("clientes/list","clientes",clientes);
+}</pre>
+<p>A lista é renderizada pelo template	list.html, iniciada	com o cabeçalho:</p>
+
+<pre class="brush:java">
+&lt!DOCTYPE html>
+&lthtml xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+&lthead>
+&lttitle>Clientes&lt/title>
+&lt/head>
+&ltbody>
+&lth1>layout:fragment="header">Lista de clientes&lt/h1>
+</pre>
+
+<p>Em seguida, fazemos	um	link para um novo cadastro e um	de th:if para alguma	mensagem do	controller:</p>
+
+<pre class="brush:html">
+&ltdiv layout:fragment="content" class="container">
+&lta href="form.html" th:href="@{/clientes/novo}">Novo cliente&lt/a>
+&ltdiv class="alert alert-success" th:if="${globalMessage}"
+th:text="${globalMessage}"> mensagem
+&lt/div>
+</pre>
+<p>Depois a	tabela HTML	para exibir	a lista	de clientes, iniciando com o cabeçalho e o	tratamento	de th:if para uma lista	vazia:</p>
+
+<pre class="brush:html">
+&lttable class="table table-bordered	table-striped">
+&ltthead>
+&lttr>
+&lttd>ID&lt/td>
+&lttd>Nome&lt/td>
+&lt/tr>
+&lt/thead>
+&lttbody>
+&lttr th:if="${clientes.empty}">
+&lttd colspan="3">Sem clientes&lt/td>
+&lt/tr>
+</pre>
+
+<p>Com o atributo th:each, listamos	o	conteúdo de	um	array de lista de clientes,	exibindo os	valores	com	th:text	e gerando um
+link de	cada um	deles para	alteração com th:each.</p>
+
+<pre class="brush:html">
+&lttr th:each="cliente : ${clientes}">
+&lttd th:text="${cliente.id}">1&lt/td>
+&lttd>&lta href="view.html"	th:href="@{'/clientes/'+${cliente.id}}"
+th:text="${cliente.nome}">nome&lt/a>&lt/td>
+&lt/tr>
+&lt/tbody>&lt/table>&lt/div>
+&lt/body>
+&lt/html>
+</pre>
+
+
+<p>A tela de detalhe de	cada cliente usa	esse método:</p>
+<pre class="brush:java">
+@GetMapping("{id}")
+public	ModelAndView view(@PathVariable("id")Cliente cliente)	{
+return new ModelAndView("clientes/view","cliente",cliente);
+}
+</pre>
+
+<p>O detalhe de	cliente	é renderizado pelo	template view.html, iniciada com o cabeçalho:</p>
+<pre class="brush:html">
+&lthtml xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="layout">
+&lthead>
+&lttitle>Cliente&lt/title>
+&lt/head>
+</pre>
+
+<p>Em seguida, adicionamos uma condição	th:if para alguma mensagem do controller:</p>
+
+<pre class="brush:html">
+ &ltbody>
+&lth1 layout:fragment="header">Cliente&lt/h1>
+&ltdiv layout:fragment="content"	class="well">
+&ltdiv class="alert	alert-success"	th:if="${globalMessage}"
+th:text="${globalMessage}">cliente	gravado	com	sucesso&lt/div>
+</pre>
+
+<p>Depois, adicionamos	a tabela HTML para exibir o detalhe do cliente, iniciando	com	o cabeçalho:</p>
+
+<pre class="brush:html">
+&lttable class="table table-striped">
+&ltthead>&lttr>
+&ltth>ID&lt/th>
+&ltth>Nome&lt/th>
+&ltth>Endereço&lt/th>
+&lt/tr>&lt/thead>
+</pre>
+
+<p>Com o <b>tx:text</b>, exibimos	o conteúdo	do	objeto cliente:</p>
+
+<pre class="brush:html">
+&lttbody>&lttr>
+&lttd id="id" th:text="${cliente.id}">123&lt/td>
+&lttd id="nome" th:text="${cliente.nome}">Nome&lt/td>
+&lttd id="endereco" th:text="${cliente.endereco}">Endereço&lt/td>
+&lt/tr>&lt/tbody>
+&lt/table>
+</pre>
+
+<p>E finalmente, montamos dois links para	 alterar e remover  os dados desse	cliente:</p>
+
+<pre class="brush:html">
+&ltdiv class="pull-left">
+&lta href="form.html" th:href="@{'/clientes/alterar/'+ 
+${cliente.id}}">alterar&lt/a>
+ |&lta href="clientes" th:href="@{'/clientes/remover/'
+ + ${cliente.id}}">remover&lt/a> 
+ |&lta th:href = "@{/clientes/}" href="list.html">voltar&lt/a>
+&lt/div>&lt/div>
+&lt/body>
+&lt/html>
+</pre>
+
+<p>A tela de cadastro de um	novo cliente é chamada	pelo método:</p>
+
+<pre class="brush:java">
+@GetMapping("/novo")
+public String createForm(@ModelAttribute Cliente cliente) { 
+return "clientes/form";
+}
+</pre>
+
+<p>O formulário	 é renderizado pelo	template form.html, iniciado com o cabeçalho:</p>
+
+<pre class="brush:html">
+&lt!DOCTYPE html>
+&lthtml	xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layout">
+&lthead>
+&lttitle>Cliente&lt/title>
+&lt/head>
+&ltbody>
+&lth1> layout:fragment="header">Cadastro de cliente&lt/h1>
+</pre>
+
+<p>Em seguida, usamos <b>th:action</b>	 para o formulário, <b>th:object</b> para relacionar ao	objeto cliente,	e <b>th:each</b> para listar os	erros de formulário (se	eles existirem).</p>
+
+<pre class="brush:html">
+&ltdiv layout:fragment="content" class="input-form">
+&ltdiv class="well">
+&ltform id="clienteForm" th:action="@{/clientes/(form)}"
+th:object="${cliente}" action="#"	method="post"
+class="form-horizontal">
+&ltdiv th:if="${#fields.hasErrors('*')}"
+class="alert alert-error">
+&ltp th:each="error : ${#fields.errors('*')}"
+th:text="${error}"> Erro de	validação&lt/p>
+&lt/div>
+</pre>
+<p>Então, usamos o th:field	para relacionar	 aos campos	 dos objetos definidos	em th:object:</p>
+
+<pre class="brush:html">
+&ltinput type="hidden"th:field="*{id}"
+th:class="${#fields.hasErrors('id')} ? 'field-error'"	/>
+&ltdiv class="form-group">
+&ltlabel class="control-label col-sm-2" for="nome">Nome&lt/label>
+&ltinput	class="col-sm-10" type="text"	th:field="*{nome}"
+th:class="${#fields.hasErrors('nome')} ? 'field-error'"	/>
+&lt/div>
+&ltdiv class="form-group">
+&ltlabel	class="control-label col-sm-2"	for="text">Endereço< /label>
+&lttextarea	class="col-sm-10" th:field="*{endereco}"
+th:class="${#fields.hasErrors('endereco')} ? 'field-error'">
+&lt/textarea>
+&lt/div>
+</pre>
+
+<p>E finalmente, adicionamos o botão de	enviar os dados	 do formulário	e um link para voltar para a lista de cliente:</p>
+<pre class="brush:html">
+&ltdiv class="col-sm-offset-2 col-sm-10">
+&ltinput	type="submit" value="Gravar"/>
+&lt/div>
+&ltbr>
+&lta th:href="@{/clientes/}" href="clientes.html"> voltar&lt/a>
+&lt/form>
+&lt/div>&lt/div>
+&lt/body>
+&lt/html>
+</pre>
+<p>O formulário	de	cadastro de	novo cliente chama esse	método:</p>
+<pre class="brush:java">
+@PostMapping(params	="form")
+public ModelAndView create(@Valid Cliente cliente, BindingResult result, RedirectAttributes	redirect){
+if(result.hasErrors()){
+	return	new	ModelAndView
+(CLIENTE_URI + "form","formErrors",result.getAllErrors());	}
+				cliente	=this.clienteRepository.save(cliente);
+				redirect.addFlashAttribute("globalMessage", "Cliente gravado com	sucesso");
+return new ModelAndView("redirect:/" + CLIENTE_URI + "{cliente.id}","cliente id",cliente.getId());
+}
+</pre>
+
+<p>A tela de alteração de cliente é	chamada	pelo método:</p>
+
+<pre class="brush:java">
+@GetMapping(value = "alterar/{id}")
+public ModelAndView alterarForm(@PathVariable("id") Cliente cliente){
+return new ModelAndView("clientes/form","cliente",cliente);
+}
+</pre>
+
+<p>E finalmente, a opção de excluir cliente chama o método:</p>
+
+<pre class="brush:java">
+@GetMapping(value = "remover/{id}")
+public ModelAndView remover(@PathVariable("id") Long id, RedirectAttributes	redirect)	{ this.clienteRepository.delete(id);
+Iterable&ltCliente>	clientes = this.clienteRepository.findAll();		
+ModelAndView mv	= new ModelAndView ("clientes/list","clientes",clientes);
+mv.addObject("globalMessage","Cliente	removido com	sucesso");
+return mv;
+}
+</pre>
+
+<p>Os cadastros	de	itens e pedidos funcionam de forma semelhante.	No final, o	seu	projeto	deve ter esses	arquivos.</p>
+<br>
+<p>Na próxima seção, vamos	aprender	 algumas dicas de aumentar a produtividade	do desenvolvimento com	Spring	Boot.</p>
+</section>
+<section id="devprodutivo">
+<h1>Desenvolvimento Produtivo</h1>
+<p>O Spring	Boot tem algumas opções	interessantes que aceleram	bastante o desenvolvimento.</p>
+
+<p>Podemos	usar o devtools	para acelerar o	desenvolvimento, pois ele faz o reload automático da aplicação a cada mudança,	 entre outras coisas. O	LiveReload também é	 interessante, já que faz o recarregamento	 do	web browser	automaticamente, sem a necessidade	de	pressionar F5.</p>
+</section>
+<section id="devtools">
+<h3>DEVTOOLS</h3>
+<p>O devtools é	um	módulo nativo do	 Spring	Boot que oferece algumas vantagens	interessantes:</p>
+<br>
+<ul>
+<li>Restart	automático — Ao	alterar	uma	classe,	o Spring Boot faz o	restart	do	seu	contexto rapidamente;</li>
+<li>Debug remoto — Permite fazer um	debug	remoto em uma porta específica configurada	nas	propriedades;</li>
+<li>LiveReload — Ativa a opção de	LiveReload,	em	que	o browser carrega	 automaticamente a página toda vez que o	seu	código-fonte for alterado.</li>
+</ul>
+<br>
+<p>Para ativar em um projeto Spring Boot, o	 primeiro passo	é adicionar	como dependência:</p>
+
+<pre class="brush:xml">
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-devtools</artifactId>
+<optional>true</optional>
+</dependency>
+</pre>
+
+<p>O Boot Dashboard	já destaca os projetos	com	devtools ativo.</p>
+<img src="imagens/jee7/springdevtool.png">
+<p>Em seguida, subindo o projeto em	 modo	 debug,	o devtools é ativado automaticamente. O projeto será reiniciado	rapidamente	a qualquer alteração de	classe.</p>
+<br>
+<p>Com esse	módulo ativo, não precisamos	 nos preocupar em parar	e subir	a aplicação,o restart será automático. A produtividade aumenta muito e torna esse item	quase que obrigatório no desenvolvimento com Spring Boot.</p>
+</section>
+<section id="livereload">
+<h2>LiveReload</h2>
+<p>O LiveReload	é um serviço instalado	no	seu	web	browser	que permite	um	refresh	automático de página cada vez que o	fonte for alterado.	Isso é muito útil no	desenvolvimento	de telas web.</p>
+<p>A sua instalação	é muito	simples.	 Acesse <a href="http://livereload.com/extensions/"target="_blank">http://livereload.com/extensions/</a>, e instale em seu	web	browser.</p>
+<p>Em seguida, ao acessarmos a aplicação,	 percebemos	no canto superior direito o logotipo do	LiveReload, que são	 duas	 setas indicando o reload e um círculo ao	 meio. Se o círculo estiver branco no meio,	o LiveReload está desligado; se	ele estiver preto, ligado.</p>
+<br>
+<img src="imagens/jee7/livereload.png">
+<br>
+
+<p>Para	 testarmos,	inicialmente clicamos	 no	ícone para	ativar	o LiveReload.	 Depois, editamos o	template index.html	
+adicionando	o link:</p>
+
+<pre class="brush:html">
+&lta href="http://livereload.com"	class="btn	btn-lg	btn-info">
+LiveReload
+&lt/a>
+</pre>
+<p>Logo	 após gravarmos	o arquivo HTML, sem	 fazer nada automaticamente, o browser atualiza	a página via LiveReload, mostrando	a alteração	feita:</p>
+
+<br>
+<img src="imagens/jee7/altelive.png">
+<br>
+
+<p>Com esse	plugin ativo, economizamos	 algum tempo ao evitarmos fazer	reload manual das páginas web no web browser.</p>
+<section id="custerro">
+<h2>Customizando Páginas de Erro</h2>
+<p>A página	de erro	404 (de	página não	 encontrada) dá	uma mensagem um	pouco	confusa	ao usuário:	Whitelabel	Error Page.</p>
+
+<p>Para	trocarmos a	página de erro, basta criamos um arquivo 404.html dentro de src/main/resources/public/error, com o	seguinte conteúdo:</p>
+
+<pre class="brush:html">
+ &lt!DOCTYPE html>
+&lthtml xmlns="http://www.w3.org/1999/xhtml">
+&lthead>
+&ltmeta charset="utf-8">
+&lttitle>404 - essa página não existe&lt/title>
+&ltstyle> ..muito	CSS...	&lt/style>
+&lt/head>
+&ltbody>
+&ltdiv id="content">
+&ltdiv class="clearfix">&lt/div>
+&ltdiv id="main-body">
+&ltp class="enormous-font bree-font">404&lt/p>
+&ltp class="big-font">Página	não	encontrada...&lt/p>
+&lthr>
+&ltp	class="big-font">
+Voltar para &lta href="/" class="underline">home	page&lt/a>
+&lt/p>
+&lt/div>
+&ltdiv>
+&lt/body>
+&lt/html>
+</pre>
+<p>Sem alterar mais	nada, ao reiniciar	a	aplicação, a nova página de	erro aparece:</p>
+<br>
+<img src="imagens/jee7/paginaerro2.png">
+<br>
+<p></p>
+
+<p>A página de erro 500	(500.html)	para	exibir	uma	mensagem amigável de sistema	indisponível pode	ser	feita	do	 mesmo	jeito, e com o mesmo código. É só criar	 um	 arquivo com este nome e colocar no	mesmo	lugar(src/main/resources/public/error).</p>
+</section>
+<section id="actuador">
+<h2>Actuator</h2>
+<p>O Actuator é	um subprojeto do Spring	Boot que ajuda a monitorar e gerenciar a sua aplicação quando ela for publicada (estiver em	execução). O Actuator permite que sejam	 monitoradas informações do servidor rodando, muito	útil para ver o ambiente em produção.
+Sua	ativação é feita adicionando a dependência:</p>
+<pre class="brush:xml">
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+</pre>
+
+<p>Existem várias ferramentas disponíveis	 dentro	do Actuator através de serviços	ReST, vamos destacar algumas:</p>
+<ul>
+<li>actuator - Lista todos os links disponíveis;</li>
+<li>dump - Faz um thread dump;</li>
+<li> env - Mostra properties do ConfigurableEnvironment	do Spring;</li>
+<li>health - Mostra	informações	do status	da aplicação;</li>
+<li>metrics	- Mostra métricas da aplicação;</li>
+<li>mappings - Exibe os	caminhos dos @RequestMapping</li>
+<li>trace - Exibe o trace dos últimos 100	 requests HTTP.</li>
+</ul>
+
+<p>A lista completa está em	<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints"target="_blank">https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints</a>.</p>
+<br>
+<p>Vamos alterar a nossa página	de	<b>ambiente.html</b> e	adicionar a	chamada	desses	serviços, adicionando os links da lista anterior:</p>
+<pre class="brush:html">
+&ltdiv layout:fragment="content"	class="container">
+&ltdiv>&lttable>&ltthead>
+&lttr>&ltth>link&lt/th>&lt th>descrição&lt/th>&lt/tr>&lt/thead>&lttbody>
+&lttr>&lttd>&ltp>&lta href="#" th:href="@{/actuator}">actuator&lt/a>&lt/p>
+&lt/td>&lttd>&ltp>Lista todos os links	disponíveis.&lt/p>&lt/td>&lt/tr>
+&lttr>&lttd>&ltp>&lta href="#" th:href="@{/dump}">dump&lt/a>&lt/p>
+&lt/td>&lttd>&ltp>Faz um thread dump.&lt/p>&lt/td>&lt/tr>
+&lttr>&lttd>&ltp>&lta href="#"	th:href="@{/env}">env&lt/a>&lt/p>
+&lt/td>&lttd>&ltp>Mostra properties do	CE do	Spring.&lt/p>&lt/td>&lt/tr>
+&lttr>&lttd>&ltp>&lta href="#" th:href="@{/health}">health&lt/a>&lt/p>
+&lt/td>&lttd>&ltp>Mostra informações do status da aplicação.&lt/p>
+&lt/td>&lt/tr>
+&lttr>&lttd>&ltp>&lta href="#" th:href="@{/metrics}">metrics&lt/a>&lt/p>
+&lt/td>&lttd>&ltp>Mostra métricas	da	aplicação.&lt/p>&lt/td>&lt/tr>
+&lttr>&lttd>&ltp>&lta href="#"	th:href="@{/mappings}">mappings&lt/a>&lt/p>
+&lt/td>&lttd>&ltp>Exibe os	caminhos dos	@RequestMapping.&lt/p>
+&lt/td>&lt/tr>
+&lttr>&lttd>&ltp>&lta href="#"	th:href="@{/trace}">trace&lt/a>&lt/p>
+&lt/td>&lttd>&ltp>Exibe o trace dos últimos	100	requests HTTP.&lt/p>
+&lt/td>&lt/tr>
+&lt/tbody>&lt/table>&ltbr>
+&lta	href="#" th:href="@{/properties}"
+class="btn	btn-large	btn-success">System	Properties&lt/a>
+&lt/div>&lt/div>
+</pre>
+
+
+<p>Apenas alterando	uma	página do template,	 temos várias funcionalidades interessantes	rodando.</p>
+<br>
+<img src="imagens/jee7/actuador.png">
+<br>
+
+<p>A opção health mostra informações da	 saúde do sistema, como	a situação	do	banco de dados	e do espaço	em	disco:</p>
+
+<br>
+<img src="imagens/jee7/actuheath.png">
+<br>
+<p>A opção metrics	mostra	algumas	métricas do	sistema, como a	memória	em	uso, quantidade	de	classes, threads, sessões	HTTP, operações	do	Garbage	Collector (GC), entre	outras	coisas. Vale a pena	destacar os	counters e gaugers.	Os counters	sempre somam alguma coisa,	como por exemplo, resposta de	status	HTTP 200 na	raiz(counter.status.200.root: 2); já	os gaugers medem o tempo de resposta da última chamada, que pode aumentar	ou diminuir, como a	chamada	de /metrics	que demora 1 ms(gauge.response.metrics:1).</p>
+
+<br>
+<img src="imagens/jee7/metricact.png">
+<br>
+<p>Na próxima seção, vamos ver a facilidade	 existente no Spring Boot de expor seus serviços ReST.</p>
+</section>
+<section id="apiservioc">
+<h1>Construindo API de Serviço</h1>
+<p>O sistema já	tem	um cadastro	de clientes, itens	e pedidos, que podem ser usados pelo administrador. O que resta agora é a tela de novos pedidos, que será feita pelos clientes de Sabor&Arte Delivery.
+Para uma boa performance, foi escolhido o	framework AngularJS	para enviar	os pedidos.
+Precisamos	agora criar	os	serviços ReST	para este fim.</p>
+</section>
+<section id="hateos">
+<h2>HATEOAS</h2>
+<p>Já percebemos que, com o Spring Data, não precisamos	 mais escrever repositórios.	 Agora mostraremos que existe uma facilidade maior para	não	escrever serviços ReST também.</p>
+<p>O termo HATEOAS(Hypermedia As The	 Engine	 Of Application	State)	significa	hipermídia	como a engine do estado	da aplicação, servindo como	 um	 agente	 que	 mapeia	e limita a arquitetura	ReST. De	acordo com o modelo de	maturidade ReST de	 Richardson, o HATEOAS é o nível máximo	que	 introduz a descoberta de serviços, fornecendo uma maneira de fazer um protocolo autodocumentado.</p>
+<p>O HATEOAS é uma arquitetura	mais	completa do que	o ReST. No nosso sistema,	 colocando apenas uma anotação, temos o serviço	no	formato	HATEOAS	pronto para	uso. Adicionando	um starter,	temos uma	tela de	consulta aos serviços online.</p>
+<p>Vamos ver um	 exemplo do	HATEOAS	começando com alteração	no	nosso repositório ItemRepository. Adicionaremos a anotação RepositoryRestResource, que define o acesso aos serviços	na URI	/itens.</p>
+
+<pre class="brush:java">
+@RepositoryRestResource(collectionResourceRel="itens",path="itens")
+public interface ItemRepository
+extends	JpaRepository &ltItem, Long>{
+</pre>
+<p>Em seguida, vamos implementar o navegador de	serviços, adicionando uma dependência ao pom.xml:</p>
+<pre class="brush:xml">
+<dependency>
+<groupId>org.springframework.data</groupId>
+<artifactId>spring-data-rest-hal-browser</artifactId>
+</dependency>
+</pre>
+
+<p>O comportamento padrão da documentação é	ficar na raiz do site. Como já	temos algumas páginas lá, vamos	alterar	para	/api, adicionando uma propriedade no	 arquivo application.properties:</p>
+
+<pre class="brush:java">
+#rest
+spring.data.rest.base-path=/api
+</pre>
+
+<p>Depois, colocamos um	link na	página inicial (index.html):</p>
+
+<pre class="brush:html">
+&lta th:href="@{/api/browser/index.html#/api/}"
+class="btn btn-lg btn-info">HAL-REST Browser&lt/a>
+</pre>
+
+<br>
+<img src="imagens/jee7/hallbrowser.png">
+<br>
+
+<p>Acessando o HAL Browser,	podemos	navegar	entre os serviços existentes nos links de	pedidos, clientes e	itens.</p>
+
+<br>
+<img src="imagens/jee7/hallservice.png">
+<br>
+<p>No HATEOAS, cada serviço	sempre retorna além de suas informações, os endereços	 para  o próprio serviço(self) e mais serviços.</p>
+<br>
+<img src="imagens/jee7/hateoas.png">
+<br>
+
+<p>O serviço HATEOAS não retorna o ID nos	 serviços, o que normalmente é um problema	para sistemas feitos com AngularJS ou	 similares.	Além disso, nos serviços, ele não retorna o MIME type application/json,	e sim application/hal+json.</p>
+
+<p>Para	resolver esse problema,	precisamos	adicionar o parâmetro para false no	arquivo	application.properties.</p>
+
+<pre class="brush:java">
+#Hypermedia	As The Engine Of Application State
+spring.hateoas.use-hal-as-default-json-media-type=false
+</pre>
+
+<p>Também precisamos criar uma classe para	 informar quais repositórios precisam expor	o valor	do campo ID	nos	serviços.</p>
+
+<pre class="brush:java">
+@Component
+public class SpringDataRestCustomization
+extends	RepositoryRestConfigurerAdapter
+{
+@Override
+public void	configureRepositoryRestConfiguration(
+	RepositoryRestConfiguration	config)	{
+		config.exposeIdsFor(Item.class,ClienteRepository.class);
+	}
+}
+</pre>
+</section>
+<section id="angularrest">
+<h2>Angular Acessando REST</h2>
+<p>O que precisa ser feito é criar um controller novo para receber os novos pedidos, e uma rotina em JavaScript para chamar	esse serviço.</p>
+<p>Inicialmente,  criaremos	uma	classe RespostaDTO	usando o pattern DTO para	receber	e enviar	os	valores	de	um	novo pedido.</p>
+
+<pre class="brush:java">
+public class RespostaDTO	{
+private	Double valorTotal;
+private	Long pedido;
+private	String mensagem;
+public RespostaDTO(Long	pedido, Double valorTotal, String mensagem)	{
+this.pedido = pedido;
+this.valorTotal = valorTotal;
+this.mensagem = mensagem;
+}
+//	getters	e	setters
+</pre>
+
+<p>Em seguida, criaremos o serviço que receberá	novos pedidos na classe NovoPedidoController, colocando	no construtor as dependências  do repositório	de clientes e itens.</p>
+<pre class="brush:java">
+@RestController	
+public class NovoPedidoController	{
+@Autowired
+public NovoPedidoController(ClienteRepository clienteRepository, ItemRepository	itemRepository)	{
+this.clienteRepository = clienteRepository;
+this.itemRepository = itemRepository;
+}
+private final ClienteRepository clienteRepository;
+private final ItemRepository itemRepository;
+</pre>
+<p>Depois, declaramos o	serviço	que	recebe	o ID do	cliente	e uma lista	de	IDs	de	itens de pedidos, separados	por	vírgulas.</p>
+<pre class="brush:java">
+@GetMapping("/rest/pedido/novo/{clienteId}/{listaDeItens}")
+public RespostaDTO novo(@PathVariable("clienteId")
+Long clienteId, @PathVariable("listaDeItens")
+String listaDeItens){
+RespostaDTO	dto	= new RespostaDTO();
+try	{
+	Cliente	c = clienteRepository.findOne(clienteId);
+	String[] listaDeItensID	= listaDeItens.split(",");
+</pre>
+<p>Então, instanciamos um novo pedido e	 atualizamos a informação do cliente.</p>
+
+<pre class="brush:java">
+Pedido pedido =	new	Pedido();
+double valorTotal = 0;
+ List&ltItem> itensPedidos =	new	ArrayList&ltItem>();
+for	(String	itemId	: listaDeItensID){
+		Item item =	itemRepository.findOne(Long.parseLong(itemId));
+		itensPedidos.add(item);
+		valorTotal += item.getPreco();
+	}
+	pedido.setItens(itensPedidos);
+	pedido.setValorTotal(valorTotal);
+	pedido.setData(new	Date());
+	pedido.setCliente(c);
+	c.getPedidos().add(pedido);
+this.clienteRepository.saveAndFlush(c);
+</pre>
+<p>Então, o	resultado do pedido	e o	valor	 são retornados	 no serviço	dentro	da	variável <b>dto</b>.	</p>
+<pre class="brush:java">
+	List&ltLong> pedidosID = new ArrayList&ltLong>();
+for (Pedido	p : c.getPedidos())	{
+	pedidosID.add(p.getId());
+	}
+	Long ultimoPedido =	Collections.max(pedidosID);
+	dto = new RespostaDTO(ultimoPedido, valorTotal, "Pedido	efetuado com sucesso");
+	}catch(Exception e)	{
+	dto.setMensagem("Erro: " +	e.getMessage());
+	}
+return dto;
+}
+</pre>
+
+<p>E para terminar o back-end, adicionamos	 o método à	classe IndexController	para	chamar	a página inicial de	novo pedido.</p>
+
+<pre class="brush:java">
+@GetMapping("/delivery")
+public String delivery()	{
+return "delivery/index";
+}
+</pre>
+
+<p>No front-end, precisamos	 colocar no	 index.html	um	link chamando	a página	de	pedidos:</p>
+
+<pre class="brush:html">
+&lta th:href="@{/delivery/}" class="btn	btn-lg btn-info">Delivery&lt/a></pre>
+
+
+<p>E finalmente, dentro	de src/main/resources/templates,
+vamos criar	a pasta	delivery, e	dentro	 dela, o arquivo index.html	com	o nosso	 código	 em	 AngularJS para chamar o
+serviço	de novo pedido.</p><br>
+<p>Inicialmente, começamos com a rotina	que	lista os itens com o nome e	preço dentro	de um checkbox:</p>
+
+<pre class="brush:html">
+ &ltdiv ng-controller="pedidoController">
+&ltform class="form-horizontal">
+&ltfieldset>
+&ltlegend>Delivery - Faça seu Pedido&lt/legend>
+&ltdiv class="form-group">
+&ltlabel class="col-md-12"	for="checkboxes">
+&ltimg alt="" src="../img/tumbl-slide1.jpg"
+style="width:50px; margin:-12px 0px;"/>
+&lt/label>
+&lt/div>
+&ltdiv class="form-group">
+&ltdiv class="col-md-12">
+&ltdiv class="checkbox checkbox-primary" ng-repeat="i in itens">
+&ltlabel for="checkboxes-0" class="opcao">
+&ltinput name="checkboxes" class=" " checklist-model="pedidoItens"
+checklist-value="i" ng-click="isItemSelecionado(i)"
+type="checkbox"> &nbsp;{{i.nome}} [R${{i.preco}}]
+&lt/label>
+&lt/div>&lt/div>&lt/div>
+</pre>
+<p>Em seguida, a rotina	para fazer o pedido, que chama a função fazerPedido:</p>
+<pre class="brush:html">
+&ltdiv class="form-group">
+&ltlabel class="col-md-12" for="btnSubmit">Subtotal: R${{subTotal}} &lt/label>
+&lt/div>
+&ltdiv class="form-group">
+&ltdiv class="col-md-12">
+&ltbutton id="btnSubmit" name="btnSubmit"
+ng-click="fazerPedido(pedidoItens)"
+class="btn btn-primary">Fazer o pedido&lt/button>
+&lt/div>
+&lt/div>
+&lt/fieldset>
+&lt/form>
+&ltdiv class="alert alert-success" ng-show="idPedido!=null">
+&ltstrong>Pedido {{idPedido}}&lt/strong> {{mensagem}}	
+&lt/div>
+&ltdiv class="alert alert-warning" ng-show="idPedido!=null">
+Valor do pedido: &ltstrong>{{valorTotal}}&lt/strong> reais.
+&lt/div>
+&ltdiv class="alert alert-warning" ng-show="idPedido!=null"> Chamada do serviço : &ltstrong>{{urlPedido}} &lt/strong>
+&lt/div>
+&ltfieldset>{{message}}&lt/fieldset>
+&lt/div>&lt/div>
+</pre>
+<p>A função	fazerPedido	está declarada dentro do arquivo delivery.js, inicialmente	declarando no formato do AngularJS e registrando a função carregarItens:</p>
+
+<pre class="brush:java">
+var app = angular.module("delivery",["checklist-model"],
+function($locationProvider){
+ $locationProvider.html5Mode({ 
+ enabled:true, 
+ requireBase : false });
+});
+
+app.controller('pedidoController',	
+function($scope,$location,$http) {
+				$scope.itens = [];
+				$scope.subTotal = 0;
+				$scope.pedidoItens = [];
+var	carregarItens =	function(){
+                  $http.get("/api/itens").success(function (data) {
+				  $scope.itens = data["_embedded"]["itens"];
+				  }).error(function	(data, status)	{
+				  $scope.message = "Aconteceu um problema: " + ata;
+			});
+		};
+</pre>
+<p>Depois, registramos a função	fazerPedido	 que chama o serviço ReST:</p>
+<pre class="brush:java">
+$scope.fazerPedido = function(pedidoItens)	{
+$scope.message ="";
+var	pedidoStr = "";
+var	prefixo = "";
+for	(var i = 0;	i < $scope.pedidoItens.length;	i++)	{
+	pedidoStr+=prefixo+$scope.pedidoItens[i].id;
+	prefixo=",";
+}
+$scope.urlPedido="/rest/pedido/novo/2/"+pedidoStr;
+$http.get($scope.urlPedido).success(function(data){
+	$scope.idPedido=data["pedido"];
+	$scope.mensagem=data["mensagem"];
+	$scope.valorTotal=data["valorTotal"];
+}).error(function(data,	status)	{
+	$scope.message = "Aconteceu	um	problema: "
+	+"Status:"+	data.status+ " - error:"+data.error;
+});
+};
+$scope.isItemSelecionado = function(){	
+if (this.checked)
+	$scope.subTotal+=this.i.preco;
+else
+	$scope.subTotal-=this.i.preco;													
+}
+carregarItens();
+});
+</pre>
+
+<p>Subindo	a aplicação, no	link delivery, temos a lista dos itens carregada e chamando	o serviço:</p>
+<br>
+<img src="imagens/jee7/deliveryservice.png">
+<br>
+<p>Ao clicar em	 fazer o pedido, o serviço ReST é chamado e a resposta é devolvida com o número	do pedido.</p>
+<br>
+<p>Na próxima seção, veremos como testar a aplicação com as soluções integradas	do Spring Boot.</p>
+</section>
+<section id="testapp">
+<h1>Testando o Aplicativo</h1>
+<p>O Spring	Framework é	bem	famoso pela	sua	facilidade em criar testes unitários. Desde	a versão 4.3, a	sua	classe	principal de rodar testes <b>SpringJUnit4ClassRunner</b> foi substituída por <b>SpringRunner</b>.	 Com	ela, conseguimos subir o applicattion context do Spring e fazer funcionar todas as	injeções de
+dependência	de seu teste. Sem ela, será necessário instanciar manualmente cada objeto envolvido	no teste.</p>
+
+<p>Podemos usar	o <b>SpringRunner</b> padrão para executar	os nossos testes unitários.	Para testar, por	exemplo, se	o nosso	serviço de	busca de clientes está funcionando	adequadamente, fazemos:</p>
+<pre class="brush:java">
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ClienteRepositoryTest	{
+@Autowired
+ClienteRepository repository;
+</pre>
+<p>O nosso sistema	faz	 uma carga inicial de dois clientes.
+Portanto, vamos	testar se o	método	<b>findAll</b>	 retorna um	 total
+maior do que o valor um.</p>
+<pre class="brush:java">
+@Test
+public void	buscaClientesCadastrados()	{
+Page&ltCliente> clientes = this.repository.findAll(new	PageRequest(0, 10));
+assertThat(clientes.getTotalElements()).isGreaterThan(1L);
+}
+</pre>
+<p>Rodar o teste inteiro demorou pouco mais	de 18 segundos, mas o teste dos métodos bem menos de um segundo. Essa diferença existe	porque o teste faz o Spring	Boot subir uma instância para rodar	os testes.</p>
+<br>
+<img src="imagens/jee7/unittest.png">
+<br>
+<p>Agora vamos mostrar o código do teste de	busca pelo nome, inicialmente com um
+valor não existente, e depois com um valor válido.</p>
+<pre class="brush:java">
+@Test
+public void buscaClienteAlan()	{
+Cliente	clienteNaoEncontrado =	
+this.repository.findByNome("Alan");
+assertThat(clienteNaoEncontrado).isNull();
+Cliente	cliente	=	
+this.repository.findByNome("Alan Santos");
+assertThat(cliente).isNotNull();
+assertThat(cliente.getNome()).isEqualTo("Alan Santos");
+assertThat(cliente.getEndereco()).isEqualTo("Salvador");
+}
+</pre>
+<p>Os testes unitários funcionam, pois testam integralmente algumas	rotinas	de busca. Entretanto, eles	 ainda não testam o resultado de um	serviço	ReST, ou seja, não	testam	o resultado	de todo	 o conjunto	 de serviços, o	que é chamado de teste de integração.</p>
+</section>
+<section id="testintegrac">
+<h2>Testes de Integração</h2>
+<p>Para	testar o serviço como um todo, usamos uma opção interna	do Spring chamada <b>MockMvc</b>,	que	é uma	maneira	fácil e eficiente de testar	um serviço ReST. Com apenas	 uma linha de código, é	possível testar	o serviço, o seu retorno, exibir a saída no console, entre outras opções.</p>
+
+<p>Outra opção seria usar o	RestTemplate para fazer	testes de integração, mas ele é	bem	mais trabalhoso	de	codificar.</p>
+<p>A nossa classe de teste usa o <b>WebApplicationContext</b>	para instanciar	o objeto mvc usado em todos	os	testes.</p>
+
+<pre class="brush:java">
+@RunWith(SpringRunner.class)
+@SpringBootTest	
+public	class SaboreArteDeliveryApplicationTests	{
+@Autowired
+private	WebApplicationContext context;
+private	MockMvc	mvc;
+@Before
+public void setUp()	{
+this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
+}
+</pre>
+
+<p>Nesse teste inicial, chamamos a raiz	dos	serviços /api e testamos se contém um serviço chamado clientes.	Usamos o método print para exibir a	saída do serviço no	console.</p>
+
+<pre class="brush:java">
+@Test
+public void	testHome() throws Exception	{
+String	URL1="/api";
+System.out.println(this.mvc.perform(get(URL1))
+	.andDo(print()));
+this.mvc.perform(get(URL1))
+	.andExpect(status().isOk())
+	.andExpect(content().string(containsString("clientes")));
+				}
+</pre>
+
+<p>Em seguida, testamos se o preço do item 2 é igual a 150:</p>
+
+<pre class="brush:java">
+@Test
+public void	findItem2()	throws Exception	{
+String URL5="/api/itens/2";
+System.out.println(this.mvc.perform(get(URL5)).andDo(print()));
+this.mvc.perform(
+	get(URL5))
+	.andExpect(status().isOk())
+	.andExpect(jsonPath("preco", equalTo(150.0)));
+}
+</pre>
+
+<p>E finalmente, testamos o	serviço	de novos pedidos, em que o valor total é 177, entre outras validações.</p>
+<pre class="brush:java">
+@Test
+public void cadastraNovoPedido() throws Exception	{
+String URL4="/rest/pedido/novo/1/1,2";
+System.out.println(this.mvc.perform(get(URL4))
+	.andDo(print()));
+this.mvc.perform(
+	get(URL4))
+	.andExpect(status().isOk())
+	.andExpect(jsonPath("valorTotal",	is(177.0)))
+	.andExpect(jsonPath("pedido",	greaterThan(3)))
+	.andExpect(jsonPath("mensagem",
+			equalTo("Pedido	efetuado com sucesso")));
+}</pre>
+<p>Logo abaixo a imagem dos testes feito nos métodos Rest:</p>
+<br>
+<img src="imagens/jee7/testrest.png">
+<br>
+<p>Com esses testes, conseguimos testar	integralmente o	serviço de pedidos e a busca de	itens.</p>
+<br>
+<p>Na próxima seção,	veremos	como disponibilizar	a nossa aplicação em diferentes ambientes, com	diferentes servidores.</p>
+</section>
+<section id="pktapp">
+<h1>Empocotando e Disponiblizando o Aplicativo</h1>
+<p>O jeito padrão do Spring	Boot é disponibilizar o sistema	inteiro (servidor e	aplicação) dentro de	 um	 pacote	 JAR. É	a alternativa mais	simples	possível.</p>
+<p>Para	obter o JAR, basta executar o comando:</p>
+
+<pre>
+mvn	install
+java -jar target/sabor-e-arte-delivery-1.0.0-SNAPSHOT.jar
+</pre>
+<p>E o seu JAR está	pronto para uso, e pode	ser publicado no servidor de produção.</p>
+</section>
+<section id="jarexe">
+<h2>Jar Executável</h2>
+<p>Usamos manualmente o	comando	 java -jar para	subir o sistema. Temos a desvantagem de, se	acontecer	 algum reboot do servidor, o sistema ficará fora do ar.</p>
+<p>Para	solucionar esse	problema, é sugerido que use o sistema como serviço. Com isso, se a	máquina	 reiniciar,	o sistema operacional automaticamente sobe	o serviço, e consequentemente o	sistema.</p>
+<p>Para	usar o JAR	como serviço, é	preciso	informar no arquivo pom.xml	 essa opção:</p>
+
+<pre class="brush:xml">
+<plugin>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-maven-plugin</artifactId>
+<configuration>
+<executable>true</executable>
+</configuration>
+</plugin>
+</pre>
+
+<p>Ao gerar	o pacote, ele pode ser usado como serviço,	por exemplo, em	 servidores	 Linux	 atuais	 que são gerenciados pelo Systemd(Ubuntu 15.4 ou superior).	É só copiar	o JAR gdd.jar para o diretório		/var/run/springboot. Em seguida, no	diretório /etc/systemd/system, adicionamos o arquivo gdd.service:</p>
+
+<pre>
+[Unit]
+Description=gdd
+After=syslog.target
+[Service]
+User=root
+ExecStart=/var/run/springboot/gdd.jar
+SuccessExitStatus=143
+[Install]
+WantedBy=multi-user.target
+</pre>
+<p>Com isso, podemos ativar o serviço com:</p>
+<pre>systemctl	enable	gdd.service</pre>
+<p>Derrubar	o serviço com:</p>
+<pre>systemctl stop gdd.service</pre>
+<p>E subir o serviço com:</p>
+<pre>systemctl start gdd.service</pre>
+<p>Veja	um exemplo de exibir o status do serviço:</p>
+<pre>
+#systemctl	status	gdd.service
+● gdd.service -	gdd
+ Loaded: loaded(/etc/systemd/system/gdd.service;
+ Active: active(running) since	Sun	2017-04-09	
+ Main PID: 11880(gdd.jar)
+ Tasks: 34 (limit:4915)
+ Memory:141.4M
+ CPU: 44.370s
+ CGroup: /system.slice/gdd.service
+		 ├─11880 /bin/bash/var/run/springboot/gdd.jar
+		 └─11911 /usr/sbin/java	-Dsun.misc.URLClassPath
+</pre>
+<p>Para	 as	distribuições mais antigas,	baseados no	 System	V, a instalação	é mais simples.	Basta criar	um link simbólico:</p>
+<pre>
+sudo ln	-s	/var/run/springboot/gdd.jar	/etc/init.d/gdd
+</pre>
+<p>Com	isso, podemos derrubar o serviço com:</p>
+<pre>service gdd stop</pre>
+<p>E subir o serviço com:</p>
+<pre>service gdd start</pre>
+<p>Para	customizar parâmetros da VM	do serviço criado, usamos um arquivo no mesmo lugar	do JAR com a	 extensão .conf.</p>
+<p>Editamos	o arquivo <b>/var/run/springboot/gdd.conf</b> adicionando a seguinte linha:</p>
+<pre>JAVA_OPTS=-Xmx1024M</pre>
+<p>Ao reiniciar	o serviço, as novas	configurações serão	aplicadas.</p>
+<br>
+
+<p>Não existe um suporte oficial para Windows, mas existe uma alternativa de usar o	Windows	Service	 Wrapper (<A HREF="https://github.com/kohsuke/winsw"target="_blank">https://github.com/kohsuke/winsw</A>).	Veja mais em: <a href="https://github.com/snicoll-scratches/spring-boot-daemon" target="_blank">https://github.com/snicoll-scratches/spring-boot-daemon</a>.</p>
+<section id="pktwar">
+<h2>War</h2>
+<p>Em	alguns	ambientes de produção mais conservadores, não existe a opção de	subir um JAR simples;	é preciso subir um pacote WAR,	de acordo com o padrão	Java EE. Para esses	casos, existe a opção	de	gerar o WAR. O Spring Boot automaticamente	colocará todas as bibliotecas necessárias dentro desse	pacote</p>
+<br>
+<p>Para	gerar um pacote WAR, basta alterar no pom.xml:</p>
+<pre>&ltpackaging>war&lt/packaging></pre>
+<p>E depois execute  o maven:</p>
+<pre>
+mvn	install
+du -h	target/*.war
+35M	target/sabor-e-arte-delivery-1.0.0-SNAPSHOT.war</pre>
+<p>Com	isso, o	pacote WAR pode	ser	publicado em um	Tomcat, Jetty, JBoss ou	WildFly, sem nenhum	problema.</p>
+</section>
+<section id="tomcatundjett">
+<h2>TomCat/Jetty/Underflow</h2>
+<p>Os diferentes contêineres de	 aplicação existentes possuem vantagens e desvantagens, e foge do escopo discutir cada  uma	 delas.	 O que é importante	saber é	 entender de que maneira podemos alterar o contêiner usado.</p>
+<br>
+<p>A implementação de contêiner	web	 padrão	é Tomcat. Mas podemos mudar	para o Jetty, veja:</p>
+<pre class="brush:xml">
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-web</artifactId>
+<exclusions>
+<exclusion>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-tomcat</artifactId>
+</exclusion>
+</exclusions>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-jetty</artifactId>
+</dependency>
+</pre>
+<br>
+<img src="imagens/jee7/jettyserv.png">
+<br>
+
+<p>Da mesma	maneira, podemos trocar	pelo Undertow:</p>
+<pre class="brush:xml">
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-web</artifactId>
+<exclusions>
+<exclusion>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-tomcat</artifactId>
+</exclusion>
+</exclusions>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-undertow</artifactId>
+</dependency>
+</pre>
+
+
+<br>
+<img src="imagens/jee7/undertow.png">
+<br>
+<p>Existem dezenas de configurações	de contêiner(todas começam com server.)	 para colocar no arquivo application.properties	: algumas específicas para Tomcat, Jetty ou	Undertow, e	outras	genéricas, como	essa:</p>
+<pre>server.compression.enabled=true</pre>
+<p>Todas as	configurações genéricas	serão aplicadas	ao	contêiner escolhido	 para rodar. Se	por	acaso	 existir uma configuração específica para Tomcat, e	o sistema subir com	 o Jetty, a configuração é simplesmente	 ignorada e o sistema sobe sem problemas.</p>
+<br>
+<p>Na próxima seção, vamos ver	como usar o	Spring	Boot na nuvem.</p>
+</section>
+  <section id="subirnuvem">
+<h1>Subindo para Nuvem</h1>
+<p>Quando usamos ambientes diferentes, temos um	 problema comum: os servidores	mudam, usuários	e	senhas também. Para gerenciar essas mudanças, usamos o	esquema	de perfil(profile) do Spring Boot.</p>
+</section>
+<section id="perfil">
+<h2>Profiles</h2>
+<p>Os profiles(perfis) são usados para a aplicação rodar com uma configuração diferenciada.	 Isso é	muito útil para	rodar o	 sistema em	 bancos	 de	 dados	 diferentes, ou	 algum	comportamento no sistema que	só é ativado em	produção.</p>
+</section>
+<section id='envemail'>
+<h3>Enviar Emails</h3>
+<p>O envio	de	e-mails	é	um	bom	exemplo	de	uma	funcionalidade que	 deve	existir	 apenas	 em	 produção.	Porém,	como diferenciar isso no sistema?
+Vamos inicialmente implementar uma notificação para confirmar um pedido	realizado no nosso sistema de	 delivery.	A rotina de	envio será	uma	interface:</p>
+<pre class="brush:java">
+package	com.alpis.delivery.dto;
+public interface Notificacao	{
+boolean	envioAtivo();
+}
+</pre>
+<p>Uma classe utilitária de	envio de e-mail	para cada pedido fará um  teste	 com o	método	 	 envioAtivo	 e,	 apenas	 em	 caso afirmativo,	fará o envio da	notificação	ao	cliente.</p>
+<pre class="brush:java">
+@Component
+public class EnviaNotificacao	{
+@Autowired
+Notificacao	notificacao;
+public void enviaEmail(Cliente	cliente,Pedido	pedido)	{
+if (notificacao.envioAtivo())	{
+/*	codigo	de	envio					*/
+	System.out.println("Notificacao	enviada!");
+	}	else	{
+	System.out.println("Notificacao	desligada!");
+		}
+	}
+}
+</pre>
+<p>Vamos alterar a nossa classe	de NovoPedidoController	 para enviar a notificação após	um	novo	pedido:</p>
+<pre class="brush:java">
+this.clienteRepository.saveAndFlush(c);
+enviaNotificacao.enviaEmail(c,pedido);
+</pre>
+<p>Vamos criar uma implementação da interface de produção chamada ProdNotificacaoConfig, que retorna true(pois	o envio	de	e-mails	deve funcionar	apenas	em	produção).</p>
+<pre class="brush:java">
+@Component
+@Profile("prod")
+public class ProdNotificacaoConfig	implements	Notificacao	{
+@Override
+public	boolean	envioAtivo()	{
+return	true;
+}
+}
+</pre>
+
+<p>A classe	<b>ProdNotificacaoConfig</b> possui a anotação <b>@Profile("prod")</b>, indicando que	será instanciada apenas quando esse	perfil estiver ativo. Já a classe <b>DevNotificacaoConfig</b>possui	 a	 anotação <b>@Profile("!prod")</b>,	indicando que será instanciada quando o perfil ativo for diferente	de prod. Para definirmos um	 perfil	 padrão, podemos colocar no application.properties:</p>
+<pre clas="brush:java">
+#profile
+spring.profiles.active=dev</pre>
+<p>Nas variáveis de ambiente, também é possível visualizar o ambiente usado:</p>
+<br>
+<img src="imagens/jee7/envdev.png">
+<br>
+<p>Fazendo o teste do pedido usando o modo desenvolvedor:</p>
+<br>
+<img src="imagens/jee7/mododev.png">
+<br>
+<p>Ao fazer	o pedido, observamos nos logs que a	mensagem não foi	enviada	(como	esperado) , porem a notificação por e-mail está desativado.</p>
+
+<br>
+<img src="imagens/jee7/notfydesl.png">
+<br>
+
+
+<p>Para	testar o perfil prod e sobrescrever o valor definido em application.properties,	use	a opção	de	linha de comando:</p>
+<pre class="brush:java">
+mvn	spring-boot:run	
+-Drun.arguments="--spring.profiles.active=prod"
+</pre>
+<p>Veja que agora mudou:</p>
+<br>
+<img src="imagens/jee7/mdenv.png">
+<br>
+<p>Fazendo pedidos no modo produção</p>
+<br>
+<img src="imagens/jee7/modoprod.png">
+<br>
+<p>Notificação do email enviado:</p>
+<br>
+<img src="imagens/jee7/notifenv.png">
+<br>
+
+<p>Aqui	 temos	uma poderosa ferramenta	 para manipular	 os sistemas com Spring	Boot. Sem nenhuma alteração	 no	 códigofonte, apenas passando um parâmetro definindo o profile, conseguimos	mudar	completamente o	comportamento do sistema.</p>
+<p>Usamos um exemplo simples de	 envio de e-mails apenas em produção. Mas isso pode	 se	 estender a	 outros	 níveis, como por exemplo, profile	de diferentes bancos de dados ou diferentes servidores.</p>
+</section>
+<section id="perfilherok">
+<h2>Usando Profiles para Heroku</h2>
+<p>Cada	perfil	novo do	Spring	Boot é um arquivo properties novo. Vamos criar um em nosso exemplo para	 usar o banco de dados MySQL e H2 local  e Postgres para nuvem.</p>
+<p>É bem comum	o banco	de	dados local	ser	diferente do servidor de nuvem,	pois informações de conexão certamente não serão iguais. Portanto, o profile ajuda a aplicação se ajustar conforme a necessidade.</p>
+<p>As dependências do Mysql e H2 Database já foram colocadas no início do projeto.</p>
+<br>
+<p>Vamos criar o arquivo para trabalhar	localmente,	o <b>application-mysql.properties</b>:</p>
+<pre class="brush:java">
+# jpa
+spring.jpa.show-sql=true
+spring.datasource.url=	jdbc:mysql://localhost:3306/saboreartedb
+spring.datasource.username=admsaboreartedb
+spring.datasource.password=saboreartedbcod
+spring.jpa.hibernate.ddl-auto=create-drop
+# rest
+spring.data.rest.base-path=/api
+# template
+spring.thymeleaf.cache=false
+# Hypermedia As	The	Engine Of Application	State
+spring.hateoas.use-hal-as-default-json-media-type=false
+# permite acesso ao Actuator
+management.security.enabled=false
+# profile
+spring.profiles.active=mysql
+
+</pre>
+<p>Ciraremos o arquivo externo <b>applicaion.properties</b> que uilizará o perfil de desenvolvedor com o Banco H2 e faremos testes antes de colocar em produção no mysql local e na nuvem.</p>
+<pre class="brush:java">
+# h2
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+# jpa
+spring.jpa.show-sql=true
+spring.datasource.url=jdbc:h2:mem:saboreartedb
+
+#rest
+spring.data.rest.base-path=/api
+
+# template
+spring.thymeleaf.cache = false
+
+# Hypermedia As The Engin   e Of Application State
+spring.hateoas.use-hal-as-default-json-media-type=false
+
+# banner
+spring.banner.image.width=150
+
+# permite acesso ao Actuator
+management.security.enabled=false
+
+# profile
+spring.profiles.active=dev
+</pre>
+<p>Criaremos agora o arquivo para trabalhar na nuvem <b>application-heroku.properties</b> que vai trabalhar com o banco de dados Postgres:</p>
+<p>Vamos adcionar a dependência que falta:</p>
+<pre class="brush:xml">
+<dependency>
+<groupId>org.postgresql</groupId>
+<artifactId>postgresql</artifactId>
+<scope>runtime</scope>
+</dependency>
+</pre>
+
+<p> vamos utilizar o Postgres no Heroku, então criaremos um arquivo especial para ele.
+O arquivo será o src/main/resources/application-heroku.properties. Ele irá sobrescrever
+algumas das propriedades que estão no application.properties. </p>
+
+<pre class="brush:java">
+
+
+# 
+
+# Ative esse profile com:
+
+#
+
+# mvn spring-boot:run -Drun.arguments="--spring.profiles.active=heroku"
+
+# 
+
+# jpa
+
+spring.jpa.show-sql=true
+
+
+spring.datasource.url=${JDBC_DATABASE_URL}
+
+spring.datasource.username=
+
+spring.datasource.password=
+
+spring.jpa.hibernate.ddl-auto=create-drop
+
+</pre>
+<p>A propriedade url ganha o valor referente à variável de ambiente
+<b>JDBC_DATABASE_URL</b>. Ela é configurada pelo Heroku e, portanto, não precisamos
+nos preocupar.
+As propriedades username e password devem ficar vazias, sobrescrevendo o
+arquivo <b>application.properties</b>. Esses dois valores já estão junto com a url.</p>
+<p>
+  <br>
+
+<p>O Spring Boot permite que você externalize sua configuração para poder trabalhar com o mesmo código de aplicativo em diferentes ambientes. Você pode usar arquivos de propriedades, arquivos YAML, variáveis de ambiente e argumentos da linha de comandos para externalizar a configuração.
+</p>
+<br>
+<p> Se quisermos substituir o mysql usado localmente pelo postgres faremos de duas maneiras. Lembrando que o ideal é não utilizar os arquivos simultaneamente.</p>
+<br>
+<p> Com arquivos YAML, criando o arquivo application.yml:</p>
+<br>
+<pre class="brush:java">
+datasource:
+  url: jdbc:postgresql://localhost/saboreartedb
+  username: admsaboreartedb
+  password: saboreartedbcod
+  
+  driverClassName: org.postgresql.Driver
+ 
+ spring:
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+    # excluded-view-names:
+    # template-resolver-order:
+    # view-names:
+
+logging:
+  level:
+    root: WARN
+    com.memorynotfound: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+
+</pre>
+<p>Uma outra forma é desabilitando a configurção do Datasource automático através de anotações:</p>
+<pre class="brush:java">
+  @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
+  </pre>
+<p>Use essa anotação na classe main da aplicação. Veja o ó exemplo do código a seguir: </p>
+<pre class="brush:java">
+  package br.com.alpis.saboreartedelivery;
+
+import javax.sql.DataSource;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+@SpringBootApplication
+@ComponentScan(basePackages = "br.com.alpis")
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
+public class SaboreArteDeliveryApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(SaboreArteDeliveryApplication.class, args);
+  }
+  
+  @Bean
+  public DataSource dataSource(){
+      DriverManagerDataSource dataSource = new DriverManagerDataSource();
+      dataSource.setDriverClassName("org.postgresql.Driver");
+      dataSource.setUrl("jdbc:postgresql://localhost:5432/saboreartedb");
+      dataSource.setUsername( "postgres" );
+      dataSource.setPassword( "" );
+      return dataSource;
+  }
+}
+</pre>
+
+<p>Como	esperado, os parâmetros	de conexão ao banco	de	dados (spring.datasource.url) são diferentes	 nos arquivos <b>properties</b>.</p>
+
+<p>Para	subir o	perfil	MySQL, basta chamar	na linha de	comando:</p>
+<pre>
+mvn	spring-boot:run	
+-Drun.arguments="--spring.profiles.active=mysql"
+</pre>
+
+<p>Dentro do Eclipse, é possível escolher o perfil na opção Run	 e Debug Configurations:</p>
+<br>
+<img src="imagens/jee7/debugconfig.png">
+<br>
+</section>
+<section id="herok">
+<h2>Heroku</h2>
+<p>Heroku é	uma	empresa	que	oferece	serviço	de	hospedagem na nuvem (Platform-as-a-Service,	 ou	 PaaS)	 suportando	 várias linguagens de programação. Existem outras opções no	mercado, mas a maioria delas é paga. Então,	vamos usar o Heroku	 que oferece uma opção gratuita bem simples	de	usar.</p>
+<p>Depois de criamos uma conta gratuita no Heroku (<a href="https://www.heroku.com"target="_blank">https://www.heroku.com</a>), podemos criar uma nova aplicação <b>sabor-e-arte</b>, ou outro	nome que desejarmos.</p>
+<br>
+<img src="imagens/jee7/heroku.png">
+<br>
+<p>Em seguida, adicionamos um recurso (resource) de	banco de dados	MySQL, pois	o nosso	sistema	precisa	armazenar os dados em algum	lugar.</p>
+<br>
+<img src="imagens/jee7/recusrsoheroku.png">
+<br>
+<p>Vamos escolher a opção gratuita:</p>
+<br>
+<img src="imagens/jee7/herokufree.png">
+<br>
+<p>Em seguida, obtemos	as	informações	 de	acesso	remoto	ao banco de	 dados	na	opção Settings, dentro	da	variável <b>DATABASE_URL</b>. Podemos editar nosso app também.</p>
+<br>
+<img src="imagens/jee7/cleardatabase.png">
+<br>
+
+<p>Em seguida, subimos	os	fontes	no	repositório	Git	do	Heroku.
+  Para subir o projeto para o Heroku, vamos precisar do Git. Você pode baixá-lo no
+site <a href="https://git-scm.com/downloads"target="_blank">https://git-scm.com/downloads</a> e a instalação é bem simples.O Git é o gerenciador de código-fonte mais utilizado no mundo. É através dele
+que o Heroku recebe nosso código para depois compilar e publicar.</p>
+</p>Existe a opção	de	ligar	o	projeto	ao	 GitHub	ou	ao	 Dropbox,	se	os
+fontes	 estiverem	 lá. Entretanto,	 vamos	 usar	 as	 fontes	 de	 nenhum
+repositório	remoto,	e	sim	do	nosso	diretório	local	da	máquina.</p>
+<p>Vamos	 fazer	 um	 exemplo	 no	 qual	 os	 fontes	 do	 Heroku	 estão
+no	 diretório	 	 heroku	 ,	 e	 o	 projeto	 	 spring-boot-sabor-e-arte-delivery	 	foi	copiado	para	dentro	dele.</p>
+<pre>
+#	cd	heroku
+#	cd	spring-boot-sabor-e-arte-delivery
+#	rm	-rf	.git
+#	git	init
+</pre>
+<p>Aqui	precisamos	criar	o	arquivo		Procfile	 	na	raiz	do	projeto,
+já	que	ele	é	o	ponto	de	partida	que	o	Heroku	vai	usar	logo	depois
+de	 baixar	 e	 compilar	 os	 seus	 fontes.	 Nele	 especificaremos	 que	 o
+nosso	sistema	é	uma	aplicação	JAR	e	que	usará	o	profile		heroku	 :</p>
+
+<pre>
+web java -Dserver.port=$PORT $JAVA_OPTS -jar target/sabor-e-arte-delivery-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:application-heroku.properties -Dspring.profiles.active=heroku
+</pre>
+
+<p>Em	seguida,	vamos	adicionar	ao	 	git	,	 commitar	 e	 fazer	 um
+	push	 	(enviar)	ao	servidor	do	Heroku.</p>
+
+<pre>
+#	git	add	.
+#	git	commit	-am	"teste	na	nuvem do heroku"
+#	git	push	heroku	master
+</pre>
+<p>Ao	fazer	esses	comandos	do	Git,	os	nossos	arquivos	fontes	são
+enviados	ao	repositório	remoto.</p>
+
+<p>Uma	opção	interessante	para	acompanhar	os	processos	e	logs
+da	 aplicação	 na	 nuvem	 é	 usar	 o	 Heroku	 CLI	 (antigo	 Heroku
+Toolbelt),	 que	 existe	 para	 diversas	 plataformas.	 Acesse
+<a href="https://devcenter.heroku.com/articles/heroku-cli"target="_blank">https://devcenter.heroku.com/articles/heroku-cli</a></p>
+
+<p>Obrigatoriamente, para configurar nossa aplicação, precisamos estar logados no
+Heroku pelo terminal. Fazemos isso com o comando login. DE Dentro do diretório <b>heroku/spring-boot-sabor-e-arte-delivery </b> digite este comando:</p>
+<pre> heroku login</pre>
+<p>Será pedido um usuário e senha para você. São os mesmos que você informou no
+cadastro dentro do site.</p>
+<p>Agora podemos criar nossa aplicação lá dentro do Heroku.</p>
+<pre>heroku create sabor-e-arte</pre>
+<p>Usamos o comando create para isso. O parâmetro passado é o nome que nossa
+aplicação irá ter no Heroku. O nome não é obrigatório e se não for passado, um
+aleatório será gerado para você.
+O nome de uma aplicação no Heroku deve ser único em todo o mundo! Caso
+você utilize um que já existe, receberá uma mensagem de erro.</p><br>
+<p>Criamos a aplicação mas caso queira criar obanco de dados  Postgres via <b>CLI</b> o comando é esse:<p>
+
+<pre> heroku addons:create heroku-postgresql:hobby-dev</pre>
+<p>Até aqui temos a aplicação e o banco configurados, basta enviar ela agora com o
+comando push do Git.</p>
+<p>Espere o processo acima encerrar e acesse o endereço <a href="https://sabor-e-arte.herokuapp.com/"target="_blank">https://sabor-e-arte.herokuapp.com/</a>. Para facilitar, você pode executar o
+comando open do Heroku CLI, que ele já abre o browser no endereço correto para
+você.<p>
+<pre>heroku open</pre>
+
+<p>É interessante conhecer também outros dois comandos do Heroku. O primeiro é
+<b>logs --tail</b> e o segundo é o <b>ps</b>.<p>
+<p>O comando <b>logs --tail</b>, bem intuitivo, serve para exibir os logs, a medida que
+forem ocorrendo dentro da sua aplicação.</p>
+<pre> heroku logs --tail</pre>
+<p>Por último, o comando <b>ps</b> serve para que você veja alguns detalhes sobre a sua
+hospedagem. Ao executá-lo:<p>
+
+<pre>
+#	heroku	ps
+</pre>
+<p>O comando logs serve para somente exibir os logs da aplicação.</p>
+<pre>
+#	heroku	logs
+</pre>
+
+<p>Vamos fazer uma alteração mínima desativado os links da h2 console e liveload no layoult da página inicial, pois foi configurado para funcionar localmente em modo desenvolvimento. Veja as alterações feitas pelo console utilizando os comandos CLI na figura abaixo:</p>
+<br>
+<img src="imagens/jee7/admcmdcli.png">
+<br>
+<p>Com  o deploy  no  ar, podemos testar  no  browser. </p>
+<br>
+<img src="imagens/jee7/deploy.png">
+<br>
+<p>Podemos	acompanhar	também	pelo	site	da	Heroku	como	 está
+o	 nosso	 sistema.	 É	 só	 logar	 e	 entrar	 nos	 detalhes	 da	 aplicação
+criada.</p>
+
+<br>
+<img src="imagens/jee7/detalheativ.png">
+<br>
+<p class="nav-arq" id="referencia"> Aplicativo Web Bookstore<a href="springwebmvc.html">&laquo; anterior | <a href="">próximo >> &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/springboot" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>

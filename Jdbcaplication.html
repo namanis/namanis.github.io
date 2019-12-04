@@ -1,0 +1,883 @@
+
+<!DOCTYPE html>
+ <html lang="pt-br">
+
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+  <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+ 
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+       <a class="w3-bar-item w3-button"  href="#buildingbd">17 - CONSTRUINDO APLICAÇÕES DE BANCO DE DADOS COM JDBC </a>
+            <a class="w3-bar-item w3-button"  href="#jdbcintrod">Introdução ao JDBC</a>
+          <a class="w3-bar-item w3-button"  href="#configbd">Configurando o banco de dados</a>
+          <a class="w3-bar-item w3-button"  href="#conectbd">Conectando-se a um banco de dados</a>
+          <a class="w3-bar-item w3-button" href="#conectbddrvmg">Conectando-se ao banco de dados usando DriverManager</a>
+       <a class="w3-bar-item w3-button"  href="#consatualbd">Consultando e atualizando o banco de dados</a>
+          <a class="w3-bar-item w3-button"  href="#interfstatem">Interface Statement </a>
+          <a class="w3-bar-item w3-button"  href="#interfresult">Interface ResultSet</a>
+           <a class="w3-bar-item w3-button"  href="#consultbd">Consultando o Banco de Dados</a>
+          <a class="w3-bar-item w3-button"  href="#atualizabd">Atualizando o Banco de Dados</a>
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+    
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+   
+
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top  w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+<section id="buildingbd">
+<h1>Construindo Aplicações de Banco de Dados com JDBC</h1>
+
+
+<p>O JDBC (Java Database Connectivity) é uma API Java importante que define como um cliente acessa um banco de dados. Como tal, é fundamental na criação de soluções Java corporativas de larga escala.</p>
+<p>Em um nível alto, a interação com um banco de dados envolve as seguintes etapas:</p>
+<ul>
+<li>1. Estabeleça uma conexão com um banco de dados.</li>
+<li>2. Execute consultas SQL para recuperar, criar ou modificar tabelas no banco de dados.</li>
+<li>3. Feche a conexão com o banco de dados.</li>
+</ul>
+<p>Java fornece um conjunto de APIs (JDBC) para realizar essas atividades com bancos de dados. Você pode usar o JDBC para estabelecer uma conexão com um banco de dados, executar sua consulta SQL e fechar a conexão com o banco de dados.
+O benefício do JDBC é que você não está escrevendo um programa para um banco de dados específico. O JDBC cria um acoplamento flexível entre seu programa Java e o tipo de banco de dados utilizado. Por exemplo, os bancos de dados podem diferir como eles estabelecem uma conexão (o nome da API pode diferir e assim por diante). O JDBC oculta toda a heterogeneidade desses bancos de dados e oferece um único conjunto de APIs que você pode usar para interagir com todos os tipos de bancos de dados. Observe que o JDBC suporta apenas bancos de dados relacionais, como MySQL, Oracle, Microsoft SQL e DB2. Ele não suporta bancos de dados de nova geração (também conhecidos como bancos de dados NoSQL), como o MongoDB e o Neo4j.</p>
+<p>As classes e interfaces JDBC fazem parte dos pacotes java.sql. * E javax.sql. *. Este capítulo pressupõe que você já esteja familiarizado com as consultas SQL e tenha algum conhecimento básico dos conceitos de banco de dados. O capítulo descreve o JDBC 4.2, que faz parte do lançamento do Java SE 8.</p>
+<br>
+
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+</section>
+<section id="jdbcintrod">
+<h1>Introdução ao JDBC</h1>
+
+<p>Vamos examinar os componentes vitais do JDBC e como esses componentes funcionam juntos para alcançar uma integração perfeita com os bancos de dados. Uma arquitetura simplificada do JDBC é representada na Figura abaixo. Um aplicativo Java usa APIs JDBC para interagir com bancos de dados. As APIs do JDBC interagem com o gerenciador de drivers JDBC para se conectar de forma transparente e executar várias atividades de banco de dados com diferentes tipos de bancos de dados. O gerenciador de drivers JDBC usa vários drivers JDBC para conectar-se a seus DBMSs específicos.</p>
+<br>
+<img src="imagens/jee7/jdbcint.jpg">
+<p><i>Arquitetura JDBC</i></p>
+<br>
+
+
+<p>Os drivers JDBC e o gerenciador de drivers desempenham um papel fundamental na realização do objetivo do JDBC. Os drivers JDBC são projetados especificamente para interagir com seus respectivos DBMSs. O gerenciador de drivers funciona como um diretório de drivers JDBC - ele mantém uma lista de fontes de dados disponíveis e seus drivers. O gerenciador de driver escolhe um driver apropriado para se comunicar com o respectivo DBMS. Ele pode gerenciar vários drivers concorrentes conectados às suas respectivas fontes de dados.</p>
+
+<p>Você pode ver na figura que a complexidade de interações heterogêneas é delegada ao gerenciador de drivers JDBC e aos drivers JDBC. Detalhes de baixo nível e a complexidade associada são ocultados do desenvolvedor do aplicativo pela API do JDBC.</p>
+</section>
+<section id="configbd">
+<h2>Configurando o banco de dados</h2>
+
+<p>Antes de começar a explorar as APIs do JDBC e seu uso, você deve configurar um banco de dados com o qual trabalhar. O banco de dados precisa ser configurado adequadamente antes que você possa começar a escrever programas JDBC. Você pode usar qualquer banco de dados. Os exemplos neste capítulo usam o MySQL para explicar vários aspectos das APIs do JDBC, porque esse banco de dados é gratuito e está amplamente disponível. Esta seção mostra as etapas para configurar um banco de dados MySQL em sua máquina, supondo que você use o Windows (se você estiver usando um sistema operacional diferente, as etapas serão um pouco diferentes).</p>
+<ul>
+<li>1. Baixe o instalador mais recente do MySQL da página de download do MySQL (www.mysql.com/downloads/mysql).</li>
+<li>2. Invoque o instalador do MySQL e siga todas as etapas mostradas pelo assistente de instalação. Mantenha os valores padrão e conclua a instalação. O instalador pede que você forneça uma senha root / admin; lembre-se, porque é usado nos exemplos.</li>
+<li>3. Invoque o cliente de linha de comando do MySQL (no nosso caso, é Cliente de Linha de Comando do MySQL 5.5, mostrado no menu Iniciar). Você verá um prompt do MySQL assim que fornecer a senha root / admin.</li>
+</ul>
+<br>
+<p>O código a seguir configura um banco de dados e cria dois registros:</p>
+<pre class="brush:sql">
+Enter password: ********
+Welcome to the MySQL monitor. Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.5.27 MySQL Community Server (GPL)
+Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners.
+
+Digite 'help'; ou '\ h' para obter ajuda. Digite '\ c' para limpar a instrução de entrada atual.
+mysql> /* Vamos criar um banco de dados para nosso uso.*/
+mysql> create database addressBook;
+Query OK, 1 row affected (0.01 sec)
+mysql> /* Agora, vamos criar uma tabela nesse banco de dados e inserir dois registros para uso posterior */
+mysql> use addressBook;
+Database changed
+mysql> create table contact (id int not null auto_increment, firstName varchar(30) Not null, lastName varchar(30), email varchar(30), phoneNo varchar(13), primary key (id));
+Query OK, 0 rows affected (0.20 sec)
+mysql> insert into contact values (default, 'Alan', 'Santos', 'alans@abc.com', 
+'+919876543210');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into contact values (default, 'William', 'Becker', 'william@abc.com', 
+'+449876543210');
+Query OK, 1 row affected (0.03 sec)
+mysql> select * from contact;
++----+-----------+----------+-----------------+---------------+
+| id | firstName | lastName | email | phoneNo |
++----+-----------+----------+-----------------+---------------+
+| 1 | Alan| Santos| alans@abc.com | +919876543210 |
+| 2 | William | Becker | william@abc.com | +449876543210 |
++----+-----------+----------+-----------------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> /* Este é o nosso Banco de Dados e ele está pronto para uso agora.*/
+</pre>
+</section>
+<section id="conectbd">
+<h1>Conectando-se a um banco de dados</h1>
+
+<p>A interface <b>Connection</b> do pacote <b>java.sql</b> representa uma conexão do aplicativo para o banco de dados.É um canal através do qual seu aplicativo e o banco de dados se comunicam. Na tabela as listas de métodos importantes na interface de conexão. Todos esses métodos geram <b>SQLExceptions</b>, portanto, isso não é mencionado.</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><td>Método</td><td>Descrição</td></tr>
+<tr><td>Statement createStatement()</td><td>Cria um objeto Statement que pode ser usado para enviar instruções SQL para o banco de dados.
+</td></tr>
+<tr><td>PreparedStatement prepareStatement(String sql)</td><td>Cria um objeto PreparedStatement que pode conter declarações SQL. A declaração SQL pode ter parâmetros IN; eles podem conter Símbolo(s), que são usados como espaços reservados para transmitir valores reais posteriormente.
+</td></tr>
+<tr><td>CallableStatement prepareCall(String sql)</td><td>Cria um objeto CallableStatement para chamar procedures stored no banco de dados. A instrução SQL pode ter parâmetros IN OR OUT; Elas podem conter o(s) símbolo(s), que são as mesmas para a subscrição dos reais.
+</td></tr>
+<tr><td>DatabaseMetaData getMetaData()</td><td>Obtém o objeto DataBaseMetaData. Esses metadados contêm informações sobre o esquema do banco de dados, informações sobre tabelas e assim por diante, o que é especialmente útil quando você não conhece o banco de dados subjacente.
+</td></tr>
+
+<tr><td>Clob createClob()</td><td>
+Retorna um objeto Clob (Clob é o nome da interface). Character Large Object (CLOB) é um tipo embutido no SQL; ele pode ser usado para armazenar um valor de coluna em uma linha de uma tabela de banco de dados.
+</td></tr>
+
+<tr><td>Blob createBlob()</td><td>Retorna um objeto de Blob (Blob é o nome da interface). Binary Large Object (BLOB) é um tipo embutido em SQL; ele pode ser usado para armazenar um valor de coluna em uma linha de uma tabela de banco de dados
+</td></tr>
+
+<tr><td>void setSchema(String schema)</td><td>Quando passado o nome do esquema, define esse objeto Connection para o esquema do banco de dados a ser acessado.</td></tr>
+
+<tr><td>String getSchema()</td><td>Retorna o nome do esquema do banco de dados associado a este objeto Connection; retorna null se nenhum esquema estiver associado a ele</td></tr>
+</table>
+</div>
+<br>
+
+</section>
+<section id="conectbddrvmg">
+<h1>Conectando-se ao banco de dados usando DriverManager</h1>
+
+<p>A primeira etapa para se comunicar com seu banco de dados é configurar uma conexão entre seu aplicativo e o servidor de banco de dados. Estabelecer uma conexão exige entender o URL do banco de dados, então vamos discutir isso agora.</p>
+<p><b>Aqui está o formato geral do URL do JDBC:</b></p>
+
+<p>Um exemplo de uma string de URL é jdbc:mysql://localhost:3306/:</p>
+<ul>
+<li>1- jdbc(&ltprotocol>) é o mesmo para todos os DBMSs.</li>
+<li>2- &ltsubprotocolo> é diferente para cada SGBD - é o mysqlin neste caso. Às vezes, inclui o nome do fornecedor (ausente neste exemplo).</li>
+<li>3- O formato de &ltsubnome> depende do banco de dados, mas seu formato geral é //&ltservidor>:&ltporta>/banco de dados.</li>
+<li>4- &ltservidor> depende do local em que você hospeda o banco de dados. Cada DBMS usa um número &ltport> específico (3306 no caso do MySQL). Finalmente, o nome do banco de dados é fornecido</li>
+</ul>
+
+<p>Aqui estão mais alguns exemplos</p>
+<pre>
+jdbc:postgresql://localhost/test
+jdbc:oracle://127.0.0.1:44000/test
+jdbc:microsoft:sqlserver://himalaya:1433
+</pre>
+<p>Agora, vamos escrever um aplicativo simples para adquirir uma conexão:</p>
+<pre class="brush:java">
+//DbConnect.java
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+// A classe tenta adquirir uma conexão com o banco de dados
+
+class DbConnect {
+public static void main(String[] args) {
+// URL aponta para o protocolo JDBC: mysql subprotocol;
+// localhost é o endereço do servidor em que instalamos nosso
+// DBMS (ou seja, na máquina local) e 3306 é a porta na qual
+// precisamos entrar em contato com nosso DBMS
+String url = "jdbc:mysql://localhost:3306/";
+// estamos nos conectando ao banco de dados do addressBook que criamos anteriormente
+String database = "addressBook";
+// fazemos login como usuário "root" com a senha "mysql123"
+String userName = "root";
+String password = "mysql123";
+try (Connection connection = DriverManager.getConnection
+(url + database, userName, password)){
+System.out.println("Database connection: Successful");
+} catch (Exception e) {
+System.out.println("Database connection: Failed");
+e.printStackTrace();
+}
+}
+}
+</pre>
+<p>Vamos analisar o programa passo a passo:</p>
+<ul>
+<li>1. A URL jdbc: mysql://localhost:3306/ indica que jdbc é o protocolo e mysql é um subprotocolo; localhost é o endereço do servidor em que instalamos nosso DBMS (a máquina local) e 3306 é a porta na qual entrar em contato com o DBMS. (Observe que esse número de porta é diferente quando você usa algum outro banco de dados. Usamos o número de porta padrão fornecido pelo banco de dados MySQL, que pode ser alterado se necessário. Além disso, se você estiver usando outro banco de dados, o subprotocolo também será alterado.) precisa usar o banco de dados do catálogo de endereços com credenciais root.</li>
+
+<li>2. Você pode obter um objeto de conexão invocando o método DriverManager.getConnection(). O método espera a URL do banco de dados junto com um nome de banco de dados, nome de usuário e senha.</li>
+
+<li>3.Você precisa fechar a conexão antes de sair do programa. Este exemplo usa uma instrução try-with-resources; portanto, o método close() para a conexão é chamado automaticamente.</li>
+
+<li>4. Se algo der errado, você recebe uma exceção. Nesse caso, o programa imprime a  exceção  stack trace(rastreamento de pilha).</li>
+</ul>
+<p>Vá em frente e execute o programa. Aqui está a saída:</p>
+<pre>
+Database connection: Failed
+java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/addressBook
+at java.sql.DriverManager.getConnection(DriverManager.java:604)
+at java.sql.DriverManager.getConnection(DriverManager.java:221)
+at DbConnect.main(DbConnect.java:16)
+</pre>
+<p> Por que você pegou essa <b>SQLException</b>? Quando você tenta se conectar ao banco de dados usando o <b>JDBC</b>, o <b>DriverManager</b> procura pelo driver do <b>MySQL</b>. Você precisa instalar explicitamente os drivers relevantes - eles não fazem parte do JDK.</p>
+
+<p>Você pode baixar o conector para MySQL da sua página de download (http://dev.mysql.com/downloads/connector/j). Não esqueça de adicionar o caminho do conector ao <b>CLASSPATH</b>. Se o conector nome é mysql-connector-java-5.1.21-bin.jar, armazenado em C:\mysql-connector-java-5.1.21, em seguida, adicione c:\mysql-connector-java-5.1.21\mysql-connector- java-5.1.21-bin.jarto o CLASSPATH</p>
+
+<p>É um erro comum esquecer de adicionar o caminho do jar na variável de ambiente CLASSPATH. Nesse caso, a API do JDBC não poderá localizar o driver JDBC e lançará uma exceção. Lembre-se, digitar o caminho do jar não é suficiente: você precisa adicionar o nome do jar junto com o caminho completo para a variável CLASSPATH ou passar o caminho do arquivo jar com o comando –cp ao invocar a JVM.</p>
+
+<p>Atualize a variável CLASSPATH e tente novamente. Você pode obter outra exceção:</p>
+<pre>
+Database connection: Failed
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1074)
+[... rest of the stack trace elided ...]
+</pre>
+<p>Este programa fornece o nome de usuário “root” e a senha “mysql123”. Se você tiver definido a senha do usuário root para outra coisa, receberá essa exceção com a mensagem "acesso negado para o usuário". Há duas maneiras de corrigir esse problema. A primeira maneira é mudar o programa para dar sua senha ao invés do “mysql123” usado neste programa. A segunda maneira é redefinir a senha no banco de dados. Para o MySQL, você pode redefinir a senha da seguinte maneira para o usuário “root”:</p>
+<pre class="brush:sql">
+UPDATE mysql.user SET Password=PASSWORD('mysql123') WHERE User='root';
+FLUSH PRIVILEGES;
+</pre>
+<p>Aqui está a saída quando o programa é executado com sucesso:</p>
+
+<pre>Database connection: Successful</pre>
+
+<p>Quando você vê essa saída, isso significa que você é capaz de estabelecer uma conexão com o banco de dados. Se você quiser experimentar os programas no restante deste capítulo, você deve fazer com que este programa funcione em seu sistema; você precisa estabelecer uma conexão para consultar ou atualizar o banco de dados.</p>
+</section>
+<section id="drivermng">
+<h3>Entendendo a classe DriverManager</h3>
+
+<p>A classe <b>DriverManager</b> ajuda a estabelecer a conexão entre o programa (o usuário) e os drivers JDBC. Essa classe também monitora diferentes fontes de dados e drivers JDBC. Portanto, não há necessidade de carregar explicitamente o driver JDBC: O DriverManager procura um driver adequado e, se encontrado, o carrega automaticamente quando você chama o método getConnection(). O exemplo seguinte contém o código para obter a conexão (fornecida em uma instrução <b>try-with-resources</b>) quando você não carrega explicitamente o driver JDBC:</p>
+
+<pre class="brush:java">Connection connection = DriverManager.getConnection(url + database, userName, password);</pre>
+
+<p>O gerenciador de drivers também gerencia vários drivers simultâneos conectados às suas respectivas fontes de dados. Logo abaixo a lista de outros métodos importantes fornecidos na classe <b>DriverManager</b>, incluindo as versões sobrecarregadas de <b>getConnection()</b>:</p><br>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Métodos</th><th>Descrição</th></tr>
+<tr><td>static Connection getConnection(String url) static Connection getConnection(String url, Properties info) static Connection getConnection(String url, String user, String password)()</td><td>Tenta estabelecer uma conexão com o URL do banco de dados. Além disso, você pode fornecer informações, como nome de usuário e senha, diretamente como argumentos String ou por meio de um arquivo de propriedades. Este método lança uma SQLException se a conexão não puder ser estabelecida.
+</td></tr>
+<tr><td>static Driver getDriver(String url)</td><td>
+Pesquisa a lista de drivers JDBC registrados e, se encontrado, retorna o objeto Driver apropriado correspondente à URL do banco de dados.</td></tr>
+<tr><td>static void registerDriver(Driver driver)</td><td>Adicione à lista de objetos Driver registrados no DriverManager.</td></tr>
+
+<tr><td>static void deregisterDriver(Driver driver)</td><td>Cancela o registro de um driver da lista de objetos de driver registrados no DriverManager.</td></tr>
+</table>
+</ddiv>
+
+
+<p>Usando o método getDriver(), você pode carregar o driver passando o URL do banco de dados:</p>
+<pre class="brush:java">
+String url = "jdbc:mysql://localhost:3306/";
+Driver driver = DriverManager.getDriver(url);
+System.out.println(driver.getClass().getName());
+</pre>
+<p>Esse segmento de código imprime <b>com.mysql.jdbc.Driver</b>- esse é o nome completo do driver JDBC do MySQL e o DriverManager conseguiu carregá-lo. A partir desse objeto Driver, você pode estabelecer uma conexão chamando o método <b>connect()</b> e passando a URL do banco de dados e a referência opcional do arquivo de propriedades:</p>
+
+<pre class="brush:java">Connection connection = driver.connect(url, /*properties = */ null);</pre>
+
+<p>No arquivo de propriedades, você pode fornecer o nome de usuário e senha, além de quaisquer outros detalhes.</p>
+</section>
+<section id="consatualbd">
+<h1>Consultando e atualizando o banco de dados</h1>
+
+<p>Depois de estabelecer uma conexão com o banco de dados desejado, você pode executar várias operações nele. Operações comuns são conhecidas pelo acrônimo <b>CRUD(create, read, update, delete)</b>. Você pode ler dados usando uma declaração <b>SELECT SQL</b> e modificar o banco de dados usando <b>INSERT</b>, <b>UPDATE</b> e <b>DELETE</b>. O JDBC fornece duas interfaces importantes para suportar consultas: <b>Statement</b> e <b>ResultSet</b>. As próximas duas subseções discutem essas interfaces.</p>
+</section>
+<section id="interfstatem">
+<h2>Interface Statement</h2>
+
+<p>Como o nome sugere, o <b>Statement</b> é uma declaração SQL que pode ser usada para comunicar uma declaração SQL ao banco de dados conectado e receber resultados do banco de dados. Você pode formar consultas SQL usando <b>Statement</b> e executá-lo usando APIs fornecidas na interface <b>Statement</b> (ou em uma de suas interfaces derivadas). A declaração vem em três tipos: <b>Statement</b>, <b>PreparedStatement</b> e <b>CallableStatement</b>; estes são mostrados na hierarquia de herança em:</p>
+<br>
+<img src="imagens/jee7/statement.jpg">
+<p><i>A declaração da interface e suas subinterfaces</i></p><br>
+<p>Como você escolhe essas três interfaces de instrução para uma determinada situação? Vamos ver as diferenças:</p>
+<ul>
+<li> <b>Statement</b>: envia uma declaração SQL para o banco de dados sem nenhum parâmetro. Para usos típicos, você precisa usar essa interface. Você pode criar uma instância do Statement usando o método createStatement() na interface Connection.</li>
+<li> <b>PreparedStatement</b>: representa uma declaração SQL pré-compilada que pode ser personalizada usando parâmetros IN. Geralmente, é mais eficiente que um objeto Statement; Portanto, ele é usado para melhorar o desempenho, especialmente se uma declaração SQL for executada várias vezes. Você pode obter uma instância de PreparedStatement chamando o método preparedStatement() na interface Connection.</li>
+<li> <b>CallableStatement</b>: executa procedimentos armazenados. As instâncias de CallableStatement podem manipular IN, bem como os parâmetros OUT e INOUT. Você precisa chamar o método prepareCall() na interface Connection para obter uma instância dessa classe.</li>
+</ul>
+<p>Depois de criar um objeto <b>Statement</b> apropriado, você estará pronto para executar uma declaração SQL. A interface <b>Statement</b> fornece três métodos de execução: <b>executeQuery()</b>, <b>executeUpdate()</b> e <b>execute()</b>.Se sua declaração SQL for uma consulta <b>SELECT</b>, use o método <b>executeQuery()</b>, que retorna um <b>ResultSet</b> (discutiremos na próxima seção). Quando você deseja atualizar um banco de dados usando uma declaração INSERT, UPDATE ou DELETE, deve utilizar o método <b>executeUpdate()</b>, que retorna um inteiro refletindo o número atualizado de linhas. Se você não souber o tipo de declaração SQL, poderá usar o método <b>execute()</b>, que pode retornar vários conjuntos de resultados ou várias contagens de atualizações ou uma combinação de ambos.</p>
+<br>
+<p>Na tabela a seguir métodos importantes da interface Statement</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Métodos </th><th>Descrição</th></tr>
+		<tr><td>boolean execute(String sql)</td><td>Executa a consulta SQL fornecida. Este método retorna true se a consulta resultou em um ResultSet. Você pode recuperar o objeto ResultSet chamando o método getResultSet(). Esse método retorna false se a consulta SQL não tiver resultados ou se houver uma contagem de atualizações. Você pode usar o método getUpdateCount() para obter a contagem de atualizações. Em raras situações, esse método pode retornar vários ResultSets; Nesse caso, você pode chamar o método getMoreResults().
+</td></tr>
+<tr><td>ResultSet executeQuery(String sql)</td><td>Executa a consulta e retorna o objeto ResultSet como o resultado. Se não houver resultados, o método não retornará nulo; em vez disso, o objeto ResultSet retornado retornará false quando o método next () for chamado.
+</td></tr>
+<tr><td>int executeUpdate(String sql)</td><td>Executa consultas CREATE, INSERT, UPDATE ou DELETESQL. Ele retorna o número de linhas atualizadas (ou zero se não houver resultado, como com a declaração CREATE)
+</td></tr>
+<tr><td>Connection getConnection()</td><td>Retorna o objeto Connection com o qual o objeto Statement foi criado
+</td></tr>
+<tr><td>void close()</td><td>Fecha o banco de dados e outros recursos JDBC associados a esse objeto Statement. Chamar close() em um objeto Statement já fechado não tem efeito.
+</td></tr>
+</table>
+</div>
+<br>
+<p><i>Escolha o método executável relevante com base no tipo da declaração SQl. lembre-se de que cada método de execução retorna uma saída diferente. o método executeQuery() retorna um ResultSet, executeUpdate() retorna uma contagem de atualização e o método execute() pode retornar múltiplos ResultSets ou múltiplas contagens de atualizações ou uma combinação de ambos.</i></p><br>
+
+</section>
+<section id="interfresult">
+<h2>Interface ResultSet</h2>
+
+
+<p>Bancos de dados relacionais contêm tabelas. Cada tabela possui um conjunto de atributos (propriedades de um objeto modelado pela tabela) que são representados por colunas; linhas são registros contendo valores para essas propriedades. Quando você consulta um banco de dados, ele resulta em dados tabulares: um certo número de linhas contendo as colunas solicitadas pela consulta. Esses dados tabulares são chamados de <b>ResultSet</b>. Um <b>ResultSet</b> é uma tabela com cabeçalhos de coluna e valores associados solicitados pela consulta.</p>
+
+<p>Um <b>ResultSet</b> mantém um cursor apontando para a linha atual. Você pode ler apenas uma linha por vez, então você deve alterar a posição do cursor para ler/navegar por todo o <b>ResultSet</b>. Inicialmente, o cursor é definido para logo antes da primeira linha. Você precisa chamar o método <b>next()</b> no <b>ResultSet</b> para avançar a posição do cursor em uma linha. Este método retorna um valor booleano; Portanto, você pode usá-lo em um whileloop para iterar sobre o ResulSet inteiro.</p>
+<br>
+<p>Métodos úteis de ResultSet para mover o cursor:</p><br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Métodos</th><th>Descrição</th></tr>
+<tr><td>void beforeFirst()</td><td>Define o cursor antes da primeira linha no ResultSet.</td></tr>
+<tr><td>void afterLast()</td><td>Define o cursor logo após a última linha do ResultSet.</td></tr>
+
+<tr><td>boolean absolute(int rowNumber)</td><td>Define o cursor para o número da linha solicitado (posição absoluta na tabela - não em relação à posição atual)</td></tr>
+
+<tr><td>boolean relative(int rowNumber)</td><td>
+Define o cursor para o número da linha solicitado em relação à posição atual. rowNumber pode ser um valor positivo ou negativo: um valor positivo avança e um valor negativo retrocede em relação à posição atual.</td></tr>
+
+
+<tr><td>boolean next() </td><td>Define o cursor para a próxima linha do ResultSet.</td></tr>
+
+<tr><td>boolean previous()</td><td>Define o cursor para a linha anterior do ResultSet.</td></tr>
+
+</table>
+</div>
+
+
+
+
+<br>
+<img src="imagens/jee7/resultset.jpg">
+<p><i>A imagem acima mostra movendo o cursor chamando os métodos ResultSet</i></p>
+<br>
+<p>ResultSet também fornece um conjunto de métodos para ler o valor na coluna desejada na linha atual. Em geral, esses métodos vêm em dois tipos: o primeiro sabor usa um número de coluna como entrada e o segundo sabor aceita um nome de coluna como entrada. Por exemplo, os métodos para ler um valor double são double getDouble(int columnNumber) e double <b>getDouble(String columnName)</b>. De maneira semelhante, o <b>ResultSet</b> fornece métodos <b>get()</b> para todos os tipos básicos.</p>
+<p>Da mesma forma, <b>ResultSet</b> fornece um conjunto de métodos para atualizar valores na coluna desejada na linha selecionada. Esses métodos também vêm em duas variantes: void updateXXX(int columnNumber, XXX x) e void updateXXX(String columnName, XXX x), onde os métodos de atualização são definidos para vários tipos de dados representados como XXX.</p>
+</section>
+<section id="consultbd">
+<h2>Consultando o Banco de Dados</h2>
+
+<p>Agora você conhece todas as interfaces necessárias que são usadas para executar uma consulta SQL simples em um banco de dados: <b>Connection</b>, <b>Statement</b>, e <b>ResultSet</b>. A seguir é mostrado as etapas de alto nível para estabelecer conexão com o banco de dados, executar consultas SQL e processar os resultados.</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Connect</th><th>Query</th><th>Processa Resultados </th></tr>
+ <tr><td>DriverMAnager.getConnection() carrega os drivers e estabelece uma conexão. </td><td>Usa o objeto Connection, cria o relevane objeto de Statement. From Statement, executa Consultas SQL</td><td>Pega o objeto ResultSet. Processa suas linhas.</td></tr>
+</table>
+</div> 
+<p>Vamos consultar um banco de dados e imprimir a saída. Lembre-se de que você criou um banco de dados denominado <b>addressBook</b> e uma tabela denominada <b>contact</b> nesse banco de dados e inseriu duas linhas na tabela. Suponha que você queira imprimir o conteúdo da tabela;</p>
+<pre class="brush:java">
+//DbConnector.java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+// Utility class with method connectToDb() that will be used by other programs in this chapter
+public class DbConnector {
+public static Connection connectToDb() throws SQLException {
+String url = "jdbc:mysql://localhost:3306/";
+String database = "addressBook";
+String userName = "root";
+String password = "mysql123";
+return DriverManager.getConnection(url + database, userName, password);
+}
+}
+</pre>
+<pre class="brush:java">
+//DbQuery.java
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+// Program to illustrate how to query a database
+class DbQuery {
+public static void main(String[] args) {
+// Get connection, execute query, get the result set
+// and print the entries from the result rest
+try (Connection connection = DbConnector.connectToDb();
+Statement statement = connection.createStatement();
+ResultSet resultSet = statement.executeQuery("SELECT * FROM contact")){
+System.out.println("ID \tfName \tlName \temail \t\tphoneNo");
+while (resultSet.next()) {
+System.out.println(resultSet.getInt("id") + "\t"
++ resultSet.getString("firstName") + "\t"
++ resultSet.getString("lastName") + "\t"
++ resultSet.getString("email") + "\t"
++ resultSet.getString("phoneNo"));
+}
+}
+catch (SQLException sqle) {
+sqle.printStackTrace();
+System.exit(-1);
+}
+}
+}
+</pre>
+<p><b>A saída do programa será  a seguinte:</b></p>
+<pre>
+ID fName lName email phoneNo
+1 Alan Santos alans@abc.com +919876543210
+2 William Becker william@abc.com +449876543210
+</pre>
+
+<p>Vamos ver o que está acontecendo neste código, passo a passo:</p>
+<ul>
+<li>1- No método main(), há uma declaração <b>try-with-resources</b>. A primeira declaração é uma chamada para o método <b>connectToDb()</b>, que é definido no programa. O método <b>connectToDb()</b> simplesmente se conecta ao banco de dados (que você viu no último exemplo) e retorna um objeto Connection se tiver êxito.</li>
+
+<li> 2- A próxima instrução cria um objeto Statement da conexão.</li>
+
+<li> 3- O objeto Statement agora é usado para executar uma consulta. Você deseja buscar todas as colunas na tabela de contatos; Portanto, você escreve SELECT * FROM contact como uma consulta SQL. Você executa a consulta usando o método <b>executeQuery()</b> do objeto <b>Statement</b>. O resultado da consulta é armazenado em um objeto <b>ResultSet</b>.</li>
+
+<li>4- O objeto <b>ResultSet</b> é usado para imprimir os dados buscados. Você lê todos os valores da coluna na linha atual e faz o mesmo para cada linha no objeto <b>ResultSet</b>.</li>
+
+<li> 5-  Como você criou os objetos <b>Connection</b>, <b>Statement</b> e <b>ResultSet</b> em uma declaração <b>try-with-resources</b>, não é necessário chamar explicitamente <b>close()</b> nesses recursos. No entanto, se você não estiver usando <b>try-with-resources</b>, precisará liberá-los explicitamente em um bloco finally.</li>
+</ul>
+<br>
+<p>Aqui, você está usando nomes de coluna para ler os valores associados. Você pode usar números de coluna para fazer o mesmo trabalho. Aqui está o código modificado no <b>whileloop</b> para usar números de colunas:</p>
+<pre class="brush:java">
+while (resultSet.next()) {
+System.out.println(resultSet.getInt(1)
++ "\t" + resultSet.getString(2)
++ "\t" + resultSet.getString(3)
++ "\t" + resultSet.getString(4)
++ "\t" + resultSet.getString(5));
+}
+</pre>
+<p>Este código produz exatamente o mesmo resultado que o último exemplo. No entanto, é importante observar que aqui o índice da coluna começa em 1, não em 0.</p>
+
+<p>Ao se referir a colunas por índice de coluna, se você se referir a uma coluna por um índice que seja maior que o número total de colunas, obterá uma exceção. Por exemplo, se você alterar um dos índices da coluna usados ​​no exemplo anterior para 6, receberá a seguinte exceção:</p>
+<pre>
+java.sql.SQLException: Column Index out of range, 6 > 5.
+at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1074)
+[... this part of the stack trace elided ...]
+at DbQuery.main(DbQuery.java:18)
+</pre>
+<p>Tenha cuidado para sempre fornecer os índices de coluna corretos.</p>
+<p>Neste exemplo, você sabe o número de colunas, bem como os tipos de dados nas colunas. E se você não souber o número de colunas em cada linha nem os tipos de dados nas colunas? Nesse caso, primeiro você precisa chamar o método <b>getMetaData()</b> no objeto <b>ResultSet</b> que retorna um objeto <b>ResultMetaData</b>; nesse objeto <b>ResultMetaData</b>, você pode usar o método <b>getColumnCount()</b> para obter a contagem de colunas. Quando você não sabe o tipo de dados de uma entrada de coluna, pode usar o método <b>getObject()</b> no objeto <b>ResultSet</b>.
+Você pode passar o índice da coluna para <b>getObject()</b> para obter o valor na coluna correspondente. Aqui está o código modificado que usa esses métodos:</p>
+<pre class="brush:java">
+// dos metadados resultSet, descubra quantas colunas existem
+// e depois leia a entrada da coluna
+int numOfColumns = resultSet.getMetaData().getColumnCount();
+while (resultSet.next()) {
+// lembre-se de que o índice da coluna começa de 1 não 0
+for(int i = 1; i <= numOfColumns; i++) {
+// como não sabemos o tipo de dados da coluna, usamos getObject()
+System.out.print(resultSet.getObject(i) + "\t");
+}
+System.out.println("");
+}
+</pre>
+<p><b>A saída do programa será  a seguinte:</b></p>
+<pre>
+ID fName lName email phoneNo
+1 Alan Santos alans@abc.com +919876543210
+2 William Becker william@abc.com +449876543210
+</pre>
+<p>Vamos fazer outro exercício. Desta vez, você só quer imprimir o nome e endereço de e-mail dos registros onde o primeiro nome corresponde a "Alan!".</p>
+
+<pre class="brush:java">
+//DbQuery4.java
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+class DbQuery4 {
+public static void main(String[] args) throws SQLException {
+try (Connection connection = DbConnector.connectToDb();
+Statement statement = connection.createStatement();
+ResultSet resultset = statement.executeQuery("SELECT firstName, email FROM 
+contact WHERE firstName=\"Alan\"")) {
+System.out.println("fName \temail");
+while (resultset.next()){
+System.out.println(resultset.getString("firstName") + "\t"
++ resultset.getString("email"));
+}
+
+} catch (SQLException e) {
+e.printStackTrace();
+System.exit(-1);
+}
+}
+}
+</pre>
+<p>A saída do programa será a seguinte:</p>
+<pre>
+ID fName lName email 
+1 Alan Santos alans@abc.com 
+</pre>
+</section>
+<section id="atualizabd">
+<h2>Atualizando o Banco de Dados</h2>
+
+<p>Agora vamos atualizar o banco de dados. Você pode fazer isso de duas maneiras: você pode usar consultas SQL para atualizar o banco de dados diretamente ou pode buscar um resultset usando uma consulta SQL e, em seguida, alterá-lo e o banco de dados. O JDBC suporta ambos os métodos. Vamos nos concentrar em recuperar o resultset e modificá-lo com o banco de dados.</p>
+<p>Para modificar o resultset e o banco de dados, a classe <b>ResultSet</b> fornece um conjunto de métodos de atualização para cada tipo de dados. Existem também outros métodos de suporte, como <b>updateRow()</b> e <b>deleteRow()</b>, para tornar a tarefa mais simples. É hora de sujar as mãos: suponha que um dos contatos no banco de dados do seu catálogo de endereços tenha mudado o número de telefone deles e você precise atualizar o número de telefone no banco de dados usando um programa JDBC:</p>
+<pre class="brush:java">
+//DbUpdate.java
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+// Para ilustrar como podemos atualizar um banco de dados
+class DbUpdate {
+public static void main(String[] args) throws SQLException {
+try (Connection connection = DbConnector.connectToDb();
+Statement statement = connection.createStatement();
+ResultSet resultSet = statement.executeQuery("SELECT * FROM contact WHERE firstName=\"Alan\"")) {
+// primeiro busca os dados e os exibe antes da operação de atualização
+System.out.println("Before the update");
+System.out.println("id \tfName \tlName \temail \t\tphoneNo");
+while (resultSet.next()) {
+System.out.println(resultSet.getInt("id") + "\t"
++ resultSet.getString("firstName") + "\t"
++ resultSet.getString("lastName") + "\t"
++ resultSet.getString("email") + "\t"
++ resultSet.getString("phoneNo"));
+}
+
+// agora atualize o resultset e exiba os dados modificados
+resultSet.absolute(1);
+resultSet.updateString("phoneNo", "+919976543210");
+System.out.println("After the update");
+
+System.out.println("id \tfName \tlName \temail \t\tphoneNo");
+resultSet.beforeFirst();
+while (resultSet.next()) {
+System.out.println(resultSet.getInt("id") + "\t"
++ resultSet.getString("firstName") + "\t"
++ resultSet.getString("lastName") + "\t"
++ resultSet.getString("email") + "\t"
++ resultSet.getString("phoneNo"));
+}
+} catch (SQLException e) {
+e.printStackTrace();
+System.exit(-1);
+}
+}
+}
+</pre>
+<p>Vamos escolher o essencial do programa, passo a passo:</p>
+<ul>
+<li>1- Você estabelece a conexão usando o método DbConnector.connectToDb ().</li>
+<li> 2- Depois de criar um objeto Statement, você executa uma consulta no banco de dados para localizar o registro associado ao Alan. (Por uma questão de simplicidade, suponha que o conjunto de resultados conterá exatamente um registro.)</li>
+<li>3- Você imprime o registro recuperado.</li>
+ <li> 4- Você usa o método absolute() para mover o cursor para a primeira linha no objeto ResultSet; então você atualiza o número de telefone usando o método updateString().</li>
+<li>5- Finalmente, você imprime o conjunto de resultados modificado.</li>
+</ul>
+<p>Isso parece simples. Execute o programa e veja o que ele imprime:</p>
+
+<p>Antes da Atualização:</p>
+<pre>
+id fName lName email phoneNo
+1 Alan Santos alans@abc.com +919876543210
+com.mysql.jdbc.NotUpdatable: Result Set not updatable.(...rest of the text elided)
+at com.mysql.jdbc.ResultSetImpl.updateString(ResultSetImpl.java:8618)
+at com.mysql.jdbc.ResultSetImpl.updateString(ResultSetImpl.java:8636)
+at DbUpdate.main(DbUpdate.java:34)
+</pre>
+
+ <p>O programa travou depois de lançar uma exceção! O que aconteceu?</p>
+<p>Você está tentando atualizar um objeto ResultSet que não é atualizável. Para fazer a atualização no resultset e no banco de dados, você precisa tornar esse resultset  atualizável. Você pode fazer isso criando um Objeto de instrução; Ao chamar o método <b>createStatement()</b>, você pode passar entradas como, por exemplo, se deseja um conjunto de resultados com rolagem sensível às alterações ou um conjunto de resultados atualizável.</p>
+<br>
+<p>Faça essa alteração única na chamada para <b>createStatement()</b> no exemplo anterior <b>DbUpdate.java</b>:
+
+<pre class="brush:java">Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);</pre>
+
+<p>Agora, execute o programa alterado para ver se funciona:</p>
+
+
+<pre>
+  //Antes de atualizar
+id fName lName email phoneNo
+1 Alan Santos alans@abc.com +919876543210
+</pre>
+<pre>
+//Depois de atualizar
+id fName lName email phoneNo
+1 Alan Santos alans@abc.com +919876543210
+</pre>
+<p>O programa não resultou em uma exceção. Mas o número de telefone não está atualizado. O que aconteceu? Você esqueceu uma declaração vital após a atualização: o método <b>updateRow()</b>. Toda vez que você fizer uma alteração no resultset usando o método <b>updateXXX()</b> apropriado, será necessário chamar <b>updateRow()</b> para garantir que todos os valores sejam realmente atualizados no banco de dados. Faça essa alteração e tente novamente:</p>
+<pre class="brush:java">
+ //DbUpdate2.java
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+// Para ilustrar como podemos atualizar um banco de dados
+class DbUpdate2 {
+public static void main(String[] args) throws SQLException {
+try (Connection connection = DbConnector.connectToDb();
+// cria uma instrução a partir da qual os ResultSets criados
+// são "sensíveis à rolagem" e "atualizáveis"
+Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_
+SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+ResultSet resultSet = statement.executeQuery("SELECT * FROM contact WHERE 
+firstName=\"Alan\"")) {
+// primeiro busca os dados e os exibe antes da operação de atualização
+System.out.println("Before the update");
+System.out.println("id \tfName \tlName \temail \t\tphoneNo");
+while (resultSet.next()) {
+System.out.println(resultSet.getInt("id") + "\t"
++ resultSet.getString("firstName") + "\t"
++ resultSet.getString("lastName") + "\t"
++ resultSet.getString("email") + "\t"
++ resultSet.getString("phoneNo"));
+}
+
+// agora atualize o resultset e exiba os dados modificados
+resultSet.absolute(1);
+resultSet.updateString("phoneNo", "+919976543210");
+// reflete essas mudanças no banco de dados
+// chamando o método updateRow()
+resultSet.updateRow();
+System.out.println("After the update");
+System.out.println("id \tfName \tlName \temail \t\tphoneNo");
+resultSet.beforeFirst();
+while (resultSet.next()) {
+System.out.println(resultSet.getInt("id") + "\t"
++ resultSet.getString("firstName") + "\t"
++ resultSet.getString("lastName") + "\t"
++ resultSet.getString("email") + "\t"
++ resultSet.getString("phoneNo"));
+}
+} catch (SQLException e) {
+e.printStackTrace();
+System.exit(-1);
+}
+}
+}
+</pre>
+<p>O programa revisado imprime o seguinte:</p>
+<pre>
+//Antes de atualizar
+id fName lName email phoneNo
+1 Alan Santos alans@abc.com +919876543210
+</pre>
+<pre>
+  //Depois de atualizar
+id fName lName email phoneNo
+1 Alan Santos alans@abc.com +919976543210
+</pre>
+<p>Está funcionando bem. Agora você conhece os requisitos e as etapas necessárias para atualizar uma linha em um banco de dados.</p>
+<br>
+<p><i> sempre chame updateRow depois de modificar o conteúdo da linha; caso contrário, você perderá as alterações.</i></p>
+<br>
+<p>Em seguida, que tal inserir um registro no conjunto de resultados e no banco de dados? Experimente o exemplo mostrado a seguir:</p>
+<pre class="brush:java">
+//DbInsert.java
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+// Para ilustrar como inserir uma linha em um conjunto de resultados e no banco de dados
+class DbInsert {
+public static void main(String[] args) throws SQLException {
+try (Connection connection = DbConnector.connectToDb();
+Statement statement = connection.createStatement(
+ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+ResultSet resultSet = statement.executeQuery("SELECT * FROM contact")) {
+System.out.println("Before the insert");
+System.out.println("id \tfName \tlName \temail \t\tphoneNo");
+while (resultSet.next()){
+System.out.println(resultSet.getInt("id") + "\t"
++ resultSet.getString("firstName") + "\t"
++ resultSet.getString("lastName") + "\t"
++ resultSet.getString("email") + "\t"
++ resultSet.getString("phoneNo"));
+}
+resultSet.moveToInsertRow();
+resultSet.updateString("firstName", "John");
+resultSet.updateString("lastName", "K.");
+resultSet.updateString("email", "john@abc.com");
+resultSet.updateString("phoneNo", "+19753186420");
+resultSet.insertRow();
+System.out.println("After the insert");
+System.out.println("id \tfName \tlName \temail \t\tphoneNo");
+resultSet.beforeFirst();
+while (resultSet.next()){
+System.out.println(resultSet.getInt("id") + "\t"
++ resultSet.getString("firstName") + "\t"
++ resultSet.getString("lastName") + "\t"
++ resultSet.getString("email") + "\t"
++ resultSet.getString("phoneNo"));
+}
+} catch (SQLException e) {
+e.printStackTrace();
+}
+}
+}
+</pre>
+<p>O que acontece neste exemplo? Depois de imprimir os registros atuais, você chama o método <b>moveToInsertRow()</b>. Este método define o cursor para um novo registro e prepara o conjunto de resultados para a inserção de uma linha (cria um buffer para manter os valores da coluna). Depois disso, você usa <b>updateString()</b> para modificar o valor de cada coluna na linha recém-adicionada. E, finalmente, você chama <b>insertRow()</b> para inserir a nova linha no conjunto de resultados e no banco de dados. Uma coisa importante a notar aqui é que você precisa fornecer o tipo correto de valores para cada coluna. Além disso, você não pode deixar uma coluna em branco (não fornecer nenhum valor) se o valor da coluna não puder ser deixado não preenchido. No caso de qualquer uma dessas violações, você poderá obter uma <b>SQLException</b>.</p>
+<p>Vamos ver o que este programa imprime:</p><br>
+
+<pre>
+  //Antes de inserir
+id fName lName email phoneNo
+1 Alan Santos alans@abc.com +919976543210
+2 William Becker william@abc.com +449876543210
+</pre>
+
+<pre>
+  //Depois de inserir
+id fName lName email phoneNo
+1 Alan Santos alans@abc.com +919976543210
+2 William Becker william@abc.com +449876543210
+3 John K. john@abc.com +19753186420
+</pre>
+<p>Agora vamos tentar outra operação: excluir um registro do banco de dados. Dê uma olhada no programa abaixo:</p>
+<pre class="brush:java">
+//DbDelete.java
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+// Para ilustrar como excluir uma linha em um conjunto de resultados e no banco de dados
+class DbDelete {
+public static void main(String[] args) throws SQLException {
+try (Connection connection = DbConnector.connectToDb();
+Statement statement = connection.createStatement(
+ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+ResultSet resultSet1 = statement.executeQuery
+("SELECT * FROM contact WHERE firstName=\"John\"")) {
+if(resultSet1.next()){
+// exclui a primeira linha
+resultSet1.deleteRow();
+}
+resultSet1.close();
+// agora busque novamente no banco de dados
+try (ResultSet resultSet2 = statement.executeQuery("SELECT * FROM contact")) {
+System.out.println("After the deletion");
+System.out.println("id \tfName \tlName \temail \t\tphoneNo");
+while (resultSet2.next()){
+System.out.println(resultSet2.getInt("id") + "\t"
++ resultSet2.getString("firstName") + "\t"
++ resultSet2.getString("lastName") + "\t"
++ resultSet2.getString("email") + "\t"
++ resultSet2.getString("phoneNo"));
+}
+}
+} catch (SQLException e) {
+e.printStackTrace();
+System.exit(-1);
+}
+}
+}
+</pre>
+<p>Este programa simplesmente seleciona uma linha apropriada para excluir e chama o método <b>deleteRow()</b> na linha atual selecionada. Aqui está a saída do programa:</p>
+<br>
+
+<pre>
+//Depois de deletar
+id fName lName email phoneNo
+1 Alan Santos alans@abc.com +919976543210
+2 William Becker william@abc.com +449876543210
+</pre>
+<p>O programa funciona bem e remove corretamente a linha em que o primeiro nome da pessoa é John.</p>
+<p>Você pode se lembrar que criou uma tabela chamada <b>contact</b> em seu banco de dados. Naquela época, você criou a tabela a partir do prompt de comando do MySQL. A mesma tarefa pode ser feita usando um programa JDBC. Vamos criar uma nova tabela chamada <b>familyGroup</b> no banco de dados programaticamente.</p>
+<pre class=" brush:java">
+//DbCreateTable.java
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.SQLException;
+class DbCreateTable {
+public static void main(String[] args) {
+try (Connection connection = DbConnector.connectToDb();
+Statement statement = connection.createStatement()){
+// use a instrução SQL CREATE TABLE para
+// cria a tabela familyGroup
+statement.executeUpdate("CREATE TABLE familyGroup (id int not null 
+auto_increment, nickName varchar(30) not null, primary key(id));");
+System.out.println("Table created successfully");
+}
+catch (SQLException sqle) {
+sqle.printStackTrace();
+System.exit(-1);
+}
+}
+}
+</pre>
+<p>Este programa imprime o seguinte:</p>
+
+<pre>Table created successfully</pre>
+
+<p>O programa está funcionando conforme o esperado. Você se conecta ao banco de dados e obtém o objeto Statement como fez anteriormente. Em seguida, você emite uma declaração SQL usando o método <b>executeUpdate()</b>. Usando a declaração SQL, você declara que uma tabela chamada <b>familyGroup</b> precisa ser criada junto com duas colunas: id e nickName. Além disso, você declara que id deve ser tratado como a chave primária. É isso aí; a declaração SQL cria uma nova tabela em seu banco de dados.</p>
+
+<p>O que acontece quando você passa uma declaração SQL que possui erros de sintaxe? Por exemplo, se você digitar incorretamente "TABLE" como "TABL", você recebe esta exceção:</p>
+<pre>
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL 
+syntax; check the manual that corresponds to your MySQL server version for the right syntax 
+to use near 'TABL familyGroup (id int not null auto_increment, nickName varchar(30) not 
+null,' at line 1
+</pre>
+<p>Passar as declaração SQL corretas (sem erros de sintaxe) é de sua responsabilidade.</p>
+</section>
+<p class="nav-arq" id="referencia">Concorrência com Java: <a href="concorrenciajava.html">&laquo; anterior | <a href="localization.html">próximo &raquo;</a> Localização </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/jdbcbancodedados" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+</body>
+	</html>

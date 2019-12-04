@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+  <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+ 
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+       <a class="w3-bar-item w3-button"  href="#javaniofile">15- JAVA FILE I/O (NIO.2)</a>
+            <a class="w3-bar-item w3-button"  href="#interpath">Usando a interface Path(caminho)</a>
+          <a class="w3-bar-item w3-button"  href="#pegandoinfo">Obtendo informações sobre o caminho</a>
+          <a class="w3-bar-item w3-button"  href="#comparecaminhos">Comparando dois Paths (Caminhos)</a>
+          <a class="w3-bar-item w3-button" href="#classeusefile">Usando a Classe File</a>
+       <a class="w3-bar-item w3-button"  href="#checkmetadado">Verificando as propriedades e metadados do arquivo</a>
+          <a class="w3-bar-item w3-button"  href="#copiafiles">Copiando um Arquivo </a>
+          <a class="w3-bar-item w3-button"  href="#moverfiles">Movendo um Arquivo</a>
+           <a class="w3-bar-item w3-button"  href="#deletefiles">Deletando um Arquivo</a>
+          <a class="w3-bar-item w3-button"  href="#apifluxonio">Usando a API de fluxo com NIO.2</a>
+           <a class="w3-bar-item w3-button"  href="#metodolist">Usando o método list na classe Files</a>
+          <a class="w3-bar-item w3-button"  href="#metodolines">Usando O Método lines() na Classe Files</a>
+          
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+ 
+    
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+      
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top  w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+<section id="javaniofile">
+<h1>Java File I/O (NIO.2)</h1>
+
+<p>Java oferece um rico conjunto de APIs que você pode usar para manipular arquivos e diretórios. O Java 7 introduziu um conjunto de APIs de I/O, chamadas <b>NIO.2</b>, que ofereciam formas convenientes de executar operações relacionadas a um sistema de arquivos. No Java 8, você pode usar a API de Stream com o NIO.2. O capítulo anterior cobriu os fundamentos de I/O; você aprendeu como ler e escrever no console e como usar fluxos para ler e gravar em arquivos. Neste capítulo, você aprenderá a operar em caminhos de arquivos e diretórios usando a interface <b>Path</b>. Você também aprende a executar várias operações de arquivo, como criar, mover, copiar e excluir usando a classe Arquivos. Por fim, você vê como usar a API de fluxo com <b>NIO.2</b>. Este capítulo usa interfaces funcionais no pacote <b>java.util.function</b> e na API Stream no pacote <b>java.util.stream</b>, e presumimos que você tenha lido os Capítulos 3, 4, 5 e 6 antes de ler este capítulo.</p><br>
+<p>Fornecemos caminhos de arquivos e diretórios, supondo que você esteja usando uma máquina Windows. Se você estiver no Linux, no Mac OS ou em qualquer outra plataforma, talvez seja necessário fazer pequenas alterações nos nomes dos caminhos para que os programas funcionem em sua máquina.</p>
+<br>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+</section>
+<section id="interpath">
+<h2>Usando a interface Path(caminho)</h2>
+
+<p>Os sistemas de arquivos geralmente formam uma árvore. O sistema de arquivos inicia com um diretório raiz que contém arquivos e diretórios (os diretórios também são chamados de pastas no Windows). Cada diretório, por sua vez, pode ter subdiretórios ou conter arquivos. Para localizar um arquivo, basta reunir os diretórios do diretório raiz no diretório imediato que contém o arquivo, juntamente com um separador de arquivos, seguido do nome do arquivo. Por exemplo, se o arquivo <b>myfile.txt</b> residir em um diretório <b>mydocs</b>, que reside no diretório raiz <b>C:\</b>, o caminho do arquivo será <b>C:\mydocs\myfile.txt</b>. Cada arquivo tem um caminho único para localizá-lo (além dos links simbólicos).</p><br>
+<p>Um caminho pode ser um caminho absoluto (como <b>C:\mydocs\myfile.txt</b>), que é iniciado por um elemento raiz. Por outro lado, um caminho pode ser especificado como um caminho relativo. Quando você tenta compilar um programa Java, escreva algo como javac <b>programFileName.java</b>; Este exemplo é especificado como o caminho do arquivo de origem Java para o direito selecionado, portanto, é um caminho relativo. Você precisa de um caminho de referência (como o caminho do diretório atual, neste caso) para interpretar um caminho relativo.</p>
+<br>
+<p>Antes de prosseguir, vamos falar sobre links simbólicos. Um link simbólico é como um ponteiro ou referência a um arquivo real. Em geral, os links simbólicos são transparentes para os aplicativos, o que significa que as operações são executadas diretamente nos arquivos, e não nos links (exceto, é claro, para operações específicas de link simbólico).</p>
+<br>
+<p>A interface <b>Path</b> é uma abstração de programação para um <b>caminho</b>. Um objeto de caminho contém os nomes de diretórios e arquivos que formam o caminho completo do arquivo/diretório representado pelo objeto <b>Path</b>; A abstração <b>Path</b> fornece métodos para extrair elementos do caminho, manipulá-los e anexá-los. Você verá mais tarde que quase todos os métodos que acessam arquivos / diretórios para obter informações sobre eles ou manipulá-los usam objetos <b>Path</b>.</p>
+
+<p>Métodos importantes na interface Path</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Método</th><th>Descrição</th></tr>
+<tr><td>Path getRoot()</td><td>Retorna um objeto Path representando a raiz do caminho fornecido ou null se o caminho não tiver uma raiz.</td></tr>
+
+
+
+<tr><td>Path getFileName()</td><td>
+
+Retorna o nome do arquivo ou nome do diretório do caminho fornecido. Observe que o nome do arquivo / diretório é o último elemento ou nome no caminho fornecido.</td></tr>
+
+<tr><td>Path getParent()</td><td>
+
+Retorna o objeto Path representando o pai do caminho fornecido ou
+null se nenhum componente pai existir para o caminho.</td></tr>
+
+<tr><td>int getNameCount()</td><td>
+
+
+Retorna o número de nomes de arquivos / diretórios no caminho fornecido; retorna 0 se o caminho dado representar a raiz.</td></tr>
+
+<tr><td>Path getName(int index)</td><td>
+
+Retorna o nome do arquivo / diretório ith; o índice 0 começa do nome mais próximo da raiz.</td></tr>
+
+<tr><td>Path subpath(int beginIndex, int endIndex)</td><td>
+
+Retorna um objeto Path que faz parte desse objeto Path; o objeto Path retornado tem um nome que começa em beginIndex e termina com o elemento no índice endIndex - 1. Em outras palavras, beginIndex é inclusivo do nome nesse índice e exclusivo do nome em endIndex. Este método pode lançar IllegalArgumentException se beginIndex é >= número de elementos, ou endIndex <= beginIndex ou endIndex> número de elementos.</td></tr>
+
+<tr><td>Path normalize()</td><td>
+
+Remove elementos redundantes no caminho, como. (Símbolo de ponto que indica o diretório atual) e .. (símbolo de dois ponto  que indica o diretório pai).</td></tr>
+
+<tr><td>Path resolve(Path other) - Path resolve(String other)</td><td>
+
+Resolve um caminho contra ao caminho fornecido. Por exemplo, esse método pode combinar o caminho fornecido com o outro caminho e retornar o caminho resultante</td></tr>
+
+<tr><td>Boolean isAbsolute()</td><td>
+
+Retorna true se o caminho fornecido for um caminho absoluto; retorna false se não (quando o caminho dado é um caminho relativo, por exemplo).</td></tr>
+
+<tr><td>Path startsWith(String path) - Path startsWith(Path path)</td><td>
+
+Retorna true se este objeto Path iniciar com o caminho fornecido ou false caso contrário..</td></tr>
+
+<tr><td>Path toAbsolutePath()</td><td>
+
+Retorna o caminho absoluto.</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="pegandoinfo">
+</h2>Obtendo informações sobre o caminho</h2>
+
+<p>Vamos criar um objeto <b>Path</b> e recuperar as informações básicas associadas ao objeto. O próximo exemplo mostra como criar um objeto <b>Path</b> e obter informações sobre ele.</p>
+<pre class="brush:java">
+//PathInfo1.java
+import java.nio.file.Path;
+import java.nio.file.Paths;
+// Classe para ilustrar como usar a interface Path e seus métodos
+public class PathInfo1 {
+public static void main(String[] args) {
+// cria um objeto Path chamando o método estático get () na classe Paths
+Path testFilePath = Paths.get("D:\\test\\testfile.txt");
+// recupera informações básicas sobre o caminho
+System.out.println("Printing file information: ");
+System.out.println("\t file name: " + testFilePath.getFileName());
+System.out.println("\t root of the path: " + testFilePath.getRoot());
+System.out.println("\t parent of the target: " + testFilePath.getParent());
+// elementos do caminho de impressão
+System.out.println("Printing elements of the path: ");
+for(Path element : testFilePath) {
+System.out.println("\t path element: " + element);
+}
+}
+}
+</pre>
+<p><b>O programa imprime o seguinte:</b></p>
+<pre>
+Printing file information:
+file name: testfile.txt
+root of the path: D:\
+parent of the target: D:\test
+Printing elements of the path:
+path element: test
+path element: testfile.txt
+</pre>
+<p>A saída é autoexplicativa. Vamos examinar o programa:</p>
+<ul>
+
+<li>Primeiro, você cria uma instância de <b>Path</b> usando o método <b>get()</b> da classe <b>Path</b>. O método <b>get()</b> espera um <b>string</b> representando um caminho como uma entrada. Essa é a maneira mais fácil de criar um objeto <b>Path</b>.</li>
+<li> Observe que você usa um caractere de escape (\) em Paths.get ("D:\\test\\testfile.txt"). No caminho, se você fornecesse D:\test, tal como \t significaria um caractere de tabulação e você obteria um <b>java.nio.file.InvalidPathException</b> ao executar o programa. Certifique-se de fornecer caracteres de escape necessários em cadeias de caminho.</li>
+<li> Você extrai o nome do arquivo representado por este objeto <b>Path</b> usando o método <b>getFilename()</b> do objeto <b>Path</b>.</li>
+<li>Você também usa <b>getRoot()</b> para obter o elemento raiz do objeto <b>Path</b> e <b>getParent()</b> para obter o diretório pai do arquivo de destino.</p>
+<li> Você itera sobre os elementos no caminho usando um <b>forloop</b>. Como alternativa, você pode usar <b>getNameCount()</b> para obter os elementos numéricos ou nomes no caminho e <b>getName(index)</b> para iterar e acessar elementos / nomes um por um.</li>
+</ul>
+<br>
+<p>Vamos tentar outro exemplo. Ele explora alguns aspectos interessantes de um objeto <b>Path</b>, por exemplo, como obter um caminho absoluto de um caminho relativo e como você pode normalizar o caminho. Antes de olhar o exemplo, você precisa primeiro entender os métodos que usa:</p>
+<ul>
+
+<li> O método <b>toUri()</b> retorna o <b>URI</b>(um caminho que pode ser aberto de um navegador) do caminho.</li>
+<li> O método <b>toAbsolutePath()</b> retorna o caminho absoluto de um determinado caminho relativo. Se o caminho de entrada já for um caminho absoluto, o método retornará o mesmo objeto.</li>
+<li> O método <b>normalize()</b> executa a normalização no caminho de entrada. Em outras palavras, ele remove símbolos desnecessários (como .e ..) do objeto <b>Path</b>.</li>
+<li> <b>toRealPath()</b> é um método interessante. Ele retorna um caminho absoluto do objeto de caminho de entrada (como <b>toAbsolutepath()</b>). Também normaliza o caminho (como em <b>normalize()</b>).Além disso, se as opções de vinculação forem escolhidas corretamente, ela resolve os links simbólicos. No entanto, o arquivo/diretório de destino deve existir no sistema de arquivos, que é um pré-requisito de nota para outros métodos de caminho.</li>
+</ul>
+<br>
+<p>A seguir é mostrado o exemplo. Suponha que o nome do arquivo Test não exista em seu sistema de arquivos.</p>
+<pre class="brush:java">
+//PathInfo2.java
+import java.io.IOException;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+// Para ilustrar métodos importantes como normalize (), toAbsolutePath () e toRealPath ()
+class PathInfo2 {
+public static void main(String[] args) throws IOException {
+// obtém um objeto de caminho com caminho relativo
+Path testFilePath = Paths.get(".\\Test");
+System.out.println("The file name is: " + testFilePath.getFileName());
+System.out.println("Its URI is: " + testFilePath.toUri());
+System.out.println("Its absolute path is: " + testFilePath.toAbsolutePath());
+System.out.println("Its normalized path is: " + testFilePath.normalize());
+// obtém outro objeto de caminho com caminho relativo normalizado
+Path testPathNormalized = Paths.get(testFilePath.normalize().toString());
+System.out.println("Its normalized absolute path is: " + testPathNormalized.toAbsolutePath());
+System.out.println("Its normalized real path is: " + testFilePath.toRealPath (LinkOption.NOFOLLOW_LINKS));
+}
+}
+</pre>
+<p><b>Este código imprime o seguinte:</b></p>
+<pre>
+The file name is: Test
+Its URI is: file:///D:/OCPJP/programs/NIO2/./Test
+Its absolute path is: D:\OCPJP\programs\NIO2\.\Test
+Its normalized path is: Test
+Its normalized absolute path is: D:\OCPJP\programs\NIO2\Test
+Exception in thread "main" java.nio.file.NoSuchFileException: D:\OCPJP\programs\NIO2\Test
+at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:79)
+[... stack trace elided ...]
+at PathInfo2.main(PathInfo2.java:16)
+</pre>
+<p>Dependendo do diretório em que você executa este programa, o caminho do diretório será diferente para você.
+Este programa instancia um objeto Path usando um caminho relativo. O método <b>getFileName()</b> retorna o nome do arquivo de destino, como você viu no último exemplo. O método <b>getUri()</b> retorna o <b>URI</b>, que pode ser usado com navegadores, e o método <b>toAbsolutePath()</b> retorna o caminho absoluto do caminho relativo fornecido. (Observe que estamos executando o programa a partir da pasta <b>D:/OCPJP/programs/NIO2/</b>; portanto, ele se torna o diretório de trabalho atual e aparece no caminho absoluto e no <b>URI</b>.<p>
+<p>Você chama o método <b>normalize()</b> para remover símbolos redundantes do caminho, portanto, ele remove o ponto principal. (Em muitos sistemas operacionais, o. [Símbolo de ponto único representa o diretório atual e .. [ponto duplo] representa o diretório pai.) Você instancia outro objeto <b>Path</b> usando saída normalizada e imprime o caminho absoluto novamente. Finalmente, você tenta chamar <b>toRealpath()</b>; no entanto, você obtém uma exceção (NoSuchFileException). Por quê? Porque você não criou o diretório Test no diretório de trabalho atual.</p>
+<p>Agora, vamos criar um diretório de test no diretório <b>D:/OCPJP/programs/NIO2/</b> e executar este exemplo novamente. Nós temos a seguinte saída:</p>
+<pre class="brush:java">
+The file name is: Test
+Its URI is: file:///D:/OCPJP/programs/NIO2/./Test/
+Its absolute path is: D:\OCPJP\programs\NIO2\.\Test
+Its normalized path is: Test
+Its normalized absolute path is: D:\OCPJP\programs\NIO2\Test
+Its normalized real path is: D:\OCPJP\programs\NIO2\Test
+</pre>
+Agora a última chamada de <b>toRealPath()</b> funciona bem e retorna o caminho absoluto normalizado. <b>Path</b> fornece muitos outros métodos úteis, incluindo os listados anteriormente. Por exemplo, aqui está como usar o método <b>resolve():</b></p>
+<pre class="brush:java">
+Path dirName = Paths.get("D:\\OCPJP\\programs\\NIO2\\");
+Path resolvedPath = dirName.resolve("Test");
+System.out.println(resolvedPath);
+</pre>
+<p><b>Este segmento de código imprime o seguinte: </b></p>
+
+<pre>D:\OCPJP\programs\NIO2\Test</pre>
+
+<p>Esse método <b>resolve()</b> considera o caminho fornecido como um diretório e una (resolve) o caminho passado com ele, conforme mostrado aqui.</p>
+
+</section>
+<section id="comparecaminhos">
+<h2>Comparando dois Paths (Caminhos)</h2>
+
+<p>A interface <b>Path</b> fornece dois métodos para comparar dois objetos <b>Path</b>: <b>equals()</b> e <b>compareTo()</b>. O método <b>equals()</b> verifica a igualdade de dois objetos <b>Path</b> e retorna um valor booleano, enquanto <b>compareTo()</b> compara dois objetos <b>Path</b> caractere por caractere e retorna um inteiro: 0 se ambos os objetos Path forem iguais; um inteiro negativo se este caminho for lexicograficamente menor que o caminho do parâmetro; e um inteiro positivo se esse caminho for lexicograficamente maior que o caminho do parâmetro. O próximo exemplo contém um pequeno programa que demonstra esses métodos.</p>
+<pre class="brush:java">
+//PathCompare1.java
+import java.nio.file.Path;
+import java.nio.file.Paths;
+// ilustra como usar compareTo e igual a e também mostra
+// a diferença entre os dois métodos
+class PathCompare1 {
+public static void main(String[] args) {
+Path path1 = Paths.get("Test");
+Path path2 = Paths.get("D:\\OCPJP\\programs\\NIO2\\Test");
+// comparando dois caminhos usando o método compareTo ()
+System.out.println("(path1.compareTo(path2) == 0) is: "
++ (path1.compareTo(path2) == 0));
+// comparando dois caminhos usando o método equals ()
+System.out.println("path1.equals(path2) is: " + path1.equals(path2));
+// comparando dois caminhos usando o método equals () com o caminho absoluto
+System.out.println("path2.equals(path1.toAbsolutePath()) is "
++ path2.equals(path1.toAbsolutePath()));
+}
+}
+ </pre>
+
+<p>Intencionalmente, um caminho é relativo e o outro é um caminho absoluto. Suponha que o diretório atual a partir do qual você está executando este programa seja D:\\OCPJP\\programs\\NIO2\\Test. Você consegue adivinhar a saída do programa?</p>
+<p>O código é o seguinte:</p>
+<pre class="brush:java">
+(path1.compareTo(path2) == 0) is: false
+path1.equals(path2) is: false
+path2.equals(path1.toAbsolutePath()) is true
+</pre>
+<p>Vamos examinar o programa passo a passo:</p>
+<ul>
+<li> Primeiro compara dois caminhos usando o método compareTo(), que compara os caminhos por caractere e retorna um inteiro. Nesse caso, como um caminho é um caminho relativo e outro é um caminho absoluto, primeiro você espera receber uma mensagem informando que os caminhos não são iguais.</li>
+<li> Então você compara os dois caminhos usando equals(). O resultado é o mesmo, o que significa que, mesmo que os dois objetos Path estejam apontando para o mesmo arquivo / diretório, é possível que <b>equals()</b> retorne <b>false</b>. Você precisa ter certeza de que ambos os caminhos são caminhos absolutos.</li>
+<li> Na próxima etapa, você converterá o caminho relativo em um caminho absoluto e os comparará usando <b>equals()</b>. Desta vez, ambos os caminhos coincidem.</li>
+</ul>
+<br>
+<p><i> Mesmo se dois objetos Path apontarem para o mesmo arquivo/diretório, não é garantido que o método equals() retornará true. Você precisa ter certeza de que ambos são caminhos absolutos e normalizados para que uma comparação de igualdade seja bem-sucedida para os caminhos.</i></p>
+<br>
+</section>
+<section id="classeusefile">
+<h1>Usando a Classe File</h1>
+
+<p>A seção anterior discutiu como criar uma instância do <b>Path</b> e extrair informações úteis dela. Nesta seção, você usa objetos <b>Path</b> para manipular arquivos/diretórios. O Java 7 oferece uma classe <b>Files</b> (no pacote java.nio.file) que você pode usar para executar várias operações relacionadas a arquivos em arquivos ou diretórios. Observe que o Files é uma classe de utilitário, o que significa que é uma classe final com um construtor privado e consiste apenas em métodos estáticos. Assim, você pode usar a classe Files chamando os métodos estáticos que ela fornece, como <b>copy()</b> para copiar arquivos. Esta classe fornece uma ampla gama de funcionalidades. Você pode criar diretórios, arquivos ou links simbólicos; crie fluxos como fluxos de diretórios, canais de byte e fluxos de entrada/saída; examinar os atributos dos arquivos; ande na árvore de arquivos; e executar operações de arquivo, como leitura, gravação, cópia e exclusão. A tabela mostra os métodos importantes na classe <b>Files</b>.</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+
+<tr>
+	<th>Método</th><th>Descrição</th></tr>
+	<tr><td>Path createDirectory(Path dirPath, FileAttribute&lt?>... dirAttrs) - Path createDirectories(Path dir, FileAttribute&lt?>... attrs)</td><td>Cria um arquivo fornecido pelo <b>dirPath</b> e defina os atributos fornecidos por <b>dirAttributes</b>. Pode lançar uma exceção como <b>FileAlreadyExistsException</b> ou <b>UnsupportedOperationException</b> (por exemplo, quando os atributos de arquivo não podem ser definidos como fornecidos por <b>dirAttrs</b>). A diferença entre <b>createDirectory</b> e <b>createDirectories</b> é que <b>createDirectories</b> cria diretórios intermediários dados pelo <b>dirPath</b> se eles ainda não estiverem presentes.</td></tr>
+
+<tr><td>Path createTempFile(Path dir, String prefix, String suffix, FileAttribute&lt?>... attrs)</td><td>Cria um arquivo temporário com o prefixo, sufixo e atributos fornecidos no diretório fornecido pelo dir</td></tr>
+
+
+
+<tr><td>Path createTempDirectory(Path dir, String prefix, FileAttribute&lt?>... attrs)</td><td>Cria um diretório temporário com os atributos de prefixo e diretório fornecidos no caminho especificado por dir.</td></tr>
+
+
+<tr><td>Path copy(Path source, Path target, CopyOption... options)</td><td>Copia o arquivo da origem para o destino. CopyOption pode ser REPLACE_EXISTING, COPY_ATTRIBUTES ou NOFOLLOW_LINKS. Pode lançar exceções, como FileAlreadyExistsException
+</td></tr>
+
+<tr><td>Path move(Path source, Path target, CopyOption... options)</td><td>Semelhante à operação de cópia, mas o arquivo de origem é removido.
+Se a origem e o destino estiverem no mesmo diretório, é um
+operação de renomeação de arquivos.
+</td></tr>
+
+<tr>boolean isSameFile(Path path, Path path2)<td></td><td>Verifica se os dois objetos Path localizam o mesmo arquivo</td></tr>
+<tr><td>boolean exists(Path path, LinkOption... options)</td><td>Verifica se existe um arquivo / diretório no caminho fornecido; pode especificar LinkOption.NOFOLLOW_LINKS para não seguir links simbólicos.
+</td></tr>
+
+<tr><td>Boolean isRegularFile(Path path, LinkOption...)<td></td>Retorna true se o arquivo representado por path é um arquivo regular.</td></tr>
+
+<tr><td>Boolean isSymbolicLink(Path path)</td><td>Retorna true se o arquivo representado por path é um link simbólico</td></tr>
+
+<tr><td>Boolean isHidden(Path path)</td><td>Retorna true se o arquivo representado por path é um arquivo oculto.</td></tr>
+
+<tr><td>long size(Path path)</td><td>Retorna o tamanho do arquivo representado pelo caminho em bytes.</td></tr>
+
+
+
+<tr><td>UserPrincipal getOwner(Path path, LinkOption...), Path setOwner(Path path, UserPrincipal owner)</td><td>Obtém/define(get/set) o proprietário do arquivo</td></tr>
+
+<tr><td>FileTime getLastModifiedTime(Path path, LinkOption...), Path setLastModifiedTime(Path path, FileTime time)</td><td>Obtém/define(get/set) o horário da última modificação para o arquivo especificado
+</td></tr>
+
+
+<tr><td>Object getAttribute(Path path, String attribute, LinkOption...), Path setAttribute(Path path, String attribute, Object value, LinkOption...)</td><td>Obtém/define(get/set) o atributo especificado do arquivo especificado.</td></tr>
+</table>
+</div>
+<br>
+</section>
+<section id="checkmetadado">
+<h2>Verificando as propriedades e metadados do arquivo</h2>
+
+<p>Na seção anterior da interface <b>Path</b>, você tentou descobrir se dois caminhos apontavam para o mesmo arquivo. Existe outra maneira de descobrir a mesma coisa: você pode usar o método <b>isSameFile()</b> da classe <b>Files</b>. O exemplo seguinte mostra como fazer isso.</p>
+<pre class="brush:java">
+//PathCompare2.java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+// ilustra como usar a classe Files para comparar dois caminhos
+class PathCompare2 {
+public static void main(String[] args) throws IOException {
+Path path1 = Paths.get("Test");
+Path path2 = Paths.get("D:\\OCPJP\\programs\\NIO2\\Test");
+System.out.println("Files.isSameFile(path1, path2) is: "+ Files.isSameFile(path1, path2));
+}
+}
+</pre>
+<p>Assuma que o diretório D:\\OCPJP\\programs\\NIO2\\Test existe em sua maquina.</p>
+
+<p><b>O programa vai imprimir assim:</b></p>
+
+<pre>Files.isSameFile(path1, path2) is: true</pre>
+
+
+<p>Nesse caso, você tem o diretório <b>Test</b> no caminho <b>D:\OCPJP\programs\NIO2\</b>, portanto, o código funcionou bem. Se o  arquivo/diretório <b>Test</b> não existir no caminho fornecido, você obterá uma <b>NoSuchFileException</b>. Mas como você pode descobrir se existe um arquivo/diretório no caminho dado? A classe <b>Files</b> oferece o método <b>exists()</b> para fazer isso. Você também pode distinguir entre um arquivo e um diretório usando o método <b>isDirectory()</b> da classe Files.</p>
+<pre class="brush:java">
+//PathExists.java
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+class PathExists {
+public static void main(String[] args) {
+Path path = Paths.get(args[0]);
+if(Files.exists(path, LinkOption.NOFOLLOW_LINKS)) {
+System.out.println("The file/directory " + path.getFileName() + " exists");
+// verifica se é um arquivo ou um diretório
+if(Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS)) {
+System.out.println(path.getFileName() + " is a directory");
+}
+else {
+System.out.println(path.getFileName() + " is a file");
+}
+}
+else {
+System.out.println("The file/directory " + path.getFileName()
++ " does not exist");
+}
+}
+}
+</pre>
+
+<p>Este programa aceita um nome de file/directory na linha de comando e cria um objeto <b>Path</b>. Em seguida, use o método <b>exists()</b> da classe <b>Files</b> para descobrir se o <b>file/directory</b> existe. O segundo parâmetro do método <b>exists()</b> é o <b>LinkOption</b>, que é usada para especificar se deve seguir links simbólicos; Nesse caso, você não está seguindo links simbólicos. Se o <b>file/directory</b> associado ao caminho de entrada existir, você verificará se o caminho de entrada indica um arquivo ou um diretório, usando o método <b>isDirectory()</b> da classe <b>Files</b>.</p>
+<p>Nós executamos este programa com dois argumentos de linha de comando diferentes e obtivemos a seguinte saída (suponha que <b>PathExists.java</b> esteja armazenado no diretório <b>D:\OCPJP\programs\NIO2\src</b>):
+<pre>
+D:\OCPJP\programs\NIO2\src>java PathExists PathExists.java
+The file/directory PathExists.java exists
+PathExists.java is a file
+D:\OCPJP\programs\NIO2\src>java PathExists D:\OCPJP\
+The file/directory OCPJP exists
+OCPJP is a directory
+D:\OCPJP\programs\NIO2\src>java PathExists D:\
+The file/directory null exists
+null is a directory
+</pre>
+<p>Nesta saída, você deve ter notado o comportamento quando o nome da raiz (nome da unidade no Windows, nesse caso) é fornecido como um argumento. Um nome raiz é um diretório, mas <b>path.getFileName()</b> retorna <b>null</b> se o caminho for um nome raiz - daí o resultado.</p>
+
+<p>Arquivos existentes podem não permitir que você leia, escreva ou execute com base em suas credenciais. Você pode verificar a capacidade de um programa de ler, gravar ou executar programaticamente. A classe <b>Files</b> fornece os métodos <b>isReadable()</b>, <b>isWritable()</b> e <b>isExecutable()</b> para fazer isso. O próximo exemplo usa estes métodos: para este programa, crie um arquivo chamado <b>readonly.txt</b> com as permissões legíveis e executáveis, mas não graváveis.</p>
+<pre class="brush:java">
+//FilePermissions.java
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+class FilePermissions {
+public static void main(String[] args) {
+Path path = Paths.get(args[0]);
+System.out.printf( "Readable: %b, Writable: %b, Executable: %b ",
+Files.isReadable(path), Files.isWritable(path), Files.isExecutable(path));
+}
+}
+</pre>
+<p>Vamos executar este programa com duas entradas diferentes. Aqui está a saída:</p>
+<pre>
+D:\OCPJP\programs\NIO2\src>java FilePermissions readonly.txt
+Readable: true, Writable: false, Executable: true
+D:\OCPJP\programs\NIO2\src>java FilePermissions FilePermissions.java
+Readable: true, Writable: true, Executable: true
+</pre>
+<p>Para o arquivo <b>readonly.txt</b>, as permissões são legíveis e executáveis, mas não graváveis. O arquivo <b>FilePermissions.java</b> tem todas as três permissões: legível, gravável e executável.</p>
+<p>Você pode usar muitos outros métodos para buscar propriedades de arquivos. Vamos usar o método <b>getAttribute()</b> para obter alguns atributos de um arquivo. O método usa um número variável de parâmetros: um objeto <b>Path</b>, um nome de atributo e as opções de link. Veja este exemplo:</p>
+<pre class="brush:java">
+//FileAttributes.java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+class FileAttributes {
+public static void main(String[] args) {
+Path path = Paths.get(args[0]);
+try {
+Object object = Files.getAttribute(path, "creationTime",LinkOption.NOFOLLOW_LINKS);
+System.out.println("Creation time: " + object);
+object = Files.getAttribute(path, "lastModifiedTime", LinkOption.NOFOLLOW_LINKS);
+System.out.println("Last modified time: " + object);
+object = Files.getAttribute(path, "size", LinkOption.NOFOLLOW_LINKS);
+System.out.println("Size: " + object);
+object = Files.getAttribute(path, "dos:hidden", LinkOption.NOFOLLOW_LINKS);
+System.out.println("isHidden: " + object);
+object = Files.getAttribute(path, "isDirectory", LinkOption.NOFOLLOW_LINKS);
+System.out.println("isDirectory: " + object);
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+}
+</pre>
+<p>Vamos primeiro executar este programa, dando o nome deste programa e, em seguida, ver o que acontece:</p>
+<pre>
+D:\> java FileAttributes FileAttributes.java
+Creation time: 2012-10-06T10:20:10.34375Z
+Last modified time: 2012-10-06T10:21:54.859375Z
+Size: 914
+isHidden: false
+isDirectory: false
+</pre>
+
+<p>A parte complicada do exemplo é o segundo parâmetro do método <b>getAttribute()</b>. Você precisa fornecer um nome de atributo correto para extrair o valor associado. A sequência esperada deve ser especificada no formato de <b>view:attribute</b> , em que <b>view</b> é o tipo de <b>FileAttributeView</b> e <b>attribute</b> é o nome do atributo suportado por <b>view</b>. Se nenhum <b>view</b> for especificada, ela será considerada básica. Nesse caso, você especifica todos atributos pertencentes a uma visão básica, exceto um atributo do <b>dosview</b>. Se você não especificar o nome correto da visualização, obterá uma <b>UnsupportedOperationException</b>; e se você atrapalhar o nome do atributo, obterá uma <b>IllegalArgumentException</b>.</p>
+<p>Por exemplo, se você digitar <b>sized</b> em vez de <b>size</b>, receberá essa exceção:</p>
+<pre>
+Exception in thread "main" java.lang.IllegalArgumentException: 'sized' not recognized
+[...stack trace elided...]
+</pre>
+<p>Agora você sabe como ler metadados associados a arquivos usando o método <b>getAttribute()</b>.
+No entanto, se você quiser ler muitos atributos, chamar <b>getAttribute()</b> para cada atributo pode não ser uma boa ideia (do ponto de vista do desempenho). Nesse caso, o Java 7 oferece uma solução: uma API - <b>readAttributes()</b> - para ler os atributos de uma só vez. A API vem em duas formas:</p>
+<pre class="brush:java">
+Map&ltString,Object> readAttributes(Pathpath, Stringattributes, LinkOption... options)
+&ltA extends BasicFileAttributes> A readAttributes(Pathpath, Class&ltA> type, LinkOption... options
+</pre>
+
+<p>O primeiro método retorna um <b>Map</b> em pares de valores-atributos e recebe parâmetros de tamanho variável. O parâmetro de atributos é o parâmetro chave em que você especifica o que deseja recuperar. Esse parâmetro é semelhante ao que você usa no método <b>getAttribute()</b>; no entanto, aqui você pode especificar uma lista de atributos e também usar um asterisco (*) para especificar todos os atributos. Por exemplo, usar * significa todos os atributos do <b>FileAttributeView</b> padrão, como <b>BasicFileAttributes</b> (especificados como basic-file-attributes). Outro exemplo é <b>dos:*</b>, que se refere a todos os atributos de atributos dos arquivos <b>dos</b>.</p>
+
+<p>O segundo método usa sintaxe genérica. O segundo parâmetro aqui leva uma classe da hierarquia <b>BasicFileAttributes</b>, que é discutida em breve. O método retorna uma instância da Hierarquia <b>BasicFileAttributes</b>.</p>
+
+
+<p>A hierarquia de atributos de arquivo é mostrada abaixo. <b>BasicFileAttributes</b> é a interface base da qual <b>DosFileAttributes</b> e <b>PosixFileAttributes</b> são derivados. Observe que essas interfaces de atributos são fornecidas no pacote <b>java.nio.file.attribute</b>.</p>
+<br>
+<img src="imagens/jee7/hirarquiabas.jpg">
+<p><i>A hierarquia de BasicFileAttributes</i></p>
+<br>
+
+
+
+<p>Como você pode ver, a interface <b>BasicFileAttributes</b> define os atributos básicos suportados por todas as plataformas comuns. No entanto, plataformas específicas definem seus próprios atributos de arquivo, que são capturados por <b>DosFileAttributes</b> e <b>PosixFileAttributes</b>. Você pode especificar qualquer uma dessas interfaces para recuperar os atributos de arquivo associados. O exemplo a seguir contém um programa para recuperar todos os atributos de um arquivo usando <b>BasicFileAttributes</b>.</p>
+<pre class="brush:java">
+//FileAttributes2.java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+class FileAttributes2 {
+public static void main(String[] args) {
+Path path = Paths.get(args[0]);
+try {
+BasicFileAttributes fileAttributes = Files.readAttributes(path, BasicFileAttributes.class);
+System.out.println("File size: " + fileAttributes.size());
+System.out.println("isDirectory: " + fileAttributes.isDirectory());
+System.out.println("isRegularFile: " + fileAttributes.isRegularFile());
+System.out.println("isSymbolicLink: " + fileAttributes.isSymbolicLink());
+System.out.println("File last accessed time: " + fileAttributes.lastAccessTime());
+System.out.println("File last modified time: " +
+fileAttributes.lastModifiedTime());
+System.out.println("File creation time: " + fileAttributes.creationTime());
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+}
+</pre>
+<p>A seguir, alguns exemplos de saída do programa:</p>
+<pre>
+D:\>java FileAttributes2 FileAttributes2.java
+File size: 904
+isDirectory: false
+isRegularFile: true
+isSymbolicLink: false
+File last accessed time: 2012-10-06T10:28:29.0625Z
+File last modified time: 2012-10-06T10:28:22.4375Z
+File creation time: 2012-10-06T10:26:39.1875Z
+</pre>
+
+<p>Você usa o método readAttribute() junto com <b>BasicFileAttributes</b> para recuperar as propriedades básicas do arquivo. Da mesma forma, você pode recuperar atributos associados a um arquivo em um ambiente DOS ou Unix usando <b>DosFileAttributes</b> e <b>PosixFileAttributes</b>, respectivamente.</p>
+</section>
+<section id="copiafiles">
+<h2>Copiando um Arquivo</h2>
+
+<p>Agora vamos tentar copiar um arquivo/diretório de um local para outro. Essa tarefa é fácil de realizar: basta chamar <b>Files.copy()</b> para copiar o arquivo da origem para o destino. Aqui está a assinatura deste método:</p>
+
+<pre class="brush:java">Pathcopy(Pathsource, Pathtarget, CopyOption... options)</pre>
+
+<p>use esse método para escrever um programa simples de cópia de arquivos.</p>
+<pre class="brush:java">
+//FileCopy.java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+public class FileCopy {
+public static void main(String[] args) {
+if(args.length != 2){
+System.out.println("usage: FileCopy &ltsource-path> &ltdestination-path>");
+System.exit(1);
+}
+Path pathSource = Paths.get(args[0]);
+Path pathDestination = Paths.get(args[1]);
+try {
+Files.copy(pathSource, pathDestination);
+System.out.println("Source file copied successfully");
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+}
+</pre>
+<p><b>Vamos executá-lo e ver se funciona.</b></p>
+
+<pre>D:\> java FileCopy FileCopy.java Backup.java
+Source file copied successfully
+</pre>
+<p>Sim, está funcionando. Tente executá-lo novamente com os mesmos argumentos:</p>
+<pre>
+D:\OCPJP\programs\NIO2\src>java FileCopy FileCopy.java Backup.java
+java.nio.file.FileAlreadyExistsException: Backup.java
+at sun.nio.fs.WindowsFileCopy.copy(Unknown Source)
+[...stack trace elided...]
+</pre>
+ <p>O que aconteceu? Quando você tenta copiar o arquivo pela segunda vez, você obtém um <b>FileAlreadyExistsException</b> porque o arquivo de destino já existe. E se você quiser substituir o arquivo existente? A solução: você precisa dizer ao método <b>copy()</b> que você deseja sobrescrever um arquivo existente. No programa anterior, altere <b>copy()</b> da seguinte maneira:</p>
+
+ <pre class="brush:java">Files.copy(pathSource, pathDestination, StandardCopyOption.REPLACE_EXISTING);</pre>
+
+ <p>Você especifica um argumento adicional (porque o método copy() suporta argumentos variáveis) para informar ao método que você deseja sobrescrever um arquivo, se ele já existir. Execute este programa e veja se funciona:</p>
+<pre>
+ D:\>java FileCopy FileCopy.java Backup.java
+Source file copied successfully
+
+D:\>java FileCopy FileCopy.java Backup.java
+Source file copied successfully
+</pre>
+<p>Sim, funciona. Agora, tente copiar um arquivo para um novo diretório:</p>
+
+<pre>D:\OCPJP\programs\NIO2\src>java FileCopy FileCopy.java bak\Backup.java
+java.nio.file.NoSuchFileException: FileCopy.java -> bak\Backup.java
+[...stack trace omitido ...]
+</pre>
+
+<p>Bem, aqui você tentou copiar um arquivo de volta para um diretório que não existe. Então, você tem o <b>NoSuchFileException</b>. Não apenas o diretório fornecido, mas também todos os diretórios intermediários em um caminho devem existir para que o método <b>copy()</b> seja bem-sucedido.</p>
+</section>
+<section id="moverfiles">
+<h2>Movendo um Arquivo</h2>
+
+<p>Mover um arquivo é semelhante a copiar um arquivo; para este propósito, você pode usar o método <b>Files.move()</b>. A assinatura deste método é a seguinte:</p>
+
+<pre class="brush:java">Pathmove(Pathsource, Pathtarget, CopyOption... options)</pre>
+
+<p>O exemplo a seguir contém um pequeno programa que usa esse método. Observe que, depois que o método <b>move()</b> for executado com êxito, o arquivo de origem não existirá mais.</p>
+<pre class="brush:java">
+//FileMove.java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+public class FileMove {
+public static void main(String[] args) {
+if(args.length != 2){
+System.out.println("usage: FileMove &ltsource-path> &ltdestination-path>");
+System.exit(-1);
+}
+Path pathSource = Paths.get(args[0]);
+Path pathDestination = Paths.get(args[1]);
+try {
+Files.move(pathSource, pathDestination, StandardCopyOption.REPLACE_EXISTING);
+System.out.println("Source file moved successfully");
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+}
+</pre>
+
+<p>Isto é como executar este programa (assumindo que existe um arquivo chamado text.txt no diretório atual):</p>
+
+<pre>D:\OCPJP\programs\NIO2\src> java FileMove text.txt newtext.txt
+Source file moved successfully</pre>
+
+<p>Aqui estão algumas observações sobre o método <b>move()</b>:</p>
+<ul>
+<li> Como o método copy(), o método move () não sobrescreve o arquivo de destino existente, a menos que você especifique que deve fazer isso usando <b>REPLACE_EXISTING</b>.</li>
+<li>Se você mover um link simbólico, o próprio link será movido, não o arquivo de destino do link. É importante observar que, no caso de copy(), se você especificar um link simbólico, o destino do link será copiado, não o próprio link.</li>
+<li> Um diretório não vazio pode ser movido se a movimentação do diretório não exigir a movimentação de arquivos/diretórios contidos. Por exemplo, mover um diretório de uma unidade física para outra pode ser malsucedido (uma <b>IOException</b> será lançada). Se a movimentação de um diretório for bem-sucedida, todos os arquivos/diretórios contidos também serão movidos.</li>
+<li> Você pode especificar <b>move()</b> como uma operação atômica usando a opção de cópia <b>ATOMIC_MOVE</b>. Quando você especifica um movimento atômico, é assegurado que o movimento foi concluído com êxito ou a fonte continua presente. Se <b>move()</b> é executado como uma operação não atômica e falha durante o processo, o estado de ambos os arquivos é desconhecido e indefinido.</li>
+</ul>
+	<br>
+</section>
+<section id="deletefiles">
+<h2>Deletando um Arquivo</h2>
+
+<p>A classe <b>Files</b> fornece um método <b>delete()</b> para excluir um arquivo/diretório/link simbólico. Este exemplo contém um programa simples para excluir um arquivo especificado.</p>
+<pre class="brush:java">
+//FileDelete.java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+public class FileDelete {
+public static void main(String[] args) {
+if(args.length != 1){
+System.out.println("usage: FileDelete &ltsource-path>");
+System.exit(1);
+}
+Path pathSource = Paths.get(args[0]);
+try {
+Files.delete(pathSource);
+System.out.println("File deleted successfully");
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+}
+</pre>
+<p><b>Imprime o seguinte quando executado:</b></p>
+<pre>
+D:\> java FileDelete log.txt
+File deleted successfully
+</pre>
+
+<p>Existem alguns pontos para lembrar ao usar o método <b>Files.delete()</b>. No caso de um diretório, o método <b>delete()</b> deve ser chamado em um diretório vazio; caso contrário, o método falhará. No caso de um link simbólico, o link é excluído, não o arquivo de destino do link. O arquivo que você pretende excluir deve existir; Caso contrário, você obtém um <b>NoSuchFileException</b>. Se você excluir um arquivo silenciosamente e não quiser ser incomodado com essa exceção, use o método <b>deleteIfExists()</b>, que não reclama se o arquivo não existir e exclui o arquivo, se existir. Além disso, se um arquivo for somente leitura, algumas plataformas podem impedir que você exclua o arquivo.</p>
+
+</section>
+<section id="apifluxonio">
+<h1>Usando a API de fluxo com NIO.2</h1>
+
+<p>Inúmeros aprimoramentos no JDK no Java 8 simplificam a programação usando o <b>NIO.2</b>. Esta seção discute alguns dos aprimoramentos importantes do pacote <b>java.nio</b> no Java 8.</p>
+</section>
+<section id="metodolist">
+<h2>Usando o método list na classe Files</h2>
+
+<p>Vamos começar usando o método <b>Files.list()</b> adicionado ao Java 8 para listar todos os arquivos no diretório atual. Por baixo, ele usa um <b>DirectoryStream</b> e, portanto, o método <b>close()</b> deve ser chamado para liberar o recurso de I/O. Este programa usa o fluxo com uma instrução <b>try-with-resources</b> que fecha automaticamente o fluxo.</p>
+<pre class="brush:java">
+ //ListFiles.java
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.util.stream.Stream;
+class ListFiles {
+public static void main(String []args) throws IOException {
+try(Stream&ltPath> entries = Files.list(Paths.get("."))) {
+entries.forEach(System.out::println);
+}
+}
+}
+</pre>
+<p><b>Ele imprimiu os arquivos no diretório atual:</b></p>
+<pre>
+./ListFiles.class
+./ListFiles.java
+... (resto da saída omitido)
+</pre>
+<p>O método list() é declarado da seguinte forma:</p>
+
+<pre class="brush:java">static Stream&ltPath> list(Path dir) throws IOException</pre>
+
+<p>Como o método <b>list()</b> retorna um fluxo, você pode usar qualquer um dos inúmeros métodos fornecidos na interface de fluxo, incluindo <b>map()</b>, <b>filter()</b>, <b>findFirst()</b>, <b>findAny()</b>, <b>distinct()</b>, <b>sorted()</b>, <b>allMatch()</b>, <b>noneMatch()</b> e <b>anyMatch()</b>.</p>
+<p>Este segmento de código é uma versão modificada do último exemplo que imprime os caminhos absolutos dos arquivos:</p>
+<pre class="brush:java">
+Files.list(Paths.get("."))
+.map(path -> path.toAbsolutePath())
+.forEach(System.out::println);
+</pre>
+<p><b>O resultado é esse:</b></p>
+<pre>
+D:\OCPJP\NIO2\src\ListFiles.class
+D:\OCPJP\NIO2\src\ListFiles.java
+... (resto da saída omitido)
+</pre>
+<p>Note que o método <b>list()</b> não percorre recursivamente as entradas no caminho dado. Para percorrer recursivamente os diretórios, você pode usar o método <b>Files.walk()</b>:</p>
+
+<pre class="brush:java">Files.walk(Paths.get(".")).forEach(System.out::println);</pre>
+
+<p>O método Files.walk() é um método sobrecarregado:</p>
+<pre class="brush:java">
+static Stream&ltPath> walk(Path path, FileVisitOption... options) throws IOException
+static Stream&ltPath> walk(Path path, int maxDepth, FileVisitOption... options) throws IOException
+</pre>
+<p>O <b>FileVisitOption</b> tem um valor de enumeração: <b>FileVisitOption.FOLLOW_LINKS</b>. Você pode passar isso para o método <b>walk()</b>. Você também pode especificar <b>maxDepth:</b> o limite no nível de aninhamento para percorrer recursivamente as entradas de diretório.</p>
+<pre class="brush:java">
+//CountEntriesRecur.java
+import java.nio.file.FileVisitOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.util.stream.Stream;
+
+class CountEntriesRecur {
+public static void main(String []args) throws IOException {
+try(Stream&ltPath> entries = Files.walk(Paths.get("."), 4, FileVisitOption.FOLLOW_LINKS)) {
+long numOfEntries = entries.count();
+System.out.printf("Found %d entries in the current path", numOfEntries);
+}
+}
+}
+</pre>
+
+<p><b>Na nossa máquina, este programa imprimiu o seguinte:</b></p>
+
+<pre>Found 179 entries in the current path</pre>
+
+<p>Este código fornece um limite arbitrário de 4 para a profundidade de aninhamento como o segundo argumento do método <b>Files.walk().</b></p>
+<p>Por fim, vamos usar o método Files.find() para listar os arquivos que correspondem a uma determinada condição.</p>
+<pre class="brush:java">
+//FindFiles.java
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.function.BiPredicate;
+import java.util.stream.Stream;
+class FindFiles {
+public static void main(String []args) throws IOException {
+BiPredicate&ltPath, BasicFileAttributes > predicate = (path, attrs)
+-> attrs.isRegularFile() && path.toString().endsWith("class");
+try(Stream&ltPath> entries = Files.find(Paths.get("."), 4, predicate)) {
+entries.limit(100).forEach(System.out::println);
+}
+}
+}
+</pre>
+<p><b>Este programa imprime longa saída, por isso não é colocado aqui.</b></p>
+<p>Este exemplo usou o método <b>limit()</b> no objeto <b>Stream&ltPath></b> para limitar o número de entradas processadas quando retornado do método <b>Files.find()</b>. O método <b>find()</b> usa o caminho para iniciar a pesquisa, a profundidade máxima a ser pesquisada, um <b>BiPredicate</b> e uma <b>FileVisitOption</b> opcional como argumentos:</p>
+
+<pre class="brush:java">
+static Stream&ltPath> find(Path path, int maxDepth, BiPredicate&ltPath,BasicFileAttributes> matcher, FileVisitOption... options) throws IOException </pre>
+
+<p>Neste exemplo, você está procurando arquivos que terminam com uma extensão class e limita o número de entradas a 100.</p>
+</section>
+<section id="metodolines">
+<h2>Usando O Método lines() na Classe Files</h2>
+
+<p>Files.lines() é um método muito conveniente para ler o conteúdo de um arquivo:</p>
+
+<pre class="brush:java">static Stream&ltString> lines(Path path)</pre>
+
+<p>Internamente, ele usa um <b>Reader</b> e, portanto, deve ser fechado após o uso. Você usa <b>try-with-resources</b> no próximo exemplo para imprimir o conteúdo do arquivo cujo nome é passado como argumento.</p>
+<pre class="brush:java">
+//Type.java
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.stream.Stream;
+// implementa uma versão simplificada do comando "type" fornecido no Windows;
+// dado o (s) nome (s) do arquivo de texto como argumento, ele imprime o conteúdo do (s) arquivo (s) 
+class Type {
+private static void processFile(String file) {
+try(Stream&ltString> lines = Files.lines(Paths.get(file))) {
+lines.forEach(System.out::println);
+} catch (IOException ioe) {
+System.err.println("IOException occurred when reading the file... exiting");
+System.exit(-1);
+}
+}
+public static void main(String[] files) throws IOException {
+if (files.length == 0) {
+System.err.println("pass the name of the file(s) as argument");
+System.exit(-1);
+}
+// process each file passed as argument
+Arrays.stream(files).forEach(Type::processFile);
+}
+}
+</pre>
+<p>Esta versão é bem concisa.</p>
+</section>
+<p class="nav-arq" id="referencia">Java IO Fundamental: <a href="javaio.html">&laquo; anterior | <a href="concorrenciajava.html">próximo &raquo;</a>Concorrência Java </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/javafilenio" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+</body>
+	</html>

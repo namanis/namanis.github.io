@@ -1,0 +1,761 @@
+
+
+<!DOCTYPE html>
+ <html lang="pt-br">
+
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+ <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+ 
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+       <a class="w3-bar-item w3-button"  href="#interfuncional">10 - INTERFACES FUNCIONAIS EMBUTIDAS DO LAMBDA</a>
+            <a class="w3-bar-item w3-button"  href="#interpredicate">A Interface Predicate</a>
+          <a class="w3-bar-item w3-button"  href="#interconsume">A Interface Consumer</a>
+          <a class="w3-bar-item w3-button"  href="#interfunction">Function Interface</a>
+          <a class="w3-bar-item w3-button" href="#interfsupplier">A Interface Supplier</a>
+          <a class="w3-bar-item w3-button"  href="#refconstrutor">Referência de Construtores</a>
+          <a class="w3-bar-item w3-button"  href="#verprimitivafunc">Versões Primitiva de Intercaces Funcional</a>
+          <a class="w3-bar-item w3-button"  href="#versprimipred">Versões primitivas da interface Predicates </a>
+           <a class="w3-bar-item w3-button"  href="#intfuncionalprimitiva">Versões Primitivas da Interface Funcional</a>
+          <a class="w3-bar-item w3-button"  href="#intconsumerprimitiva">Versão Primitiva da Interface Consumer</a>
+           <a class="w3-bar-item w3-button"  href="#intprimitivasuplier">Versões Primitivas da Interface Supplier</a>
+          <a class="w3-bar-item w3-button"  href="#funcionalbinario">Versões Binárias de Interfaces Funcional </a>
+           <a class="w3-bar-item w3-button"  href="#bifunction">A interface BiFunction</a>
+          <a class="w3-bar-item w3-button"  href="#intbipredicate">A Interface BiPredicate</a>
+          <a class="w3-bar-item w3-button"  href="#intbitconsumer">A Interface BiConsumer</a>
+           <a class="w3-bar-item w3-button"  href="#unaryoperator">A Interface UnaryOperator</a>
+          
+           
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+   
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>  
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-top  w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+<section id="interfuncional">
+<h1>Interfaces Funcionais Embutidas do Lambda</h1>
+
+<ul>
+
+<li>Usar interfaces embutidas incluída no pacote java.util.function tal como Predicate, Consumer, Function, e Supplier</li>
+
+<li>Desenvolver código que usa versão primitiva de interfaces funcional</li>
+
+<li>Desenvolver codigo que usa versão binária de interfeces funcional</li>
+
+<li>Desenvolver código que usa a interface UnaryOperator</li>
+</ul>
+
+<p>Nesta seção, vamos discutir quatro importantes interfaces embutida incluída no pacote java.util.function: Predicate, Consumer, Function e Suplier. </p>
+
+<p><b>Predicate&ltT></b> -> Verifica uma condição e retorna como resultado um valor booleano.
+O uso comum é no metodo <b>filter()</b> em <b>java.util.stream.Stream</b> que é usado para remover elementos no fluxo que não coresponde a condição dada( isto é predicate) como argumento.</p>
+
+<p><b>Consumer&ltT></b> -> Operação que leva um argumento mas retorna nada.</p>
+
+<p>O Uso Comum é no método <p>forEach()</b> em coleções e em <b>java.util.stream.Stream</b>; este método é usado para atravessar todos os elementos na coleção(collection) ou fluxo(stream).</p>
+
+
+<p><b>Function&ltT ,R></b>-> Funções que leva um argumento e retorna um resultado.</p>
+
+<p>O uso comum é No método <b> map()</b> em <b>java.util.sream.Stream</b> para transformar ou operar no valor passado e retorna um resultado.</p>
+
+
+<p><b>Supplier&ltT></b>-> Operação que retorna um valor para o chamador( o valor retornado pode ser mesmo ou de diferentes valores)</p>
+
+<p>O uso comum é no método generate em <b>java.util.sream.Stream</b> para criar um infinito stream de elementos.</p>
+
+<br>
+<img src="imagens/jee7/predicate.jpg">
+
+
+
+<p><i>Na imagem acima são declarações de métodos abstratos nas chaves de interfaces funcionais no pacote  <b>java.util.function</b></i>.</p><br>
+
+</section>
+<section id="interpredicate">
+<h2>A Interface Predicate</h2>
+
+<p>No código, muitas vezes precisamos usar funções que verificam uma condição e retornam um valor booleano. Considere o seguinte segmento de código:</p>
+<pre class="brush:java">
+Stream.of("hello", "world")
+.filter(str -> str.startsWith("h"))
+.forEach(System.out::println);
+</pre>
+
+
+<p>Este segmento de código apenas imprime "hello" no console. O método <b>filter()</b> só retorna <b>true</b> se a <b>string</b> passada começar com "h" e, portanto, "filtra" a <b>string</b> "world" do fluxo porque a <b>string</b> não inicia com "h". Nesse código, o método <b>filter()</b> usa um <b>Predicate</b> como argumento. Aqui está a <b>interface PredicateFunctional</b>:</p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface Predicate&ltT> {
+boolean test(T t);
+// outros métodos omitidos
+}
+</pre>
+<p>O método abstrado nomeado <b>test()</b> que leva um argumento e retorna <b>true</b> ou <b>false</b>.</p>
+<br>
+<img src="imagens/jee7/intepredic.jpg">
+<p><i>Um Predicate&ltT> pega um argumento do tipo T e retorna um valor booleano como resultado</i></p><br>
+<p>Essa interface funcional também define os métodos padrão denominados <b>and()</b> e <B>or()</b> que usam um <b>Predicate</b> e retornam um </b>Predicate</b>. Esses métodos têm comportamento semelhante aos operadores <b>&&</b> e <b>||</b> . O método <b>negate()</b> retorna um </b>Predicate</b> e seu comportamento é semelhante ao operador' <b>!</b> '' . Como eles são úteis? Aqui está um programa que ilustra o uso do método <b>and()</b> na interface Predicate.</p>
+<pre class="brush:java">
+//PredicateTest.java
+import java.util.function.Predicate;
+public class PredicateTest {
+public static void main(String []args) {
+Predicate&ltString> nullCheck = arg -> arg != null;
+Predicate&ltString> emptyCheck = arg -> arg.length() > 0;
+Predicate&ltString> nullAndEmptyCheck = nullCheck.and(emptyCheck);
+String helloStr = "hello";
+System.out.println(nullAndEmptyCheck.test(helloStr));
+String nullStr = null;
+System.out.println(nullAndEmptyCheck.test(nullStr));
+}
+</pre>
+
+<p><b>Este programa imprime:</b></p>
+<pre>
+true
+false
+</pre>
+
+<p>Neste programa, o objeto <b>nullCheck</b> é um </b>Predicate</b> que retorna <b>true</b> se o argumento <b>String</b> fornecido não for nulo. O predicate <b>emptyCheck</b> retorna <b>true</b> se a <b>string</b> especificada não estiver vazia. O predicate <b>nullAndEmptyCheck</b> combina os predicates <b>nullCheck</b> e <b>emptyCheck</b> fazendo uso do método padrão denominado <b>and()</b> fornecido no <b>Predicate</b>. Desde que <b>helloStr</b> aponta para a <b>string</b> “hello” na primeira chamada <b>nullAndEmptyCheck.test(helloStr)</b>, e a <b>string</b> não está vazia, ela retorna <b>true</b>. No entanto, na próxima chamada, </b>nullStr</b> é <b>null</b> e, portanto, a chamada </b>nullAndEmptyCheck.test(nullStr)</b> retorna <b>false</b>.</p>
+
+
+<p>Para dar outro exemplo para usar Predicates, aqui está um segmento de código que faz uso do método removeIf() método adicionado na interface Collection em Java 8:</p>
+<pre class="brush:java">
+//RemoveIfMethod.java
+import java.util.List;
+import java.util.ArrayList;
+public class RemoveIfMethod {
+public static void main(String []args) {
+List&ltString> greeting = new ArrayList&lt>();
+greeting.add("hello");
+greeting.add("world");
+greeting.removeIf(str -> !str.startsWith("h"));
+greeting.forEach(System.out::println);
+}
+}
+</pre>
+</p>Imprime “hello” no console. O método padrão <b>removeIf()</b> definido na Interface Collection (uma super interface de ArrayList) usa um <b>Predicate</b> como argumento:</p>
+
+
+<pre class="brush:java">default boolean removeIf(Predicate&lt? super E> filter)</pre>
+
+<p>Na chamada para o método </b>removeIf()</b>, estamos passando uma expressão lambda que corresponde ao método booleano de teste abstrato <b>test(T t)</b> declarado na interface Predicate:</p>
+
+<pre class="brush:java">greeting.removeIf(str -> !str.startsWith("h"));</pre>
+
+<p>Como resultado, a string “world” da saudação do objeto ArrayList é removida e, portanto, apenas o “hello” é impresso no console. Neste código, usamos o operador<b>!</b>. Em vez disso, que tal usar o método equivalente <b>negate()</b> definido no <b>Predicate</b>? Sim, é possível e aqui está o código alterado:</p>
+
+<pre class="brush:java">greeting.removeIf(((Predicate&ltString>) str -> str.startsWith("h")).negate());</pre>
+
+<p>Quando você executa o programa na <b>RemoveIfMethod</b> do exemplo anterior com essa mudança, o programa imprime “hello”. Observe como executamos o tipo de conversão explícito (para o Predicate< String >) nessa expressão. Sem este tipo explícito convertido - como em <b>((str -> str.startsWith("h")).negate())</b> - o compilador não pode executar inferência de tipos para determinar a interface funcional correspondente e, portanto, reportará um erro.</p>
+</section>
+<section id="interconsume">
+<h2>A Interface Consumer</h2>
+
+<p>Existem muitos métodos que usam um argumento, executam algumas operações com base no argumento, mas não retornam nada para seus chamadores - eles são métodos do consumidor. Considere o seguinte segmento de código:</p>
+<pre class="brush:java">
+Stream.of("hello", "world")
+.forEach(System.out::println);
+</pre>
+<p>Este segmento de código imprime as palavras “hello” e “world” que fazem parte do fluxo usando o método forEach() definido na interface Stream. Este método é declarado na interface <b>java.util.stream.Stream</b> da seguinte forma:
+</p>
+<pre class="brush:java">void forEach(Consumer&lt? super T> action);</pre>
+
+<p>O <b>forEach()</b> usa uma instância de </b>Consumer</b> como argumento. A interface funcional <b>Consumer</b> declara um método abstrato denominado <b>accept().</b></p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface Consumer&ltT> {
+void accept(T t);
+// o método padrão andThen omitido
+}
+</pre>
+
+<br>
+<img src="imagens/jee7/consumer.jpg">
+<p><i>Um <b>Consumer&ltT></b> leva um argumento do tipo <b>T</b> e retorna nada.</i></p><br>
+
+<p>O método <b>accept()</b> "consome" um objeto e retorna nada(void)</p>.
+
+<p>Aqui um exemplo:</p>
+<pre class="brush:java">
+Consumer&ltString> printUpperCase = str -> System.out.println(str.toUpperCase());
+printUpperCase.accept("hello");
+// prints: HELLO
+</pre>
+<p>Nesse código, a expressão lambda pega a string dada, converte em maiúscula e a imprime no console. Nós estamos passando o argumento atual “hello” para o método <b>accept()</b>.</p>
+
+<p>Agora, vamos voltar à discussão sobre <b>forEach()</b>: como funciona a chamada <b>forEach(System.out::println)</b>? A classe <b>System</b> possui uma variável estática denominada <b>out</b> que é do tipo <b>PrintStream</b>. A classe <b>PrintStream</b> define métodos <b>println</b> sobrecarregados; Um dos métodos sobrecarregados tem a assinatura <b>void println(String)</b>. Na chamada <b>forEach(System.out::println)</b>, estamos passando a referência do método para <b/>println</b>, ou seja, <b>System.out::println</b>. Essa referência de método corresponde à assinatura do método abstrato na interface <b>Consumer</b>, ou seja, <b>void accept(T)</b>. Portanto, a referência de método <b>System.out::println</b> serve para implementar a interface funcional <b>Consumer</b> e o código imprime as <b>strings</b> “hello” e “world” para o console. O exemplo, a seguir divide o código </b>Stream.of ("hello", "world")</b>. <b>ForEach(System.out :: println);</b> em três instruções diferentes apenas para mostrar como funciona.</p>
+<pre class="brush:java">
+//ConsumerUse.java
+import java.util.stream.Stream;
+import java.util.function.Consumer;
+class ConsumerUse {
+public static void main(String []args) {
+Stream&ltString> strings = Stream.of("hello", "world");
+Consumer&ltString> printString = System.out::println;
+strings.forEach(printString);
+}
+}
+</pre>
+<p><b>Este programa imprime isto:</b/></p>
+<pre>
+hello
+world
+</pre>
+<p><b>Consumer</b> também tem um método padrão chamado <b>andThen();</b> permite encadear chamadas para objetos de <b>Consumer.</b></p>
+
+</section>
+<section id="interfunction">
+<h2>Function Interface </h2>
+
+<p>Considere este exemplo que faz uso do metódo <b>map()</b> na interface <b>java.util.stream.Stream</b>.</p>
+
+<pre class="brush:java">
+import java.util.Arrays;
+public class FunctionUse {
+public static void main(String []args) {
+Arrays.stream("4, -9, 16".split(", "))
+.map(Integer::parseInt)
+.map(i -> (i < 0) ? -i : i)
+.forEach(System.out::println);
+}
+}
+</pre>
+<p><b>Este programa imprime:</b></p>
+<pre>
+4
+9
+16
+</pre>
+<p>Este programa cria um fluxo de <b>Strings</b> dividindo a <b>string</b> “4, -9, 16”. A referência ao método <b>Integer::parseInt</b> é passada para o método <b>map()</B> - esta chamada retorna um objeto <b>Integer</b> para cada elemento no fluxo. Na segunda chamada ao método <b>map()</b> no fluxo, usamos a função lambda <b>(i -> (i < 0) ? -i: i)</b> para produzir uma lista de inteiros não negativos (alternativamente, poderíamos ter usado o Método <b>Math::abs</b>).</p>
+<p>O método <b>map()</b> que usamos aqui toma uma </b>Function</b> como um argumento (este exemplo é para ilustrar onde uma interface <b>Function</b> é útil). Finalmente, os inteiros resultantes são impressos usando o método <b>forEach()</b>.</p>
+<p>A interface <b>Function</b> define um único método abstrato chamado <b>apply()</b> que recebe um argumento do tipo genérico <b>T</b> e retorna um objeto do tipo genérico <b>R</b>.</p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface Function&ltT, R> {
+R apply(T t);
+//outros métodos omitido
+}
+</pre>
+<br>
+<img src="imagens/jee7/functionint.jpg">
+<p><i>Uma <b>Function&ltT,R></b> pega um argumento do tipo <b>T</b> e retorna do tipo <b>R</b>.</i></p>
+<br>
+
+<p>Aqui um simples exemplo que usa uma <b>Function</b>:</p>
+<pre class="brush:java">
+Function&ltString, Integer> strLength = str -> str.length();
+System.out.println(strLength.apply("supercalifragilisticexpialidocious"));
+// prints: 34
+</pre>
+<p>Este código pega uma <b>string</b> e retorna seu tamanho. Para a chamada, <b>strLength.apply</b>, passamos a <B>string</b>"supercalifragilisticexpialidocious". Como resultado de fazer a chamada <b>apply()</b>, obtemos o comprimento dessa <b>string</b> 34 como resultado</p>.
+<b>Vamos mudar nosso programa anterior para usar o método <b>andThen()</b>:</b>
+<pre class="brush:java">
+//CombineFunctions.java
+import java.util.Arrays;
+import java.util.function.Function;
+public class CombineFunctions {
+public static void main(String []args) {
+Function&ltString, Integer> parseInt = Integer::parseInt;
+Function&ltInteger, Integer> absInt = Math::abs;
+Function&ltString, Integer> parseAndAbsInt = parseInt.andThen(absInt);
+Arrays.stream("4, -9, 16".split(", "))
+.map(parseAndAbsInt)
+.forEach(System.out::println);
+}
+}
+</pre>
+
+<p>Este programa imprime 4, 9 e 16 em linhas separadas: a mesma saída do exemplo anterior, mas faz uma única chamada ao método <b>map()</b> no Stream. Como o <b>Integer::parseInt()</b> usa uma <b>String</b> como argumento, analisa-o para retornar um <b>Integer</b>, declaramos o método <b>parseInt()</b> do tipo <b>Function&ltString, Integer></b>. O método <b>Math::abs</b> usa um inteiro e retorna um inteiro e, portanto, declaramos que ele é do tipo </b>Function&ltInteger, Integer></b>. Como o <b>parseAndAbsInt</b> usa uma <b>String</b> como argumento e retorna um <b>inteiro</b> como resultado, nós o declaramos como sendo do tipo <b>Function&ltString, Integer>.</b></p>
+
+
+<p>Qual é a diferença entre os métodos <b>andThen()</b> e <b>compose()</b> na interface <B>Function</b>? O método <b>andThen()</b> aplica o argumento passado após chamar a função atual. O método <b>compose()</b> chama o argumento antes de chamar a função atual, como em:</p>
+
+<pre class="brush:java">Function&ltString, Integer> parseAndAbsInt = absInt.compose(parseInt):</pre>
+
+<p>A função <b>identity()</b> em <b>Function</b> apenas retorna o argumento passado sem fazer nada! Então qual é o seu uso? Às vezes é usado para testes - quando você escreve um trecho de código que pega uma função e quer verificar se ela funciona, você pode chamar <b>identity()</b> porque ela não faz nada. Aqui está um exemplo:</p>
+<pre class="brush:java">
+Arrays.stream("4, -9, 16".split(", "))
+.map(Function.identity())
+.forEach(System.out::println);
+</pre>
+<p>Nesse código, o <b>map(Function.identity())</b> não faz nada; apenas passa os elementos no fluxo para a chamada <b>forEach(System.out::println)</b>. Portanto, o código imprime os elementos como eles são, ou seja, os valores 4, -9 e 16 em linhas separadas.</p>
+</section>
+<section id="interfsupplier">
+<h2>A Interface Supplier</h2>
+
+<p>Nos programas, muitas vezes precisamos usar um método que não recebe nenhuma entrada, mas retorna alguma saída. Considere o seguinte programa que gera valores booleanos:</p>
+<pre class="brush:java">
+//GenerateBooleans.java
+import java.util.stream.Stream;
+import java.util.Random;
+class GenerateBooleans {
+public static void main(String []args) {
+Random random = new Random();
+Stream.generate(random::nextBoolean)
+.limit(2)
+.forEach(System.out::println);
+}
+}
+</pre>
+<p>Este programa imprime rondomicamente dois valores boolean, por exemplo "true" e "false". O método <b>generate()</b> na interface <b>Stream</b> é um membro estático que pega um <b>suplier</b> como um argumento:</p>
+
+<pre class="brush:java">
+static&ltT> Stream&ltT> generate(Supplier&ltT> s)</pre>
+
+
+<p>Aqui, você está passando a referência do método para <b>nextBoolean</b> definido na classe <b>java.util.Random</b>. Ele retorna um valor booleano escolhido aleatoriamente:</p>
+
+<pre class="brush:java">boolean nextBoolean()</pre>
+
+<p>Você pode passar a referência do método para <b>nextBoolean</b> ao método <b>generate()</b> do <b>Stream</b> porque corresponde o método abstrato na interface <b>Supplier</b>, ou seja, <b>T get()</b></p>.
+<pre class="brush:java">
+@FunctionalInterface
+public interface Supplier&ltT> {
+T get();
+// sem outros métodos nesta interface
+}
+</pre>
+<br>
+<img src="imagens/jee7/supplier.jpg">
+<p><i>Um <b>Supplier&ltT></b> não pega argumentos e retorna um valor do tipo <b>T</b></i></p>.<br>
+
+<p>Aqui um exemplo que retorna um valor serm pegar qualquer argumento:</p>
+
+<pre class="brush:java">Supplier&ltString> currentDateTime = () -> LocalDateTime.now().toString();
+System.out.println(currentDateTime.get());</pre>
+
+<p>Invocamos o método <b>now()</b> em <b>java.time.LocalDateTime()</b>. Quando nós executamos isto, imprimiu: 2018-10-16T12: 40: 55.164. Claro, se você tentar este código,você terá uma saída diferente. Aqui estamos usando um <b>Supplier&ltString></b>. A expressão lambda não recebe nenhuma saída, mas retorna a data/hora atual como um formato <b>String</b>. Estamos chamando o lambda quando chamamos o método <b>get()</b> na variável <b>currentDateTime</b>.</p>
+</section>
+<section id="refconstrutor">
+<h1>Referência de Construtores</h1>
+
+
+<p>Considere o seguinte código:</p>
+<pre class="brush:java">
+Supplier&ltString> newString = String::new;
+System.out.println(newString.get());
+// imprime uma string vazia (nada) no console e então um caracter na nova linha
+</pre>
+<p>Este código faz uso de referencia de construtores. Este código equivale para:</p>
+<pre class="brush:java">
+Supplier&ltString> newString = () -> new String();
+System.out.println(newString.get());
+</pre>
+<p>Com uma referência de método usando <b>::new</b>, esta expressão lambda é simplificada, como em <b>String::new</b>. Como usar construtores que recebem argumentos? Por exemplo, considere o construtor <b>Integer(String):</b> este construtor <b>Integer</b> usa uma <b>String</b> como argumento e cria um objeto <b>Integer</b> com o valor dado nessa <b>string</b>. Aqui está como você pode usar esse construtor:</p>
+<pre class="brush:java">
+Function&ltString, Integer> anotherInteger = Integer::new;
+System.out.println(anotherInteger.apply("100"));
+// este código imprime: 100
+</pre>
+<p>Não podemos usar um <b>Supplier</b> aqui porque os <b>Suppliers</b> não aceitam nenhum argumento. Funções aceitam argumentos e o tipo de retorno aqui é Integer e, portanto, podemos usar <b>Function&ltString, Integer></b>.</p>
+</section>
+<section id="verprimitivafunc">
+<h2>Versões Primitiva de Interfaces Funcional</h2>
+
+<p>As interfaces integradas <b>Predicate</b>, <b>Consumer</b>, <b>Function</b> e <b>Supplier</b> operam em objetos do tipo de referência.<p>
+<p>Para tipos primitivos, existem especializações disponíveis para <b>int</b>, <b>long</b> e tipo <b>double</b> para essas interfaces funcionais. Considere o <b>Predicate</b> que opera em objetos do tipo <b>T</b>, ou seja, é o <b>Predicate&ltT></b>. As especializações para <b>int</b>, <b>long</b> e <b>double</b> para <b>Predicate</b> são <b>IntPredicate</b>, <b>LongPredicate</b> e <b>DoublePredicate</b> respectivamente.</p>
+<p>Devido as limitações em genéricos, não é possível usar valores de tipo primitivos com as interfaces funcionais <b>Predicate</b>, <b>Consumer</b>, <b>Function</b> e <b>Supplier</b>. Mas você pode usar tipos de <b>wrapper</b>, como <b>Integer</b> e <b>Double</b>, com essas interfaces funcionais. Quando você tenta usar tipos primitivos com essas interfaces funcionais, isso resulta em <b>autoboxing</b> e <b>unboxing</b> implícitos, por exemplo, um valor <b>int</b> é convertido em um objeto <b>Integer</b> e vice-versa. Na verdade, muitas vezes você nem percebe que está usando os tipos de <b>wrapper</b> com essas interfaces funcionais. No entanto, o desempenho pode sofrer quando usamos os tipos de <b>wrapper</b>: pense em boxear e desempacotar alguns milhões de inteiros em um fluxo. Para evitar esse problema de desempenho, você pode usar versões primitivas relevantes dessas interfaces funcionais.</p>
+</section>
+<section id="versprimipred">
+<h2>Versões primitivas da interface Predicate</h2>
+
+<p>Considere este exemplo:</p>
+
+<pre class="brush:java">IntStream.range(1, 10).filter(i -> (i % 2) == 0).forEach(System.out::println);</pre>
+
+
+
+
+<p>Aqui o método <b>filter()</b> pega um <b>IntPredicte</b> como um argumento desde que o <B>stream</b> subjacente é um <b>IntStream</b>. Aqui é o código equivalente que usa explicitamente um <b>IntPredicate</b>:</p>
+<pre class="brush:java">
+IntPredicate evenNums = i -> (i % 2) == 0;
+IntStream.range(1, 10).filter(evenNums).forEach(System.out::println);
+</pre>
+<p>Na Tabela lista de versões primitivas de interface Predicate fornecido no pacote java.util.function. </p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Interface Funcional</th><th>Método abstrato</th><th>Breve Descrição</th></tr>
+  
+<tr><td>IntPredicate</td><td> boolean test(int value)</td><td> - Avalia a condição passada como int e retorna um valor booleano como resultado</td></tr>
+<tr><td>LongPredicate</td><td> boolean test(long value)</td><td>- Avalia a condição passada por muito tempo e retorna um valor booleano como resultado</td></tr>
+<tr><td>DoublePredicate</td><td> boolean test(double value)  </td><td>- Avalia a condição passada como dupla eretorna um valor booleano como resultado</td></tr>
+</table>
+</div>
+</section>
+<section id="intfuncionalprimitiva">
+<h2>Versões Primitivas da Interface Funcional</h2>
+
+<p>Aqui é um exemplo que usa um <b>Stream</b> com inteiros de tipo primitivo:</p>
+<pre class="brush:java">
+AtomicInteger ints = new AtomicInteger(0);
+Stream.generate(ints::incrementAndGet).limit(10).forEach(System.out::println);
+// imprime inteiros de 1 a 10 no console
+</pre>
+
+<p>Esse código chama o método int <b>incrementAndGet()</b> definido na classe <b>java.util.concurrent.atomic.AtomicInteger</b>. Note que este método retorna um <b>int</b> e não um <b>Integer</b>. Ainda assim, podemos usá-lo com o <b>Stream</b> por causa de <b>autoboxing</b> e <b>unboxing</b> implícitos para o tipo inteiro do <b>wrapper</b> de int. Este boxe e unboxing é simplesmente desnecessário. Em vez disso, você pode usar a interface <b>IntStream;</b> seu método <b>generator()</b> usa um <b>IntSupplier</b> como um argumento. Com essa mudança, aqui está o código equivalente:</p>
+
+<pre class="brush:java">
+AtomicInteger ints = new AtomicInteger(0);
+IntStream.generate(ints::incrementAndGet).limit(10).forEach(System.out::println);
+// imprime inteiros de 1 a 10 no console
+</pre>
+<p>Como seu código usa <b>IntStream</b> e o método <b>generate()</b> usa um <b>IntSupplier</b>, não há boxe e unboxing implícitos; portanto, esse código executa mais rápido, pois não gera objetos inteiros temporários desnecessários.</p>
+
+<p>Para dar outro exemplo, aqui é um segmento de código que vimos anteriormente usando o método <b>Math.abs()</b>:</p>
+
+<pre class="brush:java">Function&ltInteger, Integer> absInt = Math::abs;</pre>
+
+<p>Você pode substituí-lo por seu equivalente usando a especialização <b>int</b> para <b>Function</b>, conhecida como <b>IntFunction</b>:</p>
+
+<pre class="brush:java">IntFunction absInt = Math::abs;</pre>
+
+<p>Dependendo do tipo de argumentos e tipos de retorno, existem várias versões de tipos primitivos para interface <b>Function</b></p>
+
+
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Interface Funcional</th><th>Método Abstrato</th><th>Breve Descrição</th></tr>
+<tr><td>IntFunction&ltR></td><td> R apply(int value)</td><td> Opera no argumento int passado e retorna o valor do tipo genérico R</td></tr>
+
+<tr><td>LongFunction&ltR></td><td> R apply(long value) </td><td> Opera no argumento long passado e retorna o valor do tipo genérico R</td></tr>
+
+
+<tr><td>DoubleFunction&ltR></td><td> R apply(double value) </td><td> Opera no argumento double passado e retorna o valor do tipo genérico R</td></tr>
+
+<tr><td>ToIntFunction&ltT></td><td> int applyAsInt(T value) </td><td> Opera no argumento de tipo genérico passado T e retorna um valor int</td></tr>
+
+<tr><td>ToLongFunction&ltT></td><td> long applyAsLong(T value) </td><td> Opera no argumento de tipo genérico T passado e retorna um valor long</td></tr>
+
+<tr><td>ToDoubleFunction&ltT></td><td> double applyAsDouble(T value) </td><td> Opera no argumento de tipo genérico T passado e retorna um valor double</td></tr>
+
+
+
+<tr><td>IntToLongFunction </td><td>long applyAsLong(int value) </td><td> Opera no argumento do tipo int passado e retorna um valor long</td></tr>
+
+
+<tr><td>IntToDoubleFunction </td><td>double applyAsDouble(int value) </td><td> Opera no argumento de tipo int passado e retorna um valor double</td></tr>
+
+<tr><td>LongToIntFunction </td><td>int applyAsInt(long value) </td><td> Opera no argumento de tipo longo passado e retorna um valor int</td></tr>
+
+
+<tr><td>LongToDoubleFunction </td><td>double applyAsLong(long value) </td><td> Opera no argumento de tipo longo passado e retorna um valor double</td></tr>
+
+
+<tr><td>DoubleToIntFunction</td><td> int applyAsInt(double value) </td><td>Opera no argumento de tipo double passado e retorna um valor int</td></tr>
+
+
+<tr><td>DoubleToLongFunction</td><td> long applyAsLong(double value)</td><td> Opera no argumento do tipo double passado e retorna um valor long</td></tr>
+</table>
+</div>
+
+</section>
+<section id="intconsumerprimitiva">
+<h2>Versão Primitiva da Interface Consumer</h2>
+
+<p>Deendendo do tipo de argumento, existem numerosas versões de tipos primitivos disponível para interface Consumer.</p>
+
+<p>Tabela abaixo de Versões primitivas da Interface Consumer:</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Interface Funcional</th><th>Método Abstrato</th><th>Breve Descrição</th></tr>
+<tr><td>IntConsumer</td><td> void accept(int value) </td><td> Opera no argumento int dado e não retorna nada</td></tr>
+
+<tr><td>LongConsumer </td><td>void accept(long value) </td><td> Opera no argumento long fornecido e não retorna nada</td></tr>
+
+<tr><td>DoubleConsumer </td><td>void accept(double value) </td><td>Opera no argumento double fornecido e não retorna nada</td></tr>
+
+<tr><td>ObjIntConsumer&ltT> </td><td>void accept(T t, int value) </td><td> Opera no argumento de tipo genérico dado argumentos T e int e
+não retorna nada</td></tr>
+
+<tr><td>ObjLongConsumer&ltT> </td><td>void accept(T t, long value) </td><td> Opera no argumento de tipo genérico dado T e argumentos long e não retorna nada</td></tr>
+
+<tr><td>ObjDoubleConsumer&ltT> </td><td>void accept(T t, double value) </td><td> Opera no argumento do tipo genérico dado T e argumentos double e não retorna nada</td></tr>
+</table>
+</div>
+</section>
+<section id="intprimitivasuplier">
+<h2>Versões Primitivas da Interface Supplier</h2>
+
+<p>As versões primitivas de <b>Supplier</b> são <b>BooleanSupplier</b>, <b>IntSupplier</b>, <b>LongSupplier</b> e <b>DoubleSupplier</b> que retornam <b>booleano</b>, <b>int</b>, <b>long</b> e <b>double</b> respectivamente.</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+  <tr><th>Método Funcional</th><th>Método Abstrato</th><th>Breve Descrição</th></tr>
+<tr><td>BooleanSupplier</td><td> boolean getAsBoolean() </td><td> Não Pega um argumento e retorna um valor boolean</td></tr>
+
+<tr><td>IntSupplier </td><td>int getAsInt() </td><td> Não Pega um argumento e retorna um valor inttd></td></tr>
+
+<tr><td>LongSupplier </td><td>long getAsLong() </td><td> Não Pega um argumento e retorna um valor longtd></td></tr>
+
+<tr><td>DoubleSupplier </td><td>double getAsDouble() </td><td> Não Pega um argumento e retorna um valor doubletd></td></tr>
+</table>
+</div>
+ <p>As versões primitivas das interfaces funcionais estão disponíveis apenas para <b>int</b>, <b>long</b> e <b>double </b>(e tipo booleano, além desses três tipos para Supplier). E se você precisar de uma interface funcional que obtenha ou retorne outros tipos primitivos <b>char</b>, <b>byte</b> ou <b>short</b>? Você tem que usar conversões implícitas para especializações <b>int</b> relevantes. Da mesma forma, quando você pode usar a especialização para o tipo <b>double</b> quando você está usando <b>float</b>.</p>
+</section>
+<section id="funcionalbinario">
+<h1>Versões Binárias de Interfaces Funcional</h1>
+
+<p><b>Desenvolver códigos usando versões binárias de interfaces funcionais.</b></p>
+<p>As interfaces funcionais <b>Predicate</b>, <b>Consumer</b> e <b>Function</b> possuem métodos abstratos que levam um argumento. Por exemplo, considere a interface funcional:</p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface Function&ltT, R> {
+R apply(T t);
+// outros métodos omitido
+}
+</pre>
+<p>O método abstrato <b>apply()</b> aceita um argumento (tipo genérico T). Aqui está a versão binária da interface Function:</p>
+<pre class="brush:java">
+@FunctionalInterface
+public interface BiFunction&ltT, U, R> {
+R apply(T t, U u);
+// outros métodos omitidos
+}
+</pre>
+<br>
+<p><i>Um BiFunction é semelhante ao Function, mas a diferença é que ele leva dois argumentos: ele pega argumentos dos tipos genéricos T e U e retorna um objeto do tipo genérico R. Você pode chamar o método apply() em um objeto BiFunction.</i></p>
+<br>
+<p>O prefixo “Bi” indica a versão que recebe “dois” argumentos. Na mesma linha que <b>BiFunction</b> para <b>Function</b>, há <b>BiPredicate</b> para <b>Predicate</b> e <b>BiConsumer</b> para <b>Consumer</b> que leva dois argumentos. E sobre o <b>Supplier</b>? Como o método abstrato em <b>Supplier</b> não aceita nenhum argumento, não há um BiSupplier equivalente disponível.</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+   <tr><th>Método Funcional</th><th>Método Abstrato</th><th>Breve Descrição</th></tr>
+
+<tr><td>BiPredicate&ltT, U ></td><td> boolean test(T t, U u) </td><td> Verifica se o argumento corresponde a condicional e retorna um valor boolean como resultado.</td></tr>
+
+<tr><td>BiConsumer&ltT, U ></td><td> void accept(T t, U u) </td><td> Operação que consome dois argumentos mas retorna nada</td></tr>
+
+<tr><td>BiFunction&ltT, U, R > </td><td>R apply(T t, U u) </td><td> Function que pega dois argumentos e retorna um resultado.</td></tr>
+<table>
+</div>
+</section>
+<section id="bifunction">
+<h2>A interface BiFunction</h2>
+
+<p>Aqui está um exemplo de inteface usando BiFunction:</p>
+
+<pre class="brush:java">
+BiFunction&ltString, String, String> concatStr = (x, y) -> x + y;
+System.out.println(concatStr.apply("hello ", "world"));
+// prints: hello world
+</pre>
+<p>Neste exemplo, os argumentos e tipo de retorna são os mesmos tipos, mas eles podem ser diferentes, como em:</p>
+<pre class="brush:java">
+BiFunction&ltDouble, Double, Integer> compareDoubles = Double::compare;
+System.out.println(compareDoubles.apply(10.0, 10.0));
+// prints: 0
+</pre>
+<p>Nesse caso, os tipos de argumento são do tipo double e o tipo de retorno é inteiro. Quando os valores double passados são iguais, o método <b>compare</b> na classe <b>Double</b>  retorna 0 e, portanto, obtemos a saída 0 para esse segmento de código.</p>
+<p>Encontrar uma interface de função adequada para um determinado contexto pode ser complicado, pois há um grande número de interfaces funcionais disponíveis no pacote <b>java.util.function</b>. Por exemplo, no nosso exemplo anterior, nós usamos o <b>BiFunction&ltDouble, Double, Integer></b>. Em vez disso, poderíamos usar a interface funcional <b>ToIntBiFunction</b>, porque ela retorna um <b>int</b>.</p>
+</section>
+<section id="intbipredicate">
+<h2>A Interface BiPredicate</h2>
+
+<pre class="brush:java">
+BiPredicate&ltList&ltInteger>, Integer> listContains = List::contains;
+List aList = Arrays.asList(10, 20, 30);
+System.out.println(listContains.test(aList, 20));
+// prints: true
+</pre>
+<p>Este código mostra como usar o <b>BiPredicate</b>. O método <b>contains()</b> em <b>List</b> usa um elemento como argumento e verifica se a lista subjacente contém o elemento. Porque leva um argumento e retorna um <b>Integer</b>, podemos usar um <b>BiPredicate</b>. Por que não usar o <b>BiFunction&ltT, U, Boolean&lt</b>? Sim, o código funcionará, mas uma melhor escolha é o equivalente <b>BiPredicate&ltT, U></b> porque o <b>BiPredicate</b> retorna um valor booleano.</p>
+</section>
+<section id="intbitconsumer">
+<h2>A Interface BiConsumer</h2>
+
+<p>Considere este segmento de código:</p>
+<pre class="brush:java">
+BiConsumer&ltList&ltInteger>, Integer> listAddElement = List::add;
+List aList = new ArrayList();
+listAddElement.accept(aList, 10);
+System.out.println(aList);
+// prints: [10]
+</pre>
+<p>Este segmento de código mostra como usar o <b>BiConsumer</b>. Semelhante a usar a referência de método <b>List:: contains</b> no exemplo anterior para <b>BiPredicate</b>, este exemplo mostra como usar <b>BiConsumer</b> para chamar o método <b>add()</b> em <b>List</b> usando essa interface</p>.
+
+</section>
+<section id="unaryoperator">
+<h2>A Interface UnaryOperator</h2>
+
+<p>Considere o seguinte código:</p>
+<pre class="brush:java">
+List&ltInteger> ell = Arrays.asList(-11, 22, 33, -44, 55);
+System.out.println("Before: " + ell);
+ell.replaceAll(Math::abs);
+System.out.println("After: " + ell);
+</pre>
+<p><b>Este imprime:</b></p>
+<pre>
+Before: [-11, 22, 33, -44, 55]
+After: [11, 22, 33, 44, 55]
+</pre>
+
+<p>Esse código usa o método <b>replaceAll()</b> introduzido no Java 8 que substitui os elementos na lista fornecida.O método replaceAll() considera o <b>UnaryOperator</b> como o único argumento:</p>
+
+<pre class="brush:java">void replaceAll(UnaryOperator&ltT> operator)</pre>
+
+
+<p>O método <b>replaceAll()</b> é passad com o método <b>Math::abs</b>.
+Math tem quatro métodos sobrecrregados para o método <b>abs()</b>:</p>
+
+<ul>
+
+<li>abs(int)</li>
+<li>abs(long)</li>
+<li>abs(double)</li>
+<li>abs(float)</li>
+</ul>
+
+<p>Como o tipo é <b>Integer</b>, o método sobrecarregado <b>abs(int)</b> é selecionado por meio da inferência de tipos. O <b>UnaryOperator</b> é uma interface funcional e estende a interface <b>Function</b>, e você pode usar o método <b>apply()</b> declarado na interface <b>Function</b>; além disso, ele herda as funções padrão <b>compose()</b> e <b>andThen()</b> da interface <b>Function</b>. Semelhante ao <b>UnaryOperator</b> que estende a interface <b>Function</b>, existe um <b>BinaryOperator</b> que estende a interface <b>BiFunction</b>.</p>
+<p>As versões dos tipos primitivos da interface UnaryOperator, IntUnaryOperator, LongUnaryOperator e DoubleUnaryOperator também são fornecidas como parte do pacote </b>java.util.function</b>.</p>
+</section>
+<p class="nav-arq" id="referencia">Generic e Collection: <a href="colecaogeneric.html">&laquo; anterior | <a href="apistream.html">próximo &raquo;</a> Api Stream java</p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/lambdafuncional" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+</body>
+	</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

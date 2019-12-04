@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+   <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+  <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+ <script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <body>
+
+
+<!-- Top Navigation Menu -->
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+   <a class="w3-bar-item w3-button" href="#webstrut2">22 - CONSTRUINDO APLICATIVO WEB COM STRUTS 2</a>
+          <a class="w3-bar-item w3-button" href="#visgeral">Strut 2 Visão Geral</a>
+          <a class="w3-bar-item w3-button"href="#action">Action</a>
+          <a class="w3-bar-item w3-button"href="#actinterface">Action Interface</a>
+          <a class="w3-bar-item w3-button"href="#actiosup">Classe ActionSupport</a>
+          <a class="w3-bar-item w3-button"href="#intercept">Interceptors</a>
+          <a class="w3-bar-item w3-button" href="#valueognl">ValueStack e OGNL</a>
+          <a class="w3-bar-item w3-button"href="#tagstrut2">Tags Struts 2 </a>
+          <a class="w3-bar-item w3-button"href="#intrdstrut2">Introdução ao Struts 2</a>
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+
+<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class=" w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA EE 7 </h1>
+</header>
+<section id="webstrut2">
+<h1>Iniciando um aplicativo Web usando o Struts 2</h1>
+<p>A estrutura Struts é uma velha árvore viva cujos padrões de anel contam a história das florestas da Web Java herdadas. O Struts, lançado em junho de 2001, foi pioneiro em uma evolução essencial do modelo de desenvolvimento do Modelo 2 para abordar as vicissitudes do desenvolvimento da web. Você pode ver o DNA do Struts assimilado em muitas outras estruturas baseadas em ação de arquitetura diversificada que evoluíram para abordar o desenvolvimento do Modelo-2.O Struts deu origem à estrutura Tiles, que agora pode ser usada com uma infinidade de estruturas da Web.</p>
+
+<p>O crescimento da popularidade do Struts começou a perder força devido às crescentes complexidades dos aplicativos da web e à concorrência de outras estruturas da web em evolução. O framework WebWork que foi construído no Struts clássico posteriormente unificada a ele para criar a estrutura do Struts 2. O Struts 2 é uma reescrita completa da arquitetura do Struts clássico, destinada a atender às necessidades mencionadas acima. O Struts 2 fornece as bases arquitetônicas para aplicativos da Web, fornece mecanismos arquitetônicos para automatizar tarefas recorrentes e separar preocupações transversais, além de evitar que os desenvolvedores mantenham uma infinidade de códigos de configuração por meio de convenções sobre configurações.</p>
+<br>
+<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+</section>
+<section id="visgeral">
+<h3>Strut 2 Visão Geral</h3>
+
+<p>A Tabela seguinte descreve os principais recursos da estrutura do Struts 2.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><td>Suporte Ajax</td><td>O Struts 2 integra o suporte ao Ajax. Além do Ajax pronto para uso, o Struts 2 também suporta uma infinidade de plug-ins centrados no Ajax.</td></tr>
+<tr><td>Convenção sobre configuração</td><td>O Struts 2 segue o princípio da convenção sobre a configuração e elimina a configuração desnecessária.</td></tr>
+<tr><td>Arquitetura declarativa usando anotações</td><td>A arquitetura declarativa do Struts 2 usando anotações reduz a configuração XML e mantém a configuração mais próxima da classe de ação.</td></tr>
+<tr><td>Conversão de dados</td><td>O Struts 2 fornece conversão automática de tipo de valores do campo de formulário baseado em string para objetos ou tipos primitivos, eliminando a necessidade de fornecer código de conversão na classe de ação.</td></tr>
+<tr><td>Injeção de dependência</td><td>O Struts 2 usa injeção de dependência para que a ação colabore com os componentes necessários.</td></tr>
+<tr><td>Extensibilidade</td><td>O Struts 2 é extensível, pois as classes no framework são baseadas em interface.</td></tr>
+<tr><td>Arquitetura de plug-in</td><td>O principal comportamento do Struts 2 pode ser aprimorado com plug-ins. Você pode encontrar vários plug-ins disponíveis para o Struts 2 aqui: https://cwiki.apache.org/S2PLUGINS/home.html</td></tr>
+<tr><td>Formas e ações do POJO</td><td>Ao contrário do Struts clássico que usava o ActionForms, no Struts 2 você pode usar qualquer POJO para receber a entrada do formulário. E qualquer POJO pode funcionar como uma ação.</td></tr>
+<tr><td>Visualização de tecnologias</td><td>O Struts 2 suporta várias visualizações, como JSP, FreeMarker, Velocity, XSLT e assim por diante.</td></tr>
+
+</table>
+</div>
+<br>
+<p>Antes de mergulhar no Struts 2, vale a pena entender a arquitetura do Struts clássico (daqui em diante referido como Struts). Struts é uma estrutura baseada em MVC. O componente central de uma estrutura do Struts é o ActionServlet, que implementa o padrão Java EE da camada da web do Front Controller. A Figura abaixo ilustra a arquitetura do Struts.</p>
+<br>
+<img src="imagens\jee7\strut2.jpg">
+<br>
+<p>A sequência de eventos no Struts é a seguinte:</p>
+<br>
+<ul>
+<li>1. O ActionServlet delega o processamento de solicitações a um RequestProcessor.</li>
+<li>2. O RequestProcessor processa a solicitação e armazena os valores do formulário no ActionForm.</li>
+<li>3. O RequestProcessor chama a classe Action.</li>
+<li>4. A classe Action acessa o ActionForm para recuperar os valores do formulário.</li>
+<li>5. A classe Action chama a chamada para a camada de serviço.</li>
+<li>6. A classe Action retorna o ActionForward, que é usado para encapsular a exibição de resposta.</li>
+</ul>
+<br>
+<p>O Struts 2, no entanto, é diferente do Struts. Diferentemente do Struts, que segue uma arquitetura push-MVC em que os dados devem estar presentes na página ou no escopo, o Struts 2 é uma arquitetura pull-MVC; isto é, os dados podem ser extraídos da ação. A Tabela mostra um mapeamento individual dos elementos da estrutura Struts e Struts 2.</p>
+
+<p><b>Mapeamento Um-para-Um dos Elementos do Framework Struts e Struts 2.</b></p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Elementos do Framework Struts</th><th>Elementos do Framework Struts 2</th></tr>
+<tr><td>ActionServlet</td><td>Servlet filter</td></tr>
+<tr><td>RequestProcessor</td><td>Interceptor</td></tr>
+<tr><td>Action</td><td>Action</td></tr>
+<tr><td>ActionForm</td><td>Action or POJOs</td></tr>
+<tr><td>ActionForward</td><td>Result</td></tr>
+</table>
+</div>
+
+<br>
+<p>Os principais elementos do Struts 2 que fornecem uma implementação mais limpa do MVC.</p>
+
+<br>
+<img src="imagens\jee7\struts2mvc.jpg">
+<br>
+
+<p>O Struts 2 também é um framework baseada em MVC que implementa o padrão Front Controller. A sequência de eventos na estrutura do Struts 2 é a seguinte:</p>
+
+<br>
+<ul>
+<li>1. A solicitação é mapeada para os metadados de configuração.</li>
+<li>2. A solicitação passa por uma pilha de interceptores que fornecem
+pré-processamento e pós-processamento para os recursos de solicitação e corte transversal.</li>
+<li>3. A ação e o método da ação que fornece a lógica para processar esta solicitação são invocados.</li>
+<li>4. O resultado é chamado para renderizar a resposta.</li>
+<li>5. A resposta é retornada ao usuário.</li>
+</ul>
+
+<p>Vamos discutir agora os elementos chaves do Struts 2</p>
+</section>
+<section id="action">
+<h3>Action</h3>
+<p>As ações são o núcleo da estrutura do Struts 2 orientada para a ação, porque fornecem a lógica necessária para o processamento de solicitações. As ações não são necessárias para implementar nenhuma interface ou estender qualquer classe, e as ações podem ser POJOs. O código abaixo ilustra a ação chamada HelloWorldAction.</p>
+<p><b>Uma Ação como um POJO</b></p>
+<pre class="brush:java">
+public class HelloWorldAction{
+//...
+public String execute() {
+return "success";
+}
+}
+</pre>
+<p>Esta classe de ação está configurada no arquivo struts.xml.</p><br>
+<p><b>Configurando a Classe Action no struts.xml</b></p>
+<pre class="brush:xml">
+&ltpackage name="helloWorld" " extends="struts-default" namespace="/>
+&ltaction name="hello" class=" HelloWorldAction">
+&ltresult name="success"> /hello.jsp&lt/result>
+&lt/action>
+&ltpackage>
+</pre>
+<p>O mapeamento de ação na usa o atributo name para definir o nome da ação que você pode usar para acessar essa classe de ação e usa a tag result para definir qual página de resultado deve ser retornada ao usuário. Agora você pode acessar a ação por meio de uma extensão .action.</p><br>
+<p>http://localhost:8080/helloWorldExample//hello.action</p>
+<br>
+<p>Mesmo que você possa usar ações POJO, o Struts 2 fornece dois assistentes de ação que podem ser usados: a interface Action e a classe ActionSupport.</p>
+</section>
+<section id="actinterface">
+<h3>Action Interface</h3>
+
+<p>O Struts 2 vem com uma interface action opcional:</p>
+<pre class="brush:java">
+package com.opensymphony.xwork2;
+public interface Action {
+public static final String ERROR = "error";
+public static final String INPUT = "input";
+public static final String LOGIN = "login";
+public static final String NONE = "none";
+public static final String SUCCESS = "success";
+public String execute();
+}
+</pre>
+
+<p>
+Essa interface fornece os valores de retorno comuns baseados em sequência como constantes e o método <b>execute()</b> padrão que deve ser implementado pelas classes de implementação.</p>
+<p>A classe action que implementa essa interface pode usar diretamente o valor constante.</p>
+<p><b>Usando a interface Action</b></p>
+<pre class="brush:java">
+import com.opensymphony.xwork2.Action;
+public class HelloWorldAction implements Action{
+//..
+public String execute() {
+return SUCCESS;
+}
+}
+</pre>
+
+</section>
+<section id="actiosup">
+<h3>Classe ActionSupport</h3>
+<p>A classe ActionSupport implementa a interface Action e fornece uma implementação do método execute () que retorna o valor SUCCESS. A classe ActionSupport também implementa alguns
+interfaces que fornecem suporte para validação, localização e internacionalização, conforme ilustrado no fragmento de código da classe ActionSupport.</p>
+
+<pre class="brush:java">
+public class ActionSupport implements Action, Validateable, ValidationAware,TextProvider, 
+LocaleProvider, Serializable {
+...
+public String execute(){
+return SUCCESS;
+}
+}
+</pre>
+<p>O fragmento de código através do qual a classe ActionSupport pode ser usada para fornecer validação.</p>
+<p><b>Usando ActionSupport</b></p>
+<pre class="brush:java">
+import com.opensymphony.xwork2.ActionSupport;
+public class LoginAction extends ActionSupport{
+private String username;
+private String password;
+public String getPassword() {
+return password;
+}
+public void setPassword(String password) {
+this.password = password;
+}
+public String getUsername() {
+return username;
+}
+public void setUsername(String username) {
+this.username = username;
+}
+
+//getters and setters
+// ...
+public String execute() {
+return "SUCCESS";
+}
+public void validate(){
+if("".equals(getUsername())){
+addFieldError("username", getText("username.required"));
+}
+if("".equals(getPassword())){
+addFieldError("password", getText("password.required"));
+}
+}
+}
+</pre>
+</section>
+<section id="intercept">
+<h3>Interceptors</h3>
+
+<p>Os interceptores promovem a separação de preocupações, separando a implementação das preocupações transversais da ação. O Struts 2 vem com um conjunto de interceptores e pilhas de interceptores pré-criados que você pode usar imediatamente. O código seguinte ilustra a declaração de uma ação que pertence a um
+pacote que estende o pacote struts-default, que contém o conjunto padrão de interceptores.</p><br>
+<p><b>Declarando uma Ação (Action)</b></p>
+<pre class="brush:xml">
+&ltpackage name="default" namespace="/" extends="struts-default">
+&ltaction name="helloAction"
+class="HelloWorldAction">
+&ltresult name="success">/hello.jsp&lt/result>
+&lt/action>
+&lt/package>
+</pre>
+
+<p>Quando você estende seu pacote do pacote struts-default, por padrão, o defaultStack será usado para todas as ações em seu pacote. O defaultStack está configurado no struts-default.xml
+e fornece toda a funcionalidade principal do Struts 2. O arquivo struts-default.xml está localizado no arquivo struts 2-core.jar. Para mapear outros interceptores para uma ação, você pode usar o elemento interceptor-ref.</p>
+
+<pre class="brush:xml">
+&ltpackage name="default" namespace="/" extends="struts-default">
+&ltaction name="helloAction"
+class="HelloWorldAction" >
+&ltinterceptor-ref name="logger"/>
+&ltresult name="success">/hello.jsp&lt/result>
+&lt/action>
+&lt/package>
+</pre>
+
+<p>
+O mapeamento action mapeia os interceptores do criador de logs para a classe action HelloWorldAction por meio do refinamento de interceptores. Como o HelloWorldAction declarou seus próprios interceptores, ele perde o conjunto padrão de interceptores e você deve declarar explicitamente o defaultStack para usá-lo.</p>
+<br>
+<p><b>Declarando um Default Stack</b></p>
+
+<pre class="brush:xml">
+&ltpackage name="default" namespace="/" extends="struts-default">
+&ltaction name="helloAction"
+class="HelloWorldAction">
+&ltinterceptor-ref name="logger"/>
+&ltinterceptor-ref name="defaultStack"/>
+&ltresult name="success">/hello.jsp&lt/result>
+&lt/action>
+&lt/package>
+</pre>
+</section>
+<section id="valueognl">
+<h3>ValueStack e OGNL</h3>
+
+<p>A OGNL (Object-Graph Navigation Language) é uma linguagem de expressão poderosa usada para definir e obter propriedades do JavaBeans e para chamar métodos das classes Java. Também ajuda na transferência de dados e na conversão de tipos. OGNL é semelhante ao EL e JSTL, que avaliam expressões e navegam nos gráficos de objetos usando a notação de pontos. O OGNL e o ValueStack, embora não façam parte do MVC, estão no centro da estrutura do Struts 2. Todos os componentes do MVC interagem com o ValueStack para fornecer dados contextuais. Esses componentes acessam o ValueStack usando a sintaxe OGNL, e OGNL e ValueStack trabalham juntos no Struts 2 para manipular uma solicitação. Especificamente, quando uma solicitação é enviada ao aplicativo Struts 2, um objeto ValueStack é criado para essa solicitação e as referências a todos os objetos criados para atender a essa solicitação, bem como aos atributos do escopo, são mantidas no ValueStack. Todos esses objetos estão disponíveis para a visualização através do OGNL. Você não achará difícil usar o OGNL porque é semelhante ao EL e JSTL .
+ Observe que o OGNL usa #, diferente do JSP EL, que usa $.</p>
+
+ <p><b>Usando OGNL</b></p>
+
+ <pre class="brush:java">&lts:property value="#book.bookTitle"/></pre>
+
+ <h3>ResultType e Result</h3>
+ <p>No Struts 2, a renderização da resposta consiste no tipo de resultado e no resultado. O tipo de resultado fornece os detalhes da implementação para o tipo de exibição retornado ao usuário. Cada método em uma ação retorna um resultado, que inclui a especificação do tipo de resultado. Se nenhum tipo de resultado for especificado, o tipo de resultado padrão será usado, que encaminha para uma página JSP.</p>
+ <p><b>Tipo de resultado padrão</b></p>
+ <pre class="brush:xml">
+<result name="success">
+/hello.jsp
+</result>
+ </pre>
+ <p>O Struts 2 vem com vários tipos de resultados predefinidos. O Struts permite usar outras tecnologias de visualização para apresentar os resultados, incluindo Velocity, FreeMarker e Tiles.</p>
+
+ <p><b>Declarando Tiles como Tipo de Resultado</b></p>
+
+ <pre class="brush:xml">
+&ltaction name="login" class="com.alpi.bookstore.action.LoginAction">
+&ltresult name="success" type="tiles">home&lt/result>
+&ltresult name="error" type="tiles">login&lt/result>
+&lt/action>
+</pre>
+
+</section>
+<section id="tagstrut2">
+<h2>Tags Struts 2 </h2>
+
+<p>O Framework Struts 2 fornece uma API de tags portátil e de alto nível que você pode usar com JSP.
+Você aprenderá como as tags funcionam e como usar o OGNL para fazer referência a valores no ValueStack nas seções a seguir. A Tabela  descreve as diferentes categorias de bibliotecas de tags do Struts 2.</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Struts 2</th><th>Descrição</th></tr>
+<tr><td>tags Ajax</td><td>O Struts 2 fornece suporte ao Ajax por meio de tags Ajax
+</td></tr>
+<tr><td>tags Control</td><td>Essas são tags que fornecem maneiras de manipular coleções de elementos.</td></tr>
+<tr><td>tags Dados</td><td>Essas são tags que renderizam dados da ação, texto internacionalizado e URLs.</td></tr>
+<tr><td>Form tags</td><td>São tags que fornecem wrappers para tags de formulário HTML, além de widgets adicionais, como um seletor de datas.</td></tr>
+<tr><td>Non from UI tags</td><td>As tags neste grupo são usadas em formulários, mas não são diretamente elementos de entrada de formulário. Eles incluem exibições de mensagens de erro, painéis com guias e exibições em árvore.</td></tr>
+
+</table>
+</div>
+
+<br>
+</section>
+<section id="intrdstrut2">
+<h1>Introdução ao Struts 2</h1>
+
+<p>Nesta seção, você desenvolverá um aplicativo HelloWorld Struts 2. Você usará a ferramenta de gerenciamento de compilação e dependência chamada Maven.
+O Maven é uma ferramenta de linha de comando usada para criar e empacotar projetos e gerenciar dependências. Facilita a vida dos desenvolvedores que trabalham em vários projetos, fornecendo a mesma estrutura de diretórios em vários projetos. Mais informações acesse -><a href="http://maven.apache.org/"target="_blank">http://maven.apache.org/</a>.</p><br>
+<p>As dependências, explicitamente configuradas e transitivas, descritas no arquivo de configuração do Maven (pom.xml) serão acessadas de um repositório local ou baixadas para o repositório local durante o processo de compilação. Esse recurso permite que os desenvolvedores criem novos projetos sem criar a estrutura de diretórios comum, criar os arquivos de configuração e codificar classes e testes padrão do zero. O benefício de usar o Maven para dependências de tempo de execução é que você não precisa se lembrar e procurar manualmente as dependências necessárias. Você usará o Maven 4 para importar dependências de tempo de execução do Struts 2. O Maven 4 está integrado ao Eclipse-Neon, conforme mencionado anteriormente. Portanto, você não precisa instalar o plug-in do Maven para Eclipse. Para criar o projeto Maven, clique em New(novo)-> Maven Project, conforme ilustrado na Figura.
+</p>
+
+<br>
+<img src="imagens\jee7\maven.jpg">
+<br> 
+<p>Selecione Projeto Maven no assistente, conforme ilustrado na Figura</p>
+<br>
+<img src="imagens\jee7\mavenproject.jpg">
+<br> 
+<p>Clique em Avançar e configure as opções conforme ilustrado na Figura</p><br> 
+<img src="imagens\jee7\newmaven.jpg">
+<br> 
+
+<p>Clique em Avançar e conforme ilustrado na Figura, selecione Catalog, GroupId e ArtifactId.</p>
+<br> 
+<img src="imagens\jee7\mavencatalog.jpg">
+<br> 
+
+<p>Clique em Avançar e insira o ID do grupo, o ID do artefato e os detalhes do pacote, conforme ilustrado na Figura</p>
+
+<br> 
+<img src="imagens\jee7\olamundostruts2.jpg">
+<br> 
+
+<p>Clique em Finish. O projeto com o nome descrito no campo Id do artefato  é criado. A próxima Figura  mostra a estrutura de diretórios do projeto criado.</p>
+<br> 
+<img src="imagens\jee7\estruturapasta.jpg">
+<br> 
+<p>A estrutura de diretórios ilustrada  segue a estrutura de diretórios normal do Maven.
+A Tabela abaixo descreve a estrutura de diretórios do aplicativo OlaMundo</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Diretório</th><th>Descrição</th></tr>
+<tr><td>src</td><td>Todas as fontes</td></tr>
+<tr><td>:---main</td><td>Principal fonte de dietório</td></tr>
+<tr><td>:-------:---java</td><td>Fonte do java</td></tr>
+<tr><td>:-------:-------olamundo</td><td>Pacote definido pelo paramentro groupID</td></tr>
+<tr><td>:-------:---------action</td><td>O pacote do archetype</td></tr>
+<tr><td>:-------:---resources</td><td>Recursor(configuração, propriedades, e mais..</td></tr>
+<tr><td>:---webapp</td><td>Arquivos do aplicativo web</td></tr>
+<tr><td>:-------:---WEB-INF</td><td>Pasta WEB-INF</td></tr>
+</table>
+</div>
+<br>
+<p>A estrutura do diretório sem o Maven, o palicativo OlaMundo pode paracer como na tabela a seguir:</p>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Diretório</th><th>Descrição</th></tr>
+<tr><td>src</td><td>Todas as fontes</td></tr>
+<tr><td>:--------olamundo</td><td>pacote OlaMundo</td></tr>
+<tr><td>:--------------action</td><td>Pacote action</td></tr>
+<tr><td>---------struts.xml</td><td>Recursos(configuração, propriedades, e mais..</td></tr>
+<tr><td>Web</td><td>Arquivos do Aplicativo Web</td></tr>
+<tr><td>:--------WEB-INF</td><td>Pasta WEB-INF</td></tr>
+</table>
+</div>
+<br>
+<p>Você precisa adicionar a dependência do struts 2-core ao arquivo pom.xml gerado do aplicativo HelloWorld. O código seguinte mostra o fragmento a ser adicionado ao pom.xml</p>
+
+<pre class="brush:xml">
+<dependency>
+<groupId>org.apache.struts</groupId>
+<artifactId>struts 2-core</artifactId>
+<version>2.3.15.1</version>
+<type>jar</type>
+<scope>compile</scope>
+</dependency>
+</pre>
+
+<p><b>Seu arquivo pom.xml</b></p>
+
+<pre class="brush:xml">
+&ltproject xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+ http://maven.apache.org/maven-v4_0_0.xsd">
+	&ltmodelVersion>4.0.0&lt/modelVersion>
+	&ltgroupId>br.com.alpi&lt/groupId>
+	&ltartifactId>olamundostruts2< /artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>olamundostruts2 Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-tiles3-plugin</artifactId>
+			<version>2.3.15.1</version>
+		</dependency>
+         <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<version>2.3.15.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>olamundostruts2</finalName>
+	</build>
+</project>
+
+</pre>
+
+<p>Você precisa configurar o filtro de servlet no descritor de implementação <b>web.xml</b>:</p>
+<pre class="brush:xml">
+&lt!DOCTYPE web-app PUBLIC
+"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd" >
+&ltweb-app>
+&ltdisplay-name>Hello World Struts2 Web App&lt/display-name>
+&ltfilter>
+&ltfilter-name>struts2&lt/filter-name>
+&ltfilter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt/filter-class>
+&lt/filter>
+&ltfilter-mapping>
+&ltfilter-name>struts2&lt/filter-name>
+&lturl-pattern>/*&lt/url-pattern>
+&lt/filter-mapping>
+&lt/web-app>
+</pre>
+
+<p>Linhas 7 a 10: essas linhas definem o <b>StrutsPrepareAndExecuteFilter</b> que é usado como o filtro de servlet no Struts 2 para o qual todos os URLs são mapeados.
+</p>
+<br>
+<p><i> O FilterDispatcher (org.apache.struts2.dispatcher.FilterDispatcher) foi usado no desenvolvimento inicial do Struts 2 e está obsoleto desde o Struts 2.1.3.</i></p>
+<br>
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8" ?>
+&lt!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+&ltstruts>
+&ltconstant name="struts.devMode" value="true" />
+&ltpackage name="basicstruts2" extends="struts-default">
+&ltaction name="index">
+&ltresult>/index.jsp< /result>
+&lt/action>
+&lt/package>
+&lt/struts>
+</pre>
+
+<p>Linhas 9 a 11: Essas linhas definem a ação do índice, que renderiza o resultado index.jsp.</p>
+
+<pre class="brush:html">
+<html>
+<body>
+<h2>Ola Mundo!</h2>
+</body>
+</html>
+</pre>
+
+<p>Implemente o aplicativo Web no contêiner de servlet Tomcat , abra um navegador da Web e acesse
+http://localhost:8080/olamundostruts2/, conforme ilustrado em Figura:</p>
+
+<br> 
+<img src="imagens\jee7\olamundost2.jpg">
+<br> 
+
+<p>
+
+O aplicativo OlaMundo que você desenvolveu não incluía nenhuma ação, exceto um único arquivo JSP que foi gerado quando você criou o projeto. O objetivo do aplicativo OlaMundo que você criou foi testar a configuração do Struts 2. Você criará ações na seção a seguir:
+</p>
+
+<br> 
+<img src="imagens\jee7\olamundoaction.jpg">
+<br> 
+<p>Quando você envia um formulário HTML em um aplicativo Web Struts 2, a entrada é enviada para a classe Java chamada Ação(Action). Após a execução da ação, um resultado seleciona um recurso para renderizar a resposta, conforme ilustrado na Figura</p>
+
+<br> 
+<img src="imagens\jee7\olaalan.jpg">
+<br> 
+
+<p>Vamos modificar o projeto OlaMundo que criado anteriormente para adicionar uma ação(action), o formulário que aceita a entrada de um usuário e a exibição que o cumprimenta, conforme ilustrado na estrutura de diretórios mostrada na Figura.</p>
+
+<p> O código a seguir ilustra o formulário que permite ao usuário inserir um nome e enviá-lo.</p>
+
+<pre class="brush:html">
+<!--index.jsp-->
+&lthtml>
+&ltbody>
+&ltform action="ola">
+&ltlabel for="name">Digite seu nome:&lt/label>&ltbr/>
+&ltinput type="text"name="name" />&ltinput type="submit" value="Submit" />
+&lt/form>
+&lt/body>
+&lt/html>
+</pre>
+
+<p><b>Linha 4</b>: quando o usuário envia o formulário, o nome da ação é enviado para o contêiner</p>
+
+<p>Você precisa de um mapeamento para mapear a URL para o controlador OlaMundoAction. O mapeamento informa à estrutura do Struts 2 qual classe responderá à ação do usuário, qual método dessa classe será executado e qual visualização será renderizada como resposta.</p>
+
+<pre class="brush:xml">
+&lt?xml version="1.0" encoding="UTF-8" ?>
+&lt!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+&ltstruts>
+&ltconstant name="struts.devMode" value="true" />
+&ltpackage name="basicstruts2" extends="struts-default">
+
+&ltaction name="index">
+&ltresult>/index.jsp&lt/result>
+&lt/action>
+
+&ltaction name="ola" class="br.com.alpi.olamundo.action.OlaMundoAction" method="execute">
+&ltresult name="success">/ola.jsp&lt/result>
+&lt/action>
+&lt/package>
+&lt/struts>
+</pre>
+
+<br>
+<ul>
+<li><b>Linha 12</b>: esta linha declara o mapeamento de ação para
+OlaMundoAction. OlaMundoAction é mapeado para o nome da ação(action)<b> ola</b>.</li>
+<li>Linha 12: Esta linha declara que o método <b>execute()</b> da ação é
+ser executado.</li>
+<li><b>Linha 13</b>: Esta linha declara que <b>ola.jsp</b> é designado como uma página de sucesso e será renderizado como a resposta.</li>
+</ul>
+<br>
+
+<pre class="brush:java">
+package br.com.alpi.olamundo.action;
+
+
+public class OlaMundoAction {
+private String name;
+
+public String execute() throws Exception {
+return "success";
+}
+
+public String getName() {
+return name;
+}
+
+public void setName(String name) {
+this.name = name;
+}
+}
+</pre>
+<ul>
+<li>Linhas 7 a 8: o framework do Struts 2 criará um objeto da classe OlaMundoAction e chamará o método execute em resposta à ação de um usuário. E o método execute retorna a string de sucesso, que é mapeada para ola.jsp em struts.xml.</li>
+</ul>
+<br>
+<p>Vamos ilustrar agora ola.jsp:</p>
+<pre class="brush:java">
+&lt%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+&lt%@ taglib prefix="s" uri="/struts-tags"%>
+&lthtml>
+&lthead>
+&lttitle>Ola Mundo&lt/title>
+&lt/head>
+&ltbody>
+Olá
+&lts:property value="name" />
+&lt/body>
+&lt/html>
+</pre>
+<br>
+<ul>
+<li>Linha 3: A diretiva taglib informa ao contêiner do servlet que esta página estará usando as tags Struts 2.</li>
+<li>Linha 10: a tag <b>s:property</b> exibe o valor retornado chamando o método getName da classe <b>OlaMundoAction</b>. O método <b>getName</b> retorna uma <b>String</b>. É essa <b>String</b> retornada por <b>getName</b> que será exibida pela tag <b>s: property</b></li>
+</ul>
+<br>
+
+<p>Agora você aprenderá uma técnica diferente de configuração declarativa fornecida pelo Struts 2: anotações. Você pode criar o novo projeto ou modificar o projeto criado anteriormente</p>
+<p>Para usar as anotações do Struts 2, você precisa do plug-in chamado struts 2-convention-plugin. Inclua a dependência no arquivo pom.xml usando o fragmento ilustrado. Seu arquivo pom.xml tem ficar como mostrado a seguir:</p>
+
+<pre class="brush:xml">
+&ltproject xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/maven-v4_0_0.xsd">
+&ltmodelVersion>4.0.0&lt/modelVersion>
+
+&ltgroupId>br.com.alpi&lt/groupId>
+&ltartifactId>olamundoaction&lt/artifactId>
+&ltpackaging>wa&lt/packaging>
+&ltversion>0.0.1-SNAPSHOT&lt/version>
+&ltname>olamundoaction Maven Webapp&lt/name>
+&lturl>http://maven.apache.org&lt/url>
+&ltdependencies>
+
+  &ltdependency>
+  &ltgroupId>junit&lt/groupId>
+  &ltartifactId>junit&lt/artifactId>
+  &ltversion>3.8.1&lt/version>
+  &ltscope>tes&lt/scope>
+  &lt/dependency>
+ <!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-core -->
+  &ltdependency>
+   &ltgroupId>org.apache.struts&lt/groupId>
+   &ltartifactId>struts2-core&lt/artifactId>
+   &ltversion>2.3.35&lt/version>
+  &lt/dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-convention-plugin -->
+   &ltdependency>
+    &ltgroupId>org.apache.struts&lt/groupId>
+    &ltartifactId>struts2-convention-plugin&lt/artifactId>
+    &ltversion>2.3.35&lt/version>
+   &lt/dependency>
+    
+&lt/dependencies>
+  &ltbuild>
+    &ltfinalName>olamundoaction&lt/finalName>
+  &lt/build>
+&lt/project>
+</pre>
+<p> Veja agora o OlaMundoAction configurado com anotações do Struts 2.</p>
+
+<pre class="brush:java">
+package br.com.alpi.olamundo.action;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+
+@Action(value = "/ola", results = { @Result(name = "success", location = "/ola.jsp") })
+public class OlaMundoAction {
+private String name;
+
+public String execute() throws Exception {
+return "success";
+}
+public String getName() {
+return name;
+}
+public void setName(String name) {
+this.name = name;
+}
+}
+</pre>
+<br>
+<ul>
+<li><b>Linha 6</b>: @Action define o URL de uma ação. Como o valor da anotação da ação é "/ola", a ação será invocada para o URL de solicitação "/ola".</li>
+<li><b>Linha 6</b>: @Result define um resultado para uma ação. A anotação de resultado mapeia o código de resultado para a página de resultados. Aqui, o código do resultado "success" é mapeado para o resultado "/ola.jsp"</li>
+</ul>
+<br>
+<p>
+Este código usa anotações de ação e resultado apenas para mostrar como usá-las. Você também pode usar os padrões inteligentes fornecidos pelo plug-in da Convenção. Se você definir o parâmetro init do filtro actionPackages como uma lista de pacotes separados por vírgula contendo classes de ação no web.xml, conforme ilustrado no código a  seguir, os pacotes e seus subpacotes serão varridos. Todas as classes nos pacotes designados que implementam ações Action ou POJO que não implementam a interface Action e terminam com Action são examinadas.</p>
+
+<pre class="brush:xml">
+
+< !DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+< web-app>
+ 
+ &ltdisplay-name>OlaMundo Web Application&lt/display-name>
+  &ltfilter>
+   &ltfilter-name>struts2&lt/filter-name>
+ &ltfilter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt/filter-class>
+	&ltinit-param>
+    &ltparam-name>actionPackages&lt/param-name>
+    &ltparam-value>br.com.alpi.olamundo.action&lt/param-value>
+    &lt/init-param>
+  &lt/filter>
+&ltfilter-mapping>
+  &ltfilter-name>struts2&lt/filter-name>
+  &lturl-pattern>/*&lt/url-pattern>
+&lt/filter-mapping>
+
+&lt/web-app>
+</pre>
+
+<p>O plug-in Convention usa o nome da classe action para mapear o URL da ação. O plug-in Convention remove primeiro a palavra Action no final do nome da classe e depois converte o nome camel-case em traços. Portanto, por padrão, OlaMundoAction será chamado para o URL de solicitação ola-mundo. Mas se você quiser que a ação seja chamada para um URL diferente, poderá fazer isso usando a anotação da ação.</p>
+</section>
+<p class="nav-arq" id="referencia">Soluções usando padrões <a href="padroes.html">&laquo; anterior | <a href="appbook.html">próximo >> Construindo um Aplicativo Web com Struts2 &raquo;</a> </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/usandostruts2" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+  
+</body>
+</html>

@@ -1,0 +1,937 @@
+
+<!DOCTYPE html>
+ <html lang="pt-br">
+
+  
+  <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="css/stylos.css">
+ <link rel="stylesheet" href="css/stylew3.css">
+ <script type="text/javascript"src="js/efeitos.js"></script>
+ <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cBrushXml.js"></script>
+<script src="code-brush-master/cBrushCss.js"></script>
+<script src="code-brush-master/cBrushPhp.js"></script>
+<script src="code-brush-master/cBrushSql.js"></script>
+<script src="code-brush-master/cBrushJScript.js"></script>   
+<script src="code-brush-master/cBrushJava.js"></script>  
+<script>
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ <title> Programar em Java</title>
+ </head>
+ <style type="text/css">
+table {border: none;} 
+table tr td{border: none;}
+th{border:none;  }
+</style>
+ <body>
+ 
+
+<!-- Top Navigation Menu -->
+
+  <div id="voltarTopo">
+  <a href="#" id="subir">Topo</a>
+</div>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+                <a class="w3-bar-item w3-button"  href="#datetimeapi">13 - USANDO DATE/TIME API EM JAVA SE 8</a>
+         <a class="w3-bar-item w3-button"  href="#classesimportantes">Entendendo Classes Importantes em java.time</a>
+          <a class="w3-bar-item w3-button" href="#usandolocaldate">Usando a classe LocalDate</a>
+          <a class="w3-bar-item w3-button"  href="#usalocaltime">Usando a classe LocalTime</a>
+          <a class="w3-bar-item w3-button"  href="#usalocaldatetime">Usando a Classe LocalDateTime</a>
+          <a class="w3-bar-item w3-button"  href="#clsinstant">Usando a Classe Instant</a>
+          <a class="w3-bar-item w3-button"  href="#periodclass">Usando A Classe Period</a>
+          <a class="w3-bar-item w3-button" href="#classduration">Usando a Classe Duration</a>
+          <a class="w3-bar-item w3-button"  href="#temporalunit">Usando A Interface TemporalUnit</a>
+          <a class="w3-bar-item w3-button"  href="#fusohorario">Lidando com fusos horários e horário de verão</a>
+          <a class="w3-bar-item w3-button"  href="#classzoneid">Usando a Classe ZoneId</a>
+          <a class="w3-bar-item w3-button"  href="#classzoneoffset">Usando a Classe ZoneOffSet</a>
+          <a class="w3-bar-item w3-button" href="#zonedatetimeuse">Usando a classe ZoneDAteTime</a>
+          <a class="w3-bar-item w3-button"  href="#horarioverao">Lidar com horário de verão</a>
+          <a class="w3-bar-item w3-button"  href="#formatdata">Formatar Data e Horarios</a>
+  <a class="w3-bar-item w3-button"  href="#viajemaereaexe">Exemplo de viagem aérea</a>
+  <div> 
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+   
+<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+<a class="w3-bar-item w3-button" href="jdbcaplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class=" w3-top w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+</p>
+</div>
+
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+</header>
+
+
+<section id="datetimeapi">
+<h1>Usando Date/Time APi em Java SE 8</h1>
+
+
+<ul>
+<li>Crie e gerencie eventos baseados em data e baseados em tempo, incluindo uma combinação de data e hora em um único objeto usando <b>LocalDate</b>, <b>LocalTime</b>, <b>LocalDateTime</b>, <b>Instant</b>, <b>Períod</b> e <b>Duration</b>.</li>
+<li>Trabalhe com datas e horas nos fusos horários e gerencie as alterações resultantes do horário de verão, incluindo os valores de data e hora do formato.</li>
+<li>Defina e crie e gerencie eventos baseados em data e baseados em tempo usando <b>Instant</b>, <b>Period</b>, <b>Duration</b> e <b>TemporalUnit</b>.</li>
+</ul>
+
+
+<p>A nova API de data e hora Java é fornecida no pacote <b>java.time</b>. Essa nova API no Java 8 substitui as classes mais antigas que suportam funcionalidade relacionada a data e hora, como as classes <b>Date</b>, <b>Calendar</b> e <b>TimeZone</b> fornecidas como parte do pacote <b>java.util</b>.</p>
+
+<p>Por que o Java 8 introduziu uma nova API de data e hora quando já tinha classes como <b>Data</b> e <b>Calendar</b> desde os primeiros dias do Java? O principal motivo foi o design inconveniente da API. Por exemplo, a classe <b>Date</b> possui componentes de data e hora; Se você quiser apenas informações de horário e não informações relacionadas a datas, terá que definir os valores relacionados à data como zero. Alguns aspectos das classes não são intuitivos
+também. Por exemplo, no construtor <b>Date</b>, o intervalo de valores de data é de 1 a 31, mas o intervalo de valores do mês é de 0 a 11 (não de 1 a 12)! Além disso, há muitos problemas relacionados à simultaneidade com <b>java.util.Date</b> e <b>SimpleDateFormatter</b> porque eles não são <b>thread-safe</b>.<p>
+
+<p>O Java 8 fornece suporte muito bom para funcionalidade relacionada a data e hora no recém-introduzido pacote <b>java.time</b>. A maioria das classes deste pacote é imutável e segura para <b>thread</b>. Este capítulo explica como usar classes e interfaces importantes neste pacote, incluindo <b>LocalDate</b>, <b>LocalTime</b>, <b>LocalDateTime</b>, <b>Instant</b>, <b>Período</b>, <b>Duration</b> e <b>TemporalUnit</b>. Você também aprende como trabalhar com fusos horários e horário de verão e como formatar valores de data e hora.</p>
+
+<p>A API java.time incorpora o conceito de interfaces fluentes: ela é projetada de forma que o código seja mais legível e mais fácil de usar. Por este motivo, as classes neste pacote possuem numerosos métodos (muitos deles métodos de fábrica). Além disso, os métodos nas classes seguem uma convenção de nomenclatura comum (por exemplo, eles usam os prefixos <b>plus</b> e <b>minus</b> para adicionar ou subtrair valores de data ou hora)</p>
+</section>
+<section id="classesimportantes">
+<h1>Entendendo Classes Importantes em java.time</h1>
+
+<p>O pacote java.time consiste de quatro subpacotes:</p>
+
+<ul>
+<li> java.time.temporal - Acessa campos e unidades de data / hora</li>
+<li> java.time.format - Formata a entrada e saída de objetos de data / hora</li>
+<li> java.time.zone - manipula os fusos horários</li>
+<li> java.time.chrono - oferece suporte a sistemas de calendário, como calendários japoneses e tailandeses</li>
+</ul>
+<p> Vamos começar por aprender a usar as classes <b>LocalDate</b>, <b>LocalTime</b>, <b>LocalDateTime</b>, <b>Instant</b>, <b>Period</b> e <b>Duration</b>.</p>
+</section>
+<section id="usandolocaldate">
+ <h2>Usando a classe LocalDate</h2>
+
+ <p><b>java.time.LocalDate</b> representa uma data sem hora nem fuso horário. <b>LocalDate</b> é representado no sistema de calendário ISO-8601 em um formato de ano-mês-dia (YYY-MM-DD): por exemplo, 2018-10-26.</p>
+
+ <p>Aqui um exemplo que usa LocalDate:</p>
+<pre class="brush:java">
+LocalDate today = LocalDate.now();
+System.out.println("Today's date is: " + today);
+</pre>
+<p><b>Este código quando executado imprime o seguinte:</b></p>
+<pre class="brush:java">
+Today's date is: 2019-08-04
+</pre>
+<p>O método <b>LocalDate.now()</b> obtém a data atual usando o relógio do sistema, com base no fuso horário padrão. Você pode obter um objeto <b>LocalDate</b> explicitamente especificando os componentes dia, mês e ano:</p>
+<pre class="brush:java">
+LocalDate newYear2019 = LocalDate.of(2019, 1, 1);
+System.out.println("New year 2019: " + newYear2019);
+</pre>
+<p><b>Este código imprime o  seguinte:</b></p>
+<pre>
+New year 2019: 2019-01-01
+</pre>
+<p>Como é este código?</p>
+<pre class="brush:java">
+LocalDate valentinesDay = LocalDate.of(2019, 14, 2);
+System.out.println("Valentine's day is on: " + valentinesDay);
+</pre>
+<p>Este código lança uma exceção:</p>
+<pre>
+Exception in thread "main" java.time.DateTimeException: Invalid value for MonthOfYear
+(valid values 1 - 12): 14
+</pre>
+ 
+<p>Nesse caso, os valores dos argumentos <b>month</b> e <b>dayOfMonth</b> são trocados. O método <b>of()</b> de <b>LocalDate</b> é declarado da seguinte maneira:</p>
+<pre class="brush:java">
+LocalDate of(int year, int month, int dayOfMonth)
+</pre>
+<p>Para evitar cometer esse erro, você pode usar a versão sobrecarregada <b>LocalDate.of(int year, Month month, int day)</b>. O segundo argumento, <b>java.time.Month</b>, é uma enumeração que representa os 12 meses do ano. Se você trocar os argumentos dia e mês, você receberá um erro do compilador. Aqui está a versão melhorada que usa essa enumeração:</p>
+<pre class="brush:java">
+LocalDate valentinesDay = LocalDate.of(2019, Month.FEBRUARY, 14);
+System.out.println("Valentine's day is on: " + valentinesDay);
+</pre>
+<p><b>Este código imprime:</b></p>
+
+<pre>Valentine's day is on: 2019-02-14</pre>
+
+<p>A classe <b>LocalDate</b> possui métodos com os quais você pode adicionar ou subtrair dias, semanas, meses ou anos a partir do objeto <b>LocalDate</b> atual. Por exemplo, suponha que seu visto expire 180 dias a partir de agora. Aqui está um segmento de código que mostra a data de expiração (supondo que a data de hoje seja 2019-10-26):</p>
+<pre class="brush:java">
+long visaValidityDays = 180L;
+LocalDate currDate = LocalDate.now();
+System.out.println("My Visa expires on: " + currDate.plusDays(visaValidityDays));
+</pre>
+<p><b>Este segmento de código imprime o seguinte:</b></p>
+
+<pre>My Visa expires on: 2020-04-23</pre>
+
+
+<p>Além do método <b>plusDays()</b>, <b>LocalDate</b> também fornece os métodos <b>plusWeeks()</b>, <b>plusMonths()</b> e <b>plusYears()</b>, bem como métodos para subtrair: <b>minusDays()</b>, <b>minusWeeks()</b>, <b>minusMonths()</b> e <b>minusYears()</b>. A Tabela abaixo lista mais alguns métodos na classe <b>LocalDate</b> que você precisa conhecer (essa tabela menciona classes como <b>ZoneId</b> - elas serão discutidas mais adiante neste capítulo)</p>
+<p>Métodos importante na classe LocalDate:</p>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Método</th><th>Descrição</th><th>Exemplo de código</th></tr>
+<tr><td>LocalDate now(Clock clock)LocalDate now(ZoneId zone)</td><td>Retorna um objeto LocalDate com a data atual usando hora ou zona passado como argumento</td>
+<td>// assume today's date is 26 Oct 2015 
+LocalDate.now(Clock.systemDefaultZone());
+// returns current date as 2015-10-26
+ LocalDate.now(ZoneId.of("Asia/Kolkata"));
+// returns current date as 2015-10-26
+ LocalDate.now(ZoneId.of("Asia/Tokyo"));
+// returns current date as 2015-10-27</td></tr>
+
+<tr><td> LocalDate ofYearDay(int year, int dayOfYear)</td><td>Retorna o LocalDate de year e dayOfYear passado como argumento </td>
+<td> LocalDate.ofYearDay(2016,100);
+// returns date as 2016-04-09</td></tr>
+
+
+<tr><td> LocalDate parse(CharSequence dateString) </td><td>Retorna o LocalDAte de um dateString passado como argumento</td><td> 
+LocalDate.parse("2015-10-26");
+// returns a LocalDate corresponding
+// to the passed string argument; 
+hence it
+// returns date as 2015-10-26
+</td></tr>
+
+<tr><td>LocalDate ofEpochDay(Long epochDay)</td><td>Retorna o LocalDate por adcionar o número de dias para epoch inicando o dia (o epoch inicia em 1970)</td><td>  LocalDate.ofEpochDay(10);
+// returns 1970-01-11;
+</td></tr>
+</table>
+</div>
+
+
+</section>
+<section id="usalocaltime">
+<h2>Usando a classe LocalTime</h2>
+
+<p>A classe <b>java.time.LocalTime</b> é semelhante a <b>LocalDate</b>, exceto que <b>LocalTime</b> representa a hora sem datas ou fusos horários. A hora está no formato do sistema de calendário ISO-8601: HH: MM: SS.nanosegundo. Ambos <b>LocalTime</b> e <b>LocalDate</b> usa o relógio do sistema e o fuso horário padrão.</p>
+
+<p>Aqui está um exemplo que usa LocalTime:</p>
+<pre class="brush:java">
+LocalTime currTime = LocalTime.now();
+System.out.println("Current time is: " + currTime);
+</pre>
+<p>Quando executado este código imprime o seguinte:</p>
+<pre>
+Current time is: 12:23:05.072
+</pre>
+
+<p>Como mencionado, o <b>LocalTime</B> usa o relógio do sistema e seu fuso horário padrão. Para criar objetos de hora diferentes com base em valores de tempo específicos, você pode usar o método <b>of()</b> sobrecarregado  da classe <b>LocalTime</b>:</p>
+<pre class="brush:java">
+System.out.println(LocalTime.of(18,30));
+// imprime: 18:30
+</pre>
+<p><b>LocalTime</b> fornece muitos métodos úteis com os quais você pode adicionar ou subtrair horas, minutos, segundos e nanossegundos. Por exemplo, suponha que você tenha uma reunião daqui a 6,5 ​​horas e queira encontrar o horário exato da reunião. Aqui está um segmento de código para isso:</p>
+<pre class="brush:java">
+long hours = 6;
+long minutes = 30;
+LocalTime currTime = LocalTime.now();
+System.out.println("Current time is: " + currTime);
+System.out.println("My meeting is at: " + currTime.plusHours(hours).plusMinutes(minutes));
+</pre>
+<p></b>Este código imprime o seguinte:</b></p>
+<pre>
+Current time is: 12:29:13.624
+My meeting is at: 18:59:13.624
+</pre>
+<p>Além de <b>plusHours()</b>, o <b>LocalTime</b> suporta os métodos <b>plusMinutes()</b>, <b>plusSeconds()</b> e <b>plusNanos()</b>; também, para subtrair, suporta <b>minusHours()</b>, <b>minusMinutes()</b>, <b>minusNanos()</b> e <b>minusSeconds().</b></p>
+
+
+<p>Na tabela Métodos importante na classe LoalTime</p>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Método</th><th>DEscrição</th><th>Exemplo</th></tr>
+  <tr><td>LocalTime now(Clock clock)LocalTime now(ZoneId 
+zone)</td><td>  Retorna um objeto LocalTime com o tempo aatual usando o argumento passado clock ou zone.
+</td><td>
+ LocalTime.now(Clock.systemDefaultZone())
+// returns current time as 18:30:35.744
+ LocalDate.now(ZoneId.of("Asia/Tokyo");
+// returns current time as 22:00:35.193
+<td></tr>
+<tr><td> LocalTime ofSecondOfDay(long daySeconds)
+</td><td>  Retorna o LocalTime de daySeconds passado como o
+argumento (note que um dia de 24 horas tem 86.400 segundos)
+</td><td>
+LocalTime.ofSecondOfDay(66620);
+// returns 18:30:20 because
+// 66620 seconds have elapsed
+<td></tr>
+<tr><td> LocalTime parse(CharSequence timeString)</td><td> 
+Retorna o LocalTime do dateString passado como o
+argumento
+</td><td>
+ LocalTime.parse("18:30:05");
+// returns a LocalTime object
+// corresponding to the given String
+// hence it prints: 18:30:0
+<td></tr>
+ </table></div>
+
+</section>
+<section id="usalocaldatetime">
+<h2> Usando a Classe LocalDateTime</h2>
+
+ <p>A classe <b>java.time.LocalDateTime</b> representa a data e a hora sem fusos horários. Você pode pensar em <b>LocalDateTime</b> como uma combinação lógica das classes <b>LocalTime</b> e <b>LocalDate</b>. Os formatos de data e hora usam o sistema de calendário ISO-8601: YYYY-MM-DD HH: MM: SS.nanosegundo.</p>
+<p>Veja um exemplo simples que imprime a data de hoje e a hora atual:</p>
+<pre class="brush:java">
+LocalDateTime currDateTime = LocalDateTime.now();
+System.out.println("Today's date and current time is: " + currDateTime);
+</pre>
+<p><b>Quando  executar este código imprime o seguinte:</b></p>
+<pre>
+Today's date and current time is: 2019-04-29T21:04:36.376
+</pre>
+
+<p>Nesta saída, observe que o caractere <b>T</b> significa tempo e separa os componentes de data e hora.
+O uso de <b>LocalDateTime.now()</b> obtém a data e a hora atuais usando o relógio do sistema e seu fuso horário padrão.</p>
+<p>Muitas classes no pacote <b>java.time</b>, incluindo <b>LocalDate</b>, <b>LocalTime</b> e <b>LocalDateTime</b>, suportam métodos <b>isAfter()</b> e <b>isBefore()</b> para comparação:</p>
+<pre class="brush:java">
+LocalDateTime christmas = LocalDateTime.of(2018, 12, 25, 0, 0);
+LocalDateTime newYear = LocalDateTime.of(2019, 1, 1, 0, 0);
+System.out.println("New Year 2016 comes after Christmas 2015? "+newYear.isAfter(christmas));
+</pre>
+<p><b>Este código imprime o seguinte: </b></p>
+<pre>
+New Year 2019 comes after Christmas 2018? true
+</pre>
+<p>Você pode usar os métodos <b>toLocalDate()</b> e <b>toLocalTime()</b>, respectivamente, para obter objetos <b>LocalDate</b> e <b>LocalTime</b> de um determinado objeto <b>LocalDateTime</b>:</p>
+<pre class="brush:java">
+LocalDateTime dateTime = LocalDateTime.now();
+System.out.println("Today's date and current time: " + dateTime);
+System.out.println("The date component is: " + dateTime.toLocalDate());
+System.out.println("The time component is: " + dateTime.toLocalTime());
+</pre>
+<p><b>Quando este código é executado ele imprime assim:</b></p>
+<pre>
+Today's date and current time: 2018-11-04T13:19:10.497
+The date component is: 2018-11-04
+The time component is: 13:19:10.497
+</pre>
+<p>Semelhante aos métodos listados anteriormente, <b>LocalDateTime</b> possui métodos como <b>now()</b>, <b>of()</b> e <b>parse()</b>. Novamente, semelhante a <b>LocalDate</b> e <b>LocalTime</b>, essa classe também fornece métodos para adicionar ou subtrair anos, meses, dias, horas, minutos, segundos e nanossegundos. Para evitar a repetição, esses métodos não são listados novamente aqui.</p>
+
+</section>
+<section id="clsinstant">
+<h2>Usando a Classe Instant</h2>
+
+<p>Suponha que você queira rastrear a execução de um aplicativo Java ou armazenar os eventos do aplicativo em um arquivo. Para esses propósitos, você precisa obter valores de registro de data e hora, e pode fazê-lo usando a classe java.time.Instant.</p>
+<p>Os valores instantâneos começaram em 1 de janeiro de 1970, às 00:00:00 horas (conhecido como a época do Unix). A classe <b>Instant</b> usa internamente uma variável longa que contém o número de segundos desde o início da época do Unix: 1970-01- 01T00: 00: 00Z (valores que ocorrem antes desta época são tratados como valores negativos). Além disso, a classe <b>Instant</b> usa uma variável inteira para armazenar o número de nanossegundos decorridos para cada segundo.</p>
+
+<pre class="brush:java">
+//UsingInstant.java
+import java.time.Instant;
+public class UsingInstant {
+public static void main(String args[]){
+// imprime o registro de data e hora atual com UTC como fuso horário
+Instant currTimeStamp = Instant.now();
+System.out.println("Instant timestamp is: "+ currTimeStamp);
+// imprime o número de segundos como carimbo de data e hora do Unix desde a época
+System.out.println("Number of seconds elapsed: " + currTimeStamp.getEpochSecond());
+// imprime o registro de data e hora do Unix em milissegundos
+System.out.println("Number of milliseconds elapsed: " + currTimeStamp.toEpochMilli());
+}
+}
+</pre>
+<p><b>Quando executado este programa imprime o seguinte:</b></p>
+
+<pre>
+Instant timestamp is: 2018-11-02T03:16:04.502Z
+Number of seconds elapsed: 1446434164
+Number of milliseconds elapsed: 1446434164502
+</pre>
+
+<p>Qual a diferença entre <b>LocalDateTime</b> e <b>Instant</b>? Aqui está um exemplo que ilustra:</p>
+
+<pre class="brush:java">
+LocalDateTime localDateTime = LocalDateTime.now();
+Instant instant = Instant.now();
+System.out.println("LocalDateTime is: " + localDateTime + " \nInstant is: " + instant);
+</pre>
+<p><b>Quando executado imprime o seguinte:</b></p>
+
+<pre>
+LocalDateTime is: 2018-11-02T17:21:11.402
+Instant is: 2018-11-02T11:51:11.404Z
+</pre>
+
+<p>Como você pode ver, o valor de tempo impresso por LocalDateTime é diferente do resultado de Instant. Por quê?
+Porque LocalDateTime usa o fuso horário padrão, mas o Instant não. O fuso horário Ásia/Kolkata, o qual foi testado, é +05:30 horas do horário de Greenwich.</p>
+</section>
+<section id="periodclass">
+<h2>Usando A Classe Period</h2>
+
+<p>A classe <b>java.time.Period</b> é usada para medir um período de tempo em termos de anos, meses e dias.
+Suponha que você tenha comprado algum medicamento caro e queira usá-lo antes que ele expire. Aqui está como você
+pode descobrir quando expirará:</p>
+
+<pre class="brush:java">
+LocalDate manufacturingDate = LocalDate.of(2016, Month.JANUARY, 1);
+LocalDate expiryDate = LocalDate.of(2018, Month.JULY, 18);
+Period expiry = Period.between(manufacturingDate, expiryDate);
+System.out.printf("Medicine will expire in: %d years, %d months, and %d days (%s)\n",
+expiry.getYears(), expiry.getMonths(), expiry.getDays(), expiry);
+</pre>
+<p><b>Este código imprime o seguinte:</b></p>
+<pre>
+Medicine will expire in: 2 years, 6 months, and 17 days (P2Y6M17D)
+</pre>
+<p>Este exemplo usa o método <b>Period.between()</b>, que recebe dois valores de <B>LocalDate</b> como argumentos e retorna um Período. Este programa usa os métodos <b>getYears()</b>, <b>getMonths()</b> e <b>getDays()</b> (esses três métodos retornam um <b>intvalue</b>), que retornam respectivamente o número de anos, meses e dias no período dado. O método <b>toString()</b> do período imprime o valor <b>P2Y6M17D</b>. Nessa string, os caracteres P, Y, M e D, respectivamente, representam período, anos, meses e dias.</p>
+<p>A partir de um Período, você pode adicionar ou subtrair anos, meses e dias usando os métodos  <b>plusYears()</b>, <b>plusMonths()</b>, <b>plusDays()</b>, <b>minusYears()</b>, <b>minusMonths()</b>, e <b>minusDays()</b>. </p>
+
+
+<p>Na tabela abaixo Métodos Importantes na classe Period</p>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Método </th><th>Descrição</th><th>Exemplo</th></tr>
+
+<tr><td>Period of(int years, int months, int days)</td><td>
+
+ Retorna um objeto Period baseado no argumento dado</td><td>
+
+LocalDate christmas = LocalDate.of(2015, 12, 25);
+System.out.println(Period.between(LocalDate.now(), christmas));
+// prints P1M23D as of 2015-11-02
+</td></tr>
+
+<tr><td> Period ofWeeks(int unit)
+</td><td> Retorna um objeto Period baseado no único argumento dado
+</td><td> 
+Period.ofWeeks(2)
+// returns P14D
+</td></tr>
+
+<tr><td> Period ofDays(int unit) Period ofMonths(int unit)
+
+</td><td> Retorna um objeto Period baseado no único argumento dado
+</td><td>
+Period.ofDays(15)
+// returns P15D
+</td></tr>
+
+<tr><td> Period ofYears (int unit)
+
+</td><td> Retorna um objeto Period baseado no único argumento dado
+</td><td>
+Period.ofMonths(6)
+// returns P6M
+ 
+Period.ofYears(4)
+// returns P4Y
+
+
+</td></tr>
+
+<tr><td> Period parse(CharSequence string)
+</td><td>Retorna um Period de uma string passada como argumento
+</td><td>
+Period.parse("P4Y6M15D");
+// returns P4Y6M15D
+</td></tr>
+</table></div>
+</section>
+<section id="classduration">
+<h2>Usando a Classe Duration</h2>
+
+<p>Discutimos a classe Período mais cedo - ela representa o tempo em termos de anos, meses e dias. Duração é o tempo equivalente do Período. A classe <b>Duration</b> representa o tempo em termos de horas, minutos, segundos e assim por diante. É adequado para medir o tempo da máquina ou ao trabalhar com objetos de instância. Semelhante à classe <b>Instance</b>, a classe <b>Duration</b> armazena o componente segundos como um valor long e nanossegundos usando um valor int. Digamos que você queira desejar à sua melhor amiga Becky um feliz aniversário à meia-noite hoje à noite. Aqui está como você pode descobrir quantas horas para ir:</p>
+<pre class="brush:java">
+LocalDateTime comingMidnight =
+LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.MIDNIGHT);
+LocalDateTime now = LocalDateTime.now();
+Duration between = Duration.between(now, comingMidnight);
+System.out.println(between);
+</pre>
+<p><b>Este código imprime: </b></p>
+
+<pre>PT7H13M42.003S</pre>
+
+<p>Este exemplo usa a versão sobrecarregada do método <b>of()</b> na classe <b>LocalDateTime</b>: <b>LocalDateTime of(LocalDate, LocalTime)</b>. A chamada <b>LocalDate.now()</b> retorna a data atual, mas você precisa adicionar um dia a esse valor para poder usar <b>LocalTime.MIDNIGHT</b> para se referir à próxima meia-noite.</p>
+<p>O método <b>between()</b> em <b>Duration</b> leva dois valores de tempo - nesse caso, dois objetos <b>LocalDateTime</b>. Quando executamos este programa, o horário era 16:46:17; de lá para a meia-noite foi de 7 horas, 13 minutos e 42 segundos. Isso é indicado pela saída <b>toString()</b>, Period: PT7H13M42.003S. O prefixo <b>PT</b> indica o tempo do Período, H indica as horas, M indica os minutos e S indica os segundos.</p>
+<p>A seguir lista de métodos importantes na classe Duration:</p>
+<br>
+<br>
+
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+	<tr><th>Métodos </th><th>Descrição </th><th>Exemplo</th></tr>
+
+<tr><td>Duration of(long number, TemporalUnit unit)</td><td>Retorna um objeto Duration para o numero fornecido no formato especificado.</td><td>Duration.of(3600, ChronoUnit.MINUTES) // returns "PT60H"</td></tr>
+
+<tr><td>  
+Duration ofDays(long unit)
+Duration ofHours(long unit)
+Duration ofMinutes(long unit)
+Duration ofSeconds(long unit)
+Duration ofMillis(long unit)
+Duration ofNanos(long unit)
+</td><td>
+Retornar Duration baseado na unidade dada no argumento
+</td><td>
+
+Duration.ofDays(4)
+// returns "PT96H"
+Duration.ofHours(2)
+// returns "PT2H"
+Duration.ofMinutes(15)
+// returns "PT15M"
+Duration.ofSeconds(30)
+//returns "PT30S"
+Duration.ofMillis(120)
+// returns "PT0.12S"
+Duration.ofNanos(120)
+// returns "PT0.00000012S"
+</td></tr>
+
+<tr><td>
+ Duration parse(CharSequence string)
+</td><td>
+ Retorna um Period da string passada como o argumento
+</td><td>
+
+Duration.parse("P2DT10H30M")
+// returns a Duration object
+// with value PT58H30M
+</td></tr>
+</table></div>
+<br>
+<br>
+<br>
+<div style="overflow-x:auto;">
+<table class="w3-table-all">
+<tr><th>Instant</th><th>Period</th><th>Duration</th></tr>
+
+<tr><td>Representa o tempo da máquina a partir da época do unix</td><td>Representa quantidade de tempo em termos de ano, mês, e dias.</td><td>Representa quantidade de tempo em termos de horas, minutos, segundos, e frações de segundos.</td></tr>
+
+<tr><td>Tipicamente usado para timestamps</td><td>Tipicamente usado para diferença entre dois objetos LocalDate</td><td>Tipicamente usado para diferença entre dois objetos LocalTime.</td></tr>
+
+</table>
+</div>
+<br>
+</section>
+<section id="temporalunit">
+<h1>Usando A Interface TemporalUnit</h1>
+
+<p>A interface <b>TemporalUnit</b> faz parte do pacote <b>java.time.temporal</b>. Ele representa unidades de data ou hora, como segundos, horas, dias, meses, anos e assim por diante. A enumeração <b>java.time.temporal.ChronoUnit</b> implementa essa interface. Em vez de usar valores constantes, é melhor usar seus valores de enumeração equivalentes. Por quê? Porque o uso de valores de enumeração no <b>ChronoUnit</b> resulta em código mais legível; Além disso, é menos provável que você cometa erros.</p> 
+<p>O exemplo seguinte imprime os valores de enumeração, sejam eles baseados em data ou baseados em tempo, e a duração:</p>
+<pre class="brush:java">
+//ChronoUnitValues.java
+import java.time.temporal.ChronoUnit;
+public class ChronoUnitValues {
+public static void main(String []args) {
+System.out.println("ChronoUnit DateBased TimeBased Duration");
+System.out.println("");
+for(ChronoUnit unit : ChronoUnit.values()) {
+System.out.printf("%10s \t %b \t\t %b \t\t %s %n",
+unit, unit.isDateBased(), unit.isTimeBased(), unit.getDuration());
+}
+}
+}
+</pre>
+<p><b>O resultado de saída é o seguinte:</b></p>
+<pre>
+	<div style="overflow-x:auto;">
+
+<table >
+<tr><th>ChronoUnit</th><th> -DateBased </th><th>-TimeBased</th><th>-Duration-</th></tr>
+
+<tr><td>Nanos</td><td> false</td><td>true</td><td>PT0.000000001S</td></tr>
+<tr><td>Micros </td><td>      false </td><td>   true</td><td>     PT0.000001S</td></tr>
+<tr><td>Millis </td><td>      false </td><td>   true </td><td>    PT0.001S</td></tr>
+<tr><td>Seconds</td><td>      false </td><td>   true </td><td>    PT1S</td></tr>
+<tr><td>Minutes</td><td>      false </td><td>   true </td><td>    PT1M</td></tr>
+<tr><td>Hours</td><td>        false</td><td>    true </td><td>    PT1H</td></tr>
+<tr><td>HalfDays</td><td>     false </td><td>   true  </td><td>   PT12H</td></tr>
+<tr><td>Days</td><td>         true  </td><td>   false </td><td>   PT24H</td></tr>
+<tr><td>Weeks</td><td>        true  </td><td>   false </td><td>   PT168H</td></tr>
+<tr><td>Months </td><td>true </td><td>    false </td><td>   PT730H29M6S</td></tr>
+<tr><td>Years  </td><td>      true </td><td>    false  </td><td>  PT8765H49M12S</td></tr>
+<tr><td>Decades </td><td>     true  </td><td>   false  </td><td>  PT87658H12M</td></tr>
+<tr><td>Centuries </td><td>   true  </td><td>   false </td><td>   PT876582H</td></tr>
+<tr><td>Millennia </td><td>   true </td><td>    false  </td><td>  PT8765820H</td></tr>
+<tr><td>Eras </td><td>        true</td><td>     false  </td><td>  PT8765820000000H</td></tr>
+<tr><td>Forever </td><td>     false</td><td>    false  </td><td>  PT2562047788015215H30M7.999999999S</td></tr>
+</table>
+</div>
+</pre>
+<p>Vários métodos no pacote <b>java.time</b> usam o <b>TemporalUnit</b> como argumento. Por exemplo, considere o método <b>of()</b> na classe <b>Duration</b>:</p>
+
+<pre class="brush:java">Duration of(long amount, TemporalUnit unit)</pre>
+
+
+<p>Como a enumeração <b>ChronoUnit</b> implementa a interface <B>TemporalUnit</b>, você pode passar um valor de enumeração <b>ChronoUnit</b> como o segundo argumento neste construtor:</p>
+<pre class="brush:java">
+System.out.println(Duration.of(1, ChronoUnit.MINUTES).getSeconds());
+// prints: 60
+System.out.println(Duration.of(1, ChronoUnit.HOURS).getSeconds());
+// prints:3600
+System.out.println(Duration.of(1, ChronoUnit.DAYS).getSeconds());
+// prints: 86400
+</pre>
+<p>Como você pode ver neste exemplo, o <b>ChronoUnit</b> ajuda a lidar com valores de unidade de tempo, como segundos, minutos e horas e valores de data, como dias, meses e anos.</p>
+</section>
+<section id="fusohorario">
+<h1>Lidando com fusos horários e horário de verão</h1>
+
+<p>A seção anterior discutiu algumas das classes importantes no pacote <b>java.time</b>. Esta seção discute como trabalhar com datas e horas em fusos horários, lidar com o horário de verão e formatar valores de data e hora.</p>
+
+<h2>Usando classes relacionadas ao fuso horário</h2>
+
+<p>Há três classes importantes relacionadas a fusos horários que você precisa saber para trabalhar com datas e horas em fusos horários: <b>ZoneId</b>, <b>ZoneOffset</b> e <b>ZonedDateTime</b>. Vamos discuti-los agora.</p>
+
+
+</section>
+<section id="classzoneid">
+<h2>Usando a Classe ZoneId</h2>
+
+<p>No pacote <b>java.time</b>, a classe <b>java.time.ZoneId</b> representa os fusos horários. Os fusos horários são normalmente identificados usando um deslocamento do Greenwich Mean Time (GMT, também conhecido como UTC / Greenwich).
+Por exemplo, se vivessemos na Índia, e o único fuso horário na Índia é Ásia / Calcutá (as zonas são dadas usando esse formato de região / cidade). Este código imprime o fuso horário:</p>
+
+
+<pre class="brush:java">System.out.println("My zone id is: " + ZoneId.systemDefault());</pre>
+
+<p>Para o nosso fuso horário, imprimiria isto:</p>
+
+<p>My zone id is: Asia/Kolkata</p>
+
+<p>Você pode obter a lista de fusos horários chamando o método estático <b>getAvailableZoneIds()</b> em <b>ZoneId</b>, que retorna um <b>Set&ltString></b>:</p>
+
+<pre class="brush:java">
+Set&ltString> zones = ZoneId.getAvailableZoneIds();
+System.out.println("Number of available time zones is: " + zones.size());
+zones.forEach(System.out::println);
+</pre>
+<p>Aqui está o resultado:</p>
+<pre>
+Number of available time zones is: 589
+Asia/Aden
+America/Cuiaba
+// rest of the output elided...
+</pre>
+
+<p>Você pode passar qualquer um desses identificadores de fuso horário ao método <b>of()</b> para criar o objeto ZoneId correspondente, como em:</p>
+
+<pre class="brush:java">ZoneId AsiaKolkataZoneId = ZoneId.of("Asia/Kolkata");</pre>
+
+</section>
+<section id="classzoneoffset">
+<h3>Usando a Classe ZoneOffSet</h3>
+
+<p><b>ZoneId</b> identifica um fuso horário, como Asia/Kolkata. Outra classe, <b>ZoneOffset</b>, representa o deslocamento de fuso horário de UTC / Greenwich. Por exemplo, o ID da zona “Ásia / Kolkata” tem um deslocamento de zona de +05:30 (mais 5 horas e 30 minutos) da UTC / Greenwich. A classe <b>ZoneOffset</b> estende a classe <b>ZoneId</b>. Discutimos um exemplo que usa o <b>ZoneOffset</b> na próxima seção.</p>
+
+</section>
+<section id="zonedatetimeuse">
+<h3>Usando a classe ZoneDateTime</h3>
+
+
+<p>No Java 8, se você quiser lidar apenas com a data, a hora ou o fuso horário, poderá usar <b>LocalDate</b>, <b>LocalTime</b> ou <b>ZoneId</b>, respectivamente. E se você quiser todos os três - data, hora e fuso horário - juntos? Para isso, você pode usar a classe <b>ZonedDateTime</b>:</p>
+<pre class="brush:java">
+LocalDate currentDate = LocalDate.now();
+LocalTime currentTime = LocalTime.now();
+ZoneId myZone = ZoneId.systemDefault();
+ZonedDateTime zonedDateTime = ZonedDateTime.of(currentDate, currentTime, myZone);
+System.out.println(zonedDateTime);
+</pre>
+
+<p><b>Aqui está o resultado</b></p>
+
+<pre class="brush:java">2015-11-05T11:38:40.647+05:30[Asia/Kolkata]</pre>
+
+<p>Este segmento de código usa o método estático <b>ZonedDateTime</b> de (LocalDate, LocalTime, ZoneID)sobrecarregado.</p>
+<p>Dado um LocalDateTime, você pode usar um ZoneId para obter um objeto ZonedDateTime:</p>
+<pre class="brush:java">
+LocalDateTime dateTime = LocalDateTime.now();
+ZoneId myZone = ZoneId.systemDefault();
+ZonedDateTime zonedDateTime = dateTime.atZone(myZone);
+</pre>
+
+<p>Para ilustrar a conversão entre essas classes relacionadas a fusos horários diferentes, aqui está um segmento de código que cria um objeto <b>ZoneId</b>, adiciona essas informações de zona a um objeto <b>LocalDateTime</b> para obter um objeto <b>ZonedDateTime</b> e finalmente obtém o deslocamento de zona do <b>ZonedDateTime</b>:</p>
+<pre class="brush:java">
+ZoneId myZone = ZoneId.of("Asia/Kolkata");
+LocalDateTime dateTime = LocalDateTime.now();
+ZonedDateTime zonedDateTime = dateTime.atZone(myZone);
+ZoneOffset zoneOffset = zonedDateTime.getOffset();
+System.out.println(zoneOffset);
+</pre>
+<p><b>Este código imprime o seguinte:</b></p>
+<pre>
++05:30
+</pre>
+
+<p>Suponha que você esteja em Cingapura, a data é 1 de janeiro de 2016 e a hora é 6:00 da manhã. Antes de falar com seu amigo que mora em Auckland (Nova Zelândia), você deseja descobrir a diferença de horário entre Cingapura e Auckland.</p>
+<p>A seguir  um programa que usa as classes <b>ZoneId</b>, <b>ZonedDateTime</b> e <b>Duration</b>, para ilustrar como usar essas classes juntas.</p>
+<pre class="brush:java">
+//TimeDifference.java
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.Duration;
+
+public class TimeDifference {
+public static void main(String[] args) {
+ZoneId singaporeZone = ZoneId.of("Asia/Singapore");
+ZonedDateTime dateTimeInSingapore = ZonedDateTime.of(
+LocalDateTime.of(2016, Month.JANUARY, 1, 6, 0), singaporeZone);
+ZoneId aucklandZone = ZoneId.of("Pacific/Auckland");
+ZonedDateTime sameDateTimeInAuckland =
+dateTimeInSingapore.withZoneSameInstant(aucklandZone);
+Duration timeDifference = Duration.between(
+dateTimeInSingapore.toLocalTime(),
+sameDateTimeInAuckland.toLocalTime());
+System.out.printf("Time difference between %s and %s zones is %d hours",
+singaporeZone, aucklandZone, timeDifference.toHours());
+}
+}
+</pre>
+<p><b>Aqui está o resultado:</b></p>
+
+<pre>Time difference between Asia/Singapore and Pacific/Auckland zones is 5 hours</pre>
+
+<p>Este programa cria dois <b>ZoneIds</b>: um para Cingapura e outro para Auckland. Depois de criar um objeto <b>ZonedDateTime</b> para o fuso horário de Cingapura com a data e a hora fornecidas, você obtém o objeto <b>ZonedDateTime</b> equivalente para Auckland chamando o método com <b>ZoneSameInstant()</b> da classe <b>ZonedDateTime</b>. Para encontrar a diferença de horas em horas, use o método <b>Duration.between()</b> e o método <b>toHours()</b> de <b>Duration</b>.</p>
+</section>
+<section id="horarioverao">
+<h2>Lidar com horário de verão</h1>
+
+<p>Com o horário de verão(DST), o relógio é definido uma hora antes ou depois para aproveitar ao máximo a luz do dia. O relógio é normalmente definido uma hora antes, quando a primavera começa e uma hora depois, no início do outono:
+<pre class="brush:java">
+ZoneId kolkataZone = ZoneId.of("Asia/Kolkata");
+Duration kolkataDST = kolkataZone.getRules().getDaylightSavings(Instant.now());
+System.out.printf("Kolkata zone DST is: %d hours %n", kolkataDST.toHours());
+ZoneId aucklandZone = ZoneId.of("Pacific/Auckland");
+Duration aucklandDST = aucklandZone.getRules().getDaylightSavings(Instant.now());
+System.out.printf("Auckland zone DST is: %d hours", aucklandDST.toHours());
+</pre>
+<p><b>Aqui está o resultado (quando executado em 5 de novembro de 2015):</b></p>
+<pre>
+Kolkata zone DST is: 0 hours
+Auckland zone DST is: 1 hours
+</pre>
+<p>A chamada <b>zoneId.getRules().getDaylightSavings(Instant.now())</b>; retorna um objeto <B>Duration</b> com base no fato de o DST estar em vigor nesse momento. Se <b>Duration.isZero()</b> for <b>false</b>, o DST entrará em vigor nessa zona; caso contrário, não é. Neste exemplo, o fuso horário de Kolkata não tem DST em vigor, mas o fuso horário de Auckland tem +1 hora de DST.</p>
+
+
+
+
+</section>
+<section id="formatdata">
+<h1>Formatar Data e Horários</h1>
+
+<p>Ao programar com datas e horas, muitas vezes você tem que imprimi-los em diferentes formatos. Além disso, talvez seja necessário ler informações de data/hora em diferentes formatos. Para ler ou imprimir valores de data e hora em vários formatos, você pode usar a classe <b>DateTimeFormatter</b> no pacote <b>java.time.format</b>.</p>
+<p>A classe <b>DateTimeFormatter</b> fornece muitas constantes predefinidas para formatar valores de data e hora.
+Aqui está uma lista de alguns desses formatadores predefinidos (com valores de saída de amostra):</p>
+
+
+<ul>
+	<li>ISO_DATE(2015-11-05)</li>
+	 <li>ISO_TIME(11:25:47.624)</li>
+	 <li>RFC_1123_DATE_TIME(Thu, 5 Nov 2015 11:27:22 +0530)</li>
+	 <li>ISO_ZONED_DATE_TIME(2015-11-05T11:30:33.49+05:30[Asia/Kolkata])</li>
+</ul>
+<p>Aqui está um exemplo simples que usa a predefinição ISO_TIME do tipo <b>DateTimeFormatter</b>:</p>
+<pre class="brush:java">
+LocalTime wakeupTime = LocalTime.of(6, 0, 0);
+System.out.println("Wake up time: " + DateTimeFormatter.ISO_TIME.format(wakeupTime));
+</pre>
+<p><b>Este código imprime o segiuinte: </b></p>
+
+<pre>Wake up time: 06:00:00</pre>
+
+<p>E se você quiser usar um formato personalizado em vez de qualquer um dos formatos predefinidos? Para fazer isso, você pode usar o método <b>ofPattern()</b> na classe <b>DateTimeFormatter</b>:</p>
+
+<pre>
+DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd MMM yyyy");
+System.out.println(customFormat.format(LocalDate.of(2016, Month.JANUARY, 01)));
+</pre>
+
+<p><b>Aqui está o resultado:</b></p>
+
+<pre>01 Jan 2016</pre>
+
+<p>Você codifica o formato da data ou hora usando letras para formar uma cadeia de padrão de data ou hora. Geralmente essas letras são repetidas no padrão.</p>
+<br>
+<p><i>Letras maiúsculas e minúsculas podem ter significados semelhantes ou diferentes quando usadas em strings de formato para datas e horas. leia o Javadoc para esses padrões cuidadosamente antes de tentar usar essas letras. Por exemplo, em dd-MM-aa, MM refere-se ao mês; no entanto, em dd-mm-aa, mm refere-se a minutos!</i></p>
+<br>
+
+
+<p>O segmento de código anterior forneceu um exemplo simples de criação de um formato de data personalizado. Letras semelhantes estão disponíveis para criar <b>strings</b> de padrão de data e hora personalizadas. Aqui está a lista de letras importantes e seus significados para criar padrões para datas (com exemplos):</p>
+
+<ul>
+
+<li>	 G(era: BC, AD)</li>
+<li> y(year of era: 2015, 15)</li>
+<li> Y(week-based year: 2015, 15)</li>
+<li>	 M(month: 11, Nov, November)</li>
+<li>w(week in year: 13)</li>
+<li>	 W(week in month: 2)</li>
+<li> E(day name in week: Sun, Sunday)</li>
+<li> D(day of year: 256)</li>
+<li>	 d(day of month: 13)</li>
+</ul>
+
+<p>O programa a seguir usa <b>strings</b> de padrão simples e complexas para criar formatos de data personalizados.</p>
+
+
+<pre class="brush:java">
+//CustomDatePatterns.java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+public class CustomDatePatterns {
+public static void main(String []args) {
+// patterns from simple to complex ones
+String [] dateTimeFormats = {
+"dd-MM-yyyy", /* d é dia (em mês), M é mês, y é ano */
+"d '('E')' MMM, YYYY", /*E é nome do dia (na week), Y é ano*/
+"w'th week of' YYYY", /* w é a semana do ano */
+"EEEE, dd'th' MMMM, YYYY" /*E é nome do dia na semana */
+};
+LocalDateTime now = LocalDateTime.now();
+for(String dateTimeFormat : dateTimeFormats) {
+System.out.printf("Pattern \"%s\" is %s %n", dateTimeFormat,
+DateTimeFormatter.ofPattern(dateTimeFormat).format(now));
+}
+</pre>
+<p><b>Aqui está o resultado </b>:</p>
+<pre>
+Pattern "dd-MM-yyyy" is 05-11-2015
+Pattern "d '('E')' MMM, YYYY" is 5 (Thu) Nov, 2015
+Pattern "w'th week of' YYYY" is 45th week of 2015
+Pattern "EEEE, dd'th' MMMM, YYYY" is Thursday, 05th November, 2015
+</pre>
+
+
+
+<p>Como você pode ver, as letras repetidas resultam em um formulário mais longo para uma entrada. Por exemplo, quando você usa <b>E</b> (que é o nome do dia da semana), o resultado é “Thu”, enquanto que o uso de <b>EEEE</b> imprime a forma completa do nome do dia, que é “Thursday”.</p>
+
+<p>Outra coisa importante a notar é como imprimir texto dentro da string de padrão dada. Para isso, você usa texto separado por aspas simples, que é impresso como está por <b>DateTimeFormatter</b>. Por exemplo, '(' E ')' imprime “(Wed)”. Se você der um padrão incorreto ou se esquecer de usar aspas simples para separar o texto das letras padrão na sequência padrão, você receberá um <b>DateTimeParseException</b> por passar um "padrão ilegal".</p>
+<p>Agora, vamos ver um exemplo semelhante para criar strings de padrão de tempo personalizadas. Aqui está a lista de letras importantes para definir um padrão de tempo personalizado:</p>
+
+<pre class="brush:java">
+a(marker for the text a.m./p.m. marker)
+H(hour: value range 0–23)
+k(hour: value range 1–24)
+K(hour in a.m./p.m.: value range 0–11)
+h(hour in a.m./p.m.: value range 1–12)
+m(minute)
+s(second)
+S(fraction of a second)
+z(time zone: general time-zone format)
+</pre>
+<p>Para mais letras e suas descrições, consulte o Javadoc para a classe <b>DateTimeFormatter</b>. O exemplo  a seguir mostra um programa que usa <b>strings</b> de padrão simples e complexas para criar formatos de hora personalizados.</p>
+<pre class="brush:java">
+CustomTimePatterns.java
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+// Usando exemplos, ilustra como usar "strings padrão" para criar formatos de hora personalizados
+class CustomTimePatterns {
+public static void main(String []args) {
+// padrões do simples ao complexo
+String [] timeFormats = {
+"h:mm", /* h is hour in am/pm (1-12), m is minute */
+"hh 'o''clock'", /* '' é a sequência de escape para imprimir uma aspas simples */
+"H:mm a", /* H is hour in day (0-23), a is am/pm*/
+"hh:mm:ss:SS", /* s é segundos, S é millisegundos */
+"K:mm:ss a" /* K é hora em am/pm(0-11) */
+};
+LocalTime now = LocalTime.now();
+for(String timeFormat : timeFormats) {
+System.out.printf("Time in pattern \"%s\" is %s %n", timeFormat,
+DateTimeFormatter.ofPattern(timeFormat).format(now));
+}
+}
+}
+</pre>
+<p><b>Aqui está o resultado:</b></p>
+<pre>
+Time in pattern "h:mm" is 12:27
+Time in pattern "hh 'o''clock'" is 12 o'clock
+Time in pattern "H:mm a" is 12:27 PM
+Time in pattern "hh:mm:ss:SS" is 12:27:10:41
+Time in pattern "K:mm:ss a" is 0:27:10 PM
+</pre>
+
+<p>Observe como a saída difere com base na sequência padrão usada.</p>
+</section>
+<section id="viajemaereaexe">
+<h1>Exemplo de viagem aérea</h1>
+
+<p>Vejamos um exemplo que usa muitas das classes abordadas até o momento. Suponha que você precisa pegar um voo de Cingapura em 1 de janeiro de 2016 às 6:00 da manhã. O vôo leva 10 horas para chegar a Auckland, Nova Zelândia. Você pode obter a hora de chegada em Auckland? O programa a seguir resolve esse problema.</p>
+<pre class="brush:java">
+//FlightTravel.java
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+public class FlightTravel {
+public static void main(String[] args) {
+DateTimeFormatter dateTimeFormatter =
+DateTimeFormatter.ofPattern("dd MMM yyyy hh.mm a");
+// Partida em 1 de janeiro de 2016 às 06:00 de "Singapore"
+ZonedDateTime departure = ZonedDateTime.of(
+LocalDateTime.of(2016, Month.JANUARY, 1, 6, 0),
+ZoneId.of("Asia/Singapore"));
+System.out.println("Departure: " + dateTimeFormatter.format(departure));
+// Chegada no mesmo dia em 10 horas em "Auckland"
+ZonedDateTime arrival =
+departure.withZoneSameInstant(ZoneId.of("Pacific/Auckland"))
+.plusHours(10);
+System.out.println("Arrival: " + dateTimeFormatter.format(arrival));
+}
+}
+</pre>
+<p><b>Aqui está o resultado:</b></p>
+<pre>
+Departure: 01 Jan 2016 06.00 AM
+Arrival: 01 Jan 2016 09.00 PM
+</pre>
+</section>
+<p class="nav-arq" id="referencia">Exceção e Asserção: <a href="exceptioassertion.html">&laquo; anterior | <a href="javaio.html">próximo &raquo;</a> Java IO Fundamental </p>
+<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/apidatetimejse" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+</div>
+</div>
+
+</body>
+	</html>
+
+
+
+
+
