@@ -1,0 +1,1 @@
+web java -Dserver.port=$PORT $JAVA_OPTS -jar target/sabor-e-arte-delivery-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:application-heroku.properties -Dspring.profiles.active=heroku
