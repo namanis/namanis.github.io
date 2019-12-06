@@ -1,19 +1,17 @@
-
-
 <!DOCTYPE html>
  <html lang="pt-br">
-
-  <head>
+<head>
  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
  <link rel="stylesheet" type="text/css" href="css/stylos.css">
  <link rel="stylesheet" href="css/stylew3.css">
  <script type="text/javascript"src="js/efeitos.js"></script>
-
- <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
 <script src="code-brush-master/cbCore.js"></script>
 <script src="code-brush-master/cBrushXml.js"></script>
+               
 <script src="code-brush-master/cBrushCss.js"></script>
 <script src="code-brush-master/cBrushPhp.js"></script>
 <script src="code-brush-master/cBrushSql.js"></script>
@@ -24,6 +22,55 @@
     SyntaxHighlighter.defaults['toolbar'] = false;
     SyntaxHighlighter.all();
 </script>
+<script type="text/javascript">
+jQuery(document).ready(function(jQuery) {            
+            var topMenu = jQuery("#mySidebar"),
+                offset = 40,
+                topMenuHeight = topMenu.outerHeight()+offset,
+                // All list items
+                menuItems =  topMenu.find('a[href*="#"]'),
+                // Anchors corresponding to menu items
+                scrollItems = menuItems.map(function(){
+                  var href = jQuery(this).attr("href"),
+                  id = href.substring(href.indexOf('#')),
+                  item = jQuery(id);
+                  //console.log(item)
+                  if (item.length) { return item; }
+                });
+
+            // so we can get a fancy scroll animation
+            menuItems.click(function(e){
+              var href = jQuery(this).attr("section"),
+                id = href.substring(href.indexOf('#'));
+                  offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+              jQuery('html, body').stop().animate({ 
+                  scrollTop: offsetTop
+              }, 300);
+              e.preventDefault();
+            });
+
+            // Bind to scroll
+            jQuery(window).scroll(function(){
+               // Get container scroll position
+               var fromTop = jQuery(this).scrollTop()+topMenuHeight;
+
+               // Get id of current scroll item
+               var cur = scrollItems.map(function(){
+                 if (jQuery(this).offset().top < fromTop)
+                   return this;
+               });
+
+               // Get the id of the current element
+               cur = cur[cur.length-1];
+               var id = cur && cur.length ? cur[0].id : "";               
+               
+               menuItems.parent().removeClass("active");
+               if(id){
+                    menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+               }
+               
+            })
+        })</script>
  <title> Programar em Java</title>
  </head>
  <body>
@@ -38,29 +85,51 @@
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
   <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <li class="active">
   <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+</li><li>
        <a class="w3-bar-item w3-button"  href="#designavancado">7 - PROJETO DE CLASSE I</a>
+         </li><li>
             <a class="w3-bar-item w3-button"  href="#modificador">Modificadores de Acesso</a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#heranca">Herança</a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#polimorfismo">Polimorfismo</a>
+          </li><li>
           <a class="w3-bar-item w3-button" href="#poliruntime">Polimorfismo em Runtime</a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#sobmetod">Sobrecargas de Métodos </a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#sobconstructor">Sobrecarga de Construtor </a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#resolsobrc">Resolução de sobrecarga </a>
-           <a class="w3-bar-item w3-button"  href="#sobrescmetd">Sobrescrevendo métodos na classe objeto</a>
+           </li><li>
+      <a class="w3-bar-item w3-button"  href="#sobrescmetd">Sobrescrevendo métodos na classe objeto</a>
+      </li><li>
           <a class="w3-bar-item w3-button"  href="#sobresctostring">Sobrescrevendo Método toString()</a>
+           </li><li>
            <a class="w3-bar-item w3-button"  href="#sobproblem">Sobrescrevendo Problemas </a>
+         </li><li>
           <a class="w3-bar-item w3-button"  href="#sobmetequal">Sobrescrever o método equal() </a>
-           <a class="w3-bar-item w3-button"  href="#invoqsuperclasse">Invocando métodos da Superclasse</a>
+           </li><li>
+      <a class="w3-bar-item w3-button"  href="#invoqsuperclasse">Invocando métodos da Superclasse</a>
+      </li><li>
           <a class="w3-bar-item w3-button"  href="#compposicao">Composição de Objeto</a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#compheranca">Composição vs Herança</a>
+           </li><li>
            <a class="w3-bar-item w3-button"  href="#singleton">Classes Imutável e Singleton</a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#singletonrealm">Assegurando que seu singleton é realmente um singleton </a>
+          </li><li>
            <a class="w3-bar-item w3-button"  href="#imutavelcls">Classes imutável</a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#defimutavel">Definindo Classes Imutáveis</a>
+           </li><li>
            <a class="w3-bar-item w3-button"  href="#palchavstatic">Usando a palavra chave Static</a>
+          </li><li>
           <a class="w3-bar-item w3-button"  href="#blocstatic">Bloco Static</a>
-           
+         </li><li>  
   
   <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
@@ -118,7 +187,7 @@
 </header>
 
 <section id="designavancado">
-<h1>Projeto de classe do Java</h1>
+<h1>Projeto de classe I</h1>
 
 <p><b>Objetivos</b></p>
 <ul>

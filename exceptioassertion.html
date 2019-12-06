@@ -1,1070 +1,1134 @@
-<!DOCTYPE html>
- <html lang="pt-br">
-
+  <!DOCTYPE html>
+   <html lang="pt-br">
   <head>
- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
- <link rel="stylesheet" type="text/css" href="css/stylos.css">
- <link rel="stylesheet" href="css/stylew3.css">
- <script type="text/javascript"src="js/efeitos.js"></script>
- <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
-<script src="code-brush-master/cbCore.js"></script>
-<script src="code-brush-master/cBrushXml.js"></script>
-<script src="code-brush-master/cBrushCss.js"></script>
-<script src="code-brush-master/cBrushPhp.js"></script>
-<script src="code-brush-master/cBrushSql.js"></script>
-<script src="code-brush-master/cBrushJScript.js"></script>   
-<script src="code-brush-master/cBrushJava.js"></script>  
-<script>
-    SyntaxHighlighter.defaults['auto-links'] = false;
-    SyntaxHighlighter.defaults['toolbar'] = false;
-    SyntaxHighlighter.all();
-</script>
- 
- <title> Programar em Java</title>
- </head>
- <body>
- 
+   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/stylos.css">
+   <link rel="stylesheet" href="css/stylew3.css">
+   <script type="text/javascript"src="js/efeitos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+  <script src="code-brush-master/cbCore.js"></script>
+  <script src="code-brush-master/cBrushXml.js"></script>
+                 
+  <script src="code-brush-master/cBrushCss.js"></script>
+  <script src="code-brush-master/cBrushPhp.js"></script>
+  <script src="code-brush-master/cBrushSql.js"></script>
+  <script src="code-brush-master/cBrushJScript.js"></script>   
+  <script src="code-brush-master/cBrushJava.js"></script>  
+  <script>
+      SyntaxHighlighter.defaults['auto-links'] = false;
+      SyntaxHighlighter.defaults['toolbar'] = false;
+      SyntaxHighlighter.all();
+  </script>
+  <script type="text/javascript">
+  jQuery(document).ready(function(jQuery) {            
+              var topMenu = jQuery("#mySidebar"),
+                  offset = 40,
+                  topMenuHeight = topMenu.outerHeight()+offset,
+                  // All list items
+                  menuItems =  topMenu.find('a[href*="#"]'),
+                  // Anchors corresponding to menu items
+                  scrollItems = menuItems.map(function(){
+                    var href = jQuery(this).attr("href"),
+                    id = href.substring(href.indexOf('#')),
+                    item = jQuery(id);
+                    //console.log(item)
+                    if (item.length) { return item; }
+                  });
 
-<!-- Top Navigation Menu -->
+              // so we can get a fancy scroll animation
+              menuItems.click(function(e){
+                var href = jQuery(this).attr("section"),
+                  id = href.substring(href.indexOf('#'));
+                    offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+                jQuery('html, body').stop().animate({ 
+                    scrollTop: offsetTop
+                }, 300);
+                e.preventDefault();
+              });
 
-  <div id="voltarTopo">
-  <a href="#" id="subir">Topo</a>
-</div>
+              // Bind to scroll
+              jQuery(window).scroll(function(){
+                 // Get container scroll position
+                 var fromTop = jQuery(this).scrollTop()+topMenuHeight;
 
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
-       <a class="w3-bar-item w3-button"  href="#exececaoassercao">12 - EXCEÇÕES E ASSERÇÕES</a>
-            <a class="w3-bar-item w3-button"  href="#lancexception">Lançando Exceções</a>
-          <a class="w3-bar-item w3-button"  href="#excenaomanipulada">Execeções não manipuladas</a>
-          <a class="w3-bar-item w3-button"  href="#dectrycatch">Declaração Try e Catch</a>
-          <a class="w3-bar-item w3-button" href="#multiblococatch">Múltiplos Blocos Catch</a>
-          <a class="w3-bar-item w3-button"  href="#blocomulticatch">Blocos Multi-Catch</a>
-          <a class="w3-bar-item w3-button"  href="#manipulageralcatch">Manipuladores Gerais de Captura </a>
-          <a class="w3-bar-item w3-button"  href="#libertrecurss">Liberando recursos </a>
-           <a class="w3-bar-item w3-button"  href="#clausulathrow">A cláusula Throw</a>
-          <a class="w3-bar-item w3-button"  href="#metodoeclausula">Métodos Sobrescrito e a Clausula Throws</a>
-           <a class="w3-bar-item w3-button"  href="#encadearelexcec">Encadeamento e Relançamento de Exceções</a>
-          <a class="w3-bar-item w3-button"  href="#tryresources">Try-With-Resources</a>
-           <a class="w3-bar-item w3-button"  href="#fechamultirecurs">Fechando Multiplos Recursos</a>
-          <a class="w3-bar-item w3-button"  href="#exceperson">Exceções Personalizadas</a>
-          <a class="w3-bar-item w3-button"  href="#codassertions">Assertions</a>
-           <a class="w3-bar-item w3-button"  href="#decassertion">Declaração Assert</a>
-          
-  <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
-    <div id="demo" class="w3-hide">
+                 // Get id of current scroll item
+                 var cur = scrollItems.map(function(){
+                   if (jQuery(this).offset().top < fromTop)
+                     return this;
+                 });
 
+                 // Get the id of the current element
+                 cur = cur[cur.length-1];
+                 var id = cur && cur.length ? cur[0].id : "";               
+                 
+                 menuItems.parent().removeClass("active");
+                 if(id){
+                      menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+                 }
+                 
+              })
+          })</script>
    
-<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
-     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+   <title> Programar em Java</title>
+   </head>
+   <body>
+   
 
-<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
-<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+  <!-- Top Navigation Menu -->
 
-<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
-<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
-
-<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
-<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
-<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
-<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
-<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
-
-<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
-<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
-<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
-<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
-<a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
-
-<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
-<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
-
-<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
-<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
-
-<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
-<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
-<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
-<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
-
-<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
-
-    </div>
+    <div id="voltarTopo">
+    <a href="#" id="subir">Topo</a>
   </div>
-</nav>
-
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-
-<div class="w3-main" style="margin-left:250px;">
-
-<div id="myTop" class="w3-top  w3-large">
-  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-</p>
-</div>
-<header class="w3-container w3-theme" style="padding:64px 32px">
-  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
-</header>
-<section id="exececaoassercao">
-<h1>Exceções e Assertions</h1>
-
-<p>Em Java, o objeto lançado deve ser uma instância da classe <b>Throwable</b> ou uma de suas subclasses (<b>Throwable</b> é a classe do apex da hierarquia de exceções em Java). Construções de manipulação de exceção, como a declaração <b>throw</b>, cláusula <b>throws</b> , e cláusula <b>catch</b>  lidam apenas com <b>Throwable</b> e suas subclasses. Existem três importantes subclasses de <b>Throwable</b> que você precisa aprender em detalhes: o <b>Error</b>, <b>Exception</b>, e Classes <b>RuntimeException.</b></p>
-
-<img src="imagens/jee7/excepassert.jpg">
-
-<p>Aqui está uma breve descrição das três classes importantes que estendem a classe <b>Throwable</b>:</p>
-<ul>
-
-<li> 1-Exceções do tipo <b>Exception</b> são conhecidas como <b>exceções verificadas</b>. Se o código pode lançar uma exceção, você deve manipulá-lo usando um bloco catch ou declarar que o método lança essa exceção, forçando o chamador desse método para manipular essa exceção.</li><br>
-<li>2- <B>RuntimeException</b> é uma classe derivada da <b>classe Exception</b>. As exceções derivadas dessa classe são conhecidas como exceções não verificadas. É opcional para lidar com exceções não verificadas. Se um segmento de código que você escrever em um método puder lançar uma exceção não verificada, não é obrigatório capturar essa exceção ou declarar essa exceção na cláusula throws desse método.</li><br>
-<li>3- Quando a JVM detecta uma condição anormal grave no programa, ela gera uma exceção do tipo <b>Error</b>. Exceções do tipo <b>Error</b> indica uma condição anormal no programa. Não há sentido em pegar essa exceção e tentar continuar a execução e fingir que nada aconteceu. É uma prática realmente ruim fazer isso!</li>
-</ul>
-<p>Agora, vamos começar a discutir como lançar e capturar exceções.</p>
-</section>
-<section id="lancexception">
-<h2>Lançando Exceções </h2>
-
-<p>Este é um exemplo de programação muito simples em que você deseja repetir o texto digitado como argumentos da linha de comando de volta ao usuário. Suponha que o usuário deve digitar algum texto como argumentos de linha de comando para fazer <b>echo</b> ou, caso contrário, você precisará informar o usuário sobre a "condição de erro".</p>
-<pre class="brush:java">
-// Echo.java
-// Um programa simples sem exceção manipulando o código
-class Echo {
-public static void main(String [] args) {
-if(args.length == 0) {
-// no arguments passed – display an error to the user
-System.out.println("Error: No input passed to echo command... ");
-System.exit(-1);
-}
-else {
-for(String str : args) {
-// argumentos linha de comando são separados e passado como um array
-// imprimi-lo por adcionar um espaço elementos do array
-System.out.print(str + " ");
-}
-}
-}
-}
-</pre>
-<p>Nesse caso, você imprime o erro no console usando uma declaração <b>println()</b>. Este é um programa trivial e o erro ocorreu no método <b>main()</b>, portanto, o tratamento de erros é fácil. Nesse caso, você pode finalizar o programa depois de imprimir a mensagem de erro no console. No entanto, se você estiver dentro das chamadas de função em um aplicativo complexo, precisará de uma maneira melhor de indicar que uma “condição excepcional” ocorreu e informar o chamador sobre essa condição. Além disso, você geralmente precisa se recuperar de uma condição de erro
-em vez de terminar o programa. Portanto, você precisa ser capaz de “manipular” uma exceção ou “voltar a” essa exceção mais adiante na pilha de chamadas para que um chamador possa lidar com essa exceção.No momento, você irá alterar o programa anterior para lançar uma exceção em vez de imprimir uma mensagem de erro (em um programa separado, Echo1.java), igual a:</p>
-<pre class="brush:java">
-if(args.length == 0) {
-// sem argumentos passado  - lança uma exceção 
-throw new IllegalArgumentException("No input passed to echo command");
-}
-</pre>
-
-<p>Este bloco dentro da condição <b>if</b> para <b>args.length == 0</b> é a única parte que precisa ser alterada dentro deste programa. Observe a sintaxe para lançar uma exceção: a palavra-chave <b>throw</b> seguida pelo objeto de exceção. Aqui você usa <b>IllegalArgumentException</b>, que já está definido na biblioteca Java. Mais adiante, você verá como definir suas próprias exceções.</p>
-
-<p>Agora, se você executar este programa sem passar nenhum argumento na linha de comando, o programa lançará um <b>IllegalArgumentException</b>:</p>
-<pre>
-Exception in thread "main" java.lang.IllegalArgumentException: No input passed to echo command
-at Echo1.main(Echo1.java:5)
-</pre>
-
-<p>Como não havia manipulador para essa exceção, essa exceção não detectada encerrou o programa. Nesse caso, você explicitamente lançou uma exceção. Exceções também podem ser executadas quando você escreve algum código ou chama APIs Java. Vamos ver um exemplo agora.</p>
-</section>
-<section id="excenaomanipulada">
-<h2>Execeções não manipuladas</h2>
-
-<p>Considere o programa a seguir, que tenta ler um valor inteiro que o usuário digita no console e imprime o inteiro lido de volta ao console. Para ler um inteiro do console, você faz uso do método <b>nextInt()</b> fornecido na classe <b>java.util.Scanner</b>. Para instanciar a classe <b>Scanner</b>, você passa em <b>System.in</b>, que é uma referência ao fluxo de entrada do sistema.</p>
-<pre class="brush:java">
-// ScanInt1.java
-// Um programa simples para aceitar um inteiro do usuário
-import java.util.Scanner;
-class ScanInt1 {
-public static void main(String [] args) {
-System.out.println("Type an integer in the console: ");
-Scanner consoleScanner = new Scanner(System.in);
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-}
-}
-</pre>
-<p>Quando você executa este programa e digita um inteiro, digamos 10, no console, o programa funciona corretamente e imprime o inteiro de volta para você com êxito.</p>
-<pre>
-D:\> java ScanInt1
-Type an integer in the console:
-10
-You typed the integer value: 10
-</pre>
-<p>No entanto, e se você (ou o usuário do programa) digitar equivocadamente a <b>string</b> “dez” em vez do valor inteiro “10”? O programa terminará depois de lançar uma exceção como esta:</p>
-<pre>
-D:\> java ScanInt1
-Type an integer in the console:
-ten
-Exception in thread "main" java.util.InputMismatchException
-at java.util.Scanner.throwFor(Scanner.java:909)
-at java.util.Scanner.next(Scanner.java:1530)
-at java.util.Scanner.nextInt(Scanner.java:2160)
-at java.util.Scanner.nextInt(Scanner.java:2119)
-at ScanInt.main(ScanInt1.java:7)
-</pre>
-<p>Se você ler a documentação do <b>nextInt()</b>, verá que esse método pode lançar <b>InputMismatchException</b> - “se o próximo token não corresponder à expressão regular <b>Integer</b>, ou estiver fora do intervalo.” Neste programa simples, você assume que (ou o usuário) sempre digitará um valor inteiro conforme o esperado e, quando essa suposição falhar, será lançada uma exceção. Se houver uma exceção lançada de um programa e não for tratada, o programa terminará de forma anormal depois de lançar um rastreamento de pilha como os mostrados aqui.</p>
-<p>Um rastreamento de pilha mostra a lista do método (com os números de linha) que foi chamado antes que o controle atingisse a instrução onde a exceção foi lançada. Como programador, você achará útil rastrear o fluxo de controle para depurar o programa e corrigir o problema que levou a essa exceção.</p>
-<p>Então, como você lida com essa situação? Você precisa colocar esse código dentro dos blocos <b>try</b> e <b>catch</b>  e, em seguida,lidar com a exceção.</p>
-</section>
-<section id= "dectrycatch">
-<h2>Declaração Try e Catch</h2>
-
-<p>Java fornece as palavras-chave <b>try</b> e <b>catch</b> para manipular quaisquer exceções que possam ser lançadas no código que você escreve.</p>
-<pre class="brush:java">
-//ScanInt2.java
-// Um programa simples para aceitar um número inteiro do usuário no caso normal,
-// caso contrário, imprime uma mensagem de erro
-import java.util.Scanner;
-import java.util.InputMismatchException;
-class ScanInt2 {
-public static void main(String [] args) {
-System.out.println("Type an integer in the console: ");
-Scanner consoleScanner = new Scanner(System.in);
-try {
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-} catch(InputMismatchException ime) {
-// nextInt () lança InputMismatchException no caso de algo
-// diferente de um número inteiro é digitado no console; então manipule isso
-System.out.println("Error: You typed some text that is not an integer value...");
-}
-}
-}
-</pre>
-<p>Se algo diferente de um inteiro válido é digitado na entrada, este programa imprime uma mensagem de erro legível para o usuário.</p>
-<pre>
-D:\> java ScanInt2
-Type an integer in the console:
-ten
-Error: You typed some text that is not an integer value...
-</pre>
-<p>Agora vamos analisar esse código. O bloco seguido pela palavra-chave <b>try</b> limita o segmento de código para o qual você espera que algumas exceções possam ser lançadas. Se alguma exceção for lançada do bloco <b>try</b>, o Java runtime procurará um manipulador correspondente (que discutiremos mais detalhadamente mais adiante). Nesse caso, um manipulador de exceção para <b>InputMismatchException</b> está presente, que é exatamente o mesmo tipo da exceção que foi lançada. Este manipulador exatamente correspondente está disponível fora do bloco <b>try</b> na forma de um bloco precedido pela  palavra-chave <b>catch</b>, e este bloco <b>catch</b> é executado. No bloco <b>catch</b> você pegou a exceção, por isso você está lidando com a exceção aqui. Você está fornecendo uma <b>string</b> de erro legível em vez de gerar um rastreio de pilha bruta (como você fez no programa anterior ), agora você está oferecendo uma saída elegante para o programa.</p>
-</section>
-<section id="multiblococatch">
-<h3>Múltiplos Blocos Catch</h3>
-
-<p>Você usou um objeto <b>Scanner</b> para ler um inteiro do console. Note que você pode usar um objeto <b>Scanner</b> para ler uma <b>String</b>.</p>
-<pre class="brush:java">
-//ScanInt3.java
-// Um programa que varre um número inteiro de uma determinada string
-import java.util.Scanner;
-import java.util.InputMismatchException;
-class ScanInt3 {
-public static void main(String [] args) {
-String integerStr = "100";
-System.out.println("The string to scan integer from it is: " + integerStr);
-Scanner consoleScanner = new Scanner(integerStr);
-try {
-System.out.println("The integer value scanned from string is: " +
-consoleScanner.nextInt());
-} catch(InputMismatchException ime) {
-// nextInt () lança InputMismatchException no caso
-// qualquer coisa que não seja um número inteiro é fornecida na string
-System.out.println("Error: Cannot scan an integer from the given string");
-}
-}
-}
-</pre>
-<p><b>Este programa imprime o seguinte:</b></p>
-<pre>
-The string to scan integer from it is: 100
-The integer value scanned from string is: 100
-</pre>
-<p>O que acontece se você modificar o programa anterior para que a <b>string</b> contenha um valor não inteiro, como em:</p>
-
-<pre class="brush:java">String integerStr = "hundred";</pre>
-
-<p>O bloco <b>try</b> lançará um <b>InputMismatchException</b>, que será tratada no bloco <b>catch</b>, e você obterá esta saída:</p>
-<pre>
-The string to scan integer from it is: hundred
-Error: Cannot scan an integer from the given string
-</pre>
-<p>Agora, e se você modificar o programa  para que a <b>string</b> contenha uma <b>string</b> vazia, como em:</p>
-
-<pre class="brush:java">String integerStr = "";</pre>
-
-<p>Para isso, <b>nextInt()</b> lançará um <b>NoSuchElementException</b>, que não é tratado neste programa, portanto, esse programa falharia:</p>
-<pre>
-The string to scan integer from it is:
-Exception in thread "main" java.util.NoSuchElementException
-at java.util.Scanner.throwFor(Scanner.java:907)
-at java.util.Scanner.next(Scanner.java:1530)
-at java.util.Scanner.nextInt(Scanner.java:2160)
-at java.util.Scanner.nextInt(Scanner.java:2119)
-at ScanInt3.main(ScanInt.java:11)
-</pre>
-<p>Além disso, se você observar o método JavaDoc para <b>Scanner.nextInt()</b>, verá que também pode lançar uma <b>IllegalStateException</b> (essa exceção será lançada se o método <b>nextInt()</b> for chamado em um objeto <b>Scanner</b> que já esteja fechado). Então, vamos fornecer manipuladores de captura para <b>InputMismatchException</b>, <b>NoSuchElementException</b> e <b>IllegalStateException</b>.</p>
-<pre class="brush:java">
-//ScanInt4.java
-// Um programa que varre um inteiro de uma string fornecida string
-import java.util.Scanner;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-class ScanInt4 {
-public static void main(String [] args) {
-String integerStr = "";
-System.out.println("The string to scan integer from it is: " + integerStr);
-Scanner consoleScanner = new Scanner(integerStr);
-try {
-System.out.println("The integer value scanned from string is: " +
-consoleScanner.nextInt());
-} catch(InputMismatchException ime) {
-System.out.println("Error: Cannot scan an integer from the given string");
-} catch(NoSuchElementException nsee) {
-System.out.println("Error: Cannot scan an integer from the given string");
-} catch(IllegalStateException ise) {
-System.out.println("Error: nextInt() called on a closed Scanner object");
-}
-}
-}
-</pre>
-<p><b>Aqui está a saída deste programa:</b></p>
-<pre>
-The string to scan integer from it is:
-Error: Cannot scan an integer from the given string
-</pre>
-
-<p>Como você pode ver na saída, como a string está vazia, <b>NoSuchElementException</b> é lançado. Ele é capturado no manipulador <b>catch</b> para essa exceção, e o código fornecido dentro do bloco <b>catch</b> é executado para resultar em uma saída normal.</p>
-
-
-<p>Observe como você forneceu mais de um manipulador de captura empilhando-os: você forneceu manipuladores de exceção específicos (ou seja, tipo derivado) seguidos por manipuladores de exceção mais genéricos (por exemplo, tipo de base). Se vocês fornecerem um tipo de exceção derivada após um tipo de exceção de base, você obtém um erro do compilador. Você pode ainda não sabe, mas <b>NoSuchElementException</b> é a classe base de <b>InputMismatchException</b>! Veja o que acontece quando você tenta inverter a ordem de manipuladores de captura para <b>InputMismatchException</b> e <b>NoSuchElementException</b>.</p>
-<pre class="brush:java">
-try {
-System.out.println("The integer value scanned from string is: "
-+ consoleScanner.nextInt());
-} catch(NoSuchElementException nsee) {
-System.out.println("Error: Cannot scan an integer from the given string");
-} catch(InputMismatchException ime) {
-System.out.println("Error: Cannot scan an integer from the given string");
-}
-</pre>
-<p><b>Este código resulta neste errode compilador:</b></p>
-<pre>
-ScanInt4.java:14: error: exception InputMismatchException has already been caught
-} catch(InputMismatchException ime) {
-^
-1 error
-</pre>
-</section>
-<section id="blocomulticatch">
-<h3>Blocos Multi-Catch</h3>
-
-<p>Java fornece um recurso chamado blocos de múltiplas capturas, no qual você pode combinar vários manipuladores de captura. Vamos usar esse recurso para combinar as cláusulas <b>catch</b> de <b>NoSuchElementException</b> e <b> IllegalStateException</b>.</p>
-<pre class="brush:java">
-//ScanInt5.java
-// Um programa que ilustra blocos multi-catch 
-import java.util.Scanner;
-import java.util.NoSuchElementException;
-
-class ScanInt5 {
-public static void main(String [] args) {
-String integerStr = "";
-System.out.println("The string to scan integer from it is: " + integerStr);
-Scanner consoleScanner = new Scanner(integerStr);
-try {
-System.out.println("The integer value scanned from string is: " +
-consoleScanner.nextInt());
-} catch(NoSuchElementException | IllegalStateException multie) {
-System.out.println("Error: An error occured while attempting to scan the integer");
-}
-}
-}
-</pre>
-<p>Observe como você combina os manipuladores de captura juntos usando o <b>|</b> Operador(OU) aqui (o mesmo operador que você usa para executar operação <b>OU</b> ou <b>bit-wise</b> em valores integrais) para combinar as cláusulas <b>catch</b> do <b>NoSuchElementException</b> e <b>IllegalStateException</b>.</p>
-
-<p>Ao contrário das cláusulas <b>catch</b> combinadas para <b>NoSuchElementException</b> e <b>IllegalStateException</b>, você não pode combinar as cláusulas <b>catch</b> de <b>NoSuchElementException</b> e <b>InputMismatchException</b>. Como já discutimos, <b>NoSuchElementException</b> é a classe base de <b>InputMismatchException</b>, e você não pode capturar os dois no bloco <b>multi-catch</b>. Se você tentar compilar essa cláusula de <b>multi-catch</b>, receberá este erro do compilador:</p>
-<pre>
-ScanInt5.java:11: error: Alternatives in a multi-catch statement cannot be related by 
-subclassing
-} catch(InputMismatchException | NoSuchElementException exception) {
-^
-</pre>
-<p>Então, qual é a alternativa? Quando você precisar de um manipulador de captura para as exceções em que uma exceção é a classe base de outra classe de exceção, fornecer o manipulador de captura para a classe base é suficiente (desde que esse manipulador manipulará a exceção de classe derivada se ocorrer).</p>
-<br>
-<p><i>em um bloco multi-catch, você não pode combinar manipuladores de captura para duas exceções que compartilham um relacionamento de classe base e derivada. Você só pode combinar manipuladores de captura para exceções que não compartilham o relação pai-filho entre eles.</i></p>
-<br>
-
-<p>Como você sabe se é melhor combinar blocos de manipulação de exceção ou empilhá-los? É uma escolha de design onde você deve considerar os seguintes aspectos: (a) As exceções são lançadas por razões semelhantes? ou por diferentes razões? (b) O código de manipulação é semelhante ou diferente? Se você responder “similar” para ambas as perguntas, é melhor combiná-las; Se você disser "diferente" para qualquer uma dessas duas perguntas, é melhor separá-las.
-</p>
-
-<p>Ainda sobre a situação específica anterior? É melhor combinar ou separar os manipuladores para as execeções
-<b>InputMismatchException</b> e <b>IllegalStateException</b>? Você pode ver que o tratamento de exceção é o mesmo para ambos os blocos <b>catch</b>. Mas as razões para essas duas exceções são consideravelmente diferentes. A entrada inválida <b>InputMismatchException</b> lançada é passada (por exemplo, “cem” como discutimos anteriormente).</p>
-<p> O <b>IllegalStateException</b> é lançado devido a um erro de programação quando você chama o método <b>nextInt()</b> depois de chamar o método <b>close()</b> no <b>Scanner</b>. Então, neste caso, é uma escolha de design melhor para separar os manipuladores para essas duas exceções.</p>
-
-</section>
-<section id="manipulageralcatch">
-<h3>Manipuladores Gerais de Captura</h3>
-
-
-<p>Se você mantiver manipular exceções específicas como esta que podem ou não resultar em uma condição excepcional quando você executar o programa, a maior parte do seu código consistirá em blocos de código <b>try-catch</b>! Existe uma maneira melhor de dizer "lidar com todas as outras exceções"? Sim, você pode fornecer um manipulador de exceção geral.</p>
-
-
-
-<p>Aqui está o trecho de código que mostra apenas os blocos <b>try-catch</b> para a classe <b>ScanInt3</b>, aprimorada com um manipulador de exceção geral:</p>
-<pre class="brush:java">
-try {
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-} catch(InputMismatchException ime) {
-// se algo diferente de inteiro for digitado, obteremos essa exceção, então manipule isso
-System.out.println("Error: You typed some text that is not an integer value...");
-} catch(Exception e) {
-// captura IllegalStateException aqui, que é improvável que ocorra ...
-System.out.println("Error: Encountered an exception and could not read an integer from 
-the console... ");
-}
-</pre>
-<p>Esse código fornece um manipulador <b>catch</b> para a exceção base do tipo <b>Exception</b>. Portanto, se o bloco <b>try</b> lançar qualquer outra exceção que  <b>InputMismatchException</b>, e se essa exceção for uma classe derivada da classe <b>Exception</b>, esse manipulador de captura geral a manipulará. Recomenda-se a prática para capturar exceções específicas e, em seguida, fornecer um manipulador de exceção geral para garantir que todas as outras exceções também sejam tratadas.</p>
-</section>
-<section id="libertrecurss">
-<h3>Liberando recursos</h3>
-
-
-<p>Você percebe que os programas que discutimos anteriormente têm vazamento de recursos (porque abrimos um objeto Scanner, mas não o fechamos)? A palavra "recurso" refere-se a qualquer uma das classes que adquirem algumas fontes do sistema a partir do sistema operacional subjacente, como rede, arquivo, banco de dados e outras alças. Mas como você sabe quais classes precisam ser fechadas? A resposta é que, se uma classe implementar <b>java.io.Closeable</b>, você deverá chamar o método <b>close()</b> dessa classe; caso contrário, isso resultará em um vazamento de recursos.</p>
-
-<br>
-<p><i>O Garbage Collector (GC) é responsável por liberar apenas recursos de memória. Se você estiver usando qualquer classe que adquira recursos do sistema, é sua responsabilidade liberá-los chamando o método close() nesse objeto.</i></p>
-
-
-<p>O <b>ScanInt6</b> chama o método <b>close()</b> do objeto <b>Scanner</b> em seu método <b>main()</b>; Se você quiser encurtar o código, use um manipulador de exceção geral para lidar com todas as exceções que podem ser lançadas no bloco <b>try</b>.</p>
-<pre class="brush:java">
-//ScanInt6.java
-import java.util.Scanner;
-class ScanInt6 {
-public static void main(String [] args) {
-System.out.println("Type an integer in the console: ");
-Scanner consoleScanner = new Scanner(System.in);
-try {
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-System.out.println("Done reading the text... closing the Scanner");
-consoleScanner.close();
-} catch(Exception e) {
-// chamar todas outras exceptions aqui ...
-System.out.println("Error: Encountered an exception and could not read an 
-integer from the console... ");
-System.out.println("Exiting the program - restart and try the program again!");
-}
-}
-}
-</pre>
-<p><b>Vamos ver se este programa funciona.</b></p>
-<pre>
-D:\> java ScanInt6
-Type an integer in the console:
-10
-You typed the integer value: 10
-Done reading the text... closing the Scanner
-</pre>
-
-<p>Porque o programa imprimiu "Done reading the text... closing the Scanner", e completou a execução normalmente, você pode assumir que a instrução <b>consoleScanner.close();</b> foi executado com sucesso. O que acontece se uma exceção for lançada?</p>
-<pre>
-D:\> java ScanInt6
-Type an integer in the console:
-ten
-Error: Encountered an exception and could not read an integer from the console...
-Exiting the program - restart and try the program again!
-</pre>
-<p>Como você pode ver na saída, o programa não imprimiu "Done reading the text... closing the Scanner", então a instrução <b>consoleScanner.close();</b> não foi executada. Como você pode consertar isso? Uma maneira é chamar <b>consoleScanner.close()</b> no bloco <b>catch</b>, assim:</p>
-<pre class="brush:java">
-try {
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-System.out.println("Done reading the text... closing the Scanner");
-consoleScanner.close();
-} catch(Exception e) {
-
-// chama todas outras exceptions aqui...
-consoleScanner.close();
-System.out.println("Error: Encountered an exception and could not read an integer from 
-the console... ");
-System.out.println("Exiting the program - restart and try the program again!");
-}
-</pre>
-<p>Essa solução funcionará, mas não é elegante. Você sabe que pode ter vários blocos <b>catch</b> e precisa fornecer chamadas para <b>consoleScanner.close()</b> em todos os blocos <b>catch</b>! Existe uma maneira melhor de liberar os recursos? Sim, você pode usar recursos de liberação em um bloco <b>finally</b>.</p>
-<pre class="brush:java">
-//ScanInt7.java
-import java.util.Scanner;
-class ScanInt7 {
-public static void main(String [] args) {
-System.out.println("Type an integer in the console: ");
-Scanner consoleScanner = new Scanner(System.in);
-try {
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-} catch(Exception e) {
-// chama todas outras exceptions aqui ...
-System.out.println("Error: Encountered an exception and could not read an integer from the console... ");
-System.out.println("Exiting the program - restart and try the program again!");
-} finally {
-System.out.println("Done reading the integer... closing the Scanner");
-consoleScanner.close();
-}
-}
-}
-</pre>
-
-<p>Nesse caso, um bloco <b>finally</b> é fornecido após o bloco <b>catch</b>. Este bloco <b>finally</b> será executado se uma exceção ocorreu ou não. Então, o bloco <b>finally</b> é um bom lugar para chamar o método <b>close()</b>no objeto <b>Scanner</b> para garantir que este recurso esteja sempre liberado.</p>
-<br>
-<p><i>se você chamar System.exit() dentro de um método, terminará anormalmente o programa. Portanto, se o método de chamada tiver um bloco finally, ele não será chamado e os recursos poderão vazar. Por esse motivo, é uma prática de programação ruim  chamar System.exit() para finalizar um programa.</i></p>
-</br>
-<p>Agora, vamos ver se o scanner está fechado no caso em que o programa é concluído normalmente (ou seja, sem gerar uma exceção) e quando o programa termina após gerar uma exceção.</p>
-
-<pre>
-D:\> java ScanInt7
-Type an integer in the console:
-10
-You typed the integer value: 10
-Done reading the integer... closing the Scanner
-</pre>
-
-<pre>
-D:\> java ScanInt7
-Type an integer in the console:
-ten
-Error: Encountered an exception and could not read an integer from the console...
-Exiting the program - restart and try the program again!
-Done reading the integer... closing the Scanner
-</pre>
-
-<p>Sim, a declaração "Done reading the integer ... closing the Scanner" é chamada se uma exceção é lançada ou não. Note que você pode ter um bloco <b>finally</b> diretamente após um bloco <b>try</b> sem um bloco <b>catch</b> também; embora esse recurso seja usado raramente, é um recurso útil. Observação: o bloco <b>finally</b> é sempre executado, independentemente de o código no bloco <b>try</b> gerar uma exceção ou não. Considere o seguinte método. Isso retornará verdadeiro ou falso para o chamador?</p>
-<pre class="brush:java">
-boolean returnTest() {
-try {
-return true;
-}
-finally {
-return false;
-}
-}
-</pre>
-<p>Esse método sempre retornará <b>false</b> porque finalmente é sempre invocado, embora não seja intuitivo. Na verdade, se você usar a opção "-Xlint", receberá este aviso do compilador: "a cláusula finally não pode ser concluída normalmente". (Note que você pode ter um bloco <b>try</b> seguido por um bloco <b>catch</b> ou por bloco <b>finally</b> ou ambos os blocos.)</p>
-</section>
-<section id="clausulathrow">
-<h1>A cláusula Throw</h1>
-
-<P>Um método pode lançar exceções verificadas; A cláusula <b>throw</b> especifica essas exceções verificadas na assinatura do método. Na cláusula <b>throws</b>, você lista as exceções verificadas que um método pode lançar. Por que precisamos da cláusula <b>throws</b>? Observando a cláusula <b>throws</b>, você pode ter uma ideia clara das exceções que o método pode lançar. Compreender as exceções verificadas é um pré-requisito para entender a cláusula <b>throws</b>. Como cobrimos as exceções verificadas na seção anterior sobre tipos de exceção, abordaremos a cláusula de lançamentos agora. Vamos tentar ler um número inteiro armazenado em um arquivo chamado <b>integer.txt</b> no diretório atual. Há um construtor sobrecarregado da classe Scanner que usa um objeto de arquivo como entrada, portanto, vamos tentar usá-lo. Vamos ver se dá certo:</p>
-<pre class="brush:java">
- //ThrowsClause1.java
-import java.io.File;
-import java.util.Scanner;
-class ThrowsClause1 {
-public static void main(String []args) {
-System.out.println("Reading an integer from the file 'integer.txt': ");
-Scanner consoleScanner = new Scanner(new File("integer.txt"));
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-}
-}
-</pre>
-
-<p>Esse código resultará em um erro do compilador de  "unreported exception FileNotFoundException; must 
-be caught or declared to be thrown" Se você observar a declaração desse método do Scanner, verá uma cláusula de lançamento:</p>
-
-<pre class="brush:java">public Scanner(File source) throws FileNotFoundException {}</pre>
-
-<p>Portanto, qualquer método que chame esse construtor deve manipular essa exceção ou incluir uma cláusula <b>throws</b> para declarar que o método pode lançar essa exceção. Adicione uma cláusula <b>throws</b> ao método <b>main();</b>
-<pre class="brush:java">
-//ThrowsClause2.java
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-class ThrowsClause2 {
-public static void main(String []args) throws FileNotFoundException {
-System.out.println("Reading an integer from the file 'integer.txt': ");
-Scanner consoleScanner = new Scanner(new File("integer.txt"));
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-}
-}
-</pre>
-
-<p>Se você executar este programa e não houver nenhum arquivo chamado <b>integer.txt</b>, o programa irá travar depois de lançar essa exceção:</p>
-<pre>
-Reading an integer from the file 'integer.txt':
-Exception in thread "main" java.io.FileNotFoundException: integer.txt (The system cannot 
-find the file specified)
-at java.io.FileInputStream.open(Native Method)
-at java.io.FileInputStream.< init >(FileInputStream.java:138)
-at java.util.Scanner.< init >(Scanner.java:656)
-at ThrowsClause2.main(ThrowsClause2.java:7)
-</pre>
-
-<p>Vamos agora extrair o código dentro do método <b>main()</b> para um novo método chamado <b>readIntFromFile()</b>. Você definiu como um método de instância, então você também cria um objeto da classe <b>ThrowsClause3</b> para invocar esse método a partir do método <b>main()</b>. Como o código dentro de <b>readIntFromFile()</b> pode lançar um <b>FileNotFoundException</b>, ele deve introduzir um manipulador de captura para manipular essa exceção ou declarar essa exceção em sua cláusula <b>throws</b>:</p>
-<pre class="brush:java">
-//ThrowsClause3.java
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-class ThrowsClause3 {
-
-// como esse método não trata FileNotFoundException,
-// o método deve declarar essa exceção na cláusula throws
-
-public int readIntFromFile() throws FileNotFoundException {
-Scanner consoleScanner = new Scanner(new File("integer.txt"));
-return consoleScanner.nextInt();
-}
-// desde que readIntFromFile() lança FileNotFoundException e main() não manipula
-//, o método main() declara essa exceção em sua cláusula throws
-
-public static void main(String []args) throws FileNotFoundException {
-System.out.println("Reading an integer from the file 'integer.txt': ");
-System.out.println("You typed the integer value: " + new ThrowsClause3().readIntFromFile());
-}
-}
-</pre>
-<p>O comportamento do programa permanece o mesmo em ambas <b>ThrowsClause1</b> e <b>ThrowsClause2</b>. No entanto, o <b>ThrowsClause3</b> mostra como o método <b>main()</b> também deve declarar para lançar o <b>FileNotFoundException</b> em sua cláusula <b>throws</b> (caso contrário, o programa não será compilado).</p>
-
-
-
-
-</section>
-<section id="metodoeclausula">
-<h2>Métodos Sobrescrito e a Clausula Throws( Lançamento)</h2>
-
-<p>Quando um método substituível possui uma cláusula <b>throws</b>, há muitas coisas a considerar ao sobrescrever esse método. Considere o programa na <b>ThrowsClause4</b> , que implementa uma interface denominada <b>IntReader</b>.Essa interface declara um único método chamado readIntFromFile () com a cláusula throws listando um <b>FileNotFoundException</b>.</p>
-<pre class="brush:java">
-//ThrowsClause4.java
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
-// Essa interface é destinada a implementada por classes que lêem um número inteiro de um arquivo
-interface IntReader {
-int readIntFromFile() throws IOException;
-}
-class ThrowsClause4 implements IntReader {
-// implementa readIntFromFile com a mesma cláusula throws
-// ou uma cláusula throws mais específica
-public int readIntFromFile() throws FileNotFoundException {
-Scanner consoleScanner = new Scanner(new File("integer.txt"));
-return consoleScanner.nextInt();
-}
-
-// método principal escolhido neste código, pois o foco aqui é entender
-// problemas relacionados à sobrescrever quando a cláusula throws estiver presente
-}
-</pre>
-<p>Neste código, você pode observar alguns fatos importantes:</p>
- <ul>
- <li>Você pode declarar a cláusula <b>throws</b> para métodos declarados em interfaces; Na verdade, você também pode fornecer a cláusula <b>throws</b> para métodos abstratos declarados em classes abstratas.</li>
- <li> O método declarado na interface <b>IntReader</b> declara lançar <b>IOException</b>, que é uma exceção mais geral do que um <b>FileNotFoundException</b>. Ao implementar um método, é aceitável fornecer a cláusula <b>throws</b> listando o mesmo tipo de exceção que o método base ou um tipo mais específico do que o método base. Nesse caso, o método <b>readIntFromFile()</b> lista uma exceção mais específica <b>(FileNotFoundException)</b> em sua cláusula <b>throws</b> contra a exceção mais geral de <b>IOException</b> listada na cláusula <b>throws</b> do método base declarado na interface <b>IntReader</b>.</li>
-</ul>
-<br>
-<img src="imagens/jee7/exception0.jpg">
-<p><i>Acima a hierarquia da classe <b>FileNotFoundException</b></i>.</p><br>
-
-<p>E se você tentar mudar a cláusula <b>throws</b>? Há muitas maneiras de alterar a cláusula <b>throws</b> no método de substituição, incluindo o seguinte:</p>
-<ul>
-
-<li>a. Listando mais exceções gerais verificadas para lançar.</li>
-<li>b. Listando mais exceções verificadas além das exceções verificadas fornecidas no método base. </li>
-</ul>
-
-<p>Se você tentar algum desses casos, receberá um erro do compilador. Por exemplo, se você fornecer uma exceção mais geral do que a especificada na classe base, isso resultará em um erro do compilador.
-Você pode optar por não especificar nenhuma exceção usando a cláusula <b>throws</b> no método sobrescrito, desde que o método sobrescrito não lance nenhuma exceção verificada ou, se o fizer, forneça um bloco <b>try-catch</b>.</p>
-<p>Para resumir, a cláusula <b>throws</b> do método da classe base é um contrato que ele fornece ao responsável pela chamada desse método: ele diz que o chamador deve manipular as exceções listadas ou declarar essas exceções em sua cláusula <b>throws</b>. Ao sobrescrever o método base, o método derivado também deve aderir a esse contrato.
-O responsável pela chamada do método base está preparado para manipular somente as exceções listadas no método base, portanto, o método que sobrescreve não pode lançar mais geral ou diferente das exceções verificada listadas.</p>
-
-<p>No entanto, observe que esta discussão de que a cláusula <b>throws</b> da classe derivada da classe deve seguir o contrato para a cláusula <b>throws</b> do método base está limitada a exceções verificadas. Exceções não verificadas ainda podem ser adicionadas ou removidas do contrato quando comparadas à cláusula <b>throws</b> do método da classe base. Por exemplo, considere o seguinte:</p>
-<pre class="brush:java">
-public int readIntFromFile() throws IOException, NoSuchElementException {
-Scanner consoleScanner = new Scanner(new File("integer.txt"));
-return consoleScanner.nextInt();
-}
-</pre>
-<p>Esta é uma cláusula <b>throws</b> aceitável, uma vez que <b>NoSuchElementException</b> pode ser lançada a partir do método <b>readIntFromFile()</b>. Essa exceção é uma exceção não verificada e é lançada quando o método <b>nextInt()</b> não pôde ler um número inteiro do arquivo. Esta é uma situação comum, por exemplo, se você tiver um arquivo vazio chamado <b>integer.txt</b>; uma tentativa de ler um inteiro deste arquivo resultará nessa exceção.</p>
-
-<h4>TAG @THROWS</h4>
-
-<p>É uma boa prática usar a tag Javadoc <b>@throws</b> (ou sua marca @exception sinônima) para documentar as situações ou casos específicos nos quais uma exceção (não verificada ou marcada) pode ser lançada de um método. Aqui está o formato para fornecer a tag @throws com um exemplo:</p>
-<pre class="brush:java">
-@throws exception-name description-text
-@throws IllegalStateException if this scanner is closed
-</pre>
-<p>Essa tag pode ser usada apenas para métodos e construtores.</p>
-<p>Aqui está um exemplo de comentário de Javadoc para o método <b>nextInt()</b> na classe <b>Scanner</b>:</p>
-
-<pre class="brush:java">
-/**
-* Scaneia o próximo token da entrada como um <tt>int</tt>.
-*
-* <p> Uma invocação deste método do formulário
-* <tt>nextInt()</tt>  se comporta exatamente da mesma maneira que a
-* invocação <tt>nextInt(radix)</tt>, onde <code>radix</code>
-* é a raiz padrão deste scanner.
-*
-* @return o <tt>int</tt> scaneado a partir da entrada
-*<b> @throws InputMismatchException</b>
-* se o próximo token não corresponder ao <i>Integer</i>
-* expressão regular ou está fora de alcance
-* <b>@throws NoSuchElementException</b> se a entrada estiver esgotada
-* <b>@throws</b> IllegalStateException se este scanner estiver fechado
-*/
-public int nextInt() {
-return nextInt(defaultRadix);
-}
-</pre>
-
-<p><i>Observe a tag <b>@throws</b> para <b>InputMismatchException</b>, <b>NoSuchElementException</b> e <b>IllegalStateException</b>. Quando um método pode lançar várias exceções, elas são listadas em ordem alfabética por convenção (como neste caso).</i></p>
-</section>
-<section id="encadearelexcec">
-<h3>Encadeamento e Relançamento de Exceções</h3>
-
-<p>Você pode capturar exceções e envolvê-las em exceções mais genéricas e colocá-las mais acima na pilha de chamadas. Quando você captura uma exceção e cria uma exceção mais geral, pode reter a referência à exceção original; isso é chamado de encadeamento de exceções.</p>
-<pre class="brush:java">
-catch(LowLevelException lle) {
-// quebra a exceção de baixo nível em uma exceção de nível superior;
-// também, encadeie a exceção original à exceção lançada recentemente
-throw new HighLevelException(lle);
-}
-</pre>
-
-<p>Encadeamento de exceções é útil para fins de depuração. Ao obter uma exceção geral, você pode verificar se há uma exceção de nível inferior encadeada e tentar entender por que essa exceção de nível inferior ocorreu.</p>
-</section>
-<section id="tryresources">
-<h1>Try-With-Resources</h1>
-
-<p>É um erro bastante comum os programadores Java esquecerem de liberar recursos, mesmo no bloco <b>finally</b>. Além disso, se você está lidando com vários recursos, é tedioso lembrar de chamar o método <b>close()</b> no bloco <b>finally</b>. O recurso <b>Try-with-resources</b> (introduzido no Java 7) ajudará a tornar sua vida mais fácil.</p>
-<pre class="brush:java">
-//TryWithResources1.java
-import java.util.Scanner;
-class TryWithResources1 {
-public static void main(String [] args) {
-System.out.println("Type an integer in the console: ");
-try(Scanner consoleScanner = new Scanner(System.in)) {
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-} catch(Exception e) {
-// captura todas outras exceptions aqui ...
-System.out.println("Error: Encountered an exception and could not read an 
-integer from the console... ");
-System.out.println("Exiting the program - restart and try the program again!");
-}
-}
-}
-</pre>
-   
-<p>Certifique-se de dar uma olhada na sintaxe do bloco <b>try-with-resources</b>.</p>
-<pre class="brush:java">try(Scanner consoleScanner = new Scanner(System.in)) {</pre>
-
-<p>Nesta declaração, você adquiriu os recursos dentro dos parênteses após a palavra-chave <b>try</b>, mas antes do bloco <b>try</b>. Além disso, no exemplo, você não fornece o bloco <b>finally</b>. O compilador Java traduzirá internamente esse bloco <b>try-with-resources</b> em um bloco <b>try-finally</b> (obviamente, o compilador manterá os blocos catch fornecidos). Você pode adquirir vários recursos no bloco <b>try-with-resources</b>. Tais declarações de aquisição de recursos devem ser separadas usando ponto e vírgula.</p>
-
-<p>Você pode fornecer declarações <b>try-with-resources</b> sem captura explícita ou blocos <b>finally</b>? Sim! Lembre-se de que um bloco <b>try</b> pode ser associado a um bloco <b/>catch</b>, a um bloco <b>finally</b> ou a ambos. Um bloco de declarações <b>try-with-resources</b> é expandido internamente para um bloco <b>try-finally</b>. Portanto, você pode fornecer uma declaração <b>try-with-resources</b> sem captura explícita ou blocos <b>finally</b>. O exemplo seguinte usa uma declaração <b>try-with-resources</b> sem qualquer captura explícita ou blocos <b>finally</b>.</p>
-<pre class="brush:java">
-//TryWithResources2.java
-import java.util.Scanner;
-class TryWithResources2 {
-public static void main(String [] args) {
-System.out.println("Type an integer in the console: ");
-try(Scanner consoleScanner = new Scanner(System.in)) {
-System.out.println("You typed the integer value: " + consoleScanner.nextInt());
-}
-}
-}
-</pre>
-<p>Embora seja possível criar uma instrução <b>try-with-resources</b> sem captura explícita ou por fim, isso não significa que você deva fazer isso! Por exemplo, como esse código não possui um bloco <b>catch</b>, se você digitar alguma entrada inválida, o programa falhará.</p>
-<pre>
-D:\> java TryWithResources2
-Type an integer in the console:
-ten
-Exception in thread "main" java.util.InputMismatchException
-at java.util.Scanner.throwFor(Scanner.java:864)
-at java.util.Scanner.next(Scanner.java:1485)
-at java.util.Scanner.nextInt(Scanner.java:2117)
-at java.util.Scanner.nextInt(Scanner.java:2076)
-at TryWithResources2.main(TryWithResources2.java:7)
-</pre>
-<p>Portanto, o benefício de uma instrução <b>try-with-resources</b> é que ela simplifica sua vida não tendo que fornecer blocos explicitamente. No entanto, você ainda precisa fornecer os blocos de captura necessários.</p>
-<p>Observe que para um recurso ser utilizável com uma instrução <b>try-with-resources</b>, a classe desse recurso deve implementar a interface <b>java.lang.AutoCloseable</b>. Essa interface declara um único método chamado <b>close()</b>. Juntamente com o recurso <b>try-with-resources</b>, a interface <b>AutoCloseable</b> também foi introduzida no Java 7, e a interface é feita da interface base da interface <b>Closeable</b>. Isso é para garantir que as classes de recursos existentes funcionem perfeitamente com uma instrução <b>try-with-resources</b>. Em outras palavras, você pode usar todas as classes de fluxo antigas com <b>try-with-resources</b> porque elas implementam a interface <b>AutoCloseable</b>.</p>
-<br>
-<img src="imagens/jee7/exception.jpg">
-
-<p><i>Interface Closable estende a interface AutoCloseable</i></p>
-<br>
-</section>
-<section id="fechamultirecurs">
-<h2>Fechando Múltiplos Recursos</h2>
-
-<p>Você pode usar mais de um recurso em uma instrução <b>try-with-resources</b>. Aqui está um trecho de código para criar um arquivo zip de um determinado arquivo de texto que faz uso de uma instrução <b>try-with-resources</b>:</p>
-<pre class="brush:java">
-// buffer é o buffer de bytes temporário usado para copiar dados
-// de um fluxo para outro fluxo
-byte [] buffer = new byte[1024];
-// these stream constructors can throw FileNotFoundException
-try (ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream(zipFileName));
-FileInputStream fileIn = new FileInputStream(fileName)) {
-zipFile.putNextEntry(new ZipEntry(fileName)); // putNextEntry can throw
-// IOException
-int lenRead = 0; // a variável para acompanhar o número de bytes lidos com sucesso
-// copia o conteúdo do arquivo de entrada no arquivo zip
-while((lenRead = fileIn.read(buffer)) > 0) { // read can throw IOException
-zipFile.write(buffer, 0, lenRead); // write can throw IOException
-}
-// os fluxos serão fechados automaticamente porque estão dentro do try-with-
-// declaração de recursos
-}
-</pre>
-<p>Nesse código, o <b>buffer</b> é um <b>array</b>> de <b>bytes</b>. Esse <b>array</b> é um armazenamento temporário útil para copiar dados brutos de um fluxo para outro. Na instrução t<b>ry-with-resources</b>, você abre dois fluxos: <b>ZipOutputStream</b>> para gravar no arquivo <b>zip</b> e <b>FileInputStream</b> para ler no arquivo de texto. (Nota: O suporte da API para arquivos zip (e jar) está disponível no pacote <b>java.util.zip</b>.) Você deseja ler o arquivo de texto de entrada, compactá-lo e colocar essa entrada no arquivo <b>zip</b>. Para colocar uma entrada de arquivo / diretório no arquivo zip, a classe <b>ZipOutputStream</b> fornece um método chamado <b>putNextEntry()</b>, que recebe um objeto <b>ZipEntry</b> como um argumento. A instrução <b>zipFile.putNextEntry(new ZipEntry(fileName))</b>, coloca uma entrada de arquivo chamado <b>fileName</b> no <b>zipFile</b>.</p>
-<p>Para ler o conteúdo do arquivo de texto, use o método <b>read()</b> na classe <b>FileInputStream</b>. O método <b>read()</b> considera o <b>buffer</b> como o argumento. A quantidade de dados  serem lidos por iteração(isto é, “tamanho do fragmento de dados” a ser lido) é dada pelo tamanho do <b>array</b> passado; são 1024 bytes neste código. O método <b>read()</b> retorna o número de <b>bytes</b> que lê e, se não houver mais dados para ler, retorna -1. O <b>whileloop</b> verifica se a leitura foi bem-sucedida (usando a condição > 0) antes de gravá-la no arquivo <b>zip</b>.</p>
-<p>Para gravar dados no arquivo <b>zip</b>, use o método <b>write()</b> na classe <b>ZipOutputStream</b>. O método <b>write()</b> aceita três argumentos: o primeiro argumento é o <b>buffer</b> de dados; o segundo argumento é o deslocamento inicial no <b>buffer</b> de dados (que é 0 porque você sempre lê a partir do início do <b>buffer</b>); e o terceiro é o número de <b>bytes</b> a serem gravados.</p>
-<p>Agora chegamos à discussão principal. Observe como você abre dois recursos no bloco <b>try</b> e os ponto-e-vírgulas separam essas duas instruções de aquisição de recursos. Você não tem um bloco <b>finally</b> explícito para liberar os recursos porque o compilador irá automaticamente inserir chamadas para os métodos de fechamento para esses dois fluxos no bloco <b>finally(s)</b>.<p>
-
-<p>O exemplo seguinte é o programa completo que faz uso desse segmento de código para ilustrar o uso da instrução <b>try with-resources</b> para o auto-fechamento de múltiplos fluxos.</p>
-<pre class="brush:java">
-//ZipTextFile.java
-import java.util.*;
-import java.util.zip.*;
-import java.io.*;
-// class ZipTextFile usa o nome de um arquivo de texto como entrada e cria um arquivo zip
-// depois de compactar esse arquivo de texto.
-class ZipTextFile {
-public static final int CHUNK = 1024; // to help copy chunks of 1KB
-public static void main(String []args) {
-if(args.length == 0) {
-System.out.println("Pass the name of the file in the current directory to be 
-zipped as an argument");
-System.exit(-1);
-}
-String fileName = args[0];
-// nome do arquivo zip é o nome do arquivo de entrada com o sufixo ".zip"
-String zipFileName = fileName + ".zip";
-byte [] buffer = new byte[CHUNK];
-// esses construtores podem lançar FileNotFoundException
-try (ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream(zipFileName));
-FileInputStream fileIn = new FileInputStream(fileName)) {
-// putNextEntry pode lançar IOException
-zipFile.putNextEntry(new ZipEntry(fileName));
-int lenRead = 0; // variável para acompanhar o número de bytes
-// lido com sucesso
-// copia o conteúdo do arquivo de entrada no arquivo zip
-while((lenRead = fileIn.read(buffer)) > 0) {
-// os métodos de leitura e gravação podem gerar IOException
-zipFile.write (buffer, 0, lenRead);
-}
-// os fluxos serão fechados automaticamente porque são
-// na instrução try-with-resources
-}
-
-// isso pode resultar em várias exceções lançadas no bloco try;
-// use "exceções suprimidas" para obter as exceções que foram suprimidas!
-catch(Exception e) {
-System.out.println("The caught exception is: " + e);
-System.out.print("The suppressed exceptions are: ");
-for(Throwable suppressed : e.getSuppressed()) {
-System.out.println(suppressed);
-}
-}
-}
-}
-</pre>
-<p>Já discutimos o bloco <b>try-with-resources</b>. O que não discutimos é exceções suprimidas. Em uma instrução <b>try-with-resources</b>, pode haver mais de uma exceção que poderia ser lançada; por exemplo, um dentro do bloco <b>try</b>, um dentro do bloco <b>catch</b> e outro dentro do bloco <b>finally</b></p>.
-<p>No entanto, apenas uma exceção pode ser detectada, portanto, as outras exceções serão listadas como exceções suprimidas. De um determinado objeto de exceção, você pode usar o método <b>getSuppressed()</b> para obter a lista de exceções suprimidas.</p>
-
-</section>
-<section id="exceperson">
-<h1>Exceções Personalizadas</h1>
-
-<p>Na maioria das situações, será suficiente lançar exceções que já são fornecidas na biblioteca Java.
-Por exemplo, se você estiver verificando a validade dos argumentos transmitidos a uma função pública e descobrir que eles são nulos ou fora do intervalo esperado, você poderá lançar uma exceção <b>IllegalArgumentException</b>. No entanto, para a maioria dos aplicativos não triviais, será necessário desenvolver suas próprias classes de exceção (exceções personalizadas) para indicar condições excepcionais. Como você define uma exceção personalizada? Existem duas opções: você pode estender a classe <b>Exception</b> ou <b>RuntimeException</b> dependendo da sua necessidade.</p>
-<p>Se você quiser forçar os usuários de sua exceção personalizada a manipular a exceção, você poderá estender sua classe de exceção a partir da Classe de Exceção - o que tornará sua exceção personalizada uma exceção verificada.
-Se você deseja dar flexibilidade aos usuários de sua exceção personalizada e deixar que os usuários de sua exceção decidam se desejam manipular a exceção ou não, você poderá deduzir sua exceção da classe <b>RuntimeException</b>.
-Portanto, você precisa tomar uma decisão se quiser tornar sua exceção personalizada uma exceção verificada ou exceção não verificada, estendendo-se da classe <b>Exception</b> ou da classe <b>RuntimeException</b>.</p>
-<p>Que tal estender a classe <b>Throwable</b> ou <b>Error</b> para exceções personalizadas? A classe <b>Throwable</b> é muito genérica para torná-la a classe base de sua exceção, portanto, ela não é recomendada. A classe <b>Error</b> é reservada para exceções fatais que a JVM pode lançar (como StackOverflowError), portanto, não é aconselhável torná-la a classe base de sua exceção.</p>
-<p>Para estender a partir de uma classe base, você precisa ver quais métodos a classe base fornece. Nesse caso, você deseja criar uma exceção personalizada estendendo as classes <b>Exception</b> ou <b>RuntimeException</b>. Como a classe <b>Exception</b> é a classe base da classe <b>RuntimeException</b>, é suficiente conhecer os membros da classe <b>Exception</b>.</p>
-
-<p>A seguir métodos e construtores importantes da classe Exception:</p>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Membros</th><th>Breve Descrição</th></tr>
-
-<tr><td>Exception()</td><td> Construtor padrão da classe Exception sem informações adicionais (ou detalhadas) sobre a exceção.</td></tr>
-
-<tr><td>Exception(String) </td><td>Construtor que usa uma sequência de informações detalhadas sobre o construtor como um argumento.</td></tr>
-
-<tr><td>Exception(String, Throwable)</td><td> Além de uma sequência de informações detalhadas como um argumento, esse construtor de exceção leva a causa da exceção (que é outra exceção) como um argumento.</td></tr>
-
-<tr><td>Exception(Throwable)</td><td> Construtor que leva a causa da exceção como um argumento.</td></tr>
-
-<tr><td>String getMessage() </td><td>Retorna a mensagem detalhada (passada como uma string quando a exceção foi criada)</td></tr>
-
-<tr><td>Throwable getCause()</td><td> Retorna a causa da exceção (se houver, ou então retorna null).</td></tr>
-
-<tr><td>Throwable[] getSuppressed() </td><td>Retorna a lista de exceções suprimidas (geralmente causadas ao usar uma instrução try-with-resources) como um array.</td></tr>
-
-<tr><td>void printStackTrace() </td><td>Imprime o rastreamento de pilha (ou seja, a lista de chamadas de método com números de linha relevantes) para o console (fluxo de erro padrão). Se a causa de uma exceção (que é outro objeto de exceção) estiver disponível na exceção, essa informação também será impressa. Além disso, se houver exceções suprimidas, elas também serão impressas.</td></tr>
-</table>
-</div>
-
-<p>Para ilustrar como criar suas próprias classes de exceção, suponha que você queira criar uma exceção personalizada denominada <b>InvalidInputException</b>. Quando você tenta ler entrada (leia um inteiro, neste caso), e se ele falhar, você deseja lançar este <b>InvalidInputException</b>:</p>
-<pre class="brush:java">
-//InvalidInputException.java
-// uma "exceção não verificada" personalizada que deve ser lançada
-// quando a entrada fornecida pelo usuário é inválida
-class InvalidInputException extends RuntimeException {
-// construtor padrão
-public InvalidInputException() {
-super();
-}
-// construtor que recebe as informações detalhadas da String que passamos enquanto
-// gerando uma exceção
-public InvalidInputException(String str) {
-super(str);
-}
-// construtor que lembra a causa da exceção e
-// lança a nova exceção
-public InvalidInputException(Throwable originalException) {
-super(originalException);
-}
-
-// o primeiro argumento pega a string de informações detalhadas criada enquanto
-// gerando uma exceção
-// e o segundo argumento é lembrar a causa da exceção
-
-public InvalidInputException(String str, Throwable originalException) {
-super(str, originalException);
-}
-}
-</pre>
-<p>Nesta classe <b>InvalidInputException</b>, você não introduziu novos campos, mas pode adicionar campos, se necessário. Essa também é uma exceção personalizada simples em que os construtores simplesmente chamam as versões da classe base do mesmo tipo de construtor. A classe <b>CustomExceptionTest</b> mostra como usar essa exceção personalizada:</p>
-
-<pre class="brush:java">
-//CustomExceptionTest.java
-import java.util.Scanner;
-import java.util.NoSuchElementException;
-// classe para testar a exceção personalizada InvalidInputException
-class CustomExceptionTest {
-public static int readIntFromConsole() {
-Scanner consoleScanner = new Scanner(System.in);
-int typedInt = 0;
-
-try {
-typedInt = consoleScanner.nextInt();
-} catch(NoSuchElementException nsee) {
-System.out.println("Wrapping up the exception and throwing it...");
-throw new InvalidInputException("Invalid integer input typed in console", nsee);
-} catch(Exception e) {
-// chama outras exceções aqui ...
-System.out.println("Error: Encountered an exception and could not read an 
-integer from the console... ");
-}
-return typedInt;
-}
-public static void main(String [] args) {
-System.out.println("Type an integer in the console: ");
-try {
-System.out.println("You typed the integer value: " + readIntFromConsole());
-} catch(InvalidInputException iie) {
-System.out.println("Error: Invalid input in console... ");
-System.out.println("The current caught exception is of type: " + iie);
-System.out.println("The originally caught exception is of type: " +
-iie.getCause());
-}
-}
-}
-</pre>
-<p>Primeiro compile e execute este programa antes de ler a discussão do código.</p>
-<pre>
-D:\> java CustomExceptionTest
-Type an integer in the console:
-one
-Wrapping up the exception and throwing it...
-Error: Invalid input in console...
-The current caught exception is of type: InvalidInputException: Invalid integer input typed 
-in console
-The originally caught exception is of type: java.util.InputMismatchException
-</pre>
-<p>Neste código, você usa <b>InvalidInputException</b>, como qualquer outra exceção já definida na biblioteca Java. Você está pegando o <b>InvalidInputException InputMismatchException</b> (que estende
-<b>InvalidInputException</b> para qual manipulador <b>catch</b> é fornecido) lançado do método <b>readIntFromConsole()</b> no método <b>main()</b>. A instrução a seguir chama o método <b>toString()</b> da <b>InvalidInputException</b>:</p>
-
-<pre class="brush:java">System.out.println("The current caught exception is of type: " + iie);</pre>
-
-<p>Você não sobrescreveu o método <b>toString()</b>, portanto, a classe <b>InvalidInputException</b> herda a implementação padrão do método <b>toString()</b> da classe base <b>RuntimeException</b>. Esse método <b>toString()</b> padrão imprime o nome da exceção emitida (InvalidInputException) e também inclui a cadeia de informações detalhadas ("Entrada de número inteiro inválida digitada no console") transmitida durante a criação do objeto de exceção. A última instrução no método <b>main()</b> é obter a causa da exceção.</p>
-
-<pre class="brush:java">System.out.println("The originally caught exception is of type: " + iie.getCause());</pre>
-
-<p>Como a causa de <b>InvalidInputException</b> é <b>InputMismatchException</b>, esse nome de exceção é impresso no console como um nome totalmente qualificado, <b>java.util.InputMismatchException</b>. Você pode pensar em           <b>InputMismatchException</b> causando <b>InvalidInputException</b>, essas duas exceções são conhecidas como exceções encadeadas.</p>
-</section>
-<SECTION id="codassertions">
-<h1>Assertions</h1>
-
-<p>Ao criar programas aplicativos, você assume muitas coisas. No entanto, muitas vezes acontece que as suposições não são válidas, resultando em uma condição errada. A declaração <b>assert</b> é usada para verificar ou testar suas suposições sobre o programa.</p>
-
-
-<p>A palavra-chave <b>assert</b> fornece suporte para assertions em Java. Cada declaração de assertions contém uma expressão booleana. Se o resultado da expressão booleana for verdadeiro, significa que a suposição é verdadeira, então nada acontece. No entanto, se o resultado booleano for falso, a suposição que você tinha sobre o programa não contém mais e um AssertionError é lançado. Lembre-se de que a classe Error e suas classes derivadas indicam erros sérios de tempo de execução e não devem ser manipuladas. Da mesma forma, se um AssertionError for lançado, o melhor curso de ação não é capturar a exceção e permitir que o programa termine. Depois disso, você precisa examinar por que a suposição não foi verdadeira e depois corrigir o programa.</p>
-
-<p>Existem muitas razões pelas quais você deve adicionar assertions ao programa. Uma razão é que isso ajuda a encontrar os problemas cedo; Quando você checa seus pressupostos no programa e quando algum deles falha, você imediatamente sabe onde procurar o problema e o que consertar. Além disso, quando outros programadores lerem seu código com assertions, eles estarão em uma posição melhor para entender o código, pois você está explicitando suas suposiçoes usando assertions.</p>
-
-</SECTION>
-<section id="decassertion">
-<h2>Declaração Assert</h2>
-
-<p>Declarações Assert em java são de duas formas:</p>
-<pre class="brush:java">
-assert booleanExpression;
-assert booleanExpression : "Detailed error message string";
-</pre>
-<p>É um erro do compilador se uma expressão não booleana for usada na declaração assert.</p>
-<pre class="brush:java">
-//AssertionExample1.java
-class AssertionExample1 {
-public static void main(String []args) {
-int i = -10;
-if(i < 0) {
-// se valor negativo, converta em valor positivo
-i = -i;
-}
-System.out.println("the value of i is: " + i);
-
-// neste ponto, a suposição é que eu não posso ser negativo;
-// afirma essa condição, pois é uma suposição que sempre será válida
-assert (i >= 0) : "impossible: i is negative!";
-}
-}
-</pre>
-
-<p>Neste programa, você está verificando se o valor de i é < 0; você está usando a expressão –i para convertê-lo em um valor positivo. Uma vez que a condição verifique if(i < 0) está completo, o valor de <b>i</b> não pode ser negativo, ou essa é a sua suposição. Tais suposições podem ser afirmadas com uma declaração assert. Aqui está a declaração de assert:</p>
-
-<pre class="brush:java">assert (i >= 0) : "impossible: i is negative!";</pre>
-
-<p>O programa será executado corretamente se a expressão booleana (i >= 0) for avaliada como verdadeira. No entanto, se for avaliado como falsa, o programa irá travar lançando um <b>AssertionError</b>. Vamos verificar esse comportamento (você precisa usar o sinalizador –ea para ativar asserções em tempo de execução; discutiremos mais sobre esse sinalizador em breve).</p>
-<pre>
-D:\>java -ea AssertionExample1
-the value of i is: 10
-</pre>
-<p>Sim, este programa foi executado com sucesso sem lançar exceções.</p>
-<p>Existe algum valor de <b>i</b> para o qual a condição irá falhar? Sim existe! Se o valor de <b>i</b> for um valor mínimo possível de inteiro, ele não poderá ser convertido em um valor positivo. Por quê? Lembre-se que o intervalo de inteiros é -2<sup>-31</sup> 2<sup>31</sup> -1, portanto, o inteiro valoriza o valor de <b>i</b> como -2147483648 a 2147483647. Em outras palavras, o valor positivo 2147483648 não está no intervalo de inteiros. Portanto, se o valor de i for -2147483648, a expressão -i irá estourar e novamente resultará no valor -2147483648. Assim, sua suposição não é verdadeira. No exemplo anterior altere o valor de i para o valor mínimo de um inteiro, como no exemplo a seguir.</p>
-
-<pre class="brush:java">int i = Integer.MIN_VALUE</pre>
-
-<p>Agora tente executar o programa.</p>
-<pre>
-D:\> java -ea AssertionExample1
-the value of i is: -2147483648
-Exception in thread "main" java.lang.AssertionError: impossible: i is negative!
-at AssertionExample1.main(AssertionExample1.java:12)
-</pre>
-<p>Nesta saída, observe como o assertion falhou. O aplicativo falha porque o programa emitiu o AssertionError e não há manipulador, portanto, o programa termina.</p>
-
-
-<p>Um ponto importante a ser lembrado é que as asserções são desabilitadas por padrão no tempo de execução; Para habilitar asserções em tempo de execução, use um comutador -ea (ou sua forma mais extensa de ativação -enable). Para desabilitar asserções em tempo de execução, use um comutador -da. Se as asserções estão desabilitadas por padrão no tempo de execução, então qual é o uso da opção -da? Existem muitos usos. Por exemplo, se você quiser habilitar asserções para todas as classes dentro de um determinado pacote e quiser desabilitar as afirmações em uma classe específica naquele pacote, então um comutador -da é útil. A Tabela seguinte lista os importantes argumentos da linha de comando e seu significado. Note que você não precisa recompilar seus programas para habilitar ou desabilitar asserções; basta usar os argumentos da linha de comando ao invocar a JVM para ativá-los ou desativá-los.</p>
-
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Argumento linha de comando</th><th>Descrição</th></tr>
-<tr><td>-ea</td><td> Ativa as declarações por padrão (exceto classes do sistema).</td></tr>
-<tr><td>-ea:&ltnome da classe></td><td>  Ativa as asserções para o nome da classe dada.</td></tr>
-<tr><td>-ea:&ltnome do pacote> ... </td><td> Ativa as asserções em todos os membros do pacote fornecido &ltnome do pacote>.</td></tr>
-<tr><td>-ea: ... </td><td> Ativar asserções no pacote sem nome especificado.</td></tr>
-<tr><td>-des </td><td> abreviada para -enablesystemsassertions; ativa asserções em classes do sistema.Esta opção é raramente usada.</td></tr>
-<tr><td>-da </td><td> Desabilita asserções por padrão (exceto classes do sistema).</td></tr>
-<tr><td>-da:&ltnome da classe> </td><td> Desativar asserções para o nome da classe dada.</td></tr>
-<tr><td>-da:&ltnome do pacote> ... </td><td> Desativa asserções em todos os membros do pacote fornecido&ltnome do pacote>.</td></tr>
-<tr><td>-da: ... </td><td> Desabilita asserções no pacote sem nome dado.</td></tr>
-<tr><td>-dsa</td><td>  Abreviação de -disablesystemsassertions; desativa as asserções nas classes do sistema. Esta opção é raramente usada.</td></tr>
-</table>
-</div>
-</section>
-<p class="nav-arq" id="referencia">Api Stream Java <a href="apistream.html">&laquo; anterior | <a href="datetime.html">próximo &raquo;</a>DateTime api jse8 </p>
-<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/excecaoassercao" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
-</div>
-</div>
-
-</body>
-	</html>
+
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+    <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+    <li class="active">
+    <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+        </li><li>
+         <a class="w3-bar-item w3-button"  href="#exececaoassercao">12 - EXCEÇÕES E ASSERÇÕES</a>
+              </li><li>
+              <a class="w3-bar-item w3-button"  href="#lancexception">Lançando Exceções</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#excenaomanipulada">Execeções não manipuladas</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#dectrycatch">Declaração Try e Catch</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#multiblococatch">Múltiplos Blocos Catch</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#blocomulticatch">Blocos Multi-Catch</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#manipulageralcatch">Manipuladores Gerais de Captura </a></li><li>
+            <a class="w3-bar-item w3-button"  href="#libertrecurss">Liberando recursos </a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#clausulathrow">A cláusula Throw</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#metodoeclausula">Métodos Sobrescrito e a Clausula Throws</a></li><li>
+             <a class="w3-bar-item w3-button"  href="#encadearelexcec">Encadeamento e Relançamento de Exceções</a></li><li>
+            <a class="w3-bar-item w3-button"  href="#tryresources">Try-With-Resources</a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#fechamultirecurs">Fechando Multiplos Recursos</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#exceperson">Exceções Personalizadas</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#codassertions">Assertions</a>
+            </li><li>
+             <a class="w3-bar-item w3-button"  href="#decassertion">Declaração Assert</a>
+            </li><li>
+    <div>
+      <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+      <div id="demo" class="w3-hide">
+
+     
+  <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+       <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+  <a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+  <a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+  <a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+  <a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+  <a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+  <a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+  <a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+  <a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+  <a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+
+  <a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+  <a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+  <a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+  <a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+  <a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+  <a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+  <a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+  <a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+  <a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+  <a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+  <a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+  <a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+  <a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+  <a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+  <div class="w3-main" style="margin-left:250px;">
+
+  <div id="myTop" class="w3-top  w3-large">
+    <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  </p>
+  </div>
+  <header class="w3-container w3-theme" style="padding:64px 32px">
+    <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+  </header>
+  <section id="exececaoassercao">
+  <h1>Exceções e Assertions</h1>
+
+  <p>Em Java, o objeto lançado deve ser uma instância da classe <b>Throwable</b> ou uma de suas subclasses (<b>Throwable</b> é a classe do apex da hierarquia de exceções em Java). Construções de manipulação de exceção, como a declaração <b>throw</b>, cláusula <b>throws</b> , e cláusula <b>catch</b>  lidam apenas com <b>Throwable</b> e suas subclasses. Existem três importantes subclasses de <b>Throwable</b> que você precisa aprender em detalhes: o <b>Error</b>, <b>Exception</b>, e Classes <b>RuntimeException.</b></p>
+
+  <img src="imagens/jee7/excepassert.jpg">
+
+  <p>Aqui está uma breve descrição das três classes importantes que estendem a classe <b>Throwable</b>:</p>
+  <ul>
+
+  <li> 1-Exceções do tipo <b>Exception</b> são conhecidas como <b>exceções verificadas</b>. Se o código pode lançar uma exceção, você deve manipulá-lo usando um bloco catch ou declarar que o método lança essa exceção, forçando o chamador desse método para manipular essa exceção.</li><br>
+  <li>2- <B>RuntimeException</b> é uma classe derivada da <b>classe Exception</b>. As exceções derivadas dessa classe são conhecidas como exceções não verificadas. É opcional para lidar com exceções não verificadas. Se um segmento de código que você escrever em um método puder lançar uma exceção não verificada, não é obrigatório capturar essa exceção ou declarar essa exceção na cláusula throws desse método.</li><br>
+  <li>3- Quando a JVM detecta uma condição anormal grave no programa, ela gera uma exceção do tipo <b>Error</b>. Exceções do tipo <b>Error</b> indica uma condição anormal no programa. Não há sentido em pegar essa exceção e tentar continuar a execução e fingir que nada aconteceu. É uma prática realmente ruim fazer isso!</li>
+  </ul>
+  <p>Agora, vamos começar a discutir como lançar e capturar exceções.</p>
+  </section>
+  <section id="lancexception">
+  <h2>Lançando Exceções </h2>
+
+  <p>Este é um exemplo de programação muito simples em que você deseja repetir o texto digitado como argumentos da linha de comando de volta ao usuário. Suponha que o usuário deve digitar algum texto como argumentos de linha de comando para fazer <b>echo</b> ou, caso contrário, você precisará informar o usuário sobre a "condição de erro".</p>
+  <pre class="brush:java">
+  // Echo.java
+  // Um programa simples sem exceção manipulando o código
+  class Echo {
+  public static void main(String [] args) {
+  if(args.length == 0) {
+  // no arguments passed – display an error to the user
+  System.out.println("Error: No input passed to echo command... ");
+  System.exit(-1);
+  }
+  else {
+  for(String str : args) {
+  // argumentos linha de comando são separados e passado como um array
+  // imprimi-lo por adcionar um espaço elementos do array
+  System.out.print(str + " ");
+  }
+  }
+  }
+  }
+  </pre>
+  <p>Nesse caso, você imprime o erro no console usando uma declaração <b>println()</b>. Este é um programa trivial e o erro ocorreu no método <b>main()</b>, portanto, o tratamento de erros é fácil. Nesse caso, você pode finalizar o programa depois de imprimir a mensagem de erro no console. No entanto, se você estiver dentro das chamadas de função em um aplicativo complexo, precisará de uma maneira melhor de indicar que uma “condição excepcional” ocorreu e informar o chamador sobre essa condição. Além disso, você geralmente precisa se recuperar de uma condição de erro
+  em vez de terminar o programa. Portanto, você precisa ser capaz de “manipular” uma exceção ou “voltar a” essa exceção mais adiante na pilha de chamadas para que um chamador possa lidar com essa exceção.No momento, você irá alterar o programa anterior para lançar uma exceção em vez de imprimir uma mensagem de erro (em um programa separado, Echo1.java), igual a:</p>
+  <pre class="brush:java">
+  if(args.length == 0) {
+  // sem argumentos passado  - lança uma exceção 
+  throw new IllegalArgumentException("No input passed to echo command");
+  }
+  </pre>
+
+  <p>Este bloco dentro da condição <b>if</b> para <b>args.length == 0</b> é a única parte que precisa ser alterada dentro deste programa. Observe a sintaxe para lançar uma exceção: a palavra-chave <b>throw</b> seguida pelo objeto de exceção. Aqui você usa <b>IllegalArgumentException</b>, que já está definido na biblioteca Java. Mais adiante, você verá como definir suas próprias exceções.</p>
+
+  <p>Agora, se você executar este programa sem passar nenhum argumento na linha de comando, o programa lançará um <b>IllegalArgumentException</b>:</p>
+  <pre>
+  Exception in thread "main" java.lang.IllegalArgumentException: No input passed to echo command
+  at Echo1.main(Echo1.java:5)
+  </pre>
+
+  <p>Como não havia manipulador para essa exceção, essa exceção não detectada encerrou o programa. Nesse caso, você explicitamente lançou uma exceção. Exceções também podem ser executadas quando você escreve algum código ou chama APIs Java. Vamos ver um exemplo agora.</p>
+  </section>
+  <section id="excenaomanipulada">
+  <h2>Execeções não manipuladas</h2>
+
+  <p>Considere o programa a seguir, que tenta ler um valor inteiro que o usuário digita no console e imprime o inteiro lido de volta ao console. Para ler um inteiro do console, você faz uso do método <b>nextInt()</b> fornecido na classe <b>java.util.Scanner</b>. Para instanciar a classe <b>Scanner</b>, você passa em <b>System.in</b>, que é uma referência ao fluxo de entrada do sistema.</p>
+  <pre class="brush:java">
+  // ScanInt1.java
+  // Um programa simples para aceitar um inteiro do usuário
+  import java.util.Scanner;
+  class ScanInt1 {
+  public static void main(String [] args) {
+  System.out.println("Type an integer in the console: ");
+  Scanner consoleScanner = new Scanner(System.in);
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  }
+  }
+  </pre>
+  <p>Quando você executa este programa e digita um inteiro, digamos 10, no console, o programa funciona corretamente e imprime o inteiro de volta para você com êxito.</p>
+  <pre>
+  D:\> java ScanInt1
+  Type an integer in the console:
+  10
+  You typed the integer value: 10
+  </pre>
+  <p>No entanto, e se você (ou o usuário do programa) digitar equivocadamente a <b>string</b> “dez” em vez do valor inteiro “10”? O programa terminará depois de lançar uma exceção como esta:</p>
+  <pre>
+  D:\> java ScanInt1
+  Type an integer in the console:
+  ten
+  Exception in thread "main" java.util.InputMismatchException
+  at java.util.Scanner.throwFor(Scanner.java:909)
+  at java.util.Scanner.next(Scanner.java:1530)
+  at java.util.Scanner.nextInt(Scanner.java:2160)
+  at java.util.Scanner.nextInt(Scanner.java:2119)
+  at ScanInt.main(ScanInt1.java:7)
+  </pre>
+  <p>Se você ler a documentação do <b>nextInt()</b>, verá que esse método pode lançar <b>InputMismatchException</b> - “se o próximo token não corresponder à expressão regular <b>Integer</b>, ou estiver fora do intervalo.” Neste programa simples, você assume que (ou o usuário) sempre digitará um valor inteiro conforme o esperado e, quando essa suposição falhar, será lançada uma exceção. Se houver uma exceção lançada de um programa e não for tratada, o programa terminará de forma anormal depois de lançar um rastreamento de pilha como os mostrados aqui.</p>
+  <p>Um rastreamento de pilha mostra a lista do método (com os números de linha) que foi chamado antes que o controle atingisse a instrução onde a exceção foi lançada. Como programador, você achará útil rastrear o fluxo de controle para depurar o programa e corrigir o problema que levou a essa exceção.</p>
+  <p>Então, como você lida com essa situação? Você precisa colocar esse código dentro dos blocos <b>try</b> e <b>catch</b>  e, em seguida,lidar com a exceção.</p>
+  </section>
+  <section id= "dectrycatch">
+  <h2>Declaração Try e Catch</h2>
+
+  <p>Java fornece as palavras-chave <b>try</b> e <b>catch</b> para manipular quaisquer exceções que possam ser lançadas no código que você escreve.</p>
+  <pre class="brush:java">
+  //ScanInt2.java
+  // Um programa simples para aceitar um número inteiro do usuário no caso normal,
+  // caso contrário, imprime uma mensagem de erro
+  import java.util.Scanner;
+  import java.util.InputMismatchException;
+  class ScanInt2 {
+  public static void main(String [] args) {
+  System.out.println("Type an integer in the console: ");
+  Scanner consoleScanner = new Scanner(System.in);
+  try {
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  } catch(InputMismatchException ime) {
+  // nextInt () lança InputMismatchException no caso de algo
+  // diferente de um número inteiro é digitado no console; então manipule isso
+  System.out.println("Error: You typed some text that is not an integer value...");
+  }
+  }
+  }
+  </pre>
+  <p>Se algo diferente de um inteiro válido é digitado na entrada, este programa imprime uma mensagem de erro legível para o usuário.</p>
+  <pre>
+  D:\> java ScanInt2
+  Type an integer in the console:
+  ten
+  Error: You typed some text that is not an integer value...
+  </pre>
+  <p>Agora vamos analisar esse código. O bloco seguido pela palavra-chave <b>try</b> limita o segmento de código para o qual você espera que algumas exceções possam ser lançadas. Se alguma exceção for lançada do bloco <b>try</b>, o Java runtime procurará um manipulador correspondente (que discutiremos mais detalhadamente mais adiante). Nesse caso, um manipulador de exceção para <b>InputMismatchException</b> está presente, que é exatamente o mesmo tipo da exceção que foi lançada. Este manipulador exatamente correspondente está disponível fora do bloco <b>try</b> na forma de um bloco precedido pela  palavra-chave <b>catch</b>, e este bloco <b>catch</b> é executado. No bloco <b>catch</b> você pegou a exceção, por isso você está lidando com a exceção aqui. Você está fornecendo uma <b>string</b> de erro legível em vez de gerar um rastreio de pilha bruta (como você fez no programa anterior ), agora você está oferecendo uma saída elegante para o programa.</p>
+  </section>
+  <section id="multiblococatch">
+  <h3>Múltiplos Blocos Catch</h3>
+
+  <p>Você usou um objeto <b>Scanner</b> para ler um inteiro do console. Note que você pode usar um objeto <b>Scanner</b> para ler uma <b>String</b>.</p>
+  <pre class="brush:java">
+  //ScanInt3.java
+  // Um programa que varre um número inteiro de uma determinada string
+  import java.util.Scanner;
+  import java.util.InputMismatchException;
+  class ScanInt3 {
+  public static void main(String [] args) {
+  String integerStr = "100";
+  System.out.println("The string to scan integer from it is: " + integerStr);
+  Scanner consoleScanner = new Scanner(integerStr);
+  try {
+  System.out.println("The integer value scanned from string is: " +
+  consoleScanner.nextInt());
+  } catch(InputMismatchException ime) {
+  // nextInt () lança InputMismatchException no caso
+  // qualquer coisa que não seja um número inteiro é fornecida na string
+  System.out.println("Error: Cannot scan an integer from the given string");
+  }
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime o seguinte:</b></p>
+  <pre>
+  The string to scan integer from it is: 100
+  The integer value scanned from string is: 100
+  </pre>
+  <p>O que acontece se você modificar o programa anterior para que a <b>string</b> contenha um valor não inteiro, como em:</p>
+
+  <pre class="brush:java">String integerStr = "hundred";</pre>
+
+  <p>O bloco <b>try</b> lançará um <b>InputMismatchException</b>, que será tratada no bloco <b>catch</b>, e você obterá esta saída:</p>
+  <pre>
+  The string to scan integer from it is: hundred
+  Error: Cannot scan an integer from the given string
+  </pre>
+  <p>Agora, e se você modificar o programa  para que a <b>string</b> contenha uma <b>string</b> vazia, como em:</p>
+
+  <pre class="brush:java">String integerStr = "";</pre>
+
+  <p>Para isso, <b>nextInt()</b> lançará um <b>NoSuchElementException</b>, que não é tratado neste programa, portanto, esse programa falharia:</p>
+  <pre>
+  The string to scan integer from it is:
+  Exception in thread "main" java.util.NoSuchElementException
+  at java.util.Scanner.throwFor(Scanner.java:907)
+  at java.util.Scanner.next(Scanner.java:1530)
+  at java.util.Scanner.nextInt(Scanner.java:2160)
+  at java.util.Scanner.nextInt(Scanner.java:2119)
+  at ScanInt3.main(ScanInt.java:11)
+  </pre>
+  <p>Além disso, se você observar o método JavaDoc para <b>Scanner.nextInt()</b>, verá que também pode lançar uma <b>IllegalStateException</b> (essa exceção será lançada se o método <b>nextInt()</b> for chamado em um objeto <b>Scanner</b> que já esteja fechado). Então, vamos fornecer manipuladores de captura para <b>InputMismatchException</b>, <b>NoSuchElementException</b> e <b>IllegalStateException</b>.</p>
+  <pre class="brush:java">
+  //ScanInt4.java
+  // Um programa que varre um inteiro de uma string fornecida string
+  import java.util.Scanner;
+  import java.util.InputMismatchException;
+  import java.util.NoSuchElementException;
+  class ScanInt4 {
+  public static void main(String [] args) {
+  String integerStr = "";
+  System.out.println("The string to scan integer from it is: " + integerStr);
+  Scanner consoleScanner = new Scanner(integerStr);
+  try {
+  System.out.println("The integer value scanned from string is: " +
+  consoleScanner.nextInt());
+  } catch(InputMismatchException ime) {
+  System.out.println("Error: Cannot scan an integer from the given string");
+  } catch(NoSuchElementException nsee) {
+  System.out.println("Error: Cannot scan an integer from the given string");
+  } catch(IllegalStateException ise) {
+  System.out.println("Error: nextInt() called on a closed Scanner object");
+  }
+  }
+  }
+  </pre>
+  <p><b>Aqui está a saída deste programa:</b></p>
+  <pre>
+  The string to scan integer from it is:
+  Error: Cannot scan an integer from the given string
+  </pre>
+
+  <p>Como você pode ver na saída, como a string está vazia, <b>NoSuchElementException</b> é lançado. Ele é capturado no manipulador <b>catch</b> para essa exceção, e o código fornecido dentro do bloco <b>catch</b> é executado para resultar em uma saída normal.</p>
+
+
+  <p>Observe como você forneceu mais de um manipulador de captura empilhando-os: você forneceu manipuladores de exceção específicos (ou seja, tipo derivado) seguidos por manipuladores de exceção mais genéricos (por exemplo, tipo de base). Se vocês fornecerem um tipo de exceção derivada após um tipo de exceção de base, você obtém um erro do compilador. Você pode ainda não sabe, mas <b>NoSuchElementException</b> é a classe base de <b>InputMismatchException</b>! Veja o que acontece quando você tenta inverter a ordem de manipuladores de captura para <b>InputMismatchException</b> e <b>NoSuchElementException</b>.</p>
+  <pre class="brush:java">
+  try {
+  System.out.println("The integer value scanned from string is: "
+  + consoleScanner.nextInt());
+  } catch(NoSuchElementException nsee) {
+  System.out.println("Error: Cannot scan an integer from the given string");
+  } catch(InputMismatchException ime) {
+  System.out.println("Error: Cannot scan an integer from the given string");
+  }
+  </pre>
+  <p><b>Este código resulta neste errode compilador:</b></p>
+  <pre>
+  ScanInt4.java:14: error: exception InputMismatchException has already been caught
+  } catch(InputMismatchException ime) {
+  ^
+  1 error
+  </pre>
+  </section>
+  <section id="blocomulticatch">
+  <h3>Blocos Multi-Catch</h3>
+
+  <p>Java fornece um recurso chamado blocos de múltiplas capturas, no qual você pode combinar vários manipuladores de captura. Vamos usar esse recurso para combinar as cláusulas <b>catch</b> de <b>NoSuchElementException</b> e <b> IllegalStateException</b>.</p>
+  <pre class="brush:java">
+  //ScanInt5.java
+  // Um programa que ilustra blocos multi-catch 
+  import java.util.Scanner;
+  import java.util.NoSuchElementException;
+
+  class ScanInt5 {
+  public static void main(String [] args) {
+  String integerStr = "";
+  System.out.println("The string to scan integer from it is: " + integerStr);
+  Scanner consoleScanner = new Scanner(integerStr);
+  try {
+  System.out.println("The integer value scanned from string is: " +
+  consoleScanner.nextInt());
+  } catch(NoSuchElementException | IllegalStateException multie) {
+  System.out.println("Error: An error occured while attempting to scan the integer");
+  }
+  }
+  }
+  </pre>
+  <p>Observe como você combina os manipuladores de captura juntos usando o <b>|</b> Operador(OU) aqui (o mesmo operador que você usa para executar operação <b>OU</b> ou <b>bit-wise</b> em valores integrais) para combinar as cláusulas <b>catch</b> do <b>NoSuchElementException</b> e <b>IllegalStateException</b>.</p>
+
+  <p>Ao contrário das cláusulas <b>catch</b> combinadas para <b>NoSuchElementException</b> e <b>IllegalStateException</b>, você não pode combinar as cláusulas <b>catch</b> de <b>NoSuchElementException</b> e <b>InputMismatchException</b>. Como já discutimos, <b>NoSuchElementException</b> é a classe base de <b>InputMismatchException</b>, e você não pode capturar os dois no bloco <b>multi-catch</b>. Se você tentar compilar essa cláusula de <b>multi-catch</b>, receberá este erro do compilador:</p>
+  <pre>
+  ScanInt5.java:11: error: Alternatives in a multi-catch statement cannot be related by 
+  subclassing
+  } catch(InputMismatchException | NoSuchElementException exception) {
+  ^
+  </pre>
+  <p>Então, qual é a alternativa? Quando você precisar de um manipulador de captura para as exceções em que uma exceção é a classe base de outra classe de exceção, fornecer o manipulador de captura para a classe base é suficiente (desde que esse manipulador manipulará a exceção de classe derivada se ocorrer).</p>
+  <br>
+  <p><i>em um bloco multi-catch, você não pode combinar manipuladores de captura para duas exceções que compartilham um relacionamento de classe base e derivada. Você só pode combinar manipuladores de captura para exceções que não compartilham o relação pai-filho entre eles.</i></p>
+  <br>
+
+  <p>Como você sabe se é melhor combinar blocos de manipulação de exceção ou empilhá-los? É uma escolha de design onde você deve considerar os seguintes aspectos: (a) As exceções são lançadas por razões semelhantes? ou por diferentes razões? (b) O código de manipulação é semelhante ou diferente? Se você responder “similar” para ambas as perguntas, é melhor combiná-las; Se você disser "diferente" para qualquer uma dessas duas perguntas, é melhor separá-las.
+  </p>
+
+  <p>Ainda sobre a situação específica anterior? É melhor combinar ou separar os manipuladores para as execeções
+  <b>InputMismatchException</b> e <b>IllegalStateException</b>? Você pode ver que o tratamento de exceção é o mesmo para ambos os blocos <b>catch</b>. Mas as razões para essas duas exceções são consideravelmente diferentes. A entrada inválida <b>InputMismatchException</b> lançada é passada (por exemplo, “cem” como discutimos anteriormente).</p>
+  <p> O <b>IllegalStateException</b> é lançado devido a um erro de programação quando você chama o método <b>nextInt()</b> depois de chamar o método <b>close()</b> no <b>Scanner</b>. Então, neste caso, é uma escolha de design melhor para separar os manipuladores para essas duas exceções.</p>
+
+  </section>
+  <section id="manipulageralcatch">
+  <h3>Manipuladores Gerais de Captura</h3>
+
+
+  <p>Se você mantiver manipular exceções específicas como esta que podem ou não resultar em uma condição excepcional quando você executar o programa, a maior parte do seu código consistirá em blocos de código <b>try-catch</b>! Existe uma maneira melhor de dizer "lidar com todas as outras exceções"? Sim, você pode fornecer um manipulador de exceção geral.</p>
+
+
+
+  <p>Aqui está o trecho de código que mostra apenas os blocos <b>try-catch</b> para a classe <b>ScanInt3</b>, aprimorada com um manipulador de exceção geral:</p>
+  <pre class="brush:java">
+  try {
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  } catch(InputMismatchException ime) {
+  // se algo diferente de inteiro for digitado, obteremos essa exceção, então manipule isso
+  System.out.println("Error: You typed some text that is not an integer value...");
+  } catch(Exception e) {
+  // captura IllegalStateException aqui, que é improvável que ocorra ...
+  System.out.println("Error: Encountered an exception and could not read an integer from 
+  the console... ");
+  }
+  </pre>
+  <p>Esse código fornece um manipulador <b>catch</b> para a exceção base do tipo <b>Exception</b>. Portanto, se o bloco <b>try</b> lançar qualquer outra exceção que  <b>InputMismatchException</b>, e se essa exceção for uma classe derivada da classe <b>Exception</b>, esse manipulador de captura geral a manipulará. Recomenda-se a prática para capturar exceções específicas e, em seguida, fornecer um manipulador de exceção geral para garantir que todas as outras exceções também sejam tratadas.</p>
+  </section>
+  <section id="libertrecurss">
+  <h3>Liberando recursos</h3>
+
+
+  <p>Você percebe que os programas que discutimos anteriormente têm vazamento de recursos (porque abrimos um objeto Scanner, mas não o fechamos)? A palavra "recurso" refere-se a qualquer uma das classes que adquirem algumas fontes do sistema a partir do sistema operacional subjacente, como rede, arquivo, banco de dados e outras alças. Mas como você sabe quais classes precisam ser fechadas? A resposta é que, se uma classe implementar <b>java.io.Closeable</b>, você deverá chamar o método <b>close()</b> dessa classe; caso contrário, isso resultará em um vazamento de recursos.</p>
+
+  <br>
+  <p><i>O Garbage Collector (GC) é responsável por liberar apenas recursos de memória. Se você estiver usando qualquer classe que adquira recursos do sistema, é sua responsabilidade liberá-los chamando o método close() nesse objeto.</i></p>
+
+
+  <p>O <b>ScanInt6</b> chama o método <b>close()</b> do objeto <b>Scanner</b> em seu método <b>main()</b>; Se você quiser encurtar o código, use um manipulador de exceção geral para lidar com todas as exceções que podem ser lançadas no bloco <b>try</b>.</p>
+  <pre class="brush:java">
+  //ScanInt6.java
+  import java.util.Scanner;
+  class ScanInt6 {
+  public static void main(String [] args) {
+  System.out.println("Type an integer in the console: ");
+  Scanner consoleScanner = new Scanner(System.in);
+  try {
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  System.out.println("Done reading the text... closing the Scanner");
+  consoleScanner.close();
+  } catch(Exception e) {
+  // chamar todas outras exceptions aqui ...
+  System.out.println("Error: Encountered an exception and could not read an 
+  integer from the console... ");
+  System.out.println("Exiting the program - restart and try the program again!");
+  }
+  }
+  }
+  </pre>
+  <p><b>Vamos ver se este programa funciona.</b></p>
+  <pre>
+  D:\> java ScanInt6
+  Type an integer in the console:
+  10
+  You typed the integer value: 10
+  Done reading the text... closing the Scanner
+  </pre>
+
+  <p>Porque o programa imprimiu "Done reading the text... closing the Scanner", e completou a execução normalmente, você pode assumir que a instrução <b>consoleScanner.close();</b> foi executado com sucesso. O que acontece se uma exceção for lançada?</p>
+  <pre>
+  D:\> java ScanInt6
+  Type an integer in the console:
+  ten
+  Error: Encountered an exception and could not read an integer from the console...
+  Exiting the program - restart and try the program again!
+  </pre>
+  <p>Como você pode ver na saída, o programa não imprimiu "Done reading the text... closing the Scanner", então a instrução <b>consoleScanner.close();</b> não foi executada. Como você pode consertar isso? Uma maneira é chamar <b>consoleScanner.close()</b> no bloco <b>catch</b>, assim:</p>
+  <pre class="brush:java">
+  try {
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  System.out.println("Done reading the text... closing the Scanner");
+  consoleScanner.close();
+  } catch(Exception e) {
+
+  // chama todas outras exceptions aqui...
+  consoleScanner.close();
+  System.out.println("Error: Encountered an exception and could not read an integer from 
+  the console... ");
+  System.out.println("Exiting the program - restart and try the program again!");
+  }
+  </pre>
+  <p>Essa solução funcionará, mas não é elegante. Você sabe que pode ter vários blocos <b>catch</b> e precisa fornecer chamadas para <b>consoleScanner.close()</b> em todos os blocos <b>catch</b>! Existe uma maneira melhor de liberar os recursos? Sim, você pode usar recursos de liberação em um bloco <b>finally</b>.</p>
+  <pre class="brush:java">
+  //ScanInt7.java
+  import java.util.Scanner;
+  class ScanInt7 {
+  public static void main(String [] args) {
+  System.out.println("Type an integer in the console: ");
+  Scanner consoleScanner = new Scanner(System.in);
+  try {
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  } catch(Exception e) {
+  // chama todas outras exceptions aqui ...
+  System.out.println("Error: Encountered an exception and could not read an integer from the console... ");
+  System.out.println("Exiting the program - restart and try the program again!");
+  } finally {
+  System.out.println("Done reading the integer... closing the Scanner");
+  consoleScanner.close();
+  }
+  }
+  }
+  </pre>
+
+  <p>Nesse caso, um bloco <b>finally</b> é fornecido após o bloco <b>catch</b>. Este bloco <b>finally</b> será executado se uma exceção ocorreu ou não. Então, o bloco <b>finally</b> é um bom lugar para chamar o método <b>close()</b>no objeto <b>Scanner</b> para garantir que este recurso esteja sempre liberado.</p>
+  <br>
+  <p><i>se você chamar System.exit() dentro de um método, terminará anormalmente o programa. Portanto, se o método de chamada tiver um bloco finally, ele não será chamado e os recursos poderão vazar. Por esse motivo, é uma prática de programação ruim  chamar System.exit() para finalizar um programa.</i></p>
+  </br>
+  <p>Agora, vamos ver se o scanner está fechado no caso em que o programa é concluído normalmente (ou seja, sem gerar uma exceção) e quando o programa termina após gerar uma exceção.</p>
+
+  <pre>
+  D:\> java ScanInt7
+  Type an integer in the console:
+  10
+  You typed the integer value: 10
+  Done reading the integer... closing the Scanner
+  </pre>
+
+  <pre>
+  D:\> java ScanInt7
+  Type an integer in the console:
+  ten
+  Error: Encountered an exception and could not read an integer from the console...
+  Exiting the program - restart and try the program again!
+  Done reading the integer... closing the Scanner
+  </pre>
+
+  <p>Sim, a declaração "Done reading the integer ... closing the Scanner" é chamada se uma exceção é lançada ou não. Note que você pode ter um bloco <b>finally</b> diretamente após um bloco <b>try</b> sem um bloco <b>catch</b> também; embora esse recurso seja usado raramente, é um recurso útil. Observação: o bloco <b>finally</b> é sempre executado, independentemente de o código no bloco <b>try</b> gerar uma exceção ou não. Considere o seguinte método. Isso retornará verdadeiro ou falso para o chamador?</p>
+  <pre class="brush:java">
+  boolean returnTest() {
+  try {
+  return true;
+  }
+  finally {
+  return false;
+  }
+  }
+  </pre>
+  <p>Esse método sempre retornará <b>false</b> porque finalmente é sempre invocado, embora não seja intuitivo. Na verdade, se você usar a opção "-Xlint", receberá este aviso do compilador: "a cláusula finally não pode ser concluída normalmente". (Note que você pode ter um bloco <b>try</b> seguido por um bloco <b>catch</b> ou por bloco <b>finally</b> ou ambos os blocos.)</p>
+  </section>
+  <section id="clausulathrow">
+  <h1>A cláusula Throw</h1>
+
+  <P>Um método pode lançar exceções verificadas; A cláusula <b>throw</b> especifica essas exceções verificadas na assinatura do método. Na cláusula <b>throws</b>, você lista as exceções verificadas que um método pode lançar. Por que precisamos da cláusula <b>throws</b>? Observando a cláusula <b>throws</b>, você pode ter uma ideia clara das exceções que o método pode lançar. Compreender as exceções verificadas é um pré-requisito para entender a cláusula <b>throws</b>. Como cobrimos as exceções verificadas na seção anterior sobre tipos de exceção, abordaremos a cláusula de lançamentos agora. Vamos tentar ler um número inteiro armazenado em um arquivo chamado <b>integer.txt</b> no diretório atual. Há um construtor sobrecarregado da classe Scanner que usa um objeto de arquivo como entrada, portanto, vamos tentar usá-lo. Vamos ver se dá certo:</p>
+  <pre class="brush:java">
+   //ThrowsClause1.java
+  import java.io.File;
+  import java.util.Scanner;
+  class ThrowsClause1 {
+  public static void main(String []args) {
+  System.out.println("Reading an integer from the file 'integer.txt': ");
+  Scanner consoleScanner = new Scanner(new File("integer.txt"));
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  }
+  }
+  </pre>
+
+  <p>Esse código resultará em um erro do compilador de  "unreported exception FileNotFoundException; must 
+  be caught or declared to be thrown" Se você observar a declaração desse método do Scanner, verá uma cláusula de lançamento:</p>
+
+  <pre class="brush:java">public Scanner(File source) throws FileNotFoundException {}</pre>
+
+  <p>Portanto, qualquer método que chame esse construtor deve manipular essa exceção ou incluir uma cláusula <b>throws</b> para declarar que o método pode lançar essa exceção. Adicione uma cláusula <b>throws</b> ao método <b>main();</b>
+  <pre class="brush:java">
+  //ThrowsClause2.java
+  import java.io.File;
+  import java.io.FileNotFoundException;
+  import java.util.Scanner;
+  class ThrowsClause2 {
+  public static void main(String []args) throws FileNotFoundException {
+  System.out.println("Reading an integer from the file 'integer.txt': ");
+  Scanner consoleScanner = new Scanner(new File("integer.txt"));
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  }
+  }
+  </pre>
+
+  <p>Se você executar este programa e não houver nenhum arquivo chamado <b>integer.txt</b>, o programa irá travar depois de lançar essa exceção:</p>
+  <pre>
+  Reading an integer from the file 'integer.txt':
+  Exception in thread "main" java.io.FileNotFoundException: integer.txt (The system cannot 
+  find the file specified)
+  at java.io.FileInputStream.open(Native Method)
+  at java.io.FileInputStream.< init >(FileInputStream.java:138)
+  at java.util.Scanner.< init >(Scanner.java:656)
+  at ThrowsClause2.main(ThrowsClause2.java:7)
+  </pre>
+
+  <p>Vamos agora extrair o código dentro do método <b>main()</b> para um novo método chamado <b>readIntFromFile()</b>. Você definiu como um método de instância, então você também cria um objeto da classe <b>ThrowsClause3</b> para invocar esse método a partir do método <b>main()</b>. Como o código dentro de <b>readIntFromFile()</b> pode lançar um <b>FileNotFoundException</b>, ele deve introduzir um manipulador de captura para manipular essa exceção ou declarar essa exceção em sua cláusula <b>throws</b>:</p>
+  <pre class="brush:java">
+  //ThrowsClause3.java
+  import java.io.File;
+  import java.io.FileNotFoundException;
+  import java.util.Scanner;
+  class ThrowsClause3 {
+
+  // como esse método não trata FileNotFoundException,
+  // o método deve declarar essa exceção na cláusula throws
+
+  public int readIntFromFile() throws FileNotFoundException {
+  Scanner consoleScanner = new Scanner(new File("integer.txt"));
+  return consoleScanner.nextInt();
+  }
+  // desde que readIntFromFile() lança FileNotFoundException e main() não manipula
+  //, o método main() declara essa exceção em sua cláusula throws
+
+  public static void main(String []args) throws FileNotFoundException {
+  System.out.println("Reading an integer from the file 'integer.txt': ");
+  System.out.println("You typed the integer value: " + new ThrowsClause3().readIntFromFile());
+  }
+  }
+  </pre>
+  <p>O comportamento do programa permanece o mesmo em ambas <b>ThrowsClause1</b> e <b>ThrowsClause2</b>. No entanto, o <b>ThrowsClause3</b> mostra como o método <b>main()</b> também deve declarar para lançar o <b>FileNotFoundException</b> em sua cláusula <b>throws</b> (caso contrário, o programa não será compilado).</p>
+
+
+
+
+  </section>
+  <section id="metodoeclausula">
+  <h2>Métodos Sobrescrito e a Clausula Throws( Lançamento)</h2>
+
+  <p>Quando um método substituível possui uma cláusula <b>throws</b>, há muitas coisas a considerar ao sobrescrever esse método. Considere o programa na <b>ThrowsClause4</b> , que implementa uma interface denominada <b>IntReader</b>.Essa interface declara um único método chamado readIntFromFile () com a cláusula throws listando um <b>FileNotFoundException</b>.</p>
+  <pre class="brush:java">
+  //ThrowsClause4.java
+  import java.io.File;
+  import java.io.FileNotFoundException;
+  import java.io.IOException;
+  import java.util.Scanner;
+  // Essa interface é destinada a implementada por classes que lêem um número inteiro de um arquivo
+  interface IntReader {
+  int readIntFromFile() throws IOException;
+  }
+  class ThrowsClause4 implements IntReader {
+  // implementa readIntFromFile com a mesma cláusula throws
+  // ou uma cláusula throws mais específica
+  public int readIntFromFile() throws FileNotFoundException {
+  Scanner consoleScanner = new Scanner(new File("integer.txt"));
+  return consoleScanner.nextInt();
+  }
+
+  // método principal escolhido neste código, pois o foco aqui é entender
+  // problemas relacionados à sobrescrever quando a cláusula throws estiver presente
+  }
+  </pre>
+  <p>Neste código, você pode observar alguns fatos importantes:</p>
+   <ul>
+   <li>Você pode declarar a cláusula <b>throws</b> para métodos declarados em interfaces; Na verdade, você também pode fornecer a cláusula <b>throws</b> para métodos abstratos declarados em classes abstratas.</li>
+   <li> O método declarado na interface <b>IntReader</b> declara lançar <b>IOException</b>, que é uma exceção mais geral do que um <b>FileNotFoundException</b>. Ao implementar um método, é aceitável fornecer a cláusula <b>throws</b> listando o mesmo tipo de exceção que o método base ou um tipo mais específico do que o método base. Nesse caso, o método <b>readIntFromFile()</b> lista uma exceção mais específica <b>(FileNotFoundException)</b> em sua cláusula <b>throws</b> contra a exceção mais geral de <b>IOException</b> listada na cláusula <b>throws</b> do método base declarado na interface <b>IntReader</b>.</li>
+  </ul>
+  <br>
+  <img src="imagens/jee7/exception0.jpg">
+  <p><i>Acima a hierarquia da classe <b>FileNotFoundException</b></i>.</p><br>
+
+  <p>E se você tentar mudar a cláusula <b>throws</b>? Há muitas maneiras de alterar a cláusula <b>throws</b> no método de substituição, incluindo o seguinte:</p>
+  <ul>
+
+  <li>a. Listando mais exceções gerais verificadas para lançar.</li>
+  <li>b. Listando mais exceções verificadas além das exceções verificadas fornecidas no método base. </li>
+  </ul>
+
+  <p>Se você tentar algum desses casos, receberá um erro do compilador. Por exemplo, se você fornecer uma exceção mais geral do que a especificada na classe base, isso resultará em um erro do compilador.
+  Você pode optar por não especificar nenhuma exceção usando a cláusula <b>throws</b> no método sobrescrito, desde que o método sobrescrito não lance nenhuma exceção verificada ou, se o fizer, forneça um bloco <b>try-catch</b>.</p>
+  <p>Para resumir, a cláusula <b>throws</b> do método da classe base é um contrato que ele fornece ao responsável pela chamada desse método: ele diz que o chamador deve manipular as exceções listadas ou declarar essas exceções em sua cláusula <b>throws</b>. Ao sobrescrever o método base, o método derivado também deve aderir a esse contrato.
+  O responsável pela chamada do método base está preparado para manipular somente as exceções listadas no método base, portanto, o método que sobrescreve não pode lançar mais geral ou diferente das exceções verificada listadas.</p>
+
+  <p>No entanto, observe que esta discussão de que a cláusula <b>throws</b> da classe derivada da classe deve seguir o contrato para a cláusula <b>throws</b> do método base está limitada a exceções verificadas. Exceções não verificadas ainda podem ser adicionadas ou removidas do contrato quando comparadas à cláusula <b>throws</b> do método da classe base. Por exemplo, considere o seguinte:</p>
+  <pre class="brush:java">
+  public int readIntFromFile() throws IOException, NoSuchElementException {
+  Scanner consoleScanner = new Scanner(new File("integer.txt"));
+  return consoleScanner.nextInt();
+  }
+  </pre>
+  <p>Esta é uma cláusula <b>throws</b> aceitável, uma vez que <b>NoSuchElementException</b> pode ser lançada a partir do método <b>readIntFromFile()</b>. Essa exceção é uma exceção não verificada e é lançada quando o método <b>nextInt()</b> não pôde ler um número inteiro do arquivo. Esta é uma situação comum, por exemplo, se você tiver um arquivo vazio chamado <b>integer.txt</b>; uma tentativa de ler um inteiro deste arquivo resultará nessa exceção.</p>
+
+  <h4>TAG @THROWS</h4>
+
+  <p>É uma boa prática usar a tag Javadoc <b>@throws</b> (ou sua marca @exception sinônima) para documentar as situações ou casos específicos nos quais uma exceção (não verificada ou marcada) pode ser lançada de um método. Aqui está o formato para fornecer a tag @throws com um exemplo:</p>
+  <pre class="brush:java">
+  @throws exception-name description-text
+  @throws IllegalStateException if this scanner is closed
+  </pre>
+  <p>Essa tag pode ser usada apenas para métodos e construtores.</p>
+  <p>Aqui está um exemplo de comentário de Javadoc para o método <b>nextInt()</b> na classe <b>Scanner</b>:</p>
+
+  <pre class="brush:java">
+  /**
+  * Scaneia o próximo token da entrada como um <tt>int</tt>.
+  *
+  * <p> Uma invocação deste método do formulário
+  * <tt>nextInt()</tt>  se comporta exatamente da mesma maneira que a
+  * invocação <tt>nextInt(radix)</tt>, onde <code>radix</code>
+  * é a raiz padrão deste scanner.
+  *
+  * @return o <tt>int</tt> scaneado a partir da entrada
+  *<b> @throws InputMismatchException</b>
+  * se o próximo token não corresponder ao <i>Integer</i>
+  * expressão regular ou está fora de alcance
+  * <b>@throws NoSuchElementException</b> se a entrada estiver esgotada
+  * <b>@throws</b> IllegalStateException se este scanner estiver fechado
+  */
+  public int nextInt() {
+  return nextInt(defaultRadix);
+  }
+  </pre>
+
+  <p><i>Observe a tag <b>@throws</b> para <b>InputMismatchException</b>, <b>NoSuchElementException</b> e <b>IllegalStateException</b>. Quando um método pode lançar várias exceções, elas são listadas em ordem alfabética por convenção (como neste caso).</i></p>
+  </section>
+  <section id="encadearelexcec">
+  <h3>Encadeamento e Relançamento de Exceções</h3>
+
+  <p>Você pode capturar exceções e envolvê-las em exceções mais genéricas e colocá-las mais acima na pilha de chamadas. Quando você captura uma exceção e cria uma exceção mais geral, pode reter a referência à exceção original; isso é chamado de encadeamento de exceções.</p>
+  <pre class="brush:java">
+  catch(LowLevelException lle) {
+  // quebra a exceção de baixo nível em uma exceção de nível superior;
+  // também, encadeie a exceção original à exceção lançada recentemente
+  throw new HighLevelException(lle);
+  }
+  </pre>
+
+  <p>Encadeamento de exceções é útil para fins de depuração. Ao obter uma exceção geral, você pode verificar se há uma exceção de nível inferior encadeada e tentar entender por que essa exceção de nível inferior ocorreu.</p>
+  </section>
+  <section id="tryresources">
+  <h1>Try-With-Resources</h1>
+
+  <p>É um erro bastante comum os programadores Java esquecerem de liberar recursos, mesmo no bloco <b>finally</b>. Além disso, se você está lidando com vários recursos, é tedioso lembrar de chamar o método <b>close()</b> no bloco <b>finally</b>. O recurso <b>Try-with-resources</b> (introduzido no Java 7) ajudará a tornar sua vida mais fácil.</p>
+  <pre class="brush:java">
+  //TryWithResources1.java
+  import java.util.Scanner;
+  class TryWithResources1 {
+  public static void main(String [] args) {
+  System.out.println("Type an integer in the console: ");
+  try(Scanner consoleScanner = new Scanner(System.in)) {
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  } catch(Exception e) {
+  // captura todas outras exceptions aqui ...
+  System.out.println("Error: Encountered an exception and could not read an 
+  integer from the console... ");
+  System.out.println("Exiting the program - restart and try the program again!");
+  }
+  }
+  }
+  </pre>
+     
+  <p>Certifique-se de dar uma olhada na sintaxe do bloco <b>try-with-resources</b>.</p>
+  <pre class="brush:java">try(Scanner consoleScanner = new Scanner(System.in)) {</pre>
+
+  <p>Nesta declaração, você adquiriu os recursos dentro dos parênteses após a palavra-chave <b>try</b>, mas antes do bloco <b>try</b>. Além disso, no exemplo, você não fornece o bloco <b>finally</b>. O compilador Java traduzirá internamente esse bloco <b>try-with-resources</b> em um bloco <b>try-finally</b> (obviamente, o compilador manterá os blocos catch fornecidos). Você pode adquirir vários recursos no bloco <b>try-with-resources</b>. Tais declarações de aquisição de recursos devem ser separadas usando ponto e vírgula.</p>
+
+  <p>Você pode fornecer declarações <b>try-with-resources</b> sem captura explícita ou blocos <b>finally</b>? Sim! Lembre-se de que um bloco <b>try</b> pode ser associado a um bloco <b/>catch</b>, a um bloco <b>finally</b> ou a ambos. Um bloco de declarações <b>try-with-resources</b> é expandido internamente para um bloco <b>try-finally</b>. Portanto, você pode fornecer uma declaração <b>try-with-resources</b> sem captura explícita ou blocos <b>finally</b>. O exemplo seguinte usa uma declaração <b>try-with-resources</b> sem qualquer captura explícita ou blocos <b>finally</b>.</p>
+  <pre class="brush:java">
+  //TryWithResources2.java
+  import java.util.Scanner;
+  class TryWithResources2 {
+  public static void main(String [] args) {
+  System.out.println("Type an integer in the console: ");
+  try(Scanner consoleScanner = new Scanner(System.in)) {
+  System.out.println("You typed the integer value: " + consoleScanner.nextInt());
+  }
+  }
+  }
+  </pre>
+  <p>Embora seja possível criar uma instrução <b>try-with-resources</b> sem captura explícita ou por fim, isso não significa que você deva fazer isso! Por exemplo, como esse código não possui um bloco <b>catch</b>, se você digitar alguma entrada inválida, o programa falhará.</p>
+  <pre>
+  D:\> java TryWithResources2
+  Type an integer in the console:
+  ten
+  Exception in thread "main" java.util.InputMismatchException
+  at java.util.Scanner.throwFor(Scanner.java:864)
+  at java.util.Scanner.next(Scanner.java:1485)
+  at java.util.Scanner.nextInt(Scanner.java:2117)
+  at java.util.Scanner.nextInt(Scanner.java:2076)
+  at TryWithResources2.main(TryWithResources2.java:7)
+  </pre>
+  <p>Portanto, o benefício de uma instrução <b>try-with-resources</b> é que ela simplifica sua vida não tendo que fornecer blocos explicitamente. No entanto, você ainda precisa fornecer os blocos de captura necessários.</p>
+  <p>Observe que para um recurso ser utilizável com uma instrução <b>try-with-resources</b>, a classe desse recurso deve implementar a interface <b>java.lang.AutoCloseable</b>. Essa interface declara um único método chamado <b>close()</b>. Juntamente com o recurso <b>try-with-resources</b>, a interface <b>AutoCloseable</b> também foi introduzida no Java 7, e a interface é feita da interface base da interface <b>Closeable</b>. Isso é para garantir que as classes de recursos existentes funcionem perfeitamente com uma instrução <b>try-with-resources</b>. Em outras palavras, você pode usar todas as classes de fluxo antigas com <b>try-with-resources</b> porque elas implementam a interface <b>AutoCloseable</b>.</p>
+  <br>
+  <img src="imagens/jee7/exception.jpg">
+
+  <p><i>Interface Closable estende a interface AutoCloseable</i></p>
+  <br>
+  </section>
+  <section id="fechamultirecurs">
+  <h2>Fechando Múltiplos Recursos</h2>
+
+  <p>Você pode usar mais de um recurso em uma instrução <b>try-with-resources</b>. Aqui está um trecho de código para criar um arquivo zip de um determinado arquivo de texto que faz uso de uma instrução <b>try-with-resources</b>:</p>
+  <pre class="brush:java">
+  // buffer é o buffer de bytes temporário usado para copiar dados
+  // de um fluxo para outro fluxo
+  byte [] buffer = new byte[1024];
+  // these stream constructors can throw FileNotFoundException
+  try (ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream(zipFileName));
+  FileInputStream fileIn = new FileInputStream(fileName)) {
+  zipFile.putNextEntry(new ZipEntry(fileName)); // putNextEntry can throw
+  // IOException
+  int lenRead = 0; // a variável para acompanhar o número de bytes lidos com sucesso
+  // copia o conteúdo do arquivo de entrada no arquivo zip
+  while((lenRead = fileIn.read(buffer)) > 0) { // read can throw IOException
+  zipFile.write(buffer, 0, lenRead); // write can throw IOException
+  }
+  // os fluxos serão fechados automaticamente porque estão dentro do try-with-
+  // declaração de recursos
+  }
+  </pre>
+  <p>Nesse código, o <b>buffer</b> é um <b>array</b>> de <b>bytes</b>. Esse <b>array</b> é um armazenamento temporário útil para copiar dados brutos de um fluxo para outro. Na instrução t<b>ry-with-resources</b>, você abre dois fluxos: <b>ZipOutputStream</b>> para gravar no arquivo <b>zip</b> e <b>FileInputStream</b> para ler no arquivo de texto. (Nota: O suporte da API para arquivos zip (e jar) está disponível no pacote <b>java.util.zip</b>.) Você deseja ler o arquivo de texto de entrada, compactá-lo e colocar essa entrada no arquivo <b>zip</b>. Para colocar uma entrada de arquivo / diretório no arquivo zip, a classe <b>ZipOutputStream</b> fornece um método chamado <b>putNextEntry()</b>, que recebe um objeto <b>ZipEntry</b> como um argumento. A instrução <b>zipFile.putNextEntry(new ZipEntry(fileName))</b>, coloca uma entrada de arquivo chamado <b>fileName</b> no <b>zipFile</b>.</p>
+  <p>Para ler o conteúdo do arquivo de texto, use o método <b>read()</b> na classe <b>FileInputStream</b>. O método <b>read()</b> considera o <b>buffer</b> como o argumento. A quantidade de dados  serem lidos por iteração(isto é, “tamanho do fragmento de dados” a ser lido) é dada pelo tamanho do <b>array</b> passado; são 1024 bytes neste código. O método <b>read()</b> retorna o número de <b>bytes</b> que lê e, se não houver mais dados para ler, retorna -1. O <b>whileloop</b> verifica se a leitura foi bem-sucedida (usando a condição > 0) antes de gravá-la no arquivo <b>zip</b>.</p>
+  <p>Para gravar dados no arquivo <b>zip</b>, use o método <b>write()</b> na classe <b>ZipOutputStream</b>. O método <b>write()</b> aceita três argumentos: o primeiro argumento é o <b>buffer</b> de dados; o segundo argumento é o deslocamento inicial no <b>buffer</b> de dados (que é 0 porque você sempre lê a partir do início do <b>buffer</b>); e o terceiro é o número de <b>bytes</b> a serem gravados.</p>
+  <p>Agora chegamos à discussão principal. Observe como você abre dois recursos no bloco <b>try</b> e os ponto-e-vírgulas separam essas duas instruções de aquisição de recursos. Você não tem um bloco <b>finally</b> explícito para liberar os recursos porque o compilador irá automaticamente inserir chamadas para os métodos de fechamento para esses dois fluxos no bloco <b>finally(s)</b>.<p>
+
+  <p>O exemplo seguinte é o programa completo que faz uso desse segmento de código para ilustrar o uso da instrução <b>try with-resources</b> para o auto-fechamento de múltiplos fluxos.</p>
+  <pre class="brush:java">
+  //ZipTextFile.java
+  import java.util.*;
+  import java.util.zip.*;
+  import java.io.*;
+  // class ZipTextFile usa o nome de um arquivo de texto como entrada e cria um arquivo zip
+  // depois de compactar esse arquivo de texto.
+  class ZipTextFile {
+  public static final int CHUNK = 1024; // to help copy chunks of 1KB
+  public static void main(String []args) {
+  if(args.length == 0) {
+  System.out.println("Pass the name of the file in the current directory to be 
+  zipped as an argument");
+  System.exit(-1);
+  }
+  String fileName = args[0];
+  // nome do arquivo zip é o nome do arquivo de entrada com o sufixo ".zip"
+  String zipFileName = fileName + ".zip";
+  byte [] buffer = new byte[CHUNK];
+  // esses construtores podem lançar FileNotFoundException
+  try (ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream(zipFileName));
+  FileInputStream fileIn = new FileInputStream(fileName)) {
+  // putNextEntry pode lançar IOException
+  zipFile.putNextEntry(new ZipEntry(fileName));
+  int lenRead = 0; // variável para acompanhar o número de bytes
+  // lido com sucesso
+  // copia o conteúdo do arquivo de entrada no arquivo zip
+  while((lenRead = fileIn.read(buffer)) > 0) {
+  // os métodos de leitura e gravação podem gerar IOException
+  zipFile.write (buffer, 0, lenRead);
+  }
+  // os fluxos serão fechados automaticamente porque são
+  // na instrução try-with-resources
+  }
+
+  // isso pode resultar em várias exceções lançadas no bloco try;
+  // use "exceções suprimidas" para obter as exceções que foram suprimidas!
+  catch(Exception e) {
+  System.out.println("The caught exception is: " + e);
+  System.out.print("The suppressed exceptions are: ");
+  for(Throwable suppressed : e.getSuppressed()) {
+  System.out.println(suppressed);
+  }
+  }
+  }
+  }
+  </pre>
+  <p>Já discutimos o bloco <b>try-with-resources</b>. O que não discutimos é exceções suprimidas. Em uma instrução <b>try-with-resources</b>, pode haver mais de uma exceção que poderia ser lançada; por exemplo, um dentro do bloco <b>try</b>, um dentro do bloco <b>catch</b> e outro dentro do bloco <b>finally</b></p>.
+  <p>No entanto, apenas uma exceção pode ser detectada, portanto, as outras exceções serão listadas como exceções suprimidas. De um determinado objeto de exceção, você pode usar o método <b>getSuppressed()</b> para obter a lista de exceções suprimidas.</p>
+
+  </section>
+  <section id="exceperson">
+  <h1>Exceções Personalizadas</h1>
+
+  <p>Na maioria das situações, será suficiente lançar exceções que já são fornecidas na biblioteca Java.
+  Por exemplo, se você estiver verificando a validade dos argumentos transmitidos a uma função pública e descobrir que eles são nulos ou fora do intervalo esperado, você poderá lançar uma exceção <b>IllegalArgumentException</b>. No entanto, para a maioria dos aplicativos não triviais, será necessário desenvolver suas próprias classes de exceção (exceções personalizadas) para indicar condições excepcionais. Como você define uma exceção personalizada? Existem duas opções: você pode estender a classe <b>Exception</b> ou <b>RuntimeException</b> dependendo da sua necessidade.</p>
+  <p>Se você quiser forçar os usuários de sua exceção personalizada a manipular a exceção, você poderá estender sua classe de exceção a partir da Classe de Exceção - o que tornará sua exceção personalizada uma exceção verificada.
+  Se você deseja dar flexibilidade aos usuários de sua exceção personalizada e deixar que os usuários de sua exceção decidam se desejam manipular a exceção ou não, você poderá deduzir sua exceção da classe <b>RuntimeException</b>.
+  Portanto, você precisa tomar uma decisão se quiser tornar sua exceção personalizada uma exceção verificada ou exceção não verificada, estendendo-se da classe <b>Exception</b> ou da classe <b>RuntimeException</b>.</p>
+  <p>Que tal estender a classe <b>Throwable</b> ou <b>Error</b> para exceções personalizadas? A classe <b>Throwable</b> é muito genérica para torná-la a classe base de sua exceção, portanto, ela não é recomendada. A classe <b>Error</b> é reservada para exceções fatais que a JVM pode lançar (como StackOverflowError), portanto, não é aconselhável torná-la a classe base de sua exceção.</p>
+  <p>Para estender a partir de uma classe base, você precisa ver quais métodos a classe base fornece. Nesse caso, você deseja criar uma exceção personalizada estendendo as classes <b>Exception</b> ou <b>RuntimeException</b>. Como a classe <b>Exception</b> é a classe base da classe <b>RuntimeException</b>, é suficiente conhecer os membros da classe <b>Exception</b>.</p>
+
+  <p>A seguir métodos e construtores importantes da classe Exception:</p>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Membros</th><th>Breve Descrição</th></tr>
+
+  <tr><td>Exception()</td><td> Construtor padrão da classe Exception sem informações adicionais (ou detalhadas) sobre a exceção.</td></tr>
+
+  <tr><td>Exception(String) </td><td>Construtor que usa uma sequência de informações detalhadas sobre o construtor como um argumento.</td></tr>
+
+  <tr><td>Exception(String, Throwable)</td><td> Além de uma sequência de informações detalhadas como um argumento, esse construtor de exceção leva a causa da exceção (que é outra exceção) como um argumento.</td></tr>
+
+  <tr><td>Exception(Throwable)</td><td> Construtor que leva a causa da exceção como um argumento.</td></tr>
+
+  <tr><td>String getMessage() </td><td>Retorna a mensagem detalhada (passada como uma string quando a exceção foi criada)</td></tr>
+
+  <tr><td>Throwable getCause()</td><td> Retorna a causa da exceção (se houver, ou então retorna null).</td></tr>
+
+  <tr><td>Throwable[] getSuppressed() </td><td>Retorna a lista de exceções suprimidas (geralmente causadas ao usar uma instrução try-with-resources) como um array.</td></tr>
+
+  <tr><td>void printStackTrace() </td><td>Imprime o rastreamento de pilha (ou seja, a lista de chamadas de método com números de linha relevantes) para o console (fluxo de erro padrão). Se a causa de uma exceção (que é outro objeto de exceção) estiver disponível na exceção, essa informação também será impressa. Além disso, se houver exceções suprimidas, elas também serão impressas.</td></tr>
+  </table>
+  </div>
+
+  <p>Para ilustrar como criar suas próprias classes de exceção, suponha que você queira criar uma exceção personalizada denominada <b>InvalidInputException</b>. Quando você tenta ler entrada (leia um inteiro, neste caso), e se ele falhar, você deseja lançar este <b>InvalidInputException</b>:</p>
+  <pre class="brush:java">
+  //InvalidInputException.java
+  // uma "exceção não verificada" personalizada que deve ser lançada
+  // quando a entrada fornecida pelo usuário é inválida
+  class InvalidInputException extends RuntimeException {
+  // construtor padrão
+  public InvalidInputException() {
+  super();
+  }
+  // construtor que recebe as informações detalhadas da String que passamos enquanto
+  // gerando uma exceção
+  public InvalidInputException(String str) {
+  super(str);
+  }
+  // construtor que lembra a causa da exceção e
+  // lança a nova exceção
+  public InvalidInputException(Throwable originalException) {
+  super(originalException);
+  }
+
+  // o primeiro argumento pega a string de informações detalhadas criada enquanto
+  // gerando uma exceção
+  // e o segundo argumento é lembrar a causa da exceção
+
+  public InvalidInputException(String str, Throwable originalException) {
+  super(str, originalException);
+  }
+  }
+  </pre>
+  <p>Nesta classe <b>InvalidInputException</b>, você não introduziu novos campos, mas pode adicionar campos, se necessário. Essa também é uma exceção personalizada simples em que os construtores simplesmente chamam as versões da classe base do mesmo tipo de construtor. A classe <b>CustomExceptionTest</b> mostra como usar essa exceção personalizada:</p>
+
+  <pre class="brush:java">
+  //CustomExceptionTest.java
+  import java.util.Scanner;
+  import java.util.NoSuchElementException;
+  // classe para testar a exceção personalizada InvalidInputException
+  class CustomExceptionTest {
+  public static int readIntFromConsole() {
+  Scanner consoleScanner = new Scanner(System.in);
+  int typedInt = 0;
+
+  try {
+  typedInt = consoleScanner.nextInt();
+  } catch(NoSuchElementException nsee) {
+  System.out.println("Wrapping up the exception and throwing it...");
+  throw new InvalidInputException("Invalid integer input typed in console", nsee);
+  } catch(Exception e) {
+  // chama outras exceções aqui ...
+  System.out.println("Error: Encountered an exception and could not read an 
+  integer from the console... ");
+  }
+  return typedInt;
+  }
+  public static void main(String [] args) {
+  System.out.println("Type an integer in the console: ");
+  try {
+  System.out.println("You typed the integer value: " + readIntFromConsole());
+  } catch(InvalidInputException iie) {
+  System.out.println("Error: Invalid input in console... ");
+  System.out.println("The current caught exception is of type: " + iie);
+  System.out.println("The originally caught exception is of type: " +
+  iie.getCause());
+  }
+  }
+  }
+  </pre>
+  <p>Primeiro compile e execute este programa antes de ler a discussão do código.</p>
+  <pre>
+  D:\> java CustomExceptionTest
+  Type an integer in the console:
+  one
+  Wrapping up the exception and throwing it...
+  Error: Invalid input in console...
+  The current caught exception is of type: InvalidInputException: Invalid integer input typed 
+  in console
+  The originally caught exception is of type: java.util.InputMismatchException
+  </pre>
+  <p>Neste código, você usa <b>InvalidInputException</b>, como qualquer outra exceção já definida na biblioteca Java. Você está pegando o <b>InvalidInputException InputMismatchException</b> (que estende
+  <b>InvalidInputException</b> para qual manipulador <b>catch</b> é fornecido) lançado do método <b>readIntFromConsole()</b> no método <b>main()</b>. A instrução a seguir chama o método <b>toString()</b> da <b>InvalidInputException</b>:</p>
+
+  <pre class="brush:java">System.out.println("The current caught exception is of type: " + iie);</pre>
+
+  <p>Você não sobrescreveu o método <b>toString()</b>, portanto, a classe <b>InvalidInputException</b> herda a implementação padrão do método <b>toString()</b> da classe base <b>RuntimeException</b>. Esse método <b>toString()</b> padrão imprime o nome da exceção emitida (InvalidInputException) e também inclui a cadeia de informações detalhadas ("Entrada de número inteiro inválida digitada no console") transmitida durante a criação do objeto de exceção. A última instrução no método <b>main()</b> é obter a causa da exceção.</p>
+
+  <pre class="brush:java">System.out.println("The originally caught exception is of type: " + iie.getCause());</pre>
+
+  <p>Como a causa de <b>InvalidInputException</b> é <b>InputMismatchException</b>, esse nome de exceção é impresso no console como um nome totalmente qualificado, <b>java.util.InputMismatchException</b>. Você pode pensar em           <b>InputMismatchException</b> causando <b>InvalidInputException</b>, essas duas exceções são conhecidas como exceções encadeadas.</p>
+  </section>
+  <SECTION id="codassertions">
+  <h1>Assertions</h1>
+
+  <p>Ao criar programas aplicativos, você assume muitas coisas. No entanto, muitas vezes acontece que as suposições não são válidas, resultando em uma condição errada. A declaração <b>assert</b> é usada para verificar ou testar suas suposições sobre o programa.</p>
+
+
+  <p>A palavra-chave <b>assert</b> fornece suporte para assertions em Java. Cada declaração de assertions contém uma expressão booleana. Se o resultado da expressão booleana for verdadeiro, significa que a suposição é verdadeira, então nada acontece. No entanto, se o resultado booleano for falso, a suposição que você tinha sobre o programa não contém mais e um AssertionError é lançado. Lembre-se de que a classe Error e suas classes derivadas indicam erros sérios de tempo de execução e não devem ser manipuladas. Da mesma forma, se um AssertionError for lançado, o melhor curso de ação não é capturar a exceção e permitir que o programa termine. Depois disso, você precisa examinar por que a suposição não foi verdadeira e depois corrigir o programa.</p>
+
+  <p>Existem muitas razões pelas quais você deve adicionar assertions ao programa. Uma razão é que isso ajuda a encontrar os problemas cedo; Quando você checa seus pressupostos no programa e quando algum deles falha, você imediatamente sabe onde procurar o problema e o que consertar. Além disso, quando outros programadores lerem seu código com assertions, eles estarão em uma posição melhor para entender o código, pois você está explicitando suas suposiçoes usando assertions.</p>
+
+  </SECTION>
+  <section id="decassertion">
+  <h2>Declaração Assert</h2>
+
+  <p>Declarações Assert em java são de duas formas:</p>
+  <pre class="brush:java">
+  assert booleanExpression;
+  assert booleanExpression : "Detailed error message string";
+  </pre>
+  <p>É um erro do compilador se uma expressão não booleana for usada na declaração assert.</p>
+  <pre class="brush:java">
+  //AssertionExample1.java
+  class AssertionExample1 {
+  public static void main(String []args) {
+  int i = -10;
+  if(i < 0) {
+  // se valor negativo, converta em valor positivo
+  i = -i;
+  }
+  System.out.println("the value of i is: " + i);
+
+  // neste ponto, a suposição é que eu não posso ser negativo;
+  // afirma essa condição, pois é uma suposição que sempre será válida
+  assert (i >= 0) : "impossible: i is negative!";
+  }
+  }
+  </pre>
+
+  <p>Neste programa, você está verificando se o valor de i é < 0; você está usando a expressão –i para convertê-lo em um valor positivo. Uma vez que a condição verifique if(i < 0) está completo, o valor de <b>i</b> não pode ser negativo, ou essa é a sua suposição. Tais suposições podem ser afirmadas com uma declaração assert. Aqui está a declaração de assert:</p>
+
+  <pre class="brush:java">assert (i >= 0) : "impossible: i is negative!";</pre>
+
+  <p>O programa será executado corretamente se a expressão booleana (i >= 0) for avaliada como verdadeira. No entanto, se for avaliado como falsa, o programa irá travar lançando um <b>AssertionError</b>. Vamos verificar esse comportamento (você precisa usar o sinalizador –ea para ativar asserções em tempo de execução; discutiremos mais sobre esse sinalizador em breve).</p>
+  <pre>
+  D:\>java -ea AssertionExample1
+  the value of i is: 10
+  </pre>
+  <p>Sim, este programa foi executado com sucesso sem lançar exceções.</p>
+  <p>Existe algum valor de <b>i</b> para o qual a condição irá falhar? Sim existe! Se o valor de <b>i</b> for um valor mínimo possível de inteiro, ele não poderá ser convertido em um valor positivo. Por quê? Lembre-se que o intervalo de inteiros é -2<sup>-31</sup> 2<sup>31</sup> -1, portanto, o inteiro valoriza o valor de <b>i</b> como -2147483648 a 2147483647. Em outras palavras, o valor positivo 2147483648 não está no intervalo de inteiros. Portanto, se o valor de i for -2147483648, a expressão -i irá estourar e novamente resultará no valor -2147483648. Assim, sua suposição não é verdadeira. No exemplo anterior altere o valor de i para o valor mínimo de um inteiro, como no exemplo a seguir.</p>
+
+  <pre class="brush:java">int i = Integer.MIN_VALUE</pre>
+
+  <p>Agora tente executar o programa.</p>
+  <pre>
+  D:\> java -ea AssertionExample1
+  the value of i is: -2147483648
+  Exception in thread "main" java.lang.AssertionError: impossible: i is negative!
+  at AssertionExample1.main(AssertionExample1.java:12)
+  </pre>
+  <p>Nesta saída, observe como o assertion falhou. O aplicativo falha porque o programa emitiu o AssertionError e não há manipulador, portanto, o programa termina.</p>
+
+
+  <p>Um ponto importante a ser lembrado é que as asserções são desabilitadas por padrão no tempo de execução; Para habilitar asserções em tempo de execução, use um comutador -ea (ou sua forma mais extensa de ativação -enable). Para desabilitar asserções em tempo de execução, use um comutador -da. Se as asserções estão desabilitadas por padrão no tempo de execução, então qual é o uso da opção -da? Existem muitos usos. Por exemplo, se você quiser habilitar asserções para todas as classes dentro de um determinado pacote e quiser desabilitar as afirmações em uma classe específica naquele pacote, então um comutador -da é útil. A Tabela seguinte lista os importantes argumentos da linha de comando e seu significado. Note que você não precisa recompilar seus programas para habilitar ou desabilitar asserções; basta usar os argumentos da linha de comando ao invocar a JVM para ativá-los ou desativá-los.</p>
+
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Argumento linha de comando</th><th>Descrição</th></tr>
+  <tr><td>-ea</td><td> Ativa as declarações por padrão (exceto classes do sistema).</td></tr>
+  <tr><td>-ea:&ltnome da classe></td><td>  Ativa as asserções para o nome da classe dada.</td></tr>
+  <tr><td>-ea:&ltnome do pacote> ... </td><td> Ativa as asserções em todos os membros do pacote fornecido &ltnome do pacote>.</td></tr>
+  <tr><td>-ea: ... </td><td> Ativar asserções no pacote sem nome especificado.</td></tr>
+  <tr><td>-des </td><td> abreviada para -enablesystemsassertions; ativa asserções em classes do sistema.Esta opção é raramente usada.</td></tr>
+  <tr><td>-da </td><td> Desabilita asserções por padrão (exceto classes do sistema).</td></tr>
+  <tr><td>-da:&ltnome da classe> </td><td> Desativar asserções para o nome da classe dada.</td></tr>
+  <tr><td>-da:&ltnome do pacote> ... </td><td> Desativa asserções em todos os membros do pacote fornecido&ltnome do pacote>.</td></tr>
+  <tr><td>-da: ... </td><td> Desabilita asserções no pacote sem nome dado.</td></tr>
+  <tr><td>-dsa</td><td>  Abreviação de -disablesystemsassertions; desativa as asserções nas classes do sistema. Esta opção é raramente usada.</td></tr>
+  </table>
+  </div>
+  </section>
+  <p class="nav-arq" id="referencia">Api Stream Java <a href="apistream.html">&laquo; anterior | <a href="datetime.html">próximo &raquo;</a>DateTime api jse8 </p>
+  <div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/excecaoassercao" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+  </div>
+  </div>
+
+  </body>
+  	</html>
 
 
 

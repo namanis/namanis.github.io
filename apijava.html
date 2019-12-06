@@ -1,1349 +1,1444 @@
-
-<!DOCTYPE html>
- <html lang="pt-br">
- <head>
+  <!DOCTYPE html>
+   <html lang="pt-br">
    <head>
- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-
-  <link rel="stylesheet" type="text/css" href="css/stylos.css">
- <link rel="stylesheet" href="css/stylew3.css">
- <script type="text/javascript"src="js/efeitos.js"></script>
-
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/stylos.css">
+   <link rel="stylesheet" href="css/stylew3.css">
+   <script type="text/javascript"src="js/efeitos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
-<script src="code-brush-master/cbCore.js"></script>
-<script src="code-brush-master/cBrushXml.js"></script>
-<script src="code-brush-master/cBrushCss.js"></script>
-<script src="code-brush-master/cBrushPhp.js"></script>
-<script src="code-brush-master/cBrushSql.js"></script>
-<script src="code-brush-master/cBrushJScript.js"></script>   
-<script src="code-brush-master/cBrushJava.js"></script>  
-<script>
-    SyntaxHighlighter.defaults['auto-links'] = false;
-    SyntaxHighlighter.defaults['toolbar'] = false;
-    SyntaxHighlighter.all();
-</script>
- <title> Programar em Java</title>
+  <script src="code-brush-master/cbCore.js"></script>
+  <script src="code-brush-master/cBrushXml.js"></script>
+                 
+  <script src="code-brush-master/cBrushCss.js"></script>
+  <script src="code-brush-master/cBrushPhp.js"></script>
+  <script src="code-brush-master/cBrushSql.js"></script>
+  <script src="code-brush-master/cBrushJScript.js"></script>   
+  <script src="code-brush-master/cBrushJava.js"></script>  
+  <script>
+      SyntaxHighlighter.defaults['auto-links'] = false;
+      SyntaxHighlighter.defaults['toolbar'] = false;
+      SyntaxHighlighter.all();
+  </script>
+  <script type="text/javascript">
+  jQuery(document).ready(function(jQuery) {            
+              var topMenu = jQuery("#mySidebar"),
+                  offset = 40,
+                  topMenuHeight = topMenu.outerHeight()+offset,
+                  // All list items
+                  menuItems =  topMenu.find('a[href*="#"]'),
+                  // Anchors corresponding to menu items
+                  scrollItems = menuItems.map(function(){
+                    var href = jQuery(this).attr("href"),
+                    id = href.substring(href.indexOf('#')),
+                    item = jQuery(id);
+                    //console.log(item)
+                    if (item.length) { return item; }
+                  });
 
-   </head>
- <body>
+              // so we can get a fancy scroll animation
+              menuItems.click(function(e){
+                var href = jQuery(this).attr("section"),
+                  id = href.substring(href.indexOf('#'));
+                    offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+                jQuery('html, body').stop().animate({ 
+                    scrollTop: offsetTop
+                }, 300);
+                e.preventDefault();
+              });
+
+              // Bind to scroll
+              jQuery(window).scroll(function(){
+                 // Get container scroll position
+                 var fromTop = jQuery(this).scrollTop()+topMenuHeight;
+
+                 // Get id of current scroll item
+                 var cur = scrollItems.map(function(){
+                   if (jQuery(this).offset().top < fromTop)
+                     return this;
+                 });
+
+                 // Get the id of the current element
+                 cur = cur[cur.length-1];
+                 var id = cur && cur.length ? cur[0].id : "";               
+                 
+                 menuItems.parent().removeClass("active");
+                 if(id){
+                      menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+                 }
+                 
+              })
+          })</script>
+   <title> Programar em Java</title>
+
+     </head>
+   <body>
 
 
-<!-- Top Navigation Menu -->
-  <div id="voltarTopo">
-  <a href="#" id="subir">Topo</a>
-</div>
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
-   <a class="w3-bar-item w3-button" href="#apijava">3- API's EM JAVA</a>
-          <a class="w3-bar-item w3-button" href="#manipulaString">Criando e Manipulando Strings</a>
-          
-          <a class="w3-bar-item w3-button"href="#concaten">Concatenação</a>
-          <a class="w3-bar-item w3-button"href="#imutabilidid">Imutabilidade </a>
-          <a class="w3-bar-item w3-button"href="#idstringpool">String Pool</a>
-          <a class="w3-bar-item w3-button" href="#metdstring">Métodos String importante</a>
-          <a class="w3-bar-item w3-button"href="#mlength">length()</a>
-
-          <a class="w3-bar-item w3-button" href="#mchartat">charAt()</a>
-          <a class="w3-bar-item w3-button" href="#indxofid">indexOf()</a>
-          <a class="w3-bar-item w3-button"href="#substringid">substring()</a>
-          <a class="w3-bar-item w3-button"href="#tolowerupcase">toLowerCase e toUpperCase()</a>
-          <a class="w3-bar-item w3-button"href="#equalsignoreid">equals() e equalsIgnoreCase()</a>
-          <a class="w3-bar-item w3-button"href="#starendid">starsWidth() e endsWith()</a>
-          <a class="w3-bar-item w3-button" href="#containsid">contains()</a>
-          <a class="w3-bar-item w3-button"href="#replaceid">replace()</a>
-
-          <a class="w3-bar-item w3-button" href="#trimid">trim()</a>
-          <a class="w3-bar-item w3-button" href="#metdencadeament">Encadeamento de Método</a>
-          <a class="w3-bar-item w3-button"href="#stringbuilder">Usando a Classe StringBuilder</a>
-          <a class="w3-bar-item w3-button"href="#idmutabencad">Mutabilidade e Encadeamento</a>
-          <a class="w3-bar-item w3-button"href="#criarstringbuild">Criar um StringBuilder</a>
-          <a class="w3-bar-item w3-button"href="#stringbuildimp">Métodos StringBuilder Importantes</a>
-          <a class="w3-bar-item w3-button" href="#appendid">append()</a>
-          <a class="w3-bar-item w3-button"href="#insertid">Insert()</a>
-
-          <a class="w3-bar-item w3-button" href="#deletchartatid">delete() e deleteCharAt()</a>
-          <a class="w3-bar-item w3-button" href="#reverseid">reverse()</a>
-          <a class="w3-bar-item w3-button"href="#igualdade">Entendendo Igualdade</a>
-          <a class="w3-bar-item w3-button"href="#arrayjava">Entendendo Arrays em Java</a>
-          <a class="w3-bar-item w3-button"href="#arrayprimitivo">Criando um Array de Primitivos</a>
-          <a class="w3-bar-item w3-button"href="#idvarderefer">Criar um array com variáveis de referência</a>
-          <a class="w3-bar-item w3-button" href="#usearray">Usando um array</a>
-          <a class="w3-bar-item w3-button"href="#sortordenar">Sort (Ordenar)</a>
-
-          <a class="w3-bar-item w3-button" href="#searching">Searching (pesquisar)</a>
-          <a class="w3-bar-item w3-button" href="#varargs">Varargs</a>
-          <a class="w3-bar-item w3-button"href="#multidimension">Criando Array mulidimensional</a>
-          <a class="w3-bar-item w3-button"href="#arraymulti">Usando um Array multidimensional</a>
-          <a class="w3-bar-item w3-button"href="#arraylist">Entendendo um Arraylist</a>
-          <a class="w3-bar-item w3-button"href="#arraylistcriate">Criando um ArrayList</a>
-          <a class="w3-bar-item w3-button" href="#arraylistuse">Usando um ArrayList</a>
-          <a class="w3-bar-item w3-button"href="#addlist">add()</a>
-
-          <a class="w3-bar-item w3-button" href="#idremove">remove()</a>
-          <a class="w3-bar-item w3-button" href="#idset">set()</a>
-          <a class="w3-bar-item w3-button"href="#isemptysize">isEmpty() e size()</a>
-          <a class="w3-bar-item w3-button"href="#idclear">clear()</a>
-          <a class="w3-bar-item w3-button"href="#idcontains">contains()</a>
-          <a class="w3-bar-item w3-button"href="#idequals">equals()</a>
-          <a class="w3-bar-item w3-button" href="#classwraperid">Classes Wrapper</a>
-          <a class="w3-bar-item w3-button"href="#idautoboxing">AutoBoxing</a>
-
-          <a class="w3-bar-item w3-button" href="#idconveslistarray">Conversão entre array e List</a>
-          <a class="w3-bar-item w3-button" href="#idsorting">Sorting</a>
-          <a class="w3-bar-item w3-button"href="#datahorario">Trabalhando com Datas e Horários</a>
-          <a class="w3-bar-item w3-button"href="#idcriardata">Criar Datas e Horários</a>
-          <a class="w3-bar-item w3-button"href="#manipulardatasid">Manipular Datas e Horários</a>
-          <a class="w3-bar-item w3-button"href="#idperiods">Trabalhando com períodos</a>
-          <a class="w3-bar-item w3-button" href="#idformdathour">Formatar Data e Horários</a>
-          <a class="w3-bar-item w3-button"href="#idhourdatenalise">Analisando Datas e Horários</a>
-       
-          <a class="w3-bar-item w3-button"href="#resumo">Resumão</a>
-  
-  <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
-    <div id="demo" class="w3-hide">
- <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
-     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
-
-<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
-<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
-<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
-
-<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
-<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
-<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
-<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
-<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
-
-<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
-<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
-<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
-<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
-<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
-<a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
-<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
-<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
-<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
-<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
-
-<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
-<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
-<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
-<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
-
-<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
-    </div>
+  <!-- Top Navigation Menu -->
+    <div id="voltarTopo">
+    <a href="#" id="subir">Topo</a>
   </div>
-</nav>
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+    <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+    <li class="active">
+    <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+     </li><li>
+     <a class="w3-bar-item w3-button" href="#apijava">3- API's EM JAVA</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#manipulaString">Criando e Manipulando Strings</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#concaten">Concatenação</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#imutabilidid">Imutabilidade </a>
+           </li><li>
+            <a class="w3-bar-item w3-button"href="#idstringpool">String Pool</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#metdstring">Métodos Strings importantes</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#mlength">length()</a>
+  </li><li>
+            <a class="w3-bar-item w3-button" href="#mchartat">charAt()</a>
+           </li><li>
+            <a class="w3-bar-item w3-button" href="#indxofid">indexOf()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#substringid">substring()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#tolowerupcase">toLowerCase e toUpperCase()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#equalsignoreid">equals() e equalsIgnoreCase()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#starendid">starsWidth() e endsWith()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#containsid">contains()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#replaceid">replace()</a>
+  </li><li>
+            <a class="w3-bar-item w3-button" href="#trimid">trim()</a>
+           </li><li>
+            <a class="w3-bar-item w3-button" href="#metdencadeament">Encadeamento de Método</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#stringbuilder">Usando a Classe StringBuilder</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idmutabencad">Mutabilidade e Encadeamento</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#criarstringbuild">Criar um StringBuilder</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#stringbuildimp">Métodos StringBuilder Importantes</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#appendid">append()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#insertid">Insert()</a>
+  </li><li>
+            <a class="w3-bar-item w3-button" href="#deletchartatid">delete() e deleteCharAt()</a>
+           </li><li>
+            <a class="w3-bar-item w3-button" href="#reverseid">reverse()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#igualdade">Entendendo Igualdade</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#arrayjava">Entendendo Arrays em Java</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#arrayprimitivo">Criando um Array de Primitivos</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idvarderefer">Criar um array com variáveis de referência</a></li><li>
+            <a class="w3-bar-item w3-button" href="#usearray">Usando um array</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#sortordenar">Sort (Ordenar)</a>
+  </li><li>
+            <a class="w3-bar-item w3-button" href="#searching">Searching (pesquisar)</a>
+           </li><li>
+            <a class="w3-bar-item w3-button" href="#varargs">Varargs</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#multidimension">Criando Array mulidimensional</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#arraymulti">Usando um Array multidimensional</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#arraylist">Entendendo um Arraylist</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#arraylistcriate">Criando um ArrayList</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#arraylistuse">Usando um ArrayList</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#addlist">add()</a>
+  </li><li>
+            <a class="w3-bar-item w3-button" href="#idremove">remove()</a>
+           </li><li>
+            <a class="w3-bar-item w3-button" href="#idset">set()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#isemptysize">isEmpty() e size()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idclear">clear()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idcontains">contains()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idequals">equals()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#classwraperid">Classes Wrapper</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idautoboxing">AutoBoxing</a>
+  </li><li>
+            <a class="w3-bar-item w3-button" href="#idconveslistarray">Conversão entre array e List</a>
+           </li><li>
+            <a class="w3-bar-item w3-button" href="#idsorting">Sorting</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#datahorario">Trabalhando com Datas e Horários</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idcriardata">Criar Datas e Horários</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"href="#manipulardatasid">Manipular Datas e Horários</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idperiods">Trabalhando com períodos</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#idformdathour">Formatar Data e Horários</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"href="#idhourdatenalise">Analisando Datas e Horários</a>
+         </li><li>
+            <a class="w3-bar-item w3-button"href="#resumo">Resumão</a>
+    </li><li>
+    <div>
+      <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
+      <div id="demo" class="w3-hide">
+   <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+       <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
 
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+  <a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+  <a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+  <a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
 
-<div class="w3-main" style="margin-left:250px;">
+  <a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+  <a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+  <a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+  <a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+  <a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
 
-<div id="myTop" class=" w3-top w3-large">
-  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-</p>
-</div>
-<header class="w3-container w3-theme" style="padding:64px 32px">
-  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
-</header>
-<section id="apijava">
-  <h1>3 - API'S EM JAVA</h1>
- <p><b>O Objetivo é trabalhar com classes usando operadores e construções de decisão, arrays, classes selecionadas da API e tipos de dados Java.</b></p>
-<ul>
-	<li>Testes de igualdades entre Strings e outros objetos usando = = e equals()</li>
-	<li>Declarar, instanciar, inicializar e usar um array dimensional e multidimensional</li>
-	<li>Criar e manipular Strings	</li>
-	<li>Manipular dados usando a classe StringBuilder	</li>
-   <li>Criar e usar arrays, dimensional e multidimensional</li>
-	<li>Declarar e usar um ArrayList de um tipo dado	</li>
-	<li>Desenvolver códigos que use classes wrapper tal como Boolean, Double, e Integer.	</li>
-  <li>Criar e manipular dados de calendários usando classes do Java. </li>
-	
-</ul>
+  <a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+  <a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+  <a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+  <a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+  <a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+  <a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+  <a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+  <a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+  <a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+  <a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
 
-<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
-</section>
+  <a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+  <a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+  <a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+  <a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
 
-<section id="manipulaString">
-<h1>Criando e Manipulando Strings</h1>
-<p>Uma <b>classe String</b> é uma classe fundamental. Você não pode escrever um <b>método main()</b> sem usar uma classe String. Uma String é basicamente uma sequência de caracteres;</p><br>
-<pre class="brush:java">String estado= "Bahia";</pre>
-<p>E este é um exemplo de um tipo de referência que são criados usando a plavra chave <b>new</b>:</p><br>
-<pre class="brush:java">String estado = new String("Bahia");</pre>
-<p>Ambos dão uma variável referência do tipo <b>estado</b> para o objeto <b>String "Bahia"</b>. Mas são sutilmente diferentes, algo que irá esclarecer durante os estudos.</p>
-</section>
-<section id="concaten">
-<h2>Concatenação</h2>
-<p>Colocar uma <b>String</b> antes de outra <b>String</b> e combiná-los juntos é chamado de <b>concatenação de strings</b>.</p>
-<ol>
-<li> Se ambos operandos são númericos, + significa adição</li>
-<li> Se o operando é uma String, + significa concatenação</li>
-<li> A expressão é avaliada de esquerda para direita.</li>
-</ol>
-<p>Exemplos:</p>
-<pre class="brush:java">
-System.out.println(1 + 2); // 3 
-System.out.println("a" + "b"; // ab
-System.out.println("a" + "b" + 3); // ab3
-System.out.println(1 + 2 + "c"); // 3c
-</pre>
+  <a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+      </div>
+    </div>
+  </nav>
 
-<p>O primeiro exemplo usa a primeira regra. Ambos operando são números então é usado a adição normal.</p><br>
-<p>O segundo exemplo é concatenção de string simples, descrito na segunda regra. As aspas no código não saem impressa no console, elas são somente usadas no código indicando que são strings. A segunda regra nos diz para concatenar desde que um dos operandos seja uma String.</p><br>
-<p>O terceiro exemplo combina ambos, a segunda e a terceira regra.</p><br>
-<p>O quarto exemplo inicia com a terceira regra, somando 1 + 2. Ambos operando são numéricos, a primeira regra diz que a resposta é 3. Então temos 3 + "c", no qual usamos a segunda regra obtendo "3c".</p><br>
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
 
-<p>Um exemplo interessante:</p>
-<pre class="brush:java">
-int oito = 8;
-String nove = "9";
-System.out.println(1 + 2 + oito + nove);
-</pre>
-<p>Considerando que <b>1 + 2</b> a primeira regra nos diz que é <b>3</b>. A próxima nós temos <b>3 + oito</b>. Desde que <b>oito</b> é do tipo <b>int</b> ainda usamos a primeira regra, obtendo <b>11</b>. Agora temos <b>11 + nove</b>. Desde que <b>nove</b> é do tipo <b>String</b> o conjunto da segunda regra nos diz que a resposta é <b>"119"</b>.</p><br>
-<p>Existe mais alguns exemplos de concatenação:</p>
-<pre class="brush:java">
-String s = "1"; // s atualmente possui "1"
-s += "2"; // s atualmente possui" 12"
-s += 3 ; // s atualmente possui "123"
-System.out.println(s); // 123
-</pre>
-<p>Preste atenção nas regras : use adição númerica se dois números são envolvidos e use concatenação de outra forma avaliando da esquerda pra direita.</p>
-<br>
-</section>
-<section id="imutabilidid">
-<h2>Imutabilidade</h2>
-<p>Uma vez um objeto <b>String</b> é criado, este não é permitdo mudar. Você não pode alterar nenhum dos caracteres inserido nele.</p>
-<pre class="brush:java">
-class Mutavel {
-private String s;
-public void setS(String newS){ s = newS; } // Setter faz dele mutável
-public String getS() { return s; }
-}
-final class Imutavel {
-private String s = "name";
-public String getS() { return s; }
-}
-</pre>
-<p><b>Imutável</b> só tem um <b>getter</b>. Não há como alterar o valor de <b>s</b> depois de definido.</P>
-<p><b>Mutável </b>tem um <b>setter</b> também. Isso permite que a referência <b>s</b> mude para apontar à uma <b>String</b> diferente posteriormente.. Note que mesmo que a classe <b>String</b> seja imutável, ela ainda pode ser usada em uma classe mutável. Você pode até mesmo tornar a variável de instância <b>final</b> para que o compilador lembre se você acidentalmente mudar <b>s</b>.</p>
-</section>
-<section id="idstringpool">
-<h2>String Pool</h2>
-<p>O <b>string pool</b>, também conhecido como <b>pool interno</b>, é uma localização no <b>Java Virtual Machine( JVM)</b> que coleta todos estes strings.</p>
-<p>O <b>string pool</b> contém valores literais que aparece em seu programa. Por exemplo <b>estado</b> é um literal e portanto vai dentro do <b>string pool</b>. No caso de <b>myObejct.toString()</b> é uma string mas não um literal, então não vai dentro do string pool.</p>
-<p><b>Strings</b> não estão no conjunto de strings(string pool), são coletadas como qualquer outro objeto.</p>
+  <div class="w3-main" style="margin-left:250px;">
 
-<pre class="brush:java">
-String estado = "Bahia";
-String estado = new String("Bahia");
-</pre>
+  <div id="myTop" class=" w3-top w3-large">
+    <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  </p>
+  </div>
+  <header class="w3-container w3-theme" style="padding:64px 32px">
+    <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+  </header>
+  <section id="apijava">
+    <h1>API'S EM JAVA</h1>
+   <p><b>O Objetivo é trabalhar com classes usando operadores e construções de decisão, arrays, classes selecionadas da API e tipos de dados Java.</b></p>
+  <ul>
+  	<li>Testes de igualdades entre Strings e outros objetos usando = = e equals()</li>
+  	<li>Declarar, instanciar, inicializar e usar um array dimensional e multidimensional</li>
+  	<li>Criar e manipular Strings	</li>
+  	<li>Manipular dados usando a classe StringBuilder	</li>
+     <li>Criar e usar arrays, dimensional e multidimensional</li>
+  	<li>Declarar e usar um ArrayList de um tipo dado	</li>
+  	<li>Desenvolver códigos que use classes wrapper tal como Boolean, Double, e Integer.	</li>
+    <li>Criar e manipular dados de calendários usando classes do Java. </li>
+  	
+  </ul>
 
-<p>O primeiro diz para usar o <b>string pool</b> normalmente. E o segundo prefere criar um novo objeto , mesmo sendo o menos eficiente.</p>
-</section>
-<section id="metdstring">
-<h2>Métodos String importante</h2>
-<p>A classe <b>String</b> tem dezenas de métodos. Você precisa conhecer alguns. Para todos estes métodos você precisa lembrar que <b>String</b> é uma sequência de caracteres e <b>Java </b> conta a partir de 0 quando é indexado. Vamos ver o exemplo da palavra <b>triunfo</b> indexada.</p><br>
+  <p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+  </section>
 
-<p>indexando para uma string:</p>
-<table align=center border=2 width=20%>
-<tr><td>t</td><td>r</td><td>i</td><td>u</td><td>n</td><td>f</td><td>o</td></tr>
-<tr><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
-</table>
-<br>
-<p>Vamos conhecer como usar alguns métodos.</p>
-</section>
-<section id="mlength">
-<h3>length()</h3>
-<p>O método <b>length()</b> retorna o número de caracteres no <b>String</b>. A assinatura do método é a seguinte:</p>
-<br>
-<pre class="brush:java">int length()</pre>
-<br>
-<p>o código abaixo mostra como usar o length():</p>
-<pre class="brush:java">
-String string = "triunfo";
-System.out.println(string.length()); // 7
-</pre>
-<p> A saída é 7 porque a contagem a partir de zero só acontece quando queremos o conteúdo <b>indexado</b> dentro da lista. Quando determinar o tamanho/comprimento total ou <b>length</b>, Java faz a contagem normal novamente, que seria a partir de 1 resultando no caso, 7.</p>
-</section>
-<section id="mchartat">
-<h3>charAt()</h3>
-<p>O método <b>charAt()</b> permite consultar a <b>String</b> para descobrir qual caractere está em um determinado <b>index(indice)</b>. A assinatura do método é a seguinte:</p>
+  <section id="manipulaString">
+  <h1>Criando e Manipulando Strings</h1>
+  <p>Uma <b>classe String</b> é uma classe fundamental. Você não pode escrever um <b>método main()</b> sem usar uma classe String. Uma String é basicamente uma sequência de caracteres;</p><br>
+  <pre class="brush:java">String estado= "Bahia";</pre>
+  <p>E este é um exemplo de um tipo de referência que são criados usando a plavra chave <b>new</b>:</p><br>
+  <pre class="brush:java">String estado = new String("Bahia");</pre>
+  <p>Ambos dão uma variável referência do tipo <b>estado</b> para o objeto <b>String "Bahia"</b>. Mas são sutilmente diferentes, algo que irá esclarecer durante os estudos.</p>
+  </section>
+  <section id="concaten">
+  <h2>Concatenação</h2>
+  <p>Colocar uma <b>String</b> antes de outra <b>String</b> e combiná-los juntos é chamado de <b>concatenação de strings</b>.</p>
+  <ol>
+  <li> Se ambos operandos são númericos, + significa adição</li>
+  <li> Se o operando é uma String, + significa concatenação</li>
+  <li> A expressão é avaliada de esquerda para direita.</li>
+  </ol>
+  <p>Exemplos:</p>
+  <pre class="brush:java">
+  System.out.println(1 + 2); // 3 
+  System.out.println("a" + "b"; // ab
+  System.out.println("a" + "b" + 3); // ab3
+  System.out.println(1 + 2 + "c"); // 3c
+  </pre>
 
-<pre class="brush:java">char charAt(int index)</pre>
+  <p>O primeiro exemplo usa a primeira regra. Ambos operando são números então é usado a adição normal.</p><br>
+  <p>O segundo exemplo é concatenção de string simples, descrito na segunda regra. As aspas no código não saem impressa no console, elas são somente usadas no código indicando que são strings. A segunda regra nos diz para concatenar desde que um dos operandos seja uma String.</p><br>
+  <p>O terceiro exemplo combina ambos, a segunda e a terceira regra.</p><br>
+  <p>O quarto exemplo inicia com a terceira regra, somando 1 + 2. Ambos operando são numéricos, a primeira regra diz que a resposta é 3. Então temos 3 + "c", no qual usamos a segunda regra obtendo "3c".</p><br>
 
-<pre class="brush:java">
-String string ="triunfo";
-Syste.out.println(string.chrAt(0)); // t
-Syste.out.println(string.chrAt(1)); // r
-Syste.out.println(string.chrAt(2)); // i 
-</pre>
-</section>
-<section id="indxofid">
-<h3>indexOf()</h3>
-<p>O método <b>indexOf()</b> examina os caracteres na <b>string</b> e localiza o primeiro <b>index</b> que corresponde ao valor desejado.
-<b>indexOf</b> pode trabalhar com um caractere individual ou uma string inteira como entrada. Também pode começar a partir de uma posição solicitada. </p>
-<p>As assinaturas do método são as seguintes:</p>.
-<pre class="brush:java">
-int indexOf(char ch)
-int indexOf(char ch, index fromIndex)
-int indexOf(string str)
-int indexOf(String str, index fromIndex)
-</pre>
-<p>os códigos a seguir mostram como usar indexOf():</p>
-<pre class="brush:java">
-String string = "triunfo";
-Syste.out.println(string.indexOf('t')); // 0
-Syste.out.println(string.indexOf("ri")); // 1
-Syste.out.println(string.indexOf('u', 3)); // 3
-Syste.out.println(string.indexOf("nf",5); // -1
-</pre>
-<p>Uma vez que o <b>index</b> inicia com <b>0</b>, o primeiro caracter <b>'t'</b> está na posição correspondida.</p>
- <p>A segunda declaração procura por um <b>String</b> mais específico e assim é correspondido mais adiante. </p>
- <p>A terceira declaração diz a Java que não deve procurar nos caracteres até chegar ao <b>index 4</b>.</p> 
- <p>A declaração final não encontra qualquer coisa porque este inicia depois que o acesso para a <b>String</b> ocorreu. Quer dizer que pra chegar a <b>"nf"</b> que está atualmente na posição 4 ele vai ter que retroceder uma posição.</p>
-</section>
-<section id="substringid">
-<h3>substring()</h3>
-<p>O método <b>substring()</b> também procura por caracteres em uma <b>String</b>. Este retorna partes da <b>String</b>.</p>
-<pre class="brush:java">
-int substring(int beginIndex)
-int substring(int beginIndex, int endIndex)
-</pre>
-<p>O seguinte código mastra como usar substring():</p>
-<pre class="brush:java">
-String string ="triunfo";
-System.out.println(substring(3)); // unfo
-System.out.println(substring(string.indexOf('u'))); //unfo
-System.out.println(substring(3,4)); // u
-System.out.println(substring(3,7)); // unfo
-</pre>
-<p>O primeiro exemplo diz para pegar os caracteres iniciando com <b>index</b> 3 até o final, obtendo <b>"unfo"</b>.</p>
-<p> O segundo exemplo faz a mesma coisa chamando o <b>indexOf()</b>. O terceiro exemplo  é uma maneira de dizer que  queremos uma <b>String</b> com um <b>caracter</b>. O exemplo final diz para pegar os caracteres do <b>index 3 até o 7</b>.</p>
-<p>Outros exemplos menos óbvio:</p>
-<pre class="brush:java">
-System.out.println(string.substring(3,3)); // string vazio
-System.out.println(string.substring(3,2)); // throws exception
-System.out.println(string.substring(3,8)); // throws exception
-</pre>
-<p>No primeiro exemplo o <b>string</b> é vazio devido a requisição do caracter de inicar e finalizar com  o mesmo <b>index  3</b>. Não existe nenhum caracter entre eles.No segundo exemplo Java sabe perfeitamente bem que nunca chegará ao <b>índex 2</b> se começar com o <b>index 3</b>. O terceiro exemplo diz continuar até o oitavo caractere na oitava posição indexada que não existe, então ele lança uma exceção.</p>
-</section>
-<section id="tolowerupcase">
-<h3>toLowerCase e toUpperCase()</h3>
-<p>Este método torna fácil converter seus dados. Os métodos de assinaturas são as seguintes:</p>
-<pre class="brush:java">
-String toLowerCase(String str)
-String toUpperCase(String str)
-</pre>
-<p>Como usar estes métodos?</p>
-<pre class="brush:java">
-String string triunfo="triunfo";
-System.out.println(string.toUpperCase()) // TRIUNFO
-System.out.println("ABC123" toLowerCase()) // abc123
-</pre>
-<p>O método <b>toUpperCase</b> converte letras minúsculas em maiúsculas na string retornada. Enquanto <b>toLowercase</b> faz o contrário, converte Letras maiúsculas em minúsculas na string retornada.</p>
-</section>
-<section id="equalsignoreid">
-<h3>equals() e equalsIgnoreCase()</h3>
-<p>O método <b>equals()</b> checa se dois objetos <b>String</b> contém o mesmo caracter na mesma ordem. O método <b>ignoreCase()</b> checa se dois objetos <b>String</b> contém o mesmo caracter com a exceção que ele irá converter os caracteres se for necessário.</p>
-<p>A assinatura dos métodos são os seguintes:</p>
-<pre class="brush:java">
-System.out.println("abc".equals("ABC")); //false
-System.out.println("ABC".equals("ABC")); //true
-System.out.println("abc".equalsIgnoreCase("ABC")); //true 
-</pre>
-</section>
-<section id="starendid">
-<h3>starsWidth() e endsWith()</h3>
-<p>Estes métodos examina se os valores fornecido corresponde a parte da <b>String</b>.</p>
-<p>A assinatura dos métodos são os seguintes:</p>
-<pre class="brush:java">
-boolean startsWith(String prefix)
-boolean endsWith(String suffix)
-</pre>
-<p>Usando os métdos:</p>
-<pre class="brush:java">
-System.out.println("abc".starsWidth("a")); //true
-System.out.println("abc".starsWidth("A")); //false
-System.out.println("abc".endsWidth("c")); //true
-System.out.println("abc".endsWidth("a")); //false
-</pre>
-</section>
-<section id="containsid">
-<h3>contains()</h3>
-<p>Este método procura por <b>String</b> correspondente em qualquer lugar na <b>String</b>;</p>
-<p>A assinatura dos métodos são os seguintes:</p>
-<br>
-<pre class="brush:java">boolean contains(String str)</pre>
-<br>
-<p>Os códigos a seguir mostram como usar esses métodos:</p>
-<pre class="brush:java">
-System.out.println("abc".contains("b")); // true
-System.out.println("abc".contains("B")); // false
-</pre>
-</section>
-<section id="replaceid">
-<h3>replace()</h3>
-<p> Este método faz uma simples pesquisa e substitui na <b>string</b>.</p>
-<p>A assinatura do método é a seguinte:</p>
-<pre class="brush:java">
- String replace(char oldChar, char newChar)
- String replace(CharSequence oldChar, CharSequence newChar)
-</pre>
- <p>A seguir mostramos como usar o método:</p>
-<pre class="brush:java">
-System.out.println("abcabc".replace('a', 'A')); // AbcAbc
-System.out.println("abcabc".replace("a", "A")); // AbcAbc
-</pre>
-<p>O primeiro exemplo estamos passando um parâmetro <b>char</b>. O segundo exemplo passamos um parâmetro <b>String</b>.</p>
-</section>
-<section id="trimid">
-<h3>trim()</h3>
-<p>O método <b>trim()</b> remove espaços em branco do início e fim da <b>String</b>.
-<p>A assinatura do método é seguinte:</p>
-<pre class="brush:java">public String trim()</pre>
-
-<p>O código abaixo mostra como usar:</p>
-<pre class="brush:java">
-System.out.println("abc".trim()); // abc
-System.out.println("\t a b c\n".trim()); // a b c
-</pre>
-<p>O primeiro exemplo imprime de forma original pois não tem espaço em branco no inicio e no fim dos caracteres. O segundo exemplo se livra da guia principal, dos espaços subseqüentes, e a nova linha à direita deixa os espaços que estão no meio da <b>string</b>.</p>
-</section>
-<section id="metdencadeament">
-<h3>Encadeamento de Método</h3>
-<p>É comum chamar múltiplos métodos na mesma <b>String</b>, como está aqui:</p>
-<pre class="brush:java">
-String start = "TriUnfo   ";
-String  trimmed = start.trim();    //"TriUnfo";
-String lowercase =trimmed.toLowerCase(); //"triunfo"
-String result = lowrcase.replace('t' , 'T'); // "Triunfo"
-System.out.println(result);
-</pre>
-<p>Este é somente uma série de métodos <b>String</b>. Cada momento um é chamado, o valor retornado é colocado em uma nova variável. Existem quatro valores <b>String</b> ao longo do caminho, e <b>"Triunfo"</b> é a saída.</p>
-</section>
-<section id="stringbuilder">
-<h1>Usando a Classe StringBuilder</h1>
-<p>Um pequeno programa pode criar uma quantidade de objetos <b>String</b> muito rapidamente. Por exemplo, quantos você acha que esse pedaço de código cria?</p>
-<pre class="brush:java">
-10- String alpha ="";
-11- for(char charatual = 'a'; charatual<='z'; charatual++)
-12- alpha += charatual;
-13- System.out.println(alpha);
-</pre>
-<p>A <b>String</b> vazia na linha 10 é instanciada, e a linha 12 acrescenta um <b>"a"</b>. Contudo, porque o objeto <b>String</b> é imutável, um novo objeto <b>String</b> é atribuído à <b>alpha</b> e o objeto se torna eleito pelo <b>coletor de lixo(garbage collection)</b>. A próxima vez que passar pelo loop, para <b>alpha</b> é atribuído um novo objeto <b>String "ab"</b>, e o <b>"a"</b> se torna o objeto eleito pelo <b>coletor de lixo</b>. A próxima iteração atribui <b>alpha</b> à <b>"abc"</b> e o objeto <b>"ab"</b> se torna elegível para <b>coleta de lixo</b>, e assim por diante. </p>
-<p>Esta sequência de eventos continua, e depois de 26 iterações através do <b>loop</b>, um total de 27 objetos são instanciados, a maioria são eleitos imediatamente pelo <b>coletor de lixo</b>. Isto o torna muito ineficiente . A solução do <b>Java</b> é a <b>Classe StringBuilder</b> que cria uma <b>String</b> sem armazenar todos aqueles valores <b>String</b> interino. Ao contrário da <b>classe String, StringBuilder</b> não é imutável.</p>
-<pre class="brush:java">
-15: StringBuilder alpha = new StringBuilder();
-16: for(char charatual = 'a'; charatual <= 'z'; charatual++) 
-17: alpha.append(charatual);
-18: System.out.println(alpha);
-</pre>
-<p>Na linha 15, um novo objeto </b>String</b> é instanciado. Ao chamar o método <b>append()</b> na linha 17 adciona um caracter ao objeto </b>Stringbuilder</b> a cada momento através do loop, e acrescenta o valor de <b>charatual</b> no fim de <b>alpha</b>. Este código reusa o mesmo <b>StringBuilder</b> sem criar um <b>String</b> interino em cado momento.</p>
-</section>
-<section id="idmutabencad">
-<h3>Mutabilidade e Encadeamento</h3>
-<p>Quando encadeamos o chamado do método <b>String</b>, o resultado foi um novo <b>String</b> como resposta. Encadear objetos <b>StringBuilder</b> não funciona desta maneira, ao invés, o <b>StringBuilder</b> muda o seu próprio estado e retorna a referência para si mesmo.</p>
-<pre class="brush:java">
-4: StringBuilder sb = new StringBuilder("start");
-5: sb.append("+middle"); // sb = "start+middle" 
-6: StringBuilder simesmo = sb.append("+end"); // "start+middle+end"
-</pre>
-<p>Linha 5 adciona o texto no fim de <b>sb</b> e retorna uma referência para <b>sb</b>. Este momento a referência está armazenada em <b>simesmo</b>- siginifica que <b>sb</b> e <b>simesmo</b> aponta exatamente para o mesmo objeto e vai imprimir a saída do mesmo valor.</p>
-</section>
-<section id="criarstringbuild">
-<h3>Criar um StringBuilder</h3>
-<p>Existem três maneiras para construir um StringBuilder:</p>
-<pre class="brush:java">
-StringBuilder sb1 = new StringBuilder();
-StringBuilder sb2 = new StringBuilder("animal");
-StringBuilder sb3 = new StringBuilder(10);
-</pre>
-<p>O primeiro diz para criar um <b>StringBuilder</b> contendo uma sequência de caracteres e atribui <b>sb1</b> apontando para ele. O segundo diz para criar um <b>StringBuilder</b> contendo um valor específico e atribui o valor <b>sb2</b> apontando para ele.</p>
-<p>E o exemplo final o <b>StringBuilder</b> reserva um certo número de espaço para caracteres.</p>
-</section>
-<section id="stringbuildimp">
-<h3>Métodos StringBuilder Importantes</h3>
-<p>Estes são alguns dos métodos da Classe StringBuilder:</p><br>
-<p><b>CharAt(), indexOf(), length(), e substring().</b></p><br>
-<p>Estes quatros métodos trabalham exatamente da mesma forma que a <b>classe String</b>. Veja saída deste exemplo:</p>
-<pre class="brush:java">
-StringBuilder sb = new StringBuilder("natureza");
-String sub = sb.substring(sb.indexOf("n"), s.indexOf("za"));
-int len =sb.length();
-char ch=sb.CharAt(2);
-System.out.println(sub +" " + len + " " + ch);
-</pre>
-<p>A resposta correta é <b>nature 8 t</b>. O método <b>indexOf()</b> chama o retorna 0 e 5, respectivamente. A <b>substring</b> retorna a <b>String</b> iniciando com <b>index 0</b> e finalizando certo antes do <b>index 5</b>.</p>
-<p>E <b>length</b> retorna 8 porque este é o número de caracteres no <b>StringBuilder</b> em vez de um <b>index</b>. Finalmente, <b>charAt()</b> retorna o caracter no <b>index 2</b>. Aqui nós iniciamos com 0 porque estamos nos referindo aos <b>indexes(indices)</b>.</p>
-</section>
-<section id="appendid">
-<h3>append()</h3>
-<p>O método <b>append</b> é frequetemente usado no método <b>StringBuilder</b>. Ele adciona o parâmetro ao <b>StringBuilder</b> e retorna a referência ao atual <b>StringBuilder</b></p>.
-<p>Uma das assinaturas é a seguinte:</p>
-<pre class="brush:java">
-StringBuilder sb = new StringBuilder().append(1).append('c');
-sb.append("-").append(true);
-System.out.println(sb); // 1c-true
-</pre>
-</section>
-<section id="insertid">
-<h3>Insert()</h3>
-<p>O método <b>insert()</b> adciona caracteres ao <b>StringBuilder</b> no <b>index</b> requisitado e retorna a referência ao StringBuilder atual.</p>
-<pre class="brush:java">StringBuilder insert(int offset, stringstr)</pre>
-
-<p><i>o offset é o index onde nós queremos inserir o parâmetro requisitado.</i></p>
-<pre class="brush:java">
-3: StringBuilder sb = new StringBuilder("animais"); 
-4: sb.insert(7, "-"); // sb = animais-
-5: sb.insert(0, "-"); // sb = -animais-
-6: sb.insert(4, "-"); // sb = -ani-mais
-7: System.out.println(sb);
-</pre>
-<p>Linha 4 diz para inserir um traço no <b>index 7</b>. Linha 5 diz para inserir o traço no <b>index 0</b> e finalmente diz para inserir o traço certo antes do <b>index 4</b>.</p>
-</section>
-<section id="deletchartatid">
-<h3>delete() e deleteCharAt()</h3>
-<p>O método <b>delete()</b> é o oposto do método inserir. Ele remove caracteres da sequência e retorna uma referência ao <b>StringBuilder</b> atual. O método <b>deleteCharAt()</b> é conveniente quando você quer deletar somente 1 caracter.</p>
-<p>Os métodos são assinados assim:</p>
-<pre class="brush:java">
-StringBuilder delete(int start , int end)
-StringBuilder deleteCharAt(int index)
-</pre>
-<p>A seguir o código mostra como usar estes métodos:</p>
-<pre class="brush:java">
-StringBuilder sb = new StringBuilder("abcdef");
-sb.delete(1, 3); // sb = adef
-sb.deleteCharAt(5); // throws an exception
-</pre>
-<p>Primeiro, deletamos os caracteres iniciando com <b>index 1</b> e finalizando-o direto antes do <b>index 3</b>. Isto nos dar <b><i>adef</i></b>. No próximo Java lança uma exceção  porque o valor que permanceu foram de quatro caracteres e a consulta saiu do limite.</p>
-</section>
-<section id="reverseid">
-<h3>reverse()</h3>
-<p>Este método reverte os caracteres na sequência e retorna uma referência para o <b>StringBuilder</b> atual.</p>
-<pre class="brush:java">
-StringBuilder reverse()
-StringBuilder sb = new SringBuilder("ABC");
-sb.reverse();
-System.out.println(sb);
-</pre>
-<p><b>Saída esperada é :</b></p>
-<pre>CBA</pre>
-<h3>toString()</h3>
-<p>O método que converte um <b>StringBuilder</b> em uma <b>String</b></p>
-<pre class="brush:java">String s = sb.ToString;</pre>
-<p>Frequentemente o <b>StrinBuilder</b> é usado para melhorar performance, mas no fim do resultado ele necessita ser uma <b>String</b>.</p>
-</section>
-<section id="igualdade">
-<h1>Entendendo Igualdade</h1>
-<p>Você aprendeu como usar == para comparar números e  referência de objetos que refere ao mesmo objeto.</p>
-<pre class="brush:java">
-StringBuilder one = new StringBuilder();
-StringBuilder two = new StringBuilder();
-StringBuilder three = one.append("a");
-System.out.println(one == two); // false
-System.out.println(one == three); // true
-</pre>
-<p>Neste exemplo não estamos lidando com números primitivos. O <b>one e o two</b> são ambos <b>StringBuilders</b> completamente separados, nos dando dois objetos.</p> <p> Portanto, a primeira declaração nos dar um resultado <b>false</b>. O <b>three</b> usa o método em cadeia, isto significa que <b>one e three </b>ambos aponta para o mesmo objeto e a segunda declaração nos dar o resultado <b>true</b>.</p>
-<p>Vamos pensar agora em um cenário mais complexo, igualdade de String, entender a maneira que JVM reusa String literais:</p>
-
-<pre class="brush:java">
-String x = "Hello World";
-String z = "Hello World";
-System.out.println(x==y); // true 
-</pre>
-<p>Lembre-se que Strings são imutáveis e literais são agrupados. O JVM cria somente um literal na memória. <b> x</b> e <b>y</b> apontam para a mesma localização na memória, portanto a declaração sairá <b>true</b>. Considere este código:</p>
-<pre class="brush:java">
-String x = "Hello World";
-String z = " Hello World".trim();
-System.out.println(x == z); // false
-</pre>
-<p> Neste exemplo, nós não temos dois dos mesmos String literal. Embora <b>x</b> e <b>z</b> aconteçam para avaliar o mesma String, um é computado em tempo de execução. Desde que ele não é o mesmo em tempo de compilação, um novo objeto String é criado. </p>
-<p>Você pode até forçar o problema criando uma nova String:</p>
-<pre class="brush:java">
-String x = new String("Hello World");
-String y = "Hello World";
-System.out.println(x == y); // false
-</pre>
-<p>Desde que você tenha especificamente requisitado um diferente objeto String, o valor agrupado não é compartilhado.</p>
-
-<br>
-<p><b>A lição é para nunca usar == para comparar objetos String.</b></p>
-<br>
-<p>Você pode dizer que deseja igualdade lógica em vez de igualdade de objeto para objetos String:</p>
-<pre class="brush:java">
-String x = "Hello World";
-String z = " Hello World".trim();
-System.out.println(x.equals(z)); // true
-</pre>
-<p>Isso funciona porque os autores da classe String implementaram um método padrão chamado <b>equals</b> para verificar os valores dentro da <b>String</b>, em vez da própria <b>String</b>. Se uma classe não tiver um método de igualdade, o Java determina se as referências apontam para o mesmo objeto, o que é exatamente o que faz. Caso você esteja se perguntando, os autores do <b>StringBuilder</b> não implementaram <b>equals()</b>. Se você chamar <b>equals()</b> em duas instâncias <b>StringBuilder</b>, ele verificará a igualdade de referência.</p>
-<p> Teste seu entendimento de igualdade com objetos:</p>
-<pre class="brush:java">
-public class Tiger {
-String name;
-public static void main(String[ ] args) {
-Tiger t1 = new Tiger();
-Tiger t2 = new Tiger();
-Tiger t3 = t1;
-System.out.println(t1 == t1); // true
-System.out.println(t1 == t2); // false
-System.out.println(t1.equals(t2)); // false
- }
+  <p>Um exemplo interessante:</p>
+  <pre class="brush:java">
+  int oito = 8;
+  String nove = "9";
+  System.out.println(1 + 2 + oito + nove);
+  </pre>
+  <p>Considerando que <b>1 + 2</b> a primeira regra nos diz que é <b>3</b>. A próxima nós temos <b>3 + oito</b>. Desde que <b>oito</b> é do tipo <b>int</b> ainda usamos a primeira regra, obtendo <b>11</b>. Agora temos <b>11 + nove</b>. Desde que <b>nove</b> é do tipo <b>String</b> o conjunto da segunda regra nos diz que a resposta é <b>"119"</b>.</p><br>
+  <p>Existe mais alguns exemplos de concatenação:</p>
+  <pre class="brush:java">
+  String s = "1"; // s atualmente possui "1"
+  s += "2"; // s atualmente possui" 12"
+  s += 3 ; // s atualmente possui "123"
+  System.out.println(s); // 123
+  </pre>
+  <p>Preste atenção nas regras : use adição númerica se dois números são envolvidos e use concatenação de outra forma avaliando da esquerda pra direita.</p>
+  <br>
+  </section>
+  <section id="imutabilidid">
+  <h2>Imutabilidade</h2>
+  <p>Uma vez um objeto <b>String</b> é criado, este não é permitdo mudar. Você não pode alterar nenhum dos caracteres inserido nele.</p>
+  <pre class="brush:java">
+  class Mutavel {
+  private String s;
+  public void setS(String newS){ s = newS; } // Setter faz dele mutável
+  public String getS() { return s; }
   }
-</pre>
-<p>
-As duas primeiras declarações verificam a igualdade de referência do objeto. A linha 7 imprime <b>true</b> porque estamos comparando referências ao mesmo objeto. A linha 8 imprime <b>false</b> porque as referências a dois objetos são diferentes. A linha 9 imprime <b>false</b>, já que <b>Tiger</b> não implementa <b>equals()</b>.</p>
+  final class Imutavel {
+  private String s = "name";
+  public String getS() { return s; }
+  }
+  </pre>
+  <p><b>Imutável</b> só tem um <b>getter</b>. Não há como alterar o valor de <b>s</b> depois de definido.</P>
+  <p><b>Mutável </b>tem um <b>setter</b> também. Isso permite que a referência <b>s</b> mude para apontar à uma <b>String</b> diferente posteriormente.. Note que mesmo que a classe <b>String</b> seja imutável, ela ainda pode ser usada em uma classe mutável. Você pode até mesmo tornar a variável de instância <b>final</b> para que o compilador lembre se você acidentalmente mudar <b>s</b>.</p>
+  </section>
+  <section id="idstringpool">
+  <h2>String Pool</h2>
+  <p>O <b>string pool</b>, também conhecido como <b>pool interno</b>, é uma localização no <b>Java Virtual Machine( JVM)</b> que coleta todos estes strings.</p>
+  <p>O <b>string pool</b> contém valores literais que aparece em seu programa. Por exemplo <b>estado</b> é um literal e portanto vai dentro do <b>string pool</b>. No caso de <b>myObejct.toString()</b> é uma string mas não um literal, então não vai dentro do string pool.</p>
+  <p><b>Strings</b> não estão no conjunto de strings(string pool), são coletadas como qualquer outro objeto.</p>
 
-</section>
-<section id="arrayjava">
-<h1>Entendendo Arrays em Java</h1>
+  <pre class="brush:java">
+  String estado = "Bahia";
+  String estado = new String("Bahia");
+  </pre>
 
-<p>Referindo ao <b>String</b> e <b>StringBuilders</b> eles são uma sequência de caracteres que são implementadas usando um <b>array</b> de caracteres. Um <b>array</b> é uma área da memória no <b>heap(aloca bloco de memoria)</b> com espaço para um designado número de elementos.</p>
+  <p>O primeiro diz para usar o <b>string pool</b> normalmente. E o segundo prefere criar um novo objeto , mesmo sendo o menos eficiente.</p>
+  </section>
+  <section id="metdstring">
+  <h2>Métodos String importante</h2>
+  <p>A classe <b>String</b> tem dezenas de métodos. Você precisa conhecer alguns. Para todos estes métodos você precisa lembrar que <b>String</b> é uma sequência de caracteres e <b>Java </b> conta a partir de 0 quando é indexado. Vamos ver o exemplo da palavra <b>triunfo</b> indexada.</p><br>
 
-<p>Um array pode ser qualquer outro tipo de Java:</p>
-<pre class="brush:java">
-Array  tipo String:
-String [] letras;
-Array tipo char:
-char [] caracteres;
-</pre>
-<p>Você pode ler mentalmente os colchetes([ ]) como <b>"array"</b>.</p>
+  <p>indexando para uma string:</p>
+  <table align=center border=2 width=20%>
+  <tr><td>t</td><td>r</td><td>i</td><td>u</td><td>n</td><td>f</td><td>o</td></tr>
+  <tr><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+  </table>
+  <br>
+  <p>Vamos conhecer como usar alguns métodos.</p>
+  </section>
+  <section id="mlength">
+  <h3>length()</h3>
+  <p>O método <b>length()</b> retorna o número de caracteres no <b>String</b>. A assinatura do método é a seguinte:</p>
+  <br>
+  <pre class="brush:java">int length()</pre>
+  <br>
+  <p>o código abaixo mostra como usar o length():</p>
+  <pre class="brush:java">
+  String string = "triunfo";
+  System.out.println(string.length()); // 7
+  </pre>
+  <p> A saída é 7 porque a contagem a partir de zero só acontece quando queremos o conteúdo <b>indexado</b> dentro da lista. Quando determinar o tamanho/comprimento total ou <b>length</b>, Java faz a contagem normal novamente, que seria a partir de 1 resultando no caso, 7.</p>
+  </section>
+  <section id="mchartat">
+  <h3>charAt()</h3>
+  <p>O método <b>charAt()</b> permite consultar a <b>String</b> para descobrir qual caractere está em um determinado <b>index(indice)</b>. A assinatura do método é a seguinte:</p>
 
-</section>
-<section id="arrayprimitivo">
+  <pre class="brush:java">char charAt(int index)</pre>
 
-<h2>Criando um Array de Primitivos</h2>
+  <pre class="brush:java">
+  String string ="triunfo";
+  Syste.out.println(string.chrAt(0)); // t
+  Syste.out.println(string.chrAt(1)); // r
+  Syste.out.println(string.chrAt(2)); // i 
+  </pre>
+  </section>
+  <section id="indxofid">
+  <h3>indexOf()</h3>
+  <p>O método <b>indexOf()</b> examina os caracteres na <b>string</b> e localiza o primeiro <b>index</b> que corresponde ao valor desejado.
+  <b>indexOf</b> pode trabalhar com um caractere individual ou uma string inteira como entrada. Também pode começar a partir de uma posição solicitada. </p>
+  <p>As assinaturas do método são as seguintes:</p>.
+  <pre class="brush:java">
+  int indexOf(char ch)
+  int indexOf(char ch, index fromIndex)
+  int indexOf(string str)
+  int indexOf(String str, index fromIndex)
+  </pre>
+  <p>os códigos a seguir mostram como usar indexOf():</p>
+  <pre class="brush:java">
+  String string = "triunfo";
+  Syste.out.println(string.indexOf('t')); // 0
+  Syste.out.println(string.indexOf("ri")); // 1
+  Syste.out.println(string.indexOf('u', 3)); // 3
+  Syste.out.println(string.indexOf("nf",5); // -1
+  </pre>
+  <p>Uma vez que o <b>index</b> inicia com <b>0</b>, o primeiro caracter <b>'t'</b> está na posição correspondida.</p>
+   <p>A segunda declaração procura por um <b>String</b> mais específico e assim é correspondido mais adiante. </p>
+   <p>A terceira declaração diz a Java que não deve procurar nos caracteres até chegar ao <b>index 4</b>.</p> 
+   <p>A declaração final não encontra qualquer coisa porque este inicia depois que o acesso para a <b>String</b> ocorreu. Quer dizer que pra chegar a <b>"nf"</b> que está atualmente na posição 4 ele vai ter que retroceder uma posição.</p>
+  </section>
+  <section id="substringid">
+  <h3>substring()</h3>
+  <p>O método <b>substring()</b> também procura por caracteres em uma <b>String</b>. Este retorna partes da <b>String</b>.</p>
+  <pre class="brush:java">
+  int substring(int beginIndex)
+  int substring(int beginIndex, int endIndex)
+  </pre>
+  <p>O seguinte código mastra como usar substring():</p>
+  <pre class="brush:java">
+  String string ="triunfo";
+  System.out.println(substring(3)); // unfo
+  System.out.println(substring(string.indexOf('u'))); //unfo
+  System.out.println(substring(3,4)); // u
+  System.out.println(substring(3,7)); // unfo
+  </pre>
+  <p>O primeiro exemplo diz para pegar os caracteres iniciando com <b>index</b> 3 até o final, obtendo <b>"unfo"</b>.</p>
+  <p> O segundo exemplo faz a mesma coisa chamando o <b>indexOf()</b>. O terceiro exemplo  é uma maneira de dizer que  queremos uma <b>String</b> com um <b>caracter</b>. O exemplo final diz para pegar os caracteres do <b>index 3 até o 7</b>.</p>
+  <p>Outros exemplos menos óbvio:</p>
+  <pre class="brush:java">
+  System.out.println(string.substring(3,3)); // string vazio
+  System.out.println(string.substring(3,2)); // throws exception
+  System.out.println(string.substring(3,8)); // throws exception
+  </pre>
+  <p>No primeiro exemplo o <b>string</b> é vazio devido a requisição do caracter de inicar e finalizar com  o mesmo <b>index  3</b>. Não existe nenhum caracter entre eles.No segundo exemplo Java sabe perfeitamente bem que nunca chegará ao <b>índex 2</b> se começar com o <b>index 3</b>. O terceiro exemplo diz continuar até o oitavo caractere na oitava posição indexada que não existe, então ele lança uma exceção.</p>
+  </section>
+  <section id="tolowerupcase">
+  <h3>toLowerCase e toUpperCase()</h3>
+  <p>Este método torna fácil converter seus dados. Os métodos de assinaturas são as seguintes:</p>
+  <pre class="brush:java">
+  String toLowerCase(String str)
+  String toUpperCase(String str)
+  </pre>
+  <p>Como usar estes métodos?</p>
+  <pre class="brush:java">
+  String string triunfo="triunfo";
+  System.out.println(string.toUpperCase()) // TRIUNFO
+  System.out.println("ABC123" toLowerCase()) // abc123
+  </pre>
+  <p>O método <b>toUpperCase</b> converte letras minúsculas em maiúsculas na string retornada. Enquanto <b>toLowercase</b> faz o contrário, converte Letras maiúsculas em minúsculas na string retornada.</p>
+  </section>
+  <section id="equalsignoreid">
+  <h3>equals() e equalsIgnoreCase()</h3>
+  <p>O método <b>equals()</b> checa se dois objetos <b>String</b> contém o mesmo caracter na mesma ordem. O método <b>ignoreCase()</b> checa se dois objetos <b>String</b> contém o mesmo caracter com a exceção que ele irá converter os caracteres se for necessário.</p>
+  <p>A assinatura dos métodos são os seguintes:</p>
+  <pre class="brush:java">
+  System.out.println("abc".equals("ABC")); //false
+  System.out.println("ABC".equals("ABC")); //true
+  System.out.println("abc".equalsIgnoreCase("ABC")); //true 
+  </pre>
+  </section>
+  <section id="starendid">
+  <h3>starsWidth() e endsWith()</h3>
+  <p>Estes métodos examina se os valores fornecido corresponde a parte da <b>String</b>.</p>
+  <p>A assinatura dos métodos são os seguintes:</p>
+  <pre class="brush:java">
+  boolean startsWith(String prefix)
+  boolean endsWith(String suffix)
+  </pre>
+  <p>Usando os métdos:</p>
+  <pre class="brush:java">
+  System.out.println("abc".starsWidth("a")); //true
+  System.out.println("abc".starsWidth("A")); //false
+  System.out.println("abc".endsWidth("c")); //true
+  System.out.println("abc".endsWidth("a")); //false
+  </pre>
+  </section>
+  <section id="containsid">
+  <h3>contains()</h3>
+  <p>Este método procura por <b>String</b> correspondente em qualquer lugar na <b>String</b>;</p>
+  <p>A assinatura dos métodos são os seguintes:</p>
+  <br>
+  <pre class="brush:java">boolean contains(String str)</pre>
+  <br>
+  <p>Os códigos a seguir mostram como usar esses métodos:</p>
+  <pre class="brush:java">
+  System.out.println("abc".contains("b")); // true
+  System.out.println("abc".contains("B")); // false
+  </pre>
+  </section>
+  <section id="replaceid">
+  <h3>replace()</h3>
+  <p> Este método faz uma simples pesquisa e substitui na <b>string</b>.</p>
+  <p>A assinatura do método é a seguinte:</p>
+  <pre class="brush:java">
+   String replace(char oldChar, char newChar)
+   String replace(CharSequence oldChar, CharSequence newChar)
+  </pre>
+   <p>A seguir mostramos como usar o método:</p>
+  <pre class="brush:java">
+  System.out.println("abcabc".replace('a', 'A')); // AbcAbc
+  System.out.println("abcabc".replace("a", "A")); // AbcAbc
+  </pre>
+  <p>O primeiro exemplo estamos passando um parâmetro <b>char</b>. O segundo exemplo passamos um parâmetro <b>String</b>.</p>
+  </section>
+  <section id="trimid">
+  <h3>trim()</h3>
+  <p>O método <b>trim()</b> remove espaços em branco do início e fim da <b>String</b>.
+  <p>A assinatura do método é seguinte:</p>
+  <pre class="brush:java">public String trim()</pre>
 
-<p>A maneira mais comum para criar um array:</p>
+  <p>O código abaixo mostra como usar:</p>
+  <pre class="brush:java">
+  System.out.println("abc".trim()); // abc
+  System.out.println("\t a b c\n".trim()); // a b c
+  </pre>
+  <p>O primeiro exemplo imprime de forma original pois não tem espaço em branco no inicio e no fim dos caracteres. O segundo exemplo se livra da guia principal, dos espaços subseqüentes, e a nova linha à direita deixa os espaços que estão no meio da <b>string</b>.</p>
+  </section>
+  <section id="metdencadeament">
+  <h3>Encadeamento de Método</h3>
+  <p>É comum chamar múltiplos métodos na mesma <b>String</b>, como está aqui:</p>
+  <pre class="brush:java">
+  String start = "TriUnfo   ";
+  String  trimmed = start.trim();    //"TriUnfo";
+  String lowercase =trimmed.toLowerCase(); //"triunfo"
+  String result = lowrcase.replace('t' , 'T'); // "Triunfo"
+  System.out.println(result);
+  </pre>
+  <p>Este é somente uma série de métodos <b>String</b>. Cada momento um é chamado, o valor retornado é colocado em uma nova variável. Existem quatro valores <b>String</b> ao longo do caminho, e <b>"Triunfo"</b> é a saída.</p>
+  </section>
+  <section id="stringbuilder">
+  <h1>Usando a Classe StringBuilder</h1>
+  <p>Um pequeno programa pode criar uma quantidade de objetos <b>String</b> muito rapidamente. Por exemplo, quantos você acha que esse pedaço de código cria?</p>
+  <pre class="brush:java">
+  10- String alpha ="";
+  11- for(char charatual = 'a'; charatual<='z'; charatual++)
+  12- alpha += charatual;
+  13- System.out.println(alpha);
+  </pre>
+  <p>A <b>String</b> vazia na linha 10 é instanciada, e a linha 12 acrescenta um <b>"a"</b>. Contudo, porque o objeto <b>String</b> é imutável, um novo objeto <b>String</b> é atribuído à <b>alpha</b> e o objeto se torna eleito pelo <b>coletor de lixo(garbage collection)</b>. A próxima vez que passar pelo loop, para <b>alpha</b> é atribuído um novo objeto <b>String "ab"</b>, e o <b>"a"</b> se torna o objeto eleito pelo <b>coletor de lixo</b>. A próxima iteração atribui <b>alpha</b> à <b>"abc"</b> e o objeto <b>"ab"</b> se torna elegível para <b>coleta de lixo</b>, e assim por diante. </p>
+  <p>Esta sequência de eventos continua, e depois de 26 iterações através do <b>loop</b>, um total de 27 objetos são instanciados, a maioria são eleitos imediatamente pelo <b>coletor de lixo</b>. Isto o torna muito ineficiente . A solução do <b>Java</b> é a <b>Classe StringBuilder</b> que cria uma <b>String</b> sem armazenar todos aqueles valores <b>String</b> interino. Ao contrário da <b>classe String, StringBuilder</b> não é imutável.</p>
+  <pre class="brush:java">
+  15: StringBuilder alpha = new StringBuilder();
+  16: for(char charatual = 'a'; charatual <= 'z'; charatual++) 
+  17: alpha.append(charatual);
+  18: System.out.println(alpha);
+  </pre>
+  <p>Na linha 15, um novo objeto </b>String</b> é instanciado. Ao chamar o método <b>append()</b> na linha 17 adciona um caracter ao objeto </b>Stringbuilder</b> a cada momento através do loop, e acrescenta o valor de <b>charatual</b> no fim de <b>alpha</b>. Este código reusa o mesmo <b>StringBuilder</b> sem criar um <b>String</b> interino em cado momento.</p>
+  </section>
+  <section id="idmutabencad">
+  <h3>Mutabilidade e Encadeamento</h3>
+  <p>Quando encadeamos o chamado do método <b>String</b>, o resultado foi um novo <b>String</b> como resposta. Encadear objetos <b>StringBuilder</b> não funciona desta maneira, ao invés, o <b>StringBuilder</b> muda o seu próprio estado e retorna a referência para si mesmo.</p>
+  <pre class="brush:java">
+  4: StringBuilder sb = new StringBuilder("start");
+  5: sb.append("+middle"); // sb = "start+middle" 
+  6: StringBuilder simesmo = sb.append("+end"); // "start+middle+end"
+  </pre>
+  <p>Linha 5 adciona o texto no fim de <b>sb</b> e retorna uma referência para <b>sb</b>. Este momento a referência está armazenada em <b>simesmo</b>- siginifica que <b>sb</b> e <b>simesmo</b> aponta exatamente para o mesmo objeto e vai imprimir a saída do mesmo valor.</p>
+  </section>
+  <section id="criarstringbuild">
+  <h3>Criar um StringBuilder</h3>
+  <p>Existem três maneiras para construir um StringBuilder:</p>
+  <pre class="brush:java">
+  StringBuilder sb1 = new StringBuilder();
+  StringBuilder sb2 = new StringBuilder("animal");
+  StringBuilder sb3 = new StringBuilder(10);
+  </pre>
+  <p>O primeiro diz para criar um <b>StringBuilder</b> contendo uma sequência de caracteres e atribui <b>sb1</b> apontando para ele. O segundo diz para criar um <b>StringBuilder</b> contendo um valor específico e atribui o valor <b>sb2</b> apontando para ele.</p>
+  <p>E o exemplo final o <b>StringBuilder</b> reserva um certo número de espaço para caracteres.</p>
+  </section>
+  <section id="stringbuildimp">
+  <h3>Métodos StringBuilder Importantes</h3>
+  <p>Estes são alguns dos métodos da Classe StringBuilder:</p><br>
+  <p><b>CharAt(), indexOf(), length(), e substring().</b></p><br>
+  <p>Estes quatros métodos trabalham exatamente da mesma forma que a <b>classe String</b>. Veja saída deste exemplo:</p>
+  <pre class="brush:java">
+  StringBuilder sb = new StringBuilder("natureza");
+  String sub = sb.substring(sb.indexOf("n"), s.indexOf("za"));
+  int len =sb.length();
+  char ch=sb.CharAt(2);
+  System.out.println(sub +" " + len + " " + ch);
+  </pre>
+  <p>A resposta correta é <b>nature 8 t</b>. O método <b>indexOf()</b> chama o retorna 0 e 5, respectivamente. A <b>substring</b> retorna a <b>String</b> iniciando com <b>index 0</b> e finalizando certo antes do <b>index 5</b>.</p>
+  <p>E <b>length</b> retorna 8 porque este é o número de caracteres no <b>StringBuilder</b> em vez de um <b>index</b>. Finalmente, <b>charAt()</b> retorna o caracter no <b>index 2</b>. Aqui nós iniciamos com 0 porque estamos nos referindo aos <b>indexes(indices)</b>.</p>
+  </section>
+  <section id="appendid">
+  <h3>append()</h3>
+  <p>O método <b>append</b> é frequetemente usado no método <b>StringBuilder</b>. Ele adciona o parâmetro ao <b>StringBuilder</b> e retorna a referência ao atual <b>StringBuilder</b></p>.
+  <p>Uma das assinaturas é a seguinte:</p>
+  <pre class="brush:java">
+  StringBuilder sb = new StringBuilder().append(1).append('c');
+  sb.append("-").append(true);
+  System.out.println(sb); // 1c-true
+  </pre>
+  </section>
+  <section id="insertid">
+  <h3>Insert()</h3>
+  <p>O método <b>insert()</b> adciona caracteres ao <b>StringBuilder</b> no <b>index</b> requisitado e retorna a referência ao StringBuilder atual.</p>
+  <pre class="brush:java">StringBuilder insert(int offset, stringstr)</pre>
 
-<pre class="brush:java">int[] numero1 = new int[3];</pre>
-<br>
-<p>Isto especifica o tipo de array que é (int) e o tamanho que é (3).</p>
+  <p><i>o offset é o index onde nós queremos inserir o parâmetro requisitado.</i></p>
+  <pre class="brush:java">
+  3: StringBuilder sb = new StringBuilder("animais"); 
+  4: sb.insert(7, "-"); // sb = animais-
+  5: sb.insert(0, "-"); // sb = -animais-
+  6: sb.insert(4, "-"); // sb = -ani-mais
+  7: System.out.println(sb);
+  </pre>
+  <p>Linha 4 diz para inserir um traço no <b>index 7</b>. Linha 5 diz para inserir o traço no <b>index 0</b> e finalmente diz para inserir o traço certo antes do <b>index 4</b>.</p>
+  </section>
+  <section id="deletchartatid">
+  <h3>delete() e deleteCharAt()</h3>
+  <p>O método <b>delete()</b> é o oposto do método inserir. Ele remove caracteres da sequência e retorna uma referência ao <b>StringBuilder</b> atual. O método <b>deleteCharAt()</b> é conveniente quando você quer deletar somente 1 caracter.</p>
+  <p>Os métodos são assinados assim:</p>
+  <pre class="brush:java">
+  StringBuilder delete(int start , int end)
+  StringBuilder deleteCharAt(int index)
+  </pre>
+  <p>A seguir o código mostra como usar estes métodos:</p>
+  <pre class="brush:java">
+  StringBuilder sb = new StringBuilder("abcdef");
+  sb.delete(1, 3); // sb = adef
+  sb.deleteCharAt(5); // throws an exception
+  </pre>
+  <p>Primeiro, deletamos os caracteres iniciando com <b>index 1</b> e finalizando-o direto antes do <b>index 3</b>. Isto nos dar <b><i>adef</i></b>. No próximo Java lança uma exceção  porque o valor que permanceu foram de quatro caracteres e a consulta saiu do limite.</p>
+  </section>
+  <section id="reverseid">
+  <h3>reverse()</h3>
+  <p>Este método reverte os caracteres na sequência e retorna uma referência para o <b>StringBuilder</b> atual.</p>
+  <pre class="brush:java">
+  StringBuilder reverse()
+  StringBuilder sb = new SringBuilder("ABC");
+  sb.reverse();
+  System.out.println(sb);
+  </pre>
+  <p><b>Saída esperada é :</b></p>
+  <pre>CBA</pre>
+  <h3>toString()</h3>
+  <p>O método que converte um <b>StringBuilder</b> em uma <b>String</b></p>
+  <pre class="brush:java">String s = sb.ToString;</pre>
+  <p>Frequentemente o <b>StrinBuilder</b> é usado para melhorar performance, mas no fim do resultado ele necessita ser uma <b>String</b>.</p>
+  </section>
+  <section id="igualdade">
+  <h1>Entendendo Igualdade</h1>
+  <p>Você aprendeu como usar == para comparar números e  referência de objetos que refere ao mesmo objeto.</p>
+  <pre class="brush:java">
+  StringBuilder one = new StringBuilder();
+  StringBuilder two = new StringBuilder();
+  StringBuilder three = one.append("a");
+  System.out.println(one == two); // false
+  System.out.println(one == three); // true
+  </pre>
+  <p>Neste exemplo não estamos lidando com números primitivos. O <b>one e o two</b> são ambos <b>StringBuilders</b> completamente separados, nos dando dois objetos.</p> <p> Portanto, a primeira declaração nos dar um resultado <b>false</b>. O <b>three</b> usa o método em cadeia, isto significa que <b>one e three </b>ambos aponta para o mesmo objeto e a segunda declaração nos dar o resultado <b>true</b>.</p>
+  <p>Vamos pensar agora em um cenário mais complexo, igualdade de String, entender a maneira que JVM reusa String literais:</p>
+
+  <pre class="brush:java">
+  String x = "Hello World";
+  String z = "Hello World";
+  System.out.println(x==y); // true 
+  </pre>
+  <p>Lembre-se que Strings são imutáveis e literais são agrupados. O JVM cria somente um literal na memória. <b> x</b> e <b>y</b> apontam para a mesma localização na memória, portanto a declaração sairá <b>true</b>. Considere este código:</p>
+  <pre class="brush:java">
+  String x = "Hello World";
+  String z = " Hello World".trim();
+  System.out.println(x == z); // false
+  </pre>
+  <p> Neste exemplo, nós não temos dois dos mesmos String literal. Embora <b>x</b> e <b>z</b> aconteçam para avaliar o mesma String, um é computado em tempo de execução. Desde que ele não é o mesmo em tempo de compilação, um novo objeto String é criado. </p>
+  <p>Você pode até forçar o problema criando uma nova String:</p>
+  <pre class="brush:java">
+  String x = new String("Hello World");
+  String y = "Hello World";
+  System.out.println(x == y); // false
+  </pre>
+  <p>Desde que você tenha especificamente requisitado um diferente objeto String, o valor agrupado não é compartilhado.</p>
+
+  <br>
+  <p><b>A lição é para nunca usar == para comparar objetos String.</b></p>
+  <br>
+  <p>Você pode dizer que deseja igualdade lógica em vez de igualdade de objeto para objetos String:</p>
+  <pre class="brush:java">
+  String x = "Hello World";
+  String z = " Hello World".trim();
+  System.out.println(x.equals(z)); // true
+  </pre>
+  <p>Isso funciona porque os autores da classe String implementaram um método padrão chamado <b>equals</b> para verificar os valores dentro da <b>String</b>, em vez da própria <b>String</b>. Se uma classe não tiver um método de igualdade, o Java determina se as referências apontam para o mesmo objeto, o que é exatamente o que faz. Caso você esteja se perguntando, os autores do <b>StringBuilder</b> não implementaram <b>equals()</b>. Se você chamar <b>equals()</b> em duas instâncias <b>StringBuilder</b>, ele verificará a igualdade de referência.</p>
+  <p> Teste seu entendimento de igualdade com objetos:</p>
+  <pre class="brush:java">
+  public class Tiger {
+  String name;
+  public static void main(String[ ] args) {
+  Tiger t1 = new Tiger();
+  Tiger t2 = new Tiger();
+  Tiger t3 = t1;
+  System.out.println(t1 == t1); // true
+  System.out.println(t1 == t2); // false
+  System.out.println(t1.equals(t2)); // false
+   }
+    }
+  </pre>
+  <p>
+  As duas primeiras declarações verificam a igualdade de referência do objeto. A linha 7 imprime <b>true</b> porque estamos comparando referências ao mesmo objeto. A linha 8 imprime <b>false</b> porque as referências a dois objetos são diferentes. A linha 9 imprime <b>false</b>, já que <b>Tiger</b> não implementa <b>equals()</b>.</p>
+
+  </section>
+  <section id="arrayjava">
+  <h1>Entendendo Arrays em Java</h1>
+
+  <p>Referindo ao <b>String</b> e <b>StringBuilders</b> eles são uma sequência de caracteres que são implementadas usando um <b>array</b> de caracteres. Um <b>array</b> é uma área da memória no <b>heap(aloca bloco de memoria)</b> com espaço para um designado número de elementos.</p>
+
+  <p>Um array pode ser qualquer outro tipo de Java:</p>
+  <pre class="brush:java">
+  Array  tipo String:
+  String [] letras;
+  Array tipo char:
+  char [] caracteres;
+  </pre>
+  <p>Você pode ler mentalmente os colchetes([ ]) como <b>"array"</b>.</p>
+
+  </section>
+  <section id="arrayprimitivo">
+
+  <h2>Criando um Array de Primitivos</h2>
+
+  <p>A maneira mais comum para criar um array:</p>
+
+  <pre class="brush:java">int[] numero1 = new int[3];</pre>
+  <br>
+  <p>Isto especifica o tipo de array que é (int) e o tamanho que é (3).</p>
 
 
-<p>A estrutura básica de um array:</p>
+  <p>A estrutura básica de um array:</p>
 
-<pre class="brush:java">
- Tipo de array --> int
- [ ]--> simbolo do array(necessário)
- [3] tamanho do array
-</pre>
+  <pre class="brush:java">
+   Tipo de array --> int
+   [ ]--> simbolo do array(necessário)
+   [3] tamanho do array
+  </pre>
 
-<p>Quando usar esta forma para instanciar um <b>array</b>, coloque todos os elementos do valor padrão para este tipo. <b>O valor padrão de um int é 0</b>. Em vez disso <b>numero1</b> é uma variável de referência.</p>
+  <p>Quando usar esta forma para instanciar um <b>array</b>, coloque todos os elementos do valor padrão para este tipo. <b>O valor padrão de um int é 0</b>. Em vez disso <b>numero1</b> é uma variável de referência.</p>
 
 
-<p>um array vazio <b>[3]numero1</b></p>
+  <p>um array vazio <b>[3]numero1</b></p>
 
-<table border=2 align=center width=25%>
-	<tr>
-<td>elemento:</td> <td>0</td> <td>0 </td><td>0</td></tr>
-<tr><td>index:</td><td>0</td><td> 1</td><td> 2</td></tr> 
-</table>
-<p>Uma outra maneira pra criar um <b>array</b> é também especificar todos os elementos :</p>
-<br>
-<p><b>int[ ] numero2 = new int[ ] {42,45,88}</b></p><br>
-<p>Neste exemplo você também cria um <b>array</b> de tamanho 3. Só que com elementos dentro.</p><br>
+  <table border=2 align=center width=25%>
+  	<tr>
+  <td>elemento:</td> <td>0</td> <td>0 </td><td>0</td></tr>
+  <tr><td>index:</td><td>0</td><td> 1</td><td> 2</td></tr> 
+  </table>
+  <p>Uma outra maneira pra criar um <b>array</b> é também especificar todos os elementos :</p>
+  <br>
+  <p><b>int[ ] numero2 = new int[ ] {42,45,88}</b></p><br>
+  <p>Neste exemplo você também cria um <b>array</b> de tamanho 3. Só que com elementos dentro.</p><br>
 
- <table border=2 align=center width=25%>
- 	<tr><td>elementos do array numero2</td> <td>42</td><td> 45</td><td> 88</td></tr>
- <tr><td>index: </td>  <td> 0</td><td>  1 </td><td> 2</td></tr>
-</table><br>
+   <table border=2 align=center width=25%>
+   	<tr><td>elementos do array numero2</td> <td>42</td><td> 45</td><td> 88</td></tr>
+   <tr><td>index: </td>  <td> 0</td><td>  1 </td><td> 2</td></tr>
+  </table><br>
 
-<p><b>Java</b> reconhece esta expressão como redundante. Uma vez que você está especificando o tipo do <b>array</b> no lado esquerdo do sinal de igualdade, <b>Java</b> já conhece o tipo. Uma vez que você está especificando o valor inicial, ele já conhece o tamanho. Como um atalho <b>Java</b> deixa você escrever isso:
-<br>
-<pre class="brush:java">
-int[] numero2 = {4,45,88};
-</pre>
-<p>Esta aboradagem é chamada de <b>array anônimo</b>. É <b>anônimo</b> porque não especifica o tipo e o tamanho.</p>
-<p>Finalmente, você pode colocar o colchete([ ]) antes ou depois do nome, e adcionar espaço é opcional.</p>
-<pre class="brush:java">
-int[] numAnimais;
-int  []  numAnimais2;
-int numAnimais3[];
-int numAnimais4  [];
-</pre>
-<p>Isto siginifica que todas estas quatros declarações faz exatamente a mesma coisa.</p>
-</section>
-<section id="idvarderefer">
-<h3>Criar um array com variáveis de referência</h3>
+  <p><b>Java</b> reconhece esta expressão como redundante. Uma vez que você está especificando o tipo do <b>array</b> no lado esquerdo do sinal de igualdade, <b>Java</b> já conhece o tipo. Uma vez que você está especificando o valor inicial, ele já conhece o tamanho. Como um atalho <b>Java</b> deixa você escrever isso:
+  <br>
+  <pre class="brush:java">
+  int[] numero2 = {4,45,88};
+  </pre>
+  <p>Esta aboradagem é chamada de <b>array anônimo</b>. É <b>anônimo</b> porque não especifica o tipo e o tamanho.</p>
+  <p>Finalmente, você pode colocar o colchete([ ]) antes ou depois do nome, e adcionar espaço é opcional.</p>
+  <pre class="brush:java">
+  int[] numAnimais;
+  int  []  numAnimais2;
+  int numAnimais3[];
+  int numAnimais4  [];
+  </pre>
+  <p>Isto siginifica que todas estas quatros declarações faz exatamente a mesma coisa.</p>
+  </section>
+  <section id="idvarderefer">
+  <h3>Criar um array com variáveis de referência</h3>
 
-<p>Voce pode escolher qualquer tipo Java para ser um tipo de Array:</p>
-<pre class="brush:java">
-public class ArrayType {
-public static void main(String args[]) {
-String [] bugs = { "cricket", "beetle", "ladybug" };
-String [] alias = bugs;
-System.out.println(bugs.equals(alias)); // true
-System.out.println(bugs.toString()); // [Ljava.lang.String;@160bc7c0
-}
-}
-</pre>
-<p>Nós podemos chamar <b>equals()</b> porque um <b>array</b> é um objeto. Ele retorna <b>true</b> porque da igualdade de referência. O método equals() no array não examina os elementos do array.
-<p>A segunda declaração significa que <b>L</b> é uma array, <b>java.lang.String</b> é o tipo de referência, e <b>160bc7c0</b> é o código hash.</p>
-<p>O <b>array</b> não aloca epaço para o objeto <b>String</b>. Ao invés, ele aloca espaço para uma referência onde o objeto está realmente armazenado.</p>
-<p>Um array apontado para uma String:<p><br>
-<table border=2 width=20% align=center>
-<tr>	<td>index --></td> <td> 0</td><td> 1</td><td> 2</td></tr>
-<tr>   <td>bugs--></td><td>"cricket"</td><td>beetle"</td><td>"ladybug"</td></tr>
-</table>
-</section>
-<section id="usearray">
-<h3>Usando um array</h3>
-<p>Vamos ver como se faz para acessar um array:</p>
-<pre class="brush:java">
-4: String[] felinos = {"leao", "tigre", "onca"};
-5: System.out.println(felinos.length); // 3
-6: System.out.println(felinos[0]); // leao
-7: System.out.println(felinos[1]); // tigre
-8: System.out.println(felinos[2); // onca
-</pre>
-<p>Linha 4 declara e inicializa um <b>array</b>. Linha 5 conta-nos quantos números de elementos o <b>array</b> pode esperar. O resto do código imprime o <b>array</b>.</p>
-<p> Note que os elementos estão indexados e iniciando com 0;</p>
-<p>Uma maneira rápida de aprender:</p>
-<pre class="brush:java">
-String aves = new String[9];
-System.out.println(aves.length);
-</pre>
-<p><b>Length</b> = tamanho/comprimento do array, então, este <b>array</b> acima tem um tamanho que cabem 10 elementos <b>aves</b>.
-Mas se for contar a partir do <b>index</b> o <b>array</b> tem 9 posições porque começa a contagem iniciando de 0. </p>
-<p>É muito comum também usar loop para acessar um <b>array.</b></p>
-<p> Veja este exemplo:</p>
-<pre class="brush:java">
-import java.util.*;
-public class AcessarArray{
-public static void main(String[] args){
-int [] numbers = new int[10];
-for (int i = 0; i <= numbers.length; i++){
-numbers[i] = i + 5;
-System.out.print(numbers[i]);
-}
-}
-}
-</pre>
-<p><i>Esse loop define 5, somando a cada elemento da iteração a partir do index 0</i>.</p> 
-<p>A saída é:</p>
-<pre>
-5 6 7 8 9 10 11 12 13 14
-</pre>
-</section>
-<section id="sortordenar">
-<h3>Sort (Ordenar)</h3>
-<p>É fácil ordenar um <b>array</b>, pois <b>Java</b> fornece o método <b>sort</b>. Você pode passar quase qualquer <b>array</b> para o <b>Arrays.sort().</b>
-Classe arrays é a primeira classe fornecida por java para usá-la é necessário utilizar um <b>import</b>.</P>
-<pre class="brush:java">
-import java.util.* // importa Arrays incluindo o pacote inteiro
-import java.util.Arrays // importa somente Arrays
-</pre>
-<p>Este exemplo ordena três números:</p>
-<pre class="brush:java">
-int [] numeros = {8, 5, 7}
-Arrays.sort(numeros);
-for (int i =0; i< numeros.length; i++)
-System.out.println(numeros[i] + "");
-</pre>
-<br>
-<p><b>O resultado  é:</b></p> 
-<pre> 5 , 7 , 8</pre>
-</section>
-<section id="searching">
-<h3>Searching (pesquisar)</h3>
-<p>Java fornece uma conveniente maneira para pesquisar, mas somente se o <b>array</b> estiver ordenado.</p>
-<p>Vamos tentar a saída nesses exemplos:</p>
-<pre class="brush:java">
-3: int[] numbers = {2,4,6,8};
-4: System.out.println(Arrays.binarySearch(numbers, 2)); // 0
-5: System.out.println(Arrays.binarySearch(numbers, 4)); // 1
-6: System.out.println(Arrays.binarySearch(numbers, 1)); // -1
-7: System.out.println(Arrays.binarySearch(numbers, 3)); // -2
-8: System.out.println(Arrays.binarySearch(numbers, 9)); // -5
-</pre>
+  <p>Voce pode escolher qualquer tipo Java para ser um tipo de Array:</p>
+  <pre class="brush:java">
+  public class ArrayType {
+  public static void main(String args[]) {
+  String [] bugs = { "cricket", "beetle", "ladybug" };
+  String [] alias = bugs;
+  System.out.println(bugs.equals(alias)); // true
+  System.out.println(bugs.toString()); // [Ljava.lang.String;@160bc7c0
+  }
+  }
+  </pre>
+  <p>Nós podemos chamar <b>equals()</b> porque um <b>array</b> é um objeto. Ele retorna <b>true</b> porque da igualdade de referência. O método equals() no array não examina os elementos do array.
+  <p>A segunda declaração significa que <b>L</b> é uma array, <b>java.lang.String</b> é o tipo de referência, e <b>160bc7c0</b> é o código hash.</p>
+  <p>O <b>array</b> não aloca epaço para o objeto <b>String</b>. Ao invés, ele aloca espaço para uma referência onde o objeto está realmente armazenado.</p>
+  <p>Um array apontado para uma String:<p><br>
+  <table border=2 width=20% align=center>
+  <tr>	<td>index --></td> <td> 0</td><td> 1</td><td> 2</td></tr>
+  <tr>   <td>bugs--></td><td>"cricket"</td><td>beetle"</td><td>"ladybug"</td></tr>
+  </table>
+  </section>
+  <section id="usearray">
+  <h3>Usando um array</h3>
+  <p>Vamos ver como se faz para acessar um array:</p>
+  <pre class="brush:java">
+  4: String[] felinos = {"leao", "tigre", "onca"};
+  5: System.out.println(felinos.length); // 3
+  6: System.out.println(felinos[0]); // leao
+  7: System.out.println(felinos[1]); // tigre
+  8: System.out.println(felinos[2); // onca
+  </pre>
+  <p>Linha 4 declara e inicializa um <b>array</b>. Linha 5 conta-nos quantos números de elementos o <b>array</b> pode esperar. O resto do código imprime o <b>array</b>.</p>
+  <p> Note que os elementos estão indexados e iniciando com 0;</p>
+  <p>Uma maneira rápida de aprender:</p>
+  <pre class="brush:java">
+  String aves = new String[9];
+  System.out.println(aves.length);
+  </pre>
+  <p><b>Length</b> = tamanho/comprimento do array, então, este <b>array</b> acima tem um tamanho que cabem 10 elementos <b>aves</b>.
+  Mas se for contar a partir do <b>index</b> o <b>array</b> tem 9 posições porque começa a contagem iniciando de 0. </p>
+  <p>É muito comum também usar loop para acessar um <b>array.</b></p>
+  <p> Veja este exemplo:</p>
+  <pre class="brush:java">
+  import java.util.*;
+  public class AcessarArray{
+  public static void main(String[] args){
+  int [] numbers = new int[10];
+  for (int i = 0; i <= numbers.length; i++){
+  numbers[i] = i + 5;
+  System.out.print(numbers[i]);
+  }
+  }
+  }
+  </pre>
+  <p><i>Esse loop define 5, somando a cada elemento da iteração a partir do index 0</i>.</p> 
+  <p>A saída é:</p>
+  <pre>
+  5 6 7 8 9 10 11 12 13 14
+  </pre>
+  </section>
+  <section id="sortordenar">
+  <h3>Sort (Ordenar)</h3>
+  <p>É fácil ordenar um <b>array</b>, pois <b>Java</b> fornece o método <b>sort</b>. Você pode passar quase qualquer <b>array</b> para o <b>Arrays.sort().</b>
+  Classe arrays é a primeira classe fornecida por java para usá-la é necessário utilizar um <b>import</b>.</P>
+  <pre class="brush:java">
+  import java.util.* // importa Arrays incluindo o pacote inteiro
+  import java.util.Arrays // importa somente Arrays
+  </pre>
+  <p>Este exemplo ordena três números:</p>
+  <pre class="brush:java">
+  int [] numeros = {8, 5, 7}
+  Arrays.sort(numeros);
+  for (int i =0; i< numeros.length; i++)
+  System.out.println(numeros[i] + "");
+  </pre>
+  <br>
+  <p><b>O resultado  é:</b></p> 
+  <pre> 5 , 7 , 8</pre>
+  </section>
+  <section id="searching">
+  <h3>Searching (pesquisar)</h3>
+  <p>Java fornece uma conveniente maneira para pesquisar, mas somente se o <b>array</b> estiver ordenado.</p>
+  <p>Vamos tentar a saída nesses exemplos:</p>
+  <pre class="brush:java">
+  3: int[] numbers = {2,4,6,8};
+  4: System.out.println(Arrays.binarySearch(numbers, 2)); // 0
+  5: System.out.println(Arrays.binarySearch(numbers, 4)); // 1
+  6: System.out.println(Arrays.binarySearch(numbers, 1)); // -1
+  7: System.out.println(Arrays.binarySearch(numbers, 3)); // -2
+  8: System.out.println(Arrays.binarySearch(numbers, 9)); // -5
+  </pre>
 
-<p>A linha 3 de fato é um <b>array</b> ordenado. Se não estivesse não poderia aplicar as regras da pesquisa. Linha 4 pesquisa por <b>index 2</b>. A resposta é    <b>index 0</b>. Linha 5 pesquisa por <b>index de 4</b>, que é <b>1</b>.</p>
-<p>Linha 5 pesquisa por <b>index de 1</b>. E apesar de <b>1</b> não está na lista, a pesquisa pode determinar que ele deveria ser inserido no elemento <b>0</b> para preservar a ordem classificada. Uma vez <b>0</b> já significa alguma coisa para o <b>index do array</b>, java precisa subtrair <b>1</b> para nos dar a resposta de <b>-1</b>. Linha 7 é similar. Apesar de <b>3</b> não está na lista, ele precisaria ser inserido no elemento <b>1</b> para preservar a ordem classificada. Negamos e subtraímos <b>1</b> por consciência, obtendo <b>-1-1</b>, também conhecido como <b>-2</b>. Finalmente, linha 8 dizemos que <b>9</b> deveria ser inserido no <b>index 4</b>. Negamos novamente e subtraímos por <b>-1</b>, obtendo <b>-4-1</b>, também conhecido como <b>-5</b>.</p>
-</section>
-<section id="varargs">
-<h3>Varargs</h3>
-<p>Aqui estão três exemplos com o método <b>main()</b>:</p>
-<pre class="brush:java">
-public static void main(String[] args) 
-public static void main(String args[]) 
-public static void main(String... args) // varargs
-</pre>
-<p>O terceiro exemplo usa uma sintaxe chamada Varargs(argumentos da variável).</p>
-</section>
-<section id="multidimension">
-<h3>Criando Array mulidimensional</h3>
-<p>Vários separadores de <b>array</b> são o suficiente para declarar <b>arrays</b> com várias dimensões. Você pode localizá-los com o tipo ou nome da variável na declaração:</p>
-<pre class="brush:java">
-int[][] vars1; // 2D array
-int vars2 [][]; // 2D array
-int[] vars3[]; // 2D array
-int[] vars4 [], space [][]; // um 2D E um 3D array
-</pre>
-<p>Os dois primeiros exemplos são declarados um <b>array com 2 dimensões [2D]</b>. O terceiro exemplo são declarados um array de 2D. O último exemplo declara 2   <b>arrays</b> na mesma linha. Vemos que a <b>vars4</b> é um <b>array de 2D</b> e <b>space</b> é um de <b>3D</b>.</p>
-<p>Você pode especificar o tamanho de seu array multidimensional na declaração:</p><br>
-<pre class="brush:java">String [ ][ ] retangulo = new String[3][2];</pre>
-<p>O resultado desta declaração é um <b>array</b> retângulo com três elementos, cada um deles refere a um array de dois elementos.</p><br>
-<p><b>Um array multidimensional esparsamente preenchido:</b></p>
-<table border=2  width=25%>
-<tr><td>Index</td><td>Elemento</td><td>Elemento</td></tr>
-<tr><td>0</<td><td>0</<td><td>1</<td></tr>
-<tr><td>1</<td><td>0</<td><td>1</<td></tr>
-<tr><td>2</<td><td>0</<td><td>1</<td></tr>
-</table>
+  <p>A linha 3 de fato é um <b>array</b> ordenado. Se não estivesse não poderia aplicar as regras da pesquisa. Linha 4 pesquisa por <b>index 2</b>. A resposta é    <b>index 0</b>. Linha 5 pesquisa por <b>index de 4</b>, que é <b>1</b>.</p>
+  <p>Linha 5 pesquisa por <b>index de 1</b>. E apesar de <b>1</b> não está na lista, a pesquisa pode determinar que ele deveria ser inserido no elemento <b>0</b> para preservar a ordem classificada. Uma vez <b>0</b> já significa alguma coisa para o <b>index do array</b>, java precisa subtrair <b>1</b> para nos dar a resposta de <b>-1</b>. Linha 7 é similar. Apesar de <b>3</b> não está na lista, ele precisaria ser inserido no elemento <b>1</b> para preservar a ordem classificada. Negamos e subtraímos <b>1</b> por consciência, obtendo <b>-1-1</b>, também conhecido como <b>-2</b>. Finalmente, linha 8 dizemos que <b>9</b> deveria ser inserido no <b>index 4</b>. Negamos novamente e subtraímos por <b>-1</b>, obtendo <b>-4-1</b>, também conhecido como <b>-5</b>.</p>
+  </section>
+  <section id="varargs">
+  <h3>Varargs</h3>
+  <p>Aqui estão três exemplos com o método <b>main()</b>:</p>
+  <pre class="brush:java">
+  public static void main(String[] args) 
+  public static void main(String args[]) 
+  public static void main(String... args) // varargs
+  </pre>
+  <p>O terceiro exemplo usa uma sintaxe chamada Varargs(argumentos da variável).</p>
+  </section>
+  <section id="multidimension">
+  <h3>Criando Array mulidimensional</h3>
+  <p>Vários separadores de <b>array</b> são o suficiente para declarar <b>arrays</b> com várias dimensões. Você pode localizá-los com o tipo ou nome da variável na declaração:</p>
+  <pre class="brush:java">
+  int[][] vars1; // 2D array
+  int vars2 [][]; // 2D array
+  int[] vars3[]; // 2D array
+  int[] vars4 [], space [][]; // um 2D E um 3D array
+  </pre>
+  <p>Os dois primeiros exemplos são declarados um <b>array com 2 dimensões [2D]</b>. O terceiro exemplo são declarados um array de 2D. O último exemplo declara 2   <b>arrays</b> na mesma linha. Vemos que a <b>vars4</b> é um <b>array de 2D</b> e <b>space</b> é um de <b>3D</b>.</p>
+  <p>Você pode especificar o tamanho de seu array multidimensional na declaração:</p><br>
+  <pre class="brush:java">String [ ][ ] retangulo = new String[3][2];</pre>
+  <p>O resultado desta declaração é um <b>array</b> retângulo com três elementos, cada um deles refere a um array de dois elementos.</p><br>
+  <p><b>Um array multidimensional esparsamente preenchido:</b></p>
+  <table border=2  width=25%>
+  <tr><td>Index</td><td>Elemento</td><td>Elemento</td></tr>
+  <tr><td>0</<td><td>0</<td><td>1</<td></tr>
+  <tr><td>1</<td><td>0</<td><td>1</<td></tr>
+  <tr><td>2</<td><td>0</<td><td>1</<td></tr>
+  </table>
 
-<pre class="brush:java">
-//Alocando em um array multidimensional
-retangulo[0][0] = "Programador I"; 
-retangulo[0][1] = "JavaSE";
-retangulo[1][0] = "Programador Web"; 
-retangulo[1][1] = "JavaEE";
-retangulo[2][0] = "WebService"; 
-retangulo[2][1] = "Spring";
-</pre> 
-<table border =2  width=35%>
-<tr><td>[0]</td><td>[0] <b>[Programador I]</b></td><td>[1] <b>[JavaSE]</b></td></tr>
-<tr><td>[1]</td><td>[0] <b>[Programdor Web]</b></td><td>[1] <b>[JavaEE]</b></td></tr>
-<tr><td>[2]</td><td>[0] <b>[WebService]</b></td><td>[1] <b>[Spring]</b></td></tr>
-</table>
-<br>
-<pre class="brush:java">int [][  diferenteTamanho ={{1,4},{3},{9,8,7}};</pre>
+  <pre class="brush:java">
+  //Alocando em um array multidimensional
+  retangulo[0][0] = "Programador I"; 
+  retangulo[0][1] = "JavaSE";
+  retangulo[1][0] = "Programador Web"; 
+  retangulo[1][1] = "JavaEE";
+  retangulo[2][0] = "WebService"; 
+  retangulo[2][1] = "Spring";
+  </pre> 
+  <table border =2  width=35%>
+  <tr><td>[0]</td><td>[0] <b>[Programador I]</b></td><td>[1] <b>[JavaSE]</b></td></tr>
+  <tr><td>[1]</td><td>[0] <b>[Programdor Web]</b></td><td>[1] <b>[JavaEE]</b></td></tr>
+  <tr><td>[2]</td><td>[0] <b>[WebService]</b></td><td>[1] <b>[Spring]</b></td></tr>
+  </table>
+  <br>
+  <pre class="brush:java">int [][  diferenteTamanho ={{1,4},{3},{9,8,7}};</pre>
 
-<p>Nós ainda iniciamos com um <b>array</b> de três elementos. Contudo, estes elementos no próximo nível são todos de diferentes tamanhos. Um é de tamanho 2, o próximo de tamanho 1, e o último de tamanho 3.</p><br>
-	<p><b>Um array multidimensional assimétrico:</b></p>
-<table border=2 font-weight: bold  width=25% empty-cells: hide>
-		<tr><td>[0]</td><td>[0] <b>1</b></td><td>[1] <b>4</b></td></tr>
-		<tr><td>[1]</td><td>[0] <b>3</b></b></td></tr>
-		<tr><td>[2]</td><td>[0] <b>9</b></td><td>[1] <b>8</b></td><td>[2] <b>7</b></td></tr>
-		
-  	     	</table>
-<p><i>Visualizando o array multidimensional <b>diferenteTamanho</b></i></p><br>
-<p>Outra maneira para criar um array assimétrico é inicializar primeiro um dimensional e definir o tamanho de cada componente na declaração separada:</p>
-<pre class="brush:java">
-int [][] args = new int[4][];
-args[0] = new int[5];
-args[1] = new int[3];
-</pre>
-</section>
-<section id="arraymulti">
-<h3>Usando um Array multidimensional</h3>
-<p>A mais comum operação no array multidimensional é o loop através dele.</p>
-<br>
-<pre class="brush:java">int [] [] twoD = new int[3][2];</pre>
-<pre class="brush:java">
-for (int i = 0; i < twoD.length; i++) {
-for (int j = 0; j < twoD[i].length; j++)
-System.out.print(twoD[i][j] + " "); // print element
-System.out.println(); // tempo para uma nova linha
-}
-</pre>
+  <p>Nós ainda iniciamos com um <b>array</b> de três elementos. Contudo, estes elementos no próximo nível são todos de diferentes tamanhos. Um é de tamanho 2, o próximo de tamanho 1, e o último de tamanho 3.</p><br>
+  	<p><b>Um array multidimensional assimétrico:</b></p>
+  <table border=2 font-weight: bold  width=25% empty-cells: hide>
+  		<tr><td>[0]</td><td>[0] <b>1</b></td><td>[1] <b>4</b></td></tr>
+  		<tr><td>[1]</td><td>[0] <b>3</b></b></td></tr>
+  		<tr><td>[2]</td><td>[0] <b>9</b></td><td>[1] <b>8</b></td><td>[2] <b>7</b></td></tr>
+  		
+    	     	</table>
+  <p><i>Visualizando o array multidimensional <b>diferenteTamanho</b></i></p><br>
+  <p>Outra maneira para criar um array assimétrico é inicializar primeiro um dimensional e definir o tamanho de cada componente na declaração separada:</p>
+  <pre class="brush:java">
+  int [][] args = new int[4][];
+  args[0] = new int[5];
+  args[1] = new int[3];
+  </pre>
+  </section>
+  <section id="arraymulti">
+  <h3>Usando um Array multidimensional</h3>
+  <p>A mais comum operação no array multidimensional é o loop através dele.</p>
+  <br>
+  <pre class="brush:java">int [] [] twoD = new int[3][2];</pre>
+  <pre class="brush:java">
+  for (int i = 0; i < twoD.length; i++) {
+  for (int j = 0; j < twoD[i].length; j++)
+  System.out.print(twoD[i][j] + " "); // print element
+  System.out.println(); // tempo para uma nova linha
+  }
+  </pre>
 
-<p>Nós temos dois loops aqui. O primeiro usa <b>index i</b> e vai através do primeiro subarray para <b>twoD</b>.  O segundo usa uma variável <b>j</b> em um loop diferente que representará o loop interno. O <b>loop interno</b> procura por quantidade de elementos no <b>array segundo-nível[j]</b>. O <b>loop interno</b> imprime os elementos e concatena o espaço  para ficar legível. Quando o <b>loop interno</b> completa, o <b>loop externo[i]</b> vai para nova linha e repete o processo para o próximo elemento.</p>
-</section>
-<section id="arraylist">
-<h1>Entendendo um ArrayList</h1>
-<p>Um array tem uma falha gritante:</p>
-<p>Você tem que saber quantos elementos estarão no <b>array</b> quando você vai criá-lo e, em seguida, você está preso com essa escolha.</p>
-<p>Assim como um <b>StringBuilder</b>, o <b>ArrayList</b> pode alterar o tamanho no tempo de execução, conforme necessário. Como um <b>array</b>, um </b>ArrayList</b> é uma sequência ordenada que permite duplicatas.</b></p>
-<p>Como quando usamos o <b>Arrays.sort</b>, o <b>ArrayList</b> exige uma importação. Para usá-lo, você deve ter uma das duas declarações a seguir na sua classe:
-<pre class="brush:java">
-import java.util.* //  importa o pacote inteiro incluindo ArrayList
-import java.util.ArrayList; // importa somente ArrayList
-</pre>
-</section>
-<section id="arraylistcriate">
-<h2>Criando um ArrayList</h2>
-<p>Existe três maneiras para criar um <b>ArrayList</b></p>
-<pre class="brush:java">
-ArrayList list1 = new ArrayList();
-ArrayList list2 = new ArrayList(10);
-ArrayList list3 = new ArrayList(list2);
-</pre>
-<p>O primeiro diz para criar um </b>ArrayList</b> contendo espaço para o número padrão de elementos mas não preenche qualquer espaço ainda. O segunda diz  para criar um <b>ArrayList</b> contendo um número específico de espaços. Mas novamente não atribui nada. O final do exemplo queremos fazer uma cópia de outro <b>ArrayList</b>. Copiamos ambos o tamanho e conteúdo deste <b>ArrayList</b>. Neste exemplo </b>list2</b> está vazio então não é interessante fazer isso.
-<p>Você pode também especificar o tipo de classe que o ArrayList irá conter.</p>
-<pre class="brush:java">
-ArrayList&ltString> list4 = new ArrayList&ltString>();
-ArrayList&ltString> list4 = new ArrayList&lt>();
-</pre>
-</section>
-<section id="arraylistuse">
-  <h2>Usando um ArrayList</h2>
-<p><b>ArrayList</b> tem muitos métodos, precisamos conhecer alguns.</p>
- <section id="addlist">
- <h3>add()</h3>
- <p>O <b>método add()</b> insere um novo valor no </b>ArrayList</b>. A assinatura do  método é a seguinte:</p>
-<pre class="brush:java">
- boolean add(E element)
- void add (int index , E element)
-</pre>
-<p>Este  <b>E</b> que aparece na assinatura do método siginifica "qualquer classe que este array pode conter". Se você não especificar um tipo quando criar o <b>ArrayList</b>, <b>E</b> vai significar <b>Objeto</b>.</p> 
-<p>Vamos ver alguns casos:</p>
-<pre class="brush:java">
-ArrayList list = new ArrayList();
-list.add("alan"); //[alan]
-list.add(Boolean.True); // [alan, true]
-System.out.println(list); //[alan,true]
-</pre>
-<p><b>add()</b> armazena a <b>String</b> no <b>ArrayList</b> não mais vazio. Este então faz a mesma coisa pra o </b>boolean</b>. Está certo porque não especificamos um tipo para <b>ArrayList</b>; portanto, o tipo é </b>Objeto</b>, que inclui tudo exceto primitivos.</p>
-<p>Agora só queremos permitir <b>String</b> objetos no <b>ArrayList</b>:
-<pre class="brush:java">
-ArrayList&ltString> safer = new ArrayList&lt>();
-safer.add("sparrow");
-safer.add(Boolean.TRUE); // NÃO COMPILA
-</pre>
-<p>Agora vamos adcionar múltiplos valores para diferentes posições. Por exemplo, <b>pardal</b> está na <b>posição 1</b> enquanto <b>passopreto</b> está na <b>posição 0</b> e assim segue.</p>
-<pre class="brush:java">
-4: List&ltString> aves = new ArrayList&lt>();
-5: aves.add("bemtevi"); // [bemtevi]
-6: aves.add(1, "pardal"); // [bemtevi, pardal]
-7: aves.add(0, "passopreto"); // [passopreto, bemtevi, pardal]
-8: aves.add(1, "sabia"); // [passopreto, sabia, bemtevi, pardal]
-9: System.out.println(aves); // [passopreto, sabia, bemtevi, pardal]
-</pre>
+  <p>Nós temos dois loops aqui. O primeiro usa <b>index i</b> e vai através do primeiro subarray para <b>twoD</b>.  O segundo usa uma variável <b>j</b> em um loop diferente que representará o loop interno. O <b>loop interno</b> procura por quantidade de elementos no <b>array segundo-nível[j]</b>. O <b>loop interno</b> imprime os elementos e concatena o espaço  para ficar legível. Quando o <b>loop interno</b> completa, o <b>loop externo[i]</b> vai para nova linha e repete o processo para o próximo elemento.</p>
+  </section>
+  <section id="arraylist">
+  <h1>Entendendo um ArrayList</h1>
+  <p>Um array tem uma falha gritante:</p>
+  <p>Você tem que saber quantos elementos estarão no <b>array</b> quando você vai criá-lo e, em seguida, você está preso com essa escolha.</p>
+  <p>Assim como um <b>StringBuilder</b>, o <b>ArrayList</b> pode alterar o tamanho no tempo de execução, conforme necessário. Como um <b>array</b>, um </b>ArrayList</b> é uma sequência ordenada que permite duplicatas.</b></p>
+  <p>Como quando usamos o <b>Arrays.sort</b>, o <b>ArrayList</b> exige uma importação. Para usá-lo, você deve ter uma das duas declarações a seguir na sua classe:
+  <pre class="brush:java">
+  import java.util.* //  importa o pacote inteiro incluindo ArrayList
+  import java.util.ArrayList; // importa somente ArrayList
+  </pre>
+  </section>
+  <section id="arraylistcriate">
+  <h2>Criando um ArrayList</h2>
+  <p>Existe três maneiras para criar um <b>ArrayList</b></p>
+  <pre class="brush:java">
+  ArrayList list1 = new ArrayList();
+  ArrayList list2 = new ArrayList(10);
+  ArrayList list3 = new ArrayList(list2);
+  </pre>
+  <p>O primeiro diz para criar um </b>ArrayList</b> contendo espaço para o número padrão de elementos mas não preenche qualquer espaço ainda. O segunda diz  para criar um <b>ArrayList</b> contendo um número específico de espaços. Mas novamente não atribui nada. O final do exemplo queremos fazer uma cópia de outro <b>ArrayList</b>. Copiamos ambos o tamanho e conteúdo deste <b>ArrayList</b>. Neste exemplo </b>list2</b> está vazio então não é interessante fazer isso.
+  <p>Você pode também especificar o tipo de classe que o ArrayList irá conter.</p>
+  <pre class="brush:java">
+  ArrayList&ltString> list4 = new ArrayList&ltString>();
+  ArrayList&ltString> list4 = new ArrayList&lt>();
+  </pre>
+  </section>
+  <section id="arraylistuse">
+    <h2>Usando um ArrayList</h2>
+  <p><b>ArrayList</b> tem muitos métodos, precisamos conhecer alguns.</p>
+   <section id="addlist">
+   <h3>add()</h3>
+   <p>O <b>método add()</b> insere um novo valor no </b>ArrayList</b>. A assinatura do  método é a seguinte:</p>
+  <pre class="brush:java">
+   boolean add(E element)
+   void add (int index , E element)
+  </pre>
+  <p>Este  <b>E</b> que aparece na assinatura do método siginifica "qualquer classe que este array pode conter". Se você não especificar um tipo quando criar o <b>ArrayList</b>, <b>E</b> vai significar <b>Objeto</b>.</p> 
+  <p>Vamos ver alguns casos:</p>
+  <pre class="brush:java">
+  ArrayList list = new ArrayList();
+  list.add("alan"); //[alan]
+  list.add(Boolean.True); // [alan, true]
+  System.out.println(list); //[alan,true]
+  </pre>
+  <p><b>add()</b> armazena a <b>String</b> no <b>ArrayList</b> não mais vazio. Este então faz a mesma coisa pra o </b>boolean</b>. Está certo porque não especificamos um tipo para <b>ArrayList</b>; portanto, o tipo é </b>Objeto</b>, que inclui tudo exceto primitivos.</p>
+  <p>Agora só queremos permitir <b>String</b> objetos no <b>ArrayList</b>:
+  <pre class="brush:java">
+  ArrayList&ltString> safer = new ArrayList&lt>();
+  safer.add("sparrow");
+  safer.add(Boolean.TRUE); // NÃO COMPILA
+  </pre>
+  <p>Agora vamos adcionar múltiplos valores para diferentes posições. Por exemplo, <b>pardal</b> está na <b>posição 1</b> enquanto <b>passopreto</b> está na <b>posição 0</b> e assim segue.</p>
+  <pre class="brush:java">
+  4: List&ltString> aves = new ArrayList&lt>();
+  5: aves.add("bemtevi"); // [bemtevi]
+  6: aves.add(1, "pardal"); // [bemtevi, pardal]
+  7: aves.add(0, "passopreto"); // [passopreto, bemtevi, pardal]
+  8: aves.add(1, "sabia"); // [passopreto, sabia, bemtevi, pardal]
+  9: System.out.println(aves); // [passopreto, sabia, bemtevi, pardal]
+  </pre>
 
-<p>Linha 5 adciona <b>"bemtevi"</b> para o fim de <b>aves</b>. Então a linha 6 adciona <b>"pardal"</b> para o <b>index 1</b> de <b>aves</b>. Linha 7 adciona      <b> "passopreto"</b> para <b>index 0</b>, o que vai ser o ínicio de <b>aves</b>. Finalmente a linha 8 <b>"sabia"</b>para o <b>index 1</b>, que está agora próximo do meio de <b>aves</b>.</p>
-</section>
-<section id="idremove">
-<h3>remove()</h3>
-<p>O método <b>remove()</b> exclui o primeiro valor correspondente no <b>ArrayList</b> ou exclui o elemento no <b>index</b> especificado.</p>
-<pre class="brush:java">
-boolen remove(Obejct obejct)
-E remove (int index)
-</pre>
-<p><b>boolean</b> retorna o valor correspondente se foi removido. O tipo de retorno <b>E</b> é o elemento que realmente foi removido.</p>
- <pre class="brush:java">
-3: List&ltString> aves = new ArrayList&lt>();
-4: aves.add("bemtevi"); // [bemtevi]
-5: aves.add("bemtevi"); // [bemtevi, bemtevi]
-6: System.out.println(aves.remove("passopreto")); // prints false
-7: System.out.println(aves.remove("bemtevi")); // prints true
-8: System.out.println(aves.remove(0)); // prints bemtevi
-9: System.out.println(aves); // [] 
-</pre>
-<p>Linha 6 tenta remover um elemento que não está em <b>aves</b>. Ele retorna <b>false</b> porque o tal elemento não foi encontrado. Linha 7 tenta remover um elemento que está em <b>aves</b> então retorna <b>true</b>. Linha 8 remove o elemento no <b>index 0</b> que é o último elemento no <b>Arraylist</b>.</p>
-</section>
-<section id="idset">
-<h3>set()</h3>
-<p>O método <b>set()</b> muda um dos elementos do <b>ArrayList</b> sem mudar o tamanho.</p>
+  <p>Linha 5 adciona <b>"bemtevi"</b> para o fim de <b>aves</b>. Então a linha 6 adciona <b>"pardal"</b> para o <b>index 1</b> de <b>aves</b>. Linha 7 adciona      <b> "passopreto"</b> para <b>index 0</b>, o que vai ser o ínicio de <b>aves</b>. Finalmente a linha 8 <b>"sabia"</b>para o <b>index 1</b>, que está agora próximo do meio de <b>aves</b>.</p>
+  </section>
+  <section id="idremove">
+  <h3>remove()</h3>
+  <p>O método <b>remove()</b> exclui o primeiro valor correspondente no <b>ArrayList</b> ou exclui o elemento no <b>index</b> especificado.</p>
+  <pre class="brush:java">
+  boolen remove(Obejct obejct)
+  E remove (int index)
+  </pre>
+  <p><b>boolean</b> retorna o valor correspondente se foi removido. O tipo de retorno <b>E</b> é o elemento que realmente foi removido.</p>
+   <pre class="brush:java">
+  3: List&ltString> aves = new ArrayList&lt>();
+  4: aves.add("bemtevi"); // [bemtevi]
+  5: aves.add("bemtevi"); // [bemtevi, bemtevi]
+  6: System.out.println(aves.remove("passopreto")); // prints false
+  7: System.out.println(aves.remove("bemtevi")); // prints true
+  8: System.out.println(aves.remove(0)); // prints bemtevi
+  9: System.out.println(aves); // [] 
+  </pre>
+  <p>Linha 6 tenta remover um elemento que não está em <b>aves</b>. Ele retorna <b>false</b> porque o tal elemento não foi encontrado. Linha 7 tenta remover um elemento que está em <b>aves</b> então retorna <b>true</b>. Linha 8 remove o elemento no <b>index 0</b> que é o último elemento no <b>Arraylist</b>.</p>
+  </section>
+  <section id="idset">
+  <h3>set()</h3>
+  <p>O método <b>set()</b> muda um dos elementos do <b>ArrayList</b> sem mudar o tamanho.</p>
 
-<pre class="brush:java">E set(int index, E newElement)</pre>
-<br>
-<p>O tipo de retorno <b>E</b> é o elemento que foi substituído.</b>
-<pre class="brush:java">
-15: List&ltString> aves = new ArrayList&lt>();
-16: aves.add("bemtevi"); // [bemtevi]
-17: System.out.println(aves.size()); // 1
-18: aves.set(0, "canario"); // [canario]
-19: System.out.println(aves.size()); // 1
-20: aves.set(1, "canario"); // IndexOutOfBoundsException
-</pre>
-<p>linha 16 adciona um <b>elemento</b> para o <b>array</b>, fazendo o <b>tamanho 1</b>. Linha 18 substitui este um <b>elemento</b> e o tamanho fica 1. Linha 20 tenta substituir um <b>elemento</b> que não está no <b>ArrayList</b> então lança uma exceção.</p>
-</section>
-<section id="isemptysize">
-<h3>isEmpty() e size()</h3>
-<p>Os métodos <b>isEmpty()</b> e <b>size()</b> olham quanto da posição do <b>array</b> está em uso.</p>
-<pre class="brush:java">
-boolean isEmpty()
-int size()
-</pre>
-<p>A seguir mostramos como usar o código.</p>
-<pre class="brush:java">
-System.out.println(aves.isEmpty()); // true
-System.out.println(aves.size()); // 0
-aves.add("bemtevi"); // [bemtevi]
-aves.add("bemtevi"); // [bemtevi, bemtevi]
-System.out.println(aves.isEmpty()); // false
-System.out.println(aves.size()); // 2
-</pre>
-<p><i>No começo, as <b>aves</b> têm um tamanho de 0 e estão vazias. Em seguida ele tem uma capacidade que é maior que 0.</i></p>
-</section>
-<section id="idclear">
-<h3>clear()</h3>
-<P>O méodo <b>clear()</b> fornece uma maneira fácil de descarregar todos os elementos do <b>ArrayList</b>.</p>
-<pre class="brush:java">void clear()</pre>
-<br>
- <p>A seguir mostramos como usar este método:</p>
-<pre class="brush:java">
-List&ltString> aves = new ArrayList&lt>();
-aves.add("ganso"); // [ganso]
-aves.add("ganso"); // [ganso, ganso]
-System.out.println(aves.isEmpty()); // false
-System.out.println(aves.size()); // 2
-aves.clear(); // []
-System.out.println(aves.isEmpty()); // true
-System.out.println(aves.size()); // 
-</pre>
-</section>
-<section id="idcontains">
-<h3>contains()</h3>
-<p>O método <b>contains()</b> certamente checa se o valor está no <b>ArrayList</b>.</p>
-<br>
-<pre class="brush:java">boolean contains(obejct Obejct)</pre>
-<br>
-<pre class="brush:java">
-List&ltString> aves = new ArrayList&lt>();
-aves.add("canario"); // [canario]
-System.out.println(aves.contains("canario")); // true
-System.out.println(aves.contains("pardal")); // false
-</pre>
-</section>
-<section id="idequals">
-<h3>equals()</h3>
-<p>Finalmente, <b>ArrayList</b> tem uma implemenação personalizada de <b>equals()</b> você pode comparar duas listas para ver se eles contém o mesmo elemento na mesma ordem.</p>
-<pre class="brush:java">boolean equals(Object object)</pre>
+  <pre class="brush:java">E set(int index, E newElement)</pre>
+  <br>
+  <p>O tipo de retorno <b>E</b> é o elemento que foi substituído.</b>
+  <pre class="brush:java">
+  15: List&ltString> aves = new ArrayList&lt>();
+  16: aves.add("bemtevi"); // [bemtevi]
+  17: System.out.println(aves.size()); // 1
+  18: aves.set(0, "canario"); // [canario]
+  19: System.out.println(aves.size()); // 1
+  20: aves.set(1, "canario"); // IndexOutOfBoundsException
+  </pre>
+  <p>linha 16 adciona um <b>elemento</b> para o <b>array</b>, fazendo o <b>tamanho 1</b>. Linha 18 substitui este um <b>elemento</b> e o tamanho fica 1. Linha 20 tenta substituir um <b>elemento</b> que não está no <b>ArrayList</b> então lança uma exceção.</p>
+  </section>
+  <section id="isemptysize">
+  <h3>isEmpty() e size()</h3>
+  <p>Os métodos <b>isEmpty()</b> e <b>size()</b> olham quanto da posição do <b>array</b> está em uso.</p>
+  <pre class="brush:java">
+  boolean isEmpty()
+  int size()
+  </pre>
+  <p>A seguir mostramos como usar o código.</p>
+  <pre class="brush:java">
+  System.out.println(aves.isEmpty()); // true
+  System.out.println(aves.size()); // 0
+  aves.add("bemtevi"); // [bemtevi]
+  aves.add("bemtevi"); // [bemtevi, bemtevi]
+  System.out.println(aves.isEmpty()); // false
+  System.out.println(aves.size()); // 2
+  </pre>
+  <p><i>No começo, as <b>aves</b> têm um tamanho de 0 e estão vazias. Em seguida ele tem uma capacidade que é maior que 0.</i></p>
+  </section>
+  <section id="idclear">
+  <h3>clear()</h3>
+  <P>O méodo <b>clear()</b> fornece uma maneira fácil de descarregar todos os elementos do <b>ArrayList</b>.</p>
+  <pre class="brush:java">void clear()</pre>
+  <br>
+   <p>A seguir mostramos como usar este método:</p>
+  <pre class="brush:java">
+  List&ltString> aves = new ArrayList&lt>();
+  aves.add("ganso"); // [ganso]
+  aves.add("ganso"); // [ganso, ganso]
+  System.out.println(aves.isEmpty()); // false
+  System.out.println(aves.size()); // 2
+  aves.clear(); // []
+  System.out.println(aves.isEmpty()); // true
+  System.out.println(aves.size()); // 
+  </pre>
+  </section>
+  <section id="idcontains">
+  <h3>contains()</h3>
+  <p>O método <b>contains()</b> certamente checa se o valor está no <b>ArrayList</b>.</p>
+  <br>
+  <pre class="brush:java">boolean contains(obejct Obejct)</pre>
+  <br>
+  <pre class="brush:java">
+  List&ltString> aves = new ArrayList&lt>();
+  aves.add("canario"); // [canario]
+  System.out.println(aves.contains("canario")); // true
+  System.out.println(aves.contains("pardal")); // false
+  </pre>
+  </section>
+  <section id="idequals">
+  <h3>equals()</h3>
+  <p>Finalmente, <b>ArrayList</b> tem uma implemenação personalizada de <b>equals()</b> você pode comparar duas listas para ver se eles contém o mesmo elemento na mesma ordem.</p>
+  <pre class="brush:java">boolean equals(Object object)</pre>
 
-<p>A seguir é mostrado um exemplo:</p>
-<pre class="brush:java">
-31: List&ltString> one = new ArrayList&lt>();
-32: List&ltString > two = new ArrayList&lt>();
-33: System.out.println(one.equals(two)); // true
-34: one.add("a"); // [a]
-35: System.out.println(one.equals(two)); // false
-36: two.add("a"); // [a]
-37: System.out.println(one.equals(two)); // true
-38: one.add("b"); // [a,b]
-39: two.add(0, "b"); // [b,a]
-40: System.out.println(one.equals(two)); // false
-</pre>
+  <p>A seguir é mostrado um exemplo:</p>
+  <pre class="brush:java">
+  31: List&ltString> one = new ArrayList&lt>();
+  32: List&ltString > two = new ArrayList&lt>();
+  33: System.out.println(one.equals(two)); // true
+  34: one.add("a"); // [a]
+  35: System.out.println(one.equals(two)); // false
+  36: two.add("a"); // [a]
+  37: System.out.println(one.equals(two)); // true
+  38: one.add("b"); // [a,b]
+  39: two.add(0, "b"); // [b,a]
+  40: System.out.println(one.equals(two)); // false
+  </pre>
 
-<p>Na lihna 33, os dois objetos <b>ArrayLists</b> são iguais. Uma lista vazia é certamente o mesmo elemento na mesma ordem. Na linha 35, os objetos <b>ArrayLists</b> não são iguais porque o tamanho é diferente. Na linha 37 eles são iguais novamente porque o mesmo elemento <b>one</b> está em cada. Na linha 40 não existe igualdade. O tamanho é o mesmo e os valores são os mesmos , mas eles não estão na mesma ordem.</p>
-</section>
-<section id="classwraperid">
-<h2>Classes Wrapper</h2>
-<p>Até agora, nós temos colocado somente objetos <b>String</b> no <b>ArrayList</b>. Se quisermos colocar primitivos temos que usar as <b>Classes Wrappers</b>, cada tipo primitivo possui uma. <b>Classe Wrapper</b> é um tipo de objeto que corresponde ao tipo primitivo.</p>
-<br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-<tr><th colspan="3">TABELA Classes Wrapper</th></tr>
-<tr><td>Tipo Primitivo</td>      <td>Classe Wrapper </td>   <td>  Exemplo de construção</td></tr>
-<tr><td>boolean</td>             <td>Boolean </td>         <td> new Boolean(true)</td></tr>
-<tr><td>byte</td>               <td>Byte</td>            <td>new Byte((byte) 1)</td></tr>
-<tr><td>short</td>            <td>Short</td>                    <td>new Short((short) 1)</td></tr>
-<tr><td>int</td>  <td> Integer</td><td> new Integer(1)</td></tr>
-<tr><td>long </td><td>Long </td><td>new Long(1)</td></tr>
-<tr><td>float </td><td>Float </td><td>new Float(1.0)</td></tr>
-<tr><td>double </td><td>Double </td><td>new Double(1.0)</td></tr>
-<r><td>char </td><td>Character </td><td>new Character('c')</td></tr>
-</table>
-</div>
-<br>
-<p>Os métodos <b>parse</b>, tal como <b>parseInt()</b>, retorna um primitivo, e o método <b>valueOf()</b> retorna uma <b>classe wrapper</b>.
-<p>Exemplos:</b>
-<pre class="brush:java">
-int primitive = Integer.parseInt("123");
-Integer wrapper =integer.valueOf("123");
-</pre>
-<p>A primeira linha converte uma <b>String</b> para um <b>int</b> primitivo. A segunda converte uma <b>String</b> para uma classe wrapper <b>Integer</b>.
+  <p>Na lihna 33, os dois objetos <b>ArrayLists</b> são iguais. Uma lista vazia é certamente o mesmo elemento na mesma ordem. Na linha 35, os objetos <b>ArrayLists</b> não são iguais porque o tamanho é diferente. Na linha 37 eles são iguais novamente porque o mesmo elemento <b>one</b> está em cada. Na linha 40 não existe igualdade. O tamanho é o mesmo e os valores são os mesmos , mas eles não estão na mesma ordem.</p>
+  </section>
+  <section id="classwraperid">
+  <h2>Classes Wrapper</h2>
+  <p>Até agora, nós temos colocado somente objetos <b>String</b> no <b>ArrayList</b>. Se quisermos colocar primitivos temos que usar as <b>Classes Wrappers</b>, cada tipo primitivo possui uma. <b>Classe Wrapper</b> é um tipo de objeto que corresponde ao tipo primitivo.</p>
+  <br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  <tr><th colspan="3">TABELA Classes Wrapper</th></tr>
+  <tr><td>Tipo Primitivo</td>      <td>Classe Wrapper </td>   <td>  Exemplo de construção</td></tr>
+  <tr><td>boolean</td>             <td>Boolean </td>         <td> new Boolean(true)</td></tr>
+  <tr><td>byte</td>               <td>Byte</td>            <td>new Byte((byte) 1)</td></tr>
+  <tr><td>short</td>            <td>Short</td>                    <td>new Short((short) 1)</td></tr>
+  <tr><td>int</td>  <td> Integer</td><td> new Integer(1)</td></tr>
+  <tr><td>long </td><td>Long </td><td>new Long(1)</td></tr>
+  <tr><td>float </td><td>Float </td><td>new Float(1.0)</td></tr>
+  <tr><td>double </td><td>Double </td><td>new Double(1.0)</td></tr>
+  <r><td>char </td><td>Character </td><td>new Character('c')</td></tr>
+  </table>
+  </div>
+  <br>
+  <p>Os métodos <b>parse</b>, tal como <b>parseInt()</b>, retorna um primitivo, e o método <b>valueOf()</b> retorna uma <b>classe wrapper</b>.
+  <p>Exemplos:</b>
+  <pre class="brush:java">
+  int primitive = Integer.parseInt("123");
+  Integer wrapper =integer.valueOf("123");
+  </pre>
+  <p>A primeira linha converte uma <b>String</b> para um <b>int</b> primitivo. A segunda converte uma <b>String</b> para uma classe wrapper <b>Integer</b>.
 
-<p>Se a <b>String</b> passada nele não é válida para o tipo dado, Java lança uma exceção.</p>
+  <p>Se a <b>String</b> passada nele não é válida para o tipo dado, Java lança uma exceção.</p>
 
-<p>Neste exemplo <b>letra</b> e <b>pontos</b> não são válidos para um valor inteiro.
-<pre class="brush:java">
-int bad1 =Integer.parseInt("a");  // throws NumberFormatException
-Integer bad2 = Integer.valueOf("123.45"); // throws NumberFormatException
-</pre>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-<tr><th colspan="3">TABELA  Converção de uma String</th></tr>
-<tr><th>classe Wrapper</th><th>      Convertendo String para primitivo</th><th>
-Convertendo String para classe wrapper </th></tr>
-<tr><td>Boolean</td> <td>Boolean.parseBoolean("true"); </td><td>Boolean.valueOf("TRUE");</td></tr>
-<tr><td>Byte</td> <td>Byte.parseByte("1");</td><td> Byte.valueOf("2");</td></tr>
-<tr><td>Short</td> <td>Short.parseShort("1");</td><td> Short.valueOf("2");</td></tr>
-<tr><td>Integer</td><td> Integer.parseInt("1");</td><td> Integer.valueOf("2");</td></tr>
-<tr><td>Long</td> <td>Long.parseLong("1");</td><td> Long.valueOf("2");</td></tr>
-<tr><td>Float</td><td> Float.parseFloat("1");</td><td> Float.valueOf("2.2");</td></tr>
-<tr><td>Double</td> <td>Double.parseDouble("1");</td><td> Double.valueOf("2.2");</td></tr>
-<tr><td>Character</td><td> None</td><td> None</td></tr>
-</table>
-</div>
-</section>
-<section id="idautoboxing">
-<h2>AutoBoxing</h2>
+  <p>Neste exemplo <b>letra</b> e <b>pontos</b> não são válidos para um valor inteiro.
+  <pre class="brush:java">
+  int bad1 =Integer.parseInt("a");  // throws NumberFormatException
+  Integer bad2 = Integer.valueOf("123.45"); // throws NumberFormatException
+  </pre>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  <tr><th colspan="3">TABELA  Converção de uma String</th></tr>
+  <tr><th>classe Wrapper</th><th>      Convertendo String para primitivo</th><th>
+  Convertendo String para classe wrapper </th></tr>
+  <tr><td>Boolean</td> <td>Boolean.parseBoolean("true"); </td><td>Boolean.valueOf("TRUE");</td></tr>
+  <tr><td>Byte</td> <td>Byte.parseByte("1");</td><td> Byte.valueOf("2");</td></tr>
+  <tr><td>Short</td> <td>Short.parseShort("1");</td><td> Short.valueOf("2");</td></tr>
+  <tr><td>Integer</td><td> Integer.parseInt("1");</td><td> Integer.valueOf("2");</td></tr>
+  <tr><td>Long</td> <td>Long.parseLong("1");</td><td> Long.valueOf("2");</td></tr>
+  <tr><td>Float</td><td> Float.parseFloat("1");</td><td> Float.valueOf("2.2");</td></tr>
+  <tr><td>Double</td> <td>Double.parseDouble("1");</td><td> Double.valueOf("2.2");</td></tr>
+  <tr><td>Character</td><td> None</td><td> None</td></tr>
+  </table>
+  </div>
+  </section>
+  <section id="idautoboxing">
+  <h2>AutoBoxing</h2>
 
-<p>Ocorre quando <b>Java</b> converte um valor de tipo primitivo para classe wrapper. Isso é chamado de <b>autoboxing</b> e ao contrário é chamado de <b>Unboxing.</b> 
-	<p>Exemplo:</p>
-<pre class="brush:java">
-4: List&ltDouble> weights = new ArrayList&lt>();
-5: weights.add(50.5); // [50.5]
-6: weights.add(new Double(60)); // [50.5, 60.0]
-7: weights.remove(50.5); // [60.0]
-8: double first = weights.get(0); // 60.0
-</pre>
+  <p>Ocorre quando <b>Java</b> converte um valor de tipo primitivo para classe wrapper. Isso é chamado de <b>autoboxing</b> e ao contrário é chamado de <b>Unboxing.</b> 
+  	<p>Exemplo:</p>
+  <pre class="brush:java">
+  4: List&ltDouble> weights = new ArrayList&lt>();
+  5: weights.add(50.5); // [50.5]
+  6: weights.add(new Double(60)); // [50.5, 60.0]
+  7: weights.remove(50.5); // [60.0]
+  8: double first = weights.get(0); // 60.0
+  </pre>
 
-<p>Linha 5 ocorre o <b>autoboxe</b> do primitvo <b>double</b> em um objeto </b>Double</b> e adciona isso à <b>List</b>. Linha 6 mostra que você ainda pode escrever o código sem pontos decimais e passar em um objeto <b>wrapper</b>. Linha 7 novamente <b>autoboxes</b> dentro do objeto </b>wrapper</b> e passa ele para o <b>remove()</b>. Linha 8 recupera o <b>Double</b> e faz <b>unboxes</b> dele dentro de um primitivo <b>double</b>.
+  <p>Linha 5 ocorre o <b>autoboxe</b> do primitvo <b>double</b> em um objeto </b>Double</b> e adciona isso à <b>List</b>. Linha 6 mostra que você ainda pode escrever o código sem pontos decimais e passar em um objeto <b>wrapper</b>. Linha 7 novamente <b>autoboxes</b> dentro do objeto </b>wrapper</b> e passa ele para o <b>remove()</b>. Linha 8 recupera o <b>Double</b> e faz <b>unboxes</b> dele dentro de um primitivo <b>double</b>.
 
-<p>Vamos ao que acontece se você quiser fazer unbox em um null:</p>
-<pre class="brush:java">
-3: List&ltInteger> heights = new ArrayList&lt>();
-4: heights.add(null);
-5: int h = heights.get(0); // NullPointerException
-</pre>
+  <p>Vamos ao que acontece se você quiser fazer unbox em um null:</p>
+  <pre class="brush:java">
+  3: List&ltInteger> heights = new ArrayList&lt>();
+  4: heights.add(null);
+  5: int h = heights.get(0); // NullPointerException
+  </pre>
 
-<p>Na linha 4, nós adcionamos um <b>null</b> para a lista. Isto funciona porque uma referência <b>null</b> pode ser atribuído para qualquer variável de referência. Na linha 5 , nós tentamos fazer <b>unbox</b> deste <b>null</b> para um </b>int</b> primitivo. Não funciona! Java tenta obter um valor <b>int</b> de <b>null</b>. Uma vez chamado qualquer método no <b>null</b> java lança a exceção <b>NullPointerException</b>, que é justamente o que ocorre.</p>
-</section>
-<section id="idconveslistarray">
-<h3>Conversão entre array e List</h3>
-<p>Você deve saber como converter entre um <b>array</b> e um <b>ArrayList</b>. Vamos iniciar com  um ArrayList dentro de um array:</p>
-<pre class="brush:java">
-3: List&ltString> list = new ArrayList&lt>();
-4: list.add("bemtevi");
-5: list.add("pardal");
-6: Object[] objectArray = list.toArray();
-7: System.out.println(objectArray.length); // 2
-8: String[] stringArray = list.toArray(new String[0]);
-9: System.out.println(stringArray.length); // 2
-</pre>
+  <p>Na linha 4, nós adcionamos um <b>null</b> para a lista. Isto funciona porque uma referência <b>null</b> pode ser atribuído para qualquer variável de referência. Na linha 5 , nós tentamos fazer <b>unbox</b> deste <b>null</b> para um </b>int</b> primitivo. Não funciona! Java tenta obter um valor <b>int</b> de <b>null</b>. Uma vez chamado qualquer método no <b>null</b> java lança a exceção <b>NullPointerException</b>, que é justamente o que ocorre.</p>
+  </section>
+  <section id="idconveslistarray">
+  <h3>Conversão entre array e List</h3>
+  <p>Você deve saber como converter entre um <b>array</b> e um <b>ArrayList</b>. Vamos iniciar com  um ArrayList dentro de um array:</p>
+  <pre class="brush:java">
+  3: List&ltString> list = new ArrayList&lt>();
+  4: list.add("bemtevi");
+  5: list.add("pardal");
+  6: Object[] objectArray = list.toArray();
+  7: System.out.println(objectArray.length); // 2
+  8: String[] stringArray = list.toArray(new String[0]);
+  9: System.out.println(stringArray.length); // 2
+  </pre>
 
-<p>Linha 6 mostra que um <b>ArrayList</b> sabe como se converter para um <b>array</b>. O problema é este padrão para um array da classe Objeto. Esta não é um forma usual. Linha 8 especifica o tipo do array , a vantagem de especificar o tamanho de 0 para o parâmetro é que <b>Java</b> criará um novo <b>array</b> adequado para retornar o valor.</p>
+  <p>Linha 6 mostra que um <b>ArrayList</b> sabe como se converter para um <b>array</b>. O problema é este padrão para um array da classe Objeto. Esta não é um forma usual. Linha 8 especifica o tipo do array , a vantagem de especificar o tamanho de 0 para o parâmetro é que <b>Java</b> criará um novo <b>array</b> adequado para retornar o valor.</p>
 
-<p>Converter de um <b>array</b> para <b>List</b> é interessante. O array original é linkado com <b>array backed List(array List apoiado)</b>. Quando a mudança é feita para um, ele é analisado no outro. Isso é uma lista de <b>tamanhho-fixado</b> e é também conhecido como<b> backed List</b> porque os arrays mudam com ele.
-<pre class="brush:java">
-20: String[] array = { "alan", "santos" }; // [alan, santos]
-21: List&ltString> list = Arrays.asList(array); // retorna list com tamanho fixado 
-22: System.out.println(list.size()); // 2
-23: list.set(1, "test"); // [alan, test]
-24: array[0] = "new"; // [new, test]
-25: for (String b : array) System.out.print(b + " "); // new test
-26: list.remove(1); // throws UnsupportedOperation Exception
-</pre>
-<p>Linha 21 converte o <b>array</b> para um <b>List</b>. Linha 23 está ok porque <b>set()</b> meramente substitui um valor existente. Linha 24 Igual a linha 23 atualiza ambos, <b>array</b> e <b>list</b>. Linha 25 mostra o <b>array</b> mudado para <b>new test</b>. Linha 26 lança uma exceção porque não é permitido mudar o tamanho de <b>list</b></p>.
-</section>
-<section id="idsorting">
-<h3>Sorting</h3>
+  <p>Converter de um <b>array</b> para <b>List</b> é interessante. O array original é linkado com <b>array backed List(array List apoiado)</b>. Quando a mudança é feita para um, ele é analisado no outro. Isso é uma lista de <b>tamanhho-fixado</b> e é também conhecido como<b> backed List</b> porque os arrays mudam com ele.
+  <pre class="brush:java">
+  20: String[] array = { "alan", "santos" }; // [alan, santos]
+  21: List&ltString> list = Arrays.asList(array); // retorna list com tamanho fixado 
+  22: System.out.println(list.size()); // 2
+  23: list.set(1, "test"); // [alan, test]
+  24: array[0] = "new"; // [new, test]
+  25: for (String b : array) System.out.print(b + " "); // new test
+  26: list.remove(1); // throws UnsupportedOperation Exception
+  </pre>
+  <p>Linha 21 converte o <b>array</b> para um <b>List</b>. Linha 23 está ok porque <b>set()</b> meramente substitui um valor existente. Linha 24 Igual a linha 23 atualiza ambos, <b>array</b> e <b>list</b>. Linha 25 mostra o <b>array</b> mudado para <b>new test</b>. Linha 26 lança uma exceção porque não é permitido mudar o tamanho de <b>list</b></p>.
+  </section>
+  <section id="idsorting">
+  <h3>Sorting</h3>
 
-<p>Ordenar um ArrayList é muito parecido com ordenar um array:</p>
-<pre class="brush:java">
-List< Integer > numeros = new ArrayList< >();
-numeros.add(89)         
-numeros.add(9)         
-numeros.add(79)         
-Collections.sort(numeros);
-System.out.println(numeros)
-</pre>
-<p><b> A saída é:</b></p>
-  <pre>[9,79,89]</pre>
+  <p>Ordenar um ArrayList é muito parecido com ordenar um array:</p>
+  <pre class="brush:java">
+  List< Integer > numeros = new ArrayList< >();
+  numeros.add(89)         
+  numeros.add(9)         
+  numeros.add(79)         
+  Collections.sort(numeros);
+  System.out.println(numeros)
+  </pre>
+  <p><b> A saída é:</b></p>
+    <pre>[9,79,89]</pre>
 
-</section>
-<section id="datahorario">
-<h1>Trabalhando com Datas e Horários</h1>
+  </section>
+  <section id="datahorario">
+  <h1>Trabalhando com Datas e Horários</h1>
 
-<p>Como <b>arrayList</b> você precisa de uma declaração <b>import</b> para trabalhar com classes de datas e horários, a maioria deles estão no pacote <b>java.time</b>:</p>
-<br>
-<pre class="brush:java">imort java.time.*  // import classes time</pre>
-<br>
-<p>A seguir seções de como criar , manipular e formatar datas e horários </p>.
-</section>
-<section id="idcriardata">
-<h2>Criar Datas e Horários</h2>
-<p>Quando trabalhar com datas e horários,  a primeira coisa para fazer é decidir quantas informações precisa.</p>
-<pre class="brush:java">
-LocalDate - > contém somente data
-LocalTime ->Contem justamente a hora
-LocalDateTime -> contém ambos data e horas
-</pre>
-<p><i>Nenhuma das três opções trabalha com data/horário por zona</i></p>
-<p>Criando seu primeiro objeto data e horário:</p>
-<pre class="brush:java">
-System.out.println(LocalDate.now()); // saida 2019 - 04 - 07
-System.out.println(LocalTime.now()); // saída 14:50:10.400
-System.out.println(LocalDateTime.now()); // 2018-04-07T14:50:10.400
-</pre>
-<p><i><b>Java</b> usa <b>T</b> para separar a <b>data</b> e <b>horário</b> ao converter <b>LocalDateTime</b> em uma <b>String.</b></i></p><br>
-<p>O primeiro contém somente uma data. o segundo contém somente o horário. Este horário mostra, minutos, segundos e nanosegundos. O terceiro contém ambos data e horário.
-</p>
-<p>Vamos olhar em outros tipos de data e horários específicos:</p>
-<pre class="brush:java">
-LocalDate date1 = LocalDate.of(2019, Month.April,7);
-LocalDate date1 = LocalDate.of(2019, 4, 20);
-</pre>
-<p>Ambos passam no ano , mês e data. Você pode usar a constante <b>Month</b> ou pode passar um numero <b>int</b> do mês diretamente.</p>
-<p>As assinaturas dos métodos são :</p>
-<pre class="brush:java">
-public static LocalDate of(int year, int month, int dayOfMonth)
-public static LocalDate of(int year, Month month, int dayOfMonth)
-</pre>
-<p>Quando criar um horário, você pode escolher como detalhar. Você pode especificar hora e minutos, ou pode adcionar números de segundos</p>
-<pre class="brush:java">
-public static LocalTime of(int hour, int minute)
-public static LocalTime of(int hour, int minute, int second)
-public static LocalTime of(int hour, int minute, int second, int nanos)
+  <p>Como <b>arrayList</b> você precisa de uma declaração <b>import</b> para trabalhar com classes de datas e horários, a maioria deles estão no pacote <b>java.time</b>:</p>
+  <br>
+  <pre class="brush:java">imort java.time.*  // import classes time</pre>
+  <br>
+  <p>A seguir seções de como criar , manipular e formatar datas e horários </p>.
+  </section>
+  <section id="idcriardata">
+  <h2>Criar Datas e Horários</h2>
+  <p>Quando trabalhar com datas e horários,  a primeira coisa para fazer é decidir quantas informações precisa.</p>
+  <pre class="brush:java">
+  LocalDate - > contém somente data
+  LocalTime ->Contem justamente a hora
+  LocalDateTime -> contém ambos data e horas
+  </pre>
+  <p><i>Nenhuma das três opções trabalha com data/horário por zona</i></p>
+  <p>Criando seu primeiro objeto data e horário:</p>
+  <pre class="brush:java">
+  System.out.println(LocalDate.now()); // saida 2019 - 04 - 07
+  System.out.println(LocalTime.now()); // saída 14:50:10.400
+  System.out.println(LocalDateTime.now()); // 2018-04-07T14:50:10.400
+  </pre>
+  <p><i><b>Java</b> usa <b>T</b> para separar a <b>data</b> e <b>horário</b> ao converter <b>LocalDateTime</b> em uma <b>String.</b></i></p><br>
+  <p>O primeiro contém somente uma data. o segundo contém somente o horário. Este horário mostra, minutos, segundos e nanosegundos. O terceiro contém ambos data e horário.
+  </p>
+  <p>Vamos olhar em outros tipos de data e horários específicos:</p>
+  <pre class="brush:java">
+  LocalDate date1 = LocalDate.of(2019, Month.April,7);
+  LocalDate date1 = LocalDate.of(2019, 4, 20);
+  </pre>
+  <p>Ambos passam no ano , mês e data. Você pode usar a constante <b>Month</b> ou pode passar um numero <b>int</b> do mês diretamente.</p>
+  <p>As assinaturas dos métodos são :</p>
+  <pre class="brush:java">
+  public static LocalDate of(int year, int month, int dayOfMonth)
+  public static LocalDate of(int year, Month month, int dayOfMonth)
+  </pre>
+  <p>Quando criar um horário, você pode escolher como detalhar. Você pode especificar hora e minutos, ou pode adcionar números de segundos</p>
+  <pre class="brush:java">
+  public static LocalTime of(int hour, int minute)
+  public static LocalTime of(int hour, int minute, int second)
+  public static LocalTime of(int hour, int minute, int second, int nanos)
 
-LocalTime time1 = LocalTime.of(6, 15); // hour and minute
-LocalTime time2 = LocalTime.of(6, 15, 30); // + seconds
-LocalTime time3 = LocalTime.of(6, 15, 30, 200); // + nanoseconds
-</pre>
-</section>
-<section id="manipulardatasid">
-<h2>Manipular Datas e Horários</h2>
-<p>Adicionar à uma data é fácil. As classes de data e horário são imutáveis, assim como <b>String</b>. </p>
-<p>Isso significa que precisamos nos lembrar de atribuir os resultados desses métodos a uma variável de referência para que eles não sejam perdidos.</p>
-<pre class="brush:java">
-12: LocalDate date = LocalDate.of(2014, Month.JANUARY, 20);
-13: System.out.println(date); // 2019-01-20
-14: date = date.plusDays(2);
-15: System.out.println(date); // 2019-01-22
-16: date = date.plusWeeks(1);
-17: System.out.println(date); // 2019-01-29
-18: date = date.plusMonths(1);
-19: System.out.println(date); // 2019-02-28
-20: date = date.plusYears(5);
-21: System.out.println(date); // 2024-02-28
-</pre>
-<p>Nós iniciamos a saída com <b>20 de janeiro, 2019</b>. Na linha 14, adicionamos dois dias e reatribuímos à nossa variável de referência. Na linha 16, nós adcionamos uma semana. Agora a data é <b>29 de janeiro de 2019</b>. Na linha 18, adcionamos um mês.
-Isto nos levou a <b>29 de fevereiro de 2019</b>. Java é inteligente suficiente para saber que esta data não corresponde e atualiza para <b>28 de Fevereiro de 2019</b>. Finalmente linha 20 adciona 5 anos.</p>
-<p>Também existem métodos para retroceder no tempo:</p>
-<pre class="brush:java">
-22: LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
-23: LocalTime time = LocalTime.of(5, 15);
-24: LocalDateTime dateTime = LocalDateTime.of(date, time);
-25: System.out.println(dateTime); // 2020-01-20T05:15
-26: dateTime = dateTime.minusDays(1);
-27: System.out.println(dateTime); // 2020-01-19T05:15
-28: dateTime = dateTime.minusHours(10);
-29: System.out.println(dateTime); // 2020-01-18T19:15
-30: dateTime = dateTime.minusSeconds(30);
-31: System.out.println(dateTime); // 2020-01-18T19:14:30
-</pre>
+  LocalTime time1 = LocalTime.of(6, 15); // hour and minute
+  LocalTime time2 = LocalTime.of(6, 15, 30); // + seconds
+  LocalTime time3 = LocalTime.of(6, 15, 30, 200); // + nanoseconds
+  </pre>
+  </section>
+  <section id="manipulardatasid">
+  <h2>Manipular Datas e Horários</h2>
+  <p>Adicionar à uma data é fácil. As classes de data e horário são imutáveis, assim como <b>String</b>. </p>
+  <p>Isso significa que precisamos nos lembrar de atribuir os resultados desses métodos a uma variável de referência para que eles não sejam perdidos.</p>
+  <pre class="brush:java">
+  12: LocalDate date = LocalDate.of(2014, Month.JANUARY, 20);
+  13: System.out.println(date); // 2019-01-20
+  14: date = date.plusDays(2);
+  15: System.out.println(date); // 2019-01-22
+  16: date = date.plusWeeks(1);
+  17: System.out.println(date); // 2019-01-29
+  18: date = date.plusMonths(1);
+  19: System.out.println(date); // 2019-02-28
+  20: date = date.plusYears(5);
+  21: System.out.println(date); // 2024-02-28
+  </pre>
+  <p>Nós iniciamos a saída com <b>20 de janeiro, 2019</b>. Na linha 14, adicionamos dois dias e reatribuímos à nossa variável de referência. Na linha 16, nós adcionamos uma semana. Agora a data é <b>29 de janeiro de 2019</b>. Na linha 18, adcionamos um mês.
+  Isto nos levou a <b>29 de fevereiro de 2019</b>. Java é inteligente suficiente para saber que esta data não corresponde e atualiza para <b>28 de Fevereiro de 2019</b>. Finalmente linha 20 adciona 5 anos.</p>
+  <p>Também existem métodos para retroceder no tempo:</p>
+  <pre class="brush:java">
+  22: LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
+  23: LocalTime time = LocalTime.of(5, 15);
+  24: LocalDateTime dateTime = LocalDateTime.of(date, time);
+  25: System.out.println(dateTime); // 2020-01-20T05:15
+  26: dateTime = dateTime.minusDays(1);
+  27: System.out.println(dateTime); // 2020-01-19T05:15
+  28: dateTime = dateTime.minusHours(10);
+  29: System.out.println(dateTime); // 2020-01-18T19:15
+  30: dateTime = dateTime.minusSeconds(30);
+  31: System.out.println(dateTime); // 2020-01-18T19:14:30
+  </pre>
 
-<p>Linha 25 imprime a data original de <b>20 de janeiro, 2020 as 5:15: a.m.</b> Linha 28 subtrai 10 horas, mostrando que a data irá mudar se as horas causarem isto, nos trazendo <b>18 de janeiro de 2020 as 19:15</b>.  Finalmente, linha 30 subtrai 30 segundos.</p> <br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-<tr><th colspan="4">TABELA  Métodos em LocalDate, LocalTime, e LocalDateTime</th></td>
-<tr><td></td><td>Pode chamar no
-LocalDate?</td><td>
-Pode chamar 
-LocalTime?</td><td>
-Pode chamar no 
-LocalDateTime?</td></tr><tr><td>
-plusYears/minusYears </td><td>Sim </td><td>Não </td><td>Sim</td></tr>
-<tr><td>plusMonths/minusMonths </td><td>Sim </td><td>Não </td><td>Sim</td></tr>
-<tr><td>plusWeeks/minusWeeks</td><td> Sim</td><td> Não</td><td> Sim</td></tr>
-<tr><td>plusDays/minusDays</td><td> Sim</td><td> Não</td><td> Sim</td><tr>
-<tr><td>plusHours/minusHours</td><td>Não</td><td> Sim</td><td> Sim</td><tr>
-<tr><td>plusMinutes/minusMinutes</td><td> Não</td><td> Sim</td><td> Sim</td></tr>
-<tr><td>plusSeconds/minusSeconds</td><td> Não</td><td> Sim</td><td> Sim</td></tr>
-<tr><td>plusNanos/minusNanos</td><td> Não </td><td>Sim</td><td> Sim</td></tr>
-</table>
-</div>
-</section>
-<section id="idperiods">
-<h3>Trabalhando com períodos</h3>
-<p>Um exemplo simples de um sistema com período que funcionará por três meses.</p>
-<pre class="brush:java">
-public static void main(String[] args) {
-LocalDate start = LocalDate.of(2019, Month.JANUARY, 1);
-LocalDate end = LocalDate.of(2019, Month.MARCH, 30);
-performAnimalEnrichment(start, end);
-}
-private static void performAnimalEnrichment(LocalDate start, LocalDate end) {
-LocalDate upTo = start;
-while (upTo.isBefore(end)) { // check if still before end
-System.out.println("give new toy: " + upTo);
-upTo = upTo.plusMonths(1); // add a month
-}
-}
-</pre>
-<p>Este código funciona bem, mas o problema é que seu método não pode ser reusado.</p>
-<p>Usando a <b>classe Period</b> este código pode fazer a mesma coisa do exemplo anterior:</p>
-<pre class="brush:java">
-public static void main(String[] args) {
-LocalDate start = LocalDate.of(2019, Month.JANUARY, 1);
-LocalDate end = LocalDate.of(2019, Month.MARCH, 30);
-Period period = Period.ofMonths(1); // create a period
-performAnimalEnrichment(start, end, period);
-}
-private static void performAnimalEnrichment(LocalDate start, LocalDate end,
-Period period) { // usa o period generico 
-LocalDate upTo = start;
-while (upTo.isBefore(end)) {
-System.out.println("give new toy: " + upTo);
-upTo = upTo.plus(period); // adciona o period
-}
-}
-</pre>
-<p>o método pode adicionar um período de tempo arbitrário que é passado. Isto permite reusar o mesmo método para diferentes períodos.</p>
-<p>Existem 5 maneiras para criar uma <b>classe Period</b>:</p>
-<pre class="brush:java">
-Period anual = Period.ofYears(1); // cada 1 ano
-Period trimestral = Period.ofMonths(3); // cada 3 meses
-Period cadaTresSemanas = Period.ofWeeks(3); // cada 3 semanas
-Period cadaOutroDia = Period.ofDays(2); // cada 2 dias
-Period cadaAnoSemana = Period.of(1, 0, 7); // cada ano e 7 dias
-</pre>
-</section>
-<section id="idformdathour">
-<h3>Formatar Data e Horários</h3>
-<p>Java fornece uma classe chamada <b>DateTimeFormatter</b> que pode ser usada para formatar qualquer tipo de dado e/ou objeto <b>horário</b>. O que muda é o formato.  
-<b>DateTimeFormatter</b> está no pacote <b>java.time.format</b></p>.
-<pre class="brush:java">
-LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
-LocalTime time = LocalTime.of(11, 12, 34);
-LocalDateTime dateTime = LocalDateTime.of(date, time);
-System.out.println(date.format(DateTimeFormatter.ISO_LOCAL_DATE));
-System.out.println(time.format(DateTimeFormatter.ISO_LOCAL_TIME));
-System.out.println(dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-</pre>
-<p><b>ISO</b><i> é um padrão para datas. A sáida do código acima é assim:</i></p><br>
-<pre>
-2020-01-20
-11:12:34
-2020-01-20T11:12:34 
-</pre>
-<p>Existem alguns formatos predefinidos que são úteis:</p>
-<pre class="brush:java">
-DateTimeFormatter shortDateTime=DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
-System.out.println(shortDateTime.format(dateTime)); // 1/20/20
-System.out.println(shortDateTime.format(date)); // 1/20/20
-System.out.println(
-shortDateTime.format(time)); // UnsupportedTemporalTypeException
-</pre>
-<p>Aqui nós queremos localizar um formato curto predefinido. A última linha lança uma exceção porque <b>horário</b> não pode ser formatado como <b>data</b></p>.
+  <p>Linha 25 imprime a data original de <b>20 de janeiro, 2020 as 5:15: a.m.</b> Linha 28 subtrai 10 horas, mostrando que a data irá mudar se as horas causarem isto, nos trazendo <b>18 de janeiro de 2020 as 19:15</b>.  Finalmente, linha 30 subtrai 30 segundos.</p> <br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  <tr><th colspan="4">TABELA  Métodos em LocalDate, LocalTime, e LocalDateTime</th></td>
+  <tr><td></td><td>Pode chamar no
+  LocalDate?</td><td>
+  Pode chamar 
+  LocalTime?</td><td>
+  Pode chamar no 
+  LocalDateTime?</td></tr><tr><td>
+  plusYears/minusYears </td><td>Sim </td><td>Não </td><td>Sim</td></tr>
+  <tr><td>plusMonths/minusMonths </td><td>Sim </td><td>Não </td><td>Sim</td></tr>
+  <tr><td>plusWeeks/minusWeeks</td><td> Sim</td><td> Não</td><td> Sim</td></tr>
+  <tr><td>plusDays/minusDays</td><td> Sim</td><td> Não</td><td> Sim</td><tr>
+  <tr><td>plusHours/minusHours</td><td>Não</td><td> Sim</td><td> Sim</td><tr>
+  <tr><td>plusMinutes/minusMinutes</td><td> Não</td><td> Sim</td><td> Sim</td></tr>
+  <tr><td>plusSeconds/minusSeconds</td><td> Não</td><td> Sim</td><td> Sim</td></tr>
+  <tr><td>plusNanos/minusNanos</td><td> Não </td><td>Sim</td><td> Sim</td></tr>
+  </table>
+  </div>
+  </section>
+  <section id="idperiods">
+  <h3>Trabalhando com períodos</h3>
+  <p>Um exemplo simples de um sistema com período que funcionará por três meses.</p>
+  <pre class="brush:java">
+  public static void main(String[] args) {
+  LocalDate start = LocalDate.of(2019, Month.JANUARY, 1);
+  LocalDate end = LocalDate.of(2019, Month.MARCH, 30);
+  performAnimalEnrichment(start, end);
+  }
+  private static void performAnimalEnrichment(LocalDate start, LocalDate end) {
+  LocalDate upTo = start;
+  while (upTo.isBefore(end)) { // check if still before end
+  System.out.println("give new toy: " + upTo);
+  upTo = upTo.plusMonths(1); // add a month
+  }
+  }
+  </pre>
+  <p>Este código funciona bem, mas o problema é que seu método não pode ser reusado.</p>
+  <p>Usando a <b>classe Period</b> este código pode fazer a mesma coisa do exemplo anterior:</p>
+  <pre class="brush:java">
+  public static void main(String[] args) {
+  LocalDate start = LocalDate.of(2019, Month.JANUARY, 1);
+  LocalDate end = LocalDate.of(2019, Month.MARCH, 30);
+  Period period = Period.ofMonths(1); // create a period
+  performAnimalEnrichment(start, end, period);
+  }
+  private static void performAnimalEnrichment(LocalDate start, LocalDate end,
+  Period period) { // usa o period generico 
+  LocalDate upTo = start;
+  while (upTo.isBefore(end)) {
+  System.out.println("give new toy: " + upTo);
+  upTo = upTo.plus(period); // adciona o period
+  }
+  }
+  </pre>
+  <p>o método pode adicionar um período de tempo arbitrário que é passado. Isto permite reusar o mesmo método para diferentes períodos.</p>
+  <p>Existem 5 maneiras para criar uma <b>classe Period</b>:</p>
+  <pre class="brush:java">
+  Period anual = Period.ofYears(1); // cada 1 ano
+  Period trimestral = Period.ofMonths(3); // cada 3 meses
+  Period cadaTresSemanas = Period.ofWeeks(3); // cada 3 semanas
+  Period cadaOutroDia = Period.ofDays(2); // cada 2 dias
+  Period cadaAnoSemana = Period.of(1, 0, 7); // cada ano e 7 dias
+  </pre>
+  </section>
+  <section id="idformdathour">
+  <h3>Formatar Data e Horários</h3>
+  <p>Java fornece uma classe chamada <b>DateTimeFormatter</b> que pode ser usada para formatar qualquer tipo de dado e/ou objeto <b>horário</b>. O que muda é o formato.  
+  <b>DateTimeFormatter</b> está no pacote <b>java.time.format</b></p>.
+  <pre class="brush:java">
+  LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
+  LocalTime time = LocalTime.of(11, 12, 34);
+  LocalDateTime dateTime = LocalDateTime.of(date, time);
+  System.out.println(date.format(DateTimeFormatter.ISO_LOCAL_DATE));
+  System.out.println(time.format(DateTimeFormatter.ISO_LOCAL_TIME));
+  System.out.println(dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+  </pre>
+  <p><b>ISO</b><i> é um padrão para datas. A sáida do código acima é assim:</i></p><br>
+  <pre>
+  2020-01-20
+  11:12:34
+  2020-01-20T11:12:34 
+  </pre>
+  <p>Existem alguns formatos predefinidos que são úteis:</p>
+  <pre class="brush:java">
+  DateTimeFormatter shortDateTime=DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+  System.out.println(shortDateTime.format(dateTime)); // 1/20/20
+  System.out.println(shortDateTime.format(date)); // 1/20/20
+  System.out.println(
+  shortDateTime.format(time)); // UnsupportedTemporalTypeException
+  </pre>
+  <p>Aqui nós queremos localizar um formato curto predefinido. A última linha lança uma exceção porque <b>horário</b> não pode ser formatado como <b>data</b></p>.
 
-<p>Se você quiser criar seu próprio formato:</p>
-<pre class="brush:java">
-DateTimeFormatter f = DateTimeFormatter.ofPattern("MMMM dd, yyyy, hh:mm");
-System.out.println(dateTime.format(f)); // January 20, 2020, 11:12
-</pre>
-</section>
-<section id="idhourdatenalise">
-<h3>Analisando Datas e Horários</h3>
+  <p>Se você quiser criar seu próprio formato:</p>
+  <pre class="brush:java">
+  DateTimeFormatter f = DateTimeFormatter.ofPattern("MMMM dd, yyyy, hh:mm");
+  System.out.println(dateTime.format(f)); // January 20, 2020, 11:12
+  </pre>
+  </section>
+  <section id="idhourdatenalise">
+  <h3>Analisando Datas e Horários</h3>
 
-<p>Agora que você sabe como converter uma <b>data</b> ou <b>horário</b> para um formato <b>String</b>, você vai achar mais fácil converter <b>String</b> para <b>data</b> ou <b>horário</b>. Apenas com o método <b>format()</b>, e o método <b>parse()</b> faz um formato também.</p>
-<pre class="brush:java">
-DateTimeFormatter f = DateTimeFormatter.ofPattern("MM dd yyyy");
-LocalDate date = LocalDate.parse("01 02 2019", f);
-LocalTime time = LocalTime.parse("11:22");
-System.out.println(date); // 2019-01-02
-System.out.println(time); // 11:22
-</pre>
-</section>
-<section id="resumo">
-<h1>Resumão</h1>
-	<p>Neste conteúdo você aprendeu que Strings são imutáveis sequências de caracteres. O operador <b>new</b> é opcional. O operador de concatenação<b>(+)</b> cria um novo <b>String</b> com o conteúdo do <b>primeiro String </b> seguido pelo conteúdo do <b>segundo String</b>. Se o operador envolve na <b>expressão + 
-	String</b>, concatenação é usado; de outra forma, adicão é usado.  <b>String literal</b> são aramazeands no <b>string pool</b>. A classe String tem muitos métodos.. Você precisa conhecer <b>charAt(), concat(), endsWith(), equals(), equalsIgnoreCase(), indexOf(), length(), replace(), startsWith(), substring(), toLowerCase(), toUpperCase(), e trim()</b>. </p><br>
-<p> <b>StringBuilders</b> são sequências de caracteres mutáveis. A maioria dos métodos retorna uma referência ao objeto atual para permitir métodos em cadeia. A classe StringBuilders tem muitos métodos. Você preciasa conhecer <b>append(), charAt(), delete(), deleteCharAt(), 
-indexOf(), insert(), length(), reverse(), substring(), e toString()</b>.</p><br>
-<p>Chamar <b>==</b> no objeto <b>String</b> vai checar se eles estão apontando para o mesmo objeto no pool. Chamar <b>==</b> na referência <b>StringBuilder</b> vai checar se eles estão apontando ao mesmo objeto StringBuilder. Chamar <b>equals()</b> no objeto <b>String</b> vai checar se a sequência de caracteres é a mesma.Chamar <b>equals()</b> no objeto <b>Stringbuilder</b> vai checar se eles estão apontando para o mesmo objeto em vez de procurar nos valores  dentro.</p><br>
-<p>Um array é um tamanho-fixo da área de memória no <b>heap</b> que tem espaço para primitivos ou apontado para objetos. Você especifica o tamanho quando criá-lo - exemplo, <b>int[ ] a = new in[8];</b> Início indexado com 0 e elementos são referido para usar um [0]. O método <b>Arrays.sort()</b> ordena um <b>array</b>.<b> Arrays.binarySearch()</b> pesquisa um <b>array ordenado</b> e retorna o <b>index</b> do correspondente. Se este correspondente não é encontrado, este nega a posição onde o elemento precisaria ser inserido e subtrai 1. Métodos que são passados, <b>varargs(...)</b> pode ser usado como se um array normal foi passado nele. Em um <b>array multidimensional</b>, o array do segundo-nível pode ir além e ser de diferentes tamanhos.</p><br>
-<p>Um ArrayList pode mudar de tamanho ao longo do seu ciclo. Ele pode aramazenar em uma referência <b>ArrayList</b> ou <b>List</b>. Pode especificar o tipo genérico que vai no <b>ArrayList</b>. Você precisa conhecer os métodos, <b>add(), clear(), contains(), equals(), isEmpty(), remove(), set(), and size()</b>. Apesar e tudo um ArrayList não é permitido conter números primitivos.</p><br>
-<p>Um <b>LocalDate</b> contém somente uma <b>data</b>, um <b>LocalTime</b> contém somente <b>horário</b>, e um <b>LocalDateTime</b> contém ambos uma <b>data</b> e <b>horário</b>. Todos os três tem construtores privados e são criados usando <b>LocalDate.now()</b> ou <b>LocalDate.of()</b>. <b>Datas</b> e <b>Horários</b> podem ser manipulados usando métodos <b>plusXXX</b> ou <b>minusXXX</b>. A <b>classe Period</b> representa o número de dias, meses, ou anos para adcionar ou subtrair do <b>LocalDate</b> ou <b>LocalDateTime</b>. <b>DateFormatter</b> é usado para saída de <b>datas</b> e <b>horários</b> no formato desejado. A classe <b>data</b> e <b>horário</b> são todas imutáveis, isto significa que o valor de retorno deve ser usado.</p>
-<br>
-<br>
-</section>
+  <p>Agora que você sabe como converter uma <b>data</b> ou <b>horário</b> para um formato <b>String</b>, você vai achar mais fácil converter <b>String</b> para <b>data</b> ou <b>horário</b>. Apenas com o método <b>format()</b>, e o método <b>parse()</b> faz um formato também.</p>
+  <pre class="brush:java">
+  DateTimeFormatter f = DateTimeFormatter.ofPattern("MM dd yyyy");
+  LocalDate date = LocalDate.parse("01 02 2019", f);
+  LocalTime time = LocalTime.parse("11:22");
+  System.out.println(date); // 2019-01-02
+  System.out.println(time); // 11:22
+  </pre>
+  </section>
+  <section id="resumo">
+  <h1>Resumão</h1>
+  	<p>Neste conteúdo você aprendeu que Strings são imutáveis sequências de caracteres. O operador <b>new</b> é opcional. O operador de concatenação<b>(+)</b> cria um novo <b>String</b> com o conteúdo do <b>primeiro String </b> seguido pelo conteúdo do <b>segundo String</b>. Se o operador envolve na <b>expressão + 
+  	String</b>, concatenação é usado; de outra forma, adicão é usado.  <b>String literal</b> são aramazeands no <b>string pool</b>. A classe String tem muitos métodos.. Você precisa conhecer <b>charAt(), concat(), endsWith(), equals(), equalsIgnoreCase(), indexOf(), length(), replace(), startsWith(), substring(), toLowerCase(), toUpperCase(), e trim()</b>. </p><br>
+  <p> <b>StringBuilders</b> são sequências de caracteres mutáveis. A maioria dos métodos retorna uma referência ao objeto atual para permitir métodos em cadeia. A classe StringBuilders tem muitos métodos. Você preciasa conhecer <b>append(), charAt(), delete(), deleteCharAt(), 
+  indexOf(), insert(), length(), reverse(), substring(), e toString()</b>.</p><br>
+  <p>Chamar <b>==</b> no objeto <b>String</b> vai checar se eles estão apontando para o mesmo objeto no pool. Chamar <b>==</b> na referência <b>StringBuilder</b> vai checar se eles estão apontando ao mesmo objeto StringBuilder. Chamar <b>equals()</b> no objeto <b>String</b> vai checar se a sequência de caracteres é a mesma.Chamar <b>equals()</b> no objeto <b>Stringbuilder</b> vai checar se eles estão apontando para o mesmo objeto em vez de procurar nos valores  dentro.</p><br>
+  <p>Um array é um tamanho-fixo da área de memória no <b>heap</b> que tem espaço para primitivos ou apontado para objetos. Você especifica o tamanho quando criá-lo - exemplo, <b>int[ ] a = new in[8];</b> Início indexado com 0 e elementos são referido para usar um [0]. O método <b>Arrays.sort()</b> ordena um <b>array</b>.<b> Arrays.binarySearch()</b> pesquisa um <b>array ordenado</b> e retorna o <b>index</b> do correspondente. Se este correspondente não é encontrado, este nega a posição onde o elemento precisaria ser inserido e subtrai 1. Métodos que são passados, <b>varargs(...)</b> pode ser usado como se um array normal foi passado nele. Em um <b>array multidimensional</b>, o array do segundo-nível pode ir além e ser de diferentes tamanhos.</p><br>
+  <p>Um ArrayList pode mudar de tamanho ao longo do seu ciclo. Ele pode aramazenar em uma referência <b>ArrayList</b> ou <b>List</b>. Pode especificar o tipo genérico que vai no <b>ArrayList</b>. Você precisa conhecer os métodos, <b>add(), clear(), contains(), equals(), isEmpty(), remove(), set(), and size()</b>. Apesar e tudo um ArrayList não é permitido conter números primitivos.</p><br>
+  <p>Um <b>LocalDate</b> contém somente uma <b>data</b>, um <b>LocalTime</b> contém somente <b>horário</b>, e um <b>LocalDateTime</b> contém ambos uma <b>data</b> e <b>horário</b>. Todos os três tem construtores privados e são criados usando <b>LocalDate.now()</b> ou <b>LocalDate.of()</b>. <b>Datas</b> e <b>Horários</b> podem ser manipulados usando métodos <b>plusXXX</b> ou <b>minusXXX</b>. A <b>classe Period</b> representa o número de dias, meses, ou anos para adcionar ou subtrair do <b>LocalDate</b> ou <b>LocalDateTime</b>. <b>DateFormatter</b> é usado para saída de <b>datas</b> e <b>horários</b> no formato desejado. A classe <b>data</b> e <b>horário</b> são todas imutáveis, isto significa que o valor de retorno deve ser usado.</p>
+  <br>
+  <br>
+  </section>
 
-<p class="nav-arq" id="referencia"> Operadores e Declarações<a href="operadorjava.html">&laquo; anterior | <a href="metodoenc.html">próximo >> Métodos e Encapsulamentos &raquo;</a> </p>
-<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/apijava" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
-</div>
-</div>
+  <p class="nav-arq" id="referencia"> Operadores e Declarações<a href="operadorjava.html">&laquo; anterior | <a href="metodoenc.html">próximo >> Métodos e Encapsulamentos &raquo;</a> </p>
+  <div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/apijava" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+  </div>
+  </div>
 
-  
-</body>
-</html>
+    
+  </body>
+  </html>
 
 
 

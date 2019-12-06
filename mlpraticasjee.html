@@ -1,16 +1,17 @@
 <!DOCTYPE html>
  <html lang="pt-br">
- <head>
-   <head>
+<head>
  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
  <link rel="stylesheet" type="text/css" href="css/stylos.css">
  <link rel="stylesheet" href="css/stylew3.css">
  <script type="text/javascript"src="js/efeitos.js"></script>
-   <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
 <script src="code-brush-master/cbCore.js"></script>
 <script src="code-brush-master/cBrushXml.js"></script>
+               
 <script src="code-brush-master/cBrushCss.js"></script>
 <script src="code-brush-master/cBrushPhp.js"></script>
 <script src="code-brush-master/cBrushSql.js"></script>
@@ -21,6 +22,56 @@
     SyntaxHighlighter.defaults['toolbar'] = false;
     SyntaxHighlighter.all();
 </script>
+<script type="text/javascript">
+jQuery(document).ready(function(jQuery) {            
+            var topMenu = jQuery("#mySidebar"),
+                offset = 40,
+                topMenuHeight = topMenu.outerHeight()+offset,
+                // All list items
+                menuItems =  topMenu.find('a[href*="#"]'),
+                // Anchors corresponding to menu items
+                scrollItems = menuItems.map(function(){
+                  var href = jQuery(this).attr("href"),
+                  id = href.substring(href.indexOf('#')),
+                  item = jQuery(id);
+                  //console.log(item)
+                  if (item.length) { return item; }
+                });
+
+            // so we can get a fancy scroll animation
+            menuItems.click(function(e){
+              var href = jQuery(this).attr("section"),
+                id = href.substring(href.indexOf('#'));
+                  offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+              jQuery('html, body').stop().animate({ 
+                  scrollTop: offsetTop
+              }, 300);
+              e.preventDefault();
+            });
+
+            // Bind to scroll
+            jQuery(window).scroll(function(){
+               // Get container scroll position
+               var fromTop = jQuery(this).scrollTop()+topMenuHeight;
+
+               // Get id of current scroll item
+               var cur = scrollItems.map(function(){
+                 if (jQuery(this).offset().top < fromTop)
+                   return this;
+               });
+
+               // Get the id of the current element
+               cur = cur[cur.length-1];
+               var id = cur && cur.length ? cur[0].id : "";               
+               
+               menuItems.parent().removeClass("active");
+               if(id){
+                    menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+               }
+               
+            })
+        })</script>
+ 
  <title> Programar em Java</title>
  </head>
  <body>
@@ -33,44 +84,75 @@
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
   <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+ <li class="active">
    <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+   </li><li>
    <a class="w3-bar-item w3-button" href="#mlpratica" >20- PRÁTICAS RECOMENDADAS JAVA EE WEB</a>
+          </li><li>
           <a class="w3-bar-item w3-button" href="#ataual">Se Atualizando</a>
-          <a class="w3-bar-item w3-button"href="#solpratic">Soluções práticas recomendadas: Usando EL e JSTL</a>
+         </li><li>
+          <a class="w3-bar-item w3-button"href="#solpratic">Soluções práticas recomendadas: Usando EL e JSTL</a></li><li>
           <a class="w3-bar-item w3-button"href="#expresslang">Expression Language</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#literal">Literais</a>
+         </li><li>
           <a class="w3-bar-item w3-button"href="#palreserv">Palavras reservadas</a>
+          </li><li>
           <a class="w3-bar-item w3-button" href="#operel">Operadores EL</a>
+         </li><li>
           <a class="w3-bar-item w3-button"href="#oparitm">Operadores Aritmético</a>
+          </li><li>
           <a class="w3-bar-item w3-button" href="#oprelacion">Operadores Relacionais</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#oplogico">Operadores Lógico</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#usarel">Usando EL</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#operadores">Os Operadores . e []</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#dentcolch">Dentro dos Colchetes</a>
+          </li><li>
           <a class="w3-bar-item w3-button" href="#objimplicito">Objetos Implícito EL </a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#usaobjimplel">Usando Objetos Implicitos EL</a>
-
-           <a class="w3-bar-item w3-button" href="#accessrequest">Acessando parâmetros de solicitação</a>
+</li><li>
+          <a class="w3-bar-item w3-button" href="#accessrequest">Acessando parâmetros de solicitação</a>
+       </li><li>
           <a class="w3-bar-item w3-button"href="#accessheader">Acessando o cabeçalho(Header)</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#accessscop">Acessando um atributo de Escopo</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#jstl">JSTL</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#actiongen">Ação de propósito Geral</a>
+          </li><li>
           <a class="w3-bar-item w3-button" href="#actionout">A Ação &ltc:out></a>
-          <a class="w3-bar-item w3-button"href="#definition">Definindo a propriedade de um objeto de destino especificado</a>
+          </li><li>
+          <a class="w3-bar-item w3-button"href="#definition">Definindo a propriedade de um objeto de destino especificado</a></li><li>
           <a class="w3-bar-item w3-button" href="#actioncatch">A Ação &ltc:catch></a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#condition">Condicionais</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#actionif">A Ação &ltc:if></a>
-          <a class="w3-bar-item w3-button"href="#actions">As ações &ltc:choose>, &ltc:when>, &ltc:otherwise></a>
+         </li><li>
+          <a class="w3-bar-item w3-button"href="#actions">As ações &ltc:choose>, &ltc:when>, &ltc:otherwise></a></li><li>
           <a class="w3-bar-item w3-button"href="#loopitera">Looping e Iteração</a>
+          </li><li>
           <a class="w3-bar-item w3-button" href="#actionfor">A ação &ltforEach></a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#actionfortok">A Ação &ltc:forTokens></a>
-
+</li><li>
 
           <a class="w3-bar-item w3-button" href="#actionrelurl">Ações Relacionando URL</a>
+         </li><li>
           <a class="w3-bar-item w3-button"href="#actimport">A Ação &ltc:import></a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#actparam">A Ação &ltc:param></a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#acturl">A Ação &ltc:url></a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#actredirect">A Ação &ltc:redirect></a>
+ </li><li>
   <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
     <div id="demo" class="w3-hide">
@@ -123,7 +205,7 @@
 </p>
 </div>
 <header class="w3-container w3-theme" style="padding:64px 32px">
-  <h1 class="w3-xxxlarge">JAVA EE </h1>
+  <h1 class="w3-xxxlarge">JAVA EE 7</h1>
 </header>
 
 <section id="mlpratica">

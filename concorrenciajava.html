@@ -1,1375 +1,1443 @@
-<!DOCTYPE html>
- <html lang="pt-br">
-
+  <!DOCTYPE html>
+   <html lang="pt-br">
   <head>
- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
- <link rel="stylesheet" type="text/css" href="css/stylos.css">
- <link rel="stylesheet" href="css/stylew3.css">
- <script type="text/javascript"src="js/efeitos.js"></script>
-  <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
-<script src="code-brush-master/cbCore.js"></script>
-<script src="code-brush-master/cBrushXml.js"></script>
-<script src="code-brush-master/cBrushCss.js"></script>
-<script src="code-brush-master/cBrushPhp.js"></script>
-<script src="code-brush-master/cBrushSql.js"></script>
-<script src="code-brush-master/cBrushJScript.js"></script>   
-<script src="code-brush-master/cBrushJava.js"></script>  
-<script>
-    SyntaxHighlighter.defaults['auto-links'] = false;
-    SyntaxHighlighter.defaults['toolbar'] = false;
-    SyntaxHighlighter.all();
-</script>
- <title> Programar em Java</title>
- </head>
- <body>
- 
+   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/stylos.css">
+   <link rel="stylesheet" href="css/stylew3.css">
+   <script type="text/javascript"src="js/efeitos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+  <script src="code-brush-master/cbCore.js"></script>
+  <script src="code-brush-master/cBrushXml.js"></script>
+                 
+  <script src="code-brush-master/cBrushCss.js"></script>
+  <script src="code-brush-master/cBrushPhp.js"></script>
+  <script src="code-brush-master/cBrushSql.js"></script>
+  <script src="code-brush-master/cBrushJScript.js"></script>   
+  <script src="code-brush-master/cBrushJava.js"></script>  
+  <script>
+      SyntaxHighlighter.defaults['auto-links'] = false;
+      SyntaxHighlighter.defaults['toolbar'] = false;
+      SyntaxHighlighter.all();
+  </script>
+  <script type="text/javascript">
+  jQuery(document).ready(function(jQuery) {            
+              var topMenu = jQuery("#mySidebar"),
+                  offset = 40,
+                  topMenuHeight = topMenu.outerHeight()+offset,
+                  // All list items
+                  menuItems =  topMenu.find('a[href*="#"]'),
+                  // Anchors corresponding to menu items
+                  scrollItems = menuItems.map(function(){
+                    var href = jQuery(this).attr("href"),
+                    id = href.substring(href.indexOf('#')),
+                    item = jQuery(id);
+                    //console.log(item)
+                    if (item.length) { return item; }
+                  });
 
-<!-- Top Navigation Menu -->
+              // so we can get a fancy scroll animation
+              menuItems.click(function(e){
+                var href = jQuery(this).attr("section"),
+                  id = href.substring(href.indexOf('#'));
+                    offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+                jQuery('html, body').stop().animate({ 
+                    scrollTop: offsetTop
+                }, 300);
+                e.preventDefault();
+              });
 
-  <div id="voltarTopo">
-  <a href="#" id="subir">Topo</a>
-</div>
+              // Bind to scroll
+              jQuery(window).scroll(function(){
+                 // Get container scroll position
+                 var fromTop = jQuery(this).scrollTop()+topMenuHeight;
 
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
-       <a class="w3-bar-item w3-button"  href="#concorrencia">16-CONCORRÊNCIA COM JAVA </a>
-            <a class="w3-bar-item w3-button"  href="#threadssimutl">Criando Threads para Executar Tarefas Simultaneamente</a>
-          <a class="w3-bar-item w3-button"  href="#criarthreads">Criando Threads</a>
-          <a class="w3-bar-item w3-button"  href="#classethreadext">Criando Threads Extendendo a Classe Thread</a>
-          <a class="w3-bar-item w3-button" href="#interfacerun">Criando Threads implementando Interface Runnable</a>
-       <a class="w3-bar-item w3-button"  href="#sincronthread">Sincronização de threads com Palavra-chave Synchronized</a>
-          <a class="w3-bar-item w3-button"  href="#condcorrida">Condições de Corrida </a>
-          <a class="w3-bar-item w3-button"  href="#blocsincronized">Blocos Sincronizados</a>
-           <a class="w3-bar-item w3-button"  href="#metsincronize">Métodos Sincronizados</a>
-          <a class="w3-bar-item w3-button"  href="#problemthread">Problemas de Threading</a>
-           <a class="w3-bar-item w3-button"  href="#deadlockjv">Deadlocks</a>
-          <a class="w3-bar-item w3-button"  href="#livelocks">Livelocks</a>
-       <a class="w3-bar-item w3-button"  href="#starationlock">Lock Starvation </a>
-          <a class="w3-bar-item w3-button"  href="#javautilconc">Usando o Pacote java.util.concurrent.atomic</a>
-           <a class="w3-bar-item w3-button"  href="#usacolecjavautil">Usando Coleções java.util.concurrent</a>
-          <a class="w3-bar-item w3-button"  href="#cyclebarrier">CyclicBarrier</a>
-           <a class="w3-bar-item w3-button"  href="#colecaoconcr">Coleções Concorrentes</a>
-          <a class="w3-bar-item w3-button"  href="#copyonwrite">CopyOnWriteArrayList</a>
-             
-       <a class="w3-bar-item w3-button"  href="#interfacecalable">Usando a Interface Callable e ExecutorService </a>
-          <a class="w3-bar-item w3-button"  href="#executorjv">EXECUTOR</a>
-           <a class="w3-bar-item w3-button"  href="#callabexecserv">Callable e ExecutrService</a>
-          <a class="w3-bar-item w3-button"  href="#paraleforkjoin">Use Parallel Fork/Join Framework</a>
-           <a class="w3-bar-item w3-button"  href="#frameworforkjoin">Classes Úteis no Framework Fork / Join</a>
-          <a class="w3-bar-item w3-button"  href="#forkjoinusefrm">Usando o Framework Fork/Join</a>
-  
-           <a class="w3-bar-item w3-button"  href="#fluxparalell">Usar Fluxos Paralelos</a>
-          <a class="w3-bar-item w3-button"  href="#fluxdesempenhoprl">Fluxos paralelos e desempenho</a>
-  <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
-    <div id="demo" class="w3-hide">
+                 // Get id of current scroll item
+                 var cur = scrollItems.map(function(){
+                   if (jQuery(this).offset().top < fromTop)
+                     return this;
+                 });
 
- 
-    
-<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
-     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+                 // Get the id of the current element
+                 cur = cur[cur.length-1];
+                 var id = cur && cur.length ? cur[0].id : "";               
+                 
+                 menuItems.parent().removeClass("active");
+                 if(id){
+                      menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+                 }
+                 
+              })
+          })</script>
+   <title> Programar em Java</title>
+   </head>
+   <body>
+   
 
-<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
-<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+  <!-- Top Navigation Menu -->
 
-<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
-<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
-
-<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
-<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
-<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
-<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
-<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
-
-<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
-<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
-<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
-<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
-<a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
-
-<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
-<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
-
-<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
-<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
-<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
-<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
-<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
-<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
-
-<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
-
-    </div>
+    <div id="voltarTopo">
+    <a href="#" id="subir">Topo</a>
   </div>
-</nav>
 
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+    <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+    <li class="active">
+    <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+         </li><li>
+         <a class="w3-bar-item w3-button"  href="#concorrencia">16-CONCORRÊNCIA COM JAVA </a>
+            </li><li>
+              <a class="w3-bar-item w3-button"  href="#threadssimutl">Criando Threads para Executar Tarefas Simultaneamente</a></li><li>
+            <a class="w3-bar-item w3-button"  href="#criarthreads">Criando Threads</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#classethreadext">Criando Threads Extendendo a Classe Thread</a></li><li>
+            <a class="w3-bar-item w3-button" href="#interfacerun">Criando Threads implementando Interface Runnable</a></li><li>
+         <a class="w3-bar-item w3-button"  href="#sincronthread">Sincronização de threads com Palavra-chave Synchronized</a></li><li>
+            <a class="w3-bar-item w3-button"  href="#condcorrida">Condições de Corrida </a>
+  </li><li>
+            <a class="w3-bar-item w3-button"  href="#blocsincronized">Blocos Sincronizados</a>
+           </li><li>
+             <a class="w3-bar-item w3-button"  href="#metsincronize">Métodos Sincronizados</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#problemthread">Problemas de Threading</a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#deadlockjv">Deadlocks</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"  href="#livelocks">Livelocks</a>
+         </li><li>
+         <a class="w3-bar-item w3-button"  href="#starationlock">Lock Starvation </a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#javautilconc">Usando o Pacote java.util.concurrent.atomic</a></li><li>
+             <a class="w3-bar-item w3-button"  href="#usacolecjavautil">Usando Coleções java.util.concurrent</a></li><li>
+            <a class="w3-bar-item w3-button"  href="#cyclebarrier">CyclicBarrier</a>
+            </li><li>
+             <a class="w3-bar-item w3-button"  href="#colecaoconcr">Coleções Concorrentes</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"  href="#copyonwrite">CopyOnWriteArrayList</a>
+               </li><li>
+         <a class="w3-bar-item w3-button"  href="#interfacecalable">Usando a Interface Callable e ExecutorService </a></li><li>
+            <a class="w3-bar-item w3-button"  href="#executorjv">EXECUTOR</a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#callabexecserv">Callable e ExecutrService</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#paraleforkjoin">Use Parallel Fork/Join Framework</a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#frameworforkjoin">Classes Úteis no Framework Fork / Join</a></li><li>
+            <a class="w3-bar-item w3-button"  href="#forkjoinusefrm">Usando o Framework Fork/Join</a>
+    </li><li>
+             <a class="w3-bar-item w3-button"  href="#fluxparalell">Usar Fluxos Paralelos</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#fluxdesempenhoprl">Fluxos paralelos e desempenho</a>
+    </li><li>
+    <div>
+      <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
+      <div id="demo" class="w3-hide">
 
-<div class="w3-main" style="margin-left:250px;">
+   
+      
+  <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+       <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
 
-<div id="myTop" class="w3-top  w3-large">
-  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-</p>
-</div>
-<header class="w3-container w3-theme" style="padding:64px 32px">
-  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
-</header>
-<section id="concorrencia">
-<h1>Concorrência com Java</h1>
+  <a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+  <a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
 
-<p>Concorrência está ganhando importância com o uso mais difundido de processadores multicore. A raiz latina da palavra concorrência significa "rodando juntos". Na programação, você pode ter vários segmentos rodando em paralelo em um programa executando diferentes tarefas ao mesmo tempo. Quando usada corretamente, a concorrência pode melhorar o desempenho e a capacidade de resposta do aplicativo e, portanto, é um recurso poderoso e útil. Neste capítulo, usamos os termos <b>multi-thread</b> e <b>concorrência</b> de forma intercambiável.</p>
-<p>Desde o início, o Java suportava concorrência na forma de gerenciamento de <b>threads</b> de baixo nível, bloqueios, sincronização e APIs para concorrência. Desde o 5.0, o Java também suporta APIs de concorrência de alto nível em seu pacote <b>java.util.concurrent</b>. A partir da versão 8.0, o Java obteve ainda melhor suporte para concorrência com a introdução de fluxos paralelos.</p>
+  <a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+  <a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
 
-<br>
-<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
-</section>
-<section id="threadssimutl">
-<h2>Criando Threads para Executar Tarefas Simultaneamente</h2>
+  <a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+  <a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+  <a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+  <a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+  <a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
 
-<p>As classes <b>Thread</b> e <b>Object</b> e a interface <b>Runnable</b> fornecem o suporte necessário para concorrência em Java. A classe <b>Thread</b> possui métodos como <b>run()</b>, <b>start()</b> e <b>sleep()</b> que são úteis para <b>multi-threading</b> . A classe <b>Object</b> tem métodos como <b>wait()</b> e <b>notify()</b> que suportam concorrência. Como cada classe em Java deriva da classe <b>Object</b>, todos os objetos possuem alguns recursos básicos de <b>multi-threading</b>. Por exemplo, você pode adquirir um bloqueio em qualquer objeto em Java (usando palavras-chave <b>syncrhonized</b>, que discutiremos mais adiante. No entanto, para criar um <b>thread</b>, esse suporte básico do <b>Object</b> não é útil. Para isso, uma classe deve estender a classe <b>Thread</b> ou implementar a interface <b>Runnable</b>. O <b>Thread</b> e o <b>Runnable</b> estão no pacote <b>java.lang</b>, portanto, você não precisa importar essas classes explicitamente para escrever programas de vários segmentos.</p>
-<br>
-<p>Logo abaixo a tabela mostra os Métodos Importantes na Classe Thread</p>
-<br>
+  <a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+  <a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+  <a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+  <a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+  <a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
 
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Método</th><th>Tipo de Método</th><th>Descrição</th></tr>
-<tr><td>Thread currentThread()</td><td>Método Estático</td><td>Retorna a referência para o thread atual.</td></tr>
-<tr><td>String getName()</td><td>Método Instancia</td><td>Retorna o nome do thread atual.</td></tr>
-<tr><td>int getPriority()</td><td>Método Instância</td><td>Retorna o valor de prioridade do thread atual.</td></tr>
-<tr><td>void join(), void join(long), void join(long, int)</td><td>Métodos InstÂncia Sobrecarrregado</td><td>O thread atual que invoca a junção no outro thread aguarda até que o outro thread seja concluído. Opcionalmente, você pode conceder o tempo limite em milissegundos (dado em long) ou o tempo limite em milissegundos, além de nanossegundos (dado em long e int).
-</td></tr>
-<tr><td>void run()</td><td>Método Instância</td><td>Depois de iniciar um thread (usando o método start()), o
-O método run() será chamado quando o thread estiver pronto para executar.
-</td></tr>
+  <a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+  <a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
 
-<tr><td>void setName(String)</td><td>Método Instância</td><td>Altera o nome do thread para o nome dado no
-argumento.
-</td></tr>
+  <a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+  <a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+  <a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+  <a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+  <a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+  <a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
 
-<tr><td>void setPriority(int)</td><td>Método Instância</td><td>Define a prioridade do thread para o valor do argumento fornecido.</td></tr>
+  <a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
 
-<tr><td>void sleep(long)</td><td>Métodos InstÂncia Sobrecarrregado</td><td>
-Faz com que o thread atual durma por milissegundos
-(dado em longo) ou por milissegundos e nanossegundos
-(dado em long e int).</td></tr>
+      </div>
+    </div>
+  </nav>
 
-<tr><td>void sleep(long, int)</td><td>Métodos InstÂncia Sobrecarrregado</td><td>
-Faz com que o thread atual durma por milissegundos
-(dado em longo) ou por milissegundos e nanossegundos
-(dado em long e int).
-</td></tr>
-<tr><td>void start()</td><td>Método Instância</td><td>Inicia o segmento; A JVM chama o método run() do thread.</td></tr>
-<tr><td>String toString()</td><td>Método Instância</td><td>Retorna a representação de string do thread; o string
-tem o nome, a prioridade e o grupo do thread.
-</td></tr>
-</table>
-</div>
-</section>
-<section id="criarthreads">
-<h1>Criando Threads</h1>
-<p>Vamos agora criar <b>threads</b> usando a classe <b>Thread</b> e a interface <b>Runnable</b>. Discutiremos como criar <b>threads</b> de trabalho usando <b>Callable</b> e <b>ExecutorService</b> posteriormente.</p>
-</section>
-<section id="classethreadext">
-<h2>Criando Threads Extendendo a Classe Thread</h2>
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
 
+  <div class="w3-main" style="margin-left:250px;">
 
+  <div id="myTop" class="w3-top  w3-large">
+    <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  </p>
+  </div>
+  <header class="w3-container w3-theme" style="padding:64px 32px">
+    <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+  </header>
+  <section id="concorrencia">
+  <h1>Concorrência com Java</h1>
 
-<p>Para estender a classe <b>Thread</b>, você precisa sobrescrever o método <b>run()</b>. Se você não sobrescrever o método <b>run()</b>, o método <b>run()</b> padrão da classe <b>Thread</b> será chamado, o que não faz nada. Para sobrescrever o método <b>run()</b>, você precisa declará-lo como público; não recebe argumentos e tem um tipo de retorno nulo; em outras palavras, deve ser declarado como <b>public void run()</b>.</p>
+  <p>Concorrência está ganhando importância com o uso mais difundido de processadores multicore. A raiz latina da palavra concorrência significa "rodando juntos". Na programação, você pode ter vários segmentos rodando em paralelo em um programa executando diferentes tarefas ao mesmo tempo. Quando usada corretamente, a concorrência pode melhorar o desempenho e a capacidade de resposta do aplicativo e, portanto, é um recurso poderoso e útil. Neste capítulo, usamos os termos <b>multi-thread</b> e <b>concorrência</b> de forma intercambiável.</p>
+  <p>Desde o início, o Java suportava concorrência na forma de gerenciamento de <b>threads</b> de baixo nível, bloqueios, sincronização e APIs para concorrência. Desde o 5.0, o Java também suporta APIs de concorrência de alto nível em seu pacote <b>java.util.concurrent</b>. A partir da versão 8.0, o Java obteve ainda melhor suporte para concorrência com a introdução de fluxos paralelos.</p>
 
-<p>Você pode criar um <b>thread</b> invocando o método <b>start()</b> em um objeto da classe <b>Thread</b>. Quando a JVM agenda a <a>thread</b>, ele moverá a <b>thread</b> para um estado executável e, em seguida, executará o método <b>run()</b>. Quando o método <b>run()</b> concluir sua execução e retornar, o <b>thread</b> será finalizado.</p>
-<pre class="brush:java">
-//MyThread.java
-class MyThread extends Thread {
-public void run() {
-try {
-sleep(1000);
-}
-catch (InterruptedException ex) {
-ex.printStackTrace();
-// ignore a InterruptedException - talvez essa seja a
-// muito poucas exceções em Java que são aceitáveis para ignorar
-}
-System.out.println("In run(); thread name is: " + getName());
-}
-public static void main(String args[]) {
-Thread myThread = new MyThread();
-myThread.start();
-System.out.println("In main(); thread name: " +
-Thread.currentThread().getName());
-}
-}
-</pre>
-<p>Este programa imprime o seguinte:</p>
-<pre>
-In main(); thread name is: main
-In run(); thread name is: Thread-0
-</pre>
-<p>Neste exemplo, a classe <b>MyThread</b> estende a classe <b>Thread</b>. Você sobrescreveu o método <b>run()</b> nesta classe. Este método <b>run()</b> será chamado quando o <b>thread</b> for executado. Na função <b>main()</b>, você cria um novo <b>thread</b> e o inicia usando o método <b>start()</b>. Uma observação importante: você não invoca o método <b>run()</b> diretamente. Em vez disso, você inicia o <b>thread</b> usando o método <b>start()</b>; o método <b>run()</b> é chamado automaticamente pela JVM.</p>
-<p>Para imprimir o nome do <b>thread</b>, você pode usar o método de instância <b>getName()</b>, que retorna uma <b>String</b>. Como <b>main()</b> é um método estático, você não tem acesso a essa referência. Assim, você obtém o nome da <b>thread</b> atual usando o método estático <b>currentThread()</b> na classe <b>Thread</b> (que retorna um objeto Thread).</p>
-<p>Agora você pode chamar <b>getName</b> nesse objeto retornado. Como você verá mais tarde, o método <b>main()</b> também é executado como uma <b>thread</b>! No entanto, dentro do método <b>run()</b>, você pode chamar diretamente o método <b>getName()</b>: <b>MyThread</b> estende o <b>Thread</b>, então todos os membros da classe base também estão disponíveis em <b>MyThread</b>.</p>
-</section>
-<section id="interfacerun">
-<h3>Criando Threads implementando Interface Runnable</h3>
-
-<p>Outra maneira de criar uma <b>thread</b> é implementar a interface <b>Runnable</b>. A classe <b>Thread</b> implementa a interface <b>Runnable</b>. A interface <b>Runnable</b> declara um único método, <b>run()</b> Assim, quando você implementa a interface <b>Runnable</b>, você precisa definir o método <b>run()</b>. Lembre-se <b>Runnable</b> não declara o método <b>start()</b>. Então, como você cria uma <b>thread</b> se você implementar a interface <b>Runnable?</b> Thread tem um construtor sobrecarregado, que usa um objeto <b>Runnable</b> como argumento.</p>
-<pre class="brush:java">
-//RunnableImpl.java
-class RunnableImpl implements Runnable {
-public void run() {
-System.out.println("In run(); thread name is: " +
-Thread.currentThread().getName());
-}
-public static void main(String args[]) throws Exception {
-Thread myThread = new Thread(new RunnableImpl());
-myThread.start();
-System.out.println("In main(); thread name is: " +
-Thread.currentThread().getName());
-}
-}
-</pre>
-<p>Este programa imprime:</p>
-<pre>
-In main(); thread name is: main
-In run(); thread name is: Thread-0
-</rpe>
-<p>Você está implementando o método <b>run()</b> neste programa. No entanto, para obter o nome da <b>string</b>, você deve seguir uma rota de retorno e obter o nome da <b>thread</b> com <b>Thread.currentThread().getName()</b>.
-<p>No método <b>main()</b>, para criar um thread, você deve passar o objeto da classe  <b>RunnableImpl</b> para o construtor <b>Thread</b>. O método <b>start()</b> inicia o <b>thread</b> e, posteriormente, a JVM chama o método <b>run()</b> do thread.
-</section>
-<section id="sincronthread">
-<h1>Sincronização de threads com Palavra-chave Synchronized</h1>
-
-<p>A palavra-chave <b>synchronized</b> do Java ajuda na sincronização de <b>threads</b>. Você pode usá-lo de duas formas: blocos sincronizados e métodos sincronizados. Por que precisamos usar a palavra-chave <b>synchronized</b>? Para evitar o problema das condições de corrida. Vamos discutir este assunto agora.</p>
-</section>
-<section id="condcorrida">
-<h2>Condições de Corrida</h2>
-
-<p><b>Threads</b> compartilham memória e podem modificar dados simultaneamente. Como a modificação pode ser feita ao mesmo tempo sem salvaguardas, isso pode levar a resultados não-intuitivos.</p>
-<p>Quando dois ou mais <b>threads</b> estão tentando acessar uma variável e um deles quer modificá-la, você recebe um problema conhecido como uma condição de corrida (também conhecida como corrida de dados ou risco de corrida). O exemplo abaixo mostra um exemplo de uma condição de corrida.</p>
-<pre class="brush:java">
-//RaceCondition.java
-
-// Esta classe expõe um contador acessível ao público
-// para ajudar a demonstrar o problema das condições da corrida
-
-class Counter {
-public static long count= 0;
-}
-// Esta classe implementa a interface Runnable
-// Seu método de execução incrementa o contador três vezes
-
-class UseCounter implements Runnable {
-public void increment() {
-
-// incrementa o contador e imprime o valor
-// do contador compartilhado entre os threads
-Counter.count++;
-System.out.print(Counter.count+ " ");
-}
-public void run() {
-increment();
-increment();
-increment();
-}
-}
-  // Esta classe cria três threads
-public class RaceCondition {
-public static void main(String args[]) {
-UseCounter c = new UseCounter();
-Thread t1 = new Thread(c);
-Thread t2 = new Thread(c);
-Thread t3 = new Thread(c);
-t1.start();
-t2.start();
-t3.start();
-}
-}
-</pre>
-<p>Neste programa, existe uma classe <b>Counter</b> que possui uma contagem de variáveis ​​estáticas. No método <b>run()</b> da classe <b>UseCounter</b>, você incrementa a contagem chamando três vezes o método <b>increment()</b>. Você cria três <b>threads</b> na função <b>main()</b> na classe <b>RaceCondition</b> e a inicia. Você espera que o programa imprima de 1 a 9 seqüencialmente como os <b>threads</b> executam e incrementam os contadores. No entanto, quando você executa este programa, ele imprime nove valores inteiros, mas a saída se parece com lixo! Em uma amostra, obtivemos estes valores:</p>
-
-<pre>3 3 5 6 3 7 8 4 9</pre>
-
-<p>Observe que os valores geralmente serão diferentes toda vez que você executar este programa; quando o rodamos mais duas vezes, conseguimos essas saídas:</p>
-<pre>
-3 3 5 6 3 4 7 8 9
-3 3 3 6 7 5 8 4 9
-</pre>
-
-<p>Então, qual é o problema?</p>
-<p>A expressão <b>Counter.count++</b> é uma operação de gravação e a próxima declaração <b>System.out.print</b> tem uma operação de leitura para <b>Counter.count</b>. Quando os três <b>threads</b> são executados, cada um deles tem uma cópia local do valor <b>Counter.count</b> e quando atualizam o contador com <b>Counter.count++</b>, eles não precisam refletir imediatamente esse valor na memória principal. Na próxima operação de leitura de <b>Counter.count</b>, o valor local de <b>Counter.count</b> é impresso. </p>
-
-<img src="imagens/jee7/concorrencia.jpg">
-<p><i>Na imagem acima Threads t1, t2 e t3 tentando alterar a contagem de contador, causando uma condição de corrida</i></p><br>
-
-<p>Portanto, este programa sofre com o problema de condição de corrida. Para evitar esse problema, você precisa garantir que um único <b>thread</b> faça as operações de gravação e leitura juntas (atomicamente). A seção de código que é comumente acessada e modificada por mais de um <b>thread</b> é conhecida como seção crítica. Para evitar o problema de condição de corrida, você precisa garantir que a seção crítica seja executada por apenas um thread por vez.</p>
-<p>Como você faz isso? Ao adquirir um bloqueio no objeto usando a palavra-chave <b>synchronized</b>, que discutiremos agora. Apenas um único <b>thread</b> pode adquirir um bloqueio em um objeto de cada vez, e somente esse <b>thread</b> pode executar o bloco de código (ou seja, a seção crítica) protegida pelo bloqueio. Até então, os outros tópicos precisam esperar.</p>
-</section>
-<section id="blocsincronized">
-<h3>Blocos Sincronizados</h3>
-
-<p>Em blocos sincronizados, você usa a palavra-chave <b>synchronized</b> para uma variável de referência e a segue por um bloco de código. Um <b>thread</b> tem que adquirir um bloqueio na variável sincronizada para entrar no bloco; quando a execução do bloco é concluída, a thread libera o bloqueio. Por exemplo, você pode adquirir um bloqueio nessa referência se o bloco de código estiver dentro de um método não estático:</p>
-<pre class="brush:java">
-synchronized(this) {
-// segmento de código protegido pelo bloqueio mutex
-}
-</pre>
-<p>E se uma exceção for lançada dentro do bloco sincronizado? O bloqueio será liberado? Sim, independentemente de o bloco ser executado totalmente ou uma exceção ser lançada, o bloqueio será liberado automaticamente pela JVM. Com blocos sincronizados, você pode adquirir um bloqueio somente em uma variável de referência. Se você usar um tipo primitivo, receberá um erro do compilador. Vamos corrigir o problema da condição de corrida do exemplo anterior, adicionando um bloco sincronizado no método increment (), como em:</p>
-
-<pre class="brush:java">
-// na classe UseCounter
-public void increment() {
-// incrementa o contador e imprime o valor
-// do contador compartilhado entre os threads
-
-synchronized(this) {
-Counter.count++;
-System.out.print(Counter.count + " ");
-}
-}
-</pre>
-<p><b>Com essa alteração, o programa imprime valores de contagem incrementados corretamente:</b></p>
-<pre>1 2 3 4 5 6 7 8 9</pre>
-
-
-<p>No método <b>increment()</b>, você obtém um bloqueio na referência <b>this</b> antes de ler e gravar em <b>Counter.count</b>. Portanto, não é possível que mais de um <b>thread</b> execute essas instruções ao mesmo tempo.Como apenas um <b>thread</b> pode adquirir um bloqueio e executar o bloco de código de “seção crítica”, o contador é incrementado por apenas um thread em um determinado momento; Como resultado, o programa imprime os valores 1 a 9 corretamente.</p>
-<p>Sem o bloco sincronizado, três threads diferentes modificariam livremente a variável e, portanto, você não obteria os valores 1 a 9 impressos corretamente (devido ao problema de condição de corrida que discutimos anteriormente).</p>
-</section>
-<section id="metsincronize">
-<h3>Métodos Sincronizados</h3>
-
-<p>Um método inteiro pode ser declarado sincronizado. Nesse caso, quando o método declarado como sincronizado é chamado, um bloqueio é obtido no objeto no qual o método é chamado e é liberado quando o método retorna ao responsável pela chamada. Aqui está um exemplo:</p>
-<pre class="brush:java">
-public synchronized void assign(int i) {
-val = i;
-</pre>
-<p>Agora o método <b>assign()</b> é um método sincronizado. Se você chamar o método <b>assign()</b>, ele obterá o bloqueio na referência <b>this</b> implicitamente e, em seguida, executará a declaração val = i ;. O que acontece se algum outro <b>thread</b> já tiver adquirido o bloqueio? Assim como os blocos sincronizados, se o <b>thread</b> não puder obter o bloqueio, ele será bloqueado e o <b>thread</b> aguardará até que o bloqueio fique disponível.</p>
-
-<p>Um método sincronizado é equivalente a um bloco sincronizado se você incluir todo o corpo do método em um bloco sincronizado(this). Então, o método equivalente <b>assign()</b> usando blocos sincronizados é:</p>
-<pre class="brush:java">
-public void assign(int i) {
-synchronized(this) {
-val = i;
-}
-}
-</pre>
-<p>Você pode declarar métodos estáticos sincronizados. No entanto, qual é a variável de referência na qual o bloqueio é obtido? Lembre-se de que métodos estáticos não têm implícita essa referência. Métodos sincronizados estáticos adquirem bloqueios no objeto de classe. Cada classe é associada a um objeto do tipo Classe e você pode acessá-la usando a sintaxe ClassName.class. Por exemplo,</p>
-<pre class="brush:java">
-class SomeClass {
-private static int val;
-public static synchronized void assign(int i) {
-val = i;
-}
-// mais membros ...
-}
-</pre>
-<p>Nesse caso, o método de atribuição adquire um bloqueio no objeto <b>SomeClass.class</b> quando é chamado. Agora o método equivalente <b>assign</b>  usando blocos sincronizados pode ser escrito assim:</p>
-<pre class="brush:java">
-class SomeClass {
-private static int val;
-public static void assign(int i) {
-synchronized(SomeClass.class) {
-val = i;
-}
-}
-// mais membros ...
-}
-</pre>
-<p>Você não pode declarar construtores sincronizados; isso resultará em um erro do compilador. Por exemplo, para:</p>
-<pre class="brush:java">
-class Synchronize {
-pubmais métodos
-}
-</pre>
-<p><b>Você obtém um erro:</b></p>
-<pre>
-Synchronize.java:2: modifier synchronized not allowed here
-public synchronized Synchronize() { /* constructor body */}
-</pre>
-<p>Por que você não pode declarar os construtores sincronizados? A JVM assegura que apenas uma <b>thread</b> possa invocar uma chamada de construtor (para um construtor específico) em um determinado ponto no tempo. Portanto, não há necessidade de declarar um construtor sincronizado. No entanto, se você quiser, você pode usar blocos sincronizados dentro de construtores.</p>
-<p>Vamos voltar ao exemplo <b>RaceCondition</b>. O método <b>increment()</b> na classe <b>UseCounter</b> pode ser reescrito como um método sincronizado também:</p>
-<pre class="brush:java">
-// declarando o incremento sincronizado em vez de usar
-// uma instrução sincronizada para um bloco de código dentro do método
-public synchronized void increment() {
-Counter.count++;
-System.out.print(Counter.count + " ");
-}
-</pre>
-<p>Este programa imprime:</p>
-<pre>1 2 3 4 5 6 7 8 9</pre>
-
-<p>Este programa imprime a saída  esperada corretamente.</p>
-<br>
-<p><i>Os iniciantes geralmente entendem mal que um bloco sincronizado obtém um bloqueio para um bloco de código. Na verdade, o bloqueio é obtido para um objeto e não para um pedaço de código. o bloqueio obtido é mantido até que todas as declarações nesse bloco concluam a execução.</i></p>
-</section>
-<section id="problemthread">
-<h1>Problemas de Threading</h1>
-
-<p>A programação concorrente em <b>threads</b> é repleta de armadilhas e problemas. Já discutimos as condições de corrida que ocorrem quando não usamos bloqueios na seção anterior. Nesta seção, vamos discutir mais três problemas de thread: deadlock, starvation e livelock.</p>
-</section>
-<section id="deadlockjv">
-<h2>Deadlocks</h2>
-
-<p>Obter e usar bloqueios é complicado e pode causar muitos problemas. Um dos problemas difíceis (e comuns) é conhecido como um <b>deadlock</b>. Um <b>deadlock</b> surge quando travamento de <b>threads</b> resultam em uma situação em que não pode prosseguir e, assim, esperar indefinidamente para que os outros terminem. Segundo, um <b>thread</b> adquire um bloqueio no recurso r1 e aguarda para adquirir outro no recurso r2. Ao mesmo tempo, digamos que há outro <b>thread</b> que tem já adquirido r2 e está esperando para obter um bloqueio em r1. Nenhum dos threads pode prosseguir até que o outro libere o bloqueio, o que nunca acontece - então eles estão presos em um deadlock.O proximo exemplo mostra como essa situação pode surgir (usando o exemplo do jogo Cricket).</p>
-<pre class="brush:java">
-//DeadLock.java
-// A classe Balls possui um membro de dados acessível globalmente para armazenar o número de bolas lançadas
-class Balls {
-public static long balls = 0;
-}
-// A classe Runs possui um membro de dados acessível globalmente para armazenar o número de execuções pontuadas
-class Runs {
-public static long runs = 0;
-}
-
-// A classe Counter possui dois métodos - IncrementBallAfterRun e IncrementRunAfterBall.
-// Para demonstrar o deadlock, chamamos esses dois métodos no método run, para que
-// o bloqueio pode ser solicitado na ordem oposta nesses dois métodos
-class Counter implements Runnable {
-// este método incrementa a variável primeiro e depois incrementa a variável balls
-// como essas variáveis ​​são acessíveis a partir de outros threads,
-// precisamos adquirir um bloqueio antes de processá-los
-public void IncrementBallAfterRun() {
-// como estamos atualizando a variável primeiro, bloqueie primeiro o Runs.class
-synchronized(Runs.class) {
-// bloqueia Balls.class antes de atualizar a variável balls
-synchronized(Balls.class) {
-Runs.runs++;
-Balls.balls++;
-}
-}
-}
-public void IncrementRunAfterBall() {
-
-// já que estamos atualizando a variável balls primeiro; então primeiro bloqueie Balls.class
-synchronized(Balls.class) {
-// adquire bloqueio no Runs.class antes de atualizar a variável de execução
-synchronized(Runs.class) {
-Balls.balls++;
-Runs.runs++;
-}
-}
-}
-public void run() {
-// chame esses dois métodos que adquirem bloqueios em ordem diferente
-// dependendo da programação do encadeamento e da ordem de aquisição do bloqueio,
-// um impasse pode ou não surgir
-IncrementBallAfterRun();
-IncrementRunAfterBall();
-}
-}
-public class DeadLock {
-public static void main(String args[]) throws InterruptedException {
-Counter c = new Counter();
-// cria dois threads e inicia-os ao mesmo tempo
-Thread t1 = new Thread(c);
-Thread t2 = new Thread(c);
-t1.start();
-t2.start();
-System.out.println("Waiting for threads to complete execution...");
-t1.join();
-t2.join();
-System.out.println("Done.");
-}
-}
-</pre>
-
-<p>Se você executar este programa, o programa poderá ser executado corretamente ou poderá travar e nunca terminar (a ocorrência de deadlock neste programa depende de como os threads são agendados).</p>
-<pre>
-D:\> java DeadLock
-Waiting for threads to complete execution...
-Done.
-D:\> java DeadLock
-Waiting for threads to complete execution...
-[deadlock – user pressed ctrl + c to terminate the program]
-D:\> java DeadLock
-Waiting for threads to complete execution...
-Done.
-</pre>
-<p>Neste exemplo, existem duas classes, <b>Balls</b> e <b>Runs</b>, com membros estáticos chamados de balls e runs. A classe <b>Counter</b> possui dois métodos, <b>IncrementBallAfterRun()</b> e <b>IncrementRunAfterBall()</b>. Eles adquirem bloqueios na <b>Balls.class</b> e <b>Runs.class</b> na ordem oposta. O método <b>run()</b> chama esses dois métodos consecutivamente. O método <b>main()</b> na classe <b>DeadLock</b> cria dois <b>threads</b> e os inicia.
-Quando os <b>threads t1</b> e <b>t2</b> executa, eles invocam os métodos <b>IncrementBallAfterRun</b> e <b>IncrementRunAfterBall</b>. Nestes métodos, os bloqueios são obtidos em ordem oposta. Pode acontecer que <b>t1</b> adquira um bloqueio em <b>Runs.class</b> e espere para obter um bloqueio em <b>Balls.class</b>. Enquanto isso, o <b>t2</b> pode ter adquirido o <b>Balls.class</b> e agora estará esperando para adquirir um bloqueio no <b>Runs.class</b>. Portanto, este programa pode levar a um <b>deadlock</b>.</p> 
-
-<br>
-  <img src="imagens/jee7/concorrencia1.jpg">
-  <p><i>A figura acima mostra Impasse(Deadlock) entre os threads t1 e t2</i></p>
   <br>
-<p>Não se pode garantir que este programa leve a um <b>deadlock</b> toda vez que você executar este programa.
-Por quê? Você nunca sabe a sequência na qual os <b>threads</b> são executados e a ordem em que os bloqueios são adquiridos e liberados. Por esta razão, tais problemas são considerados não-determinísticos, e tais problemas não podem ser reproduzidos consistentemente.</p>
-<p>Existem diferentes estratégias para lidar com <b>deadlocks</b>, como prevenção, revogação ou detecção de deadlock:</p>
-<ul>
-<li> Os deadlocks podem surgir no contexto de vários bloqueios.</li>
-<li> Se vários bloqueios forem adquiridos na mesma ordem, um deadlock não ocorrerá; no entanto, se você adquiri-los em uma ordem diferente, os deadlocks podem ocorrer.</li>
-<li> Deadlocks (assim como outros problemas de multi-threading) são não-determinísticos; você não pode reproduzir consistentemente deadlocks.</li>
-</ul>
-<p>Evite adquirir vários bloqueios. Se você deseja adquirir vários bloqueios, certifique-se de que eles sejam adquiridos na mesma ordem em todos os lugares para evitar conflitos.</p>
-</section>
-<section id="livelocks">
-<h2>Livelocks</h2>
-
-<p>Para ajudar a entender os <b>livelocks</b>, vamos considerar uma analogia. Suponha que existem dois carros robóticos que são programados para dirigir automaticamente na estrada. Há uma situação em que dois carros robóticos alcançam as duas extremidades opostas de uma ponte estreita. A ponte é tão estreita que apenas um carro pode passar de cada vez. Os carros robóticos são programados de tal forma que esperam que o outro carro passe primeiro. Quando ambos os carros tentam entrar na ponte ao mesmo tempo, a seguinte situação pode acontecer: cada carro começa a entrar na ponte, percebe que o outro carro está tentando fazer o mesmo e inverte! Note que os carros continuam se movendo para frente e para trás e, assim, aparecem como se estivessem fazendo muito trabalho, mas não há progresso feito por nenhum dos carros. Esta situação é chamada de <b>livelock</b>.</p>
-<p>Considere dois <b>threads</b> t1 e t2. Suponha que o <b>thread</b> t1 faça uma alteração e o <b>thread</b> t2 desfaça essa alteração. Quando ambos os <b>threads</b> t1 e t2 funcionar, parecerá que muito trabalho está sendo feito, mas nenhum progresso é feito. Essa situação é chamada de <b>livelock</b> em <b>threads</b>.</p>
-<p>A semelhança entre <b>livelocks</b> e <b>deadlocks</b> é que o processo “trava” e o programa nunca termina. No entanto, em um <b>deadlock</b>, os <b>threads</b> estão presos no mesmo estado, aguardando que outro (s) thread (s) liberem um recurso compartilhado; em um <b>livelock</b>, os <b>threads</b> continuam executando uma tarefa, e há uma mudança contínua nos estados do processo, mas o aplicativo como um todo não faz progresso.</p>
-<br>
-</section>
-<section id="starationlock">
-<h2>Lock Starvation</h2>
-
-<p>Considere a situação em que vários <b>threads</b> têm prioridades diferentes designadas a eles (no intervalo de prioridade mais baixa, 1, para prioridade mais alta, 10, que é o intervalo permitido para prioridade de <b>threads</b> em Java). Quando um bloqueio está disponível, o programador de <b>thread</b> dará prioridade aos <b>threads</b> com alta prioridade sobre baixa prioridade.</p>
-<p>Se houver muitos <b>threads</b> de alta prioridade que desejem obter o bloqueio e também manter o bloqueio por longos períodos de tempo, quando os <b>threads</b> de baixa prioridade terão a chance de obter o bloqueio? Em outras palavras, em uma situação onde <b>threads</b> de baixa prioridade "passam fome" por um longo tempo tentando obter o bloqueio é conhecido como <b>lock starvation</b>.</p>
-</section>
-<section id="javautilconc">
-<h1>Usando o Pacote java.util.concurrent.atomic</h1>
-
-<p>O pacote <b>java.util.concurrent</b> tem dois subpacotes: <b>java.util.concurrent.atomic</b> e <b>java.util.concurrent.locks</b>. Nesta seção, discutiremos variáveis ​​atômicas no pacote <b>java.util.concurrent.atomic</b>.</p>
-
-<p>Muitas vezes você pode ver código que adquire e libera bloqueios para implementar operações primitivas/simples como incrementar uma variável, decrementar uma variável e assim por diante? (Nós já vimos um exemplo no incremento de uma variável inteira quando discutimos a palavra-chave synchronized anteriormente ).</p>
-<p>Adquirir e liberar bloqueios para essas operações primitivas não é eficiente. Em tais casos, o Java fornece uma alternativa eficiente na forma de variáveis ​​atômica.</p>
-<p>Aqui está uma lista de algumas das classes deste pacote e sua breve descrição:</p>
-<ul>
-<li> <b>AtomicBoolean</b>: Valor booleano atomicamente atualizável.</li>
- <li><b>AtomicInteger</b>: valor int atomicamente atomizado; herda da classe Number.<li>
-<li> <b>AtomicIntegerArray</b>: um array int no qual os elementos podem ser atualizados atomicamente.</li>
-<li> <b>AtomicLong</b>: valor long atomicamente atualizável; herda da classe Number.</li>
-<li> <b>AtomicLongArray</b>: Um long array no qual os elementos podem ser atualizados atomicamente.</li>
-<li> <b>AtomicReference&ltV></b>: uma referência de objeto atomicamente atualizável do tipo V.</li>
-<li> <b>AtomicReferenceArray&ltE></b>: Um array atomicamente atualizável que pode conter referências de objetos do tipo E (E refere ao tipo base de elementos).</li>
-</ul>
-<br>
-<p><i>Apenas AtomicInteger e AtomicLong se estendem da classe Number, mas não do AtomicBoolean. Todas as outras classes no subpacote java.util.concurrent.atomic herdam diretamente da classe Object</i></p>
-<br>
-
-<p>Das classes no subpacote <b>java.util.concurrency.atomic</b>, <b>AtomicInteger</b> e <b>AtomicLong</b> são as mais importantes. Logo abaixo a tabela lista os métodos importantes na classe AtomicInteger. (Os métodos no AtomicLong são análogos a estes).</p>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Método</th><th>Descrição</th></tr>
-<tr><td>AtomicInteger()</td><td>Cria uma instância do AtomicInteger com o valor inicial 0.</td></tr> 
-
-<tr><td>AtomicInteger(int initVal)</td><td>Cria uma instância do AtomicInteger com o valor inicial initVal.</td></tr> 
-<tr><td>int get()</td><td>Retorna o valor inteiro mantido neste objeto.</td></tr>
- 
-<tr><td>void set(int newVal)</td><td>Redefine o valor inteiro contido neste objeto para newVal.</td></tr>
- 
- <tr><td>int getAndSet(int newValue)</td><td>Retorna o intvalue atual mantido neste objeto e define o valor contido neste objeto como newVal.</td></tr>
-
-<tr><td>boolean compareAndSet(int expect, int update)</td><td>Compara o valor int deste objeto com o valor esperado e, se eles são iguais, define o valor int deste objeto para o valor de atualização.</td></tr>
-
- <tr><td>int getAndIncrement()<td></td>Retorna o valor atual do valor inteiro neste objeto e incrementa o valor inteiro neste objeto. Semelhante ao comportamento de i ++ onde i um int.
-</td></tr> 
-<tr><td>int getAndDecrement()</td><td>Retorna o valor atual do valor inteiro neste objeto e decrementa o valor inteiro neste objeto. Semelhante ao comportamento de i - onde i é um int.</td></tr>
- 
-<tr><td>int getAndAdd(int delta)</td><td>Retorna o valor inteiro mantido neste objeto e adiciona o valor delta dado ao valor inteiro.</td></tr>
- 
-<tr><td>int incrementAndGet() </td><td>Incrementa o valor atual do valor inteiro neste objeto e
-retorna esse valor. Semelhante ao comportamento de ++ i onde i é um int.</td></tr>
-
-<tr><td>int decrementAndGet()</td><td>Decrementa o valor inteiro atual neste objeto e retorna esse valor. Semelhante ao comportamento de --i, onde i é um int.</td></tr>
- 
- <tr><td>int addAndGet(int delta)</td><td>Adiciona o valor delta ao valor atual do inteiro neste objeto e retorna esse valor.</td></tr> 
- 
-<tr><td>int intValue() long longValue() float floatValue() double doubleValue() -</td><td>Converte o valor int atual do objeto e o retorna como valores int, long, float ou double.</td></tr>
-</table>
-</div>
-
-
-<p>Vamos experimentar um exemplo para entender como usar o <b>AtomicInteger</b> ou o <b>AtomicLong</b>. Suponha que você tenha um valor de contador que seja público e acessível por todos os <b>threads</b>. Como você atualiza ou acessa esse valor de contador comum com segurança sem introduzir o problema de condição de corrida (discutido anteriormente neste capítulo)? Obviamente, você pode usar a palavra-chave synchronized para garantir que a seção crítica (o código que modifica o valor do contador) seja acessada por apenas um <b>thread</b> em um determinado ponto no tempo. A seção crítica será muito pequena, como em:</p>
-<pre class="brush:java">
-public void run() {
-synchronized(SharedCounter.class) {
-SharedCounter.count++;
-}
-}
-</pre>
-<p>No entanto, este código é ineficiente, uma vez que adquire e libera o bloqueio de cada vez apenas para incrementar o valor <b>count</b>. Alternativamente, se você declarar <b>count</b> como <b>AtomicInteger</b> ou <b>AtomicLong</b> (o que for adequado). As classes como <b>AtomicInteger</b> não usam um bloqueio; em vez disso, eles usam internamente variáveis ​​voláteis e um mecanismo de baixo nível conhecido como <b>Compare-and-Set (CAS)</b>. Por esse motivo, usar <b>AtomicInteger</b> e classes relacionadas é mais rápido do que usar bloqueios usando a palavra-chave synchronized.</p>
-<pre class="brush:java">
- //AtomicVariableTest.java
-import java.util.concurrent.atomic.AtomicInteger;
-// Classe para demonstrar como números inteiros "normais" (isto é, thread inseguro) são mutantes
-// e os números inteiros "atômicos" (ou seja, seguros para threads) são diferentes:
-// A mutação de um objeto inteiro compartilhado sem bloqueios pode resultar em uma condição de corrida;
-// no entanto, a mutação de um AtomicInteger compartilhado não resultará em uma condição de corrida.
-class Counter {
-public static Integer integer= new Integer(0);
-public static AtomicInteger atomicInteger= new AtomicInteger(0);
-}
-class AtomicVariableTest {
-static class Incrementer extends Thread {
-public void run() {
-Counter.integer++;
-Counter.atomicInteger.incrementAndGet();
-}
-}
-static class Decrementer extends Thread {
-public void run() {
-Counter.integer--;
-Counter.atomicInteger.decrementAndGet();
-}
-}
-public static void main(String []args) throws InterruptedException {
-Thread incremeterThread[] = new Incrementer[1000];
-Thread decrementerThread[] = new Decrementer[1000];
-
-for(int i = 0; i < 1000; i++) {
-incremeterThread[i] = new Incrementer();
-decrementerThread[i] = new Decrementer();
-incremeterThread[i].start();
-decrementerThread[i].start();
-}
-for(int i = 0; i < 1000; i++) {
-incremeterThread[i].join();
-decrementerThread[i].join();
-}
-System.out.printf("Integer value = %d AtomicInteger value = %d ",
-Counter.integer, Counter.atomicInteger.get());
-}
-}
-</pre>
- <p>A saída real depende do agendamento de threads. Em execuções diferentes, imprimiu as seguintes saídas:</p>
-<pre>
-Integer value = -2 AtomicInteger value = 0
-Integer value = 2 AtomicInteger value = 0
-Integer value = -1 AtomicInteger value = 0
-Integer value = -1 AtomicInteger value = 0
-Integer value = 0 AtomicInteger value = 0
-</pre>
-<p>Vamos analisar esse programa. A classe <b>Counter</b> possui dois membros de dados - um do tipo <b>Integer</b> e outro do tipo <b>AtomicInteger</b> - com o mesmo valor inicial 0. Existem duas classes de <b>Thread</b>. A classe Incrementer tem o método <b>run()</b> que incrementa os valores <b>Integer</b> e <b>AtomicInteger</b>. Por outro lado, a classe <b>Decrementer</b> possui o método <b>run()</b> que diminui os valores <b>Integer</b> e <b>AtomicInteger</b>.</p>
-
-<p>Nesta saída, observe que o incremento do objeto <b>Integer</b> pode resultar em uma condição de corrida: o valor final de <b>Integer</b> ou <b>AtomicInteger</b> após incrementar e decrementar um número igual de vezes deve ser sempre 0 - se não tivermos uma condição de corrida. Como você pode observar a partir da saída, às vezes para o objeto <b>Integer</b> é 0 (ou seja, sem condição de corrida), mas na maioria das vezes não é igual a 0 (o que significa que tem condição de corrida). No entanto, para <b>AtomicInteger</b>, o resultado é sempre zero (o que significa que não tem condição de corrida). Em outras palavras, este programa mostra que é seguro manipular um valor <b>AtomicInteger</b> sem nenhum bloqueio.</p>
-</section>
-<section id="usacolecjavautil">
-<h1>Usando Coleções java.util.concurrent</h1>
-
-<p>Existem muitas classes e interfaces no pacote <b>java.util.concurrent</b> que fornecem APIs de alto nível para programação concorrente. Nesta seção, discutiremos principalmente as classes de sincronizador fornecidas neste pacote. Em seguida, abordaremos brevemente as importantes classes de coleções concorrentes fornecidas no pacote <b>java.util.concurrent</b>.</p>
-<p>Você já entende as construções de concorrência de baixo nível, como o uso da palavra-chave <b>synchronized</b> usando interfaces <b>Runnable</b> para criar <b>threads</b>. No caso de um recurso compartilhado que precisa ser acessado por vários <b>threds</b>, o acesso e as modificações no recurso compartilhado precisam ser protegidos.</p>
-<p>Quando você usa a palavra-chave <b>synchronized</b>, você usa <b>mutexes</b>(exclusão mútua) para sincronizar entre <b>threads</b> para acesso compartilhado seguro. Os <b>threads</b> também costumam precisar coordenar suas execuções para concluir uma tarefa maior de nível superior. É possível construir abstrações de alto nível para sincronização de <b>threads</b>. Essas abstrações de alto nível para sincronizar atividades de dois ou mais <b>threads</b> são conhecidas como sincronizadores. Sincronizadores usam internamente as APIs de baixo nível existentes para coordenação de <b>threads</b>.</p>
-
-<p>Os sincronizadores fornecidos na biblioteca <b>java.util.concurrent</b> e seus usos são:</p>
-<ul>
-<li> Um <b>semáforo</b> controla o acesso a recursos compartilhados. Um semáforo mantém um contador para especificar o número de recursos que o semáforo controla.</li>
-<li> <b>CountDownLatch</b> permite que um ou mais threads aguardem a conclusão de uma contagem regressiva.</li>
-<li> A classe <b>Exchanger</b> destina-se à troca de dados entre dois threads. Essa classe é útil quando dois threads precisam sincronizar entre si e trocar dados continuamente.</li>
-<li>O <b>CyclicBarrier</b> ajuda a fornecer um ponto de sincronização onde os threads podem precisar aguardar em um ponto de execução predefinido até que todos os outros threads atinjam esse ponto.</li>
-<li>O <b>Phaser</b> é um recurso útil quando poucos threads independentes precisam trabalhar em fases para concluir uma tarefa.</li>
-
-</section>
-<section id="cyclebarrier">
-<h2>CyclicBarrier</h2>
-
-<p>Há muitas situações na programação concorrente em que os <b>threads</b> podem precisar aguardar em um ponto de execução predefinido até que todos os outros <b>threads</b> atinjam esse ponto. O <b>CyclicBarrier</b> ajuda a fornecer esse ponto de sincronização; ver Tabela abixo para os métodos importantes desta classe.</p>
-<br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Métodos</th><th>Descrição</th></tr>
-
-
-<tr><td>CyclicBarrier(int numThreads)</td><td>Cria um objeto CyclicBarrier com o número de segmentos que estão esperando especificado. Lança IllegalArgumentException se numThreads for negativo ou zero.
-</td></tr>
-
-<tr><td>CyclicBarrier(int parties, Runnable barrierAction)</td><td>O mesmo que o construtor anterior; Esse construtor também pega o thread para chamar quando a barreira é atingida.</td></tr>
-
-<tr><td>int await() int await(long timeout, TimeUnit unit)</td><td>Bloqueia até que o número especificado de threads que tenha chamado await() nessa barreira. O método retorna o índice de chegada desse thread. Este método pode lançar uma InterruptedException se o thread for interrompido enquanto aguarda por outros threads ou um BrokenBarrierException se a barreira foi quebrada por algum motivo (por exemplo, outro thread foi expirado ou interrompido). O método sobrecarregado leva um período de tempo limite como uma opção adicional; essa versão sobrecarregada lança um TimeoutException se todos os outros threads não forem alcançados dentro do período de tempo limite.</td></tr>
-
-<tr><td>boolean isBroken()</td><td>Retorna true se a barreira estiver quebrada. Uma barreira é quebrada se pelo menos um thread nessa barreira for interrompido ou expirado, ou se uma ação de barreira tiver falhado ao lançar uma exceção</td></tr>
-
-<tr><td>void reset()</td><td>Redefine a barreira para o estado inicial. Se houver algum thread aguardando na barreira, eles lançarão a exceção BrokenBarrier.
-</td></tr>
-</table>
-</div>
-<br>
-<p>Agora um exemplo que faz uso da classe CyclicBarrier.</p>
-<br>
-<pre class="brush:java">
-//CyclicBarrierTest.java
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.BrokenBarrierException;
-// O método run() neste thread deve ser chamado apenas quando
-// quatro jogadores estão prontos para começar o jogo
-class MixedDoubleTennisGame extends Thread {
-public void run() {
-System.out.println("All four players ready, game starts \n Love all...");
-}
-}
-// Este tópico simula a chegada de um jogador.
-// Quando um jogador chega, ele/ela deve esperar que outros jogadores cheguem
-class Player extends Thread {
-CyclicBarrier waitPoint;
-public Player(CyclicBarrier barrier, String name) {
-this.setName(name);
-waitPoint = barrier;
-this.start();
-}
-public void run() {
-System.out.println("Player " + getName() + " is ready ");
-try {
-waitPoint.await(); //  aguardo a chegada dos quatro jogadores
-} catch(BrokenBarrierException | InterruptedException exception) {
-System.out.println("An exception occurred while waiting... "
-+ exception);
-}
-}
-}
-
-// Cria um objeto CyclicBarrier passando o número de threads e o thread a ser executado
-// quando todos os threads atingem a barreira
-class CyclicBarrierTest {
-public static void main(String []args) {
-// um jogo de tênis misto e duplo requer quatro jogadores;
-// então espere quatro jogadores
-// (ou seja, quatro threads) para ingressar no jo
-System.out.println("Reserving tennis court \n"
-+ "As soon as four players arrive, game will start");
-CyclicBarrier barrier = new CyclicBarrier(4, new MixedDoubleTennisGame());
-new Player(barrier, "G I Joe");
-new Player(barrier, "Dora");
-new Player(barrier, "Tintin");
-new Player(barrier, "Barbie");
-}
-}
-</pre>
-<p><b>O programa imprime:</b></p>
-<pre>
-Reserving tennis court
-As soon as four players arrive, game will start
-Player Dora is ready
-Player G I Joe is ready
-Player Tintin is ready
-Player Barbie is ready
-All four players ready, game starts
-Love all...
-</pre>
-<p>Agora vamos ver como esse programa funciona. No método <b>main()</b>, você cria um objeto <b>CyclicBarrier</b>. O construtor recebe dois argumentos: o número de <b>threads</b> a serem aguardados e o <b>thread</b> a ser invocado quando todos os <b>threads</b> alcançarem a barreira. Neste caso, você tem quatro jogadores para esperar, então você cria quatro <b>threads</b>, com cada <b>thread</b> representando um jogador. O segundo argumento para o construtor <b>CyclicBarrier</b> é o objeto <b>MixedDoubleTennisGame</b>, já que este <b>thread</b> representa o jogo, que será iniciado assim que todos os quatro jogadores estiverem prontos.</p>
-<p>Dentro do método <b>run()</b> para cada<b> Playerthread</b>, você chama o método <b>await()</b> no objeto <b>CyclicBarrier</b>. Quando o número de <b>threads</b> aguardando para o objeto <b>CyclicBarrier</b> atingir quatro, o método <b>run()</b> em <b>MixedDoubleTennisGame</b> é chamado.</p>
-</section>
-<section id="colecaoconcr">
-<h2>Coleções Concorrentes</h2>
-
-
-<p>O pacote <b>java.util.concurrent</b> fornece um número de classes que são <b>thread-safe</b> equivalentes   aquelas fornecidas nas classes de estrutura de coleções no pacote <b>java.util</b>. Por exemplo,
-<b>java.util.concurrent.ConcurrentHashMap</b> é um equivalente simultâneo a <b>java.util.HashMap</b>. A principal diferença entre esses dois contêineres é que você precisa sincronizar explicitamente inserções e exclusões com o <b>HashMap</b>, enquanto essa sincronização é incorporada no <b>ConcurrentHashMap</b>. Se você souber usar o <b>HashMap</b>, saberá usar o <b>ConcurrentHashMap</b> implicitamente.</p>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>classes / interfaces</th><th>Descrição</th></tr>
-<tr><td>BlockingQueue</td><td>Essa interface estende a interface de Queue. Em BlockingQueue, se a fila estiver vazia, ela espera (ou seja, bloqueia) um elemento a ser inserido e, se a fila estiver cheia, ele espera que um elemento seja removido da fila.</td></tr>
-
-<tr><td>ArrayBlockingQueue</td><td>Esta classe fornece uma implementação baseada em array de tamanho fixo da interface BlockingQueue</td></tr>
-
-<tr><td>LinkedBlockingQueue</td><td>Esta classe fornece uma implementação baseada em lista vinculada da interface BlockingQueue.</td></tr>
-
-<tr><td>DelayQueue</td><td>Essa classe implementa BlockingQueuea e consiste em elementos que são do tipo Delayed. Um elemento pode ser recuperado desta fila somente após seu período de atraso.
-</td></tr>
-
-<tr><td>PriorityBlockingQueue</td><td>Equivalente a java.util.PriorityQueue, mas implementa a interface BlockingQueue.</td></tr>
-
-<tr><td>SynchronousQueue</td><td>Esta classe implementa o BlockingQueue. Nesse contêiner, cada inserção() por um thread aguarda(bloqueia) por um remove() correspondente por outro thread e vice-versa.</td></tr>
-<tr><td>LinkedBlockingDeque</td><td>Esta classe implementa o BlockingDeque onde as operações de inserção e remoção podem bloquear; usa uma lista vinculada para implementação
-</td></tr>
-
-<tr><td>ConcurrentHashMap</td><td>Análogo ao Hashtable, mas com acesso e atualizações concorrente seguras.</td></tr>
-
-<tr><td>ConcurrentSkipListMap</td><td>Analogamente ao TreeMap, mas fornece acesso e atualizações concorrente seguras.</td></tr>
-
-<tr><td>ConcurrentSkipListSet</td><td>Análogo ao TreeSet, mas fornece acesso e atualizações concorrente seguras
-</td></tr>
-
-<tr><td>CopyOnWriteArrayList</td><td>Semelhante ao ArrayList, mas fornece acesso concorrente seguro. Quando o contêiner é modificado, ele cria uma nova cópia do array subjacente</td></tr> 
-
-<tr><td>CopyOnWriteArraySet</td><td>Uma implementação Set, mas fornece acesso concorrente seguro e é implementada usando CopyOnWriteArrayList. Quando o contêiner é modificado, ele cria uma nova cópia do array subjacente.
-</td></tr>
-</table>
-</div>
-</section>
-<section id="copyonwrite">
-<h1>Classe CopyOnWriteArrayList</h1>
-
-<p><b>ArrayList</b> e <b>CopyOnWriteArrayList</b> implementam a interface <b>List</b>. Existem três diferenças principais entre <b>ArrayList</b> e <b>CopyOnWriteArrayList</b>:</p>
-<ul>
-<li><b>ArrayList</b> não é <b>thread-safe</b> mas <b>CopyOnWriteArrayList</b> é thread-safe. Isso significa que não é seguro usar o ArrayList em contextos nos quais vários threads estão sendo executados (especialmente quando alguns dos threads modificam o contêiner), mas é seguro usar CopyOnWriteArrayList nesse contexto.</li>
-<li>Métodos em <b>ArrayLists</b>, assim como os métodos <b>remove()</b>, <b>add()</b> e <b>set()</b> podem lançar <b>java.util.ConcurrentModificationException</b> se outro <b>thread</b> modificar o <b>ArrayList</b> quando um <b>thread</b> estiver acessando-o. No entanto, é seguro executar essas operações de vários segmentos em <b>CopyOnWriteArrayList</b> e, portanto, métodos como <b>remove()</b>, <b>add()</b> e <b>set()</b> não lançam essa exceção. Quão? Todos os iteradores ativos ainda terão acesso à versão não modificada do contêiner e, portanto, não serão afetados; Se você tentar criar um iterador após a modificação, obterá o iterador para o contêiner modificado.</li>
-<li> Você pode obter um iterador chamando o método <b>Iterator()</b> em um objeto <b>List</b>. Se você chamar o método <b>remove()</b> quando o contêiner subjacente for modificado, você poderá obter um <b>ConcurrentModificationException</b>. No entanto, você não pode chamar o método <b>remove()</b> em um iterador de um <b>CopyOnWriteArrayList</b>: ele sempre lança o <b>UnsupportedOperationException</b>.</li>
-</ul>
-<p>O comportamento de <b>CopyOnWriteArrayList</b> às vezes é útil mesmo em contextos em que o multi-threading não é usado. Por exemplo, o programa a seguir mostra uma ArrayList que está sendo modificada quando o iterador é executado.
-<pre class="brush:java">
-//ModifyingList.java
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-public class ModifyingList {
-public static void main(String []args) {
-List&ltString> aList = new ArrayList&lt>();
-aList.add("one");
-aList.add("two");
-aList.add("three");
-Iterator listIter = aList.iterator();
-while(listIter.hasNext()) {
-System.out.println(listIter.next());
-aList.add("four");
-}
-}
-}
-</pre>
-<p>Este programa trava jogando <b>java.util.ConcurrentModificationException</b>. Por quê? Porque o os iteradores do <b>ArrayList</b> são <b>fail-fast</b>; falha ao lançar <b>ConcurrentModificationException</b> se detectar que o contêiner subjacente foi alterado quando está interagindo sobre os elementos no contêiner. Esse comportamento é útil em contextos concorrentes quando um thread modifica o contêiner subjacente quando outro thread está interagindo sobre os elementos do contêiner.
-Você pode usar <b>CopyOnWriteArrayList</b> para fazer essas alterações no contêiner subjacente quando a iteração estiver acontecendo.</p>
-<pre class="brush:java">
-//COWList.java
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-public class COWList {
-public static void main(String []args) {
-List&ltString> aList = new CopyOnWriteArrayList&lt>();
-aList.add("one");
-aList.add("two");
-aList.add("three");
-Iterator listIter = aList.iterator();
-while(listIter.hasNext()) {
-System.out.println(listIter.next());
-aList.add("four");
-}
-}
-}
-</pre>
-<p><b>Agora o programa não trava, ele imprime:</b></p>
-<pre>
-one
-two
-three
-</pre>
-<p>Observe que o elemento “four” adicionado três vezes não é impresso como parte da saída. Isso ocorre porque o iterador ainda tem acesso ao contêiner original (não modificado) que tinha três elementos. Se você criar um novo iterador e acessar os elementos, descobrirá que novos elementos foram adicionados a uma lista.</p>
-
-</section>
-<section id="interfacecalable">
-<h1>Usando a Interface Callable e ExecutorService</h1>
-
-<p>Você pode criar e gerenciar diretamente encadeamentos no aplicativo, criando objetos <b>Thread</b>. No entanto, se você quiser abstrair os detalhes de baixo nível da programação multi-threaded, você pode fazer uso da interface <b>Executor</b></p>
-<br>
-<img src="imagens/jee7/concorrencia2.jpg">
-<p><i>Classes/interfaces importantes na hierarquia do Executor</i></p>
-<br>
-<section id="executorjv">
-<h2>EXECUTOR</h2>
-
-<p><b>Executor</b> é uma interface que declara apenas um método: void execute(Runnable). Isso pode não parecer uma interface significativa por si só, mas suas classes derivadas (ou interfaces), como <b>ExecutorService</b>, <b>ThreadPoolExecutor</b> e <b>ForkJoinPool</b>, oferecem suporte à funcionalidade útil. Discutiremos algumas das classes derivadas do <b>Executor</b> em mais detalhes mais adiante.</p>
-<p>Vamos ententeder com um exemplo simples de como implementar esta interface e usá-la na prática.</p>
-<pre class="brush:java">
-//ExecutorTest.java
-import java.util.concurrent.Executor;
-// Esta classe Task implementa Runnable, portanto é um objeto Thread
-class Task implements Runnable {
-public void run() {
-System.out.println("Calling Task.run() ");
-}
-}
-
-// Esta classe implementa a interface Executor e deve substituir o método execute (Runnable).
-// Fornecemos um método de execução sobrecarregado com um argumento adicional 'times' para criar e
-// executa os threads por um determinado número de vezes
-
-class RepeatedExecutor implements Executor {
-public void execute(Runnable runnable) {
-new Thread(runnable).start();
-}
-public void execute(Runnable runnable, int times) {
-System.out.printf("Calling Task.run() %d times thro' Executor.execute() %n",
-times);
-for(int i = 0; i < times; i++) {
-execute(runnable);
-}
-}
-}
-// Esta classe gera um thread de tarefas e chama explicitamente o método start ().
-// Também mostra como executar um Thread usando o Executor
-class ExecutorTest {
-public static void main(String []args) {
-Runnable runnable = new Task();
-System.out.println("Calling Task.run() by directly creating a Thread");
-Thread thread = new Thread(runnable);
-thread.start();
-RepeatedExecutor executor = new RepeatedExecutor();
-executor.execute(runnable, 3);
-}
-}
-</pre>
-<p><b>Aqui está a saída deste programa:</b></p>
-<pre>
-Calling Task.run() by directly creating a Thread
-Calling Task.run()
-Calling Task.run() 3 times thro' Executor.execute()
-Calling Task.run()
-Calling Task.run()
-Calling Task.run()
-</pre>
-<p>Neste programa, você tem uma classe <b>Task</b> que implementa <b>Runnable</b>, fornecendo a definição do método <b>run()</b>. A classe <b>RepeatedExecutor</b> implementa o <b>Executorinterface</b> fornecendo a definição do método <b>execute(Runnable)</b>.</p>
-
-<p>Ambos <b>Runnable</b> e <b>Executor</b> são semelhantes no sentido de que eles fornecem um único método para implementação. Nesta definição você deve ter notado que o <b>Executor</b> por si só não é um <b>thread</b>, e você deve criar um objeto <b>Thread</b> para executar o objeto <b>Runnable</b> passado no método <b>execute()</b>. No entanto, a principal diferença entre <b>Runnable</b> e <b>Executor</b> é que o <b>Executor</b> deve resumir como o <b>thread</b> é executado. Por exemplo, dependendo da implementação do <b>Executor</b>, pode-se agendar um <b>thread</b> para ser executado em um determinado momento ou executar o <b>thread</b> após um determinado período de atraso.</p>
-
-<p>Neste programa, você sobrecarregou o método <b>execute()</b> com um argumento adicional para criar e executar <b>threads</b> um determinado número de vezes. No método <b>main()</b>, você primeiro cria um objeto <b>Thread</b> e agendá-lo para execução. Depois disso, você instancia o <b>RepeatedExecutor</b> para executar o <b>thread</b> três vezes.</p>
-</section>
-<section id="callabexecserv">
-<h2>Callable e ExecutorService</h2>
-
-<p><b>Callable</b> é uma interface que declara apenas um método: <b>call()</b>. Sua assinatura completa é <b>V call() throws Exception</b>. Representa uma tarefa que precisa ser concluída por um <b>thread</b>. Depois que a tarefa é concluída, ela retorna um valor. Por algum motivo, se o método <b>call()</b> não puder executar ou falhar, ele lançará uma exceção.</p>
-
-<p>Para executar uma tarefa usando o objeto <b>Callable</b>, você primeiro cria um pool de threads. Um pool de thread é uma coleção de threads que podem executar tarefas. Você cria um pool de threads usando a classe de utilitário de executores. Esta classe fornece métodos para obter instâncias de conjuntos de threads, fábricas de threads e assim por diante.</p>
-<p>A interface <b>ExecutorService</b> estende a interface de <b>Executor</b> e fornece serviços como finalização de threads e produção de objetos <b>Future</b>. Algumas tarefas podem levar um tempo considerável de execução para serem concluídas. Então, quando você envia uma tarefa para o serviço executor, você obtém um objeto <b>Future</b>.</p>
-
-<p><b>Future</b> representa objetos que contêm um valor retornado por um thread no futuro (isto é, retorna o valor quando o thread termina no "futuro"). Você pode usar o método <b>isDone()</b> na classe <b>Future</b> para verificar se a tarefa está completa e, em seguida, use o método <b>get()</b> para buscar o resultado da tarefa. Se você chamar o método <b>get()</b> diretamente enquanto a tarefa não está completa, o método bloqueia até que seja concluído e retorna o valor assim que estiver disponível.</b>
-
-<p>Aqui está um exemplo simples para ver como essas classes funcionam juntas:</p>
-<p><b>CallableTest.java</b></p>
-<pre class="brush:java">
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.Executors;
-
-// O fatorial implementa Callable para que possa ser passado para um ExecutorService
-// e é executado como uma tarefa.
-class Factorial implements Callable&ltLong> {
-long n;
-public Factorial(long n) {
-this.n = n;
-}
-public Long call() throws Exception {
-if(n <= 0) {
-throw new Exception("for finding factorial, N should be > 0");
-}
-long fact = 1;
-for(long longVal = 1; longVal <= n; longVal++) {
-fact *= longVal;
-}
-return fact;
-}
-}
-// Ilustra como Callable, Executors, ExecutorService e Future estão relacionados;
-// também mostra como eles trabalham juntos para executar uma tarefa
-class CallableTest {
-public static void main(String []args) throws Exception {
-// o valor para o qual queremos encontrar o fatorial
-long N = 20;
-// get a callable task to be submitted to the executor service
-Callable&ltLong> task = new Factorial(N);
-// cria um ExecutorService com um pool de threads fixo com um thread
-ExecutorService es = Executors.newSingleThreadExecutor();
-// envia a tarefa ao serviço executor e armazena o objeto Future
-Future&ltLong> future = es.submit(task);
-// aguarde o método get () que bloqueia até que a computação esteja concluída.
-System.out.printf("factorial of %d is %d", N, future.get());
-// feito. desligue o serviço executor, pois não precisamos mais dele
-es.shutdown();
-}
-}
-</pre>
-<p>Este programa imprime o seguinte:</p>
-<pre>
-factorial of 20 is 2432902008176640000
-</pre>
-<p>Neste programa, você tem uma classe <b>Factorial</b> que implementa <b>Callable</b>. Como a tarefa é calcular o fatorial de um número N, a tarefa precisa retornar um resultado. Você usa o tipo <b>Long</b> para o valor fatorial, portanto, implementa <b>Callable&ltLong></b>. Dentro da classe <b>Factorial</b>, você define o método <b>call()</b> que realmente executa a tarefa (a tarefa aqui é calcular o fatorial do número dado). Se o valor fornecido N for negativo ou zero, você não executará a tarefa e lançará uma exceção ao chamador. Caso contrário, você faz um loop de 1 a N e encontra o valor fatorial.</p>
-<p>Na classe <b>CallableTest</b>, você primeiro cria uma instância da classe <b>Factorial</b>. Você precisa então executar esta tarefa. Por uma questão de simplicidade, você obtém um executor de thread único chamando o novo método <b>SingleThreadExecutor()</b> na classe <b>Executors</b>. Observe que você pode usar outros métodos, como <b>new FixedThreadPool(nThreads)</b>, para criar um <b>pool de threads</b> com vários <b>threads</b>, dependendo do nível de paralelismo necessário.</p>
-
-<p>Depois de obter um <b>ExecutorService</b>, você envia a tarefa para execução. <b>ExecutorService</b> abstrai detalhes como quando a tarefa é executada e como a tarefa é atribuída aos <b>threads</b>. Você obtém uma referência ao <b>Future&ltLong></b> quando chama o método <b>submit(task)</b>. A partir dessa referência futura, você chama o método <b>get()</b> para buscar o resultado depois de concluir a tarefa. Se a tarefa ainda estiver em execução quando você chamar <b>future.get()</b>, esse método <b>get()</b> será bloqueado até que a execução da tarefa seja concluída. Quando a execução estiver concluída, você precisará liberar manualmente o <b>ExecutorService</b> chamando o método <b>shutdown()</b>.</p>
-</section>
-<section id="paraleforkjoin">
-<h2>Use Parallel Fork/Join Framework</h2>
-
-<p>O framework <b>Fork/Join</b> no pacote <b>java.util.concurrent</b> ajuda a simplificar a gravação de código em paralelo. O framework é uma implementação da interface <b>ExecutorService</b> e fornece uma plataforma concorrente fácil de usar para explorar vários processadores. Esse framework é muito útil para modelar problemas de divisão e conquista. Essa abordagem é adequada para tarefas que podem ser divididas recursivamente e computadas em uma escala menor; os resultados calculados são então combinados. Dividir a tarefa em tarefas menores está <b>bifurcando(forking)</b> e mesclando os resultados das tarefas menores.</p>
-
-<p>O framework <b>Fork/Join</b> usa o algoritmo de roubo de trabalho: quando um <b>thread</b> de trabalho conclui seu trabalho e é gratuito, ele executa (ou rouba) trabalhos de outros <b>threads</b> que ainda estão ocupados fazendo algum trabalho. Inicialmente, parecerá a você que usar <b>Fork/Join</b> é uma tarefa complexa. Uma vez familiarizado com isso, você perceberá que é conceitualmente fácil e que simplifica significativamente seu trabalho.</p></p> A chave é subdividir recursivamente a tarefa em partes menores que podem ser processadas por <b>threads</b> separados.</p>
-
-<p><b>Resumidamente, o algoritmo Fork/Join é projetado da seguinte forma:</b></p>
-<pre class="brush:java">
-forkJoinAlgorithm() {
-fork (split) the tasks;
-join the tasks;
-compose the results;
-}
-</pre>
-<p><b>Aqui está o pseudo-código de como essas etapas funcionam:</b></p>
-<pre class="brush:java">
-doRecursiveTask(input) {
-if (the task is small enough to be handled by a thread) {
-compute the small task;
-if there is a result to return, do so
-}
-else {
-divide (i.e., fork) the task into two parts
-call compute() on first task, join() on second task, return combined results
-}
-
-}
-</pre>
-<p>O próximo exemplo visualiza como a tarefa é subdividida de forma recursiva em tarefas menores e como os resultados parciais são combinados. Como mostrado pela figura, uma tarefa é dividida em duas subtarefas e, em seguida, cada subtarefa é novamente dividida em duas subtarefas, e assim por diante, até que cada subtarefa de divisão seja computável por cada thread. Depois que um thread conclui o cálculo, ele retorna o resultado para combiná-lo com outros resultados; Desta forma, todos os resultados calculados são combinados de volta..</p>
-
-<br>
-<img src="imagens/jee7/concorrencia3.jpg">
-<p><i>O Framework Fork/Join usa Dividir e Conquistar para concluir a tarefa</i></p>
-<br>
-</section>
-<section id="frameworforkjoin">
-<h2>Classes Úteis no Framework Fork/Join</h2>
-
-<p>As classes a seguir desempenham papéis-chave no framework Fork/Join: <b>ForkJoinPool</b>, <b>ForkJoinTask</b>, <b>RecursiveTask</b> e <b>RecursiveAction</b>. Vamos considerar essas classes com mais detalhes.</p>
-<ul>
-<li> ForkJoinPool é a classe mais importante no framework Fork/Join. É um conjunto de encadeamentos para executar tarefas fork/join e executa uma instância de ForkJoinTask. Executa tarefas e gerencia seu ciclo de vida.</li>
-</ul>
-<br>
-<p>Na tabela- Métodos importantes na classe ForkJoinPool</p><br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Método</th><th>Descrição</th></tr>
-<tr><td>void execute(ForkJoinTask&lt?> task)</td><td>Executa uma determinada tarefa de forma assíncrona</td></tr>
-<tr><td>&ltT> T invoke(ForkJoinTask&ltT> task)</td><td>Executa a tarefa determinada e retorna o resultado computado</td></tr>
-<tr><td>&ltT> List< Future&ltT>> invokeAll(Collection&lt? extends Callable&ltT>> tasks)</td><td>Executa todas as tarefas dadas e retorna uma lista de objetos futuros quando todas as tarefas são concluídas</td></tr>
-
-<tr><td>boolean isTerminated()</td><td>Retorna true se todas as tarefas forem concluídas.</td></tr>
-
-<tr><td>int getParallelism() <br> int getPoolSize() <br> long getStealCount() <br> int getActiveThreadCount()</td><td>Estes são métodos de verificação de status.</td></tr>
-
-<tr><td>&ltT> ForkJoinTask&ltT> submit(Callable&ltT> task)&ltT><br> ForkJoinTask&ltT> submit(ForkJoinTask&ltT> task) <br> ForkJoinTask&lt?> submit(Runnable task) <br> &ltT> ForkJoinTask&ltT> submit(Runnable task, T result)</td><td>Esses métodos estão executando uma tarefa enviada. Versões sobrecarregadas tomam diferentes tipos de tarefas; retorna um objeto Task ou um objeto Future.
-</td></tr>
-
-</table>
-</div>
-<br>
-
-
-<p><b>ForkJoinTask&ltV></b> é uma entidade leve semelhante a um <b>thread</b> que representa uma tarefa que define métodos como <b>fork()</b> e <b>join()</b>.</p><br>
-<p>Na tabela- Métodos importantes na classe ForkJoinTask</p><br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Método</th><th>Descrição</th></tr>
-<tr><td>boolean cancel(boolean mayInterruptIfRunning)</td><td>Tenta cancelar a execução da tarefa</td></tr>
-
-<tr><td>ForkJoinTask&ltV> fork()</td>Executa a tarefa de forma assíncrona.<td></td></tr>
-<tr><td>V join()</td><td>Retorna o resultado do cálculo quando o cálculo é feito</td></tr>
-
-<tr><td>V get()</td><td>Retorna o resultado do cálculo; espera se o cálculo for
-incompleto.</td></tr>
-<tr><td>V invoke() nstatic</td><td>&ltT extends ForkJoinTask&lt?>> Collection&ltT> invokeAll(Collection&ltT> tasks)</td></tr>
-
-<tr><td>boolean isCancelled()</td><td>Retorna true se a tarefa for cancelada.</td></tr>
-
-<tr><td>boolean isDone()</td><td>Retorna true se a tarefa estiver concluída.</td></tr>
-
-</table>
-</div>
-
-
-<ul>
-<li> <b>RecursiveTask&ltV></b> é uma tarefa que pode ser executada em um <b>ForkJoinPool</b>; o método <b>compute()</b> retorna um valor do tipo <b>V</b>. Ele herda de <b>ForkJoinTask</b>.</li>
-<li> <b>RecursiveAction</b> é uma tarefa que pode ser executada em um <b>ForkJoinPool</b>; seu método <b>compute()</b> executa as etapas reais de cálculo na tarefa. É semelhante ao <b>RecursiveTask</b>, mas não retorna um valor.</li>
-</ul>
-<br>
-</section>
-<section id="forkjoinusefrm">
-<h2>Usando o Framework Fork/Join</h2>
-
-<p>Vamos verificar como você pode usar o framework <b>Fork/Join</b> na solução de problemas. Aqui estão os passos para usar o framewowrk:</p>
-<ul>
-<li> <b>Primeiro</b>, verifique se o problema é adequado para o framework <b>Fork/Join</b> ou não. Lembre-se: o framework Fork/Join não é adequada para todos os tipos de tarefas. Este framework é adequado se o seu problema se encaixa nessa descrição:</li>
-<li> 1 - O problema pode ser projetado como uma tarefa recursiva em que a tarefa pode ser subdividida em unidades menores e os resultados podem ser combinados.</li>
-<li> 2 - As tarefas subdivididas são independentes e podem ser calculadas separadamente sem a necessidade de comunicação entre as tarefas quando a computação está em andamento. (Claro, depois que o cálculo terminar, você precisará juntá-los.)</li>
-
-<li> Se o problema que você deseja resolver puder ser modelado recursivamente, defina uma classe de tarefa que estenda <b>RecursiveTask</b> ou <b>RecursiveAction</b>. Se uma tarefa retornar um resultado, estenda de <b>RecursiveTask</b>; de outra forma estender de <b>RecursiveAction</b>.</li>
-
-<li>Substituir o método <b>compute()</b> na classe de tarefa recém-definida. O método <b>compute()</b> realmente executa a tarefa se a tarefa for pequena o suficiente para ser executada; ou divide a tarefa em subtarefas e invoca-as. As subtarefas podem ser chamadas pelo método <b>invokeAll()</b> ou <b>fork()</b> (use <b>fork()</b> quando a subtarefa retornar um valor). Use o método <b>join()</b> para obter os resultados computados (se você usou o método fork () anteriormente).<li>
-
-<li> Mesclar os resultados, se computado a partir das subtarefas.</li>
-<li> Em seguida, instancie o <b>ForkJoinPool</b>, crie uma instância da classe de tarefa e inicie a execução da tarefa usando o método <b>invoke()</b> na instância <b>ForkJoinPool</b>.</li>
-<li> É isso - você está feito.</li>
-</ul>
-
-<p>Agora vamos tentar resolver o problema de como somar 1..N onde N é um número grande. Você pode resolver este problema rescursivamente usando o framework Fork /Join></p>
-<pre class="brush:java">
-//SumOfNUsingForkJoin.java
-import java.util.concurrent.RecursiveTask;
-import java.util.concurrent.ForkJoinPool;
-// Esta classe ilustra como podemos calcular a soma de 1..N números usando a estrutura fork / join.
-// O intervalo de números é dividido pela metade até que o intervalo possa ser tratado por um encadeamento.
-// Depois que a soma do intervalo é concluída, o resultado é resumido juntos.
-class SumOfNUsingForkJoin {
-private static long N = 1000_000; // um milhão - queremos calcular soma
-// de 1 .. um milhão
-private static final int NUM_THREADS = 10;
-// número de threads a serem criados para
-// distribuindo o esforço
-// Esta é a implementação recursiva do algoritmo; herdar de RecursiveTask
-// em vez de RecursiveAction, pois estamos retornando valores.
-static class RecursiveSumOfN extends RecursiveTask&ltLong> {
-long from, to;
-// from e to são intervalo de valores a serem somados
-public RecursiveSumOfN(long from, long to) {
-this.from = from;
-this.to = to;
-}
-
-// o método executa fork e join para calcular a soma se o intervalo
-// dos valores podem ser somados por um thread lembre-se de que queremos dividir
-// a tarefa de soma igualmente entre NUM_THREADS) e depois soma o intervalo
-// dos números de .. até usando um loop for simples;
-// caso contrário, bifurque o intervalo e junte os resultados
-
-public Long compute() {
-if( (to - from) <= N/NUM_THREADS) {
-// the range is something that can be handled
-// by a thread, so do summation
-
-long localSum = 0;
-// add in range 'from' .. 'to' inclusive of the value 'to'
-for(long i = from; i <= to; i++) {
-localSum += i;
- }
-System.out.printf("\tSum of value range %d to %d is %d %n",
-from, to, localSum);
-return localSum;
-}
-else {
-// não, o intervalo é muito grande para um segmento manipular,
-// então bifurque a computação
-// encontramos o valor do ponto médio no intervalo de .. até
-long mid = (from + to)/2;
-System.out.printf("Forking computation into two ranges: " +
-"%d to %d and %d to %d %n", from, mid, mid, to);
-// determina o cálculo para a primeira metade
-// com o intervalo de..mid
-RecursiveSumOfN firstHalf = new RecursiveSumOfN(from, mid);
-// agora, execute essa tarefa
-firstHalf.fork();
-// determine o cálculo para a segunda metade
-// com o intervalo mid + 1..para
-RecursiveSumOfN secondHalf = new RecursiveSumOfN(mid + 1, to);
-long resultSecond = secondHalf.compute();
-// agora, aguarde a primeira metade da soma da computação
-// complete, uma vez feito, adicione-o à parte restante
-return firstHalf.join() + resultSecond;
-}
-}
-}
-public static void main(String []args) {
-// Crie um pool de junção de bifurcação(fork-join) que consiste em NUM_THREADS
-ForkJoinPool pool = new ForkJoinPool(NUM_THREADS);
-// envia a tarefa de computação ao conjunto de junções de bifurcação(fork-join) 
-long computedSum = pool.invoke(new RecursiveSumOfN(0, N));
-// esta é a soma da fórmula para o intervalo 1..N
-long formulaSum = (N * (N + 1)) / 2;
-// Compare a soma calculada e a soma da fórmula
-System.out.printf("Sum for range 1..%d; computed sum = %d, " +
-"formula sum = %d %n", N, computedSum, formulaSum);
-}
-</pre>
-<p>O programa imprime o seguinte:</p>
-<pre>
-Forking computation into two ranges: 0 to 500000 and 500000 to 1000000
-Forking computation into two ranges: 500001 to 750000 and 750000 to 1000000
-Forking computation into two ranges: 0 to 250000 and 250000 to 500000
-Forking computation into two ranges: 500001 to 625000 and 625000 to 750000
-Forking computation into two ranges: 750001 to 875000 and 875000 to 1000000
-Forking computation into two ranges: 500001 to 562500 and 562500 to 625000
-Forking computation into two ranges: 625001 to 687500 and 687500 to 750000
-Forking computation into two ranges: 0 to 125000 and 125000 to 250000
-Forking computation into two ranges: 250001 to 375000 and 375000 to 500000
-Sum of value range 562501 to 625000 is 37109406250
-Forking computation into two ranges: 0 to 62500 and 62500 to 125000
-Sum of value range 687501 to 750000 is 44921906250
-Forking computation into two ranges: 250001 to 312500 and 312500 to 375000
-Forking computation into two ranges: 750001 to 812500 and 812500 to 875000
-Sum of value range 250001 to 312500 is 17578156250
-Forking computation into two ranges: 875001 to 937500 and 937500 to 1000000
-Sum of value range 750001 to 812500 is 48828156250
-Sum of value range 812501 to 875000 is 52734406250
-Sum of value range 312501 to 375000 is 21484406250
-Forking computation into two ranges: 125001 to 187500 and 187500 to 250000
-Sum of value range 625001 to 687500 is 41015656250
-Forking computation into two ranges: 375001 to 437500 and 437500 to 500000
-Sum of value range 187501 to 250000 is 13671906250
-Sum of value range 62501 to 125000 is 5859406250
-Sum of value range 500001 to 562500 is 33203156250
-Sum of value range 437501 to 500000 is 29296906250
-Sum of value range 125001 to 187500 is 9765656250
-Sum of value range 875001 to 937500 is 56640656250
-Sum of value range 0 to 62500 is 1953156250
-Sum of value range 937501 to 1000000 is 60546906250
-Sum of value range 375001 to 437500 is 25390656250
-Sum for range 1..1000000; computed sum = 500000500000, formula sum = 500000500000
-</pre>
-<p>Vamos analisar como esse programa funciona. Neste programa, você deseja calcular a soma dos valores no intervalo de 1..1.000.000. Por uma questão de simplicidade, você decide usar dez <b>threads</b> para executar as tarefas. A classe <b>RecursiveSumOfN</b> estende <b>RecursiveTask&ltLong></b>. Em <b>RecursiveTask&ltLong></b>, você usa &ltLong> porque a soma dos números em cada subintervalo é um valor <b>Long</b>. Além disso, você escolheu <b>RecursiveTask&ltLong></b> em vez de <b>RecursiveAction</b> simples, porque cada subtarefa retorna um valor. Se a subtarefa não retornar um valor, você poderá usar <b>RecursiveAction</b>.</p>
-
-<p>No método <b>compute()</b>, você decide se computa a soma do intervalo ou subdivide a tarefa usando a seguinte condição:</p>
-
-<pre class="brush:java">(to - from) <= N/NUM_THREADS)</pre>
-
-<p>Você usa esse valor de "limite" nesse cálculo. Em outras palavras, se o intervalo de valores estiver dentro do limite que pode ser manipulado por uma tarefa, você executa o cálculo; caso contrário, você divide recursivamente a tarefa em duas partes. Você usa um forloop simples para encontrar a soma dos valores nesse intervalo. No outro caso, você divide o intervalo de forma semelhante a como você divide o intervalo em um algoritmo de pesquisa binária: para o intervalo de ... até, você encontra o ponto médio e cria dois subintervalos de ... mid e mid + 1. . para. Depois de chamar <b>fork()</b>, você aguarda a primeira tarefa concluir a computação da soma e gerar outra tarefa para a segunda metade do cálculo.</p>
-
-<p>No método <b>main()</b>, você cria um número de threads <b>ForkJoinPool</b> com o número fornecido por <b>NUM_THREADS</b>. Você envia a tarefa para o <b>pool fork/join</b>  e obtém a soma computada para 1..1.000.000. Agora você também calcula a soma usando a fórmula para somar N números contínuos.</p>
-
-</p>A partir da saída do programa, você pode observar como a tarefa foi subdividida em subtarefas. Você também pode verificar, a partir da saída, que a soma calculada e a soma computada da fórmula são as mesmas, indicando que sua divisão de tarefas para somar os sub-intervalos está correta.</p>
-
-<p>Neste programa, você assumiu arbitrariamente que o número de <b>threads</b> a serem usados era de dez threads. Isso foi para simplificar a lógica deste programa. Uma abordagem melhor para decidir o valor limite é dividir o tamanho do comprimento de dados pelo número de processadores disponíveis. Em outras palavras,
-<pre class="brush:java">threshold value = (data length size) / (número de processadores disponíveis); </pre>
-
-<p>Como você programaticamente obter o número de processadores disponíveis? Para isso, você pode usar este método: <pre class="brush:java">Runtime.getRuntime().AvailableProcessors())</pre>
-
-<p>Você usou <b>RecursiveTask</b>; no entanto, se uma tarefa não estiver retornando um valor, você deverá usar RecursiveAction. Haverá várias diferenças no programa se você usar <b>RecursiveAction</b> em vez de <b>RecursiveTask</b>. Uma mudança é que você precisa estender a classe de tarefa de <b>RecursiveAction</b>. Além disso, o método <b>compute()</b> não retorna nada. Outra mudança é que você precisa usar o método <b>invokeAll()</b> para enviar as subtarefas para serem executadas. Finalmente, uma mudança óbvia é que você precisa realizar a pesquisa no método <b>compute()</b> em vez do somatório no caso anterior.</p>
-</section>
-<section id="fluxparalell">
-<h1>Usar Fluxos Paralelos</h1>
-
-<p>Os fluxos podem ser sequenciais ou paralelos. Quando discutimos a API de Stream, discutimos apenas fluxos sequenciais. Nesta seção, vamos discutir fluxos paralelos.</p>
-<p>O que são fluxos paralelos? Os fluxos paralelos dividem os elementos em vários fragmentos, processam cada fragmento com diferentes threads e (se necessário) combinam os resultados desses threads para avaliar o resultado final.</p>
-
-
-<p>Na última seção, discutimos o framework <b>fork/join</b>: as tarefas são executadas dividindo-as recursivamente em sub-tarefas e, em seguida, as sub-tarefas são executadas em paralelo. Os fluxos paralelos usam internamente esse framework <b>fork/join</b>. As etapas do processo devem consistir em tarefas sem estado e independentes.</p>
-<p>Aqui está um exemplo de contagem de números de primos de 1 a N. A lógica usada para verificar se um determinado número é simples é que verificamos se há algum número divisível de 2 a N/2. É claro que podemos simplificar a lógica para acelerar o cálculo, mas nosso objetivo aqui é mostrar como os fluxos paralelos funcionam, de modo que mantivemos essa lógica simples para verificar se um dado número é primo ou não. Primeiro, vamos ver a versão sequencial deste programa.</p>
-<pre class="brush:java">
-//PrimeNumbers.java
-import java.util.stream.LongStream;
-class PrimeNumbers {
-private static boolean isPrime(long val) {
-for(long i = 2; i <= val/2; i++) {
-if((val % i) == 0) {
-return false;
-}
-}
-return true;
-}
-public static void main(String []args) {
-long numOfPrimes = LongStream.rangeClosed(2, 100_000)
-.filter(PrimeNumbers::isPrime)
-.count();
-System.out.println(numOfPrimes);
-}
-}
-</pre>
-<p><b>Este programa imprime:</b></p>
-<pre>
-9592
-</pre>
-
-<p>Este programa informa corretamente que existem 9.592 números primos até 1.00.000. Quando o cronometramos, demorou 2.510 segundos para rodar (na minha máquina que tem um processador dual core Intel Core i5 de 2.4 GHz).</p>
-<p>
-É muito fácil fazer a computação paralela: temos que chamar o método <b>parallel()</b> fornecido na interface <b>LongStream</b>. O segmento de código com essa mudança é:</p>
-<pre class="brush:java">
-long numOfPrimes = LongStream.rangeClosed(2, 100_000)
-.parallel()
-.filter(PrimeNumbers::isPrime)
-.count();
-System.out.println(numOfPrimes);
-</pre>
-<p>Por causa da chamada para <b>parallel()</b>, o fluxo se torna um fluxo paralelo, e o trabalho a ser executado é dividido e despachado para ser executado por threads disponíveis no fork/join pool. Quando o cálculo do número de números primos é realizado em paralelo, o tempo gasto agora reduz para 1.235 segundos.</p>
-<p>Isso é quase metade do tempo gasto quando comparado aos 2.510 segundos que levou quando o cálculo foi realizado no fluxo sequencial.</p>
-
-<p>Se você comparar a complexidade do código para usar o framework fork/join (verifique o exemplo de código anterior), o código que usa fluxos paralelos é muito simples: tudo o que precisamos fazer é apenas chamar o método parallel() no fluxo.</p>
-<br>
-<p><i>Quando você chamar o método <b>stream()</b> da classe <b>Collection</b>, você obterá um fluxo seqüencial. Quando você chama o método <b>parallelStream()</b> da classe <b>Collection</b>, você receberá um fluxo paralelo.</i></p>
-<br>
-<p>Você pode verificar se o fluxo é seqüencial ou paralelo chamando o método <b>isParallel()</b>. Aqui está um segmento de código simples que ilustra o uso do método em um fluxo:</p>
-
-<pre class="brush:java">System.out.println(IntStream.range(1, 10).filter(i -> (i % 2) == 0).isParallel());</pre>
-
-<p>Este segmento de código imprime: false. Por quê? Porque o fluxo subjacente (por padrão) é seqüencial e, portanto, o método <b>isParallel()</b> retorna <b>false</b>. Como é esse segmento de código?</p>
-<pre class="brush:java">
-List&ltInteger> ints = Arrays.asList(1, 2, 3, 4, 5);
-System.out.println(ints.parallelStream().filter(i -> (i % 2) == 0).isParallel());
-</pre>
-<p>Como o fluxo subjacente é paralelo (por causa da chamada do método <b>parallelStream()</b>), o método <b>isParallel()</b> retorna <b>true</b>.</p>
-<br>
-<p><i>você pode converter um fluxo seqüencial em um fluxo paralelo chamando o método <b>parallel()</b>; Da mesma forma, você pode converter um fluxo paralelo em um fluxo seqüencial chamando o método <b>sequential()</b>.</i></p>
-
-<p>O que esse segmento de código imprimirá?</p>
-<pre class="brush:java">
-List&ltInteger> ints = Arrays.asList(1, 2, 3, 4, 5);
-System.out.println(ints.parallelStream().filter(i -> (i % 2) == 0).sequential().
-isParallel());
-</pre>
-
-<p>Este segmento de código imprime: false. Por quê? Embora o fluxo criado seja um fluxo paralelo, a chamada para o método <b>sequencial()</b> tornou o fluxo sequencial. Por isso, a chamada <b>isParallel()</b> imprime <b>false</b>.</p>
-
-<p>Para usar fluxos paralelos corretamente, é importante não depender do estado global. Em outras palavras, os cálculos devem ser livres de efeitos colaterais. Veja  um exemplo de uso errado :</p>
- <pre class="brush:java">
-//StringSplitAndConcatenate.java
-import java.util.Arrays;
-class StringConcatenator {
-public static String result = "";
-public static void concatStr(String str) {
-result = result + " " + str;
-}
-}
-class StringSplitAndConcatenate {
-public static void main(String []args) {
-String words[] = "the quick brown fox jumps over the lazy dog".split(" ");
-Arrays.stream(words).forEach(StringConcatenator::concatStr);
-System.out.println(StringConcatenator.result);
-}
-}
-</pre>
-<p><b>Este prgrama imprime assim:</b></p>
-<pre>
-the quick brown fox jumps over the lazy dog
-</pre>
-<p>Neste programa, estamos dividindo as palavras na <b>string</b> "the quick brown fox jumps over the lazy dog" e depois a combina novamente. Para combinar as palavras, estamos usando um resultado de variável global e modificando-o passando a referência de método StringConcatenator::concatStr() no método forEach() do fluxo. Como o fluxo subjacente é um fluxo sequencial, parece que não temos problemas e conseguimos reconstruir a sequência corretamente. No entanto, aqui está uma versão modificada do programa que converte o fluxo em um fluxo paralelo chamando <b>parallel()</b>.</p>
-
-<pre class="brush:java">Arrays.stream(words).parallel().forEach(StringConcatenator::concatStr);</pre>
-
-<p>Com essa única mudança, nós recebemos uma string truncada! Quando rodamos este programa, ele imprimiu:</p>
-<pre>
-quick the fox brown lazy dog the jumps
-</pre>
-<p>Quando o rodamos novamente, foi impresso:</p>
-<pre>
-fox quick the jumps lazy dog
-</pre>
-<p>Claramente, há algo seriamente errado quando usamos o método <b>parallel()</b>. O que está acontecendo?</p>
-
-<p>Quando o fluxo é paralelo, a tarefa é dividida em várias sub-tarefas e diferentes <b>threads</b> executam-na. As chamadas para <b>forEach (StringConcatenator::concatStr)</b> agora acessam o resultado variável acessível globalmente na classe <b>StringConcatenator</b>. Portanto, este programa sofre de um problema de condição de corrida (discutido anteriormente neste capítulo). Como resolvemos esse problema? Precisamos nos livrar da modificação do estado global e manter a redução localizada. Podemos usar o método <b>reduce()</b>, como no próximo exemplo. Lembre-se de que você pode usar o método <b>reduce()</b> em um fluxo quando quiser executar operações repetidas em elementos de fluxo para calcular um resultado.</p>
-<pre class="brush:java">
-//CorrectStringSplitAndConcatenate.java
-import java.util.Arrays;
-import java.util.Optional;
-class CorrectStringSplitAndConcatenate {
-public static void main(String []args) {
-String words[] = "the quick brown fox jumps over the lazy dog".split(" ");
-Optional&ltString> originalString = (Arrays.stream(words).parallel().reduce((a, b) -> a + " " + b));
-System.out.println(originalString.get());
-}
-}
-</pre>
-<p>Este programa imprime corretamente:</p>
-<pre>
-the quick brown fox jumps over the lazy dog
-</pre>
-<p>Se você remover o método <b>parallel()</b> ou retê-lo (não importa), este programa irá concatenar corretamente as palavras para imprimir a string original porque usamos a operação de redução corretamente, sem depender das mudanças de estado globais.</p>
-</section>
-<section id="fluxdesempenhoprl">
-<h2>Fluxos paralelos e desempenho</h2>
-
-<p>Uma nota importante de cautela no uso de fluxos paralelos: nem sempre é o caso de que o desempenho com fluxos paralelos é melhor que fluxos sequenciais. Somente se as operações forem executadas em um número significativamente grande de elementos, as operações são computacionalmente caras e as estruturas de dados são divididas de maneira eficiente, você verá melhorias de desempenho com fluxos paralelos; caso contrário, a execução com um fluxo paralelo pode ser mais lenta do que com fluxos sequenciais!</p>
-
-<p>Por padrão, o conjunto de thread <b>fork/join</b> tem o número de threads normalmente igual ao número de processadores que você tem em sua máquina. Você pode obter o número de processadores em sua máquina usando esta chamada: <b>Runtime.getRuntime().AvailableProcessors()</b>. Essa configuração padrão é boa o suficiente para a maioria dos usos de fluxos paralelos. Como alternativa, você pode verificar o paralelismo padrão usando o método <b>getParallelism()</b> no <b>ForkJoinPool</b>:</p>
-
-<pre class="brush:java">System.out.println(ForkJoinPool.commonPool().getParallelism());
-// imprimiu 3 na minha máquina
-</pre>
-<p>O método <b>getParallelism()</b> obtém o valor da propriedade do sistema <B>java.util.concurrent.ForkJoinPool.common.parallelism</b>. Você pode usar o método <b>System.setProperty</b> para modificar o valor dessa propriedade do sistema:</p>
-<pre class="brush:java">
-//Parallelism.java
-import java.util.concurrent.ForkJoinPool;
-public class Parallelism {
-public static void main(String []args) {
-System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "8");
-System.out.println(ForkJoinPool.commonPool().getParallelism());
-}
-}
-</pre>
-<p>Quando executado, este programa imprime: 8. Uma alternativa ao uso de <b>System.setProperty()</b> é definir essa propriedade passando-a como um parâmetro da JVM ao invocar a JVM, como em:</p>
-
-<pre class="brush:java">java -Djava.util.concurrent.ForkJoinPool.common.parallelism=8 GetParallelism.</pre>
-</section>
-<p class="nav-arq" id="referencia">Java File NIO: <a href="javafilenio.html">&laquo; anterior | <a href="jdbcaplication.html">próximo &raquo;</a> Construindo Aplicações com Banco de Dados JDBC </p>
-<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/concorrenciajava" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
-</div>
-</div>
-
-</body>
-	</html>
+  <p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+  </section>
+  <section id="threadssimutl">
+  <h2>Criando Threads para Executar Tarefas Simultaneamente</h2>
+
+  <p>As classes <b>Thread</b> e <b>Object</b> e a interface <b>Runnable</b> fornecem o suporte necessário para concorrência em Java. A classe <b>Thread</b> possui métodos como <b>run()</b>, <b>start()</b> e <b>sleep()</b> que são úteis para <b>multi-threading</b> . A classe <b>Object</b> tem métodos como <b>wait()</b> e <b>notify()</b> que suportam concorrência. Como cada classe em Java deriva da classe <b>Object</b>, todos os objetos possuem alguns recursos básicos de <b>multi-threading</b>. Por exemplo, você pode adquirir um bloqueio em qualquer objeto em Java (usando palavras-chave <b>syncrhonized</b>, que discutiremos mais adiante. No entanto, para criar um <b>thread</b>, esse suporte básico do <b>Object</b> não é útil. Para isso, uma classe deve estender a classe <b>Thread</b> ou implementar a interface <b>Runnable</b>. O <b>Thread</b> e o <b>Runnable</b> estão no pacote <b>java.lang</b>, portanto, você não precisa importar essas classes explicitamente para escrever programas de vários segmentos.</p>
+  <br>
+  <p>Logo abaixo a tabela mostra os Métodos Importantes na Classe Thread</p>
+  <br>
+
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Método</th><th>Tipo de Método</th><th>Descrição</th></tr>
+  <tr><td>Thread currentThread()</td><td>Método Estático</td><td>Retorna a referência para o thread atual.</td></tr>
+  <tr><td>String getName()</td><td>Método Instancia</td><td>Retorna o nome do thread atual.</td></tr>
+  <tr><td>int getPriority()</td><td>Método Instância</td><td>Retorna o valor de prioridade do thread atual.</td></tr>
+  <tr><td>void join(), void join(long), void join(long, int)</td><td>Métodos InstÂncia Sobrecarrregado</td><td>O thread atual que invoca a junção no outro thread aguarda até que o outro thread seja concluído. Opcionalmente, você pode conceder o tempo limite em milissegundos (dado em long) ou o tempo limite em milissegundos, além de nanossegundos (dado em long e int).
+  </td></tr>
+  <tr><td>void run()</td><td>Método Instância</td><td>Depois de iniciar um thread (usando o método start()), o
+  O método run() será chamado quando o thread estiver pronto para executar.
+  </td></tr>
+
+  <tr><td>void setName(String)</td><td>Método Instância</td><td>Altera o nome do thread para o nome dado no
+  argumento.
+  </td></tr>
+
+  <tr><td>void setPriority(int)</td><td>Método Instância</td><td>Define a prioridade do thread para o valor do argumento fornecido.</td></tr>
+
+  <tr><td>void sleep(long)</td><td>Métodos InstÂncia Sobrecarrregado</td><td>
+  Faz com que o thread atual durma por milissegundos
+  (dado em longo) ou por milissegundos e nanossegundos
+  (dado em long e int).</td></tr>
+
+  <tr><td>void sleep(long, int)</td><td>Métodos InstÂncia Sobrecarrregado</td><td>
+  Faz com que o thread atual durma por milissegundos
+  (dado em longo) ou por milissegundos e nanossegundos
+  (dado em long e int).
+  </td></tr>
+  <tr><td>void start()</td><td>Método Instância</td><td>Inicia o segmento; A JVM chama o método run() do thread.</td></tr>
+  <tr><td>String toString()</td><td>Método Instância</td><td>Retorna a representação de string do thread; o string
+  tem o nome, a prioridade e o grupo do thread.
+  </td></tr>
+  </table>
+  </div>
+  </section>
+  <section id="criarthreads">
+  <h1>Criando Threads</h1>
+  <p>Vamos agora criar <b>threads</b> usando a classe <b>Thread</b> e a interface <b>Runnable</b>. Discutiremos como criar <b>threads</b> de trabalho usando <b>Callable</b> e <b>ExecutorService</b> posteriormente.</p>
+  </section>
+  <section id="classethreadext">
+  <h2>Criando Threads Extendendo a Classe Thread</h2>
+
+
+
+  <p>Para estender a classe <b>Thread</b>, você precisa sobrescrever o método <b>run()</b>. Se você não sobrescrever o método <b>run()</b>, o método <b>run()</b> padrão da classe <b>Thread</b> será chamado, o que não faz nada. Para sobrescrever o método <b>run()</b>, você precisa declará-lo como público; não recebe argumentos e tem um tipo de retorno nulo; em outras palavras, deve ser declarado como <b>public void run()</b>.</p>
+
+  <p>Você pode criar um <b>thread</b> invocando o método <b>start()</b> em um objeto da classe <b>Thread</b>. Quando a JVM agenda a <a>thread</b>, ele moverá a <b>thread</b> para um estado executável e, em seguida, executará o método <b>run()</b>. Quando o método <b>run()</b> concluir sua execução e retornar, o <b>thread</b> será finalizado.</p>
+  <pre class="brush:java">
+  //MyThread.java
+  class MyThread extends Thread {
+  public void run() {
+  try {
+  sleep(1000);
+  }
+  catch (InterruptedException ex) {
+  ex.printStackTrace();
+  // ignore a InterruptedException - talvez essa seja a
+  // muito poucas exceções em Java que são aceitáveis para ignorar
+  }
+  System.out.println("In run(); thread name is: " + getName());
+  }
+  public static void main(String args[]) {
+  Thread myThread = new MyThread();
+  myThread.start();
+  System.out.println("In main(); thread name: " +
+  Thread.currentThread().getName());
+  }
+  }
+  </pre>
+  <p>Este programa imprime o seguinte:</p>
+  <pre>
+  In main(); thread name is: main
+  In run(); thread name is: Thread-0
+  </pre>
+  <p>Neste exemplo, a classe <b>MyThread</b> estende a classe <b>Thread</b>. Você sobrescreveu o método <b>run()</b> nesta classe. Este método <b>run()</b> será chamado quando o <b>thread</b> for executado. Na função <b>main()</b>, você cria um novo <b>thread</b> e o inicia usando o método <b>start()</b>. Uma observação importante: você não invoca o método <b>run()</b> diretamente. Em vez disso, você inicia o <b>thread</b> usando o método <b>start()</b>; o método <b>run()</b> é chamado automaticamente pela JVM.</p>
+  <p>Para imprimir o nome do <b>thread</b>, você pode usar o método de instância <b>getName()</b>, que retorna uma <b>String</b>. Como <b>main()</b> é um método estático, você não tem acesso a essa referência. Assim, você obtém o nome da <b>thread</b> atual usando o método estático <b>currentThread()</b> na classe <b>Thread</b> (que retorna um objeto Thread).</p>
+  <p>Agora você pode chamar <b>getName</b> nesse objeto retornado. Como você verá mais tarde, o método <b>main()</b> também é executado como uma <b>thread</b>! No entanto, dentro do método <b>run()</b>, você pode chamar diretamente o método <b>getName()</b>: <b>MyThread</b> estende o <b>Thread</b>, então todos os membros da classe base também estão disponíveis em <b>MyThread</b>.</p>
+  </section>
+  <section id="interfacerun">
+  <h3>Criando Threads implementando Interface Runnable</h3>
+
+  <p>Outra maneira de criar uma <b>thread</b> é implementar a interface <b>Runnable</b>. A classe <b>Thread</b> implementa a interface <b>Runnable</b>. A interface <b>Runnable</b> declara um único método, <b>run()</b> Assim, quando você implementa a interface <b>Runnable</b>, você precisa definir o método <b>run()</b>. Lembre-se <b>Runnable</b> não declara o método <b>start()</b>. Então, como você cria uma <b>thread</b> se você implementar a interface <b>Runnable?</b> Thread tem um construtor sobrecarregado, que usa um objeto <b>Runnable</b> como argumento.</p>
+  <pre class="brush:java">
+  //RunnableImpl.java
+  class RunnableImpl implements Runnable {
+  public void run() {
+  System.out.println("In run(); thread name is: " +
+  Thread.currentThread().getName());
+  }
+  public static void main(String args[]) throws Exception {
+  Thread myThread = new Thread(new RunnableImpl());
+  myThread.start();
+  System.out.println("In main(); thread name is: " +
+  Thread.currentThread().getName());
+  }
+  }
+  </pre>
+  <p>Este programa imprime:</p>
+  <pre>
+  In main(); thread name is: main
+  In run(); thread name is: Thread-0
+  </rpe>
+  <p>Você está implementando o método <b>run()</b> neste programa. No entanto, para obter o nome da <b>string</b>, você deve seguir uma rota de retorno e obter o nome da <b>thread</b> com <b>Thread.currentThread().getName()</b>.
+  <p>No método <b>main()</b>, para criar um thread, você deve passar o objeto da classe  <b>RunnableImpl</b> para o construtor <b>Thread</b>. O método <b>start()</b> inicia o <b>thread</b> e, posteriormente, a JVM chama o método <b>run()</b> do thread.
+  </section>
+  <section id="sincronthread">
+  <h1>Sincronização de threads com Palavra-chave Synchronized</h1>
+
+  <p>A palavra-chave <b>synchronized</b> do Java ajuda na sincronização de <b>threads</b>. Você pode usá-lo de duas formas: blocos sincronizados e métodos sincronizados. Por que precisamos usar a palavra-chave <b>synchronized</b>? Para evitar o problema das condições de corrida. Vamos discutir este assunto agora.</p>
+  </section>
+  <section id="condcorrida">
+  <h2>Condições de Corrida</h2>
+
+  <p><b>Threads</b> compartilham memória e podem modificar dados simultaneamente. Como a modificação pode ser feita ao mesmo tempo sem salvaguardas, isso pode levar a resultados não-intuitivos.</p>
+  <p>Quando dois ou mais <b>threads</b> estão tentando acessar uma variável e um deles quer modificá-la, você recebe um problema conhecido como uma condição de corrida (também conhecida como corrida de dados ou risco de corrida). O exemplo abaixo mostra um exemplo de uma condição de corrida.</p>
+  <pre class="brush:java">
+  //RaceCondition.java
+
+  // Esta classe expõe um contador acessível ao público
+  // para ajudar a demonstrar o problema das condições da corrida
+
+  class Counter {
+  public static long count= 0;
+  }
+  // Esta classe implementa a interface Runnable
+  // Seu método de execução incrementa o contador três vezes
+
+  class UseCounter implements Runnable {
+  public void increment() {
+
+  // incrementa o contador e imprime o valor
+  // do contador compartilhado entre os threads
+  Counter.count++;
+  System.out.print(Counter.count+ " ");
+  }
+  public void run() {
+  increment();
+  increment();
+  increment();
+  }
+  }
+    // Esta classe cria três threads
+  public class RaceCondition {
+  public static void main(String args[]) {
+  UseCounter c = new UseCounter();
+  Thread t1 = new Thread(c);
+  Thread t2 = new Thread(c);
+  Thread t3 = new Thread(c);
+  t1.start();
+  t2.start();
+  t3.start();
+  }
+  }
+  </pre>
+  <p>Neste programa, existe uma classe <b>Counter</b> que possui uma contagem de variáveis ​​estáticas. No método <b>run()</b> da classe <b>UseCounter</b>, você incrementa a contagem chamando três vezes o método <b>increment()</b>. Você cria três <b>threads</b> na função <b>main()</b> na classe <b>RaceCondition</b> e a inicia. Você espera que o programa imprima de 1 a 9 seqüencialmente como os <b>threads</b> executam e incrementam os contadores. No entanto, quando você executa este programa, ele imprime nove valores inteiros, mas a saída se parece com lixo! Em uma amostra, obtivemos estes valores:</p>
+
+  <pre>3 3 5 6 3 7 8 4 9</pre>
+
+  <p>Observe que os valores geralmente serão diferentes toda vez que você executar este programa; quando o rodamos mais duas vezes, conseguimos essas saídas:</p>
+  <pre>
+  3 3 5 6 3 4 7 8 9
+  3 3 3 6 7 5 8 4 9
+  </pre>
+
+  <p>Então, qual é o problema?</p>
+  <p>A expressão <b>Counter.count++</b> é uma operação de gravação e a próxima declaração <b>System.out.print</b> tem uma operação de leitura para <b>Counter.count</b>. Quando os três <b>threads</b> são executados, cada um deles tem uma cópia local do valor <b>Counter.count</b> e quando atualizam o contador com <b>Counter.count++</b>, eles não precisam refletir imediatamente esse valor na memória principal. Na próxima operação de leitura de <b>Counter.count</b>, o valor local de <b>Counter.count</b> é impresso. </p>
+
+  <img src="imagens/jee7/concorrencia.jpg">
+  <p><i>Na imagem acima Threads t1, t2 e t3 tentando alterar a contagem de contador, causando uma condição de corrida</i></p><br>
+
+  <p>Portanto, este programa sofre com o problema de condição de corrida. Para evitar esse problema, você precisa garantir que um único <b>thread</b> faça as operações de gravação e leitura juntas (atomicamente). A seção de código que é comumente acessada e modificada por mais de um <b>thread</b> é conhecida como seção crítica. Para evitar o problema de condição de corrida, você precisa garantir que a seção crítica seja executada por apenas um thread por vez.</p>
+  <p>Como você faz isso? Ao adquirir um bloqueio no objeto usando a palavra-chave <b>synchronized</b>, que discutiremos agora. Apenas um único <b>thread</b> pode adquirir um bloqueio em um objeto de cada vez, e somente esse <b>thread</b> pode executar o bloco de código (ou seja, a seção crítica) protegida pelo bloqueio. Até então, os outros tópicos precisam esperar.</p>
+  </section>
+  <section id="blocsincronized">
+  <h3>Blocos Sincronizados</h3>
+
+  <p>Em blocos sincronizados, você usa a palavra-chave <b>synchronized</b> para uma variável de referência e a segue por um bloco de código. Um <b>thread</b> tem que adquirir um bloqueio na variável sincronizada para entrar no bloco; quando a execução do bloco é concluída, a thread libera o bloqueio. Por exemplo, você pode adquirir um bloqueio nessa referência se o bloco de código estiver dentro de um método não estático:</p>
+  <pre class="brush:java">
+  synchronized(this) {
+  // segmento de código protegido pelo bloqueio mutex
+  }
+  </pre>
+  <p>E se uma exceção for lançada dentro do bloco sincronizado? O bloqueio será liberado? Sim, independentemente de o bloco ser executado totalmente ou uma exceção ser lançada, o bloqueio será liberado automaticamente pela JVM. Com blocos sincronizados, você pode adquirir um bloqueio somente em uma variável de referência. Se você usar um tipo primitivo, receberá um erro do compilador. Vamos corrigir o problema da condição de corrida do exemplo anterior, adicionando um bloco sincronizado no método increment (), como em:</p>
+
+  <pre class="brush:java">
+  // na classe UseCounter
+  public void increment() {
+  // incrementa o contador e imprime o valor
+  // do contador compartilhado entre os threads
+
+  synchronized(this) {
+  Counter.count++;
+  System.out.print(Counter.count + " ");
+  }
+  }
+  </pre>
+  <p><b>Com essa alteração, o programa imprime valores de contagem incrementados corretamente:</b></p>
+  <pre>1 2 3 4 5 6 7 8 9</pre>
+
+
+  <p>No método <b>increment()</b>, você obtém um bloqueio na referência <b>this</b> antes de ler e gravar em <b>Counter.count</b>. Portanto, não é possível que mais de um <b>thread</b> execute essas instruções ao mesmo tempo.Como apenas um <b>thread</b> pode adquirir um bloqueio e executar o bloco de código de “seção crítica”, o contador é incrementado por apenas um thread em um determinado momento; Como resultado, o programa imprime os valores 1 a 9 corretamente.</p>
+  <p>Sem o bloco sincronizado, três threads diferentes modificariam livremente a variável e, portanto, você não obteria os valores 1 a 9 impressos corretamente (devido ao problema de condição de corrida que discutimos anteriormente).</p>
+  </section>
+  <section id="metsincronize">
+  <h3>Métodos Sincronizados</h3>
+
+  <p>Um método inteiro pode ser declarado sincronizado. Nesse caso, quando o método declarado como sincronizado é chamado, um bloqueio é obtido no objeto no qual o método é chamado e é liberado quando o método retorna ao responsável pela chamada. Aqui está um exemplo:</p>
+  <pre class="brush:java">
+  public synchronized void assign(int i) {
+  val = i;
+  </pre>
+  <p>Agora o método <b>assign()</b> é um método sincronizado. Se você chamar o método <b>assign()</b>, ele obterá o bloqueio na referência <b>this</b> implicitamente e, em seguida, executará a declaração val = i ;. O que acontece se algum outro <b>thread</b> já tiver adquirido o bloqueio? Assim como os blocos sincronizados, se o <b>thread</b> não puder obter o bloqueio, ele será bloqueado e o <b>thread</b> aguardará até que o bloqueio fique disponível.</p>
+
+  <p>Um método sincronizado é equivalente a um bloco sincronizado se você incluir todo o corpo do método em um bloco sincronizado(this). Então, o método equivalente <b>assign()</b> usando blocos sincronizados é:</p>
+  <pre class="brush:java">
+  public void assign(int i) {
+  synchronized(this) {
+  val = i;
+  }
+  }
+  </pre>
+  <p>Você pode declarar métodos estáticos sincronizados. No entanto, qual é a variável de referência na qual o bloqueio é obtido? Lembre-se de que métodos estáticos não têm implícita essa referência. Métodos sincronizados estáticos adquirem bloqueios no objeto de classe. Cada classe é associada a um objeto do tipo Classe e você pode acessá-la usando a sintaxe ClassName.class. Por exemplo,</p>
+  <pre class="brush:java">
+  class SomeClass {
+  private static int val;
+  public static synchronized void assign(int i) {
+  val = i;
+  }
+  // mais membros ...
+  }
+  </pre>
+  <p>Nesse caso, o método de atribuição adquire um bloqueio no objeto <b>SomeClass.class</b> quando é chamado. Agora o método equivalente <b>assign</b>  usando blocos sincronizados pode ser escrito assim:</p>
+  <pre class="brush:java">
+  class SomeClass {
+  private static int val;
+  public static void assign(int i) {
+  synchronized(SomeClass.class) {
+  val = i;
+  }
+  }
+  // mais membros ...
+  }
+  </pre>
+  <p>Você não pode declarar construtores sincronizados; isso resultará em um erro do compilador. Por exemplo, para:</p>
+  <pre class="brush:java">
+  class Synchronize {
+  pubmais métodos
+  }
+  </pre>
+  <p><b>Você obtém um erro:</b></p>
+  <pre>
+  Synchronize.java:2: modifier synchronized not allowed here
+  public synchronized Synchronize() { /* constructor body */}
+  </pre>
+  <p>Por que você não pode declarar os construtores sincronizados? A JVM assegura que apenas uma <b>thread</b> possa invocar uma chamada de construtor (para um construtor específico) em um determinado ponto no tempo. Portanto, não há necessidade de declarar um construtor sincronizado. No entanto, se você quiser, você pode usar blocos sincronizados dentro de construtores.</p>
+  <p>Vamos voltar ao exemplo <b>RaceCondition</b>. O método <b>increment()</b> na classe <b>UseCounter</b> pode ser reescrito como um método sincronizado também:</p>
+  <pre class="brush:java">
+  // declarando o incremento sincronizado em vez de usar
+  // uma instrução sincronizada para um bloco de código dentro do método
+  public synchronized void increment() {
+  Counter.count++;
+  System.out.print(Counter.count + " ");
+  }
+  </pre>
+  <p>Este programa imprime:</p>
+  <pre>1 2 3 4 5 6 7 8 9</pre>
+
+  <p>Este programa imprime a saída  esperada corretamente.</p>
+  <br>
+  <p><i>Os iniciantes geralmente entendem mal que um bloco sincronizado obtém um bloqueio para um bloco de código. Na verdade, o bloqueio é obtido para um objeto e não para um pedaço de código. o bloqueio obtido é mantido até que todas as declarações nesse bloco concluam a execução.</i></p>
+  </section>
+  <section id="problemthread">
+  <h1>Problemas de Threading</h1>
+
+  <p>A programação concorrente em <b>threads</b> é repleta de armadilhas e problemas. Já discutimos as condições de corrida que ocorrem quando não usamos bloqueios na seção anterior. Nesta seção, vamos discutir mais três problemas de thread: deadlock, starvation e livelock.</p>
+  </section>
+  <section id="deadlockjv">
+  <h2>Deadlocks</h2>
+
+  <p>Obter e usar bloqueios é complicado e pode causar muitos problemas. Um dos problemas difíceis (e comuns) é conhecido como um <b>deadlock</b>. Um <b>deadlock</b> surge quando travamento de <b>threads</b> resultam em uma situação em que não pode prosseguir e, assim, esperar indefinidamente para que os outros terminem. Segundo, um <b>thread</b> adquire um bloqueio no recurso r1 e aguarda para adquirir outro no recurso r2. Ao mesmo tempo, digamos que há outro <b>thread</b> que tem já adquirido r2 e está esperando para obter um bloqueio em r1. Nenhum dos threads pode prosseguir até que o outro libere o bloqueio, o que nunca acontece - então eles estão presos em um deadlock.O proximo exemplo mostra como essa situação pode surgir (usando o exemplo do jogo Cricket).</p>
+  <pre class="brush:java">
+  //DeadLock.java
+  // A classe Balls possui um membro de dados acessível globalmente para armazenar o número de bolas lançadas
+  class Balls {
+  public static long balls = 0;
+  }
+  // A classe Runs possui um membro de dados acessível globalmente para armazenar o número de execuções pontuadas
+  class Runs {
+  public static long runs = 0;
+  }
+
+  // A classe Counter possui dois métodos - IncrementBallAfterRun e IncrementRunAfterBall.
+  // Para demonstrar o deadlock, chamamos esses dois métodos no método run, para que
+  // o bloqueio pode ser solicitado na ordem oposta nesses dois métodos
+  class Counter implements Runnable {
+  // este método incrementa a variável primeiro e depois incrementa a variável balls
+  // como essas variáveis ​​são acessíveis a partir de outros threads,
+  // precisamos adquirir um bloqueio antes de processá-los
+  public void IncrementBallAfterRun() {
+  // como estamos atualizando a variável primeiro, bloqueie primeiro o Runs.class
+  synchronized(Runs.class) {
+  // bloqueia Balls.class antes de atualizar a variável balls
+  synchronized(Balls.class) {
+  Runs.runs++;
+  Balls.balls++;
+  }
+  }
+  }
+  public void IncrementRunAfterBall() {
+
+  // já que estamos atualizando a variável balls primeiro; então primeiro bloqueie Balls.class
+  synchronized(Balls.class) {
+  // adquire bloqueio no Runs.class antes de atualizar a variável de execução
+  synchronized(Runs.class) {
+  Balls.balls++;
+  Runs.runs++;
+  }
+  }
+  }
+  public void run() {
+  // chame esses dois métodos que adquirem bloqueios em ordem diferente
+  // dependendo da programação do encadeamento e da ordem de aquisição do bloqueio,
+  // um impasse pode ou não surgir
+  IncrementBallAfterRun();
+  IncrementRunAfterBall();
+  }
+  }
+  public class DeadLock {
+  public static void main(String args[]) throws InterruptedException {
+  Counter c = new Counter();
+  // cria dois threads e inicia-os ao mesmo tempo
+  Thread t1 = new Thread(c);
+  Thread t2 = new Thread(c);
+  t1.start();
+  t2.start();
+  System.out.println("Waiting for threads to complete execution...");
+  t1.join();
+  t2.join();
+  System.out.println("Done.");
+  }
+  }
+  </pre>
+
+  <p>Se você executar este programa, o programa poderá ser executado corretamente ou poderá travar e nunca terminar (a ocorrência de deadlock neste programa depende de como os threads são agendados).</p>
+  <pre>
+  D:\> java DeadLock
+  Waiting for threads to complete execution...
+  Done.
+  D:\> java DeadLock
+  Waiting for threads to complete execution...
+  [deadlock – user pressed ctrl + c to terminate the program]
+  D:\> java DeadLock
+  Waiting for threads to complete execution...
+  Done.
+  </pre>
+  <p>Neste exemplo, existem duas classes, <b>Balls</b> e <b>Runs</b>, com membros estáticos chamados de balls e runs. A classe <b>Counter</b> possui dois métodos, <b>IncrementBallAfterRun()</b> e <b>IncrementRunAfterBall()</b>. Eles adquirem bloqueios na <b>Balls.class</b> e <b>Runs.class</b> na ordem oposta. O método <b>run()</b> chama esses dois métodos consecutivamente. O método <b>main()</b> na classe <b>DeadLock</b> cria dois <b>threads</b> e os inicia.
+  Quando os <b>threads t1</b> e <b>t2</b> executa, eles invocam os métodos <b>IncrementBallAfterRun</b> e <b>IncrementRunAfterBall</b>. Nestes métodos, os bloqueios são obtidos em ordem oposta. Pode acontecer que <b>t1</b> adquira um bloqueio em <b>Runs.class</b> e espere para obter um bloqueio em <b>Balls.class</b>. Enquanto isso, o <b>t2</b> pode ter adquirido o <b>Balls.class</b> e agora estará esperando para adquirir um bloqueio no <b>Runs.class</b>. Portanto, este programa pode levar a um <b>deadlock</b>.</p> 
+
+  <br>
+    <img src="imagens/jee7/concorrencia1.jpg">
+    <p><i>A figura acima mostra Impasse(Deadlock) entre os threads t1 e t2</i></p>
+    <br>
+  <p>Não se pode garantir que este programa leve a um <b>deadlock</b> toda vez que você executar este programa.
+  Por quê? Você nunca sabe a sequência na qual os <b>threads</b> são executados e a ordem em que os bloqueios são adquiridos e liberados. Por esta razão, tais problemas são considerados não-determinísticos, e tais problemas não podem ser reproduzidos consistentemente.</p>
+  <p>Existem diferentes estratégias para lidar com <b>deadlocks</b>, como prevenção, revogação ou detecção de deadlock:</p>
+  <ul>
+  <li> Os deadlocks podem surgir no contexto de vários bloqueios.</li>
+  <li> Se vários bloqueios forem adquiridos na mesma ordem, um deadlock não ocorrerá; no entanto, se você adquiri-los em uma ordem diferente, os deadlocks podem ocorrer.</li>
+  <li> Deadlocks (assim como outros problemas de multi-threading) são não-determinísticos; você não pode reproduzir consistentemente deadlocks.</li>
+  </ul>
+  <p>Evite adquirir vários bloqueios. Se você deseja adquirir vários bloqueios, certifique-se de que eles sejam adquiridos na mesma ordem em todos os lugares para evitar conflitos.</p>
+  </section>
+  <section id="livelocks">
+  <h2>Livelocks</h2>
+
+  <p>Para ajudar a entender os <b>livelocks</b>, vamos considerar uma analogia. Suponha que existem dois carros robóticos que são programados para dirigir automaticamente na estrada. Há uma situação em que dois carros robóticos alcançam as duas extremidades opostas de uma ponte estreita. A ponte é tão estreita que apenas um carro pode passar de cada vez. Os carros robóticos são programados de tal forma que esperam que o outro carro passe primeiro. Quando ambos os carros tentam entrar na ponte ao mesmo tempo, a seguinte situação pode acontecer: cada carro começa a entrar na ponte, percebe que o outro carro está tentando fazer o mesmo e inverte! Note que os carros continuam se movendo para frente e para trás e, assim, aparecem como se estivessem fazendo muito trabalho, mas não há progresso feito por nenhum dos carros. Esta situação é chamada de <b>livelock</b>.</p>
+  <p>Considere dois <b>threads</b> t1 e t2. Suponha que o <b>thread</b> t1 faça uma alteração e o <b>thread</b> t2 desfaça essa alteração. Quando ambos os <b>threads</b> t1 e t2 funcionar, parecerá que muito trabalho está sendo feito, mas nenhum progresso é feito. Essa situação é chamada de <b>livelock</b> em <b>threads</b>.</p>
+  <p>A semelhança entre <b>livelocks</b> e <b>deadlocks</b> é que o processo “trava” e o programa nunca termina. No entanto, em um <b>deadlock</b>, os <b>threads</b> estão presos no mesmo estado, aguardando que outro (s) thread (s) liberem um recurso compartilhado; em um <b>livelock</b>, os <b>threads</b> continuam executando uma tarefa, e há uma mudança contínua nos estados do processo, mas o aplicativo como um todo não faz progresso.</p>
+  <br>
+  </section>
+  <section id="starationlock">
+  <h2>Lock Starvation</h2>
+
+  <p>Considere a situação em que vários <b>threads</b> têm prioridades diferentes designadas a eles (no intervalo de prioridade mais baixa, 1, para prioridade mais alta, 10, que é o intervalo permitido para prioridade de <b>threads</b> em Java). Quando um bloqueio está disponível, o programador de <b>thread</b> dará prioridade aos <b>threads</b> com alta prioridade sobre baixa prioridade.</p>
+  <p>Se houver muitos <b>threads</b> de alta prioridade que desejem obter o bloqueio e também manter o bloqueio por longos períodos de tempo, quando os <b>threads</b> de baixa prioridade terão a chance de obter o bloqueio? Em outras palavras, em uma situação onde <b>threads</b> de baixa prioridade "passam fome" por um longo tempo tentando obter o bloqueio é conhecido como <b>lock starvation</b>.</p>
+  </section>
+  <section id="javautilconc">
+  <h1>Usando o Pacote java.util.concurrent.atomic</h1>
+
+  <p>O pacote <b>java.util.concurrent</b> tem dois subpacotes: <b>java.util.concurrent.atomic</b> e <b>java.util.concurrent.locks</b>. Nesta seção, discutiremos variáveis ​​atômicas no pacote <b>java.util.concurrent.atomic</b>.</p>
+
+  <p>Muitas vezes você pode ver código que adquire e libera bloqueios para implementar operações primitivas/simples como incrementar uma variável, decrementar uma variável e assim por diante? (Nós já vimos um exemplo no incremento de uma variável inteira quando discutimos a palavra-chave synchronized anteriormente ).</p>
+  <p>Adquirir e liberar bloqueios para essas operações primitivas não é eficiente. Em tais casos, o Java fornece uma alternativa eficiente na forma de variáveis ​​atômica.</p>
+  <p>Aqui está uma lista de algumas das classes deste pacote e sua breve descrição:</p>
+  <ul>
+  <li> <b>AtomicBoolean</b>: Valor booleano atomicamente atualizável.</li>
+   <li><b>AtomicInteger</b>: valor int atomicamente atomizado; herda da classe Number.<li>
+  <li> <b>AtomicIntegerArray</b>: um array int no qual os elementos podem ser atualizados atomicamente.</li>
+  <li> <b>AtomicLong</b>: valor long atomicamente atualizável; herda da classe Number.</li>
+  <li> <b>AtomicLongArray</b>: Um long array no qual os elementos podem ser atualizados atomicamente.</li>
+  <li> <b>AtomicReference&ltV></b>: uma referência de objeto atomicamente atualizável do tipo V.</li>
+  <li> <b>AtomicReferenceArray&ltE></b>: Um array atomicamente atualizável que pode conter referências de objetos do tipo E (E refere ao tipo base de elementos).</li>
+  </ul>
+  <br>
+  <p><i>Apenas AtomicInteger e AtomicLong se estendem da classe Number, mas não do AtomicBoolean. Todas as outras classes no subpacote java.util.concurrent.atomic herdam diretamente da classe Object</i></p>
+  <br>
+
+  <p>Das classes no subpacote <b>java.util.concurrency.atomic</b>, <b>AtomicInteger</b> e <b>AtomicLong</b> são as mais importantes. Logo abaixo a tabela lista os métodos importantes na classe AtomicInteger. (Os métodos no AtomicLong são análogos a estes).</p>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Método</th><th>Descrição</th></tr>
+  <tr><td>AtomicInteger()</td><td>Cria uma instância do AtomicInteger com o valor inicial 0.</td></tr> 
+
+  <tr><td>AtomicInteger(int initVal)</td><td>Cria uma instância do AtomicInteger com o valor inicial initVal.</td></tr> 
+  <tr><td>int get()</td><td>Retorna o valor inteiro mantido neste objeto.</td></tr>
+   
+  <tr><td>void set(int newVal)</td><td>Redefine o valor inteiro contido neste objeto para newVal.</td></tr>
+   
+   <tr><td>int getAndSet(int newValue)</td><td>Retorna o intvalue atual mantido neste objeto e define o valor contido neste objeto como newVal.</td></tr>
+
+  <tr><td>boolean compareAndSet(int expect, int update)</td><td>Compara o valor int deste objeto com o valor esperado e, se eles são iguais, define o valor int deste objeto para o valor de atualização.</td></tr>
+
+   <tr><td>int getAndIncrement()<td></td>Retorna o valor atual do valor inteiro neste objeto e incrementa o valor inteiro neste objeto. Semelhante ao comportamento de i ++ onde i um int.
+  </td></tr> 
+  <tr><td>int getAndDecrement()</td><td>Retorna o valor atual do valor inteiro neste objeto e decrementa o valor inteiro neste objeto. Semelhante ao comportamento de i - onde i é um int.</td></tr>
+   
+  <tr><td>int getAndAdd(int delta)</td><td>Retorna o valor inteiro mantido neste objeto e adiciona o valor delta dado ao valor inteiro.</td></tr>
+   
+  <tr><td>int incrementAndGet() </td><td>Incrementa o valor atual do valor inteiro neste objeto e
+  retorna esse valor. Semelhante ao comportamento de ++ i onde i é um int.</td></tr>
+
+  <tr><td>int decrementAndGet()</td><td>Decrementa o valor inteiro atual neste objeto e retorna esse valor. Semelhante ao comportamento de --i, onde i é um int.</td></tr>
+   
+   <tr><td>int addAndGet(int delta)</td><td>Adiciona o valor delta ao valor atual do inteiro neste objeto e retorna esse valor.</td></tr> 
+   
+  <tr><td>int intValue() long longValue() float floatValue() double doubleValue() -</td><td>Converte o valor int atual do objeto e o retorna como valores int, long, float ou double.</td></tr>
+  </table>
+  </div>
+
+
+  <p>Vamos experimentar um exemplo para entender como usar o <b>AtomicInteger</b> ou o <b>AtomicLong</b>. Suponha que você tenha um valor de contador que seja público e acessível por todos os <b>threads</b>. Como você atualiza ou acessa esse valor de contador comum com segurança sem introduzir o problema de condição de corrida (discutido anteriormente neste capítulo)? Obviamente, você pode usar a palavra-chave synchronized para garantir que a seção crítica (o código que modifica o valor do contador) seja acessada por apenas um <b>thread</b> em um determinado ponto no tempo. A seção crítica será muito pequena, como em:</p>
+  <pre class="brush:java">
+  public void run() {
+  synchronized(SharedCounter.class) {
+  SharedCounter.count++;
+  }
+  }
+  </pre>
+  <p>No entanto, este código é ineficiente, uma vez que adquire e libera o bloqueio de cada vez apenas para incrementar o valor <b>count</b>. Alternativamente, se você declarar <b>count</b> como <b>AtomicInteger</b> ou <b>AtomicLong</b> (o que for adequado). As classes como <b>AtomicInteger</b> não usam um bloqueio; em vez disso, eles usam internamente variáveis ​​voláteis e um mecanismo de baixo nível conhecido como <b>Compare-and-Set (CAS)</b>. Por esse motivo, usar <b>AtomicInteger</b> e classes relacionadas é mais rápido do que usar bloqueios usando a palavra-chave synchronized.</p>
+  <pre class="brush:java">
+   //AtomicVariableTest.java
+  import java.util.concurrent.atomic.AtomicInteger;
+  // Classe para demonstrar como números inteiros "normais" (isto é, thread inseguro) são mutantes
+  // e os números inteiros "atômicos" (ou seja, seguros para threads) são diferentes:
+  // A mutação de um objeto inteiro compartilhado sem bloqueios pode resultar em uma condição de corrida;
+  // no entanto, a mutação de um AtomicInteger compartilhado não resultará em uma condição de corrida.
+  class Counter {
+  public static Integer integer= new Integer(0);
+  public static AtomicInteger atomicInteger= new AtomicInteger(0);
+  }
+  class AtomicVariableTest {
+  static class Incrementer extends Thread {
+  public void run() {
+  Counter.integer++;
+  Counter.atomicInteger.incrementAndGet();
+  }
+  }
+  static class Decrementer extends Thread {
+  public void run() {
+  Counter.integer--;
+  Counter.atomicInteger.decrementAndGet();
+  }
+  }
+  public static void main(String []args) throws InterruptedException {
+  Thread incremeterThread[] = new Incrementer[1000];
+  Thread decrementerThread[] = new Decrementer[1000];
+
+  for(int i = 0; i < 1000; i++) {
+  incremeterThread[i] = new Incrementer();
+  decrementerThread[i] = new Decrementer();
+  incremeterThread[i].start();
+  decrementerThread[i].start();
+  }
+  for(int i = 0; i < 1000; i++) {
+  incremeterThread[i].join();
+  decrementerThread[i].join();
+  }
+  System.out.printf("Integer value = %d AtomicInteger value = %d ",
+  Counter.integer, Counter.atomicInteger.get());
+  }
+  }
+  </pre>
+   <p>A saída real depende do agendamento de threads. Em execuções diferentes, imprimiu as seguintes saídas:</p>
+  <pre>
+  Integer value = -2 AtomicInteger value = 0
+  Integer value = 2 AtomicInteger value = 0
+  Integer value = -1 AtomicInteger value = 0
+  Integer value = -1 AtomicInteger value = 0
+  Integer value = 0 AtomicInteger value = 0
+  </pre>
+  <p>Vamos analisar esse programa. A classe <b>Counter</b> possui dois membros de dados - um do tipo <b>Integer</b> e outro do tipo <b>AtomicInteger</b> - com o mesmo valor inicial 0. Existem duas classes de <b>Thread</b>. A classe Incrementer tem o método <b>run()</b> que incrementa os valores <b>Integer</b> e <b>AtomicInteger</b>. Por outro lado, a classe <b>Decrementer</b> possui o método <b>run()</b> que diminui os valores <b>Integer</b> e <b>AtomicInteger</b>.</p>
+
+  <p>Nesta saída, observe que o incremento do objeto <b>Integer</b> pode resultar em uma condição de corrida: o valor final de <b>Integer</b> ou <b>AtomicInteger</b> após incrementar e decrementar um número igual de vezes deve ser sempre 0 - se não tivermos uma condição de corrida. Como você pode observar a partir da saída, às vezes para o objeto <b>Integer</b> é 0 (ou seja, sem condição de corrida), mas na maioria das vezes não é igual a 0 (o que significa que tem condição de corrida). No entanto, para <b>AtomicInteger</b>, o resultado é sempre zero (o que significa que não tem condição de corrida). Em outras palavras, este programa mostra que é seguro manipular um valor <b>AtomicInteger</b> sem nenhum bloqueio.</p>
+  </section>
+  <section id="usacolecjavautil">
+  <h1>Usando Coleções java.util.concurrent</h1>
+
+  <p>Existem muitas classes e interfaces no pacote <b>java.util.concurrent</b> que fornecem APIs de alto nível para programação concorrente. Nesta seção, discutiremos principalmente as classes de sincronizador fornecidas neste pacote. Em seguida, abordaremos brevemente as importantes classes de coleções concorrentes fornecidas no pacote <b>java.util.concurrent</b>.</p>
+  <p>Você já entende as construções de concorrência de baixo nível, como o uso da palavra-chave <b>synchronized</b> usando interfaces <b>Runnable</b> para criar <b>threads</b>. No caso de um recurso compartilhado que precisa ser acessado por vários <b>threds</b>, o acesso e as modificações no recurso compartilhado precisam ser protegidos.</p>
+  <p>Quando você usa a palavra-chave <b>synchronized</b>, você usa <b>mutexes</b>(exclusão mútua) para sincronizar entre <b>threads</b> para acesso compartilhado seguro. Os <b>threads</b> também costumam precisar coordenar suas execuções para concluir uma tarefa maior de nível superior. É possível construir abstrações de alto nível para sincronização de <b>threads</b>. Essas abstrações de alto nível para sincronizar atividades de dois ou mais <b>threads</b> são conhecidas como sincronizadores. Sincronizadores usam internamente as APIs de baixo nível existentes para coordenação de <b>threads</b>.</p>
+
+  <p>Os sincronizadores fornecidos na biblioteca <b>java.util.concurrent</b> e seus usos são:</p>
+  <ul>
+  <li> Um <b>semáforo</b> controla o acesso a recursos compartilhados. Um semáforo mantém um contador para especificar o número de recursos que o semáforo controla.</li>
+  <li> <b>CountDownLatch</b> permite que um ou mais threads aguardem a conclusão de uma contagem regressiva.</li>
+  <li> A classe <b>Exchanger</b> destina-se à troca de dados entre dois threads. Essa classe é útil quando dois threads precisam sincronizar entre si e trocar dados continuamente.</li>
+  <li>O <b>CyclicBarrier</b> ajuda a fornecer um ponto de sincronização onde os threads podem precisar aguardar em um ponto de execução predefinido até que todos os outros threads atinjam esse ponto.</li>
+  <li>O <b>Phaser</b> é um recurso útil quando poucos threads independentes precisam trabalhar em fases para concluir uma tarefa.</li>
+
+  </section>
+  <section id="cyclebarrier">
+  <h2>CyclicBarrier</h2>
+
+  <p>Há muitas situações na programação concorrente em que os <b>threads</b> podem precisar aguardar em um ponto de execução predefinido até que todos os outros <b>threads</b> atinjam esse ponto. O <b>CyclicBarrier</b> ajuda a fornecer esse ponto de sincronização; ver Tabela abixo para os métodos importantes desta classe.</p>
+  <br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Métodos</th><th>Descrição</th></tr>
+
+
+  <tr><td>CyclicBarrier(int numThreads)</td><td>Cria um objeto CyclicBarrier com o número de segmentos que estão esperando especificado. Lança IllegalArgumentException se numThreads for negativo ou zero.
+  </td></tr>
+
+  <tr><td>CyclicBarrier(int parties, Runnable barrierAction)</td><td>O mesmo que o construtor anterior; Esse construtor também pega o thread para chamar quando a barreira é atingida.</td></tr>
+
+  <tr><td>int await() int await(long timeout, TimeUnit unit)</td><td>Bloqueia até que o número especificado de threads que tenha chamado await() nessa barreira. O método retorna o índice de chegada desse thread. Este método pode lançar uma InterruptedException se o thread for interrompido enquanto aguarda por outros threads ou um BrokenBarrierException se a barreira foi quebrada por algum motivo (por exemplo, outro thread foi expirado ou interrompido). O método sobrecarregado leva um período de tempo limite como uma opção adicional; essa versão sobrecarregada lança um TimeoutException se todos os outros threads não forem alcançados dentro do período de tempo limite.</td></tr>
+
+  <tr><td>boolean isBroken()</td><td>Retorna true se a barreira estiver quebrada. Uma barreira é quebrada se pelo menos um thread nessa barreira for interrompido ou expirado, ou se uma ação de barreira tiver falhado ao lançar uma exceção</td></tr>
+
+  <tr><td>void reset()</td><td>Redefine a barreira para o estado inicial. Se houver algum thread aguardando na barreira, eles lançarão a exceção BrokenBarrier.
+  </td></tr>
+  </table>
+  </div>
+  <br>
+  <p>Agora um exemplo que faz uso da classe CyclicBarrier.</p>
+  <br>
+  <pre class="brush:java">
+  //CyclicBarrierTest.java
+  import java.util.concurrent.CyclicBarrier;
+  import java.util.concurrent.BrokenBarrierException;
+  // O método run() neste thread deve ser chamado apenas quando
+  // quatro jogadores estão prontos para começar o jogo
+  class MixedDoubleTennisGame extends Thread {
+  public void run() {
+  System.out.println("All four players ready, game starts \n Love all...");
+  }
+  }
+  // Este tópico simula a chegada de um jogador.
+  // Quando um jogador chega, ele/ela deve esperar que outros jogadores cheguem
+  class Player extends Thread {
+  CyclicBarrier waitPoint;
+  public Player(CyclicBarrier barrier, String name) {
+  this.setName(name);
+  waitPoint = barrier;
+  this.start();
+  }
+  public void run() {
+  System.out.println("Player " + getName() + " is ready ");
+  try {
+  waitPoint.await(); //  aguardo a chegada dos quatro jogadores
+  } catch(BrokenBarrierException | InterruptedException exception) {
+  System.out.println("An exception occurred while waiting... "
+  + exception);
+  }
+  }
+  }
+
+  // Cria um objeto CyclicBarrier passando o número de threads e o thread a ser executado
+  // quando todos os threads atingem a barreira
+  class CyclicBarrierTest {
+  public static void main(String []args) {
+  // um jogo de tênis misto e duplo requer quatro jogadores;
+  // então espere quatro jogadores
+  // (ou seja, quatro threads) para ingressar no jo
+  System.out.println("Reserving tennis court \n"
+  + "As soon as four players arrive, game will start");
+  CyclicBarrier barrier = new CyclicBarrier(4, new MixedDoubleTennisGame());
+  new Player(barrier, "G I Joe");
+  new Player(barrier, "Dora");
+  new Player(barrier, "Tintin");
+  new Player(barrier, "Barbie");
+  }
+  }
+  </pre>
+  <p><b>O programa imprime:</b></p>
+  <pre>
+  Reserving tennis court
+  As soon as four players arrive, game will start
+  Player Dora is ready
+  Player G I Joe is ready
+  Player Tintin is ready
+  Player Barbie is ready
+  All four players ready, game starts
+  Love all...
+  </pre>
+  <p>Agora vamos ver como esse programa funciona. No método <b>main()</b>, você cria um objeto <b>CyclicBarrier</b>. O construtor recebe dois argumentos: o número de <b>threads</b> a serem aguardados e o <b>thread</b> a ser invocado quando todos os <b>threads</b> alcançarem a barreira. Neste caso, você tem quatro jogadores para esperar, então você cria quatro <b>threads</b>, com cada <b>thread</b> representando um jogador. O segundo argumento para o construtor <b>CyclicBarrier</b> é o objeto <b>MixedDoubleTennisGame</b>, já que este <b>thread</b> representa o jogo, que será iniciado assim que todos os quatro jogadores estiverem prontos.</p>
+  <p>Dentro do método <b>run()</b> para cada<b> Playerthread</b>, você chama o método <b>await()</b> no objeto <b>CyclicBarrier</b>. Quando o número de <b>threads</b> aguardando para o objeto <b>CyclicBarrier</b> atingir quatro, o método <b>run()</b> em <b>MixedDoubleTennisGame</b> é chamado.</p>
+  </section>
+  <section id="colecaoconcr">
+  <h2>Coleções Concorrentes</h2>
+
+
+  <p>O pacote <b>java.util.concurrent</b> fornece um número de classes que são <b>thread-safe</b> equivalentes   aquelas fornecidas nas classes de estrutura de coleções no pacote <b>java.util</b>. Por exemplo,
+  <b>java.util.concurrent.ConcurrentHashMap</b> é um equivalente simultâneo a <b>java.util.HashMap</b>. A principal diferença entre esses dois contêineres é que você precisa sincronizar explicitamente inserções e exclusões com o <b>HashMap</b>, enquanto essa sincronização é incorporada no <b>ConcurrentHashMap</b>. Se você souber usar o <b>HashMap</b>, saberá usar o <b>ConcurrentHashMap</b> implicitamente.</p>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>classes / interfaces</th><th>Descrição</th></tr>
+  <tr><td>BlockingQueue</td><td>Essa interface estende a interface de Queue. Em BlockingQueue, se a fila estiver vazia, ela espera (ou seja, bloqueia) um elemento a ser inserido e, se a fila estiver cheia, ele espera que um elemento seja removido da fila.</td></tr>
+
+  <tr><td>ArrayBlockingQueue</td><td>Esta classe fornece uma implementação baseada em array de tamanho fixo da interface BlockingQueue</td></tr>
+
+  <tr><td>LinkedBlockingQueue</td><td>Esta classe fornece uma implementação baseada em lista vinculada da interface BlockingQueue.</td></tr>
+
+  <tr><td>DelayQueue</td><td>Essa classe implementa BlockingQueuea e consiste em elementos que são do tipo Delayed. Um elemento pode ser recuperado desta fila somente após seu período de atraso.
+  </td></tr>
+
+  <tr><td>PriorityBlockingQueue</td><td>Equivalente a java.util.PriorityQueue, mas implementa a interface BlockingQueue.</td></tr>
+
+  <tr><td>SynchronousQueue</td><td>Esta classe implementa o BlockingQueue. Nesse contêiner, cada inserção() por um thread aguarda(bloqueia) por um remove() correspondente por outro thread e vice-versa.</td></tr>
+  <tr><td>LinkedBlockingDeque</td><td>Esta classe implementa o BlockingDeque onde as operações de inserção e remoção podem bloquear; usa uma lista vinculada para implementação
+  </td></tr>
+
+  <tr><td>ConcurrentHashMap</td><td>Análogo ao Hashtable, mas com acesso e atualizações concorrente seguras.</td></tr>
+
+  <tr><td>ConcurrentSkipListMap</td><td>Analogamente ao TreeMap, mas fornece acesso e atualizações concorrente seguras.</td></tr>
+
+  <tr><td>ConcurrentSkipListSet</td><td>Análogo ao TreeSet, mas fornece acesso e atualizações concorrente seguras
+  </td></tr>
+
+  <tr><td>CopyOnWriteArrayList</td><td>Semelhante ao ArrayList, mas fornece acesso concorrente seguro. Quando o contêiner é modificado, ele cria uma nova cópia do array subjacente</td></tr> 
+
+  <tr><td>CopyOnWriteArraySet</td><td>Uma implementação Set, mas fornece acesso concorrente seguro e é implementada usando CopyOnWriteArrayList. Quando o contêiner é modificado, ele cria uma nova cópia do array subjacente.
+  </td></tr>
+  </table>
+  </div>
+  </section>
+  <section id="copyonwrite">
+  <h1>Classe CopyOnWriteArrayList</h1>
+
+  <p><b>ArrayList</b> e <b>CopyOnWriteArrayList</b> implementam a interface <b>List</b>. Existem três diferenças principais entre <b>ArrayList</b> e <b>CopyOnWriteArrayList</b>:</p>
+  <ul>
+  <li><b>ArrayList</b> não é <b>thread-safe</b> mas <b>CopyOnWriteArrayList</b> é thread-safe. Isso significa que não é seguro usar o ArrayList em contextos nos quais vários threads estão sendo executados (especialmente quando alguns dos threads modificam o contêiner), mas é seguro usar CopyOnWriteArrayList nesse contexto.</li>
+  <li>Métodos em <b>ArrayLists</b>, assim como os métodos <b>remove()</b>, <b>add()</b> e <b>set()</b> podem lançar <b>java.util.ConcurrentModificationException</b> se outro <b>thread</b> modificar o <b>ArrayList</b> quando um <b>thread</b> estiver acessando-o. No entanto, é seguro executar essas operações de vários segmentos em <b>CopyOnWriteArrayList</b> e, portanto, métodos como <b>remove()</b>, <b>add()</b> e <b>set()</b> não lançam essa exceção. Quão? Todos os iteradores ativos ainda terão acesso à versão não modificada do contêiner e, portanto, não serão afetados; Se você tentar criar um iterador após a modificação, obterá o iterador para o contêiner modificado.</li>
+  <li> Você pode obter um iterador chamando o método <b>Iterator()</b> em um objeto <b>List</b>. Se você chamar o método <b>remove()</b> quando o contêiner subjacente for modificado, você poderá obter um <b>ConcurrentModificationException</b>. No entanto, você não pode chamar o método <b>remove()</b> em um iterador de um <b>CopyOnWriteArrayList</b>: ele sempre lança o <b>UnsupportedOperationException</b>.</li>
+  </ul>
+  <p>O comportamento de <b>CopyOnWriteArrayList</b> às vezes é útil mesmo em contextos em que o multi-threading não é usado. Por exemplo, o programa a seguir mostra uma ArrayList que está sendo modificada quando o iterador é executado.
+  <pre class="brush:java">
+  //ModifyingList.java
+  import java.util.ArrayList;
+  import java.util.Iterator;
+  import java.util.List;
+  public class ModifyingList {
+  public static void main(String []args) {
+  List&ltString> aList = new ArrayList&lt>();
+  aList.add("one");
+  aList.add("two");
+  aList.add("three");
+  Iterator listIter = aList.iterator();
+  while(listIter.hasNext()) {
+  System.out.println(listIter.next());
+  aList.add("four");
+  }
+  }
+  }
+  </pre>
+  <p>Este programa trava jogando <b>java.util.ConcurrentModificationException</b>. Por quê? Porque o os iteradores do <b>ArrayList</b> são <b>fail-fast</b>; falha ao lançar <b>ConcurrentModificationException</b> se detectar que o contêiner subjacente foi alterado quando está interagindo sobre os elementos no contêiner. Esse comportamento é útil em contextos concorrentes quando um thread modifica o contêiner subjacente quando outro thread está interagindo sobre os elementos do contêiner.
+  Você pode usar <b>CopyOnWriteArrayList</b> para fazer essas alterações no contêiner subjacente quando a iteração estiver acontecendo.</p>
+  <pre class="brush:java">
+  //COWList.java
+  import java.util.Iterator;
+  import java.util.List;
+  import java.util.concurrent.CopyOnWriteArrayList;
+  public class COWList {
+  public static void main(String []args) {
+  List&ltString> aList = new CopyOnWriteArrayList&lt>();
+  aList.add("one");
+  aList.add("two");
+  aList.add("three");
+  Iterator listIter = aList.iterator();
+  while(listIter.hasNext()) {
+  System.out.println(listIter.next());
+  aList.add("four");
+  }
+  }
+  }
+  </pre>
+  <p><b>Agora o programa não trava, ele imprime:</b></p>
+  <pre>
+  one
+  two
+  three
+  </pre>
+  <p>Observe que o elemento “four” adicionado três vezes não é impresso como parte da saída. Isso ocorre porque o iterador ainda tem acesso ao contêiner original (não modificado) que tinha três elementos. Se você criar um novo iterador e acessar os elementos, descobrirá que novos elementos foram adicionados a uma lista.</p>
+
+  </section>
+  <section id="interfacecalable">
+  <h1>Usando a Interface Callable e ExecutorService</h1>
+
+  <p>Você pode criar e gerenciar diretamente encadeamentos no aplicativo, criando objetos <b>Thread</b>. No entanto, se você quiser abstrair os detalhes de baixo nível da programação multi-threaded, você pode fazer uso da interface <b>Executor</b></p>
+  <br>
+  <img src="imagens/jee7/concorrencia2.jpg">
+  <p><i>Classes/interfaces importantes na hierarquia do Executor</i></p>
+  <br>
+  <section id="executorjv">
+  <h2>EXECUTOR</h2>
+
+  <p><b>Executor</b> é uma interface que declara apenas um método: void execute(Runnable). Isso pode não parecer uma interface significativa por si só, mas suas classes derivadas (ou interfaces), como <b>ExecutorService</b>, <b>ThreadPoolExecutor</b> e <b>ForkJoinPool</b>, oferecem suporte à funcionalidade útil. Discutiremos algumas das classes derivadas do <b>Executor</b> em mais detalhes mais adiante.</p>
+  <p>Vamos ententeder com um exemplo simples de como implementar esta interface e usá-la na prática.</p>
+  <pre class="brush:java">
+  //ExecutorTest.java
+  import java.util.concurrent.Executor;
+  // Esta classe Task implementa Runnable, portanto é um objeto Thread
+  class Task implements Runnable {
+  public void run() {
+  System.out.println("Calling Task.run() ");
+  }
+  }
+
+  // Esta classe implementa a interface Executor e deve substituir o método execute (Runnable).
+  // Fornecemos um método de execução sobrecarregado com um argumento adicional 'times' para criar e
+  // executa os threads por um determinado número de vezes
+
+  class RepeatedExecutor implements Executor {
+  public void execute(Runnable runnable) {
+  new Thread(runnable).start();
+  }
+  public void execute(Runnable runnable, int times) {
+  System.out.printf("Calling Task.run() %d times thro' Executor.execute() %n",
+  times);
+  for(int i = 0; i < times; i++) {
+  execute(runnable);
+  }
+  }
+  }
+  // Esta classe gera um thread de tarefas e chama explicitamente o método start ().
+  // Também mostra como executar um Thread usando o Executor
+  class ExecutorTest {
+  public static void main(String []args) {
+  Runnable runnable = new Task();
+  System.out.println("Calling Task.run() by directly creating a Thread");
+  Thread thread = new Thread(runnable);
+  thread.start();
+  RepeatedExecutor executor = new RepeatedExecutor();
+  executor.execute(runnable, 3);
+  }
+  }
+  </pre>
+  <p><b>Aqui está a saída deste programa:</b></p>
+  <pre>
+  Calling Task.run() by directly creating a Thread
+  Calling Task.run()
+  Calling Task.run() 3 times thro' Executor.execute()
+  Calling Task.run()
+  Calling Task.run()
+  Calling Task.run()
+  </pre>
+  <p>Neste programa, você tem uma classe <b>Task</b> que implementa <b>Runnable</b>, fornecendo a definição do método <b>run()</b>. A classe <b>RepeatedExecutor</b> implementa o <b>Executorinterface</b> fornecendo a definição do método <b>execute(Runnable)</b>.</p>
+
+  <p>Ambos <b>Runnable</b> e <b>Executor</b> são semelhantes no sentido de que eles fornecem um único método para implementação. Nesta definição você deve ter notado que o <b>Executor</b> por si só não é um <b>thread</b>, e você deve criar um objeto <b>Thread</b> para executar o objeto <b>Runnable</b> passado no método <b>execute()</b>. No entanto, a principal diferença entre <b>Runnable</b> e <b>Executor</b> é que o <b>Executor</b> deve resumir como o <b>thread</b> é executado. Por exemplo, dependendo da implementação do <b>Executor</b>, pode-se agendar um <b>thread</b> para ser executado em um determinado momento ou executar o <b>thread</b> após um determinado período de atraso.</p>
+
+  <p>Neste programa, você sobrecarregou o método <b>execute()</b> com um argumento adicional para criar e executar <b>threads</b> um determinado número de vezes. No método <b>main()</b>, você primeiro cria um objeto <b>Thread</b> e agendá-lo para execução. Depois disso, você instancia o <b>RepeatedExecutor</b> para executar o <b>thread</b> três vezes.</p>
+  </section>
+  <section id="callabexecserv">
+  <h2>Callable e ExecutorService</h2>
+
+  <p><b>Callable</b> é uma interface que declara apenas um método: <b>call()</b>. Sua assinatura completa é <b>V call() throws Exception</b>. Representa uma tarefa que precisa ser concluída por um <b>thread</b>. Depois que a tarefa é concluída, ela retorna um valor. Por algum motivo, se o método <b>call()</b> não puder executar ou falhar, ele lançará uma exceção.</p>
+
+  <p>Para executar uma tarefa usando o objeto <b>Callable</b>, você primeiro cria um pool de threads. Um pool de thread é uma coleção de threads que podem executar tarefas. Você cria um pool de threads usando a classe de utilitário de executores. Esta classe fornece métodos para obter instâncias de conjuntos de threads, fábricas de threads e assim por diante.</p>
+  <p>A interface <b>ExecutorService</b> estende a interface de <b>Executor</b> e fornece serviços como finalização de threads e produção de objetos <b>Future</b>. Algumas tarefas podem levar um tempo considerável de execução para serem concluídas. Então, quando você envia uma tarefa para o serviço executor, você obtém um objeto <b>Future</b>.</p>
+
+  <p><b>Future</b> representa objetos que contêm um valor retornado por um thread no futuro (isto é, retorna o valor quando o thread termina no "futuro"). Você pode usar o método <b>isDone()</b> na classe <b>Future</b> para verificar se a tarefa está completa e, em seguida, use o método <b>get()</b> para buscar o resultado da tarefa. Se você chamar o método <b>get()</b> diretamente enquanto a tarefa não está completa, o método bloqueia até que seja concluído e retorna o valor assim que estiver disponível.</b>
+
+  <p>Aqui está um exemplo simples para ver como essas classes funcionam juntas:</p>
+  <p><b>CallableTest.java</b></p>
+  <pre class="brush:java">
+  import java.util.concurrent.Callable;
+  import java.util.concurrent.ExecutorService;
+  import java.util.concurrent.Future;
+  import java.util.concurrent.Executors;
+
+  // O fatorial implementa Callable para que possa ser passado para um ExecutorService
+  // e é executado como uma tarefa.
+  class Factorial implements Callable&ltLong> {
+  long n;
+  public Factorial(long n) {
+  this.n = n;
+  }
+  public Long call() throws Exception {
+  if(n <= 0) {
+  throw new Exception("for finding factorial, N should be > 0");
+  }
+  long fact = 1;
+  for(long longVal = 1; longVal <= n; longVal++) {
+  fact *= longVal;
+  }
+  return fact;
+  }
+  }
+  // Ilustra como Callable, Executors, ExecutorService e Future estão relacionados;
+  // também mostra como eles trabalham juntos para executar uma tarefa
+  class CallableTest {
+  public static void main(String []args) throws Exception {
+  // o valor para o qual queremos encontrar o fatorial
+  long N = 20;
+  // get a callable task to be submitted to the executor service
+  Callable&ltLong> task = new Factorial(N);
+  // cria um ExecutorService com um pool de threads fixo com um thread
+  ExecutorService es = Executors.newSingleThreadExecutor();
+  // envia a tarefa ao serviço executor e armazena o objeto Future
+  Future&ltLong> future = es.submit(task);
+  // aguarde o método get () que bloqueia até que a computação esteja concluída.
+  System.out.printf("factorial of %d is %d", N, future.get());
+  // feito. desligue o serviço executor, pois não precisamos mais dele
+  es.shutdown();
+  }
+  }
+  </pre>
+  <p>Este programa imprime o seguinte:</p>
+  <pre>
+  factorial of 20 is 2432902008176640000
+  </pre>
+  <p>Neste programa, você tem uma classe <b>Factorial</b> que implementa <b>Callable</b>. Como a tarefa é calcular o fatorial de um número N, a tarefa precisa retornar um resultado. Você usa o tipo <b>Long</b> para o valor fatorial, portanto, implementa <b>Callable&ltLong></b>. Dentro da classe <b>Factorial</b>, você define o método <b>call()</b> que realmente executa a tarefa (a tarefa aqui é calcular o fatorial do número dado). Se o valor fornecido N for negativo ou zero, você não executará a tarefa e lançará uma exceção ao chamador. Caso contrário, você faz um loop de 1 a N e encontra o valor fatorial.</p>
+  <p>Na classe <b>CallableTest</b>, você primeiro cria uma instância da classe <b>Factorial</b>. Você precisa então executar esta tarefa. Por uma questão de simplicidade, você obtém um executor de thread único chamando o novo método <b>SingleThreadExecutor()</b> na classe <b>Executors</b>. Observe que você pode usar outros métodos, como <b>new FixedThreadPool(nThreads)</b>, para criar um <b>pool de threads</b> com vários <b>threads</b>, dependendo do nível de paralelismo necessário.</p>
+
+  <p>Depois de obter um <b>ExecutorService</b>, você envia a tarefa para execução. <b>ExecutorService</b> abstrai detalhes como quando a tarefa é executada e como a tarefa é atribuída aos <b>threads</b>. Você obtém uma referência ao <b>Future&ltLong></b> quando chama o método <b>submit(task)</b>. A partir dessa referência futura, você chama o método <b>get()</b> para buscar o resultado depois de concluir a tarefa. Se a tarefa ainda estiver em execução quando você chamar <b>future.get()</b>, esse método <b>get()</b> será bloqueado até que a execução da tarefa seja concluída. Quando a execução estiver concluída, você precisará liberar manualmente o <b>ExecutorService</b> chamando o método <b>shutdown()</b>.</p>
+  </section>
+  <section id="paraleforkjoin">
+  <h2>Use Parallel Fork/Join Framework</h2>
+
+  <p>O framework <b>Fork/Join</b> no pacote <b>java.util.concurrent</b> ajuda a simplificar a gravação de código em paralelo. O framework é uma implementação da interface <b>ExecutorService</b> e fornece uma plataforma concorrente fácil de usar para explorar vários processadores. Esse framework é muito útil para modelar problemas de divisão e conquista. Essa abordagem é adequada para tarefas que podem ser divididas recursivamente e computadas em uma escala menor; os resultados calculados são então combinados. Dividir a tarefa em tarefas menores está <b>bifurcando(forking)</b> e mesclando os resultados das tarefas menores.</p>
+
+  <p>O framework <b>Fork/Join</b> usa o algoritmo de roubo de trabalho: quando um <b>thread</b> de trabalho conclui seu trabalho e é gratuito, ele executa (ou rouba) trabalhos de outros <b>threads</b> que ainda estão ocupados fazendo algum trabalho. Inicialmente, parecerá a você que usar <b>Fork/Join</b> é uma tarefa complexa. Uma vez familiarizado com isso, você perceberá que é conceitualmente fácil e que simplifica significativamente seu trabalho.</p></p> A chave é subdividir recursivamente a tarefa em partes menores que podem ser processadas por <b>threads</b> separados.</p>
+
+  <p><b>Resumidamente, o algoritmo Fork/Join é projetado da seguinte forma:</b></p>
+  <pre class="brush:java">
+  forkJoinAlgorithm() {
+  fork (split) the tasks;
+  join the tasks;
+  compose the results;
+  }
+  </pre>
+  <p><b>Aqui está o pseudo-código de como essas etapas funcionam:</b></p>
+  <pre class="brush:java">
+  doRecursiveTask(input) {
+  if (the task is small enough to be handled by a thread) {
+  compute the small task;
+  if there is a result to return, do so
+  }
+  else {
+  divide (i.e., fork) the task into two parts
+  call compute() on first task, join() on second task, return combined results
+  }
+
+  }
+  </pre>
+  <p>O próximo exemplo visualiza como a tarefa é subdividida de forma recursiva em tarefas menores e como os resultados parciais são combinados. Como mostrado pela figura, uma tarefa é dividida em duas subtarefas e, em seguida, cada subtarefa é novamente dividida em duas subtarefas, e assim por diante, até que cada subtarefa de divisão seja computável por cada thread. Depois que um thread conclui o cálculo, ele retorna o resultado para combiná-lo com outros resultados; Desta forma, todos os resultados calculados são combinados de volta..</p>
+
+  <br>
+  <img src="imagens/jee7/concorrencia3.jpg">
+  <p><i>O Framework Fork/Join usa Dividir e Conquistar para concluir a tarefa</i></p>
+  <br>
+  </section>
+  <section id="frameworforkjoin">
+  <h2>Classes Úteis no Framework Fork/Join</h2>
+
+  <p>As classes a seguir desempenham papéis-chave no framework Fork/Join: <b>ForkJoinPool</b>, <b>ForkJoinTask</b>, <b>RecursiveTask</b> e <b>RecursiveAction</b>. Vamos considerar essas classes com mais detalhes.</p>
+  <ul>
+  <li> ForkJoinPool é a classe mais importante no framework Fork/Join. É um conjunto de encadeamentos para executar tarefas fork/join e executa uma instância de ForkJoinTask. Executa tarefas e gerencia seu ciclo de vida.</li>
+  </ul>
+  <br>
+  <p>Na tabela- Métodos importantes na classe ForkJoinPool</p><br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Método</th><th>Descrição</th></tr>
+  <tr><td>void execute(ForkJoinTask&lt?> task)</td><td>Executa uma determinada tarefa de forma assíncrona</td></tr>
+  <tr><td>&ltT> T invoke(ForkJoinTask&ltT> task)</td><td>Executa a tarefa determinada e retorna o resultado computado</td></tr>
+  <tr><td>&ltT> List< Future&ltT>> invokeAll(Collection&lt? extends Callable&ltT>> tasks)</td><td>Executa todas as tarefas dadas e retorna uma lista de objetos futuros quando todas as tarefas são concluídas</td></tr>
+
+  <tr><td>boolean isTerminated()</td><td>Retorna true se todas as tarefas forem concluídas.</td></tr>
+
+  <tr><td>int getParallelism() <br> int getPoolSize() <br> long getStealCount() <br> int getActiveThreadCount()</td><td>Estes são métodos de verificação de status.</td></tr>
+
+  <tr><td>&ltT> ForkJoinTask&ltT> submit(Callable&ltT> task)&ltT><br> ForkJoinTask&ltT> submit(ForkJoinTask&ltT> task) <br> ForkJoinTask&lt?> submit(Runnable task) <br> &ltT> ForkJoinTask&ltT> submit(Runnable task, T result)</td><td>Esses métodos estão executando uma tarefa enviada. Versões sobrecarregadas tomam diferentes tipos de tarefas; retorna um objeto Task ou um objeto Future.
+  </td></tr>
+
+  </table>
+  </div>
+  <br>
+
+
+  <p><b>ForkJoinTask&ltV></b> é uma entidade leve semelhante a um <b>thread</b> que representa uma tarefa que define métodos como <b>fork()</b> e <b>join()</b>.</p><br>
+  <p>Na tabela- Métodos importantes na classe ForkJoinTask</p><br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Método</th><th>Descrição</th></tr>
+  <tr><td>boolean cancel(boolean mayInterruptIfRunning)</td><td>Tenta cancelar a execução da tarefa</td></tr>
+
+  <tr><td>ForkJoinTask&ltV> fork()</td>Executa a tarefa de forma assíncrona.<td></td></tr>
+  <tr><td>V join()</td><td>Retorna o resultado do cálculo quando o cálculo é feito</td></tr>
+
+  <tr><td>V get()</td><td>Retorna o resultado do cálculo; espera se o cálculo for
+  incompleto.</td></tr>
+  <tr><td>V invoke() nstatic</td><td>&ltT extends ForkJoinTask&lt?>> Collection&ltT> invokeAll(Collection&ltT> tasks)</td></tr>
+
+  <tr><td>boolean isCancelled()</td><td>Retorna true se a tarefa for cancelada.</td></tr>
+
+  <tr><td>boolean isDone()</td><td>Retorna true se a tarefa estiver concluída.</td></tr>
+
+  </table>
+  </div>
+
+
+  <ul>
+  <li> <b>RecursiveTask&ltV></b> é uma tarefa que pode ser executada em um <b>ForkJoinPool</b>; o método <b>compute()</b> retorna um valor do tipo <b>V</b>. Ele herda de <b>ForkJoinTask</b>.</li>
+  <li> <b>RecursiveAction</b> é uma tarefa que pode ser executada em um <b>ForkJoinPool</b>; seu método <b>compute()</b> executa as etapas reais de cálculo na tarefa. É semelhante ao <b>RecursiveTask</b>, mas não retorna um valor.</li>
+  </ul>
+  <br>
+  </section>
+  <section id="forkjoinusefrm">
+  <h2>Usando o Framework Fork/Join</h2>
+
+  <p>Vamos verificar como você pode usar o framework <b>Fork/Join</b> na solução de problemas. Aqui estão os passos para usar o framewowrk:</p>
+  <ul>
+  <li> <b>Primeiro</b>, verifique se o problema é adequado para o framework <b>Fork/Join</b> ou não. Lembre-se: o framework Fork/Join não é adequada para todos os tipos de tarefas. Este framework é adequado se o seu problema se encaixa nessa descrição:</li>
+  <li> 1 - O problema pode ser projetado como uma tarefa recursiva em que a tarefa pode ser subdividida em unidades menores e os resultados podem ser combinados.</li>
+  <li> 2 - As tarefas subdivididas são independentes e podem ser calculadas separadamente sem a necessidade de comunicação entre as tarefas quando a computação está em andamento. (Claro, depois que o cálculo terminar, você precisará juntá-los.)</li>
+
+  <li> Se o problema que você deseja resolver puder ser modelado recursivamente, defina uma classe de tarefa que estenda <b>RecursiveTask</b> ou <b>RecursiveAction</b>. Se uma tarefa retornar um resultado, estenda de <b>RecursiveTask</b>; de outra forma estender de <b>RecursiveAction</b>.</li>
+
+  <li>Substituir o método <b>compute()</b> na classe de tarefa recém-definida. O método <b>compute()</b> realmente executa a tarefa se a tarefa for pequena o suficiente para ser executada; ou divide a tarefa em subtarefas e invoca-as. As subtarefas podem ser chamadas pelo método <b>invokeAll()</b> ou <b>fork()</b> (use <b>fork()</b> quando a subtarefa retornar um valor). Use o método <b>join()</b> para obter os resultados computados (se você usou o método fork () anteriormente).<li>
+
+  <li> Mesclar os resultados, se computado a partir das subtarefas.</li>
+  <li> Em seguida, instancie o <b>ForkJoinPool</b>, crie uma instância da classe de tarefa e inicie a execução da tarefa usando o método <b>invoke()</b> na instância <b>ForkJoinPool</b>.</li>
+  <li> É isso - você está feito.</li>
+  </ul>
+
+  <p>Agora vamos tentar resolver o problema de como somar 1..N onde N é um número grande. Você pode resolver este problema rescursivamente usando o framework Fork /Join></p>
+  <pre class="brush:java">
+  //SumOfNUsingForkJoin.java
+  import java.util.concurrent.RecursiveTask;
+  import java.util.concurrent.ForkJoinPool;
+  // Esta classe ilustra como podemos calcular a soma de 1..N números usando a estrutura fork / join.
+  // O intervalo de números é dividido pela metade até que o intervalo possa ser tratado por um encadeamento.
+  // Depois que a soma do intervalo é concluída, o resultado é resumido juntos.
+  class SumOfNUsingForkJoin {
+  private static long N = 1000_000; // um milhão - queremos calcular soma
+  // de 1 .. um milhão
+  private static final int NUM_THREADS = 10;
+  // número de threads a serem criados para
+  // distribuindo o esforço
+  // Esta é a implementação recursiva do algoritmo; herdar de RecursiveTask
+  // em vez de RecursiveAction, pois estamos retornando valores.
+  static class RecursiveSumOfN extends RecursiveTask&ltLong> {
+  long from, to;
+  // from e to são intervalo de valores a serem somados
+  public RecursiveSumOfN(long from, long to) {
+  this.from = from;
+  this.to = to;
+  }
+
+  // o método executa fork e join para calcular a soma se o intervalo
+  // dos valores podem ser somados por um thread lembre-se de que queremos dividir
+  // a tarefa de soma igualmente entre NUM_THREADS) e depois soma o intervalo
+  // dos números de .. até usando um loop for simples;
+  // caso contrário, bifurque o intervalo e junte os resultados
+
+  public Long compute() {
+  if( (to - from) <= N/NUM_THREADS) {
+  // the range is something that can be handled
+  // by a thread, so do summation
+
+  long localSum = 0;
+  // add in range 'from' .. 'to' inclusive of the value 'to'
+  for(long i = from; i <= to; i++) {
+  localSum += i;
+   }
+  System.out.printf("\tSum of value range %d to %d is %d %n",
+  from, to, localSum);
+  return localSum;
+  }
+  else {
+  // não, o intervalo é muito grande para um segmento manipular,
+  // então bifurque a computação
+  // encontramos o valor do ponto médio no intervalo de .. até
+  long mid = (from + to)/2;
+  System.out.printf("Forking computation into two ranges: " +
+  "%d to %d and %d to %d %n", from, mid, mid, to);
+  // determina o cálculo para a primeira metade
+  // com o intervalo de..mid
+  RecursiveSumOfN firstHalf = new RecursiveSumOfN(from, mid);
+  // agora, execute essa tarefa
+  firstHalf.fork();
+  // determine o cálculo para a segunda metade
+  // com o intervalo mid + 1..para
+  RecursiveSumOfN secondHalf = new RecursiveSumOfN(mid + 1, to);
+  long resultSecond = secondHalf.compute();
+  // agora, aguarde a primeira metade da soma da computação
+  // complete, uma vez feito, adicione-o à parte restante
+  return firstHalf.join() + resultSecond;
+  }
+  }
+  }
+  public static void main(String []args) {
+  // Crie um pool de junção de bifurcação(fork-join) que consiste em NUM_THREADS
+  ForkJoinPool pool = new ForkJoinPool(NUM_THREADS);
+  // envia a tarefa de computação ao conjunto de junções de bifurcação(fork-join) 
+  long computedSum = pool.invoke(new RecursiveSumOfN(0, N));
+  // esta é a soma da fórmula para o intervalo 1..N
+  long formulaSum = (N * (N + 1)) / 2;
+  // Compare a soma calculada e a soma da fórmula
+  System.out.printf("Sum for range 1..%d; computed sum = %d, " +
+  "formula sum = %d %n", N, computedSum, formulaSum);
+  }
+  </pre>
+  <p>O programa imprime o seguinte:</p>
+  <pre>
+  Forking computation into two ranges: 0 to 500000 and 500000 to 1000000
+  Forking computation into two ranges: 500001 to 750000 and 750000 to 1000000
+  Forking computation into two ranges: 0 to 250000 and 250000 to 500000
+  Forking computation into two ranges: 500001 to 625000 and 625000 to 750000
+  Forking computation into two ranges: 750001 to 875000 and 875000 to 1000000
+  Forking computation into two ranges: 500001 to 562500 and 562500 to 625000
+  Forking computation into two ranges: 625001 to 687500 and 687500 to 750000
+  Forking computation into two ranges: 0 to 125000 and 125000 to 250000
+  Forking computation into two ranges: 250001 to 375000 and 375000 to 500000
+  Sum of value range 562501 to 625000 is 37109406250
+  Forking computation into two ranges: 0 to 62500 and 62500 to 125000
+  Sum of value range 687501 to 750000 is 44921906250
+  Forking computation into two ranges: 250001 to 312500 and 312500 to 375000
+  Forking computation into two ranges: 750001 to 812500 and 812500 to 875000
+  Sum of value range 250001 to 312500 is 17578156250
+  Forking computation into two ranges: 875001 to 937500 and 937500 to 1000000
+  Sum of value range 750001 to 812500 is 48828156250
+  Sum of value range 812501 to 875000 is 52734406250
+  Sum of value range 312501 to 375000 is 21484406250
+  Forking computation into two ranges: 125001 to 187500 and 187500 to 250000
+  Sum of value range 625001 to 687500 is 41015656250
+  Forking computation into two ranges: 375001 to 437500 and 437500 to 500000
+  Sum of value range 187501 to 250000 is 13671906250
+  Sum of value range 62501 to 125000 is 5859406250
+  Sum of value range 500001 to 562500 is 33203156250
+  Sum of value range 437501 to 500000 is 29296906250
+  Sum of value range 125001 to 187500 is 9765656250
+  Sum of value range 875001 to 937500 is 56640656250
+  Sum of value range 0 to 62500 is 1953156250
+  Sum of value range 937501 to 1000000 is 60546906250
+  Sum of value range 375001 to 437500 is 25390656250
+  Sum for range 1..1000000; computed sum = 500000500000, formula sum = 500000500000
+  </pre>
+  <p>Vamos analisar como esse programa funciona. Neste programa, você deseja calcular a soma dos valores no intervalo de 1..1.000.000. Por uma questão de simplicidade, você decide usar dez <b>threads</b> para executar as tarefas. A classe <b>RecursiveSumOfN</b> estende <b>RecursiveTask&ltLong></b>. Em <b>RecursiveTask&ltLong></b>, você usa &ltLong> porque a soma dos números em cada subintervalo é um valor <b>Long</b>. Além disso, você escolheu <b>RecursiveTask&ltLong></b> em vez de <b>RecursiveAction</b> simples, porque cada subtarefa retorna um valor. Se a subtarefa não retornar um valor, você poderá usar <b>RecursiveAction</b>.</p>
+
+  <p>No método <b>compute()</b>, você decide se computa a soma do intervalo ou subdivide a tarefa usando a seguinte condição:</p>
+
+  <pre class="brush:java">(to - from) <= N/NUM_THREADS)</pre>
+
+  <p>Você usa esse valor de "limite" nesse cálculo. Em outras palavras, se o intervalo de valores estiver dentro do limite que pode ser manipulado por uma tarefa, você executa o cálculo; caso contrário, você divide recursivamente a tarefa em duas partes. Você usa um forloop simples para encontrar a soma dos valores nesse intervalo. No outro caso, você divide o intervalo de forma semelhante a como você divide o intervalo em um algoritmo de pesquisa binária: para o intervalo de ... até, você encontra o ponto médio e cria dois subintervalos de ... mid e mid + 1. . para. Depois de chamar <b>fork()</b>, você aguarda a primeira tarefa concluir a computação da soma e gerar outra tarefa para a segunda metade do cálculo.</p>
+
+  <p>No método <b>main()</b>, você cria um número de threads <b>ForkJoinPool</b> com o número fornecido por <b>NUM_THREADS</b>. Você envia a tarefa para o <b>pool fork/join</b>  e obtém a soma computada para 1..1.000.000. Agora você também calcula a soma usando a fórmula para somar N números contínuos.</p>
+
+  </p>A partir da saída do programa, você pode observar como a tarefa foi subdividida em subtarefas. Você também pode verificar, a partir da saída, que a soma calculada e a soma computada da fórmula são as mesmas, indicando que sua divisão de tarefas para somar os sub-intervalos está correta.</p>
+
+  <p>Neste programa, você assumiu arbitrariamente que o número de <b>threads</b> a serem usados era de dez threads. Isso foi para simplificar a lógica deste programa. Uma abordagem melhor para decidir o valor limite é dividir o tamanho do comprimento de dados pelo número de processadores disponíveis. Em outras palavras,
+  <pre class="brush:java">threshold value = (data length size) / (número de processadores disponíveis); </pre>
+
+  <p>Como você programaticamente obter o número de processadores disponíveis? Para isso, você pode usar este método: <pre class="brush:java">Runtime.getRuntime().AvailableProcessors())</pre>
+
+  <p>Você usou <b>RecursiveTask</b>; no entanto, se uma tarefa não estiver retornando um valor, você deverá usar RecursiveAction. Haverá várias diferenças no programa se você usar <b>RecursiveAction</b> em vez de <b>RecursiveTask</b>. Uma mudança é que você precisa estender a classe de tarefa de <b>RecursiveAction</b>. Além disso, o método <b>compute()</b> não retorna nada. Outra mudança é que você precisa usar o método <b>invokeAll()</b> para enviar as subtarefas para serem executadas. Finalmente, uma mudança óbvia é que você precisa realizar a pesquisa no método <b>compute()</b> em vez do somatório no caso anterior.</p>
+  </section>
+  <section id="fluxparalell">
+  <h1>Usar Fluxos Paralelos</h1>
+
+  <p>Os fluxos podem ser sequenciais ou paralelos. Quando discutimos a API de Stream, discutimos apenas fluxos sequenciais. Nesta seção, vamos discutir fluxos paralelos.</p>
+  <p>O que são fluxos paralelos? Os fluxos paralelos dividem os elementos em vários fragmentos, processam cada fragmento com diferentes threads e (se necessário) combinam os resultados desses threads para avaliar o resultado final.</p>
+
+
+  <p>Na última seção, discutimos o framework <b>fork/join</b>: as tarefas são executadas dividindo-as recursivamente em sub-tarefas e, em seguida, as sub-tarefas são executadas em paralelo. Os fluxos paralelos usam internamente esse framework <b>fork/join</b>. As etapas do processo devem consistir em tarefas sem estado e independentes.</p>
+  <p>Aqui está um exemplo de contagem de números de primos de 1 a N. A lógica usada para verificar se um determinado número é simples é que verificamos se há algum número divisível de 2 a N/2. É claro que podemos simplificar a lógica para acelerar o cálculo, mas nosso objetivo aqui é mostrar como os fluxos paralelos funcionam, de modo que mantivemos essa lógica simples para verificar se um dado número é primo ou não. Primeiro, vamos ver a versão sequencial deste programa.</p>
+  <pre class="brush:java">
+  //PrimeNumbers.java
+  import java.util.stream.LongStream;
+  class PrimeNumbers {
+  private static boolean isPrime(long val) {
+  for(long i = 2; i <= val/2; i++) {
+  if((val % i) == 0) {
+  return false;
+  }
+  }
+  return true;
+  }
+  public static void main(String []args) {
+  long numOfPrimes = LongStream.rangeClosed(2, 100_000)
+  .filter(PrimeNumbers::isPrime)
+  .count();
+  System.out.println(numOfPrimes);
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime:</b></p>
+  <pre>
+  9592
+  </pre>
+
+  <p>Este programa informa corretamente que existem 9.592 números primos até 1.00.000. Quando o cronometramos, demorou 2.510 segundos para rodar (na minha máquina que tem um processador dual core Intel Core i5 de 2.4 GHz).</p>
+  <p>
+  É muito fácil fazer a computação paralela: temos que chamar o método <b>parallel()</b> fornecido na interface <b>LongStream</b>. O segmento de código com essa mudança é:</p>
+  <pre class="brush:java">
+  long numOfPrimes = LongStream.rangeClosed(2, 100_000)
+  .parallel()
+  .filter(PrimeNumbers::isPrime)
+  .count();
+  System.out.println(numOfPrimes);
+  </pre>
+  <p>Por causa da chamada para <b>parallel()</b>, o fluxo se torna um fluxo paralelo, e o trabalho a ser executado é dividido e despachado para ser executado por threads disponíveis no fork/join pool. Quando o cálculo do número de números primos é realizado em paralelo, o tempo gasto agora reduz para 1.235 segundos.</p>
+  <p>Isso é quase metade do tempo gasto quando comparado aos 2.510 segundos que levou quando o cálculo foi realizado no fluxo sequencial.</p>
+
+  <p>Se você comparar a complexidade do código para usar o framework fork/join (verifique o exemplo de código anterior), o código que usa fluxos paralelos é muito simples: tudo o que precisamos fazer é apenas chamar o método parallel() no fluxo.</p>
+  <br>
+  <p><i>Quando você chamar o método <b>stream()</b> da classe <b>Collection</b>, você obterá um fluxo seqüencial. Quando você chama o método <b>parallelStream()</b> da classe <b>Collection</b>, você receberá um fluxo paralelo.</i></p>
+  <br>
+  <p>Você pode verificar se o fluxo é seqüencial ou paralelo chamando o método <b>isParallel()</b>. Aqui está um segmento de código simples que ilustra o uso do método em um fluxo:</p>
+
+  <pre class="brush:java">System.out.println(IntStream.range(1, 10).filter(i -> (i % 2) == 0).isParallel());</pre>
+
+  <p>Este segmento de código imprime: false. Por quê? Porque o fluxo subjacente (por padrão) é seqüencial e, portanto, o método <b>isParallel()</b> retorna <b>false</b>. Como é esse segmento de código?</p>
+  <pre class="brush:java">
+  List&ltInteger> ints = Arrays.asList(1, 2, 3, 4, 5);
+  System.out.println(ints.parallelStream().filter(i -> (i % 2) == 0).isParallel());
+  </pre>
+  <p>Como o fluxo subjacente é paralelo (por causa da chamada do método <b>parallelStream()</b>), o método <b>isParallel()</b> retorna <b>true</b>.</p>
+  <br>
+  <p><i>você pode converter um fluxo seqüencial em um fluxo paralelo chamando o método <b>parallel()</b>; Da mesma forma, você pode converter um fluxo paralelo em um fluxo seqüencial chamando o método <b>sequential()</b>.</i></p>
+
+  <p>O que esse segmento de código imprimirá?</p>
+  <pre class="brush:java">
+  List&ltInteger> ints = Arrays.asList(1, 2, 3, 4, 5);
+  System.out.println(ints.parallelStream().filter(i -> (i % 2) == 0).sequential().
+  isParallel());
+  </pre>
+
+  <p>Este segmento de código imprime: false. Por quê? Embora o fluxo criado seja um fluxo paralelo, a chamada para o método <b>sequencial()</b> tornou o fluxo sequencial. Por isso, a chamada <b>isParallel()</b> imprime <b>false</b>.</p>
+
+  <p>Para usar fluxos paralelos corretamente, é importante não depender do estado global. Em outras palavras, os cálculos devem ser livres de efeitos colaterais. Veja  um exemplo de uso errado :</p>
+   <pre class="brush:java">
+  //StringSplitAndConcatenate.java
+  import java.util.Arrays;
+  class StringConcatenator {
+  public static String result = "";
+  public static void concatStr(String str) {
+  result = result + " " + str;
+  }
+  }
+  class StringSplitAndConcatenate {
+  public static void main(String []args) {
+  String words[] = "the quick brown fox jumps over the lazy dog".split(" ");
+  Arrays.stream(words).forEach(StringConcatenator::concatStr);
+  System.out.println(StringConcatenator.result);
+  }
+  }
+  </pre>
+  <p><b>Este prgrama imprime assim:</b></p>
+  <pre>
+  the quick brown fox jumps over the lazy dog
+  </pre>
+  <p>Neste programa, estamos dividindo as palavras na <b>string</b> "the quick brown fox jumps over the lazy dog" e depois a combina novamente. Para combinar as palavras, estamos usando um resultado de variável global e modificando-o passando a referência de método StringConcatenator::concatStr() no método forEach() do fluxo. Como o fluxo subjacente é um fluxo sequencial, parece que não temos problemas e conseguimos reconstruir a sequência corretamente. No entanto, aqui está uma versão modificada do programa que converte o fluxo em um fluxo paralelo chamando <b>parallel()</b>.</p>
+
+  <pre class="brush:java">Arrays.stream(words).parallel().forEach(StringConcatenator::concatStr);</pre>
+
+  <p>Com essa única mudança, nós recebemos uma string truncada! Quando rodamos este programa, ele imprimiu:</p>
+  <pre>
+  quick the fox brown lazy dog the jumps
+  </pre>
+  <p>Quando o rodamos novamente, foi impresso:</p>
+  <pre>
+  fox quick the jumps lazy dog
+  </pre>
+  <p>Claramente, há algo seriamente errado quando usamos o método <b>parallel()</b>. O que está acontecendo?</p>
+
+  <p>Quando o fluxo é paralelo, a tarefa é dividida em várias sub-tarefas e diferentes <b>threads</b> executam-na. As chamadas para <b>forEach (StringConcatenator::concatStr)</b> agora acessam o resultado variável acessível globalmente na classe <b>StringConcatenator</b>. Portanto, este programa sofre de um problema de condição de corrida (discutido anteriormente neste capítulo). Como resolvemos esse problema? Precisamos nos livrar da modificação do estado global e manter a redução localizada. Podemos usar o método <b>reduce()</b>, como no próximo exemplo. Lembre-se de que você pode usar o método <b>reduce()</b> em um fluxo quando quiser executar operações repetidas em elementos de fluxo para calcular um resultado.</p>
+  <pre class="brush:java">
+  //CorrectStringSplitAndConcatenate.java
+  import java.util.Arrays;
+  import java.util.Optional;
+  class CorrectStringSplitAndConcatenate {
+  public static void main(String []args) {
+  String words[] = "the quick brown fox jumps over the lazy dog".split(" ");
+  Optional&ltString> originalString = (Arrays.stream(words).parallel().reduce((a, b) -> a + " " + b));
+  System.out.println(originalString.get());
+  }
+  }
+  </pre>
+  <p>Este programa imprime corretamente:</p>
+  <pre>
+  the quick brown fox jumps over the lazy dog
+  </pre>
+  <p>Se você remover o método <b>parallel()</b> ou retê-lo (não importa), este programa irá concatenar corretamente as palavras para imprimir a string original porque usamos a operação de redução corretamente, sem depender das mudanças de estado globais.</p>
+  </section>
+  <section id="fluxdesempenhoprl">
+  <h2>Fluxos paralelos e desempenho</h2>
+
+  <p>Uma nota importante de cautela no uso de fluxos paralelos: nem sempre é o caso de que o desempenho com fluxos paralelos é melhor que fluxos sequenciais. Somente se as operações forem executadas em um número significativamente grande de elementos, as operações são computacionalmente caras e as estruturas de dados são divididas de maneira eficiente, você verá melhorias de desempenho com fluxos paralelos; caso contrário, a execução com um fluxo paralelo pode ser mais lenta do que com fluxos sequenciais!</p>
+
+  <p>Por padrão, o conjunto de thread <b>fork/join</b> tem o número de threads normalmente igual ao número de processadores que você tem em sua máquina. Você pode obter o número de processadores em sua máquina usando esta chamada: <b>Runtime.getRuntime().AvailableProcessors()</b>. Essa configuração padrão é boa o suficiente para a maioria dos usos de fluxos paralelos. Como alternativa, você pode verificar o paralelismo padrão usando o método <b>getParallelism()</b> no <b>ForkJoinPool</b>:</p>
+
+  <pre class="brush:java">System.out.println(ForkJoinPool.commonPool().getParallelism());
+  // imprimiu 3 na minha máquina
+  </pre>
+  <p>O método <b>getParallelism()</b> obtém o valor da propriedade do sistema <B>java.util.concurrent.ForkJoinPool.common.parallelism</b>. Você pode usar o método <b>System.setProperty</b> para modificar o valor dessa propriedade do sistema:</p>
+  <pre class="brush:java">
+  //Parallelism.java
+  import java.util.concurrent.ForkJoinPool;
+  public class Parallelism {
+  public static void main(String []args) {
+  System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "8");
+  System.out.println(ForkJoinPool.commonPool().getParallelism());
+  }
+  }
+  </pre>
+  <p>Quando executado, este programa imprime: 8. Uma alternativa ao uso de <b>System.setProperty()</b> é definir essa propriedade passando-a como um parâmetro da JVM ao invocar a JVM, como em:</p>
+
+  <pre class="brush:java">java -Djava.util.concurrent.ForkJoinPool.common.parallelism=8 GetParallelism.</pre>
+  </section>
+  <p class="nav-arq" id="referencia">Java File NIO: <a href="javafilenio.html">&laquo; anterior | <a href="jdbcapplication.html">próximo &raquo;</a> Construindo Aplicações com Banco de Dados JDBC </p>
+  <div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/concorrenciajava" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+  </div>
+  </div>
+
+  </body>
+  	</html>

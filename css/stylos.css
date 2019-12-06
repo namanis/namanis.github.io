@@ -28,6 +28,16 @@ p {font-size: calc(50em + 1.0v);
 	text-align:left; ;
 white-space: wrap;
 }
+
+#mySidebar a:hover {
+    color: #000;
+}
+
+
+#mySidebar li.active a {
+    border-top: 3px solid #1033;
+    color: #666;
+}
 /*pre { overflow: auto; display: inline-block; width: auto; height: auto; font-size: 20px; background-color:yellow;  border: dotted; }*/
 pre {
   white-space: pre-line;

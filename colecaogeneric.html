@@ -1,1493 +1,1564 @@
-<!DOCTYPE html>
- <html lang="pt-br">
-
+  <!DOCTYPE html>
+   <html lang="pt-br">
   <head>
- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
- <link rel="stylesheet" type="text/css" href="css/stylos.css">
- <link rel="stylesheet" href="css/stylew3.css">
- <script type="text/javascript"src="js/efeitos.js"></script>
- <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
-<script src="code-brush-master/cbCore.js"></script>
-<script src="code-brush-master/cBrushXml.js"></script>
-<script src="code-brush-master/cBrushCss.js"></script>
-<script src="code-brush-master/cBrushPhp.js"></script>
-<script src="code-brush-master/cBrushSql.js"></script>
-<script src="code-brush-master/cBrushJScript.js"></script>   
-<script src="code-brush-master/cBrushJava.js"></script>  
-<script>
-    SyntaxHighlighter.defaults['auto-links'] = false;
-    SyntaxHighlighter.defaults['toolbar'] = false;
-    SyntaxHighlighter.all();
-</script>
- 
- <title> Programar em Java</title>
- </head>
- <body>
- 
+   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/stylos.css">
+   <link rel="stylesheet" href="css/stylew3.css">
+   <script type="text/javascript"src="js/efeitos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+  <script src="code-brush-master/cbCore.js"></script>
+  <script src="code-brush-master/cBrushXml.js"></script>
+                 
+  <script src="code-brush-master/cBrushCss.js"></script>
+  <script src="code-brush-master/cBrushPhp.js"></script>
+  <script src="code-brush-master/cBrushSql.js"></script>
+  <script src="code-brush-master/cBrushJScript.js"></script>   
+  <script src="code-brush-master/cBrushJava.js"></script>  
+  <script>
+      SyntaxHighlighter.defaults['auto-links'] = false;
+      SyntaxHighlighter.defaults['toolbar'] = false;
+      SyntaxHighlighter.all();
+  </script>
+  <script type="text/javascript">
+  jQuery(document).ready(function(jQuery) {            
+              var topMenu = jQuery("#mySidebar"),
+                  offset = 40,
+                  topMenuHeight = topMenu.outerHeight()+offset,
+                  // All list items
+                  menuItems =  topMenu.find('a[href*="#"]'),
+                  // Anchors corresponding to menu items
+                  scrollItems = menuItems.map(function(){
+                    var href = jQuery(this).attr("href"),
+                    id = href.substring(href.indexOf('#')),
+                    item = jQuery(id);
+                    //console.log(item)
+                    if (item.length) { return item; }
+                  });
 
-<!-- Top Navigation Menu -->
+              // so we can get a fancy scroll animation
+              menuItems.click(function(e){
+                var href = jQuery(this).attr("section"),
+                  id = href.substring(href.indexOf('#'));
+                    offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+                jQuery('html, body').stop().animate({ 
+                    scrollTop: offsetTop
+                }, 300);
+                e.preventDefault();
+              });
 
-  <div id="voltarTopo">
-  <a href="#" id="subir">Topo</a>
-</div>
+              // Bind to scroll
+              jQuery(window).scroll(function(){
+                 // Get container scroll position
+                 var fromTop = jQuery(this).scrollTop()+topMenuHeight;
 
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
-       <a class="w3-bar-item w3-button"  href="#genericolec">9 - GENERICS E COLEÇÕES</a>
-            <a class="w3-bar-item w3-button"  href="#classegeneric">Criando e Usando Classes Genericas</a>
-          <a class="w3-bar-item w3-button"  href="#sintdimante">Sintax Diamond</a>
-          <a class="w3-bar-item w3-button"  href="#tipbrutipgen">Interoperabilidade de tipos brutos e tipos genéricos</a>
-          <a class="w3-bar-item w3-button" href="#metgeneric">Métodos Genericos</a>
-          <a class="w3-bar-item w3-button"  href="#genesubtip">Genericos e Subtipagem</a>
-          <a class="w3-bar-item w3-button"  href="#coringas">Parâmetros Coringas </a>
-          <a class="w3-bar-item w3-button"  href="#limcoringas">Limitação de Coringas </a>
-           <a class="w3-bar-item w3-button"  href="#classcolect">Criando e Usando Classes de Coleção</a>
-          <a class="w3-bar-item w3-button"  href="#classintabs">Classes Abstratas e Interface</a>
-           <a class="w3-bar-item w3-button"  href="#intcolect">A interface Collection</a>
-          <a class="w3-bar-item w3-button"  href="#classconcret">Classes Concretas </a>
-           <a class="w3-bar-item w3-button"  href="#classarraylist">Classe ArrayList</a>
-          <a class="w3-bar-item w3-button"  href="#aslist">Usando Arrays.asList()</a>
-          <a class="w3-bar-item w3-button"  href="#classtreeset">A classe TreeSet</a>
-           <a class="w3-bar-item w3-button"  href="#intmap">A interface Map</a>
-          <a class="w3-bar-item w3-button"  href="#dequearray">A interface Deque e classe ArrayDeque </a>
-           <a class="w3-bar-item w3-button"  href="#intcomp">Interfaces Comparáveis ​​e de Comparação</a>
-          <a class="w3-bar-item w3-button"  href="#fluxosfilt">Fluxo de Coleções e Filtros</a>
-           <a class="w3-bar-item w3-button"  href="#iteragefor">Iteragir Usando forEach</a>
+                 // Get id of current scroll item
+                 var cur = scrollItems.map(function(){
+                   if (jQuery(this).offset().top < fromTop)
+                     return this;
+                 });
 
-           <a class="w3-bar-item w3-button"  href="#referenflux">Referências de Métodos com Fluxos(Stream)</a>
-           <a class="w3-bar-item w3-button"  href="#intfluxostream">Entendendo uma interface de fluxo(interface stream)</a>
-          <a class="w3-bar-item w3-button"  href="#pipelinefluxo">Pipeline de fluxo </a>
-           <a class="w3-bar-item w3-button"  href="#fontfluxo">Fonte de Fluxos</a>
-           <a class="w3-bar-item w3-button"  href="#opintermed">Operações Intermediárias</a>
-           <a class="w3-bar-item w3-button"  href="#filtcolect">Filtrando uma Coleção</a>
-           <a class="w3-bar-item w3-button"  href="#opterminal">Operações de Terminal</a>
-          
-           
-  
-  <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
-    <div id="demo" class="w3-hide">
-
+                 // Get the id of the current element
+                 cur = cur[cur.length-1];
+                 var id = cur && cur.length ? cur[0].id : "";               
+                 
+                 menuItems.parent().removeClass("active");
+                 if(id){
+                      menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+                 }
+                 
+              })
+          })</script>
    
-<a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
-     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+   <title> Programar em Java</title>
+   </head>
+   <body>
+   
 
-<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
-<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+  <!-- Top Navigation Menu -->
 
-<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
-<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
-
-<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
-<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
-<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
-
-<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
-<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
-
-<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
-<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
-<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
-<a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
-<a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
-
-<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
-<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
-
-<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
-<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
-
-<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
-<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
-<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
-<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
-
-<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
-      
-    </div>
+    <div id="voltarTopo">
+    <a href="#" id="subir">Topo</a>
   </div>
-</nav>
-
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-
-<div class="w3-main" style="margin-left:250px;">
-
-<div id="myTop" class="w3-top  w3-large">
-  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-</p>
-</div>
-<header class="w3-container w3-theme" style="padding:64px 32px">
-  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
-</header>
-<section id="genericolec">
-<H1>Generics e Coleções</h1>
-
-<p><b>Objetivos</b></p>
-<ul>
-<li>Criar e uar uma classe genérica</li>
-<li>Criar e usar ArrayList, TreeSet, TreeMAp, e objeto ArrayDeque</li>
-<li>Usar java.util.Comparator e java.lang.Comparable interfaces Coleçoes Streams e Filtros</li>
-<li>Iteragir usndo métodos forEach de Streams e List</li>
-<li>Descrever interface Stream e pipeline Stream</li>
-<li>Filtrar uma coleção usando expressoes lambda</li>
-<li>Usar rferencia de métodos com Streams</li>
-</ul>
-<p>Cada aplicativo Java não trivial faz uso de estruturas de dados e algoritmos. O framework da coleção Java fornece um grande conjunto de estruturas de dados e algoritmos de uso geral prontamente utilizáveis. Essas estruturas de dados e algoritmos podem ser usados com qualquer tipo de dados adequado de uma maneira segura para o tipo; isso é conseguido através do uso de um recurso de linguagem conhecido como <b>genéricas</b>.</p>
-
-</p>Coleções em java implemena estruturas de dados e algoritmos e são implementadas usando funções <b>genéricas</b> e lambda. </p>
-<p>Neste capítulo, começamos discutindo as <b>genéricas</b>. Uma vez que nossa experiência mostra que muitas vezes é difícil responder corretamente a perguntas sobre <b>genéricas</b>, abordamos as <b>genéricas</b> em detalhes. Em seguida, discutimos coleções importantes e também discutimos <b>java.lang.Comparator</b> e <b>java.lang.Comparable interfaces</b>. Finalmente, abordamos em detalhes como as funções e fluxos lambda podem ser usados na estrutura de coleções Java.</p>
-
-<br>
-<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
-</section>
-<section id="classegeneric">
-<h2>Criando e Usando Classes Genericas</h2>
-
-
-<p>As <b>genéricas</b> são um recurso de linguagem apresentado ao Java na versão 1.5. Antes das <b>genéricas</b> serem introduzidos em Java, a classe base <b>Object</b> era usada como alternativa as <b>genéricas</b>. Com <b>genéricas</b>, você escreve código para um tipo (digamos T) que é aplicável para todos os tipos, em vez de escrever classes separadas para cada tipo. Vamos começar com um exemplo simples.</p>
-<p>Suponha que você queira imprimir o valor do objeto entre colchetes. Por exemplo, para imprimir um objeto <b>Integer</b> com valor <b>10</b>, em vez de imprimir “10” no console, você deseja imprimir o valor dentro de uma “caixa” como esta: “[10]”.</p>
-<pre class="brush:java">
-// Este programa mostra a implementação do contêiner nos. Genéricos
-class BoxPrinter&ltT> {
-private T val;
-public BoxPrinter(T arg) {
-val = arg;
-}
-public String toString() {
-return "[" + val + "]";
-}
-}
-class BoxPrinterTest {
-public static void main(String []args) {
-BoxPrinter&ltInteger> value1 = new BoxPrinter&ltInteger>(new Integer(10));
-System.out.println(value1);
-BoxPrinter&ltString> value2 = new BoxPrinter&ltString>("Hello world");
-System.out.println(value2);
-}
-}
-</pre>
-<p><b>Este código imprime o seguinte:</b></p>
-<pre>
-[10]
-[Hello world]
-</pre>
-<p>Existe muitas coisas que é preciso destacar.</p>
-<p>1- Veja a declaração do BoxPriner:</p>
-
-<pre class="brush:java">class BoxPrinter&ltT></pre>
-
-<p>Você dar a classe <b>BoxPrinter</b> um tipo placeholder&ltT> - o tipo  nome T dentro do bracelets "<" e ">" segue o nome da classe. Você pode usar este tipo dentro da classe para indicar que ele é um placeholder(espaço reservado) para o tipo atual fornecer mais tarde.</p>
-
-<p>2- Dentro da classe primeiro usa <b>T</b> na declação do campo:</p>
-
-<pre class="brush:java">private T val;</pre>
-
-<p>Você pode declarar val do tipo generico - o tipo atual será especificado mais tarde quando você usar <b>BoxPrinter</b>. Em <b>main()</b> você declara variável do tipo <b>BoxPrinter</b> para um Integer como isto:</p>
-
-<pre class="brush:java">BoxPrinter&ltInteger> value1</pre>
- 
- <p>Aqui você especifica que <b>T</b> é do tipo Inteiro - identificando <b>T</b> (um placeholder) é substituído com o tipo Integer. Assim, o <b>val</b> dentro de <b>BoxPrinter</b> torna Integer porque <b>T</b> é substituído por <b>Integer</b>.</p>
-
-
-<p>3- Agora, Aqui é outro lugar onde usa <b>T</b>:</p>
-<pre class="brush:java">
-public BoxPrinter(T arg) {
-val = arg;
-}
-</pre>
-<p>Semelhante à declaração de <b>val</b> com tipo <b>T</b>, você está dizendo que o argumento para o construtor <b>BoxPrinter</b> é do tipo T. Posteriormente no método <b>main()</b>, quando o construtor é chamado por <b>new</b>, você especifica que <b>T</b> é do tipo <b>Integer</b>:</p>
-
-<pre class="brush:java">new BoxPrinter&ltInteger>(new Integer(10));</pre>
-
-<p>Agora, dentro do construtor <b>BoxPrinter</b>, <b>arg</b> e <b>val</b> devem ser do mesmo tipo, pois ambos são do tipo <b>T</b>. Por exemplo, se você alterar o construtor da seguinte forma:</p>
-
-<pre class="brush:java">new BoxPrinter&ltString>(new Integer(10));</pre>
-
-<p>O <b>BoxPrinter</b> é do tipo <b>String</b>, e o argumento transmitido é do tipo <b>Integer</b>, então você receberá um erro de compilador para incompatibilidade de tipos ao usar os genéricos (o que é bom porque você encontrará o problema anteriormente).</p>
-<p>Vamos considerar outro exemplo. Aqui está uma classe genérica <b>Pair</b> que pode conter objetos de dois tipos diferentes, <b>T1</b> e <b>T2</b>.</p>
-<pre class="brush:java">
-// Demonstra o uso de genéricos na definição de classes
-class Pair&ltT1, T2> {
-T1 object1;
-T2 object2;
-Pair(T1 one, T2 two) {
-object1 = one;
-object2 = two;
-}
-public T1 getFirst() {
-return object1;
-}
-public T2 getSecond() {
-return object2;
-}
-}
-class PairTest {
-public static void main(String []args) {
-Pair&ltInteger, String> worldCup = new Pair&ltInteger, String>(2018, "Russia");
-System.out.println("World cup " + worldCup.getFirst() +
-" in " + worldCup.getSecond());
-}
-}
-</pre>
-<p><b>Este programa imprime o seguinte:</b></p>
-<pre>
-World cup 2018 in Russia
-</pre>
-<p>Aqui <b>T1</b> e <b>T2</b> são  de tipo holders. Você dá esses tipos de placeholders dentro de colchetes angulares: < T1, T2 >.</p> Ao usar a classe <b>Pair</b>, você deve especificar quais tipos específicos você usará no lugar de <b>T1</b> e <b>T2</b>.</p>
-<p>Por exemplo, você usa Integer e String para Pair, como em Pair&ltInteger, String> no método <b>main()</b>. Agora, pense na classe Pair como se ela tivesse esse corpo:</p>
-<pre class="brush:java">
-// como Pair&ltInteger, String> pode ser tratado internamente
-class Pair {
-Integer object1;
-String object2;
-Pair(Integer one, String two) {
-object1 = one;
-object2 = two;
-}
-public Integer getFirst() {
-return object1;
-}
-public String getSecond() {
-return object2;
-}
-}
-</pre>
-<p>Em outras palavras, tente manualmente fazer um localizar e substituir os tipos de placeholders  e substituí-los por tipos reais no código. Isso ajudará você a entender como os genéricos realmente funcionam. Com isso, você pode entender como os métodos <b>getFirst()</b> e <b>getSecond()</b> retornam valores <b>Integer</b> e <b>String</b> no método <b>main()</b>.</p>
-
-<p>Na declaração:</p> 
-
-<pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair&ltInteger, String>(2018, "Russia");</pre>
-
-<p>Note que os tipos correspondem exatamente. Se você tentar:</p> 
-<pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair&ltString, String>(2018, "Russia");</pre>
-
-<p>Você receberá o seguinte erro do compilador:</p>
-<pre>
-TestPair.java:20: cannot find symbol
-symbol : constructor Pair(int,java.lang.String)
-location: class Pair&ltjava.lang.String,java.lang.String>
-</pre>
-<p>Agora, que tal tentar essa declaração?</p>
-
-<pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair&ltNumber, String>(2018, "Russia");</pre>
-
-
-<p>Você receberá outro erro do compilador devido à incompatibilidade de tipos no tipo declarado de worldCup e ao tipo fornecido na expressão de inicialização:</p>
-<pre>
-TestPair.java:20: incompatible types
-found : Pair&ltjava.lang.Number,java.lang.String>
-required: Pair&ltjava.lang.Integer,java.lang.String>
-</pre>
-
-
-
-<p>Agora modifique a classe <b>Pair</b> genérica. <b>Pair&ltT1, T2></b> armazena objetos do tipo <b>T1</b> e <b/>T2</b>. Como é uma classe de par genérica que leva um tipo T e armazena dois objetos desse tipo T? Obviamente, uma maneira de fazer isso é instanciar <b>Pair&ltT1, T2></b> com o mesmo tipo, digamos <b>Pair&ltString, String></b>, mas não é uma boa solução. Por quê? Não há como garantir que você está instanciando o par com os mesmos tipos! O exemplo a seguir é uma versão modificada do par, vamos chamá-lo de <b>PairOfT</b>, que usa o tipo de espaço reservado para o tipo <b>T</b>.</p>
-<pre class="brush:java">
-// Este programa mostra como usar genéricos em seus programas
-class PairOfT&ltT> {
-T object1;
-T object2;
-PairOfT(T one, T two) {
-object1 = one;
-object2 = two;
-}
-public T getFirst() {
-return object1;
-}
-public T getSecond() {
-return object2;
-}
-}
-</pre>
-<p>Agora, esta declaração funcionará?</p>
-
-<pre class="brush:java">PairOfT&ltInteger, String> worldCup = new PairOfT&ltInteger, String>(2018, "Russia");</pre>
-<p>
-Não, porque o PairOf T usa um parâmetro de tipo e você deu dois parâmetros de tipo aqui. Então, você receberá um erro do compilador. Então, que tal esta declaração?</p>
-
-<pre class="brush:java">PairOfT&ltString> worldCup = new PairOfT&ltString>(2018, "Russia");</pre>
-
-<p>Não, você ainda receberá um erro do compilador:</p>
-<pre>
-TestPair.java:20: cannot find symbol
-symbol : constructor PairOfT(int,java.lang.String)
-location: class PairOfT&ltjava.lang.String>
-PairOfT&ltString> worldCup = new PairOfT&ltString>(2018, "Russia");
-</pre>
-
-<p>A razão é que 2018 - quando em caixa - é um <b>Integer</b>, e você deve dar um <b>String</b> como argumento.</p> <p>Como é esta declaração?</p>
-
-<pre class="brush:java">PairOfT&ltString> worldCup = new PairOfT&ltString>("2018", "Russia");</pre>
-<p>Sim, agora compila e funcina bem!</p>
-</section>
-<section id="sintdimante">
-<h2>Sintax Diamond</h2> 
-
-<p>Veja como é tedioso garantir que você forneça parâmetros do mesmo tipo tanto no tipo de declaração (Pair&ltInteger, String> neste caso) quanto na nova expressão de criação de objeto (new Pair &ltString, String>() neste caso) Para simplificar sua vida, o Java 1.7 introduziu a sintaxe de diamante, na qual os parâmetros de tipo podem ser omitidos: você pode simplesmente deixá-lo ao compilador para inferir os tipos da declaração de tipo. Assim, a declaração pode ser simplificada como: </p>
-
-<pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair&lt>(2018, "Russia");</pre>
-
-<p>A seguir o programa  completo fazendo uso desta sintaxe de diamante.</p>
-<pre class="brush:java">
-// Este programa mostra o uso da sintaxe de diamante ao usar genéricos
-class Pair&ltT1, T2> {
-T1 object1;
-T2 object2;
-Pair(T1 one, T2 two) {
-object1 = one;
-object2 = two;
-}
-public T1 getFirst() {
-return object1;
-}
-public T2 getSecond() {
-return object2;
-}
-}
-class TestPair {
-public static void main(String []args) {
-Pair&ltInteger, String> worldCup = new Pair&lt>(2018, "Russia");
-System.out.println("World cup " + worldCup.getFirst() +
-" in " + worldCup.getSecond());
-}
-</pre>
-<p><b>Este programa irá imprimir o seguinte:</b></p>
-
-<pre>World cup 2018 in Russia</pre>
-
-
-<p>Note que é um erro comum esquecer o operador diamante &lt> na expressão de inicialização, como em:</p>
-
-<pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair(2018, "Russia");</pre>
-
-<p>Aqui estão os avisos que você obterá do compilador (quando você passar a opção de linha de comando -Xlint: unchecked to javac):</p>
-<pre>
-Pair.java:19: warning: [unchecked] unchecked call to Pair(T1,T2) as a member of the 
-raw type Pair
-Pair&ltInteger, String> worldCup = new Pair(2018, "Russia");
-^
-where T1,T2 are type-variables:
-T1 extends Object declared in class Pair
-T2 extends Object declared in class Pair
-Pair.java:19: warning: [unchecked] unchecked conversion
-Pair&ltInteger, String> worldCup = new Pair(2018, "Russia");
-^
-required: Pair&ltInteger,String>
-found: Pair
-2 warnings
-</pre>
-<p>Como <b>Pair</b> é um tipo genérico e você esqueceu de usar o &lt> ou fornecer os parâmetros de tipo explicitamente, o compilador o trata como um tipo bruto com <b>Pair</b> usando dois parâmetros de tipo <B>Object</b>. Embora esse comportamento não tenha causado nenhum problema nesse segmento de código específico, ele é perigoso e pode causar bugs, como mostra a próxima seção.</p>
-</section>
-<section id="tipbrutipgen">
-<h2>Interoperabilidade de tipos brutos e tipos genéricos</h2>
-
-<p>Um tipo genérico pode ser usado sem especificar seu tipo associado. Nesse caso, o tipo é referido como tipo bruto. Por exemplo, <b>List&ltT></b> deve ser usado junto com um tipo associado, ou seja, <b>List&ltString></b>; no entanto, ele pode ser usado sem especificar o tipo acompanhado, ou seja, apenas <b>List</b>. Neste último caso, <b>List</b> é referida como tipo bruto.</p>
-<p>Quando você usa um tipo bruto, perde a vantagem da segurança de tipo oferecida pelos genéricos. Por exemplo, o tipo Vector é um tipo bruto. Tipos brutos ignoram a verificação de tipo em tempo de compilação; no entanto, eles podem lançar exceções de tempo de execução (por exemplo, <b>ClassCastException</b>). Portanto, não é recomendável usar tipos brutos no novo código.</p>
-<pre class="brush:java">
-//RawTest1.java
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Iterator;
-class RawTest1 {
-public static void main(String []args) {
-List list = new LinkedList();
-list.add("First");
-list.add("Second");
-List&ltString> strList = list; //#1
-for(Iterator&ltString> itemItr = strList.iterator(); itemItr.hasNext();)
-System.out.println("Item: " + itemItr.next());
-List&ltString> strList2 = new LinkedList&lt>();
-strList2.add("First");
-strList2.add("Second");
-List list2 = strList2; //#2
-for(Iterator&ltString> itemItr = list2.iterator(); itemItr.hasNext();)
-System.out.println("Item: " + itemItr.next());
-}
-}
-</pre>
-<p>O que você espera do programa acima? Você acha que irá compilar / executar corretamente? Bem, sim - irá compilar (com avisos) e executar sem nenhum problema. Imprime o seguinte:</p>
-<pre>
-Item: First
-Item: Second
-Item: First
-Item: Second
-</pre>
-<p>O exemplo a seguir introduz algumas alterações; observe a saída:</p>
-<pre class="brush:java">
-//RawTest2.java
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Iterator;
-class RawTest2 {
-public static void main(String []args) {
-List list = new LinkedList();
-list.add("First");
-list.add("Second");
-List&ltString> strList = list;
-strList.add(10); // #1: gera erro no compilador
-for(Iterator&ltString> itemItr = strList.iterator(); itemItr.hasNext();)
-System.out.println("Item : " + itemItr.next());
-List&ltString> strList2 = new LinkedList&lt>();
-strList2.add("First");
-strList2.add("Second");
-List list2 = strList2;
-list2.add(10); // #2: compiles fine, results in runtime exception
-for(Iterator&ltString> itemItr = list2.iterator(); itemItr.hasNext();)
-System.out.println("Item : " + itemItr.next());
-}
-}
-</pre>
-<p>No exemplo aacima você adcionou duas declarações. A primeira declaração é a seguinte:</p>
-<pre class="brush:java">strList.add(10); // #1: gera erro no compilador</pre>
-
-<p>Você está tentando adicionar um item inteiro em uma lista de tipo <b>List &ltString></b>, para obter um erro em tempo de compilação "nenhum método adequado encontrado para add(int)". Como discutido anteriormente, esse tipo de verificação no nível do compilador é bom, pois, sem ela, uma exceção de tempo de execução pode ter resultado posteriormente. Aqui está a segunda declaração que você adicionou:</p>
-
-<pre class="brush:java">list2.add(10); // #2: compila bem, resulta em runtime exception</pre>
-
-<p>Aqui, a <b>list2 linked-list</b> (tipo bruto) é inicializada com um tipo genérico <b>List&lt></b>. Após a inicialização, você adicionou um número inteiro ao tipo bruto da lista. Isso é permitido, pois <b>list2</b> é um tipo bruto. No entanto, isso resultará em um <b>ClassCastException</b>.</p>
-<p>A lição que aprendemos com este exemplo é evitar misturar tipos brutos e tipos genéricos em nossos programas, pois isso pode resultar em um comportamento errôneo em tempo de execução. Se você precisar usar ambos em um programa, certifique-se de adicionar um único tipo de item nos contêineres e recuperar usando o mesmo tipo.</p>
-</section>
-<section id="metgeneric">
-<h2>Métodos Genericos</h2>
-
-<p>Semelhante às classes <b>genéricas</b>, você pode criar métodos <b>genéricos</b>, isto é, métodos que usam tipos de parâmetros <b>genéricos</b>. Métodos <b>genéricos</b> são úteis para escrever métodos que são aplicáveis ​​a uma ampla gama de tipos, enquanto a funcionalidade permanece a mesma. Por exemplo, existem vários métodos <b>genéricos</b> na classe <b>java.util.Collections</b>.</p>
-<p>Vamos implementar um método simples chamado <b>fill()</b>. Dado um contêiner, o método <b>fill()</B> preenche todos os elementos contêineres com valor <b>val</b>. O exemplo a seguir  contém a implementação do método <b>fill()</b> na classe <b>Utilities</b>.
-<pre class="brush:java">
-//UtilitiesTest.java
-// Este programa demonstra métodos genericos
-import java.util.List;
-import java.util.ArrayList;
-
-class Utilities {
-public static&ltT> void fill(List&ltT> list, T val) {
-for(int i = 0; i < list.size(); i++)
-list.set(i, val);
-}
-}
-class UtilitiesTest {
-public static void main(String []args) {
-List&ltInteger> intList = new ArrayList&ltInteger>();
-intList.add(10);
-intList.add(20);
-System.out.println("The original list is: " + intList);
-Utilities.fill(intList, 100);
-System.out.println("The list after calling Utilities.fill() is: " + intList);
-}
-}
-</pre>
-<p><b>Este programa imprime o seguinte:</b></p>
-
-<pre>The original list is: [10, 20]
-The list after calling Utilities.fill() is: [100, 100]</pre>
-
-<p>Vamos olhar passo por passo este código:</p>
-<p>
-1- Você cria um método nomeado fill() na classe Utilities com esta declaração:</p>
-
-<pre class="brush:java">public static&ltT> void fill(List&ltT> list, T val)</pre>
-
-
-<p>Você declara o parâmetro de tipo genérico <b>T</b> neste método. Após os qualificadores <b>public</b> e </b>static</b>, você coloca <b>&ltT></b> e depois o segue por tipo de retorno, nome do método e seus parâmetros. Esta declaração é diferente das classes <b>genéricas</b> - você fornece os parâmetros de tipo <b>genérico</b> após o nome da classe em classes <b>genéricas</b>.
-
-<p>No corpo, você escreve o código como se fosse um método normal.</p>
-<pre class="brush:java">
-for(int i = 0; i < list.size(); i++)
-list.set(i, val);
-</pre>
-<p>Você percorre a lista de 0 até seu tamanho e configura cada um dos elementos para valor <b>val</b> em cada iteração. Você usa o método <b>set()</b> em <b>List</b>, que assume a posição do índice no contêiner como o primeiro argumento e o valor real a ser definido como o segundo argumento.</p>
-
-<p>3-No método <b>main()</b> na classe <b>UtilitiesTest</b>, é assim que você chama o método <b>fill()</b>:</p>
-
-<pre class="brush:java">Utilities.fill(intList, 100);</pre>
-
-
-<p>Observe que você não forneceu explicitamente o valor do parâmetro de tipo <b>genérico</b>. Como <b>int List</b> é do tipo <b>Integer</b> e 100 é digitado como <b>Integer</b>, o compilador inferiu que o tipo <b>T</b> no método<b> fill()</b> é do tipo <b>Integer</b>.</p>
-</section>
-<section id="genesubtip">
-<h2>Genéricos e Subtipagem</h2>
-
-
-<p>Você pode atribuir um objeto de tipo derivado à sua referência de tipo base; isso é o que você quer dizer com subtipagem. No entanto, para <b>genéricos</b>, os parâmetros de tipo devem corresponder exatamente; caso contrário, você receberá um erro do compilador. Em outras palavras, a subtipagem não funciona para parâmetros <b>genéricos</b>. Sim, essa é uma regra difícil de lembrar, por isso vamos discutir com mais detalhes por que a subtipagem não funciona para os parâmetros de tipo <b>genérico</b>.</p>
-
-<p>Vejamos o que pode dar errado se você assumir que pode usar subtipagem para parâmetros de tipo genérico.</p>
-<pre class="brush:java">
-// código ilegal - suponha que a seguinte inicialização seja permitida
-List&ltNumber> intList = new ArrayList&ltInteger>();
-intList.add(new Integer(10)); // okay
-intList.add(new Float(10.0f)); // oops!
-</pre>
-
-<p>O tipo <b>intList</b> de <b>List&ltNumber></b> deve conter um Objeto <b>ArrayList&ltNumber></b>. No entanto, você está armazenando um <b>ArrayList&ltInteger></b>. Isso parece razoável, pois <b>List</b> estende <b>ArrayList</b> e <b>Integer</b> estende <b>Number</b>. No entanto, você pode acabar inserindo um valor <b>Float</b> no <b>intList</b>! Lembre-se de que o tipo dinâmico de <b>intList</b> é o tipo <b>ArrayList&ltInteger></b> - portanto, você está violando a segurança do tipo aqui (e, portanto, obterá o erro do compilador de tipos incompatíveis). Como os <b>genéricos</b> são projetados para evitar erros de segurança de tipo como este, você não pode atribuir um parâmetro de tipo genérico derivado a um parâmetro de tipo de base.</p>
-
-<p>Como você pode ver, a subtipagem de tipos de parâmetro genéricos não é permitida porque não é segura, mas ainda assim é uma limitação inconveniente. Felizmente, o Java suporta tipos de parâmetros curingas nos quais você pode usar subtipagem. Vamos explorar essa capacidade agora.</p>
-</section>
-<section id="coringas">
-<h2>Parâmetros Coringas</h2>
-<p>Você viu na seção anterior que a subtipagem não funciona para parâmetros de tipo genérico. Assim,</p>
-
-<pre class="brush:java">List&ltNumber> intList = new ArrayList&ltInteger>();</pre>
-
-<p>Dá um erro  de compilador:</p>
-<pre>
-WildCardUse.java:6: incompatible types
-found : java.util.ArrayList&ltjava.lang.Integer>
-required: java.util.List&ltjava.lang.Number>
-List&ltNumber> numList = new ArrayList&ltInteger>();
-</pre>
-<p>Se você alterar um pouco a declaração para usar o parâmetro curinga, ele irá compilar:</p>
-
-<pre class="brush:java">List&lt?> wildCardList = new ArrayList&ltInteger>();</pre>
-
-<p>O que significa um curinga? Assim como o curinga que você usa para substituir qualquer carta em um jogo de cartas, você pode usar um curinga para indicar que ele pode corresponder a qualquer tipo. Com <b>List&lt?></b>, você quer dizer que é uma lista de qualquer tipo - em outras palavras, você pode dizer que é uma "lista de incógnitas!". Mas espere um minuto ... quando você quer um tipo indicando "qualquer tipo", você usa a classe Object, não é? Como é a mesma declaração, mas usando o parâmetro de tipo de objeto?</p>
-<pre class="brush:java">
-List&ltObject> numList = new ArrayList&ltInteger>();</pre>
-<p>Sem sorte - você tem o mesmo erro que você obteve acima usando List&ltNumber>!</p>
-<pre>
-WildCardUse.java:6: incompatible types
-found : java.util.ArrayList&ltjava.lang.Integer>
-required: java.util.List&ltjava.lang.Object>
-List&ltObject> numList = new ArrayList&ltInteger>();
-</pre>
-<p>Em outras palavras, você ainda está tentando usar a subtipagem para parâmetros <b>genéricos</b>, e ainda não funciona. Como você pode ver, <b>List&ltObject></b> não é o mesmo que <b>List&lt?></b>. De fato, <b>List&lt?></b> é um supertipo de qualquer tipo de <b>List</b>, o que significa que você pode passar <b>List&ltInteger></b>, ou <b>List&ltString></b>, ou mesmo <b>List&ltObject></b> onde <b>List&lt?></b> é esperado.</p>
-<p>Vamos usar o curinga em um exemplo e ver se ele funcionará :</p>
-<pre class="brush:java">
-// Este programa demonstra o uso de parâmetros curinga
-import java.util.List;
-import java.util.ArrayList;
-class WildCardUse {
-static void printList(List&lt?> list){
-for(Object element: list)
-System.out.println("[" + element + "]");
-}
-public static void main(String []args) {
-List&ltInteger> list = new ArrayList&lt>();
-list.add(10);
-list.add(100);
-printList(list);
-List&ltString> strList = new ArrayList&lt>();
-strList.add("10");
-strList.add("100");
-printList(strList);
-}
-}
-</pre>
-<p><b>Este programa imprime o seguinte:</b></p>
-<pre>
-[10]
-[100]
-[10]
-[100]
-</pre>
-<p>Funciona, e a lista usando curinga pode ser passada na lista de números inteiros, bem como na lista de (Strings)seqüências de caracteres. Isso acontece por causa do tipo de parâmetro do método <b>printList() - List< ? ></b>. </p>
-</section>
-<section id="limcoringas">
-<h3>Limitação de Coringas</h3>
-
-<p>Vamos considerar o seguinte trecho, que tenta adicionar um elemento e imprimir a lista:</p>
-<pre class="brush:java">
-List&lt?> wildCardList = new ArrayList&ltInteger>();
-wildCardList.add(new Integer(10));
-System.out.println(wildCardList);
-</pre>
-<p>Você receberá o seguinte erro:</p>
-<pre>
-WildCardUse.java:7: cannot find symbol
-symbol : method add(java.lang.Integer)
-location: interface java.util.List&ltcapture#145 of ? extends java.lang.Number>
-wildCardList.add(new Integer(10));
-</pre>
-
-<p>Por quê? Você tem certeza absoluta de que o método <b>add()</b> existe na interface <b>List</b>. Então, por que o compilador não encontra o método?</p>
-<p>O problema requer alguma explicação detalhada. Quando você usa o tipo <b>curinga&lt?></b>, Você diz ao compilador que está ignorando as informações de tipo, então <b>&lt?></b> significa tipo desconhecido. Toda vez que você tenta passar argumentos para um tipo <b>genérico</b>, o compilador java tenta inferir o tipo do argumento passado, bem como o tipo dos genéricos e para justificar o tipo de segurança. Agora, você está tentando usar o método <b>add()</b> para inserir um elemento na lista. Como <b>wildCardList</b> não sabe qual tipo de objeto ele contém, é arriscado adicionar elementos a ele. Você pode acabar adicionando uma <b>string</b> - "hello", por exemplo - em vez de um valor inteiro. Para evitar esse problema (lembre-se, os genéricos foram introduzidos na linguagem para garantir a segurança dos tipos!), O compilador não permite que você chame métodos que modifiquem o objeto. Como o método <b>add</b> modifica o objeto, você recebe um erro! A mensagem de erro também parece confusa, como em &ltcapture # 145 of? extends java.lang.Number>.</p>
-
-</section>
-<section id="classcolect">
-<h1>Criando e Usando Classes de Coleção</h1>
-
-<p><b>Criar e usar ArrayList, TreeSet, TreeMap, e objetos ArrayDeque</b></p>
-
-<p>A biblioteca java tem um framework de <b>coleções</b> que faz uso extensivo de <b>genéricos</b> e fornece uma definiçao de contêiners e algorítimos. Nesta seção focaremos no uso do framework de coleções. Especialemente discutiremos importantes classes de <b>coleção</b> incluindo <b>ArrayList, TreeSet, TreeMap, e objetos ArrayDeque</b>.</p>
-
-<p>O Termo <b>coleção( collection(s))</b> é um termo genérico, enquanto <b>Collecions</b> e <b>Collection</b> são <b>API's</b> específicos do  <b>java.util.package.Collections</b> -- como em <b>java.util.Collections</b> -- é uma classe de utilidade que contém somente métodos estáticos. Em geral coleções (collection) refere-se para um contêiner assim como <b>map, set, stack, e queue</b>. Usaremos o termo contêiners quando referir a esta <b>coleção</b>.
-</section>
-<section id="classintabs"></section>
-<h2>Classes Abstratas e Interface</h2>
-
-<p>A hierarquia de tipos na biblioteca <b>java.util</b> consiste em várias classes e interfaces abstratas que fornecem funcionalidade genérica. A Tabela abaixo relaciona alguns tipos importantes nessa hierarquia. Cobriremos alguns desses tipos mais detalhadamente mais adiante nesta seção.</p>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Classe Abstrata/Interface</th><th>Breve Descrição</th></tr>
-<tr><td>Iterable </td><td>A implementação dessa interface pode ser usada para iterar com uma declaração foreach.</td></tr>
-<tr><td>Collection</td><td> Interface base comum para classes na hierarquia de coleções. Quando você quer escrever métodos que são muito gerais, você pode passar a interface Collection. Por exemplo, o método max() em java.util.Collections recebe uma coleção e retorna um objeto.</td></tr>
-<tr><td>List</td><td>Interface base para contêineres que armazenam uma sequência de elementos. Você pode acessar os elementos usando um índice e recuperar o mesmo elemento mais tarde (para manter o pedido de inserção). Você pode armazenar elementos duplicados em uma lista.</td></tr>
-
-<tr><td>Set, SortedSet,NavigableSet</td><td> Interfaces para contêineres que não permitem elementos duplicados. SortedSet mantém os elementos do conjunto em uma ordem classificada. NavigableSet permite pesquisar o conjunto para as correspondências mais próximas.</td></tr>
-
-<tr><td>Queue Dequeue </td><td> Queue é uma interface base para contêineres que contém uma seqüência de elementos para processamento. Por exemplo, as classes que implementam o Queue podem ser LIFO (last in, first out (ultimo que entra - primeiro que sai) - como na estrutura de dados da pilha) ou FIFO (first in, first out -(primeiro que entra - primeiro que sai) como na estrutura de dados da fila). Em um Deque você pode inserir ou remover elementos de ambas as extremidades.</td></tr>
-
-<tr><td>Map, SortedMap, NavigableMap</td><td> Interfaces para contêineres que mapeiam chaves para valores. No SortedMap, as chaves estão em uma ordem classificada. Um NavigableMap permite pesquisar e retornar a correspondência mais próxima para determinados critérios de pesquisa. Observe que a hierarquia de mapas não estende a interface Collection.</td></tr>
-
-<tr><td>Iterator, ListIterator</td><td>  Você pode atravessar o contêiner na direção para frente se uma classe implementar a interface Iterator. Você pode percorrer as direções para frente e para trás se uma classe implementar a interface ListIterator.</td></tr>
-</table>
-</div>
-<p>Esses são alguns tipos de base, mas não sejam sobrecarregados por eles. Você verá classes concretas específicas e usará alguns desses tipos de base. Cobriremos apenas a <b>interface Collection</b> e, em seguida, passaremos a abordar as classes concretas específicas que fazem parte dessa hierarquia de coleção.</p>
-</section>
-<section id="intcolect">
-<h2>A interface Collection</h2>
-
-<p>A interface Collection fornece métodos como <b>add()</b> e <b>remove()</b> que são comuns a todos os contêineres.</p> 
-<p>A seguir relacionamos  os métodos mais importantes nessa interface.</p>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Métdos</th><th>Breve Descrição</th></tr>
-<tr><td>boolean add(Element elem)</td><td> Adiciona elem no container subjacente.</td></tr>
-<tr><td>void clear()</td><td> Remove todos os elementos do contêiner.</td></tr>
-<tr><td>boolean isEmpty()</td><td> Verifica se o contêiner tem algum elemento ou não.</td></tr>
-<tr><td>Iterator&ltElement> iterator() </td><td>Retorna um objeto Iterator&ltElement> para iterar pelo contêiner.</td></tr>
-<tr><td>boolean remove(Object obj) </td><td>Remove o elemento se obj estiver presente no container.</td></tr>
-<tr><td>int size() </td><td>Retorna o número de elementos no container.</td></tr>
-<tr><td>Object[] toArray() </td><td>Retorna um array que possui todos os elementos no container.</td></tr>
-</table>
-</div>
-<p>Métodos como <b>add() e remove()</b> podem falhar dependendo do contêiner subjacente. Por exemplo, se o contêiner for somente leitura, você não poderá adicionar ou remover elementos. Além desses métodos, há muitos métodos na interface Collection que se aplicam a vários elementos no contêiner.</p>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-<tr><th>Métodos</th><th>Breve Descrição</th></tr>
-<tr><td>boolean addAll (Collection&lt? extends Elemen> coll)</td><td> Adiciona todos os elementos em coll no Contêiner subjacente.</td></tr>
-<tr><td>boolean containsAll(Collection&lt?> coll)</td><td> Verifica se todos os elementos dados no coll estão presentes no contêiner subjacente.</td></tr>
-<tr><td>boolean removeAll (Collection&lt?> coll) </td><td> Remove todos os elementos do contêiner subjacente que também estão presentes em coll.</td></tr>
-<tr><td>boolean retainAll (Collection&lt?> coll) </td><td> Mantém elementos no contêiner subjacente somente se eles também estiverem presentes em coll; remove todos os outros elementos</td></tr>
-</table>
-</div>
-</section>
-<section id="classconcret">
-<h2>Classes Concretas</h2>
-
-<p>Numerosas interfaces e classes abstratas na hierarquia Collection fornecem os métodos comuns que classes concretas específicas implementam/estendem.</p>
-<p>A tabela a seguir mostra Classes Concretas importantes.</p>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-<tr><th>Classes Concretas</th><th> Breve Descrição</th></tr>
-<tr><td>ArrayList</td><td> internamente é implementado como um array redimensionável. Esta é uma das classes concreta mais utilizadas. Rápido para pesquisar, mas lento para inserir ou excluir. Permite duplicatas.</td></tr>
- <tr><td>LinkedList </td><td>Implementa internamente uma estrutura de dados de lista duplamente vinculada. Rápido para inserir ou excluir elementos, mas lento para pesquisar elementos. Além disso, LinkedListcan pode ser usado quando você precisa de uma estrutura de dados de pilha (LIFO) ou fila (FIFO). Permite duplicatas.</td></tr>
-<tr><td>HashSet </td><td>Internamente implementado como uma estrutura de dados de tabela de hash. Usado para armazenar um conjunto de elementos - não permite armazenar elementos duplicados. Rápido para pesquisar e recuperar elementos. Não mantém qualquer ordem para os elementos armazenados.</td></tr>
-<tr><td>TreeSet</td><td> Implementa internamente uma estrutura de dados de árvore vermelha e preta. Como o HashSet, o TreeSet não permite o armazenamento de duplicatas. No entanto, ao contrário do HashSet, ele armazena os elementos em uma ordem classificada. Ele usa uma estrutura de dados em árvore para decidir onde armazenar ou pesquisar os elementos, e a posição é decidida pela ordem de classificação.</td></tr>
-<tr><td>HashMap </td><td>Internamente implementado como uma estrutura de dados da tabela de hash. Armazena pares de chave e valor. Usa hashing para encontrar um local para pesquisar ou armazenar um par. Pesquisar ou inserir é muito rápido. Não armazena os elementos em qualquer ordem.</td></tr>
-<tr><td>TreeMap</td><td> Implementado internamente usando uma estrutura de dados em árvore vermelho-preto. Ao contrário do HashMap, o TreeMap armazena os elementos em uma ordem classificada. Ele usa uma estrutura de dados em árvore para decidir onde armazenar ou pesquisar chaves, e a posição é decidida pela ordem de classificação.</td></tr>
-<tr><td>PriorityQueue </td><td>Implementado internamente usando a estrutura de dados de heap. Um PriorityQueue é para recuperar elementos com base na prioridade. Independentemente da ordem em que você inserir, quando você remover os elementos, o elemento de prioridade mais alta será recuperado primeiro.</td></tr>
-</table>
-</div>
-</section>
-<section id="classarraylist">
-<h3>Classe ArrayList</h3>
-
-<p>Listas são usadas para armazenar uma seqüência de elementos. Você pode inserir um elemento do contêiner em uma posição específica usando um índice e recuperar o mesmo elemento posteriormente (isto é, manter a ordem de inserção). Você pode armazenar elementos duplicados em uma lista. Existem duas classes concretas que você precisa saber: <b>ArrayList e LinkedList</b>.</p>
-<p><b>ArrayList</b> implementa um array redimensionável. Quando você cria um array nativo (digamos, new String [10];), o tamanho do array é conhecido (fixo) no momento da criação. No entanto, <b>ArrayList</b> é um array dinâmico: pode crescer em tamanho conforme necessário. Internamente, um <b>ArrayList</b> aloca um bloco de memória e aumenta conforme necessário.</p>
-<p>Então, acessar os elementos do array é muito rápido em uma ArrayList. No entanto, quando você adiciona ou remove elementos, internamente, o restante dos elementos é copiado; portanto, a adição / exclusão de elementos é uma operação dispendiosa.</p>
-
-<p>Veja um exemplo simples para visitar elementos em uma ArrayList. Você pega uma ArrayList e usa a construção for-each para percorrer uma coleção:</p>
-<pre class="brush:java">
-ArrayList&ltString> languageList = new ArrayList&lt>();
-languageList.add("C");
-languageList.add("C++");
-languageList.add("Java");
-for(String language : languageList) {
-System.out.println(language);
-}
-</pre>
-<p><b>O progrma imprime:</b></p>
-<pre>
-C
-C++
-Java
-</pre>
-<p>Este <b>for-each</b> é equivalente ao codigo seguinte, que explicitamente usa um <b>Iterator:</b></p>
-<pre class="brush:java">
-for(Iterator&ltString> languageIter = languageList.iterator(); languageIter.hasNext();) {
-String language = languageIter.next();
-System.out.println(language);
-}
-</pre>
-
-<p>Este segmento de código também imprimirá a mesma saída que o código do loop-for-each anterior . Aqui está uma descrição passo-a-passo de como este loop-for funciona:</p>
-<p>1. Você usa o método <b>iterator()</b> para obter o iterador desse contêiner. Como <b>languageList</b> é um <b>ArrayList</b> do tipo <b>&ltString></b>, você deve criar <b>Iterator</b> como <b>String</b>. Nome é <b>languageIter</b>.</p>
-<p>2. Antes de entrar no loop, você verifica se há algum elemento para visitar. Você chama o método <b>hasNext()</b> para verificar isso. Se retornar verdadeiro, há mais elementos para visitar; se retornar false, a iteração acabou e você sai do loop.</p>
-<p>3. Uma vez que você entra no corpo do loop, a primeira coisa que você precisa fazer é chamar <b>next()</b> e mover o iterador. O método <b>next()</b> retorna o valor iterado. Você captura esse valor de retorno na variável <b>language</b>.</p>
-<p>4. Você imprime o valor <b>language</b> e, em seguida, o loop continua.</p>
-
-<p>Esse tipo de iteração - a maneira como você chama os métodos <b>iterator(), hasNext() e next()</b> - é importante para aprender; usaremos o loop-for-each ou essa expressão extensivamente em nossos exemplos.</p>
-<p>Note que você cria <b>ArrayList&ltString></b> e <b>Iterator&ltString></b> em vez de apenas usar <b>ArrayList</b> ou <b>Iterator</b> (ou seja, você fornece informações de tipo junto com essas classes). As classes <b>Collection</b> são classes <b>genéricas</b>; portanto, você precisa especificar os parâmetros de tipo para usá-los. Aqui você está armazenando/iterando uma lista de strings, então você usa &ltString>.</p>
-<p>Você pode remover elementos ao percorrer um contêiner usando iteradores. Vamos criar um objeto do tipo <b>ArrayList&ltInteger></b> com dez elementos. Você iterará sobre os elementos e removerá todos eles (em vez de usar o método <b>removeAll()</b> em <b>ArrayList</b>).</p>
-
-<pre class="brush:java">
- //TestIterator.java
-// Este prograa mostra a utilidade do Iterator
-import java.util.ArrayList;
-import java.util.Iterator;
-class TestIterator {
-public static void main(String []args) {
-ArrayList&ltInteger> nums = new ArrayList&ltInteger>();
-for(int i = 1; i < 10; i++)
-nums.add(i);
-System.out.println("Original list " + nums);
-Iterator&ltInteger> numsIter = nums.iterator();
-while(numsIter.hasNext()) {
-numsIter.remove();
-}
-System.out.println("List after removing all elements" + nums);
-}
-}
-</pre>
-<p><b> Este programa imprime este erro:</b></p>
-<pre>
-Original list [1, 2, 3, 4, 5, 6, 7, 8, 9]
-Exception in thread "main" java.lang.IllegalStateException
-at java.util.AbstractList$Itr.remove(AbstractList.java:356)
-at TestIterator.main(Main.java:12)
-</pre>
-<p>O problema é que você não chamou <b>next()</b> antes de chamar <b>remove()</b>. Verificando <b>hasNext()</b> na condição <b>loop-while</b>, movendo o elemento usando <b>next()</b>, e chamando <b>remove()</b> é o tipo correto para remover um elemento. Se você não segui-lo corretamente, poderá ter problemas (por exemplo,você obterá IllegalStateException). Da mesma forma, se você chamar <b>remove()</b> duas vezes sem inserir um <b>next()</b> entre as declarações, receberá essa exceção.</p>
-<p>Vamos corrigir este programa chamando <b>next()</b> antes de chamar <b>remove()</b>. Aqui está a parte relevante do código:</p>
-<pre class="brush:java">
-Iterator&ltInteger> numsIter = nums.iterator();
-while(numsIter.hasNext()) {
-numsIter.next();
-numsIter.remove();
-}
-System.out.println("List after removing all elements " + nums);
-</pre>
-
-<p><b>Imprime a lista sem elementos, conforme esperado:</b></p>
-
-<pre>
-List after removing all elements []
-</pre>
-</section>
-<section id="aslist">
-<h3>Usando Arrays.asList()</h3>
-
-<p>A classe <b>java.util.Arrays</b> tem um método útil nomeado  método <b>asList()</b> que retorna uma lista de tamanho fixo. Aqui é um interessante aspecto sobre o objeto <b>List</b> retornado : você não pode adcionar ou remover elementos mas você pode modificar o objeto retornado pelo método <b>asList()</b>.</p>
-<pre class="brush:java">
-//ArrayAsList.java
-import java.util.List;
-import java.util.Arrays;
-class ArrayAsList {
-public static void main(String []args) {
-Double [] temperatureArray = {31.1, 30.0, 32.5, 34.9, 33.7, 27.8};
-System.out.println("The original array is: " + Arrays.toString(temperatureArray));
-List&ltDouble> temperatureList =  Arrays.asList(temperatureArray);
-temperatureList.set(0, 35.2);
-System.out.println("The modified array is: " + Arrays.toString(temperatureArray));
-}
-}
-</pre>
-<p><b>Este código imprime o seguinte:</b></p>
-<pre>
-The original array is: [31.1, 30.0, 32.5, 34.9, 33.7, 27.8]
-The modified array is: [35.2, 30.0, 32.5, 34.9, 33.7, 27.8]
-</pre>
-
-<p>A classe <b>Arrays</b> fornece apenas funcionalidades limitadas e muitas vezes você vai querer usar métodos na classe <b>Collections</b>. Para conseguir isso, chamar o método Arrays.asList() é uma técnica útil.</p>
-</section>
-<section id="classtreeset">
-<h3>A classe TreeSet</h3>
-
-<p>Existem duas classes concretas importantes para <b>Set</b>(neste caso pense em set como conjunto ): <b>HashSet</b> e <b>TreeSet</b>. Um <b>HashSet</b> é para inserir e recuperar rapidamente elementos; não mantém nenhuma ordem de classificação para os elementos que contém. Um <b>TreeSet</b> armazena os elementos em uma ordem classificada (e implementa a interface <b>SortedSet</b>).</p>
-<p>Dada uma frase, como você pode classificar as letras usadas nessa frase em ordem alfabética? Um <b>TreeSet</b> coloca os valores em uma ordem classificada, para que você possa usar um contêiner TreeSet para resolver esse problema.</p>
-<pre class="brush:java">
-import java.util.Set;
-import java.util.TreeSet;
-class TreeSetTest {
-public static void main(String []args) {
-String pangram = "the quick brown fox jumps over the lazy dog";
-Set&ltCharacter> aToZee = new TreeSet&ltCharacter>();
-for(char gram : pangram.toCharArray())
-aToZee.add(gram);
-System.out.println("The pangram is: " + pangram);
-System.out.print("Sorted pangram characters are: " + aToZee);
-}
-}
-</pre>
-<p><b>Este imprime assim:</b></p>
-<pre>
-The pangram is: the quick brown fox jumps over the lazy dog
-Sorted pangram characters are: [ , a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, 
-t, u, v, w, x, y, z]
-</pre>
-<p>Um pangram é uma frase que usa todas as letras do alfabeto pelo menos uma vez. Você quer armazenar caracteres de um pangram no <b>Set</b>. Como você precisa usar tipos de referência para contêineres, você criou um <b>TreeSet</b> de <b>Characters</b>.</p>
-<p>Agora, como obter os caracteres de uma String? Lembre-se de que a indexação de array não funciona para Strings.
-Por exemplo, para obter o primeiro caractere "t", se você usar o pangram [0] no programa, receberá um erro do compilador.</p>
-<p>Felizmente, <b>String</b> possui um método chamado <b>toCharArray()</b> que retorna um <b>char[]</b>. Então, você usa esse método para percorrer a <b>string</b> e obter todos os caracteres. À medida que você adiciona os caracteres no <b>TreeSet</b>, os caracteres são armazenados em uma ordem classificada. Assim, você obtém todas as letras minúsculas quando imprime o <b>set</b>.
-<p>Observe na saída que há uma vírgula principal. Por quê? A string de pangram possui muitos caracteres de espaço em branco. Um espaço em branco também é armazenado no <b>set</b>, por isso também é impresso!</p>
-</section>
-<section id="intmap">
-<h2>A interface Map</h2>
-
- <p>Um Mapa armazena pares chave e valor. A <b>interface Map</b> não estende a <b>interface Collection</b>. No entanto, existem métodos na <b>interface Map</b> que você pode usar para obter as classes de objetos que implementam a <b>interface Collection</b> para contornar esse problema. Além disso, os nomes de métodos em <b>Map</b> são muito semelhantes aos métodos em <b>Collection</b>, por isso é fácil entender e usar <b>Map</b>. Existem duas classes concretas importantes de <b>Map</b>: <b>HashMap e TreeMap</b>.</p>
-
- <p>Um <b>HashMap</b> usa uma estrutura de dados da tabela de hash internamente. No HashMap, procurar (ou procurar por elementos) é uma operação rápida. No entanto, o Hash Map não lembra a ordem em que você inseriu elementos nem mantém elementos em qualquer ordem classificada.</p>
-  <p>Um <b>TreeMap</b> usa uma estrutura de dados de árvore vermelha e preta internamente. Ao contrário do HashMap, o TreeMap mantém os elementos na ordem de classificação (isto é, classificados por suas chaves). Então, pesquisar ou inserir é um pouco mais lento que o HashMap.</p>
-
-  <h3>A interface NavigableMap e a classe TreeMap</h3>
-
-  <p>A <b>interface NavigableMap</b> estende a <b>interface SortedMap</b>. A classe <b>TreeMap</b> é a classe amplamente usada que implementa o <b>NavigableMap</b>. Como o nome indica, com o <b>NavigableMap</b>, você pode navegar no <b>Map</b> facilmente. Tem muitos métodos que facilitam a navegação no <b>Map</b>. Você pode obter o valor mais próximo que corresponda à chave especificada, todos os valores menores que a chave especificada, todos os valores maiores que a chave especificada e assim por diante. Vejamos um exemplo: Sophia, Emma, Isabella e Olivea fizeram um exame on-line. Nesse exame, o máximo que eles podem pontuar é 100, com uma pontuação de aprovação de 40. Se você quiser encontrar detalhes como quem passou no exame e classificar as pontuações do exame em ordem crescente ou decrescente, o NavigableMap (e o TreeMap) é muito conveniente.</p>
-<pre class="brush:java">
-  
-// Este programa demonstra o uso da interface de árvore navegável e da classe TreeMap
-import java.util.NavigableMap;
-import java.util.TreeMap;
-public class NavigableMapTest {
-public static void main(String []args) {
-NavigableMap&ltInteger, String> examScores = new TreeMap&ltInteger, String>();
-examScores.put(90, "Sophia");
-examScores.put(20, "Isabella");
-examScores.put(10, "Emma");
-examScores.put(50, "Olivea");
-System.out.println("The data in the map is: " + examScores);
-System.out.println("The data descending order is: " + examScores.descendingMap());
-System.out.println("Details of those who passed the exam: " + examScores.tailMap(40));
-System.out.println("The lowest mark is: " + examScores.firstEntry());
-}
-}
-</pre>
-<p><b>Este programa imprime assim:</b></p>
-<pre>
-The data in the map is: {10=Emma, 20=Isabella, 50=Olivea, 90=Sophia}
-The data descending order is: {90=Sophia, 50=Olivea, 20=Isabella, 10=Emma}
-Details of those who passed the exam: {50=Olivea, 90=Sophia}
-The lowest mark is: 10=Emma
-</pre>
-
-<p>Neste programa, você tem um <b>NavigableMap&ltInteger, String></b> que mapeia a pontuação do exame e o nome da pessoa. Você cria um <b>TreeMap&ltInteger, String></b> para armazenar as pontuações do exame. Por padrão, um <b>TreeMap</b> armazena dados em ordem crescente. Se você deseja os dados em ordem decrescente, é fácil: basta usar o método <b>descendingMap()</b> (ou <b>descendingKeySet()</b> se estiver interessado apenas nas chaves).</p>
-
-
-<p>Como a pontuação de aprovação é 40, talvez você queira obter o mapa com os dados daqueles que falharam no exame. Para isso, você pode usar o método <b>headMap()</b> com o valor da chave 40 (já que os dados estão em ordem crescente, você deseja obter a parte “head” do mapa da posição dada). Da mesma forma, para obter os dados daqueles que passaram no exame, você pode usar o método <b>tailMap()</b>.</p>
-
-
-<pb>Se você quiser os imediatos acima e abaixo da pontuação de aprovação, use os métodos <b>higherEntry()</b> e <b>lowerEntry()</b>, respectivamente. Os métodos <b>firstEntry() e lastEntry()</b> fornecem as entradas com os valores de chave mais baixos e mais altos. Então, quando você usa o método <b>firstEntry()</b> em <b>examScores</b>, você obtém Emma com 10 pontos. Se você usar <b>lastEntry()</b>, você recebe Sophia, que tem pontuação de 90.</p>
-
-</section>
-<section id="dequearray">
-<h2>A interface Deque e classe ArrayDeque</h2>
-
-
-<p><b>Deque</b> (Fila Duplamente terminada ) é uma estrutura de dados que permite inserir e remover elementos de ambas as extremidades. A <b>interface Deque</b> foi introduzida no Java 6 no pacote <b>java.util.collection</b>. A <b>interface Deque</b> estende a <b>interface Queue</b>. Portanto, todos os métodos fornecidos pelo <b>Queue</b> também estão disponíveis na <b>interface Deque</b>.
-
-
-<p>Existem três implementações concretas da <b>interface Deque</b>: LinkedList, ArrayDeque e LinkedBlockingDeque.</p><p> Vamos usar o <b>ArrayDeque</b> para entender os recursos da <b>interface Deque</b>.</p>
-<p>Considere a implementação de uma fila especial (por exemplo, para pagar uma conta de luz) em que um cliente pode ser adicionado apenas no final da fila e pode ser removido na frente da fila (quando o cliente pagou a conta) ou a partir do final da fila (quando o cliente fica frustrado com a fila longa e deixa a fila).</p>
-<pre class="brush:java">
-//SplQueueTest.java
-// Este programa mostra a utilidade do interface Deque
-import java.util.ArrayDeque;
-import java.util.Deque;
-class SplQueue {
-private Deque&ltString> splQ = new ArrayDeque&lt>();
-void addInQueue(String customer){
-splQ.addLast(customer);
-}
-void removeFront(){
-splQ.removeFirst();
-}
-void removeBack(){
-splQ.removeLast();
-}
-void printQueue(){
-System.out.println("Special queue contains: " + splQ);
-}
- }
-class SplQueueTest {
-public static void main(String []args) {
-SplQueue splQ = new SplQueue();
-splQ.addInQueue("Alan");
-splQ.addInQueue("Anderson");
-splQ.addInQueue("Antonio");
-splQ.addInQueue("Maria");
-splQ.printQueue();
-splQ.removeFront();
-splQ.removeBack();
-splQ.printQueue();
-}
-}
-</pre>
-<p><b>Este programa imprime o seguinte:</b></p>
-<pre>
-Special queue contains: [Alan, Anderson, Antonio, Maria]
-Special queue contains: [Anderson, Antonio]
-</pre>
-<p>Você define primeiro uma classe - <b>SplQueue</b> - que define um tipo de <b>splQ</b> do contêiner <b>ArrayDeque</b> com quatro operações básicas. O método <b>addInQueue()</b> adiciona um cliente no final da fila, o método <b>removeBack()</b> remove um cliente do final da fila, o método <b>removeFront()</b> remove um cliente da frente da fila e o método <b>printQueue()</b> simplesmente imprime todos os elementos da fila. Você simplesmente usa os métodos <b>addLast(), removeFirst() e removeLast()</b> da interface <b>Deque</b> para realizar os métodos da classe <b>SplQueue</b>. No seu método <b>main()</b>, você instancia o <b>SplQueue</b> e chama o método <b>addInQueue()</b> da classe <b>SplQueue</b>. Depois disso, você remove um cliente da frente e um do final e imprime o conteúdo da fila antes e depois dessa remoção.</p> 
-<br>
-<p><i>A diferença entre um <b>ArrayList e ArrayDeque</b> é que você pode adicionar um elemento em qualquer lugar em uma lista de array usando um índice; no entanto, você pode adicionar um elemento somente na parte frontal ou final do <b>ArrayDeque</b>.Isso faz a inserção no <b>ArrayDeque</b>  mais eficiente do que <b>ArrayList</b>; no entanto, a navegação em um <b>ArrayDeque</b> se torna mais cara do que em um <b>ArrayList</b>.</i></p>
-<br>
-
-</section>
-<section id="intcomp">
-<h1>Interfaces Comparáveis ​​e de Comparação</h1>
-<p>Como seus nomes sugerem, as interfaces <b>Comparable e Comparator</b> são usadas para comparar objetos semelhantes (por exemplo, durante a pesquisa ou classificação). Suponha que você tenha um contêiner contendo uma lista de objetos <b>Pessoa</b>. Agora, como você compara dois objetos <b>Pessoa</b>? Existem muitos atributos comparáveis, como SSN, nome, número da carteira de habilitação e assim por diante. Dois objetos podem ser comparados no SSN bem como o nome da pessoa; isso depende do contexto. Portanto, o critério para comparar os objetos <b>Pessoa</b> não pode ser predefinido; um desenvolvedor tem que definir esse critério. Java define interfaces comparáveis e de comparação para alcançar o mesmo.</p>
-<p>A <b>interface Comparable</b> tem apenas um método <b>compareTo()</b>, que é declarado da seguinte forma:</p>
-
-<pre class="brush:java">int compareTo(Element that)</pre>
-
-<p>Como você está implementando o método <b>compareTo()</b> em uma classe, você tem essa referência disponível. Você pode comparar o elemento atual com o elemento passado e retornar um valor <b>int</b>. Qual deve ser o valor <b>int</b>? Aqui estão as regras para retornar o valor inteiro:</p>
-<pre>
-retorna 1 se objeto atual > objeto passado
-retorna 0 se objeto atual == objeto passado
-retorna -1 se objeto atual < objeto passado
-</pre>
-<p>Agora, uma questão importante: o que >, < ou == significa para um elemento? O significado de comparação deve ser natural; em outras palavras, a comparação deveria significar ordenação natural. Por exemplo, você viu como os inteiros são comparados entre si, com base em uma ordem numérica, que é a ordem natural para tipos inteiros. Da mesma forma, você compara <b>Strings</b> usando a comparação gráfica léxica, que é a ordem natural para <b>Strings</b>. Para classes definidas pelo usuário, você precisa encontrar a ordem natural na qual você pode comparar os objetos. Por exemplo, para uma classe Student, StudentId pode ser a ordem natural para comparar objetos Student</p>
-
-<pre class="brush:java">
-//ComparatorTest1.java 
-// Este programa ostra a utilidade da interface Comparable
-import java.util.Arrays;
-class Student implements Comparable< Student > {
-String id;
-String name;
-Double cgpa;
-public Student(String studentId, String studentName, double studentCGPA) {
-id = studentId;
-name = studentName;
-cgpa = studentCGPA;
-}
-public String toString() {
-return " \n " + id + " \t " + name + " \t " + cgpa;
-}
-public int compareTo(Student that) {
-return this.id.compareTo(that.id);
-}
-}
-class ComparatorTest1 {
-public static void main(String []args) {
-Student []students = { new Student("cs011", "Maria ", 3.1),
-new Student("cs021", "Alan", 3.4),
-new Student("cs012", "Anderson ", 2.7),
-new Student("cs022", "Antonio ", 3.7) };
-System.out.println("Before sorting by student ID");
-System.out.println("Student-ID \t Name \t CGPA (for 4.0) ");
-System.out.println(Arrays.toString(students));
-Arrays.sort(students);
-System.out.println("After sorting by student ID");
-System.out.println("Student-ID \t Name \t CGPA (for 4.0) ");
-System.out.println(Arrays.toString(students));
-}
-}
-</pre>
-<p><b>Este imprime o seguinte:</b></p>
-<pre>
-Before sorting by student ID
-Student-ID Name CGPA (for 4.0)
-[
-cs011 Maria 3.1,
-cs021 Alan 3.4,
-cs012 Anderson 2.7,
-cs022 Antonio 3.7]
-After sorting by student ID
-Student-ID Name CGPA (for 4.0)
-[
-cs011 Maria 3.1,
-cs012 Anderson 2.7,
-cs021 Alan 3.4,
-cs022 Antonio 3.7]
-</pre>
-
-<p>Você implementou a <b>interface Comparable&ltStudent></b>. Quando você chama o método <b>sort()</b>, ele chama o método <b>compareTo()</b> para comparar objetos <b>Student</b> por seus IDs. Como os IDs dos alunos são únicos, é uma ordem de comparação natural que funciona bem.</p>
-<p>Agora, você pode precisar organizar os alunos com base na média de pontos acumulados (CGPA) obtida. Você pode até precisar comparar os alunos com base em seus nomes. Se você precisar implementar duas ou mais formas alternativas de comparar dois objetos semelhantes, poderá implementar a <b>interface Comparator</b>. O exemplo a seguir é uma implementação (não há mudança na classe Student, então não estamos produzindo aqui novamente).</p>
-
-<pre class="brush:java">
-//ComparatorTest2.java 
-// Este programa mostra a implementação da interface Comparator
-import java.util.Arrays;
-import java.util.Comparator;
-class CGPAComparator implements Comparator< Student > {
-public int compare(Student s1, Student s2) {
-return (s1.cgpa.compareTo(s2.cgpa));
-}
-}
-class ComparatorTest2 {
-public static void main(String []args) {
-Student []students = { new Student("cs011", "Maria ", 3.1),
-new Student("cs021", "Alan", 3.4),
-new Student("cs012", "Anderson ", 2.7),
-new Student("cs022", "Antonio ", 3.7) };
-System.out.println("Before sorting by CGPA ");
-System.out.println("Student-ID \t Name \t CGPA (for 4.0) ");
-System.out.println(Arrays.toString(students));
-Arrays.sort(students, new CGPAComparator());
-
-System.out.println("After sorting by CGPA");
-System.out.println("Student-ID \t Name \t CGPA (for 4.0) ");
-System.out.println(Arrays.toString(students));
-}
-}
-</pre>
-<p><b>Este Imprime o seguinte:</b></b>
-
-<pre>
-Before sorting by CGPA
-Student-ID Name CGPA (for 4.0)
-[
-cs011 Maria 3.1,
-cs021 Alan 3.4,
-cs012 Anderson 2.7,
-cs022 Antonio 3.7]
-After sorting by CGPA
-Student-ID Name CGPA (for 4.0)
-[
-cs012 Anderson 2.7,
-cs011 Maria 3.1,
-cs021 Alan 3.4,
-cs022 Antonio 3.7]
-</pre>
-
-<p>Sim, o programa imprime os dados de <b>Student</b> ordenados pelo seu <b>CGPA</b>. Você não alterou a classe Student ; a classe ainda implementa a <b>interface Comparable&ltString></b> e define o método <b>compareTo()</b>, mas você não usa o método <b>compareTo()</b> em seu programa. Você cria uma classe separada chamada <b>CGPAComparator</b> e implementa a <b>interface Comparator&ltStudent></b>. Você define o método <b>compare()</b>, que recebe dois objetos <b>Student</b> como argumentos. Você compara o <b>CGPA</b> dos argumentos <b>s1</b> e <b>s2</b> (re)usando  o método <b>compareTo()</b> da classe Double. Você não alterou nada no método <b>main()</b>, exceto pela maneira como chama o método <b>sort()</b>. Você cria um novo objeto <b>CGPAComparator()</b> e passa como segundo argumento para o método <b>sort()</b>. Por padrão, <b>sort()</b> usa o método <b>compareTo()</b>; Como você está passando um objeto <b>Comparator</b> explicitamente, ele agora usa o método <b>compare()</b> definido no <b>CGPAComparator</b>. Então, os objetos <b>Student</b> agora são comparados e classificados com base em seus <b>CGPA</b>.</p>
-
-</section>
-<section id="fluxosfilt">
-<h1>Fluxo de Coleções e Filtros</h1>
-
-<p>A nova API de fluxo é fornecida no pacote <b>java.util.stream</b> introduzido no Java 8. O principal tipo neste pacote é a <b>interface Stream&ltT></b>, que é o fluxo de referências de objeto. <b>IntStream, LongStream e DoubleStream</b> são fluxos para tipos primitivos<b> int, long e double</b> respectivamente.</p>
-
-
-<p>A <b>interface Collection</b> foi adicionada com os métodos <b>stream()</b> e </b>parallelStream()</b> no Java 8.
-Um fluxo é uma sequência de elementos. Você pode executar operações sequenciais ao obter um fluxo usando o método <b>stream()</b> e operações paralelas com o método <b>parallelStream()</b>.  Com as interfaces <b>List, Set, Deque e Queue</b> estendem a <b>interface Collection</b>, é possível obter um fluxo ou um fluxo paralelo das classes de coleta que implementam essas interfaces. Por exemplo, você pode obter um fluxo de um objeto <b>ArrayList</b>.</p>
-
-<p>Os fluxos fornecem recursos de <b>pipelining</b> - você pode filtrar, mapear e pesquisar dados. Em outras palavras, as operações de fluxo podem ser "encadeadas" juntas para formar um <b>pipeline</b> conhecido como "pipeline de fluxo". Introduzimos pipelines de fluxo mais adiante nesta seção e os cobrimos em detalhes no capítulo dedicado aos fluxos.</p>
-<p>A fonte mais comum de fluxos é objetos de coleção, como conjuntos, mapas e listas. No entanto, observe que podemos usar a API de fluxos independente das coleções. Mais adiante, discutiremos como as coleções são usadas com fluxos</p>
-</section>
-<section id="iteragefor">
-<h2>Iteragir Usando forEach</h2>
-
-<p>Considere este exemplo:</p>
-<pre class="brush:java">List&ltString> strings = Arrays.asList("eeny", "meeny", "miny", "mo");</pre>
-
-<p>Quando percorremos essa coleção usando um loop-for, estamos usando iteração externa, como em:</p>
-<pre class="brush:java">
-for(String string : strings) {
-System.out.println(string);
-}
-</pre>
-
-<p>A iteração interna deixa a iteração para o código da biblioteca. O mesmo código pode ser convertido para o seguinte código equivalente que faz uso de expressões lambda:</p>
-<pre class="brush:java">
-//internalIteration.java
-import java.util.Arrays;
-import java.util.List;
-public class InternalIteration {
-public static void main(String []args) {
-List&ltString> strings = Arrays.asList("eeny", "meeny", "miny", "mo");
-strings.forEach(string -> System.out.println(string));
-}
-}
-</pre>
-<p><b>Este programa imprime:</b></p>
-<pre>
-eeny
-meeny
-miny
-mo
-</pre>
-<p>Observe que a <b>interface List</b> estende a <b>interface Iterable</b> que possui um método <b>forEach</b> padrão (esse método foi incluído no Java 8). Assim, fomos capazes de executar a iteração interna chamando o método <b>forEach</b> no objeto strings e passando uma expressão lambda para ele como o parâmetro.</p>
-<p>Embora esse exemplo seja simples, ele ilustra uma grande mudança com a abordagem do Java 8: estamos passando da iteração externa para a iteração interna. De fato, toda a API do Stream é baseada no conceito de iteração interna.</p>
-<p>Antes de discutirmos a interface Stream e o pipeline de fluxo, vamos discutir um tópico importante relacionado às funções lambda que usamos na discussão sobre streams: referência de métodos.</p>
-</section>
-<section id="referenflux">
-<h1>Referências de Métodos com Fluxos(Stream)</h1>
-<p>Usando esta expressão lambda:</p>
-<pre class="brush:java">strings.forEach(string -> System.out.println(string));</pre>
-
-<p>Este código é um pouco detalhado porque estamos pegando o parâmetro string e apenas passando para o <b>System.out.println</b>. Felizmente, o Java 8 introduziu um recurso conhecido como “referências a métodos”. Referências de método usam o operador “<b>::</b>”. Aqui está uma expressão simplificada usando <b>referências de métodos</b>:</p>
-
-<pre class="brush:java">strings.forEach(System.out::println);</pre>
-
-<p>Referência de método encaminham os parâmetros fornecidos. Neste caso, <b>System.out::println</b> é equivalente a usar a expressão de expressão lambda <b>-> System.out.println(string)</b>. Como simplificar a seguinte declaração para usar referências de método?</p>
-
-<pre class="brush:java">strings.forEach(string -> System.out.println(string.toUpperCase()));</pre>
-
-<p>A expressão lambda neste código chama o método <b>UpCase()</b> no objeto <b>String</b> fornecido. Como as referências de método apenas rotearam os parâmetros, você não pode usá-los diretamente para simplificar essa expressão lambda. Uma alternativa é colocar esse código dentro de um método e usar a referência desse método.</p>
-<pre class="brush:java">
-import java.util.Arrays;
-import java.util.List;
-class MethodReference {
-public static void printUpperCaseString(String string) {
-System.out.println(string.toUpperCase());
-}
-public static void main(String []args) {
-List&ltString> strings = Arrays.asList("eeny", "meeny", "miny", "mo");
-strings.forEach(MethodReference::printUpperCaseString);
-}
-}
-</pre>
-<p><b>This program prints:</b></p>
-<pre>
-EENY
-MEENY
-MINY
-MO
-</pre>
-<p>Neste caso, introduzimos um método estático dentro da classe <b>MethodReference</b>. A string <b>printUpperCase</b>chama o método <b>toUpperCase()</b> no argumento String passado e imprime a string resultante.</p>
-<p>Para resumir, existem dois benefícios principais de referências de métodos:</p>
-
-<p>As referências de método servem como uma maneira de rotear os parâmetros e, portanto, muitas vezes é conveniente (resulta em código mais conciso) usá-los do que as expressões lambda equivalentes. Por exemplo, vimos como <b>System.out::println</b> pode ser usado como um equivalente a <b>arg -> System.out.println (arg)</b>.</p>
-</section>
-<section id="intfluxostream">
-<h1>Entendendo uma interface de fluxo(interface stream)</h1>
-
-<p>A <b>interface Stream</b> é a interface mais importante fornecida no pacote <b>java.util.stream</b>. As classes <b>IntStream, LongStream e DoubleStream</b> são especializações de fluxo para <b>int, long e double</b>respectivamente. A Figura abaixo mostra a hierarquia de herança desses fluxos.</p>
-
-<br>
-<img src="imagens/jee7/interfacefluxo.jpg">
-<br>
-</section>
-<section id="pipelinefluxo">
-<h2>Pipeline de fluxo</h2>
-
-
-<p>As operações de fluxo podem ser "encadeadas" juntas para formar um "pipeline de fluxo  ". Existem três partes no pipeline de fluxo :
-<ul>
-<li> Fonte: crie um fluxo (a partir de uma coleção ou array ou usando os métodos Stream, como of() e generate()).</li>
-<li> Operações intermediárias: operações opcionais que podem ser encadeadas (como os métodos map(), filter(), distinct() e sorted() na interface Stream).</li>
-<li>Operações do terminal: produza um resultado (como os métodos sum(), collect(), forEach() e reduce() na interface Stream).</li>
-</ul>
-
-<br>
-<img src="imagens/jee7/pipefluxo.jpg">
-<br>
-<p><b>Fonte Stream</b>  -> Exemplos: intStream.range(), Arrays.Stream()</p>
-
-<p><b>Operaçoes Intermediárias</b> -> Exemplos: map(), filter(), distinct() ,sorted()</p>
-
-<p><b>Operação Terminal</b> -> Exemplos: sum(), collect(), forEach(), reduce()</p>
-
-
-<p>Aqui um exemplo de pipeline de Fluxo( stream pipeline)</p>
-
-<pre class="brush:java">
-import java.util.Arrays;
-class StreamPipelineExample {
-public static void main(String []args) {
-Arrays.stream(Object.class.getMethods()) // fonte
-.map(method -> method.getName()) // operação intermediária
-.distinct() // operação intermediária
-.forEach(System.out::println); // operação terminal
-}
-}
-</pre>
-<p><b>este código imprime:</b></p>
-<pre>
-wait
-equals
-toString
-hashCode
-getClass
-notify
-notifyAll
-</pre>
-
-<p>O <b>Object.class.getMethods()</b> resulta em um array de objetos <b>Method</b> na classe <b>Object</b>. O mapa de operação  <b>map(method -> method.getName())</b> retorna os nomes dos métodos como um array (como parte de um fluxo). Observe que o método <b>wait()</b> na classe <b>Object</b> é um método sobrecarregado. Para obter nomes de métodos exclusivos, podemos usar a operação <b>distinct()</b> para remover as entradas duplicadas no array.Finalmente, a operação do terminal <b>forEach()</b> imprime os nomes dos métodos.</p>
-<p>Uma maneira de entender o pipeline de fluxo é dividir os componentes do pipeline em declarações separadas. O exemplo anterior divide as partes em componentes separados e é o código equivalente do exemplo seguinte.</p>
-<pre class="brush:java">
-import java.util.Arrays;
-import java.util.stream.Stream;
-import java.lang.reflect.Method;
-class StreamPipelineComponents {
-public static void main(String []args) {
-Method[] objectMethods = Object.class.getMethods();
-Stream&ltMethod> objectMethodStream = Arrays.stream(objectMethods);
-Stream&ltString> objectMethodNames = objectMethodStream.map(method -> method.getName());
-Stream&ltString> uniqueObjectMethodNames = objectMethodNames.distinct();
-uniqueObjectMethodNames.forEach(System.out::println);
-}
-}
-</pre>
-<p>Nesse caso, obtemos um fluxo chamando o método <b>Arrays.stream()</b> no resultado de <b>Object.class.getMethod()</b>- essa é a origem do fluxo. Os métodos <b>map() e distinct()</b> usam um fluxo como entrada e retornam um fluxo (modificado) como a saída. Finalmente, o método <b>forEach()</b> no fluxo é a operação terminal no pipeline.</p>
-
-<br>
- <p><i>Não confunda map em Streams com a interface java.util.Map. o método map() é uma operação intermediária que recebe elementos de um fluxo de entrada, aplica a operação e gera um fluxo de elementos como saída; a interface Map contém pares de valores-chave.</i></p>
-<br>
-</section>
-<section id="fontfluxo">
-<h2>Fonte de Fluxos</h2>
-
-<p>Existem muitas fontes para um fluxo, incluindo métodos de gerador em interfaces de fluxo, coleções e arrays. Vamos considerar a tarefa simples de obter um fluxo de valores inteiros de 1 a 5.</p>
-
-<p>1-Você pode usar métodos de intervalo ou iteração de fábrica na interface IntStream.</p>
-
-<pre class="brush:java">IntStream.range(1, 6)</pre>
-
- <p>O método <b>range()</b> recebe dois argumentos: inicia do valor inicial (dado como o primeiro argumento) e continua adicionando 1 para resultar em elementos de fluxo até atingir o valor final (dado como segundo argumento e excluindo esse valor ). Neste caso, nós passamos os valores 1 e 6, então o método <b>reduce()</b> gera o fluxo de valores inteiros a partir de 1, adiciona o valor 1 e resulta nos valores 2, 3, 4 e 5, e para aí porque atingiu o valor final 6.</p>
-
-<pre class="brush:java">IntStream.iterate(1, i -> i + 1).limit(5)</pre>
-
-<p>O método <b>iterate()</b> usa dois argumentos: o valor inicial (como o primeiro argumento) e chama iterativamente a função dada (como segundo argumento) usando o valor inicial semente. Neste caso, o primeiro argumento é 1, e iterativamente chama i + 1, gerando os valores inteiros 2, 3, 4, 5,… Este é um fluxo infinito. Nós limitamos o fluxo para os primeiros cinco valores chamando <b>limit(5)</b> sobre este fluxo infinito de valores inteiros.</p>
-
-<p>2- Você pode usar o método <b>stream()</b> na classe <b>java.util.Arrays</b> para criar um fluxo a partir de um determinado <b>array</b>, como em:</p>
-<pre class="brush:java">
-Arrays.stream(new int[] {1, 2, 3, 4, 5})
-Arrays.stream(new Integer[] {1, 2, 3, 4, 5})
-</pre>
-<p>O método <b>stream()</b> foi adcionado na classe Arrays em java 8</p>
-<pre class="brush:java">
-// na Classe Arrays 
-public static IntStream stream(int[] array) { /* retorna um fluxo(stream) de inteiros */ }
-public static&ltT> Stream&ltT> stream(T[] array) { /* retorna um fluxo de objetos  T*/ }
-</pre>
-
-<p>Versões sobrecarregadas do método <b>stream()</b> levam <b>long[]</b>, <b>double[]</b> e </b>T[]</b>. Já que estamos passando um <b>int[]</b> e o <b>Integer[]</b>, as chamadas <b>stream()</b> resolvem para <b>stream(int[]) e stream (T[])</b> respectivamente e um fluxo inteiro é retornado.</p>
-
-<p>3. Também podemos criar fluxos usando fábricas e construtores. O método <b>of()</b> é um método de fábrica na <b>interface Stream</b>:</p>
-<pre class="brush:java">
-Stream.of(1, 2, 3, 4, 5)
-Stream.of(new Integer[]{1, 2, 3, 4, 5})
-</pre>
-
-<p>O método sobrecarreagdo <b>of()</b> da <b>interface Stream</b> usa a lista de argumentos variáveis ​​ou um elemento do tipo <b>T</b>.</p>
-<p>Além disso, você pode usar o método <b>builder()</b> e construir o objeto <b>Stream</b> adicionando cada elemento, como em:</p>
-
-<pre class="brush:java">Stream.builder().add(1).add(2).add(3).add(4).add(5).build()</pre>
-
-<p>Essa não é uma lista completa de maneiras que você pode usar para gerar um fluxo inteiro - isso é apenas para dar uma idéia de que há muitas maneiras de obter um fluxo. Como mencionado anteriormente, a <b>interface Collection</b> foi adicionada com os métodos <b>stream()</b> e <b>parallelStream()</b>. Portanto, qualquer objeto <b>Collection</b> é uma fonte de um fluxo - basta chamar o método <b>stream()</b> ou <b>parallelStream()</b>. Por exemplo:</p>
-
-<pre class="brush:java">
-List&ltString> strings = Arrays.asList("eeny", "meeny", "miny", "mo");
-strings.stream().forEach(string -> System.out.println(string));
-</pre>
-
-<p>Neste caso, estamos recebendo um fluxo de um objeto <b>List&ltString></b> chamando o método <b>stream()</b>.</p>
-<p>Existem vários outros tipos na biblioteca Java que retornam um fluxo, como:</p>
-<ul>
-<li> O método lines() na classe java.nio.file.Files</li>
-<li> O método splitAsStream() na classe java.util.regex.Pattern</li>
-<li> O método ints() na classe java.util.Random</li>
-<li> O método chars() na classe java.lang.String</li>
-</ul>
-
-<p>Aqui estão alguns exemplos rápidos de como usá-los.</p>
-
-<p>1. A classe <b>java.nio.file.Files</b> possui o método <b>lines()</b> que retorna um
-<b>Stream&ltString></b>. Este código imprime o conteúdo do arquivo “FileRead.java” no diretório atual.</p>
-
-<pre class="brush:java">Files.lines (Paths.get ("./FileRead.java")). forEach (System.out :: println);</pre>
-
-<p>2. A classe <b>java.util.Pattern</b> possui o método <b>splitAsStream()</b> que retorna um </b>Stream&ltstring></b>. Esse código divide a string de entrada “java 8 streams” com base no espaço em branco e, portanto, imprime as strings “java”, “8” e “streams” no console.</p>
-
-<pre class="brush:java">Pattern.compile ("") .splitAsStream ("java 8 streams").forEach(System.out :: println);</pre>
-
-<p>3. A classe <b>java.util.Random</b> possui o método <b>ints()</b> que retorna um <b>IntStream</b>. Ele gera um fluxo infinito de inteiros aleatórios; Então, para restringir o número de inteiros a 5 inteiros, chamamos o limit(5) naquele stream.</p>
-
-<pre class="brush:java">new Random ().ints().limit(5).forEach(System.out :: println);</pre>
-
-<p>4. A classe <b>String</b> possui o método <b>chars()</b> (recentemente introduzido no Java 8 in
-CharSequence - uma interface que a classe String implementa). Esse método retorna um <b>IntStream</b> (por que <b>IntStream</b>? Lembre-se de que não há especialização de caractere equivalente para <b>Streams</b>). Esse código chama o método <b>sorted()</b> nesse fluxo, para que os elementos do fluxo sejam classificados em ordem crescente. Como é um fluxo de inteiros, esse código usa "% c" para forçar explicitamente a conversão de <b>int</b> para <b>char</b>.</p>
-
-<pre class="brush:java">"hello".chars().sorted().forEach(ch -> System.out.printf("%c ", ch));
-// imprime e h l l o
-</pre>
-<p>Nestes exemplos, já usamos operações intermediárias, como <b>limit()</b> e <b>sorted()</b>. Vamos discutir essas operações intermediárias em mais detalhes agora.</p>
-
-</section>
-<section id="opintermed">
-<h3>Operações Intermediárias</h3>
-
-<p>Operações intermediárias transformam elementos em um fluxo. A Tabela abaixo lista algumas das operações intermediárias importantes no <b>Stream&ltT></b>.</p>
-
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-<tr><th>Método</th><th>descrição</th></tr>  
-
-<tr><td>Stream&ltT> filter(Predicate&lt? super T> check)</td><td> Remove os elementos para os quais o predicate de verificação retorna falso.</td></tr>
-
-<tr><td>&ltR>Stream&ltR> map(Function&lt? super T,? extends R> transform)</td><td> Aplica a função transform() para cada um dos elementos no fluxo.</td></tr>
-
-<tr><td>Stream&ltT> distinct()</td><td> Remove elementos duplicados no fluxo; ele usa o método equals() para determinar se um elemento é repetido no fluxo.</td></tr>
-
-<tr><td>Stream&ltT> sorted() Stream&ltT> sorted(Comparator&lt? super T> compare) </td><td> Classifica os elementos em sua ordem natural. A versão sobrecarregada leva um Comparator - você pode passar uma função lambda para isso.</td></tr>
-
-<tr><td>Stream&ltT> peek(Consumer&lt? super T> consume)</td><td> Retorna os mesmos elementos no fluxo, mas também executa a expressão lambda de consumo passada nos elementos.</td></tr>
-
-<tr><td>Stream&ltT> limit(long size)</td><td> Remove os elementos se houver mais elementos do que o tamanho determinado no fluxo.</td></tr>
-</table>
-</div>
-
-<p>Observe que todas as operações intermediárias nesta tabela retornam um <b>Stream&ltT></b> como resultado.</p>
-<p>Operações intermediárias são opcionais; Não é necessário haver operações intermediárias em um fluxo de pipeline.</p> <p>Aqui está um exemplo simples:</p>
-
-<pre class="brush:java">Stream.of(1, 2, 3, 4, 5).count();,</pre>
-
-<p>Esse código retorna o valor 5. Nesse caso, o método <b>Stream.of()</b> é a fonte do fluxo e o método <b>count()</b> é uma operação do terminal. O método <b>count()</b> retorna o número de elementos no fluxo.</p>
-<p>Vamos introduzir uma operação intermediária nesse pipeline de fluxo:</p>
-
-<pre class="brush:java">Stream.of(1, 2, 3, 4, 5).map(i -> i * i).count();</pre>
-
-<p>A operação <b>map()</b> aplica a função fornecida passada como seu argumento nos elementos do fluxo.
-Nesse caso, ele agrupa os elementos no fluxo. Este código também retorna o valor 5. Você pode verificar o resultado da aplicação do método <b>map()</b> neste código? Você pode usar o método <b>peek()</b> para isso:</p>
-
-<pre class="brush:java">Stream.of(1, 2, 3, 4, 5).map(i -> i * i).peek(i -> System.out.printf("%d ", i)).count();</pre>
-
-<p><b>Este código imprime:</b></p>
-
-<pre>1 4 9 16 25</pre>
-
-<p>Este exemplo também ilustra como as operações intermediárias podem ser encadeadas juntas. Isso é possível porque operações intermediárias retornam fluxos.</p>
-
-<p>Agora, vamos adicionar um método <b>peek()</b> antes de chamar o método <b>map()</b> para entender como ele funciona:</p>
-<pre class="brush:java">
-Stream.of(1, 2, 3, 4, 5)
-.peek(i -> System.out.printf("%d ", i))
-.map(i -> i * i)
-.peek(i -> System.out.printf("%d ", i))
-.count();
-</pre>
-<p><b>Este código immprime:</b></p>
-<pre>1 1 2 4 3 9 4 16 5 25</pre>
-
-
-<p>Como você pode observar dessa saída, o pipeline de fluxo está processando os elementos um por um.
-Cada elemento é mapeado para seu valor quadrado. O método <b>peek()</b> nos ajuda a entender como o fluxo está processando os elementos.</p>
-<br>
-<p><i>O método peek () é usado principalmente para fins de depuração. Ele nos ajuda a entender como os elementos são transformados no pipeline. Não o use no código de produção.</i></p>
-</section>
-<section id="filtcolect">
-<h1>Filtrando uma Coleção</h1>
-
-<p>O método <b>filter()</b> na <b>interface Stream</b> é usado para remover os elementos que não correspondem à condição dada. Veja um exemplo simples que usa o método <b>filter()</b> do Stream para remover um número inteiro ímpar.</p>
-<pre class="brush:java">
-//EvenNumbers.java
-import java.util.stream.IntStream;
-class EvenNumbers {
-public static void main(String []args) {
-IntStream.rangeClosed(0, 10)
-.filter(i -> (i % 2) == 0)
-.forEach(System.out::println);
-}
-}
-</pre>
-<p><b>Este programa imprime isto:</b></p>
-<pre>
-0
-2
-4
-6
-8
-10
-</pre>
-<p>Neste exemplo, estamos usando a classe <b>IntStream</b>-uma das especializações <b>ofStream</b> para <b>ints</b>. O método <b>rangeClosed(startValue,endValueInclusiveOfEnd)</b> gera uma sequência de números inteiros começando com <b>startValue</b> até (e inclusive) <b>endValueInclusiveOfEnd</b>. Aqui, o <b>rangeClosed(0, 10)</b> resulta em valores inteiros 0, 1, 2,…, 9, 10 (observe o valor 10). Há também um intervalo de método semelhante <b>range(startValue, endValueExclusiveOfEnd)</b> que gera uma sequência de números inteiros começando com <b>startValue</b> até (sem incluir) <b>endValueExclusiveOfEnd</b>.</p>
-
-<p>A partir do resultado deste método <b>rangeClosed()</b>, aplicamos o método <b>filter()</b> nele. Aqui está a assinatura do método <b>filter()</b>:</p>
-
-<pre class="brush:java">IntStream filter(IntPredicate predicate)</pre>
-
-<p>O método <b>filter()</b> aplica o predicado fornecido para determinar se o elemento deve ser incluído como parte do fluxo retornado ou eliminado (isto é, filtro). A interface funcional <b>java.util.function.IntPredicate</b>  tem a função com a seguinte assinatura:</p>
-
-<pre class="brush:java">boolean test(int value);</pre>
-
-
-<p>Aqui nós passamos uma função lambda <b>i -> (i% 2) == 0 </b> para casar com a interface funcional <b>IntPredicate</b> que retorna um valor booleano. Se o elemento atualmente sendo processado retornar verdadeiro (ou seja, neste caso, é par), ele será parte do fluxo ou será eliminado.</p>
-<p>Alternativamente, você pode definir uma função com o tipo de função da interface funcional <b>IntPredicate</b> e passá-la ao filtro.</p>
-<pre class="brush:java">
-// voce pode definir esta função estática dentro da classe EvenNumbers
-public static boolean isEven(int i) {
-return (i % 2) == 0;
-}
-</pre>
-<p>Agora, em vez de passar a função lambda para <b>filter()</b>, você pode passar uma <b>referência de método</b>, como em <b>filter(EvenNumbers::isEven)</b>.</p>
-<p>Frequentemente os métodos <b>map()</b> e <b>filter()</b> são usados ​​juntos. Por exemplo, o programa a seguir imprime os quadrados dos números pares.</p>
-
-<pre class="brush:java">
-//EvenSquares.java
-import java.util.stream.IntStream;
-class EvenSquares {
-public static void main(String []args) {
-IntStream.rangeClosed(0, 10)
-.map(i -> i * i)
-.filter(i -> (i % 2) == 0)
-.forEach(System.out::println);
-}
-}
-</pre>
-<p><b>Este programa imprime:</b></p>
-<pre>
-0
-4
-16
-36
-64
-100
-</pre>
-
-
-<p>No entanto, este código calcula desnecessariamente os quadrados dos números ímpares (os quadrados dos números ímpares são sempre ímpares). Assim, podemos alterar a ordem das operações de mapeamento e filtro para eliminar esses cálculos desnecessários:</p>
-<pre class="brush:java">
-IntStream.rangeClosed(0, 10)
-.filter(i -> (i % 2) == 0)
-.map(i -> i * i) // chama map DEPOIS chamar filter
-.forEach(System.out::println);
-</pre>
-<p>Essa saída é a mesma. Este exemplo simples mostra como você pode, às vezes, alterar a ordem das operações intermediárias sem alterar o comportamento.</p>
-
-</section>
-<section id="opterminal">
-<h3>Operações de Terminal</h3>
-
-<p>Você precisa fornecer uma operação de terminal no final de um <b>pipeline</b>. Essa operação de terminal geralmente produz um resultado, como chamar os métodos <b>sum()</b>, <b>min()</b>, <b>max ()</b> ou <b>average()</b>em um <b>IntStream</b>. Uma operação de terminal também pode executar outras ações, como acumular os elementos com métodos <b>reduce()</b>, <b>collect()</b> ou simplesmente executar uma ação como na chamada do método <b>forEach()</b>. A Tabela abaixo lista algumas das importantes operações do terminal no <b>Stream&ltT></b>.</p>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-	<tr><th>Métodos</th><th>Descrição</th></tr>
-<tr><td>void forEach(Consumer&lt? super T> action)</td><td> Chama a ação para cada elemento no fluxo.</td></tr>
-
-<tr><td>Object[] toArray() </td></td>Retorna um array de objetos que tem os elementos no fluxo.</td></tr>
-
-
-<tr><td>Optional&ltT> min(Comparator&lt? super T> compare)</td><td>  Retorna o valor mínimo no fluxo (compara os objetos usando a função compar fornecida)</td></tr>
-
-
-<tr><td>Optional&ltT> max(Comparator&lt? super T> compare)</td><td> Retorna o valor náximo no fluxo (compara os objetos usando a função compar fornecida)</td></tr>
-
-<tr><td>long count() </td><td>retorna o número de elementos no fluxo</td></tr>
-</table>
-</div>
-
-<p>Há muitas operações importantes do terminal, como os métodos <b>reduce()</b>, <b>collect()</b>, </b>findFirst()</b>, <b>findAny()</b>, <b>anyMatch()</b>, <b>allMatch()</b> e <b>noneMatch()</b>. Discutimos esses métodos (e também o  <b>Optional&ltT></b> Além disso, <b>IntStream</b>, <b>LongStream</b> e<b> DoubleStream</b> possuem métodos como <b>sum()</b>, <b>min()</b>, <b>max()</b> e <b>average()</b> que operam no fluxo de <b>ints</b>, <b>longs</b> e <b>doubles</b>, respectivamente.</p>
-
-<p>Aqui está um exemplo que usa o método toArray() na interface Stream:</p>
-<pre class="brush:java">
-Object [] words = Pattern.compile(" ").splitAsStream("1 2 3 4 5").toArray();
-System.out.println(Arrays.stream(words).mapToInt(str -> Integer.valueOf((String)str)).sum());
-</pre>
-<p><b>Este programa imprime:</b></p>
-<pre>
-15
-</pre>
-
-<p>Neste programa, temos uma string “1 2 3 4 5” e <b>splitAsStream()</b> retorna um <b>fluxo de Strings</b>. Nós convertemos esse <b>fluxo de Strings</b> em um <b>array</b> de objetos chamado <b>words</b>; nós então convertemos o <b>array</b> de volta para fluxos usando <b>Arrays.stream(words)</b> (apenas para ilustrar como você pode converter um fluxo em um array e voltar!). Agora, mapeamos cada entrada de Objeto em uma <b>String</b> e depois para um valor inteiro. Finalmente, chamamos a soma de operação do terminal <b>sum()</b> para obter a soma dos inteiros como <b>15</b>.</p>
-<p>Quando a operação do terminal é concluída, o fluxo no qual ela é operada é considerado "consumido".
-Se você tentar "usar" o fluxo novamente, receberá uma exceção <b>IlegalStateException</b>.</p>
-<pre class="brush:java">
-//StreamReuse.java
-import java.util.stream.IntStream;
-public class StreamReuse {
-public static void main(String []args) {
-IntStream chars = "bookkeep".chars();
-System.out.println(chars.count());
-chars.distinct().sorted().forEach(ch -> System.out.printf("%c ", ch));
-}
-}
-</pre>
-
-<p>A variável <b>chars</b> aponta para o fluxo criado a partir da string “bookkeep”. Quando recebemos <b>chars.count()</b>, o fluxo é "consumido". Por quê? Porque o método <b>count()</b> é uma operação de terminal. Porque tentamos usar o fluxo novamente na próxima instrução, este programa trava lançando <b>IllegalStateException</b>.</p>
-
-
-
-</section>
-<p class="nav-arq" id="referencia">Projeto de Classe Avançado: <a href="designdeclasseavancado.html">&laquo; anterior | <a href="lambda.html">próximo &raquo;</a>Interfaces funcionais embutidas Lambda </p>
-<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/genericecollection" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
-</div>
-</div>
-
-</body>
-	</html>
+
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+    <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+    <li class="active">
+    <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+         </li><li>
+         <a class="w3-bar-item w3-button"  href="#genericolec">9 - GENERICS E COLEÇÕES</a>
+              </li><li>
+         <a class="w3-bar-item w3-button"  href="#classegeneric">Criando e Usando Classes Genericas</a>
+              </li><li>
+            <a class="w3-bar-item w3-button"  href="#sintdimante">Sintax Diamond</a>
+        </li><li>
+  <a class="w3-bar-item w3-button"  href="#tipbrutipgen">Interoperabilidade de tipos brutos e tipos genéricos</a></li><li>
+            <a class="w3-bar-item w3-button" href="#metgeneric">Métodos Genericos</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#genesubtip">Genericos e Subtipagem</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"  href="#coringas">Parâmetros Coringas </a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#limcoringas">Limitação de Coringas </a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#classcolect">Criando e Usando Classes de Coleção</a></li><li>
+            <a class="w3-bar-item w3-button"  href="#classintabs">Classes Abstratas e Interface</a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#intcolect">A interface Collection</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#classconcret">Classes Concretas </a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#classarraylist">Classe ArrayList</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#aslist">Usando Arrays.asList()</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#classtreeset">A classe TreeSet</a>
+            </li><li>
+             <a class="w3-bar-item w3-button"  href="#intmap">A interface Map</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#dequearray">A interface Deque e classe ArrayDeque </a></li><li>
+             <a class="w3-bar-item w3-button"  href="#intcomp">Interfaces Comparáveis ​​e de Comparação</a></li><li>
+            <a class="w3-bar-item w3-button"  href="#fluxosfilt">Fluxo de Coleções e Filtros</a>
+            </li><li>
+             <a class="w3-bar-item w3-button"  href="#iteragefor">Iteragir Usando forEach</a>
+</li><li>
+             <a class="w3-bar-item w3-button"  href="#referenflux">Referências de Métodos com Fluxos(Stream)</a></li><li>
+             <a class="w3-bar-item w3-button"  href="#intfluxostream">Entendendo uma interface de fluxo(interface stream)</a></li><li>
+            <a class="w3-bar-item w3-button"  href="#pipelinefluxo">Pipeline de fluxo </a>
+            </li><li>
+             <a class="w3-bar-item w3-button"  href="#fontfluxo">Fonte de Fluxos</a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#opintermed">Operações Intermediárias</a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#filtcolect">Filtrando uma Coleção</a>
+             </li><li>
+             <a class="w3-bar-item w3-button"  href="#opterminal">Operações de Terminal</a>
+            </li><li>
+             
+    
+    <div>
+      <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+      <div id="demo" class="w3-hide">
+
+     
+  <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+       <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+
+  <a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+  <a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+
+  <a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+  <a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
+
+  <a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+  <a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+  <a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+
+  <a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
+  <a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+
+  <a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+  <a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+  <a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+  <a class="w3-bar-item w3-button" href="concorrenciajava.html">16 - Concorrência com Java</a>
+  <a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+
+  <a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+  <a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+
+  <a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+  <a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
+
+  <a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+  <a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+  <a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+  <a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+  <a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+  <div class="w3-main" style="margin-left:250px;">
+
+  <div id="myTop" class="w3-top  w3-large">
+    <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  </p>
+  </div>
+  <header class="w3-container w3-theme" style="padding:64px 32px">
+    <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+  </header>
+  <section id="genericolec">
+  <H1>Generics e Coleções</h1>
+
+  <p><b>Objetivos</b></p>
+  <ul>
+  <li>Criar e uar uma classe genérica</li>
+  <li>Criar e usar ArrayList, TreeSet, TreeMAp, e objeto ArrayDeque</li>
+  <li>Usar java.util.Comparator e java.lang.Comparable interfaces Coleçoes Streams e Filtros</li>
+  <li>Iteragir usndo métodos forEach de Streams e List</li>
+  <li>Descrever interface Stream e pipeline Stream</li>
+  <li>Filtrar uma coleção usando expressoes lambda</li>
+  <li>Usar rferencia de métodos com Streams</li>
+  </ul>
+  <p>Cada aplicativo Java não trivial faz uso de estruturas de dados e algoritmos. O framework da coleção Java fornece um grande conjunto de estruturas de dados e algoritmos de uso geral prontamente utilizáveis. Essas estruturas de dados e algoritmos podem ser usados com qualquer tipo de dados adequado de uma maneira segura para o tipo; isso é conseguido através do uso de um recurso de linguagem conhecido como <b>genéricas</b>.</p>
+
+  </p>Coleções em java implemena estruturas de dados e algoritmos e são implementadas usando funções <b>genéricas</b> e lambda. </p>
+  <p>Neste capítulo, começamos discutindo as <b>genéricas</b>. Uma vez que nossa experiência mostra que muitas vezes é difícil responder corretamente a perguntas sobre <b>genéricas</b>, abordamos as <b>genéricas</b> em detalhes. Em seguida, discutimos coleções importantes e também discutimos <b>java.lang.Comparator</b> e <b>java.lang.Comparable interfaces</b>. Finalmente, abordamos em detalhes como as funções e fluxos lambda podem ser usados na estrutura de coleções Java.</p>
+
+  <br>
+  <p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+  </section>
+  <section id="classegeneric">
+  <h2>Criando e Usando Classes Genericas</h2>
+
+
+  <p>As <b>genéricas</b> são um recurso de linguagem apresentado ao Java na versão 1.5. Antes das <b>genéricas</b> serem introduzidos em Java, a classe base <b>Object</b> era usada como alternativa as <b>genéricas</b>. Com <b>genéricas</b>, você escreve código para um tipo (digamos T) que é aplicável para todos os tipos, em vez de escrever classes separadas para cada tipo. Vamos começar com um exemplo simples.</p>
+  <p>Suponha que você queira imprimir o valor do objeto entre colchetes. Por exemplo, para imprimir um objeto <b>Integer</b> com valor <b>10</b>, em vez de imprimir “10” no console, você deseja imprimir o valor dentro de uma “caixa” como esta: “[10]”.</p>
+  <pre class="brush:java">
+  // Este programa mostra a implementação do contêiner nos. Genéricos
+  class BoxPrinter&ltT> {
+  private T val;
+  public BoxPrinter(T arg) {
+  val = arg;
+  }
+  public String toString() {
+  return "[" + val + "]";
+  }
+  }
+  class BoxPrinterTest {
+  public static void main(String []args) {
+  BoxPrinter&ltInteger> value1 = new BoxPrinter&ltInteger>(new Integer(10));
+  System.out.println(value1);
+  BoxPrinter&ltString> value2 = new BoxPrinter&ltString>("Hello world");
+  System.out.println(value2);
+  }
+  }
+  </pre>
+  <p><b>Este código imprime o seguinte:</b></p>
+  <pre>
+  [10]
+  [Hello world]
+  </pre>
+  <p>Existe muitas coisas que é preciso destacar.</p>
+  <p>1- Veja a declaração do BoxPriner:</p>
+
+  <pre class="brush:java">class BoxPrinter&ltT></pre>
+
+  <p>Você dar a classe <b>BoxPrinter</b> um tipo placeholder&ltT> - o tipo  nome T dentro do bracelets "<" e ">" segue o nome da classe. Você pode usar este tipo dentro da classe para indicar que ele é um placeholder(espaço reservado) para o tipo atual fornecer mais tarde.</p>
+
+  <p>2- Dentro da classe primeiro usa <b>T</b> na declação do campo:</p>
+
+  <pre class="brush:java">private T val;</pre>
+
+  <p>Você pode declarar val do tipo generico - o tipo atual será especificado mais tarde quando você usar <b>BoxPrinter</b>. Em <b>main()</b> você declara variável do tipo <b>BoxPrinter</b> para um Integer como isto:</p>
+
+  <pre class="brush:java">BoxPrinter&ltInteger> value1</pre>
+   
+   <p>Aqui você especifica que <b>T</b> é do tipo Inteiro - identificando <b>T</b> (um placeholder) é substituído com o tipo Integer. Assim, o <b>val</b> dentro de <b>BoxPrinter</b> torna Integer porque <b>T</b> é substituído por <b>Integer</b>.</p>
+
+
+  <p>3- Agora, Aqui é outro lugar onde usa <b>T</b>:</p>
+  <pre class="brush:java">
+  public BoxPrinter(T arg) {
+  val = arg;
+  }
+  </pre>
+  <p>Semelhante à declaração de <b>val</b> com tipo <b>T</b>, você está dizendo que o argumento para o construtor <b>BoxPrinter</b> é do tipo T. Posteriormente no método <b>main()</b>, quando o construtor é chamado por <b>new</b>, você especifica que <b>T</b> é do tipo <b>Integer</b>:</p>
+
+  <pre class="brush:java">new BoxPrinter&ltInteger>(new Integer(10));</pre>
+
+  <p>Agora, dentro do construtor <b>BoxPrinter</b>, <b>arg</b> e <b>val</b> devem ser do mesmo tipo, pois ambos são do tipo <b>T</b>. Por exemplo, se você alterar o construtor da seguinte forma:</p>
+
+  <pre class="brush:java">new BoxPrinter&ltString>(new Integer(10));</pre>
+
+  <p>O <b>BoxPrinter</b> é do tipo <b>String</b>, e o argumento transmitido é do tipo <b>Integer</b>, então você receberá um erro de compilador para incompatibilidade de tipos ao usar os genéricos (o que é bom porque você encontrará o problema anteriormente).</p>
+  <p>Vamos considerar outro exemplo. Aqui está uma classe genérica <b>Pair</b> que pode conter objetos de dois tipos diferentes, <b>T1</b> e <b>T2</b>.</p>
+  <pre class="brush:java">
+  // Demonstra o uso de genéricos na definição de classes
+  class Pair&ltT1, T2> {
+  T1 object1;
+  T2 object2;
+  Pair(T1 one, T2 two) {
+  object1 = one;
+  object2 = two;
+  }
+  public T1 getFirst() {
+  return object1;
+  }
+  public T2 getSecond() {
+  return object2;
+  }
+  }
+  class PairTest {
+  public static void main(String []args) {
+  Pair&ltInteger, String> worldCup = new Pair&ltInteger, String>(2018, "Russia");
+  System.out.println("World cup " + worldCup.getFirst() +
+  " in " + worldCup.getSecond());
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime o seguinte:</b></p>
+  <pre>
+  World cup 2018 in Russia
+  </pre>
+  <p>Aqui <b>T1</b> e <b>T2</b> são  de tipo holders. Você dá esses tipos de placeholders dentro de colchetes angulares: < T1, T2 >.</p> Ao usar a classe <b>Pair</b>, você deve especificar quais tipos específicos você usará no lugar de <b>T1</b> e <b>T2</b>.</p>
+  <p>Por exemplo, você usa Integer e String para Pair, como em Pair&ltInteger, String> no método <b>main()</b>. Agora, pense na classe Pair como se ela tivesse esse corpo:</p>
+  <pre class="brush:java">
+  // como Pair&ltInteger, String> pode ser tratado internamente
+  class Pair {
+  Integer object1;
+  String object2;
+  Pair(Integer one, String two) {
+  object1 = one;
+  object2 = two;
+  }
+  public Integer getFirst() {
+  return object1;
+  }
+  public String getSecond() {
+  return object2;
+  }
+  }
+  </pre>
+  <p>Em outras palavras, tente manualmente fazer um localizar e substituir os tipos de placeholders  e substituí-los por tipos reais no código. Isso ajudará você a entender como os genéricos realmente funcionam. Com isso, você pode entender como os métodos <b>getFirst()</b> e <b>getSecond()</b> retornam valores <b>Integer</b> e <b>String</b> no método <b>main()</b>.</p>
+
+  <p>Na declaração:</p> 
+
+  <pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair&ltInteger, String>(2018, "Russia");</pre>
+
+  <p>Note que os tipos correspondem exatamente. Se você tentar:</p> 
+  <pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair&ltString, String>(2018, "Russia");</pre>
+
+  <p>Você receberá o seguinte erro do compilador:</p>
+  <pre>
+  TestPair.java:20: cannot find symbol
+  symbol : constructor Pair(int,java.lang.String)
+  location: class Pair&ltjava.lang.String,java.lang.String>
+  </pre>
+  <p>Agora, que tal tentar essa declaração?</p>
+
+  <pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair&ltNumber, String>(2018, "Russia");</pre>
+
+
+  <p>Você receberá outro erro do compilador devido à incompatibilidade de tipos no tipo declarado de worldCup e ao tipo fornecido na expressão de inicialização:</p>
+  <pre>
+  TestPair.java:20: incompatible types
+  found : Pair&ltjava.lang.Number,java.lang.String>
+  required: Pair&ltjava.lang.Integer,java.lang.String>
+  </pre>
+
+
+
+  <p>Agora modifique a classe <b>Pair</b> genérica. <b>Pair&ltT1, T2></b> armazena objetos do tipo <b>T1</b> e <b/>T2</b>. Como é uma classe de par genérica que leva um tipo T e armazena dois objetos desse tipo T? Obviamente, uma maneira de fazer isso é instanciar <b>Pair&ltT1, T2></b> com o mesmo tipo, digamos <b>Pair&ltString, String></b>, mas não é uma boa solução. Por quê? Não há como garantir que você está instanciando o par com os mesmos tipos! O exemplo a seguir é uma versão modificada do par, vamos chamá-lo de <b>PairOfT</b>, que usa o tipo de espaço reservado para o tipo <b>T</b>.</p>
+  <pre class="brush:java">
+  // Este programa mostra como usar genéricos em seus programas
+  class PairOfT&ltT> {
+  T object1;
+  T object2;
+  PairOfT(T one, T two) {
+  object1 = one;
+  object2 = two;
+  }
+  public T getFirst() {
+  return object1;
+  }
+  public T getSecond() {
+  return object2;
+  }
+  }
+  </pre>
+  <p>Agora, esta declaração funcionará?</p>
+
+  <pre class="brush:java">PairOfT&ltInteger, String> worldCup = new PairOfT&ltInteger, String>(2018, "Russia");</pre>
+  <p>
+  Não, porque o PairOf T usa um parâmetro de tipo e você deu dois parâmetros de tipo aqui. Então, você receberá um erro do compilador. Então, que tal esta declaração?</p>
+
+  <pre class="brush:java">PairOfT&ltString> worldCup = new PairOfT&ltString>(2018, "Russia");</pre>
+
+  <p>Não, você ainda receberá um erro do compilador:</p>
+  <pre>
+  TestPair.java:20: cannot find symbol
+  symbol : constructor PairOfT(int,java.lang.String)
+  location: class PairOfT&ltjava.lang.String>
+  PairOfT&ltString> worldCup = new PairOfT&ltString>(2018, "Russia");
+  </pre>
+
+  <p>A razão é que 2018 - quando em caixa - é um <b>Integer</b>, e você deve dar um <b>String</b> como argumento.</p> <p>Como é esta declaração?</p>
+
+  <pre class="brush:java">PairOfT&ltString> worldCup = new PairOfT&ltString>("2018", "Russia");</pre>
+  <p>Sim, agora compila e funcina bem!</p>
+  </section>
+  <section id="sintdimante">
+  <h2>Sintax Diamond</h2> 
+
+  <p>Veja como é tedioso garantir que você forneça parâmetros do mesmo tipo tanto no tipo de declaração (Pair&ltInteger, String> neste caso) quanto na nova expressão de criação de objeto (new Pair &ltString, String>() neste caso) Para simplificar sua vida, o Java 1.7 introduziu a sintaxe de diamante, na qual os parâmetros de tipo podem ser omitidos: você pode simplesmente deixá-lo ao compilador para inferir os tipos da declaração de tipo. Assim, a declaração pode ser simplificada como: </p>
+
+  <pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair&lt>(2018, "Russia");</pre>
+
+  <p>A seguir o programa  completo fazendo uso desta sintaxe de diamante.</p>
+  <pre class="brush:java">
+  // Este programa mostra o uso da sintaxe de diamante ao usar genéricos
+  class Pair&ltT1, T2> {
+  T1 object1;
+  T2 object2;
+  Pair(T1 one, T2 two) {
+  object1 = one;
+  object2 = two;
+  }
+  public T1 getFirst() {
+  return object1;
+  }
+  public T2 getSecond() {
+  return object2;
+  }
+  }
+  class TestPair {
+  public static void main(String []args) {
+  Pair&ltInteger, String> worldCup = new Pair&lt>(2018, "Russia");
+  System.out.println("World cup " + worldCup.getFirst() +
+  " in " + worldCup.getSecond());
+  }
+  </pre>
+  <p><b>Este programa irá imprimir o seguinte:</b></p>
+
+  <pre>World cup 2018 in Russia</pre>
+
+
+  <p>Note que é um erro comum esquecer o operador diamante &lt> na expressão de inicialização, como em:</p>
+
+  <pre class="brush:java">Pair&ltInteger, String> worldCup = new Pair(2018, "Russia");</pre>
+
+  <p>Aqui estão os avisos que você obterá do compilador (quando você passar a opção de linha de comando -Xlint: unchecked to javac):</p>
+  <pre>
+  Pair.java:19: warning: [unchecked] unchecked call to Pair(T1,T2) as a member of the 
+  raw type Pair
+  Pair&ltInteger, String> worldCup = new Pair(2018, "Russia");
+  ^
+  where T1,T2 are type-variables:
+  T1 extends Object declared in class Pair
+  T2 extends Object declared in class Pair
+  Pair.java:19: warning: [unchecked] unchecked conversion
+  Pair&ltInteger, String> worldCup = new Pair(2018, "Russia");
+  ^
+  required: Pair&ltInteger,String>
+  found: Pair
+  2 warnings
+  </pre>
+  <p>Como <b>Pair</b> é um tipo genérico e você esqueceu de usar o &lt> ou fornecer os parâmetros de tipo explicitamente, o compilador o trata como um tipo bruto com <b>Pair</b> usando dois parâmetros de tipo <B>Object</b>. Embora esse comportamento não tenha causado nenhum problema nesse segmento de código específico, ele é perigoso e pode causar bugs, como mostra a próxima seção.</p>
+  </section>
+  <section id="tipbrutipgen">
+  <h2>Interoperabilidade de tipos brutos e tipos genéricos</h2>
+
+  <p>Um tipo genérico pode ser usado sem especificar seu tipo associado. Nesse caso, o tipo é referido como tipo bruto. Por exemplo, <b>List&ltT></b> deve ser usado junto com um tipo associado, ou seja, <b>List&ltString></b>; no entanto, ele pode ser usado sem especificar o tipo acompanhado, ou seja, apenas <b>List</b>. Neste último caso, <b>List</b> é referida como tipo bruto.</p>
+  <p>Quando você usa um tipo bruto, perde a vantagem da segurança de tipo oferecida pelos genéricos. Por exemplo, o tipo Vector é um tipo bruto. Tipos brutos ignoram a verificação de tipo em tempo de compilação; no entanto, eles podem lançar exceções de tempo de execução (por exemplo, <b>ClassCastException</b>). Portanto, não é recomendável usar tipos brutos no novo código.</p>
+  <pre class="brush:java">
+  //RawTest1.java
+  import java.util.List;
+  import java.util.LinkedList;
+  import java.util.Iterator;
+  class RawTest1 {
+  public static void main(String []args) {
+  List list = new LinkedList();
+  list.add("First");
+  list.add("Second");
+  List&ltString> strList = list; //#1
+  for(Iterator&ltString> itemItr = strList.iterator(); itemItr.hasNext();)
+  System.out.println("Item: " + itemItr.next());
+  List&ltString> strList2 = new LinkedList&lt>();
+  strList2.add("First");
+  strList2.add("Second");
+  List list2 = strList2; //#2
+  for(Iterator&ltString> itemItr = list2.iterator(); itemItr.hasNext();)
+  System.out.println("Item: " + itemItr.next());
+  }
+  }
+  </pre>
+  <p>O que você espera do programa acima? Você acha que irá compilar / executar corretamente? Bem, sim - irá compilar (com avisos) e executar sem nenhum problema. Imprime o seguinte:</p>
+  <pre>
+  Item: First
+  Item: Second
+  Item: First
+  Item: Second
+  </pre>
+  <p>O exemplo a seguir introduz algumas alterações; observe a saída:</p>
+  <pre class="brush:java">
+  //RawTest2.java
+  import java.util.List;
+  import java.util.LinkedList;
+  import java.util.Iterator;
+  class RawTest2 {
+  public static void main(String []args) {
+  List list = new LinkedList();
+  list.add("First");
+  list.add("Second");
+  List&ltString> strList = list;
+  strList.add(10); // #1: gera erro no compilador
+  for(Iterator&ltString> itemItr = strList.iterator(); itemItr.hasNext();)
+  System.out.println("Item : " + itemItr.next());
+  List&ltString> strList2 = new LinkedList&lt>();
+  strList2.add("First");
+  strList2.add("Second");
+  List list2 = strList2;
+  list2.add(10); // #2: compiles fine, results in runtime exception
+  for(Iterator&ltString> itemItr = list2.iterator(); itemItr.hasNext();)
+  System.out.println("Item : " + itemItr.next());
+  }
+  }
+  </pre>
+  <p>No exemplo aacima você adcionou duas declarações. A primeira declaração é a seguinte:</p>
+  <pre class="brush:java">strList.add(10); // #1: gera erro no compilador</pre>
+
+  <p>Você está tentando adicionar um item inteiro em uma lista de tipo <b>List &ltString></b>, para obter um erro em tempo de compilação "nenhum método adequado encontrado para add(int)". Como discutido anteriormente, esse tipo de verificação no nível do compilador é bom, pois, sem ela, uma exceção de tempo de execução pode ter resultado posteriormente. Aqui está a segunda declaração que você adicionou:</p>
+
+  <pre class="brush:java">list2.add(10); // #2: compila bem, resulta em runtime exception</pre>
+
+  <p>Aqui, a <b>list2 linked-list</b> (tipo bruto) é inicializada com um tipo genérico <b>List&lt></b>. Após a inicialização, você adicionou um número inteiro ao tipo bruto da lista. Isso é permitido, pois <b>list2</b> é um tipo bruto. No entanto, isso resultará em um <b>ClassCastException</b>.</p>
+  <p>A lição que aprendemos com este exemplo é evitar misturar tipos brutos e tipos genéricos em nossos programas, pois isso pode resultar em um comportamento errôneo em tempo de execução. Se você precisar usar ambos em um programa, certifique-se de adicionar um único tipo de item nos contêineres e recuperar usando o mesmo tipo.</p>
+  </section>
+  <section id="metgeneric">
+  <h2>Métodos Genericos</h2>
+
+  <p>Semelhante às classes <b>genéricas</b>, você pode criar métodos <b>genéricos</b>, isto é, métodos que usam tipos de parâmetros <b>genéricos</b>. Métodos <b>genéricos</b> são úteis para escrever métodos que são aplicáveis ​​a uma ampla gama de tipos, enquanto a funcionalidade permanece a mesma. Por exemplo, existem vários métodos <b>genéricos</b> na classe <b>java.util.Collections</b>.</p>
+  <p>Vamos implementar um método simples chamado <b>fill()</b>. Dado um contêiner, o método <b>fill()</B> preenche todos os elementos contêineres com valor <b>val</b>. O exemplo a seguir  contém a implementação do método <b>fill()</b> na classe <b>Utilities</b>.
+  <pre class="brush:java">
+  //UtilitiesTest.java
+  // Este programa demonstra métodos genericos
+  import java.util.List;
+  import java.util.ArrayList;
+
+  class Utilities {
+  public static&ltT> void fill(List&ltT> list, T val) {
+  for(int i = 0; i < list.size(); i++)
+  list.set(i, val);
+  }
+  }
+  class UtilitiesTest {
+  public static void main(String []args) {
+  List&ltInteger> intList = new ArrayList&ltInteger>();
+  intList.add(10);
+  intList.add(20);
+  System.out.println("The original list is: " + intList);
+  Utilities.fill(intList, 100);
+  System.out.println("The list after calling Utilities.fill() is: " + intList);
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime o seguinte:</b></p>
+
+  <pre>The original list is: [10, 20]
+  The list after calling Utilities.fill() is: [100, 100]</pre>
+
+  <p>Vamos olhar passo por passo este código:</p>
+  <p>
+  1- Você cria um método nomeado fill() na classe Utilities com esta declaração:</p>
+
+  <pre class="brush:java">public static&ltT> void fill(List&ltT> list, T val)</pre>
+
+
+  <p>Você declara o parâmetro de tipo genérico <b>T</b> neste método. Após os qualificadores <b>public</b> e </b>static</b>, você coloca <b>&ltT></b> e depois o segue por tipo de retorno, nome do método e seus parâmetros. Esta declaração é diferente das classes <b>genéricas</b> - você fornece os parâmetros de tipo <b>genérico</b> após o nome da classe em classes <b>genéricas</b>.
+
+  <p>No corpo, você escreve o código como se fosse um método normal.</p>
+  <pre class="brush:java">
+  for(int i = 0; i < list.size(); i++)
+  list.set(i, val);
+  </pre>
+  <p>Você percorre a lista de 0 até seu tamanho e configura cada um dos elementos para valor <b>val</b> em cada iteração. Você usa o método <b>set()</b> em <b>List</b>, que assume a posição do índice no contêiner como o primeiro argumento e o valor real a ser definido como o segundo argumento.</p>
+
+  <p>3-No método <b>main()</b> na classe <b>UtilitiesTest</b>, é assim que você chama o método <b>fill()</b>:</p>
+
+  <pre class="brush:java">Utilities.fill(intList, 100);</pre>
+
+
+  <p>Observe que você não forneceu explicitamente o valor do parâmetro de tipo <b>genérico</b>. Como <b>int List</b> é do tipo <b>Integer</b> e 100 é digitado como <b>Integer</b>, o compilador inferiu que o tipo <b>T</b> no método<b> fill()</b> é do tipo <b>Integer</b>.</p>
+  </section>
+  <section id="genesubtip">
+  <h2>Genéricos e Subtipagem</h2>
+
+
+  <p>Você pode atribuir um objeto de tipo derivado à sua referência de tipo base; isso é o que você quer dizer com subtipagem. No entanto, para <b>genéricos</b>, os parâmetros de tipo devem corresponder exatamente; caso contrário, você receberá um erro do compilador. Em outras palavras, a subtipagem não funciona para parâmetros <b>genéricos</b>. Sim, essa é uma regra difícil de lembrar, por isso vamos discutir com mais detalhes por que a subtipagem não funciona para os parâmetros de tipo <b>genérico</b>.</p>
+
+  <p>Vejamos o que pode dar errado se você assumir que pode usar subtipagem para parâmetros de tipo genérico.</p>
+  <pre class="brush:java">
+  // código ilegal - suponha que a seguinte inicialização seja permitida
+  List&ltNumber> intList = new ArrayList&ltInteger>();
+  intList.add(new Integer(10)); // okay
+  intList.add(new Float(10.0f)); // oops!
+  </pre>
+
+  <p>O tipo <b>intList</b> de <b>List&ltNumber></b> deve conter um Objeto <b>ArrayList&ltNumber></b>. No entanto, você está armazenando um <b>ArrayList&ltInteger></b>. Isso parece razoável, pois <b>List</b> estende <b>ArrayList</b> e <b>Integer</b> estende <b>Number</b>. No entanto, você pode acabar inserindo um valor <b>Float</b> no <b>intList</b>! Lembre-se de que o tipo dinâmico de <b>intList</b> é o tipo <b>ArrayList&ltInteger></b> - portanto, você está violando a segurança do tipo aqui (e, portanto, obterá o erro do compilador de tipos incompatíveis). Como os <b>genéricos</b> são projetados para evitar erros de segurança de tipo como este, você não pode atribuir um parâmetro de tipo genérico derivado a um parâmetro de tipo de base.</p>
+
+  <p>Como você pode ver, a subtipagem de tipos de parâmetro genéricos não é permitida porque não é segura, mas ainda assim é uma limitação inconveniente. Felizmente, o Java suporta tipos de parâmetros curingas nos quais você pode usar subtipagem. Vamos explorar essa capacidade agora.</p>
+  </section>
+  <section id="coringas">
+  <h2>Parâmetros Coringas</h2>
+  <p>Você viu na seção anterior que a subtipagem não funciona para parâmetros de tipo genérico. Assim,</p>
+
+  <pre class="brush:java">List&ltNumber> intList = new ArrayList&ltInteger>();</pre>
+
+  <p>Dá um erro  de compilador:</p>
+  <pre>
+  WildCardUse.java:6: incompatible types
+  found : java.util.ArrayList&ltjava.lang.Integer>
+  required: java.util.List&ltjava.lang.Number>
+  List&ltNumber> numList = new ArrayList&ltInteger>();
+  </pre>
+  <p>Se você alterar um pouco a declaração para usar o parâmetro curinga, ele irá compilar:</p>
+
+  <pre class="brush:java">List&lt?> wildCardList = new ArrayList&ltInteger>();</pre>
+
+  <p>O que significa um curinga? Assim como o curinga que você usa para substituir qualquer carta em um jogo de cartas, você pode usar um curinga para indicar que ele pode corresponder a qualquer tipo. Com <b>List&lt?></b>, você quer dizer que é uma lista de qualquer tipo - em outras palavras, você pode dizer que é uma "lista de incógnitas!". Mas espere um minuto ... quando você quer um tipo indicando "qualquer tipo", você usa a classe Object, não é? Como é a mesma declaração, mas usando o parâmetro de tipo de objeto?</p>
+  <pre class="brush:java">
+  List&ltObject> numList = new ArrayList&ltInteger>();</pre>
+  <p>Sem sorte - você tem o mesmo erro que você obteve acima usando List&ltNumber>!</p>
+  <pre>
+  WildCardUse.java:6: incompatible types
+  found : java.util.ArrayList&ltjava.lang.Integer>
+  required: java.util.List&ltjava.lang.Object>
+  List&ltObject> numList = new ArrayList&ltInteger>();
+  </pre>
+  <p>Em outras palavras, você ainda está tentando usar a subtipagem para parâmetros <b>genéricos</b>, e ainda não funciona. Como você pode ver, <b>List&ltObject></b> não é o mesmo que <b>List&lt?></b>. De fato, <b>List&lt?></b> é um supertipo de qualquer tipo de <b>List</b>, o que significa que você pode passar <b>List&ltInteger></b>, ou <b>List&ltString></b>, ou mesmo <b>List&ltObject></b> onde <b>List&lt?></b> é esperado.</p>
+  <p>Vamos usar o curinga em um exemplo e ver se ele funcionará :</p>
+  <pre class="brush:java">
+  // Este programa demonstra o uso de parâmetros curinga
+  import java.util.List;
+  import java.util.ArrayList;
+  class WildCardUse {
+  static void printList(List&lt?> list){
+  for(Object element: list)
+  System.out.println("[" + element + "]");
+  }
+  public static void main(String []args) {
+  List&ltInteger> list = new ArrayList&lt>();
+  list.add(10);
+  list.add(100);
+  printList(list);
+  List&ltString> strList = new ArrayList&lt>();
+  strList.add("10");
+  strList.add("100");
+  printList(strList);
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime o seguinte:</b></p>
+  <pre>
+  [10]
+  [100]
+  [10]
+  [100]
+  </pre>
+  <p>Funciona, e a lista usando curinga pode ser passada na lista de números inteiros, bem como na lista de (Strings)seqüências de caracteres. Isso acontece por causa do tipo de parâmetro do método <b>printList() - List< ? ></b>. </p>
+  </section>
+  <section id="limcoringas">
+  <h3>Limitação de Coringas</h3>
+
+  <p>Vamos considerar o seguinte trecho, que tenta adicionar um elemento e imprimir a lista:</p>
+  <pre class="brush:java">
+  List&lt?> wildCardList = new ArrayList&ltInteger>();
+  wildCardList.add(new Integer(10));
+  System.out.println(wildCardList);
+  </pre>
+  <p>Você receberá o seguinte erro:</p>
+  <pre>
+  WildCardUse.java:7: cannot find symbol
+  symbol : method add(java.lang.Integer)
+  location: interface java.util.List&ltcapture#145 of ? extends java.lang.Number>
+  wildCardList.add(new Integer(10));
+  </pre>
+
+  <p>Por quê? Você tem certeza absoluta de que o método <b>add()</b> existe na interface <b>List</b>. Então, por que o compilador não encontra o método?</p>
+  <p>O problema requer alguma explicação detalhada. Quando você usa o tipo <b>curinga&lt?></b>, Você diz ao compilador que está ignorando as informações de tipo, então <b>&lt?></b> significa tipo desconhecido. Toda vez que você tenta passar argumentos para um tipo <b>genérico</b>, o compilador java tenta inferir o tipo do argumento passado, bem como o tipo dos genéricos e para justificar o tipo de segurança. Agora, você está tentando usar o método <b>add()</b> para inserir um elemento na lista. Como <b>wildCardList</b> não sabe qual tipo de objeto ele contém, é arriscado adicionar elementos a ele. Você pode acabar adicionando uma <b>string</b> - "hello", por exemplo - em vez de um valor inteiro. Para evitar esse problema (lembre-se, os genéricos foram introduzidos na linguagem para garantir a segurança dos tipos!), O compilador não permite que você chame métodos que modifiquem o objeto. Como o método <b>add</b> modifica o objeto, você recebe um erro! A mensagem de erro também parece confusa, como em &ltcapture # 145 of? extends java.lang.Number>.</p>
+
+  </section>
+  <section id="classcolect">
+  <h1>Criando e Usando Classes de Coleção</h1>
+
+  <p><b>Criar e usar ArrayList, TreeSet, TreeMap, e objetos ArrayDeque</b></p>
+
+  <p>A biblioteca java tem um framework de <b>coleções</b> que faz uso extensivo de <b>genéricos</b> e fornece uma definiçao de contêiners e algorítimos. Nesta seção focaremos no uso do framework de coleções. Especialemente discutiremos importantes classes de <b>coleção</b> incluindo <b>ArrayList, TreeSet, TreeMap, e objetos ArrayDeque</b>.</p>
+
+  <p>O Termo <b>coleção( collection(s))</b> é um termo genérico, enquanto <b>Collecions</b> e <b>Collection</b> são <b>API's</b> específicos do  <b>java.util.package.Collections</b> -- como em <b>java.util.Collections</b> -- é uma classe de utilidade que contém somente métodos estáticos. Em geral coleções (collection) refere-se para um contêiner assim como <b>map, set, stack, e queue</b>. Usaremos o termo contêiners quando referir a esta <b>coleção</b>.
+  </section>
+  <section id="classintabs"></section>
+  <h2>Classes Abstratas e Interface</h2>
+
+  <p>A hierarquia de tipos na biblioteca <b>java.util</b> consiste em várias classes e interfaces abstratas que fornecem funcionalidade genérica. A Tabela abaixo relaciona alguns tipos importantes nessa hierarquia. Cobriremos alguns desses tipos mais detalhadamente mais adiante nesta seção.</p>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Classe Abstrata/Interface</th><th>Breve Descrição</th></tr>
+  <tr><td>Iterable </td><td>A implementação dessa interface pode ser usada para iterar com uma declaração foreach.</td></tr>
+  <tr><td>Collection</td><td> Interface base comum para classes na hierarquia de coleções. Quando você quer escrever métodos que são muito gerais, você pode passar a interface Collection. Por exemplo, o método max() em java.util.Collections recebe uma coleção e retorna um objeto.</td></tr>
+  <tr><td>List</td><td>Interface base para contêineres que armazenam uma sequência de elementos. Você pode acessar os elementos usando um índice e recuperar o mesmo elemento mais tarde (para manter o pedido de inserção). Você pode armazenar elementos duplicados em uma lista.</td></tr>
+
+  <tr><td>Set, SortedSet,NavigableSet</td><td> Interfaces para contêineres que não permitem elementos duplicados. SortedSet mantém os elementos do conjunto em uma ordem classificada. NavigableSet permite pesquisar o conjunto para as correspondências mais próximas.</td></tr>
+
+  <tr><td>Queue Dequeue </td><td> Queue é uma interface base para contêineres que contém uma seqüência de elementos para processamento. Por exemplo, as classes que implementam o Queue podem ser LIFO (last in, first out (ultimo que entra - primeiro que sai) - como na estrutura de dados da pilha) ou FIFO (first in, first out -(primeiro que entra - primeiro que sai) como na estrutura de dados da fila). Em um Deque você pode inserir ou remover elementos de ambas as extremidades.</td></tr>
+
+  <tr><td>Map, SortedMap, NavigableMap</td><td> Interfaces para contêineres que mapeiam chaves para valores. No SortedMap, as chaves estão em uma ordem classificada. Um NavigableMap permite pesquisar e retornar a correspondência mais próxima para determinados critérios de pesquisa. Observe que a hierarquia de mapas não estende a interface Collection.</td></tr>
+
+  <tr><td>Iterator, ListIterator</td><td>  Você pode atravessar o contêiner na direção para frente se uma classe implementar a interface Iterator. Você pode percorrer as direções para frente e para trás se uma classe implementar a interface ListIterator.</td></tr>
+  </table>
+  </div>
+  <p>Esses são alguns tipos de base, mas não sejam sobrecarregados por eles. Você verá classes concretas específicas e usará alguns desses tipos de base. Cobriremos apenas a <b>interface Collection</b> e, em seguida, passaremos a abordar as classes concretas específicas que fazem parte dessa hierarquia de coleção.</p>
+  </section>
+  <section id="intcolect">
+  <h2>A interface Collection</h2>
+
+  <p>A interface Collection fornece métodos como <b>add()</b> e <b>remove()</b> que são comuns a todos os contêineres.</p> 
+  <p>A seguir relacionamos  os métodos mais importantes nessa interface.</p>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Métdos</th><th>Breve Descrição</th></tr>
+  <tr><td>boolean add(Element elem)</td><td> Adiciona elem no container subjacente.</td></tr>
+  <tr><td>void clear()</td><td> Remove todos os elementos do contêiner.</td></tr>
+  <tr><td>boolean isEmpty()</td><td> Verifica se o contêiner tem algum elemento ou não.</td></tr>
+  <tr><td>Iterator&ltElement> iterator() </td><td>Retorna um objeto Iterator&ltElement> para iterar pelo contêiner.</td></tr>
+  <tr><td>boolean remove(Object obj) </td><td>Remove o elemento se obj estiver presente no container.</td></tr>
+  <tr><td>int size() </td><td>Retorna o número de elementos no container.</td></tr>
+  <tr><td>Object[] toArray() </td><td>Retorna um array que possui todos os elementos no container.</td></tr>
+  </table>
+  </div>
+  <p>Métodos como <b>add() e remove()</b> podem falhar dependendo do contêiner subjacente. Por exemplo, se o contêiner for somente leitura, você não poderá adicionar ou remover elementos. Além desses métodos, há muitos métodos na interface Collection que se aplicam a vários elementos no contêiner.</p>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  <tr><th>Métodos</th><th>Breve Descrição</th></tr>
+  <tr><td>boolean addAll (Collection&lt? extends Elemen> coll)</td><td> Adiciona todos os elementos em coll no Contêiner subjacente.</td></tr>
+  <tr><td>boolean containsAll(Collection&lt?> coll)</td><td> Verifica se todos os elementos dados no coll estão presentes no contêiner subjacente.</td></tr>
+  <tr><td>boolean removeAll (Collection&lt?> coll) </td><td> Remove todos os elementos do contêiner subjacente que também estão presentes em coll.</td></tr>
+  <tr><td>boolean retainAll (Collection&lt?> coll) </td><td> Mantém elementos no contêiner subjacente somente se eles também estiverem presentes em coll; remove todos os outros elementos</td></tr>
+  </table>
+  </div>
+  </section>
+  <section id="classconcret">
+  <h2>Classes Concretas</h2>
+
+  <p>Numerosas interfaces e classes abstratas na hierarquia Collection fornecem os métodos comuns que classes concretas específicas implementam/estendem.</p>
+  <p>A tabela a seguir mostra Classes Concretas importantes.</p>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  <tr><th>Classes Concretas</th><th> Breve Descrição</th></tr>
+  <tr><td>ArrayList</td><td> internamente é implementado como um array redimensionável. Esta é uma das classes concreta mais utilizadas. Rápido para pesquisar, mas lento para inserir ou excluir. Permite duplicatas.</td></tr>
+   <tr><td>LinkedList </td><td>Implementa internamente uma estrutura de dados de lista duplamente vinculada. Rápido para inserir ou excluir elementos, mas lento para pesquisar elementos. Além disso, LinkedListcan pode ser usado quando você precisa de uma estrutura de dados de pilha (LIFO) ou fila (FIFO). Permite duplicatas.</td></tr>
+  <tr><td>HashSet </td><td>Internamente implementado como uma estrutura de dados de tabela de hash. Usado para armazenar um conjunto de elementos - não permite armazenar elementos duplicados. Rápido para pesquisar e recuperar elementos. Não mantém qualquer ordem para os elementos armazenados.</td></tr>
+  <tr><td>TreeSet</td><td> Implementa internamente uma estrutura de dados de árvore vermelha e preta. Como o HashSet, o TreeSet não permite o armazenamento de duplicatas. No entanto, ao contrário do HashSet, ele armazena os elementos em uma ordem classificada. Ele usa uma estrutura de dados em árvore para decidir onde armazenar ou pesquisar os elementos, e a posição é decidida pela ordem de classificação.</td></tr>
+  <tr><td>HashMap </td><td>Internamente implementado como uma estrutura de dados da tabela de hash. Armazena pares de chave e valor. Usa hashing para encontrar um local para pesquisar ou armazenar um par. Pesquisar ou inserir é muito rápido. Não armazena os elementos em qualquer ordem.</td></tr>
+  <tr><td>TreeMap</td><td> Implementado internamente usando uma estrutura de dados em árvore vermelho-preto. Ao contrário do HashMap, o TreeMap armazena os elementos em uma ordem classificada. Ele usa uma estrutura de dados em árvore para decidir onde armazenar ou pesquisar chaves, e a posição é decidida pela ordem de classificação.</td></tr>
+  <tr><td>PriorityQueue </td><td>Implementado internamente usando a estrutura de dados de heap. Um PriorityQueue é para recuperar elementos com base na prioridade. Independentemente da ordem em que você inserir, quando você remover os elementos, o elemento de prioridade mais alta será recuperado primeiro.</td></tr>
+  </table>
+  </div>
+  </section>
+  <section id="classarraylist">
+  <h3>Classe ArrayList</h3>
+
+  <p>Listas são usadas para armazenar uma seqüência de elementos. Você pode inserir um elemento do contêiner em uma posição específica usando um índice e recuperar o mesmo elemento posteriormente (isto é, manter a ordem de inserção). Você pode armazenar elementos duplicados em uma lista. Existem duas classes concretas que você precisa saber: <b>ArrayList e LinkedList</b>.</p>
+  <p><b>ArrayList</b> implementa um array redimensionável. Quando você cria um array nativo (digamos, new String [10];), o tamanho do array é conhecido (fixo) no momento da criação. No entanto, <b>ArrayList</b> é um array dinâmico: pode crescer em tamanho conforme necessário. Internamente, um <b>ArrayList</b> aloca um bloco de memória e aumenta conforme necessário.</p>
+  <p>Então, acessar os elementos do array é muito rápido em uma ArrayList. No entanto, quando você adiciona ou remove elementos, internamente, o restante dos elementos é copiado; portanto, a adição / exclusão de elementos é uma operação dispendiosa.</p>
+
+  <p>Veja um exemplo simples para visitar elementos em uma ArrayList. Você pega uma ArrayList e usa a construção for-each para percorrer uma coleção:</p>
+  <pre class="brush:java">
+  ArrayList&ltString> languageList = new ArrayList&lt>();
+  languageList.add("C");
+  languageList.add("C++");
+  languageList.add("Java");
+  for(String language : languageList) {
+  System.out.println(language);
+  }
+  </pre>
+  <p><b>O progrma imprime:</b></p>
+  <pre>
+  C
+  C++
+  Java
+  </pre>
+  <p>Este <b>for-each</b> é equivalente ao codigo seguinte, que explicitamente usa um <b>Iterator:</b></p>
+  <pre class="brush:java">
+  for(Iterator&ltString> languageIter = languageList.iterator(); languageIter.hasNext();) {
+  String language = languageIter.next();
+  System.out.println(language);
+  }
+  </pre>
+
+  <p>Este segmento de código também imprimirá a mesma saída que o código do loop-for-each anterior . Aqui está uma descrição passo-a-passo de como este loop-for funciona:</p>
+  <p>1. Você usa o método <b>iterator()</b> para obter o iterador desse contêiner. Como <b>languageList</b> é um <b>ArrayList</b> do tipo <b>&ltString></b>, você deve criar <b>Iterator</b> como <b>String</b>. Nome é <b>languageIter</b>.</p>
+  <p>2. Antes de entrar no loop, você verifica se há algum elemento para visitar. Você chama o método <b>hasNext()</b> para verificar isso. Se retornar verdadeiro, há mais elementos para visitar; se retornar false, a iteração acabou e você sai do loop.</p>
+  <p>3. Uma vez que você entra no corpo do loop, a primeira coisa que você precisa fazer é chamar <b>next()</b> e mover o iterador. O método <b>next()</b> retorna o valor iterado. Você captura esse valor de retorno na variável <b>language</b>.</p>
+  <p>4. Você imprime o valor <b>language</b> e, em seguida, o loop continua.</p>
+
+  <p>Esse tipo de iteração - a maneira como você chama os métodos <b>iterator(), hasNext() e next()</b> - é importante para aprender; usaremos o loop-for-each ou essa expressão extensivamente em nossos exemplos.</p>
+  <p>Note que você cria <b>ArrayList&ltString></b> e <b>Iterator&ltString></b> em vez de apenas usar <b>ArrayList</b> ou <b>Iterator</b> (ou seja, você fornece informações de tipo junto com essas classes). As classes <b>Collection</b> são classes <b>genéricas</b>; portanto, você precisa especificar os parâmetros de tipo para usá-los. Aqui você está armazenando/iterando uma lista de strings, então você usa &ltString>.</p>
+  <p>Você pode remover elementos ao percorrer um contêiner usando iteradores. Vamos criar um objeto do tipo <b>ArrayList&ltInteger></b> com dez elementos. Você iterará sobre os elementos e removerá todos eles (em vez de usar o método <b>removeAll()</b> em <b>ArrayList</b>).</p>
+
+  <pre class="brush:java">
+   //TestIterator.java
+  // Este prograa mostra a utilidade do Iterator
+  import java.util.ArrayList;
+  import java.util.Iterator;
+  class TestIterator {
+  public static void main(String []args) {
+  ArrayList&ltInteger> nums = new ArrayList&ltInteger>();
+  for(int i = 1; i < 10; i++)
+  nums.add(i);
+  System.out.println("Original list " + nums);
+  Iterator&ltInteger> numsIter = nums.iterator();
+  while(numsIter.hasNext()) {
+  numsIter.remove();
+  }
+  System.out.println("List after removing all elements" + nums);
+  }
+  }
+  </pre>
+  <p><b> Este programa imprime este erro:</b></p>
+  <pre>
+  Original list [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  Exception in thread "main" java.lang.IllegalStateException
+  at java.util.AbstractList$Itr.remove(AbstractList.java:356)
+  at TestIterator.main(Main.java:12)
+  </pre>
+  <p>O problema é que você não chamou <b>next()</b> antes de chamar <b>remove()</b>. Verificando <b>hasNext()</b> na condição <b>loop-while</b>, movendo o elemento usando <b>next()</b>, e chamando <b>remove()</b> é o tipo correto para remover um elemento. Se você não segui-lo corretamente, poderá ter problemas (por exemplo,você obterá IllegalStateException). Da mesma forma, se você chamar <b>remove()</b> duas vezes sem inserir um <b>next()</b> entre as declarações, receberá essa exceção.</p>
+  <p>Vamos corrigir este programa chamando <b>next()</b> antes de chamar <b>remove()</b>. Aqui está a parte relevante do código:</p>
+  <pre class="brush:java">
+  Iterator&ltInteger> numsIter = nums.iterator();
+  while(numsIter.hasNext()) {
+  numsIter.next();
+  numsIter.remove();
+  }
+  System.out.println("List after removing all elements " + nums);
+  </pre>
+
+  <p><b>Imprime a lista sem elementos, conforme esperado:</b></p>
+
+  <pre>
+  List after removing all elements []
+  </pre>
+  </section>
+  <section id="aslist">
+  <h3>Usando Arrays.asList()</h3>
+
+  <p>A classe <b>java.util.Arrays</b> tem um método útil nomeado  método <b>asList()</b> que retorna uma lista de tamanho fixo. Aqui é um interessante aspecto sobre o objeto <b>List</b> retornado : você não pode adcionar ou remover elementos mas você pode modificar o objeto retornado pelo método <b>asList()</b>.</p>
+  <pre class="brush:java">
+  //ArrayAsList.java
+  import java.util.List;
+  import java.util.Arrays;
+  class ArrayAsList {
+  public static void main(String []args) {
+  Double [] temperatureArray = {31.1, 30.0, 32.5, 34.9, 33.7, 27.8};
+  System.out.println("The original array is: " + Arrays.toString(temperatureArray));
+  List&ltDouble> temperatureList =  Arrays.asList(temperatureArray);
+  temperatureList.set(0, 35.2);
+  System.out.println("The modified array is: " + Arrays.toString(temperatureArray));
+  }
+  }
+  </pre>
+  <p><b>Este código imprime o seguinte:</b></p>
+  <pre>
+  The original array is: [31.1, 30.0, 32.5, 34.9, 33.7, 27.8]
+  The modified array is: [35.2, 30.0, 32.5, 34.9, 33.7, 27.8]
+  </pre>
+
+  <p>A classe <b>Arrays</b> fornece apenas funcionalidades limitadas e muitas vezes você vai querer usar métodos na classe <b>Collections</b>. Para conseguir isso, chamar o método Arrays.asList() é uma técnica útil.</p>
+  </section>
+  <section id="classtreeset">
+  <h3>A classe TreeSet</h3>
+
+  <p>Existem duas classes concretas importantes para <b>Set</b>(neste caso pense em set como conjunto ): <b>HashSet</b> e <b>TreeSet</b>. Um <b>HashSet</b> é para inserir e recuperar rapidamente elementos; não mantém nenhuma ordem de classificação para os elementos que contém. Um <b>TreeSet</b> armazena os elementos em uma ordem classificada (e implementa a interface <b>SortedSet</b>).</p>
+  <p>Dada uma frase, como você pode classificar as letras usadas nessa frase em ordem alfabética? Um <b>TreeSet</b> coloca os valores em uma ordem classificada, para que você possa usar um contêiner TreeSet para resolver esse problema.</p>
+  <pre class="brush:java">
+  import java.util.Set;
+  import java.util.TreeSet;
+  class TreeSetTest {
+  public static void main(String []args) {
+  String pangram = "the quick brown fox jumps over the lazy dog";
+  Set&ltCharacter> aToZee = new TreeSet&ltCharacter>();
+  for(char gram : pangram.toCharArray())
+  aToZee.add(gram);
+  System.out.println("The pangram is: " + pangram);
+  System.out.print("Sorted pangram characters are: " + aToZee);
+  }
+  }
+  </pre>
+  <p><b>Este imprime assim:</b></p>
+  <pre>
+  The pangram is: the quick brown fox jumps over the lazy dog
+  Sorted pangram characters are: [ , a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, 
+  t, u, v, w, x, y, z]
+  </pre>
+  <p>Um pangram é uma frase que usa todas as letras do alfabeto pelo menos uma vez. Você quer armazenar caracteres de um pangram no <b>Set</b>. Como você precisa usar tipos de referência para contêineres, você criou um <b>TreeSet</b> de <b>Characters</b>.</p>
+  <p>Agora, como obter os caracteres de uma String? Lembre-se de que a indexação de array não funciona para Strings.
+  Por exemplo, para obter o primeiro caractere "t", se você usar o pangram [0] no programa, receberá um erro do compilador.</p>
+  <p>Felizmente, <b>String</b> possui um método chamado <b>toCharArray()</b> que retorna um <b>char[]</b>. Então, você usa esse método para percorrer a <b>string</b> e obter todos os caracteres. À medida que você adiciona os caracteres no <b>TreeSet</b>, os caracteres são armazenados em uma ordem classificada. Assim, você obtém todas as letras minúsculas quando imprime o <b>set</b>.
+  <p>Observe na saída que há uma vírgula principal. Por quê? A string de pangram possui muitos caracteres de espaço em branco. Um espaço em branco também é armazenado no <b>set</b>, por isso também é impresso!</p>
+  </section>
+  <section id="intmap">
+  <h2>A interface Map</h2>
+
+   <p>Um Mapa armazena pares chave e valor. A <b>interface Map</b> não estende a <b>interface Collection</b>. No entanto, existem métodos na <b>interface Map</b> que você pode usar para obter as classes de objetos que implementam a <b>interface Collection</b> para contornar esse problema. Além disso, os nomes de métodos em <b>Map</b> são muito semelhantes aos métodos em <b>Collection</b>, por isso é fácil entender e usar <b>Map</b>. Existem duas classes concretas importantes de <b>Map</b>: <b>HashMap e TreeMap</b>.</p>
+
+   <p>Um <b>HashMap</b> usa uma estrutura de dados da tabela de hash internamente. No HashMap, procurar (ou procurar por elementos) é uma operação rápida. No entanto, o Hash Map não lembra a ordem em que você inseriu elementos nem mantém elementos em qualquer ordem classificada.</p>
+    <p>Um <b>TreeMap</b> usa uma estrutura de dados de árvore vermelha e preta internamente. Ao contrário do HashMap, o TreeMap mantém os elementos na ordem de classificação (isto é, classificados por suas chaves). Então, pesquisar ou inserir é um pouco mais lento que o HashMap.</p>
+
+    <h3>A interface NavigableMap e a classe TreeMap</h3>
+
+    <p>A <b>interface NavigableMap</b> estende a <b>interface SortedMap</b>. A classe <b>TreeMap</b> é a classe amplamente usada que implementa o <b>NavigableMap</b>. Como o nome indica, com o <b>NavigableMap</b>, você pode navegar no <b>Map</b> facilmente. Tem muitos métodos que facilitam a navegação no <b>Map</b>. Você pode obter o valor mais próximo que corresponda à chave especificada, todos os valores menores que a chave especificada, todos os valores maiores que a chave especificada e assim por diante. Vejamos um exemplo: Sophia, Emma, Isabella e Olivea fizeram um exame on-line. Nesse exame, o máximo que eles podem pontuar é 100, com uma pontuação de aprovação de 40. Se você quiser encontrar detalhes como quem passou no exame e classificar as pontuações do exame em ordem crescente ou decrescente, o NavigableMap (e o TreeMap) é muito conveniente.</p>
+  <pre class="brush:java">
+    
+  // Este programa demonstra o uso da interface de árvore navegável e da classe TreeMap
+  import java.util.NavigableMap;
+  import java.util.TreeMap;
+  public class NavigableMapTest {
+  public static void main(String []args) {
+  NavigableMap&ltInteger, String> examScores = new TreeMap&ltInteger, String>();
+  examScores.put(90, "Sophia");
+  examScores.put(20, "Isabella");
+  examScores.put(10, "Emma");
+  examScores.put(50, "Olivea");
+  System.out.println("The data in the map is: " + examScores);
+  System.out.println("The data descending order is: " + examScores.descendingMap());
+  System.out.println("Details of those who passed the exam: " + examScores.tailMap(40));
+  System.out.println("The lowest mark is: " + examScores.firstEntry());
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime assim:</b></p>
+  <pre>
+  The data in the map is: {10=Emma, 20=Isabella, 50=Olivea, 90=Sophia}
+  The data descending order is: {90=Sophia, 50=Olivea, 20=Isabella, 10=Emma}
+  Details of those who passed the exam: {50=Olivea, 90=Sophia}
+  The lowest mark is: 10=Emma
+  </pre>
+
+  <p>Neste programa, você tem um <b>NavigableMap&ltInteger, String></b> que mapeia a pontuação do exame e o nome da pessoa. Você cria um <b>TreeMap&ltInteger, String></b> para armazenar as pontuações do exame. Por padrão, um <b>TreeMap</b> armazena dados em ordem crescente. Se você deseja os dados em ordem decrescente, é fácil: basta usar o método <b>descendingMap()</b> (ou <b>descendingKeySet()</b> se estiver interessado apenas nas chaves).</p>
+
+
+  <p>Como a pontuação de aprovação é 40, talvez você queira obter o mapa com os dados daqueles que falharam no exame. Para isso, você pode usar o método <b>headMap()</b> com o valor da chave 40 (já que os dados estão em ordem crescente, você deseja obter a parte “head” do mapa da posição dada). Da mesma forma, para obter os dados daqueles que passaram no exame, você pode usar o método <b>tailMap()</b>.</p>
+
+
+  <pb>Se você quiser os imediatos acima e abaixo da pontuação de aprovação, use os métodos <b>higherEntry()</b> e <b>lowerEntry()</b>, respectivamente. Os métodos <b>firstEntry() e lastEntry()</b> fornecem as entradas com os valores de chave mais baixos e mais altos. Então, quando você usa o método <b>firstEntry()</b> em <b>examScores</b>, você obtém Emma com 10 pontos. Se você usar <b>lastEntry()</b>, você recebe Sophia, que tem pontuação de 90.</p>
+
+  </section>
+  <section id="dequearray">
+  <h2>A interface Deque e classe ArrayDeque</h2>
+
+
+  <p><b>Deque</b> (Fila Duplamente terminada ) é uma estrutura de dados que permite inserir e remover elementos de ambas as extremidades. A <b>interface Deque</b> foi introduzida no Java 6 no pacote <b>java.util.collection</b>. A <b>interface Deque</b> estende a <b>interface Queue</b>. Portanto, todos os métodos fornecidos pelo <b>Queue</b> também estão disponíveis na <b>interface Deque</b>.
+
+
+  <p>Existem três implementações concretas da <b>interface Deque</b>: LinkedList, ArrayDeque e LinkedBlockingDeque.</p><p> Vamos usar o <b>ArrayDeque</b> para entender os recursos da <b>interface Deque</b>.</p>
+  <p>Considere a implementação de uma fila especial (por exemplo, para pagar uma conta de luz) em que um cliente pode ser adicionado apenas no final da fila e pode ser removido na frente da fila (quando o cliente pagou a conta) ou a partir do final da fila (quando o cliente fica frustrado com a fila longa e deixa a fila).</p>
+  <pre class="brush:java">
+  //SplQueueTest.java
+  // Este programa mostra a utilidade do interface Deque
+  import java.util.ArrayDeque;
+  import java.util.Deque;
+  class SplQueue {
+  private Deque&ltString> splQ = new ArrayDeque&lt>();
+  void addInQueue(String customer){
+  splQ.addLast(customer);
+  }
+  void removeFront(){
+  splQ.removeFirst();
+  }
+  void removeBack(){
+  splQ.removeLast();
+  }
+  void printQueue(){
+  System.out.println("Special queue contains: " + splQ);
+  }
+   }
+  class SplQueueTest {
+  public static void main(String []args) {
+  SplQueue splQ = new SplQueue();
+  splQ.addInQueue("Alan");
+  splQ.addInQueue("Anderson");
+  splQ.addInQueue("Antonio");
+  splQ.addInQueue("Maria");
+  splQ.printQueue();
+  splQ.removeFront();
+  splQ.removeBack();
+  splQ.printQueue();
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime o seguinte:</b></p>
+  <pre>
+  Special queue contains: [Alan, Anderson, Antonio, Maria]
+  Special queue contains: [Anderson, Antonio]
+  </pre>
+  <p>Você define primeiro uma classe - <b>SplQueue</b> - que define um tipo de <b>splQ</b> do contêiner <b>ArrayDeque</b> com quatro operações básicas. O método <b>addInQueue()</b> adiciona um cliente no final da fila, o método <b>removeBack()</b> remove um cliente do final da fila, o método <b>removeFront()</b> remove um cliente da frente da fila e o método <b>printQueue()</b> simplesmente imprime todos os elementos da fila. Você simplesmente usa os métodos <b>addLast(), removeFirst() e removeLast()</b> da interface <b>Deque</b> para realizar os métodos da classe <b>SplQueue</b>. No seu método <b>main()</b>, você instancia o <b>SplQueue</b> e chama o método <b>addInQueue()</b> da classe <b>SplQueue</b>. Depois disso, você remove um cliente da frente e um do final e imprime o conteúdo da fila antes e depois dessa remoção.</p> 
+  <br>
+  <p><i>A diferença entre um <b>ArrayList e ArrayDeque</b> é que você pode adicionar um elemento em qualquer lugar em uma lista de array usando um índice; no entanto, você pode adicionar um elemento somente na parte frontal ou final do <b>ArrayDeque</b>.Isso faz a inserção no <b>ArrayDeque</b>  mais eficiente do que <b>ArrayList</b>; no entanto, a navegação em um <b>ArrayDeque</b> se torna mais cara do que em um <b>ArrayList</b>.</i></p>
+  <br>
+
+  </section>
+  <section id="intcomp">
+  <h1>Interfaces Comparáveis ​​e de Comparação</h1>
+  <p>Como seus nomes sugerem, as interfaces <b>Comparable e Comparator</b> são usadas para comparar objetos semelhantes (por exemplo, durante a pesquisa ou classificação). Suponha que você tenha um contêiner contendo uma lista de objetos <b>Pessoa</b>. Agora, como você compara dois objetos <b>Pessoa</b>? Existem muitos atributos comparáveis, como SSN, nome, número da carteira de habilitação e assim por diante. Dois objetos podem ser comparados no SSN bem como o nome da pessoa; isso depende do contexto. Portanto, o critério para comparar os objetos <b>Pessoa</b> não pode ser predefinido; um desenvolvedor tem que definir esse critério. Java define interfaces comparáveis e de comparação para alcançar o mesmo.</p>
+  <p>A <b>interface Comparable</b> tem apenas um método <b>compareTo()</b>, que é declarado da seguinte forma:</p>
+
+  <pre class="brush:java">int compareTo(Element that)</pre>
+
+  <p>Como você está implementando o método <b>compareTo()</b> em uma classe, você tem essa referência disponível. Você pode comparar o elemento atual com o elemento passado e retornar um valor <b>int</b>. Qual deve ser o valor <b>int</b>? Aqui estão as regras para retornar o valor inteiro:</p>
+  <pre>
+  retorna 1 se objeto atual > objeto passado
+  retorna 0 se objeto atual == objeto passado
+  retorna -1 se objeto atual < objeto passado
+  </pre>
+  <p>Agora, uma questão importante: o que >, < ou == significa para um elemento? O significado de comparação deve ser natural; em outras palavras, a comparação deveria significar ordenação natural. Por exemplo, você viu como os inteiros são comparados entre si, com base em uma ordem numérica, que é a ordem natural para tipos inteiros. Da mesma forma, você compara <b>Strings</b> usando a comparação gráfica léxica, que é a ordem natural para <b>Strings</b>. Para classes definidas pelo usuário, você precisa encontrar a ordem natural na qual você pode comparar os objetos. Por exemplo, para uma classe Student, StudentId pode ser a ordem natural para comparar objetos Student</p>
+
+  <pre class="brush:java">
+  //ComparatorTest1.java 
+  // Este programa ostra a utilidade da interface Comparable
+  import java.util.Arrays;
+  class Student implements Comparable< Student > {
+  String id;
+  String name;
+  Double cgpa;
+  public Student(String studentId, String studentName, double studentCGPA) {
+  id = studentId;
+  name = studentName;
+  cgpa = studentCGPA;
+  }
+  public String toString() {
+  return " \n " + id + " \t " + name + " \t " + cgpa;
+  }
+  public int compareTo(Student that) {
+  return this.id.compareTo(that.id);
+  }
+  }
+  class ComparatorTest1 {
+  public static void main(String []args) {
+  Student []students = { new Student("cs011", "Maria ", 3.1),
+  new Student("cs021", "Alan", 3.4),
+  new Student("cs012", "Anderson ", 2.7),
+  new Student("cs022", "Antonio ", 3.7) };
+  System.out.println("Before sorting by student ID");
+  System.out.println("Student-ID \t Name \t CGPA (for 4.0) ");
+  System.out.println(Arrays.toString(students));
+  Arrays.sort(students);
+  System.out.println("After sorting by student ID");
+  System.out.println("Student-ID \t Name \t CGPA (for 4.0) ");
+  System.out.println(Arrays.toString(students));
+  }
+  }
+  </pre>
+  <p><b>Este imprime o seguinte:</b></p>
+  <pre>
+  Before sorting by student ID
+  Student-ID Name CGPA (for 4.0)
+  [
+  cs011 Maria 3.1,
+  cs021 Alan 3.4,
+  cs012 Anderson 2.7,
+  cs022 Antonio 3.7]
+  After sorting by student ID
+  Student-ID Name CGPA (for 4.0)
+  [
+  cs011 Maria 3.1,
+  cs012 Anderson 2.7,
+  cs021 Alan 3.4,
+  cs022 Antonio 3.7]
+  </pre>
+
+  <p>Você implementou a <b>interface Comparable&ltStudent></b>. Quando você chama o método <b>sort()</b>, ele chama o método <b>compareTo()</b> para comparar objetos <b>Student</b> por seus IDs. Como os IDs dos alunos são únicos, é uma ordem de comparação natural que funciona bem.</p>
+  <p>Agora, você pode precisar organizar os alunos com base na média de pontos acumulados (CGPA) obtida. Você pode até precisar comparar os alunos com base em seus nomes. Se você precisar implementar duas ou mais formas alternativas de comparar dois objetos semelhantes, poderá implementar a <b>interface Comparator</b>. O exemplo a seguir é uma implementação (não há mudança na classe Student, então não estamos produzindo aqui novamente).</p>
+
+  <pre class="brush:java">
+  //ComparatorTest2.java 
+  // Este programa mostra a implementação da interface Comparator
+  import java.util.Arrays;
+  import java.util.Comparator;
+  class CGPAComparator implements Comparator< Student > {
+  public int compare(Student s1, Student s2) {
+  return (s1.cgpa.compareTo(s2.cgpa));
+  }
+  }
+  class ComparatorTest2 {
+  public static void main(String []args) {
+  Student []students = { new Student("cs011", "Maria ", 3.1),
+  new Student("cs021", "Alan", 3.4),
+  new Student("cs012", "Anderson ", 2.7),
+  new Student("cs022", "Antonio ", 3.7) };
+  System.out.println("Before sorting by CGPA ");
+  System.out.println("Student-ID \t Name \t CGPA (for 4.0) ");
+  System.out.println(Arrays.toString(students));
+  Arrays.sort(students, new CGPAComparator());
+
+  System.out.println("After sorting by CGPA");
+  System.out.println("Student-ID \t Name \t CGPA (for 4.0) ");
+  System.out.println(Arrays.toString(students));
+  }
+  }
+  </pre>
+  <p><b>Este Imprime o seguinte:</b></b>
+
+  <pre>
+  Before sorting by CGPA
+  Student-ID Name CGPA (for 4.0)
+  [
+  cs011 Maria 3.1,
+  cs021 Alan 3.4,
+  cs012 Anderson 2.7,
+  cs022 Antonio 3.7]
+  After sorting by CGPA
+  Student-ID Name CGPA (for 4.0)
+  [
+  cs012 Anderson 2.7,
+  cs011 Maria 3.1,
+  cs021 Alan 3.4,
+  cs022 Antonio 3.7]
+  </pre>
+
+  <p>Sim, o programa imprime os dados de <b>Student</b> ordenados pelo seu <b>CGPA</b>. Você não alterou a classe Student ; a classe ainda implementa a <b>interface Comparable&ltString></b> e define o método <b>compareTo()</b>, mas você não usa o método <b>compareTo()</b> em seu programa. Você cria uma classe separada chamada <b>CGPAComparator</b> e implementa a <b>interface Comparator&ltStudent></b>. Você define o método <b>compare()</b>, que recebe dois objetos <b>Student</b> como argumentos. Você compara o <b>CGPA</b> dos argumentos <b>s1</b> e <b>s2</b> (re)usando  o método <b>compareTo()</b> da classe Double. Você não alterou nada no método <b>main()</b>, exceto pela maneira como chama o método <b>sort()</b>. Você cria um novo objeto <b>CGPAComparator()</b> e passa como segundo argumento para o método <b>sort()</b>. Por padrão, <b>sort()</b> usa o método <b>compareTo()</b>; Como você está passando um objeto <b>Comparator</b> explicitamente, ele agora usa o método <b>compare()</b> definido no <b>CGPAComparator</b>. Então, os objetos <b>Student</b> agora são comparados e classificados com base em seus <b>CGPA</b>.</p>
+
+  </section>
+  <section id="fluxosfilt">
+  <h1>Fluxo de Coleções e Filtros</h1>
+
+  <p>A nova API de fluxo é fornecida no pacote <b>java.util.stream</b> introduzido no Java 8. O principal tipo neste pacote é a <b>interface Stream&ltT></b>, que é o fluxo de referências de objeto. <b>IntStream, LongStream e DoubleStream</b> são fluxos para tipos primitivos<b> int, long e double</b> respectivamente.</p>
+
+
+  <p>A <b>interface Collection</b> foi adicionada com os métodos <b>stream()</b> e </b>parallelStream()</b> no Java 8.
+  Um fluxo é uma sequência de elementos. Você pode executar operações sequenciais ao obter um fluxo usando o método <b>stream()</b> e operações paralelas com o método <b>parallelStream()</b>.  Com as interfaces <b>List, Set, Deque e Queue</b> estendem a <b>interface Collection</b>, é possível obter um fluxo ou um fluxo paralelo das classes de coleta que implementam essas interfaces. Por exemplo, você pode obter um fluxo de um objeto <b>ArrayList</b>.</p>
+
+  <p>Os fluxos fornecem recursos de <b>pipelining</b> - você pode filtrar, mapear e pesquisar dados. Em outras palavras, as operações de fluxo podem ser "encadeadas" juntas para formar um <b>pipeline</b> conhecido como "pipeline de fluxo". Introduzimos pipelines de fluxo mais adiante nesta seção e os cobrimos em detalhes no capítulo dedicado aos fluxos.</p>
+  <p>A fonte mais comum de fluxos é objetos de coleção, como conjuntos, mapas e listas. No entanto, observe que podemos usar a API de fluxos independente das coleções. Mais adiante, discutiremos como as coleções são usadas com fluxos</p>
+  </section>
+  <section id="iteragefor">
+  <h2>Iteragir Usando forEach</h2>
+
+  <p>Considere este exemplo:</p>
+  <pre class="brush:java">List&ltString> strings = Arrays.asList("eeny", "meeny", "miny", "mo");</pre>
+
+  <p>Quando percorremos essa coleção usando um loop-for, estamos usando iteração externa, como em:</p>
+  <pre class="brush:java">
+  for(String string : strings) {
+  System.out.println(string);
+  }
+  </pre>
+
+  <p>A iteração interna deixa a iteração para o código da biblioteca. O mesmo código pode ser convertido para o seguinte código equivalente que faz uso de expressões lambda:</p>
+  <pre class="brush:java">
+  //internalIteration.java
+  import java.util.Arrays;
+  import java.util.List;
+  public class InternalIteration {
+  public static void main(String []args) {
+  List&ltString> strings = Arrays.asList("eeny", "meeny", "miny", "mo");
+  strings.forEach(string -> System.out.println(string));
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime:</b></p>
+  <pre>
+  eeny
+  meeny
+  miny
+  mo
+  </pre>
+  <p>Observe que a <b>interface List</b> estende a <b>interface Iterable</b> que possui um método <b>forEach</b> padrão (esse método foi incluído no Java 8). Assim, fomos capazes de executar a iteração interna chamando o método <b>forEach</b> no objeto strings e passando uma expressão lambda para ele como o parâmetro.</p>
+  <p>Embora esse exemplo seja simples, ele ilustra uma grande mudança com a abordagem do Java 8: estamos passando da iteração externa para a iteração interna. De fato, toda a API do Stream é baseada no conceito de iteração interna.</p>
+  <p>Antes de discutirmos a interface Stream e o pipeline de fluxo, vamos discutir um tópico importante relacionado às funções lambda que usamos na discussão sobre streams: referência de métodos.</p>
+  </section>
+  <section id="referenflux">
+  <h1>Referências de Métodos com Fluxos(Stream)</h1>
+  <p>Usando esta expressão lambda:</p>
+  <pre class="brush:java">strings.forEach(string -> System.out.println(string));</pre>
+
+  <p>Este código é um pouco detalhado porque estamos pegando o parâmetro string e apenas passando para o <b>System.out.println</b>. Felizmente, o Java 8 introduziu um recurso conhecido como “referências a métodos”. Referências de método usam o operador “<b>::</b>”. Aqui está uma expressão simplificada usando <b>referências de métodos</b>:</p>
+
+  <pre class="brush:java">strings.forEach(System.out::println);</pre>
+
+  <p>Referência de método encaminham os parâmetros fornecidos. Neste caso, <b>System.out::println</b> é equivalente a usar a expressão de expressão lambda <b>-> System.out.println(string)</b>. Como simplificar a seguinte declaração para usar referências de método?</p>
+
+  <pre class="brush:java">strings.forEach(string -> System.out.println(string.toUpperCase()));</pre>
+
+  <p>A expressão lambda neste código chama o método <b>UpCase()</b> no objeto <b>String</b> fornecido. Como as referências de método apenas rotearam os parâmetros, você não pode usá-los diretamente para simplificar essa expressão lambda. Uma alternativa é colocar esse código dentro de um método e usar a referência desse método.</p>
+  <pre class="brush:java">
+  import java.util.Arrays;
+  import java.util.List;
+  class MethodReference {
+  public static void printUpperCaseString(String string) {
+  System.out.println(string.toUpperCase());
+  }
+  public static void main(String []args) {
+  List&ltString> strings = Arrays.asList("eeny", "meeny", "miny", "mo");
+  strings.forEach(MethodReference::printUpperCaseString);
+  }
+  }
+  </pre>
+  <p><b>This program prints:</b></p>
+  <pre>
+  EENY
+  MEENY
+  MINY
+  MO
+  </pre>
+  <p>Neste caso, introduzimos um método estático dentro da classe <b>MethodReference</b>. A string <b>printUpperCase</b>chama o método <b>toUpperCase()</b> no argumento String passado e imprime a string resultante.</p>
+  <p>Para resumir, existem dois benefícios principais de referências de métodos:</p>
+
+  <p>As referências de método servem como uma maneira de rotear os parâmetros e, portanto, muitas vezes é conveniente (resulta em código mais conciso) usá-los do que as expressões lambda equivalentes. Por exemplo, vimos como <b>System.out::println</b> pode ser usado como um equivalente a <b>arg -> System.out.println (arg)</b>.</p>
+  </section>
+  <section id="intfluxostream">
+  <h1>Entendendo uma interface de fluxo(interface stream)</h1>
+
+  <p>A <b>interface Stream</b> é a interface mais importante fornecida no pacote <b>java.util.stream</b>. As classes <b>IntStream, LongStream e DoubleStream</b> são especializações de fluxo para <b>int, long e double</b>respectivamente. A Figura abaixo mostra a hierarquia de herança desses fluxos.</p>
+
+  <br>
+  <img src="imagens/jee7/interfacefluxo.jpg">
+  <br>
+  </section>
+  <section id="pipelinefluxo">
+  <h2>Pipeline de fluxo</h2>
+
+
+  <p>As operações de fluxo podem ser "encadeadas" juntas para formar um "pipeline de fluxo  ". Existem três partes no pipeline de fluxo :
+  <ul>
+  <li> Fonte: crie um fluxo (a partir de uma coleção ou array ou usando os métodos Stream, como of() e generate()).</li>
+  <li> Operações intermediárias: operações opcionais que podem ser encadeadas (como os métodos map(), filter(), distinct() e sorted() na interface Stream).</li>
+  <li>Operações do terminal: produza um resultado (como os métodos sum(), collect(), forEach() e reduce() na interface Stream).</li>
+  </ul>
+
+  <br>
+  <img src="imagens/jee7/pipefluxo.jpg">
+  <br>
+  <p><b>Fonte Stream</b>  -> Exemplos: intStream.range(), Arrays.Stream()</p>
+
+  <p><b>Operaçoes Intermediárias</b> -> Exemplos: map(), filter(), distinct() ,sorted()</p>
+
+  <p><b>Operação Terminal</b> -> Exemplos: sum(), collect(), forEach(), reduce()</p>
+
+
+  <p>Aqui um exemplo de pipeline de Fluxo( stream pipeline)</p>
+
+  <pre class="brush:java">
+  import java.util.Arrays;
+  class StreamPipelineExample {
+  public static void main(String []args) {
+  Arrays.stream(Object.class.getMethods()) // fonte
+  .map(method -> method.getName()) // operação intermediária
+  .distinct() // operação intermediária
+  .forEach(System.out::println); // operação terminal
+  }
+  }
+  </pre>
+  <p><b>este código imprime:</b></p>
+  <pre>
+  wait
+  equals
+  toString
+  hashCode
+  getClass
+  notify
+  notifyAll
+  </pre>
+
+  <p>O <b>Object.class.getMethods()</b> resulta em um array de objetos <b>Method</b> na classe <b>Object</b>. O mapa de operação  <b>map(method -> method.getName())</b> retorna os nomes dos métodos como um array (como parte de um fluxo). Observe que o método <b>wait()</b> na classe <b>Object</b> é um método sobrecarregado. Para obter nomes de métodos exclusivos, podemos usar a operação <b>distinct()</b> para remover as entradas duplicadas no array.Finalmente, a operação do terminal <b>forEach()</b> imprime os nomes dos métodos.</p>
+  <p>Uma maneira de entender o pipeline de fluxo é dividir os componentes do pipeline em declarações separadas. O exemplo anterior divide as partes em componentes separados e é o código equivalente do exemplo seguinte.</p>
+  <pre class="brush:java">
+  import java.util.Arrays;
+  import java.util.stream.Stream;
+  import java.lang.reflect.Method;
+  class StreamPipelineComponents {
+  public static void main(String []args) {
+  Method[] objectMethods = Object.class.getMethods();
+  Stream&ltMethod> objectMethodStream = Arrays.stream(objectMethods);
+  Stream&ltString> objectMethodNames = objectMethodStream.map(method -> method.getName());
+  Stream&ltString> uniqueObjectMethodNames = objectMethodNames.distinct();
+  uniqueObjectMethodNames.forEach(System.out::println);
+  }
+  }
+  </pre>
+  <p>Nesse caso, obtemos um fluxo chamando o método <b>Arrays.stream()</b> no resultado de <b>Object.class.getMethod()</b>- essa é a origem do fluxo. Os métodos <b>map() e distinct()</b> usam um fluxo como entrada e retornam um fluxo (modificado) como a saída. Finalmente, o método <b>forEach()</b> no fluxo é a operação terminal no pipeline.</p>
+
+  <br>
+   <p><i>Não confunda map em Streams com a interface java.util.Map. o método map() é uma operação intermediária que recebe elementos de um fluxo de entrada, aplica a operação e gera um fluxo de elementos como saída; a interface Map contém pares de valores-chave.</i></p>
+  <br>
+  </section>
+  <section id="fontfluxo">
+  <h2>Fonte de Fluxos</h2>
+
+  <p>Existem muitas fontes para um fluxo, incluindo métodos de gerador em interfaces de fluxo, coleções e arrays. Vamos considerar a tarefa simples de obter um fluxo de valores inteiros de 1 a 5.</p>
+
+  <p>1-Você pode usar métodos de intervalo ou iteração de fábrica na interface IntStream.</p>
+
+  <pre class="brush:java">IntStream.range(1, 6)</pre>
+
+   <p>O método <b>range()</b> recebe dois argumentos: inicia do valor inicial (dado como o primeiro argumento) e continua adicionando 1 para resultar em elementos de fluxo até atingir o valor final (dado como segundo argumento e excluindo esse valor ). Neste caso, nós passamos os valores 1 e 6, então o método <b>reduce()</b> gera o fluxo de valores inteiros a partir de 1, adiciona o valor 1 e resulta nos valores 2, 3, 4 e 5, e para aí porque atingiu o valor final 6.</p>
+
+  <pre class="brush:java">IntStream.iterate(1, i -> i + 1).limit(5)</pre>
+
+  <p>O método <b>iterate()</b> usa dois argumentos: o valor inicial (como o primeiro argumento) e chama iterativamente a função dada (como segundo argumento) usando o valor inicial semente. Neste caso, o primeiro argumento é 1, e iterativamente chama i + 1, gerando os valores inteiros 2, 3, 4, 5,… Este é um fluxo infinito. Nós limitamos o fluxo para os primeiros cinco valores chamando <b>limit(5)</b> sobre este fluxo infinito de valores inteiros.</p>
+
+  <p>2- Você pode usar o método <b>stream()</b> na classe <b>java.util.Arrays</b> para criar um fluxo a partir de um determinado <b>array</b>, como em:</p>
+  <pre class="brush:java">
+  Arrays.stream(new int[] {1, 2, 3, 4, 5})
+  Arrays.stream(new Integer[] {1, 2, 3, 4, 5})
+  </pre>
+  <p>O método <b>stream()</b> foi adcionado na classe Arrays em java 8</p>
+  <pre class="brush:java">
+  // na Classe Arrays 
+  public static IntStream stream(int[] array) { /* retorna um fluxo(stream) de inteiros */ }
+  public static&ltT> Stream&ltT> stream(T[] array) { /* retorna um fluxo de objetos  T*/ }
+  </pre>
+
+  <p>Versões sobrecarregadas do método <b>stream()</b> levam <b>long[]</b>, <b>double[]</b> e </b>T[]</b>. Já que estamos passando um <b>int[]</b> e o <b>Integer[]</b>, as chamadas <b>stream()</b> resolvem para <b>stream(int[]) e stream (T[])</b> respectivamente e um fluxo inteiro é retornado.</p>
+
+  <p>3. Também podemos criar fluxos usando fábricas e construtores. O método <b>of()</b> é um método de fábrica na <b>interface Stream</b>:</p>
+  <pre class="brush:java">
+  Stream.of(1, 2, 3, 4, 5)
+  Stream.of(new Integer[]{1, 2, 3, 4, 5})
+  </pre>
+
+  <p>O método sobrecarreagdo <b>of()</b> da <b>interface Stream</b> usa a lista de argumentos variáveis ​​ou um elemento do tipo <b>T</b>.</p>
+  <p>Além disso, você pode usar o método <b>builder()</b> e construir o objeto <b>Stream</b> adicionando cada elemento, como em:</p>
+
+  <pre class="brush:java">Stream.builder().add(1).add(2).add(3).add(4).add(5).build()</pre>
+
+  <p>Essa não é uma lista completa de maneiras que você pode usar para gerar um fluxo inteiro - isso é apenas para dar uma idéia de que há muitas maneiras de obter um fluxo. Como mencionado anteriormente, a <b>interface Collection</b> foi adicionada com os métodos <b>stream()</b> e <b>parallelStream()</b>. Portanto, qualquer objeto <b>Collection</b> é uma fonte de um fluxo - basta chamar o método <b>stream()</b> ou <b>parallelStream()</b>. Por exemplo:</p>
+
+  <pre class="brush:java">
+  List&ltString> strings = Arrays.asList("eeny", "meeny", "miny", "mo");
+  strings.stream().forEach(string -> System.out.println(string));
+  </pre>
+
+  <p>Neste caso, estamos recebendo um fluxo de um objeto <b>List&ltString></b> chamando o método <b>stream()</b>.</p>
+  <p>Existem vários outros tipos na biblioteca Java que retornam um fluxo, como:</p>
+  <ul>
+  <li> O método lines() na classe java.nio.file.Files</li>
+  <li> O método splitAsStream() na classe java.util.regex.Pattern</li>
+  <li> O método ints() na classe java.util.Random</li>
+  <li> O método chars() na classe java.lang.String</li>
+  </ul>
+
+  <p>Aqui estão alguns exemplos rápidos de como usá-los.</p>
+
+  <p>1. A classe <b>java.nio.file.Files</b> possui o método <b>lines()</b> que retorna um
+  <b>Stream&ltString></b>. Este código imprime o conteúdo do arquivo “FileRead.java” no diretório atual.</p>
+
+  <pre class="brush:java">Files.lines (Paths.get ("./FileRead.java")). forEach (System.out :: println);</pre>
+
+  <p>2. A classe <b>java.util.Pattern</b> possui o método <b>splitAsStream()</b> que retorna um </b>Stream&ltstring></b>. Esse código divide a string de entrada “java 8 streams” com base no espaço em branco e, portanto, imprime as strings “java”, “8” e “streams” no console.</p>
+
+  <pre class="brush:java">Pattern.compile ("") .splitAsStream ("java 8 streams").forEach(System.out :: println);</pre>
+
+  <p>3. A classe <b>java.util.Random</b> possui o método <b>ints()</b> que retorna um <b>IntStream</b>. Ele gera um fluxo infinito de inteiros aleatórios; Então, para restringir o número de inteiros a 5 inteiros, chamamos o limit(5) naquele stream.</p>
+
+  <pre class="brush:java">new Random ().ints().limit(5).forEach(System.out :: println);</pre>
+
+  <p>4. A classe <b>String</b> possui o método <b>chars()</b> (recentemente introduzido no Java 8 in
+  CharSequence - uma interface que a classe String implementa). Esse método retorna um <b>IntStream</b> (por que <b>IntStream</b>? Lembre-se de que não há especialização de caractere equivalente para <b>Streams</b>). Esse código chama o método <b>sorted()</b> nesse fluxo, para que os elementos do fluxo sejam classificados em ordem crescente. Como é um fluxo de inteiros, esse código usa "% c" para forçar explicitamente a conversão de <b>int</b> para <b>char</b>.</p>
+
+  <pre class="brush:java">"hello".chars().sorted().forEach(ch -> System.out.printf("%c ", ch));
+  // imprime e h l l o
+  </pre>
+  <p>Nestes exemplos, já usamos operações intermediárias, como <b>limit()</b> e <b>sorted()</b>. Vamos discutir essas operações intermediárias em mais detalhes agora.</p>
+
+  </section>
+  <section id="opintermed">
+  <h3>Operações Intermediárias</h3>
+
+  <p>Operações intermediárias transformam elementos em um fluxo. A Tabela abaixo lista algumas das operações intermediárias importantes no <b>Stream&ltT></b>.</p>
+
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  <tr><th>Método</th><th>descrição</th></tr>  
+
+  <tr><td>Stream&ltT> filter(Predicate&lt? super T> check)</td><td> Remove os elementos para os quais o predicate de verificação retorna falso.</td></tr>
+
+  <tr><td>&ltR>Stream&ltR> map(Function&lt? super T,? extends R> transform)</td><td> Aplica a função transform() para cada um dos elementos no fluxo.</td></tr>
+
+  <tr><td>Stream&ltT> distinct()</td><td> Remove elementos duplicados no fluxo; ele usa o método equals() para determinar se um elemento é repetido no fluxo.</td></tr>
+
+  <tr><td>Stream&ltT> sorted() Stream&ltT> sorted(Comparator&lt? super T> compare) </td><td> Classifica os elementos em sua ordem natural. A versão sobrecarregada leva um Comparator - você pode passar uma função lambda para isso.</td></tr>
+
+  <tr><td>Stream&ltT> peek(Consumer&lt? super T> consume)</td><td> Retorna os mesmos elementos no fluxo, mas também executa a expressão lambda de consumo passada nos elementos.</td></tr>
+
+  <tr><td>Stream&ltT> limit(long size)</td><td> Remove os elementos se houver mais elementos do que o tamanho determinado no fluxo.</td></tr>
+  </table>
+  </div>
+
+  <p>Observe que todas as operações intermediárias nesta tabela retornam um <b>Stream&ltT></b> como resultado.</p>
+  <p>Operações intermediárias são opcionais; Não é necessário haver operações intermediárias em um fluxo de pipeline.</p> <p>Aqui está um exemplo simples:</p>
+
+  <pre class="brush:java">Stream.of(1, 2, 3, 4, 5).count();,</pre>
+
+  <p>Esse código retorna o valor 5. Nesse caso, o método <b>Stream.of()</b> é a fonte do fluxo e o método <b>count()</b> é uma operação do terminal. O método <b>count()</b> retorna o número de elementos no fluxo.</p>
+  <p>Vamos introduzir uma operação intermediária nesse pipeline de fluxo:</p>
+
+  <pre class="brush:java">Stream.of(1, 2, 3, 4, 5).map(i -> i * i).count();</pre>
+
+  <p>A operação <b>map()</b> aplica a função fornecida passada como seu argumento nos elementos do fluxo.
+  Nesse caso, ele agrupa os elementos no fluxo. Este código também retorna o valor 5. Você pode verificar o resultado da aplicação do método <b>map()</b> neste código? Você pode usar o método <b>peek()</b> para isso:</p>
+
+  <pre class="brush:java">Stream.of(1, 2, 3, 4, 5).map(i -> i * i).peek(i -> System.out.printf("%d ", i)).count();</pre>
+
+  <p><b>Este código imprime:</b></p>
+
+  <pre>1 4 9 16 25</pre>
+
+  <p>Este exemplo também ilustra como as operações intermediárias podem ser encadeadas juntas. Isso é possível porque operações intermediárias retornam fluxos.</p>
+
+  <p>Agora, vamos adicionar um método <b>peek()</b> antes de chamar o método <b>map()</b> para entender como ele funciona:</p>
+  <pre class="brush:java">
+  Stream.of(1, 2, 3, 4, 5)
+  .peek(i -> System.out.printf("%d ", i))
+  .map(i -> i * i)
+  .peek(i -> System.out.printf("%d ", i))
+  .count();
+  </pre>
+  <p><b>Este código immprime:</b></p>
+  <pre>1 1 2 4 3 9 4 16 5 25</pre>
+
+
+  <p>Como você pode observar dessa saída, o pipeline de fluxo está processando os elementos um por um.
+  Cada elemento é mapeado para seu valor quadrado. O método <b>peek()</b> nos ajuda a entender como o fluxo está processando os elementos.</p>
+  <br>
+  <p><i>O método peek () é usado principalmente para fins de depuração. Ele nos ajuda a entender como os elementos são transformados no pipeline. Não o use no código de produção.</i></p>
+  </section>
+  <section id="filtcolect">
+  <h1>Filtrando uma Coleção</h1>
+
+  <p>O método <b>filter()</b> na <b>interface Stream</b> é usado para remover os elementos que não correspondem à condição dada. Veja um exemplo simples que usa o método <b>filter()</b> do Stream para remover um número inteiro ímpar.</p>
+  <pre class="brush:java">
+  //EvenNumbers.java
+  import java.util.stream.IntStream;
+  class EvenNumbers {
+  public static void main(String []args) {
+  IntStream.rangeClosed(0, 10)
+  .filter(i -> (i % 2) == 0)
+  .forEach(System.out::println);
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime isto:</b></p>
+  <pre>
+  0
+  2
+  4
+  6
+  8
+  10
+  </pre>
+  <p>Neste exemplo, estamos usando a classe <b>IntStream</b>-uma das especializações <b>ofStream</b> para <b>ints</b>. O método <b>rangeClosed(startValue,endValueInclusiveOfEnd)</b> gera uma sequência de números inteiros começando com <b>startValue</b> até (e inclusive) <b>endValueInclusiveOfEnd</b>. Aqui, o <b>rangeClosed(0, 10)</b> resulta em valores inteiros 0, 1, 2,…, 9, 10 (observe o valor 10). Há também um intervalo de método semelhante <b>range(startValue, endValueExclusiveOfEnd)</b> que gera uma sequência de números inteiros começando com <b>startValue</b> até (sem incluir) <b>endValueExclusiveOfEnd</b>.</p>
+
+  <p>A partir do resultado deste método <b>rangeClosed()</b>, aplicamos o método <b>filter()</b> nele. Aqui está a assinatura do método <b>filter()</b>:</p>
+
+  <pre class="brush:java">IntStream filter(IntPredicate predicate)</pre>
+
+  <p>O método <b>filter()</b> aplica o predicado fornecido para determinar se o elemento deve ser incluído como parte do fluxo retornado ou eliminado (isto é, filtro). A interface funcional <b>java.util.function.IntPredicate</b>  tem a função com a seguinte assinatura:</p>
+
+  <pre class="brush:java">boolean test(int value);</pre>
+
+
+  <p>Aqui nós passamos uma função lambda <b>i -> (i% 2) == 0 </b> para casar com a interface funcional <b>IntPredicate</b> que retorna um valor booleano. Se o elemento atualmente sendo processado retornar verdadeiro (ou seja, neste caso, é par), ele será parte do fluxo ou será eliminado.</p>
+  <p>Alternativamente, você pode definir uma função com o tipo de função da interface funcional <b>IntPredicate</b> e passá-la ao filtro.</p>
+  <pre class="brush:java">
+  // voce pode definir esta função estática dentro da classe EvenNumbers
+  public static boolean isEven(int i) {
+  return (i % 2) == 0;
+  }
+  </pre>
+  <p>Agora, em vez de passar a função lambda para <b>filter()</b>, você pode passar uma <b>referência de método</b>, como em <b>filter(EvenNumbers::isEven)</b>.</p>
+  <p>Frequentemente os métodos <b>map()</b> e <b>filter()</b> são usados ​​juntos. Por exemplo, o programa a seguir imprime os quadrados dos números pares.</p>
+
+  <pre class="brush:java">
+  //EvenSquares.java
+  import java.util.stream.IntStream;
+  class EvenSquares {
+  public static void main(String []args) {
+  IntStream.rangeClosed(0, 10)
+  .map(i -> i * i)
+  .filter(i -> (i % 2) == 0)
+  .forEach(System.out::println);
+  }
+  }
+  </pre>
+  <p><b>Este programa imprime:</b></p>
+  <pre>
+  0
+  4
+  16
+  36
+  64
+  100
+  </pre>
+
+
+  <p>No entanto, este código calcula desnecessariamente os quadrados dos números ímpares (os quadrados dos números ímpares são sempre ímpares). Assim, podemos alterar a ordem das operações de mapeamento e filtro para eliminar esses cálculos desnecessários:</p>
+  <pre class="brush:java">
+  IntStream.rangeClosed(0, 10)
+  .filter(i -> (i % 2) == 0)
+  .map(i -> i * i) // chama map DEPOIS chamar filter
+  .forEach(System.out::println);
+  </pre>
+  <p>Essa saída é a mesma. Este exemplo simples mostra como você pode, às vezes, alterar a ordem das operações intermediárias sem alterar o comportamento.</p>
+
+  </section>
+  <section id="opterminal">
+  <h3>Operações de Terminal</h3>
+
+  <p>Você precisa fornecer uma operação de terminal no final de um <b>pipeline</b>. Essa operação de terminal geralmente produz um resultado, como chamar os métodos <b>sum()</b>, <b>min()</b>, <b>max ()</b> ou <b>average()</b>em um <b>IntStream</b>. Uma operação de terminal também pode executar outras ações, como acumular os elementos com métodos <b>reduce()</b>, <b>collect()</b> ou simplesmente executar uma ação como na chamada do método <b>forEach()</b>. A Tabela abaixo lista algumas das importantes operações do terminal no <b>Stream&ltT></b>.</p>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  	<tr><th>Métodos</th><th>Descrição</th></tr>
+  <tr><td>void forEach(Consumer&lt? super T> action)</td><td> Chama a ação para cada elemento no fluxo.</td></tr>
+
+  <tr><td>Object[] toArray() </td></td>Retorna um array de objetos que tem os elementos no fluxo.</td></tr>
+
+
+  <tr><td>Optional&ltT> min(Comparator&lt? super T> compare)</td><td>  Retorna o valor mínimo no fluxo (compara os objetos usando a função compar fornecida)</td></tr>
+
+
+  <tr><td>Optional&ltT> max(Comparator&lt? super T> compare)</td><td> Retorna o valor náximo no fluxo (compara os objetos usando a função compar fornecida)</td></tr>
+
+  <tr><td>long count() </td><td>retorna o número de elementos no fluxo</td></tr>
+  </table>
+  </div>
+
+  <p>Há muitas operações importantes do terminal, como os métodos <b>reduce()</b>, <b>collect()</b>, </b>findFirst()</b>, <b>findAny()</b>, <b>anyMatch()</b>, <b>allMatch()</b> e <b>noneMatch()</b>. Discutimos esses métodos (e também o  <b>Optional&ltT></b> Além disso, <b>IntStream</b>, <b>LongStream</b> e<b> DoubleStream</b> possuem métodos como <b>sum()</b>, <b>min()</b>, <b>max()</b> e <b>average()</b> que operam no fluxo de <b>ints</b>, <b>longs</b> e <b>doubles</b>, respectivamente.</p>
+
+  <p>Aqui está um exemplo que usa o método toArray() na interface Stream:</p>
+  <pre class="brush:java">
+  Object [] words = Pattern.compile(" ").splitAsStream("1 2 3 4 5").toArray();
+  System.out.println(Arrays.stream(words).mapToInt(str -> Integer.valueOf((String)str)).sum());
+  </pre>
+  <p><b>Este programa imprime:</b></p>
+  <pre>
+  15
+  </pre>
+
+  <p>Neste programa, temos uma string “1 2 3 4 5” e <b>splitAsStream()</b> retorna um <b>fluxo de Strings</b>. Nós convertemos esse <b>fluxo de Strings</b> em um <b>array</b> de objetos chamado <b>words</b>; nós então convertemos o <b>array</b> de volta para fluxos usando <b>Arrays.stream(words)</b> (apenas para ilustrar como você pode converter um fluxo em um array e voltar!). Agora, mapeamos cada entrada de Objeto em uma <b>String</b> e depois para um valor inteiro. Finalmente, chamamos a soma de operação do terminal <b>sum()</b> para obter a soma dos inteiros como <b>15</b>.</p>
+  <p>Quando a operação do terminal é concluída, o fluxo no qual ela é operada é considerado "consumido".
+  Se você tentar "usar" o fluxo novamente, receberá uma exceção <b>IlegalStateException</b>.</p>
+  <pre class="brush:java">
+  //StreamReuse.java
+  import java.util.stream.IntStream;
+  public class StreamReuse {
+  public static void main(String []args) {
+  IntStream chars = "bookkeep".chars();
+  System.out.println(chars.count());
+  chars.distinct().sorted().forEach(ch -> System.out.printf("%c ", ch));
+  }
+  }
+  </pre>
+
+  <p>A variável <b>chars</b> aponta para o fluxo criado a partir da string “bookkeep”. Quando recebemos <b>chars.count()</b>, o fluxo é "consumido". Por quê? Porque o método <b>count()</b> é uma operação de terminal. Porque tentamos usar o fluxo novamente na próxima instrução, este programa trava lançando <b>IllegalStateException</b>.</p>
+
+
+
+  </section>
+  <p class="nav-arq" id="referencia">Projeto de Classe Avançado: <a href="designdeclasseavancado.html">&laquo; anterior | <a href="lambda.html">próximo &raquo;</a>Interfaces funcionais embutidas Lambda </p>
+  <div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/genericecollection" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+  </div>
+  </div>
+
+  </body>
+  	</html>
 
 
 

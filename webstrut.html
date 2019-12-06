@@ -1,16 +1,17 @@
 <!DOCTYPE html>
  <html lang="pt-br">
- <head>
-   <head>
+<head>
  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
  <link rel="stylesheet" type="text/css" href="css/stylos.css">
  <link rel="stylesheet" href="css/stylew3.css">
  <script type="text/javascript"src="js/efeitos.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
- <script src="code-brush-master/cbCore.js"></script>
+<script src="code-brush-master/cbCore.js"></script>
 <script src="code-brush-master/cBrushXml.js"></script>
+               
 <script src="code-brush-master/cBrushCss.js"></script>
 <script src="code-brush-master/cBrushPhp.js"></script>
 <script src="code-brush-master/cBrushSql.js"></script>
@@ -21,6 +22,55 @@
     SyntaxHighlighter.defaults['toolbar'] = false;
     SyntaxHighlighter.all();
 </script>
+<script type="text/javascript">
+jQuery(document).ready(function(jQuery) {            
+            var topMenu = jQuery("#mySidebar"),
+                offset = 40,
+                topMenuHeight = topMenu.outerHeight()+offset,
+                // All list items
+                menuItems =  topMenu.find('a[href*="#"]'),
+                // Anchors corresponding to menu items
+                scrollItems = menuItems.map(function(){
+                  var href = jQuery(this).attr("href"),
+                  id = href.substring(href.indexOf('#')),
+                  item = jQuery(id);
+                  //console.log(item)
+                  if (item.length) { return item; }
+                });
+
+            // so we can get a fancy scroll animation
+            menuItems.click(function(e){
+              var href = jQuery(this).attr("section"),
+                id = href.substring(href.indexOf('#'));
+                  offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+              jQuery('html, body').stop().animate({ 
+                  scrollTop: offsetTop
+              }, 300);
+              e.preventDefault();
+            });
+
+            // Bind to scroll
+            jQuery(window).scroll(function(){
+               // Get container scroll position
+               var fromTop = jQuery(this).scrollTop()+topMenuHeight;
+
+               // Get id of current scroll item
+               var cur = scrollItems.map(function(){
+                 if (jQuery(this).offset().top < fromTop)
+                   return this;
+               });
+
+               // Get the id of the current element
+               cur = cur[cur.length-1];
+               var id = cur && cur.length ? cur[0].id : "";               
+               
+               menuItems.parent().removeClass("active");
+               if(id){
+                    menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+               }
+               
+            })
+        })</script>
  <title> Programar em Java</title>
  </head>
  <body>
@@ -33,17 +83,29 @@
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
   <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <li class="active">
   <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+   </li><li>
    <a class="w3-bar-item w3-button" href="#webstrut2">22 - CONSTRUINDO APLICATIVO WEB COM STRUTS 2</a>
+          </li><li>
           <a class="w3-bar-item w3-button" href="#visgeral">Strut 2 Visão Geral</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#action">Action</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#actinterface">Action Interface</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#actiosup">Classe ActionSupport</a>
+          </li><li>
           <a class="w3-bar-item w3-button"href="#intercept">Interceptors</a>
+         </li><li>
           <a class="w3-bar-item w3-button" href="#valueognl">ValueStack e OGNL</a>
+         </li><li>
+         <a class="w3-bar-item w3-button" href="#resutype">ResultType e Result</a>
+   </li><li>
           <a class="w3-bar-item w3-button"href="#tagstrut2">Tags Struts 2 </a>
+ </li><li>
           <a class="w3-bar-item w3-button"href="#intrdstrut2">Introdução ao Struts 2</a>
-  
+  </li><li>
   <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
     <div id="demo" class="w3-hide">
@@ -337,7 +399,8 @@ class="HelloWorldAction">
  <p><b>Usando OGNL</b></p>
 
  <pre class="brush:java">&lts:property value="#book.bookTitle"/></pre>
-
+</section>
+<section id="resutype">
  <h3>ResultType e Result</h3>
  <p>No Struts 2, a renderização da resposta consiste no tipo de resultado e no resultado. O tipo de resultado fornece os detalhes da implementação para o tipo de exibição retornado ao usuário. Cada método em uma ação retorna um resultado, que inclui a especificação do tipo de resultado. Se nenhum tipo de resultado for especificado, o tipo de resultado padrão será usado, que encaminha para uma página JSP.</p>
  <p><b>Tipo de resultado padrão</b></p>
@@ -772,7 +835,7 @@ Este código usa anotações de ação e resultado apenas para mostrar como usá
 
 <p>O plug-in Convention usa o nome da classe action para mapear o URL da ação. O plug-in Convention remove primeiro a palavra Action no final do nome da classe e depois converte o nome camel-case em traços. Portanto, por padrão, OlaMundoAction será chamado para o URL de solicitação ola-mundo. Mas se você quiser que a ação seja chamada para um URL diferente, poderá fazer isso usando a anotação da ação.</p>
 </section>
-<p class="nav-arq" id="referencia">Soluções usando padrões <a href="padroes.html">&laquo; anterior | <a href="appbook.html">próximo >> Construindo um Aplicativo Web com Struts2 &raquo;</a> </p>
+<p class="nav-arq" id="referencia">Soluções usando padrões <a href="padroes.html">&laquo; anterior | <a href="appbook.html">próximo >> Aplicativo Web com Struts2 &raquo;</a> </p>
 <div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis.github.io/tree/master/javacodigos/usandostruts2" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
 </div>
 </div>

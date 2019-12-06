@@ -1,1419 +1,1502 @@
-
-
-<!DOCTYPE html>
- <html lang="pt-br">
-
+  <!DOCTYPE html>
+   <html lang="pt-br">
   <head>
- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/stylos.css">
+   <link rel="stylesheet" href="css/stylew3.css">
+   <script type="text/javascript"src="js/efeitos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+  <script src="code-brush-master/cbCore.js"></script>
+  <script src="code-brush-master/cBrushXml.js"></script>
+                 
+  <script src="code-brush-master/cBrushCss.js"></script>
+  <script src="code-brush-master/cBrushPhp.js"></script>
+  <script src="code-brush-master/cBrushSql.js"></script>
+  <script src="code-brush-master/cBrushJScript.js"></script>   
+  <script src="code-brush-master/cBrushJava.js"></script>  
+  <script>
+      SyntaxHighlighter.defaults['auto-links'] = false;
+      SyntaxHighlighter.defaults['toolbar'] = false;
+      SyntaxHighlighter.all();
+  </script>
+  <script type="text/javascript">
+  jQuery(document).ready(function(jQuery) {            
+              var topMenu = jQuery("#mySidebar"),
+                  offset = 40,
+                  topMenuHeight = topMenu.outerHeight()+offset,
+                  // All list items
+                  menuItems =  topMenu.find('a[href*="#"]'),
+                  // Anchors corresponding to menu items
+                  scrollItems = menuItems.map(function(){
+                    var href = jQuery(this).attr("href"),
+                    id = href.substring(href.indexOf('#')),
+                    item = jQuery(id);
+                    //console.log(item)
+                    if (item.length) { return item; }
+                  });
 
- <link rel="stylesheet" type="text/css" href="css/stylos.css">
- <link rel="stylesheet" href="css/stylew3.css">
- <script type="text/javascript"src="js/efeitos.js"></script>
- <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
-<script src="code-brush-master/cbCore.js"></script>
-<script src="code-brush-master/cBrushXml.js"></script>
-<script src="code-brush-master/cBrushCss.js"></script>
-<script src="code-brush-master/cBrushPhp.js"></script>
-<script src="code-brush-master/cBrushSql.js"></script>
-<script src="code-brush-master/cBrushJScript.js"></script>   
-<script src="code-brush-master/cBrushJava.js"></script>  
-<script>
-    SyntaxHighlighter.defaults['auto-links'] = false;
-    SyntaxHighlighter.defaults['toolbar'] = false;
-    SyntaxHighlighter.all();
-</script>
- <title> Programar em Java</title>
- </head>
- <body>
- 
+              // so we can get a fancy scroll animation
+              menuItems.click(function(e){
+                var href = jQuery(this).attr("section"),
+                  id = href.substring(href.indexOf('#'));
+                    offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+                jQuery('html, body').stop().animate({ 
+                    scrollTop: offsetTop
+                }, 300);
+                e.preventDefault();
+              });
 
-<!-- Top Navigation Menu -->
+              // Bind to scroll
+              jQuery(window).scroll(function(){
+                 // Get container scroll position
+                 var fromTop = jQuery(this).scrollTop()+topMenuHeight;
 
-  <div id="voltarTopo">
-  <a href="#" id="subir">Topo</a>
-</div>
+                 // Get id of current scroll item
+                 var cur = scrollItems.map(function(){
+                   if (jQuery(this).offset().top < fromTop)
+                     return this;
+                 });
 
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
-       <a class="w3-bar-item w3-button"  href="#metodoenc">4 - MÉTODOS E ENCAPSULAMENTOS</a>
-            <a class="w3-bar-item w3-button"  href="#desenhometodo">Projetando Métodos</a>
-          <a class="w3-bar-item w3-button"  href="#idmodifyaccess">Modificadores de Acesso</a>
-          <a class="w3-bar-item w3-button"  href="#especopc">Especificadores Opcionais</a>
-          <a class="w3-bar-item w3-button" href="#idtipretorn">Tipo de Retorno</a>
-          <a class="w3-bar-item w3-button"  href="#idnommetodo">Nome do Método </a>
-          <a class="w3-bar-item w3-button"  href="#idlisparam">Lista de Parâmetros </a>
-          <a class="w3-bar-item w3-button"  href="#idlistexce">Lista de Exceção Opcional </a>
-           <a class="w3-bar-item w3-button"  href="#idbodymethod">Corpo do Método </a>
-          <a class="w3-bar-item w3-button"  href="#vararg">Trabalhando com Varargs</a>
-          
-<a class="w3-bar-item w3-button"  href="#miodificadoracesso">Aplicando Modificadores de Acesso</a>
-            <a class="w3-bar-item w3-button"  href="#idaccesspriv">Acesso Private</a>
-          <a class="w3-bar-item w3-button"  href="#iddefaultaccss">Acesso Default (pacote privado)</a>
-          <a class="w3-bar-item w3-button"  href="#idaccessprotec">Acesso Protected</a>
-          <a class="w3-bar-item w3-button" href="#idacesspublic">Acesso Público</a>
-          <a class="w3-bar-item w3-button"  href="#idprjmetcampst">Projetando métodos e campos estáticos </a>
-          <a class="w3-bar-item w3-button"  href="#idcallmethod">Chamando um Método ou Variável Estática </a>
-          <a class="w3-bar-item w3-button"  href="#staticvsinst">Estático vs. Instância </a>
-           <a class="w3-bar-item w3-button"  href="#varestatic">Variável Estática </a>
-          <a class="w3-bar-item w3-button"  href="#inicstatic">Inicialização Estática</a>
-        
-        <a class="w3-bar-item w3-button"  href="#idimportstatic">Importes Estáticos</a>
-            <a class="w3-bar-item w3-button"  href="#passardados">Passando Dados entre Métodos</a>
-          <a class="w3-bar-item w3-button"  href="#metodosobrecarga">Métodos de Sobrecarga</a>
-          <a class="w3-bar-item w3-button"  href="#idvarsobrecarg">Sobrecarga e Varargs</a>
-          <a class="w3-bar-item w3-button" href="#idautoboxing">AutoBoxing</a>
-          <a class="w3-bar-item w3-button"  href="#tiprefid">Tipos de Referências </a>
-          <a class="w3-bar-item w3-button"  href="#primitiveid">Primitivos</a>
-          <a class="w3-bar-item w3-button"  href="#idjunttudo">Juntando Tudo</a>
-           <a class="w3-bar-item w3-button"  href="#construtores">Criando Construtores </a>
-          <a class="w3-bar-item w3-button"  href="#idconstrutdefaul">Construtor Default</a>
-        
-        <a class="w3-bar-item w3-button"  href="#idsobrecconst">Sobrecarga de construtores</a>
-            <a class="w3-bar-item w3-button"  href="#idencadeamconst">Encadeamento de Construtores</a>
-          <a class="w3-bar-item w3-button"  href="#idcampfinal">Campos "final</a>
-          <a class="w3-bar-item w3-button"  href="#idordinicaliz">Ordem de inicialização</a>
-          <a class="w3-bar-item w3-button" href="#encapsulardados">Encapsular Dados</a>
-          <a class="w3-bar-item w3-button"  href="#lambda">Escrevendo Lambda Simples </a>
-          <a class="w3-bar-item w3-button"  href="#idlambdaexemplo">Lambda Exemplo </a>
-          <a class="w3-bar-item w3-button"  href="#idsintaxlambda">Sintax Lambda </a>
-           <a class="w3-bar-item w3-button"  href="#idpredicate">Predicate </a>
-          <a class="w3-bar-item w3-button"  href="#resumo">Resumão</a>
-        
+                 // Get the id of the current element
+                 cur = cur[cur.length-1];
+                 var id = cur && cur.length ? cur[0].id : "";               
+                 
+                 menuItems.parent().removeClass("active");
+                 if(id){
+                      menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+                 }
+                 
+              })
+          })</script>
+   <title> Programar em Java</title>
+   </head>
+   <body>
+   
 
-  
-  <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
-    <div id="demo" class="w3-hide">
+  <!-- Top Navigation Menu -->
 
-  <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
-     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
-
-<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
-<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
-<a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
-
-<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
-<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
-<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
-<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
-<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
-
-<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
-<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
-<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
-<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
-<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
-<a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
-<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
-<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
-<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
-<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
-
-<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
-<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
-<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
-<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
-
-<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
-      
-      
-    </div>
+    <div id="voltarTopo">
+    <a href="#" id="subir">Topo</a>
   </div>
-</nav>
 
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+    <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+    <li class="active">
+    <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+         </li><li>
+         <a class="w3-bar-item w3-button"  href="#metodoenc">4 - MÉTODOS E ENCAPSULAMENTOS</a>
+          </li><li>
+        <a class="w3-bar-item w3-button"  href="#desenhometodo">Projetando Métodos</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"  href="#idmodifyaccess">Modificadores de Acesso</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"  href="#especopc">Especificadores Opcionais</a>
+      </li><li>
+            <a class="w3-bar-item w3-button" href="#idtipretorn">Tipo de Retorno</a>
+             </li><li>
+            <a class="w3-bar-item w3-button"  href="#idnommetodo">Nome do Método </a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idlisparam">Lista de Parâmetros </a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idlistexce">Lista de Exceção Opcional </a>
+                    </li><li>
+             <a class="w3-bar-item w3-button"  href="#idbodymethod">Corpo do Método </a>
+                  </li><li>
+            <a class="w3-bar-item w3-button"  href="#vararg">Trabalhando com Varargs</a>
+                   </li><li>
+  <a class="w3-bar-item w3-button"  href="#miodificadoracesso">Aplicando Modificadores de Acesso</a>
+                     </li><li>
+              <a class="w3-bar-item w3-button"  href="#idaccesspriv">Acesso Private</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#iddefaultaccss">Acesso Default (pacote privado)</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idaccessprotec">Acesso Protected</a>
+                 </li><li>
+            <a class="w3-bar-item w3-button" href="#idacesspublic">Acesso Público</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idprjmetcampst">Projetando métodos e campos estáticos </a>       </li><li>
+            <a class="w3-bar-item w3-button"  href="#idcallmethod">Chamando um Método ou Variável Estática </a>       </li><li>
+            <a class="w3-bar-item w3-button"  href="#staticvsinst">Estático vs. Instância </a>
+                  </li><li>
+             <a class="w3-bar-item w3-button"  href="#varestatic">Variável Estática </a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#inicstatic">Inicialização Estática</a>
+                 </li><li>
+          <a class="w3-bar-item w3-button"  href="#idimportstatic">Importes Estáticos</a>
+                     </li><li>
+              <a class="w3-bar-item w3-button"  href="#passardados">Passando Dados entre Métodos</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#metodosobrecarga">Métodos de Sobrecarga</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idvarsobrecarg">Sobrecarga e Varargs</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button" href="#idautoboxing">AutoBoxing</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#tiprefid">Tipos de Referências </a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#primitiveid">Primitivos</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idjunttudo">Juntando Tudo</a>
+                  </li><li>
+             <a class="w3-bar-item w3-button"  href="#construtores">Criando Construtores </a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idconstrutdefaul">Construtor Default</a>
+                 </li><li>
+          <a class="w3-bar-item w3-button"  href="#idsobrecconst">Sobrecarga de construtores</a>
+                  </li><li>
+              <a class="w3-bar-item w3-button"  href="#idencadeamconst">Encadeamento de Construtores</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idcampfinal">Campos "final</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idordinicaliz">Ordem de inicialização</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button" href="#encapsulardados">Encapsular Dados</a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#lambda">Escrevendo Lambda Simples </a>
+                 </li><li>
+            <a class="w3-bar-item w3-button"  href="#idlambdaexemplo">Lambda Exemplo </a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#idsintaxlambda">Sintax Lambda </a>
+                    </li><li>
+             <a class="w3-bar-item w3-button"  href="#idpredicate">Predicate </a>
+                   </li><li>
+            <a class="w3-bar-item w3-button"  href="#resumo">Resumão</a>
+                 </li><li>
 
-<div class="w3-main" style="margin-left:250px;">
+    
+    <div>
+      <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links  <i class="fa fa-caret-down"></i></a>
+      <div id="demo" class="w3-hide">
 
-<div id="myTop" class="w3-top  w3-large">
-  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-</p>
-</div>
-<header class="w3-container w3-theme" style="padding:64px 32px">
-  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
-</header>
-<section id="metodoenc">
-<h1>4 - MÉTODOS E ENCAPSULAMENTOS</h1>
+    <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+       <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
 
-<p><b>O objetivo é trabalhar com métodos e encapsulamento assim como classes selecionadas do Java API</b></p>
-<ul>
-	<li>Criar métodos com argumentos e retornar valores; incluindo métodos sobrecarregados</li>
-<li>Aplicar campos e métodos com a palavra-chave <b>static</b></li>
-<li>Criar e sobracarregar construtores; incluindo impacto nos construtores padrão</li>
-<li>Aplicar modificadores de acesso</li>
-<li>Aplicar principios de encapsulamento para classe</li>
-<li>Determinar o efeito sobre referências de objetos e valores primitivos quando eles são passados dentro dos métodos que mudam os valores</li>
+  <a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+  <a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+  <a class="w3-bar-item w3-button" href="excecao.html">6 - Exceções</a>
 
-<li>Escrever uma simples expressão Lambda que consome um Predicado de expressão Lambda</li>
-</ul>
-<p>Nesta parte iremos explorar métodos e construtores, variáveis de instâncias, a palavra-chave <b>final</b>, modificadores de acesso,  inicialização e escrever uma simples expressão lambda.</p>
+  <a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+  <a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+  <a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+  <a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+  <a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
 
-</section>
-<section id="desenhometodo">
-<h1>Projetando Métodos</h1>
-<p>Todo o programa Java nós temos visto o método <b>main()</b>. Podemos escrever outros métodos também. Por exemplo:</p>
+  <a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+  <a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+  <a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+  <a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+  <a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+  <a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+  <a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+  <a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+  <a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+  <a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
 
-<pre class="brush:java">        
-public  final  void  desligar(int minutos)  throws InterruptedException {
-                                 
-          // corpo do método 
-            }
-}    
+  <a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+  <a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+  <a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+  <a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
+
+  <a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+        
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+  <div class="w3-main" style="margin-left:250px;">
+
+  <div id="myTop" class="w3-top  w3-large">
+    <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  </p>
+  </div>
+  <header class="w3-container w3-theme" style="padding:64px 32px">
+    <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+  </header>
+  <section id="metodoenc">
+  <h1>MÉTODOS E ENCAPSULAMENTOS</h1>
+
+  <p><b>O objetivo é trabalhar com métodos e encapsulamento assim como classes selecionadas do Java API</b></p>
+  <ul>
+  	<li>Criar métodos com argumentos e retornar valores; incluindo métodos sobrecarregados</li>
+  <li>Aplicar campos e métodos com a palavra-chave <b>static</b></li>
+  <li>Criar e sobracarregar construtores; incluindo impacto nos construtores padrão</li>
+  <li>Aplicar modificadores de acesso</li>
+  <li>Aplicar principios de encapsulamento para classe</li>
+  <li>Determinar o efeito sobre referências de objetos e valores primitivos quando eles são passados dentro dos métodos que mudam os valores</li>
+
+  <li>Escrever uma simples expressão Lambda que consome um Predicado de expressão Lambda</li>
+  </ul>
+  <p>Nesta parte iremos explorar métodos e construtores, variáveis de instâncias, a palavra-chave <b>final</b>, modificadores de acesso,  inicialização e escrever uma simples expressão lambda.</p>
+
+  </section>
+  <section id="desenhometodo">
+  <h1>Projetando Métodos</h1>
+  <p>Todo o programa Java nós temos visto o método <b>main()</b>. Podemos escrever outros métodos também. Por exemplo:</p>
+
+  <pre class="brush:java">        
+  public  final  void  desligar(int minutos)  throws InterruptedException {
                                    
- // public -> modificador de acesso
- // final -> opcional
- // void -> tipo de retorno
- // desligar -> nome do método
- // (int minutos) -> lista de parâmetros
- // throws InterruptedException -> exceção(opcional)
-</pre>
-<p>Isto é chamado de uma declaração de métodos, que especifica todas as informações necessárias para chamar o método. Existe uma quantidade de partes que iremos cobrir.</p>
-<br>
-<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+            // corpo do método 
+              }
+  }    
+                                     
+   // public -> modificador de acesso
+   // final -> opcional
+   // void -> tipo de retorno
+   // desligar -> nome do método
+   // (int minutos) -> lista de parâmetros
+   // throws InterruptedException -> exceção(opcional)
+  </pre>
+  <p>Isto é chamado de uma declaração de métodos, que especifica todas as informações necessárias para chamar o método. Existe uma quantidade de partes que iremos cobrir.</p>
+  <br>
+  <p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
 
 
-<br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-  <tr><th colspan="3">TABELA  Partes de uma declaração do método</th></tr>
-<tr><td>Elemento</td> <td>Valor no exemplo desligar() </td> <td>Necessário?</td></tr>
-<tr><td>Modificador de Acesso</td> <td> public</td> <td>Não</td></tr>
-<tr><td>Especificador Opcional</td><td> final</td><td> Não</td></tr>
-<tr><td>Tipo de Retorno</td><td> void</td><td> Sim</td></tr>
-<tr><td>Nome do Método</td><td> desligar</td><td> Sim</td></tr>
-<tr><td>Lista de Parâmetro</td><td> (int minutos)</td><td> Sim, mas o parêntese pode estar vazio</td></tr>
-<tr><td>Lista de Exceção Opcional</td><td> throws InterruptedException</td><td> Não</td></tr>
-<tr><td>Corpo do Método</td><td> {// desligar a tv }</td><td> Sim, mas pode ficar de chaves vazia </td></tr>
-</table>
-</div>
-<br>
-<p>Para chamar esse método, basta digitar seu nome, seguido por um único valor int no parêntese <b>desligar(10)</b>;</b>
+  <br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+    <tr><th colspan="3">TABELA  Partes de uma declaração do método</th></tr>
+  <tr><td>Elemento</td> <td>Valor no exemplo desligar() </td> <td>Necessário?</td></tr>
+  <tr><td>Modificador de Acesso</td> <td> public</td> <td>Não</td></tr>
+  <tr><td>Especificador Opcional</td><td> final</td><td> Não</td></tr>
+  <tr><td>Tipo de Retorno</td><td> void</td><td> Sim</td></tr>
+  <tr><td>Nome do Método</td><td> desligar</td><td> Sim</td></tr>
+  <tr><td>Lista de Parâmetro</td><td> (int minutos)</td><td> Sim, mas o parêntese pode estar vazio</td></tr>
+  <tr><td>Lista de Exceção Opcional</td><td> throws InterruptedException</td><td> Não</td></tr>
+  <tr><td>Corpo do Método</td><td> {// desligar a tv }</td><td> Sim, mas pode ficar de chaves vazia </td></tr>
+  </table>
+  </div>
+  <br>
+  <p>Para chamar esse método, basta digitar seu nome, seguido por um único valor int no parêntese <b>desligar(10)</b>;</b>
 
-<p>Vamos dar uma olhada em cada parte de um método básico.</p>
-</section>
-<section id="idmodifyaccess"></section>
-<h2>Modificadores de Acesso</h2>
+  <p>Vamos dar uma olhada em cada parte de um método básico.</p>
+  </section>
+  <section id="idmodifyaccess"></section>
+  <h2>Modificadores de Acesso</h2>
 
-<p>Java oferece quatro modificadores de acesso:</p>
+  <p>Java oferece quatro modificadores de acesso:</p>
 
-<ul>
+  <ul>
 
-<li>public: O método pode ser chamado de qualquer classe</li>
-<li>private: O método pode ser chamado somente de dentro da mesma classe.</li>
-<li>protected: O método pode ser chamado da classe no mesmo pacote ou subclasses.</li>
-<li>default(Pacote Privado) O método pode somente ser chamado das classes no mesmo pacote. Este é um pouco complicado porque não existe a palavra chave <b>default</b>. Você simplesmente omite o modificador de acesso.</li>
-</ul>
-<p>Atenção nos modificadores de acesso</p>
-<pre class="brush:java">
-public void estudar1()}
-default void estudar2() {} // NÃO COMPILA
-void public estudar3() {} // NÃO COMPILA
-void estudar4() {}
-</pre>
-<p><b>estudar1()</b> é uma declaração de método válido com acesso público. <b>estudar4()</b> é uma declaração de método válido com acesso <b>default</b>. <b>estudar2()</b> não compila porque <b>default</b> não é um modificador de acesso válido. <b>estudar3()</b> não compila porque o modificador é especificado depois do tipo de retorno.</p> 
-<section id="especopc">
-<h2>Especificadores Opcionais</h2>
+  <li>public: O método pode ser chamado de qualquer classe</li>
+  <li>private: O método pode ser chamado somente de dentro da mesma classe.</li>
+  <li>protected: O método pode ser chamado da classe no mesmo pacote ou subclasses.</li>
+  <li>default(Pacote Privado) O método pode somente ser chamado das classes no mesmo pacote. Este é um pouco complicado porque não existe a palavra chave <b>default</b>. Você simplesmente omite o modificador de acesso.</li>
+  </ul>
+  <p>Atenção nos modificadores de acesso</p>
+  <pre class="brush:java">
+  public void estudar1()}
+  default void estudar2() {} // NÃO COMPILA
+  void public estudar3() {} // NÃO COMPILA
+  void estudar4() {}
+  </pre>
+  <p><b>estudar1()</b> é uma declaração de método válido com acesso público. <b>estudar4()</b> é uma declaração de método válido com acesso <b>default</b>. <b>estudar2()</b> não compila porque <b>default</b> não é um modificador de acesso válido. <b>estudar3()</b> não compila porque o modificador é especificado depois do tipo de retorno.</p> 
+  <section id="especopc">
+  <h2>Especificadores Opcionais</h2>
 
-<p>Existem um número de especificadores opcionais. Ao contrário do modificador de acesso você pode ter múltiplos especificadores no mesmo método(Apesar de algumas combinações serem ilegais). Quando acontece você pode especificá-lo em qualquer ordem.</p>
+  <p>Existem um número de especificadores opcionais. Ao contrário do modificador de acesso você pode ter múltiplos especificadores no mesmo método(Apesar de algumas combinações serem ilegais). Quando acontece você pode especificá-lo em qualquer ordem.</p>
 
-<ul>
-<li>static : Usado por métodos de classe</li>
-<li>final : Usado quando um método não é permitido ser sobrescrito por uma subclasse.</li>
-</ul>
-<pre class="brush:java">
-public void estudar1() {}
-public final void estudar2() {}
-public static final void estudar3() {} 
-public final static void estudar4() {}
-public modifier void estudar5() {} // DOES NOT COMPILE
-public void final estudar6() {} // DOES NOT COMPILE
-final public void estudar7() {
-</pre>
-<p><b>estudar1()</b> é uma declaração de método válido sem especificador opcional. <b>estudar2()</b> é uma declaração de método válido, com <b>final</b> como especificador opcional. <b>estudar3()</b> e <b>estudar4()</b> são declarações de métodos válidos com ambos <b>final</b> e <b>static</b> como especificadores opcionais. A ordem destas duas chaves não importa. <b>estudar5()</b> não compila porque o modificador não é um especificador opcional válido. <b>estudar6()</b> não compila porque o especificador opcional é depois do tipo de retorno.
-<b>estudar7()</b> compila. Java permite colocar o especificador opcional antes do modificador de acesso.</p>
-</section>
-<section id="idtipretorn">
- <h2>Tipo de Retorno</h2>
+  <ul>
+  <li>static : Usado por métodos de classe</li>
+  <li>final : Usado quando um método não é permitido ser sobrescrito por uma subclasse.</li>
+  </ul>
+  <pre class="brush:java">
+  public void estudar1() {}
+  public final void estudar2() {}
+  public static final void estudar3() {} 
+  public final static void estudar4() {}
+  public modifier void estudar5() {} // DOES NOT COMPILE
+  public void final estudar6() {} // DOES NOT COMPILE
+  final public void estudar7() {
+  </pre>
+  <p><b>estudar1()</b> é uma declaração de método válido sem especificador opcional. <b>estudar2()</b> é uma declaração de método válido, com <b>final</b> como especificador opcional. <b>estudar3()</b> e <b>estudar4()</b> são declarações de métodos válidos com ambos <b>final</b> e <b>static</b> como especificadores opcionais. A ordem destas duas chaves não importa. <b>estudar5()</b> não compila porque o modificador não é um especificador opcional válido. <b>estudar6()</b> não compila porque o especificador opcional é depois do tipo de retorno.
+  <b>estudar7()</b> compila. Java permite colocar o especificador opcional antes do modificador de acesso.</p>
+  </section>
+  <section id="idtipretorn">
+   <h2>Tipo de Retorno</h2>
 
- <p>O próximo item na declaração do método é o tipo de retorno. O tipo de retorno pode ser tal como <b>String</b> ou <b>int</b>. Se não existir retorno,  a palavra chave <b>void</b> é usada.</p>
- <p>Quando checar o tipo de retorno, você também tem que olhar o lado de dentro do corpo do método. Métodos com um outro tipo de retorno do que <b>void</b> são necessários para ter uma declaração  <b>return</b> dentro do corpo do método. Esta declaração <b>return</b> deve incluir  o primitivo ou objeto para ser retornado.</p>
-<p>Métodos que tem um tipo de retorno de <b>void</b> são permitidos ter um a declaração <b>return</b> com nenhum valor retornado ou omite a declaração inteiramente.</p>
-<pre class="brush:java">
-public void estudar1() { }
-public void estudar2() { return; }
-public String estudar3() { return ""; }
-public String estudar4() { } // NÃO COMPILA
-public estudar5() { } // NÃO COMPILA
-String estudar6(int a) { if (a == 4) return ""; } // NÃO COMPILA
-</pre>
-<p>Desde que o tipo de retorno de <b>estudar1()</b> é <b>void</b>, a declaração <b>return</b> é opcional. <b>estudar2()</b> mostra a declaração <b>return</b> opcional que corretamente não retorna nada. <b>estudar3()</b> é um método válido com um tipo de retorno <b>String</b> e uma declaração <b>return</b> que retorna uma <b>String</b>. <b>estudar4()</b> não compila porque a declaração <b>return</b> está em falta. <b>estudar5()</b> não compila porque o tipo de retorno está ausente.
-<b>estudar6()</b> é um pouco complicado. Há uma declaração de retorno, mas nem sempre é executada. Se <b>a</b> for <b>6</b>, a declaração de retorno não será executada. Como o <b>String</b> sempre precisa ser retornado, o compilador reclama.</p>
-</section>
-<section id="idnommetodo">
-<h2>Nome do Método</h2>
+   <p>O próximo item na declaração do método é o tipo de retorno. O tipo de retorno pode ser tal como <b>String</b> ou <b>int</b>. Se não existir retorno,  a palavra chave <b>void</b> é usada.</p>
+   <p>Quando checar o tipo de retorno, você também tem que olhar o lado de dentro do corpo do método. Métodos com um outro tipo de retorno do que <b>void</b> são necessários para ter uma declaração  <b>return</b> dentro do corpo do método. Esta declaração <b>return</b> deve incluir  o primitivo ou objeto para ser retornado.</p>
+  <p>Métodos que tem um tipo de retorno de <b>void</b> são permitidos ter um a declaração <b>return</b> com nenhum valor retornado ou omite a declaração inteiramente.</p>
+  <pre class="brush:java">
+  public void estudar1() { }
+  public void estudar2() { return; }
+  public String estudar3() { return ""; }
+  public String estudar4() { } // NÃO COMPILA
+  public estudar5() { } // NÃO COMPILA
+  String estudar6(int a) { if (a == 4) return ""; } // NÃO COMPILA
+  </pre>
+  <p>Desde que o tipo de retorno de <b>estudar1()</b> é <b>void</b>, a declaração <b>return</b> é opcional. <b>estudar2()</b> mostra a declaração <b>return</b> opcional que corretamente não retorna nada. <b>estudar3()</b> é um método válido com um tipo de retorno <b>String</b> e uma declaração <b>return</b> que retorna uma <b>String</b>. <b>estudar4()</b> não compila porque a declaração <b>return</b> está em falta. <b>estudar5()</b> não compila porque o tipo de retorno está ausente.
+  <b>estudar6()</b> é um pouco complicado. Há uma declaração de retorno, mas nem sempre é executada. Se <b>a</b> for <b>6</b>, a declaração de retorno não será executada. Como o <b>String</b> sempre precisa ser retornado, o compilador reclama.</p>
+  </section>
+  <section id="idnommetodo">
+  <h2>Nome do Método</h2>
 
-<p>O nome do método segue as mesmas regras dos nomes das variáveis. Um identificador pode somente conter letras, números, $, ou _ . Também o primeiro caracter, não é permitido ser número, e palavras-chaves não são permitidos. Por convenção, os métodos começam com uma letra minúscula, mas não são obrigatórios.</p>
-<pre class="brush:java">
-public void estudar1() { }
-public void 2estudar() { } // NÃO COMPILA
-public estudar3 void() { } // NÃO COMPILA
-public void Estudar_$() { }
-public void() { } // NÃO COMPILA
+  <p>O nome do método segue as mesmas regras dos nomes das variáveis. Um identificador pode somente conter letras, números, $, ou _ . Também o primeiro caracter, não é permitido ser número, e palavras-chaves não são permitidos. Por convenção, os métodos começam com uma letra minúscula, mas não são obrigatórios.</p>
+  <pre class="brush:java">
+  public void estudar1() { }
+  public void 2estudar() { } // NÃO COMPILA
+  public estudar3 void() { } // NÃO COMPILA
+  public void Estudar_$() { }
+  public void() { } // NÃO COMPILA
 
-</pre>
-<p><b>estudar1()</b> é uma declaração de método válido com um nome tradiconal. <b>2estudar()</b> não compila porque identificadores não são permitidos iniciar com números. <b>estudar3()</b> não compila porque o nome do método é antes do tipo de retorno. <b>Estudar_$()</b> é uma declaração de método válido. Embora isto certamente não é uma boa prática iniciar um método com letra maiúscula e finalizar com pontuação, mas isso é legal. A linha final do código não compila porque o nome do método está ausente.</p>
-</section>
-<section id="idlisparam">
-<h2>Lista de Parâmetros</h2>
+  </pre>
+  <p><b>estudar1()</b> é uma declaração de método válido com um nome tradiconal. <b>2estudar()</b> não compila porque identificadores não são permitidos iniciar com números. <b>estudar3()</b> não compila porque o nome do método é antes do tipo de retorno. <b>Estudar_$()</b> é uma declaração de método válido. Embora isto certamente não é uma boa prática iniciar um método com letra maiúscula e finalizar com pontuação, mas isso é legal. A linha final do código não compila porque o nome do método está ausente.</p>
+  </section>
+  <section id="idlisparam">
+  <h2>Lista de Parâmetros</h2>
 
-<P>Apesar da necessária lista de parâmetro, não precisa conter nenhum parâmetro. Isso significa que você pode somente ter um par de parênteses vazio depois do nome do método, tal como <b>void desligar()</b>. Se você tem múltiplos parâmetros, separe-os com vírgula.</p>
-<pre class="brush:java">
-public void estudar1() { }
-public void estudar2 { } // NÃO COMPILA
-public void estudar3(int a) { }
-public void estudar4(int a; int b) { } //NÃO COMPILA
-public void estudar5(int a, int b) { }
-</pre>
-<p><b>estudar1()</b> é uma declaração de método válido sem nenhum parâmetro. <b>estudar2()</b> não compila porque está faltando o parêntese ao redor da lista de parâmetros. <b>estudar3()</b> é uma declaração de método válido com um parâmetro. <b>estudar4()</b> não compila porque os parâmetros são separados por ponto e vírgula em vez de uma vírgula. Ponto e vírgula são para separar declarações e não listas de parâmetros. <b>estudar5()</b> é uma declaração de método válido com dois parâmetros.</p>
-</section>
-<section id="idlistexce">
-<h2>Lista de Exceção Opcional</h2>
-<p>Em Java, o código pode indicar que alguma coisa foi errada para lançar uma exceção. Por agora, você somente precisa conhecer que ele é opcional e onde no método vai colocar sua assinatura se presente. Neste exemplo, <b>InterruptedException</b> é um tipo de Exceção.</p> 
-<pre class="brush:java">
-public void zeroExceptions() { }
-public void oneException() throws IllegalArgumentException { }
-public void twoExceptions() throws 
-IllegalArgumentException, InterruptedException { }
-</pre>
-</section>
-<section id="idbodymethod">
-<h2>Corpo do Método</h2>
+  <P>Apesar da necessária lista de parâmetro, não precisa conter nenhum parâmetro. Isso significa que você pode somente ter um par de parênteses vazio depois do nome do método, tal como <b>void desligar()</b>. Se você tem múltiplos parâmetros, separe-os com vírgula.</p>
+  <pre class="brush:java">
+  public void estudar1() { }
+  public void estudar2 { } // NÃO COMPILA
+  public void estudar3(int a) { }
+  public void estudar4(int a; int b) { } //NÃO COMPILA
+  public void estudar5(int a, int b) { }
+  </pre>
+  <p><b>estudar1()</b> é uma declaração de método válido sem nenhum parâmetro. <b>estudar2()</b> não compila porque está faltando o parêntese ao redor da lista de parâmetros. <b>estudar3()</b> é uma declaração de método válido com um parâmetro. <b>estudar4()</b> não compila porque os parâmetros são separados por ponto e vírgula em vez de uma vírgula. Ponto e vírgula são para separar declarações e não listas de parâmetros. <b>estudar5()</b> é uma declaração de método válido com dois parâmetros.</p>
+  </section>
+  <section id="idlistexce">
+  <h2>Lista de Exceção Opcional</h2>
+  <p>Em Java, o código pode indicar que alguma coisa foi errada para lançar uma exceção. Por agora, você somente precisa conhecer que ele é opcional e onde no método vai colocar sua assinatura se presente. Neste exemplo, <b>InterruptedException</b> é um tipo de Exceção.</p> 
+  <pre class="brush:java">
+  public void zeroExceptions() { }
+  public void oneException() throws IllegalArgumentException { }
+  public void twoExceptions() throws 
+  IllegalArgumentException, InterruptedException { }
+  </pre>
+  </section>
+  <section id="idbodymethod">
+  <h2>Corpo do Método</h2>
 
-<p>A parte final da declaração de um método é o corpo do método (exceto para métodos abstratos e interfaces, algo que aprenderemos mais adiante). Um corpo do método é um simples bloco de código. Este tem chaves que contem zero ou mais declaraçoes Java.</p>
-<pre class="brush:java">
-public void estudar1() { }
-public void estudar2; // NÃO COMPILA
-public void estudar3(int a) { int name = 5; }
-</pre>
-<p><b>estudar()</b> é uma declaração de método válido com o corpo do método vazio. <b>estudar2()</b> não compila porque está faltando as chaves ao redor do corpo do método vazio.<b>estudar3()</b> é uma declaração de método válido com uma declaração no corpo do método.</p>
-</section>
-<section id="vararg">
-<h1>Trabalhando com Varargs</h1>
+  <p>A parte final da declaração de um método é o corpo do método (exceto para métodos abstratos e interfaces, algo que aprenderemos mais adiante). Um corpo do método é um simples bloco de código. Este tem chaves que contem zero ou mais declaraçoes Java.</p>
+  <pre class="brush:java">
+  public void estudar1() { }
+  public void estudar2; // NÃO COMPILA
+  public void estudar3(int a) { int name = 5; }
+  </pre>
+  <p><b>estudar()</b> é uma declaração de método válido com o corpo do método vazio. <b>estudar2()</b> não compila porque está faltando as chaves ao redor do corpo do método vazio.<b>estudar3()</b> é uma declaração de método válido com uma declaração no corpo do método.</p>
+  </section>
+  <section id="vararg">
+  <h1>Trabalhando com Varargs</h1>
 
-<p>Um método pode usar um parâmetro <b>vararg</b> como este fosse um <b>array</b>. Um parâmetro <b>vararg</b> deve ser o último elemento no método na lista de parâmetro. Isto implica você estar somente permitido ter um parâmetro <b>vararg</b> por método.</p>
-<pre class="brush:java">
-public void  estudar1(int... nums) { }
-public void estudar2(int start, int... nums) { }
-public void estudar3(int... nums, int start) { } // NÃO COMPILA
-public void estudar4(int... start, int... nums) { } // NÃO COMPILA
-</pre>
+  <p>Um método pode usar um parâmetro <b>vararg</b> como este fosse um <b>array</b>. Um parâmetro <b>vararg</b> deve ser o último elemento no método na lista de parâmetro. Isto implica você estar somente permitido ter um parâmetro <b>vararg</b> por método.</p>
+  <pre class="brush:java">
+  public void  estudar1(int... nums) { }
+  public void estudar2(int start, int... nums) { }
+  public void estudar3(int... nums, int start) { } // NÃO COMPILA
+  public void estudar4(int... start, int... nums) { } // NÃO COMPILA
+  </pre>
 
-<p><b>estudar1()</b> é uma declaração de método válido com um parâmetro <b>vararg</b>. <b>estudar2()</b> é uma declaração de método válido com um parâmetro <b>int</b> e um parâmetro <b>vararg</b>. <b>estudar3()</b> e <b>estudar4()</b> não compila porque eles tem um parâmetro <b>vararg</b> em uma posição que não é uma última.</p>
-<p>Quando chamar um método com um parâmetro <b>vararg</b>, você tem uma escolha. Você pode passar um <b>array</b>, ou você pode listar os elementos do <b>array</b> e deixar Java criar isso para você. Você pode omitir os valores do <b>vararg</b> na chamada do método e Java criará um <b>array</b> de tamanho zero pra você.</p>
-<pre class="brush:java">
-15: public static void estudar(int start, int... nums) {
-16: System.out.println(nums.length);
-17: }
-18: public static void main(String[] args) {
-19: estudar(1); // 0
-20: estudar(1, 2); // 1
-21: estudar(1, 2, 3); // 2
-22: estudar(1, new int[] {4, 5}); // 2
-23: }
-</pre>
-<p>linha 19, Java cria um <b>array</b> de tamanha <b>1</b> para <b>nums</b>. Linha 20, Java converte este valor para um <b>array</b> de tamanho <b>1</b>. Linha 21, Java converte estes dois valores para um <b>array</b> de tamanho <b>2</b>. Linha 22, passa <b>1</b> como <b>start</b> e um <b>array</b> de tamanho <b>2</b> diretamente como <b>nums</b>.</p>
+  <p><b>estudar1()</b> é uma declaração de método válido com um parâmetro <b>vararg</b>. <b>estudar2()</b> é uma declaração de método válido com um parâmetro <b>int</b> e um parâmetro <b>vararg</b>. <b>estudar3()</b> e <b>estudar4()</b> não compila porque eles tem um parâmetro <b>vararg</b> em uma posição que não é uma última.</p>
+  <p>Quando chamar um método com um parâmetro <b>vararg</b>, você tem uma escolha. Você pode passar um <b>array</b>, ou você pode listar os elementos do <b>array</b> e deixar Java criar isso para você. Você pode omitir os valores do <b>vararg</b> na chamada do método e Java criará um <b>array</b> de tamanho zero pra você.</p>
+  <pre class="brush:java">
+  15: public static void estudar(int start, int... nums) {
+  16: System.out.println(nums.length);
+  17: }
+  18: public static void main(String[] args) {
+  19: estudar(1); // 0
+  20: estudar(1, 2); // 1
+  21: estudar(1, 2, 3); // 2
+  22: estudar(1, new int[] {4, 5}); // 2
+  23: }
+  </pre>
+  <p>linha 19, Java cria um <b>array</b> de tamanha <b>1</b> para <b>nums</b>. Linha 20, Java converte este valor para um <b>array</b> de tamanho <b>1</b>. Linha 21, Java converte estes dois valores para um <b>array</b> de tamanho <b>2</b>. Linha 22, passa <b>1</b> como <b>start</b> e um <b>array</b> de tamanho <b>2</b> diretamente como <b>nums</b>.</p>
 
-<p>Acessar um parâmetro vararg é também como acessar um array:</p>
-<pre class="brush:java">
-16: public static void run(int... nums) {
-17: System.out.println(nums[1]);
-18: }
-19: public static void main(String[] args) {
-20: run(11, 22); // 22
-21: }
-</pre>
+  <p>Acessar um parâmetro vararg é também como acessar um array:</p>
+  <pre class="brush:java">
+  16: public static void run(int... nums) {
+  17: System.out.println(nums[1]);
+  18: }
+  19: public static void main(String[] args) {
+  20: run(11, 22); // 22
+  21: }
+  </pre>
 
-<p>Linha 20 chama o parâmetro <b>vararg </b> de dois parâmetros. Quando o método é chamado, este ver um <b>array</b> de tamanho <b>2</b>. Desde que são indexados com base 0, <b>22</b> é imprimido</p>. 
-</section>
+  <p>Linha 20 chama o parâmetro <b>vararg </b> de dois parâmetros. Quando o método é chamado, este ver um <b>array</b> de tamanho <b>2</b>. Desde que são indexados com base 0, <b>22</b> é imprimido</p>. 
+  </section>
 
-<section id="miodificadoracesso">
-<h1>Aplicando Modificadores de Acesso</h1>
-<p>Existem 4 modificadores de acesso: <b>public</b>, <b>private</b>, <b>protected</b>, e acesso <b>default</b>.</p>
-<ul>
+  <section id="miodificadoracesso">
+  <h1>Aplicando Modificadores de Acesso</h1>
+  <p>Existem 4 modificadores de acesso: <b>public</b>, <b>private</b>, <b>protected</b>, e acesso <b>default</b>.</p>
+  <ul>
 
-<li>private : Acessível somente dentro da mesma classe</li>
-<li>acesso default(pacote privado): privado e outras classes no mesmo pacote</li>
-<li>protected : acesso default e classes filhas</li>
-<li>public : protected e classes em outros pacotes</li>
-</ul>
-</section>
-<section id="idaccesspriv">
-<h3>Acesso Private</h3>
-<p>Acesso <b>private</b> é fácil. Somente código na mesma classe pode chamar métodos privados ou acessar campos privados.</p>
+  <li>private : Acessível somente dentro da mesma classe</li>
+  <li>acesso default(pacote privado): privado e outras classes no mesmo pacote</li>
+  <li>protected : acesso default e classes filhas</li>
+  <li>public : protected e classes em outros pacotes</li>
+  </ul>
+  </section>
+  <section id="idaccesspriv">
+  <h3>Acesso Private</h3>
+  <p>Acesso <b>private</b> é fácil. Somente código na mesma classe pode chamar métodos privados ou acessar campos privados.</p>
 
-<div style= "width:250px; height:270px ; background-color: #a3d39c; margin:auto">pond.duck
+  <div style= "width:250px; height:270px ; background-color: #a3d39c; margin:auto">pond.duck
 
-<div style= "width:100px; height:50px ; background-color: gray; margin:auto" > FatherDuck</div><br>
-<div style= "width:100px ;height:45px; background-color: gray; margin:auto"> MotherDuck</div><br>
-<div style= "width:100px; height:40px ; background-color: gray; margin:auto; padding-bottom:2px"> BadDucking </div><br>
-<div style= "width:120px; height:35px ;  background-color: gray; margin:auto " > GoodDucking </div>
-</div>
+  <div style= "width:100px; height:50px ; background-color: gray; margin:auto" > FatherDuck</div><br>
+  <div style= "width:100px ;height:45px; background-color: gray; margin:auto"> MotherDuck</div><br>
+  <div style= "width:100px; height:40px ; background-color: gray; margin:auto; padding-bottom:2px"> BadDucking </div><br>
+  <div style= "width:120px; height:35px ;  background-color: gray; margin:auto " > GoodDucking </div>
+  </div>
 
-<br>
-<br>
+  <br>
+  <br>
 
-<div style= "width:200px; height:100px ; background-color: #a3d39c; margin:auto">pond.swan
-<div style= "width:100px; height:50px ; background-color: gray; margin:auto">BadCygnet</div>
-</div>
-<pre class="brush:java">
-package pond.duck;
-public class FatherDuck {
-private String noise = "quack";
-private void quack() {
-System.out.println(noise); // acesso private está  ok
- }
-private void makeNoise() {
-quack(); // acesso private está  ok
- }
+  <div style= "width:200px; height:100px ; background-color: #a3d39c; margin:auto">pond.swan
+  <div style= "width:100px; height:50px ; background-color: gray; margin:auto">BadCygnet</div>
+  </div>
+  <pre class="brush:java">
+  package pond.duck;
+  public class FatherDuck {
+  private String noise = "quack";
+  private void quack() {
+  System.out.println(noise); // acesso private está  ok
+   }
+  private void makeNoise() {
+  quack(); // acesso private está  ok
+   }
+    }
+  </pre>
+  <p><b>FatherDuck</b> faz um chamado para o método privado <b>quack()</b> na linha 8 e usa a variável de instância <b>private noise</b> na linha 5.</p>
+
+  <pre class="brush:java">
+  package pond.duck;
+  public class BadDuckling {
+  public void makeNoise() {
+  FatherDuck duck = new FatherDuck();
+  duck.quack(); // NÃO COMPILA
+  System.out.println(duck.noise); // NÃO COMPILA
+  } 
   }
-</pre>
-<p><b>FatherDuck</b> faz um chamado para o método privado <b>quack()</b> na linha 8 e usa a variável de instância <b>private noise</b> na linha 5.</p>
-
-<pre class="brush:java">
-package pond.duck;
-public class BadDuckling {
-public void makeNoise() {
-FatherDuck duck = new FatherDuck();
-duck.quack(); // NÃO COMPILA
-System.out.println(duck.noise); // NÃO COMPILA
-} 
-}
-</pre>
-<p>Na linha 5, tenta acessar o método privado em outra classe. Na linha 6, tenta acessar uma variável de instância privada em outra classe. Ambos geram erros de compilação.</p>
-</section>
-<section id="iddefaultaccss">
-<h2>Acesso Default (pacote privado)</h2>
-
-<p>Java usa o <b>default</b>, que é um acesso de pacote privado. Que signicia este membro é "privado" para classe no mesmo pacote. Em outras palavras, somente classe do mesmo pacote pode acessá-la.</p>
-<pre class="brush:java">
-package pond.duck;
-public class MotherDuck {
-String noise = "quack";
-void quack() {
-System.out.println(noise); // acesso default está ok
-}
-private void makeNoise() {
-quack(); // acesso default está ok
-} }
-</pre>
-<p><b>MotherDuck</b> pode chamar <b>quack()</b> e referir pra <b>noise</b>. Depois de tudo, membros na mesma classe certmente estão no mesmo pacote.</p>
-
-<pre class="brush:java">
-package pond.duck;
-public class GoodDuckling {
-public void makeNoise() {
-MotherDuck duck = new MotherDuck();
-duck.quack(); // acesso default 
-System.out.println(duck.noise); // acesso default
-} 
-}
-</pre>
-
-<p>Observe que todas as classes que cobrimos até agora estão no mesmo pacote <b>pond.duck</b>. Isto permite o acesso <b>default(pacote privado)</b> funcionar.</p>
-<pre class="brush:java">
-package pond.swan;
-import pond.duck.MotherDuck; // importando autro pacote
-public class BadCygnet {
-public void makeNoise() {
-MotherDuck duck = new MotherDuck();
-duck.quack(); // NÃO COMPILA
-System.out.println(duck.noise); // NÃO COMPILA 
-} }
-</pre>
-
-<p>Lembre que quando não existe acesso modificador, somente classes no mesmo pacote pode acessá-lo.</p>
-</section>
-<section id="idaccessprotec">
-<h2>Acesso Protected</h2>
-
-<p>Acesso protected permite tudo que acesso default(pacote private) permite e mais. O acesso modificador protected adciona a habilidde de acessar membros da classe pai .</p> 
-
-
-<div style= "width:200px; height:200px ; background-color: #a3d39c; margin:auto;padding-bottom:25px"> pond.shore 
-<br><br>
-
-<div style= "width:100px; height:50px ; background-color: gray; margin:auto"> Bird</div><br>
-<div style= "width:100px; height:50px ; background-color: gray; margin:auto"> BirdWatcher</div>
-
-</div>
-<br>
-<div style= "width:200px; height:200px ; background-color: #a3d39c; margin:auto; padding-bottom:25px">pond.goose
-<br><br>
-<div style= "width:150px; height:50px ; background-color: gray; margin:auto"> Gosing (extends Bird)</div><br>
-<div style= "width:150px; height:50px ; background-color: gray; margin:auto"> Goose (extends Bird)</div>
-
-</div>
-
-<p>Primeiro, nós criamos uma classe <b>Bird</b> e damos acesso <b>protected</b> para estes membros:</p>
-<pre class="brush:java">
-package pond.shore;
-public class Bird {
-protected String text = "floating"; // acesso protected 
-protected void floatInWater() { // acesso protected
-System.out.println(text);
-} }
-</pre>
-<p>Agora criamos uma subclasse:</p>
-<pre class="brush:java">
-package pond.goose;
-import pond.shore.Bird; // em um diferente pacote
-public class Gosling extends Bird { //  estender significa criar subclasses
-public void swim() {
-floatInWater(); // chamando membro protected 
-System.out.println(text); // chamando membro protected
-} }
-</pre>
-
-<p>Esta é uma subclasse simples. Ele estende a classe <b>Bird</b>. Estender significa criar uma subclasse com acesso para qualquer membros <b>protected</b> ou <b>public</b> da classe pai. Desde que <b>Gosling</b> é uma subclasse de <b>Bird</b>, ele pode acessar este membro mesmo estando em diferente pacote.</p>
-
-<p>Lembre que <b>protected</b> também dar acesso para tudo que acesso <b>default</b> faz. Isso quer dizer que a classe no mesmo pacote como <b>Bird</b> pode aceesar este membros <b>protected</b></p>.
-<pre class="brush:java">
-package pond.shore; // mesmo pacote(package) que Bird
-public class BirdWatcher {
-public void watchBird() {
-Bird bird = new Bird();
-bird.floatInWater(); // chamando membro protected
-System.out.println(bird.text); // chamando membro protected
-} }
-</pre>
-<p>Desde que <b>Bird</b> e <b>BirdWatcher</b> estão no mesmo pacote, <b>BirdWatcher</b> pode acessar membros da variável <b>bird</b>. A definição de <b>protected</b> permite acessar subclasses no mesmo pacote.</p>
-
-</section>
-<section id="idacesspublic">
-<h2>Acesso Público</h2>
-
-<p>Aceeso público quer dizer que qualquer um pode acessar o membro de qualquer lugar</p>
-<pre class="brush:java">
-package pond.duck;
-public class DuckTeacher {
-public String name = "helpful"; // acesso public 
-public void swim() { // acesso public
-System.out.println("swim");
-} }
-</pre>
-<p><b>DuckTeacher</b> permite acessar qualquer classe que quiser.</p>
-<pre class="brush:java">
-package pond.goose;
-import pond.duck.DuckTeacher;
-public class LostDuckling {
-public void swim() {
-DuckTeacher teacher = new DuckTeacher();
-teacher.swim(); // permitido
-System.out.println("Thanks" + teacher.name); // permitido
-} }
-</pre>
-<p><b>LostDuckling</b> é capaz de referir para <b>swim()</b> e <b>name</b> no <b>DuckTeacher</b> porque eles são <b>public</b></p>.
-
-<br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-  <tr><th colspan="4">TABELA Modificadores de acesso</th></tr>
-<tr><td>Pode Acessar</td><td>  Se este membro é private? </td><td> Se este membro tem acesso default (pacote private) ?</td><td> Se este membro é protected?</td><td> Se este  membro é public?</td></tr>
-<tr><td>Membro na mesma classe</td><td> Sim</td><td> Sim</td><td> Sim</td><td> Sim</td></tr>
-<tr><td>Membro em outra classe no mesmo pacote</td><td> Não</td><td> Sim</td><td> Sim</td><td> Sim</td></tr>
-<tr><td>Membro em uma superclasse em um pacote diferente</td><td> Não </td><td>Não</td><td> Sim</td><td> Sim</td></tr>
-<tr><td>Método/campo em uma classe não superclasse em um diferente pacote</td><td> Não</td><td> Não</td><td> Não</td><td> Sim</td></tr>
-</table>
-</div>
-<br>
-</section>
-<section id="idprjmetcampst">
-<h2>Projetando métodos e campos estáticos</h2>
-
-<p>Métodos Estático não exige uma instância de classe. Eles são compartilhados além de todos usuários da classe. Você pode pensar de estáticos como sendo membro da única classe objeto que existe independentemente de qualquer instância desta classe.</p>
-<p>O método <b>main()</b> é estático. Isto quer dizer que você pode chamá-lo pelo nome da classe</p>
-<pre class="brush:java">
-public class Koala {
-public static int count = 0; //variável static 
-public static void main(String[] args) { //método static 
-System.out.println(count);
-}
-}
-</pre>
-
-<p>O JVM basicamente chama <b>Koala.main()</b> para iniciar o programa. Você pode fazer isto também. Temos o <b>KoalaTester</b> que não faz nada, mas chama o método <b>main()</b></p>.
-<pre class="brush:java">
-public class KoalaTester {
-public static void main(String[] args) {
-Koala.main(new String[0]); // chama método static
-}
-}
-</pre>
-
-<p>Quando executamos <b>KoalaTester</b> ele faz uma chamado para o método <b>main()</b> de <b>Koala</b>, que imprime o valor de <b>count</b>. O próposito deste exemplo é mostrar que o método <b>main()</b> pode ser chamado como qualquer outro método estático.</p>
-</section>
-<section id="idcallmethod">
-<h2>Chamando um Método ou Variável Estática</h2>
-
-<p>Acessar o método estático é fácil. Você somente coloca o nome da classe antes do método ou variável. Exemplo:</p>
-<pre class="brush:java">
-System.out.println(Koala.count);
-Koala.main(new String[0]);
-</pre>
-
-<p>Você pode usar uma instância de objeto para chamar um método estático.</p>
-<pre class="brush:java">
-5: Koala k = new Koala();
-6: System.out.println(k.count); // k is a Koala
-7: k = null;
-8: System.out.println(k.count); // k is still a Koala
-</pre>
-
-<p>A saída deste código é <b>0</b> duas vezes. Linha 6 ver que <b>k</b> é um <b>Koala</b> e <b>count</b> é uma variável estática, assim ele ler esta variável estática. Linha 8 faz a mesma coisa. Java não se importa que <b>k</b> seja nulo. Como estamos procurando por uma estática, isso não importa.</p>
-</section>
-<section id="staticvsinst">
-<h3>Estático vs. Instância</h3>
-
-<p>Um membro estático não pode chamar um membro da instância</p>
-<pre class="brush:java">
-public class Static {
-private String name = "Static class";
-public static void first() { }
-public static void second() { }
-public void third() { System.out.println(name); }
-public static void main(String args[]) {
-first();
-second();
-third(); // NÃO COMPILA
-} }
-</pre>
- <p>Compilador vai dar um erro sobre fazer uma referência estática para um método não estático</p>.
-
- <br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-  <tr><th colspan="4">TABELA  Chamadas estáticas vs chamadas de instância</th></tr>
-<tr><td>Tipo </td><td>Chamar</td><td> Legal?</td><td> Como?</td></tr>
-<tr><td> Método Estático</td><td> Outro método ou variável estática</td><td>Sim </td><td>Usando o nome da classe</td></tr>
-<tr><td> Método Estático </td><td>Um método ou variável de instância</td><td>Não</td></tr>
-<tr><td>Método de Instância </td><td> Um método ou variável estática</td><td>Sim</td><td> Usando o nome da classe ou variável de referência</td></tr>
-<tr><td>Método de Instância</td><td> Outra variável ou método de instância </td><td>Sim</td><td> Usando uma variável de referência</td></tr>
-</table>
-</div>
-<br>
-
-<p>Vamos ver alguns exemplos: </p>
-<pre class="brush:java">
- public class Gorilla {
- public static int count;
- public static void addGorilla() { count++; }
- public void babyGorilla() { count++; }
- public void announceBabies() {
- addGorilla();
- babyGorilla();
- }
-public static void announceBabiesToEveryone() {
-addGorilla();
-babyGorilla(); // NÃO COMPILA
-}
-public int total;
-public static average = total / count; // NÃO COMPILA
-}
-</pre>
-
-<p>Linha 3  e 4  estão funcionando porque ambos estático e métodos de instância pode referir para uma variável estática. Linha 5-8 estão funcionando porque um método de instância pode chamar um método estático. Linha 11 não compila porque um método estático não pode chamar um método de instância. Similarmente, linha 14 não compila porque uma variável estática está tentando usar uma variável de instância.</p>
-</section>
-<section id="varestatic">
-<h2>Variável Estática</h2>
-<p>Algumas variáveis estáticas devem mudar conforme o programa é executado. Como variável de instância você pode inicializar uma variavel estática</p>.
-<pre class="brush:java">
-public class Initializers {
-private static int counter= 0; // inicialização
-}
-</pre>
-<p>Outras variáveis de instância nunca mudam durante o programa. Este tipo é conhecido como constatnte. Este usa o modificador <b>final</b> para garantir que a variável nunca vá mudar. Constantes <b>static final</b> usa uma convenção de nomeação diferente de outras variáveis. Eles usam letras maiúsculas com <b>underscore</b> entre as palavras. Exemplo:</p>
-<pre class="brush:java">
-public class Initializers {
-private static final int NUM_BUCKETS = 45;
-public static void main(String[] args) {
-NUM_BUCKETS = 5; // NÃO COMPILA
-} 
-}
-</pre>
-</section>
-<section id="inicstatic">
-<h2>Inicialização Estática</h2>
-<p>Adcione a palavra-chave <b>static</b> para especificar que eles deverão ser executado quando a primeira classe é usada</b>.
-<pre class="brush:java">
-private static final int NUM_SECONDS_PER_HOUR;
-static {
-int numSecondsPerMinute = 60;
-int numMinutesPerHour = 60;
-NUM_SECONDS_PER_HOUR = numSecondsPerMinute * numMinutesPerHour;
-}
-</pre>
-
-<p>A inicalização estática executa quando a primeira classe é usada. A declaração nele executa e atribui qualquer variável estática como necessidade. A variável <b>final</b> não permite ser reatribuído.</p>
-<p>Vamos ver outro exemplo para entender a diferença:</p>
-<pre class="brush:java">
-14: private static int one;
-15: private static final int two;
-16: private static final int three = 3;
-17: private static final int four; // NÃO COMPILA
-18: static {
-19: one = 1;
-20: two = 2;
-21: three = 3; //NÃO COMPILA
-22: two = 4; // NÃO COMPILA
-23: }
-</pre>
-
-<p>Linha 14 declara uma variável estática que não é <b>final</b>. Este pode ser atribuído muitas vezes. Linha 15 declara uma variável <b>final</b> sem inicializá-la. Isto significa que podemos inicalizá-lo exetamente uma vez no bloco estático. Linha 22 não compila porque esta é a segunda tentativa.. Linha 16 declara uma variável <b>final</b> e inicialliza no mesmo momento. Não é permitido atribuir novamente, então a linha 21 não compila. Linha 17 declara uma variável <b>final</b> que nunca é inicializada.</p> 
-</section>
-<section id="idimportstatic">
-<h2>Importes Estáticos</h2>
-
-<p>Importes são conveniente porque não precisa especificar onde cada classe vem no momento de usá-la. Existe outro tipo de <b>import</b> chamado <b>import static</b>. Imports regulares são para importar classes. Imports Static são para importar membros static das classes.</b>
-<pre class="brush:java">
-import java.util.ArrayList;
-import java.util.*;//Nós regularmente usamos esta técnica para importar:
-import java.util.List;
-import java.util.Arrays;
-public class Imports {
-public static void main(String[] args) {
-List&ltString> list = Arrays.asList("one", "two");
-}
-}  
-</pre>
-
-<p>Justamente como imports regulares, você pode usar asterísticos(*) ou importar membro específico.</p>
-
-<p>O método anterior tem um método estático chamado: <b>Arrays.asList</b>. Reescrevendo o código para usar um import static:</p>
-<pre class="brush:java">
-import java.util.List;
-import static java.util.Arrays.asList; // static import
-public class StaticImports {
-public static void main(String[] args) {
-List&ltString> list = asList("one", "two"); // sem Arrays.
-} 
-}
-</pre>
-
-<p>Neste exemplo, nós estamos especialmente importando o método <b>asList</b>. Isso significa que qualquer momento nós referimos para <b>asList</b> na classe, este vai chamar <b>Arrays.asList()</b></p>.
-</section>
-<section id="passardados">
-<h1>Passando Dados entre Métodos</h1>
-<p>Java é uma linguagem de passagem por valor. Isso quer dizer que a cópia da variável é feita e o método recebe esta cópia. Atribuições feita no método não afeta o chamado. Exemplo:</p>
-<pre class="brush:java">
-2: public static void main(String[] args) {
-3: int num = 4;
-4: newNumber(5);
-5: System.out.println(num); // 4
-6: }
-7: public static void newNumber(int num) {
-8: num = 8;
-9: }
-</pre>
-
-<p>Na linha 3 é atribuído o valor de <b>4</b>. Na linha 4 nós chamamos um método. Na linha 8, o parâmetro <b>num</b> no método  é definido como <b>8</b>.  Apesar deste parâmetro ter o mesmo  nome como a variável na linha 3 isto é uma coincidência. O nome poderá ser qualquer coisa. A variável 3 nunca muda porque nenhuma atribuição é feita para ele.</p>
-
-<p>Agora vamos ver um exemplo com tipo de referência. Qual seria a saída deste código? </p>
-
-<pre class="brush:java">
-public static void main(String[] args) {
-String name = "Webby";
-speak(name);
-System.out.println(name); 
-}
-public static void speak(String name) {
-name = "Sparky";
-}
-</pre>
-<p><b>A resposta correta é Webby. </b></p>
-<p>A variável atribuída é somente para o parâmetro do método e não afeta o chamador.</p>
-
- <p>Para revisar, o Java usa a passagem-por-valor para obter dados em um método. Atribuir um novo primitivo ou referência a um parâmetro não altera o chamador. Chamar métodos em uma referência a um objeto afeta o chamador.</p>
-
- <p>Vamos tentar um exemplo:</p>
-
-<pre class="brush:java">
-public class ReturningValues {
-public static void main(String[] args) {
-int number = 1; // 1
-String letters = "abc"; // abc
-number(number); // 1
-letters = letters(letters); // abcd
-System.out.println(number + letters); // 1abcd
-}
- public static int number(int number) {
- number++;
- return number;
-}
-public static String letters(String letters) {
- letters += "d";
- return letters;
-}
-}
-</pre>
-<p>Linhas 3 e 4 são atribuições diretas. Linha 5 chama um método. Linha 10 incremeta o parâmetro do método para 2 mas deixa a variável <b>numbers</b> no método <b>main()</b> como <b>1</b>. Enquanto na linha 11 retorna o valor, o chamador ignora ele. O método chamado na linha 6 não ignora o resultado assim a letra torna <b>"abcd"</b>. Lembrar que isto acontece porque do valor retornado e não o parâmetro do método.</p>
-</section>
-<section id="metodosobrecarga">
-<h1>Métodos de Sobrecarga</h1>
-<p>Sobrecarga de método ocorre quando existem métodos de diferentes assinaturas com o mesmo nome, mas tipos diferentes de parâmetros.Tudo que não seja a assinatura do método pode variar para métodos sobrecarregados. Isso significa que pode haver diferentes modificadores de acesso, especificadores (como estático), tipos de retorno e listas de exceções.</p>
-
-<p>Estes métodos sobrecarregados são todos válidos:</p>
-<pre class="brush:java">
-public void fly(int numMiles) { }
-public void fly(short numFeet) { }
-public boolean fly() { return false; }
-void fly(int numMiles, short numFeet) { }
-public void fly(short numFeet, int numMiles) throws Exception { }
-</pre>
-
-<p>Vamos ver exemplo de sobrecarga que não é válido:</p>
-<pre class="brush:java">
-public void fly(int numMiles) { }
-public int fly(int numMiles) { } // NÃO COMPILA
-</pre>
-<p>Este método não compila porque este apenas difere do original por tipo de retorno.</p>
-
-<p>Por que este exemplo não compila?</p>
-<pre class="brush:java">
-public void fly(int numMiles) { }
-public static void fly(int numMiles) { } // NÃO COMPILA
-</pre>
-<p>A lista de parâmetro é o mesmo. A diferença é que um é método de instância e outro um método estático.</p>
-</section>
-<section id="idvarsobrecarg">
-<h2>Sobrecarga e Varargs</h2>
-
-<p>Qual método  você pensa que é chamado se passarmos um int[]?</p>
-<pre class="brush:java">
-public void fly(int[] lengths){}
-public void fly(int... lengths){} // NÃO COMPILA
-</pre>
-<p>Java trata <b>varags</b> como se fosse um <b>array</b>. Isto significa que a assinatura do método é o mesmo para ambos os métodos. Como não temos permissão para sobrecarregar métodos com a mesma lista de parâmetros, esse código não compila.</p>
-</section>
-<section id="idautoboxing"></section>
-<h2>AutoBoxing</h2>
-<p>Java realiza autoboxing quando tem a necessidade de converter um int primitivo para um objeto Integer.</p>
-<p>O que acontece se nós tivermos ambos uma versão primitiva e uma inteira(integer)?</p>
-<pre class="brush:java">
-public void fly(int numMiles) { }
-public void fly(Integer numMiles) { }
-</pre>
-<p>Java vai corresponder a versão <b>int numMiles</b>. Java tenta usar a lista de parâmetros mais específica que pode encontrar. Quando uma versão <b>int</b> primitivo não está presente este realizará o <b>autobox</b>. Contudo , quando a versão <b>int</b> primitivo é fornecido, não existe razão para java fazer um trabalho extra de Autoboxing.</p>
-</section>
-<section id="tiprefid">
-<h2>Tipos de Referências</h2>
-<p>Dada a regra sobre o Java escolher a versão mais específica de um método que ele pode. O que você pensa sobre a saída deste código?</p>
-<pre class="brush:java">
-public class ReferenceTypes {
-public void fly(String s) {
-System.out.print("string ");
-}
-public void fly(Object o) {
-System.out.print("object ");
-}
-public static void main(String[] args) {
-ReferenceTypes r = new ReferenceTypes();
-r.fly("test");
-r.fly(56);
-}
-}
-</pre>
-
-<p>A resposta é  <b>string object</b>. O primeiro chamado é uma <b>String</b> e encontra um correspondente direto. Não existe razão para usar a versão <b>Object</b> quando existe uma boa lista de parâmetro <b>String</b> somente esperando para ser chamado. O  segundo chamado procura por uma lista de parâmetro <b>int</b>. Quando este um não é encontrado, ele faz um <b>autoboxes</b> para <b>Integer</b>. Como ainda não encontra uma correspondência, vai para o <b>Object</b></p>.
-</section>
-<section id="primitiveid">
-<h2>Primitivos</h2>
-
-<p>Primitivos funciona de maneira similar a variáveis de referência. Java tenta encontrar o método sobrecarregado correspondente mais específico.</p> 
-<p>O que acontece aqui?</p>
-<pre class="brush:java">
-public class Plane {
-public void fly(int i) {
-System.out.print("int ");
-}
-public void fly(long l) {
-System.out.print("long ");
-}
-public static void main(String[] args) {
-Plane p = new Plane();
-p.fly(123);
-p.fly(123L);
-} 
-}
-</pre>
-<p>A resposta é <b>int long</b>. O primeiro chamado passa um <b>int</b> e ver uma correspondência exata. O segundo chamado passa um <b>long</b> e também ver uma correspodência exata. </p>
-</section>
-<section id="idjunttudo">
-<h2>Juntando Tudo</h2>
-
-<p>Até agora, todas as regras quando um método sobrecarregado é chamado deve ser lógico. Java chama o método mais específico que ele pode. Quando alguns dos tipos interage, Java foca a regra na compatibilidade anterior.
-A tabela abaixo mostra a ordem que Java usa para escolher o método sobrecarreagdo correto.</p><br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-<tr><th>Regra</th><th>Exemplo de qual será escolhido por glide(1,2)</th></tr>
-<tr><td>Correspondência exata por tipo</td><td>public String glide(int i, int j) {}</td></tr>
-  <tr><td> Tipo mais largo de primitivo</td><td> public String glide(long i, long j) {} </td></tr>
-  <tr><td>Tipo Autoboxed </td><td> public String glide(Integer i, Integer j) {} </tr>
-  <tr><td>Varargs</td><td> public String glide(int... nums) {} </td></tr>
-</table>
-</div>
-<br>
-
-<p>Vamos praticar executando as regras da Tabela.</p>  
-<pre class="brush:java">
-public class Glider2 {
-public static String glide(String s) {
-return "1";
-}
-public static String glide(String... s) {
-return "2";
-}
-public static String glide(Object o) {
-return "3";
-}
-public static String glide(String s, String t) {
-return "4";
-}
-public static void main(String[] args) {
-System.out.print(glide("a"));
-System.out.print(glide("a", "b"));
-System.out.print(glide("a", "b", "c"));
-} 
-}
-</pre>
-
-<p>Este imprime a saída <b>142</b>. O primeiro chamado corresponde a assinatura pegando um único <b>String</b> porque este é o mais específico que corresponde. O segundo chamado corresponde a assinatura que pega dois parâmetros <b>String</b>. O terceiro chamado a versão <b>varargs</b> é usada desde que não exista correspondente melhor.</p>
-</section>
-<section id="construtores">
-<h1>Criando Construtores</h1> 
-
-<p>Um construtor é um método especial que corresponde ao nome da classe e não tem um tipo de retorno. Aqui um exemplo:</p>
-<pre class="brush:java">
-public class Bunny {
-public Bunny() {
-System.out.println("construtor");
-}
-}
-</pre>
-
-<p>O nome do construtor, <b>Bunny</b>, corresponde ao nome da classe,<b> Bunny</b>, e não existe tipo de retorno, nem mesmo o <b>void</b>.</p>  
-<p>Estes dois contrutores abaixo não são válido para classe <b>Bunny</b>:</p>
-<pre class="brush:java">
-public bunny() { } // NÃO COMPILA
-public void Bunny() { }
-</pre>
-
-<p>O primeiro não corresponde ao nome da classe porque Java é <b>case sensitive</b>. O segundo método é perfeitamente um bom método, mas não é um construtor  porque este tem um tipo de retorno, <b>void</b>.</p>
-<p>Construtores são usados quando criam um novo objeto. Este processo é chamado de instanciação porque este cria uma nova instância da classe. Um construtor é chamado quando nós escrevemos <b>new</b> seguido pelo nome da classe que nós queremos instanciar. Exemplo:</p>
-<br>
-<pre class="brush:java">new Bunny()</pre>
-<br>
-
-<p>Quando Java ver essa palavra-chave, ele aloca memória para o novo objeto. Java também procura por um construtor e chama ele.</p>
-<p>Um consrutor é tipicamente usado para inicializar variáveis de instância. A palavra-chave diz a Java que você quer referenciar uma variável de instância. Na maioria das vezes <b>this</b> é opcional. O problema é que algumas vezes existem duas variáveis com o mesmo nome. No construtor, tem um que é parâmetro e um que é variável de uma instância. Se você de outra maneira não dizer, Java vai para o escopo mais granular, que é o parâmetro. Usando <b>this.nome</b> Java conta que quer instanciar a variável.</p>
-
-<p>Aqui uma maneira comum de escrever um construtor :</p>
-<pre class="brush:java">
-public class Bunny {
-private String color;
-public Bunny(String color) {
-this.color = color;
-} 
-}
-</pre>
-
-<p>Na linha 4 nós atribuímos o parâmetro <b>color</b> para a variável de instância <b>color</b>. O lado direito da atribuição refere ao parâmetro porque não especifica nada especial. O lado esquerdo da atribuição usa <b>this</b> para contar a Java que queremos usar a variável de instância.</p>
-</section>
-<section id="idconstrutdefaul">
-<h2>Construtor Default</h2>
-
-<p>Cada classe em Java tem um construtor se codificar um ou não. Se você não incluir qualquer construtor na classe, Java criará um pra você sem qualquer parâmetro.</p>
-
-<p>Algumas vezes nós chamamos o <b>construtor-default sem argumentos</b>. Exemplo:</p>
-<pre class="brush:java">
-public class Rabbit {
-public static void main(String[] args) {
-Rabbit rabbit = new Rabbit(); // Chama construtor default
-}
-}
-</pre>
-<p>Na classe <b>Rabbit</b>, Java não ver construtor codificado e cria um.</p>
-<br>
-<pre class="brush:java">public Rabbit() {}</pre>
-<br>
-
-<p>O <b>construtor-default</b> tem uma lista de parâmetro vazio e um corpo vazio.</p>
-<p>O <b>construtor-default</b> somente é suprido se não existir construtor presente.</p>
-<pre class="brush:java">
-class Rabbit1 {
-}
-class Rabbit2 {
-public Rabbit2() { }
-}
-class Rabbit3 {
-public Rabbit3(boolean b) { }
-}
-class Rabbit4 {
-private Rabbit4() { }
-}
-</pre>
-
-<p>Somente <b>Rabbit1</b> tem um <b>construtor-default sem argumento</b>. Este não tem um construtor codificado então Java gera um <b>construtor-default sem argumento</b>. <b>Rabbit2</b> e <b>Rabbit3</b> ambos tem um construtor publicado. <b>Rabbit4</b> tem um consrutor privado.</p>
-
-<p>Vamos ver como funciona executando estes construtores:</p>
-<pre class="brush:java">
- public class RabbitsMultiply {
- public static void main(String[] args) {
- Rabbit1 r1 = new Rabbit1();
- Rabbit2 r2 = new Rabbit2();
- Rabbit3 r3 = new Rabbit3(true);
- Rabbit4 r4 = new Rabbit4(); // NÃO COMPILA
- } 
-}
-</pre>
-
-<p>Linha 3 chama o <b>construtor-default sem argumento</b> gerado. Linha 4 e 5 chama o construtor fornecido pelo usário. Linha 6 não compila, <b>Rabbit4</b> é um construtor privado então outras classes não pode chamá-la.</p>
-</section>
-<section id="idsobrecconst">
-<h2>Sobrecarga de construtores</h2>
-<p>Temos visto somente um construtor por classe. Mas você pode ter múltiplos construtores na mesma classe. Ao sobrecarregar métodos, o nome do método e a lista de parâmetros precisavam corresponder. Como construtores, o nome é sempre o mesmo nome da classe. Isto significa que construtores deve ter diferentes parâmetros em ordem para ser sobrecarregado.</p>
-
-<p>Este exemplo mostra dois construtores:</p>
-<pre class="brush:java">
-public class Hamster {
-private String color;
-private int weight;
-public Hamster(int weight) { // primeiro construtor
-this.weight = weight;
-color = "brown";
-}
-public Hamster(int weight, String color) { // segundo construtor
-this.weight = weight;
-this.color = color;
-}
-}
-</pre>
-<p>Um dos construtores leva um único parâmetro <b>int</b>. O outro leva um <b>int</b> e um <b>String</b>. Esta lista de parâmetros são diferentes, assim os construtores são sobrecarregados com sucesso.</p>
-
-<p>Caso queiramos para o primeiro construtor chamar o segundo construtor com dois parâmetros. Você pode ser tentado a escrever isso:</p>
-<pre class="brush:java">
-public Hamster(int weight) {
-Hamster(weight, "brown"); // NÃO COMPILA
-}
-</pre>
-<p>Isto não funciona! Construtores podem ser chamado apenas por escrever <b>new</b> antes do nome do construtor. Veja o que acontece se colocarmos <b>new</b> antes do nome do construtor:</p>
-<pre class="brush:java">
-public Hamster(int weight) {
-new Hamster(weight, "brown"); // Compila mas não faz o que queremos
-}
-</pre>
-<p>Esta tentativa compila. Mas não da forma que queremos. Quando o construtor com um parâmetro é chamado, este cria um objeto com o <b>color</b> e <b>weight</b>  padrão. Em seguida, ele constrói um objeto diferente com o <b>weight</b> e <b>color</b> desejados e ignora o novo objeto. Nós queremos <b>weight</b> e <b>color</b> definido no objeto. Nós estamos tentando instanciá-lo no primeiro lugar.</p>
-
-<p>Java fornece uma solução com <b>this</b>, a mesma palavra chave usada para referir a variáveis de instãncia. Quando <b>this</b> é usado é como se fosse um método, Java chama outros construtores na mesma instância da classe.</p>
-<pre class="brush:java">
-public Hamster(int weight) {
-this(weight, "brown");
-}
-</pre>
-
-<p>Agora sim, Java chama os construtores que leva dois parâmetros. <b>weight</b> e <b>color</b> fica definido nesta instância.</p>
-
-<p><b>this()</b> tem uma regra especial que você precisa saber. Se você escolher chamá-lo, o <b>this()</b> deve ser a primeira declaração não comentada no construtor. </p>
-<pre class="brush:java">
-3: public Hamster(int weight) {
-4: System.out.println("in constructor");
-5: // ready to call this
-6: this(weight, "brown"); //NÃO COMPILA
-7: }
-</pre>
-<p>Mesmo imprimindo a declaração na linha 4 não muda qualquer variável, ele ainda é uma declaração Java e não pode ser inserida antes da chamada para <b>this()</b>.</p>
-</section>
-<section id="idencadeamconst">
-<h2>Encadeamento de Construtores</h2>
-
-<p>Construtores sobrecarregados geralmente chamam uns aos outros. Uma técnica comum é fazer com que cada construtor adicione um parâmetro até chegar ao construtor que faz todo o trabalho.</p>
-<p>Essa abordagem é chamada de encadeamento de construtores. Neste exemplo, todos os três construtores são encadeados:</p>
-<pre class="brush:java">
-public class Mouse {
-private int numTeeth;
-private int numWhiskers;
-private int weight;
-public Mouse(int weight) {
-this(weight, 16);  // chma construtor com dois parâmetros
-}
-public Mouse(int weight, int numTeeth) {
-this(weight, numTeeth, 6);  // chma construtor com trE^s parâmetros
-}
-public Mouse(int weight, int numTeeth, int numWhiskers) {
-this.weight = weight;
-this.numTeeth = numTeeth;
-this.numWhiskers = numWhiskers;
-}
-public void print() {
-System.out.println(weight + " " + numTeeth + " " + numWhiskers);
-}
-public static void main(String[] args) {
-Mouse mouse = new Mouse(15);
-mouse.print();
-}
-}
-</pre>
-<p>Este código imprime 15 6 6 . O método <b>main()</b> chama o construtor com um parâmetro. Este construtor adciona o segundo valor código-fixo e chama o construtor com dois parâmeros. Este construtor adciona mais um valor codigo-fixo e chama o construtor com três parâmetros. O construtor parâmetro-três atribui a variável de instância.</p>
-</section>
-<section id="idcampfinal">
-<h2>Campos "final"</h2>
-
-<p>A variável de instância <b>final</b> deve ser atribuído um valor exatamente uma vez. Nós vimos isto acontecer na linha da declaração e na instância inicializada. Existe mais uma atribuição desta que pode ser feita no construtor:</p>
-<pre class="brush:java">
-public class MouseHouse {
-private final int volume;
-private final String name = "The Mouse House";
-public MouseHouse(int length, int width, int height) {
-volume = length * width * height;
-}
-}
-</pre>
- <p>O construtor é parte do processo de inicialização, assim este é permitido atribuir variável instância <b>final</b> nele.</p>
-</section>
-<section id="idordinicaliz">
-<h2> Ordem de inicialização</h2>
-
-<p>Esta é uma lista que tem que ser memorizada:</p>
-<ol>
- <li> Se existe uma superclasse(que estudaremos mais adiante) inicialize este primeiro</li>
-<li> Declarações de variáveis estáticas e inicializadores estáticos na ordem em que aparecem no arquivo</li>
-<li>Declarações de variável de instância e inicializadores de instância na ordem em que aparecem no arquivo</li>
-<li>Construtores</li>
-</ol>
-
-<p>Vamos tentar o primeiro exemplo:</p>
-<pre class="brush:java">
- public class InitializationOrderSimple {
- private String name = "Torchie";
- { System.out.println(name); }
- private static int COUNT = 0;
- static { System.out.println(COUNT); }
- static { COUNT += 10; System.out.println(COUNT); }
- public InitializationOrderSimple() {
- System.out.println("constructor");
- }
+  </pre>
+  <p>Na linha 5, tenta acessar o método privado em outra classe. Na linha 6, tenta acessar uma variável de instância privada em outra classe. Ambos geram erros de compilação.</p>
+  </section>
+  <section id="iddefaultaccss">
+  <h2>Acesso Default (pacote privado)</h2>
+
+  <p>Java usa o <b>default</b>, que é um acesso de pacote privado. Que signicia este membro é "privado" para classe no mesmo pacote. Em outras palavras, somente classe do mesmo pacote pode acessá-la.</p>
+  <pre class="brush:java">
+  package pond.duck;
+  public class MotherDuck {
+  String noise = "quack";
+  void quack() {
+  System.out.println(noise); // acesso default está ok
   }
-</pre>
-<pre class="brush:java">
-  public class CallInitializationOrderSimple {
+  private void makeNoise() {
+  quack(); // acesso default está ok
+  } }
+  </pre>
+  <p><b>MotherDuck</b> pode chamar <b>quack()</b> e referir pra <b>noise</b>. Depois de tudo, membros na mesma classe certmente estão no mesmo pacote.</p>
+
+  <pre class="brush:java">
+  package pond.duck;
+  public class GoodDuckling {
+  public void makeNoise() {
+  MotherDuck duck = new MotherDuck();
+  duck.quack(); // acesso default 
+  System.out.println(duck.noise); // acesso default
+  } 
+  }
+  </pre>
+
+  <p>Observe que todas as classes que cobrimos até agora estão no mesmo pacote <b>pond.duck</b>. Isto permite o acesso <b>default(pacote privado)</b> funcionar.</p>
+  <pre class="brush:java">
+  package pond.swan;
+  import pond.duck.MotherDuck; // importando autro pacote
+  public class BadCygnet {
+  public void makeNoise() {
+  MotherDuck duck = new MotherDuck();
+  duck.quack(); // NÃO COMPILA
+  System.out.println(duck.noise); // NÃO COMPILA 
+  } }
+  </pre>
+
+  <p>Lembre que quando não existe acesso modificador, somente classes no mesmo pacote pode acessá-lo.</p>
+  </section>
+  <section id="idaccessprotec">
+  <h2>Acesso Protected</h2>
+
+  <p>Acesso protected permite tudo que acesso default(pacote private) permite e mais. O acesso modificador protected adciona a habilidde de acessar membros da classe pai .</p> 
+
+
+  <div style= "width:200px; height:200px ; background-color: #a3d39c; margin:auto;padding-bottom:25px"> pond.shore 
+  <br><br>
+
+  <div style= "width:100px; height:50px ; background-color: gray; margin:auto"> Bird</div><br>
+  <div style= "width:100px; height:50px ; background-color: gray; margin:auto"> BirdWatcher</div>
+
+  </div>
+  <br>
+  <div style= "width:200px; height:200px ; background-color: #a3d39c; margin:auto; padding-bottom:25px">pond.goose
+  <br><br>
+  <div style= "width:150px; height:50px ; background-color: gray; margin:auto"> Gosing (extends Bird)</div><br>
+  <div style= "width:150px; height:50px ; background-color: gray; margin:auto"> Goose (extends Bird)</div>
+
+  </div>
+
+  <p>Primeiro, nós criamos uma classe <b>Bird</b> e damos acesso <b>protected</b> para estes membros:</p>
+  <pre class="brush:java">
+  package pond.shore;
+  public class Bird {
+  protected String text = "floating"; // acesso protected 
+  protected void floatInWater() { // acesso protected
+  System.out.println(text);
+  } }
+  </pre>
+  <p>Agora criamos uma subclasse:</p>
+  <pre class="brush:java">
+  package pond.goose;
+  import pond.shore.Bird; // em um diferente pacote
+  public class Gosling extends Bird { //  estender significa criar subclasses
+  public void swim() {
+  floatInWater(); // chamando membro protected 
+  System.out.println(text); // chamando membro protected
+  } }
+  </pre>
+
+  <p>Esta é uma subclasse simples. Ele estende a classe <b>Bird</b>. Estender significa criar uma subclasse com acesso para qualquer membros <b>protected</b> ou <b>public</b> da classe pai. Desde que <b>Gosling</b> é uma subclasse de <b>Bird</b>, ele pode acessar este membro mesmo estando em diferente pacote.</p>
+
+  <p>Lembre que <b>protected</b> também dar acesso para tudo que acesso <b>default</b> faz. Isso quer dizer que a classe no mesmo pacote como <b>Bird</b> pode aceesar este membros <b>protected</b></p>.
+  <pre class="brush:java">
+  package pond.shore; // mesmo pacote(package) que Bird
+  public class BirdWatcher {
+  public void watchBird() {
+  Bird bird = new Bird();
+  bird.floatInWater(); // chamando membro protected
+  System.out.println(bird.text); // chamando membro protected
+  } }
+  </pre>
+  <p>Desde que <b>Bird</b> e <b>BirdWatcher</b> estão no mesmo pacote, <b>BirdWatcher</b> pode acessar membros da variável <b>bird</b>. A definição de <b>protected</b> permite acessar subclasses no mesmo pacote.</p>
+
+  </section>
+  <section id="idacesspublic">
+  <h2>Acesso Público</h2>
+
+  <p>Aceeso público quer dizer que qualquer um pode acessar o membro de qualquer lugar</p>
+  <pre class="brush:java">
+  package pond.duck;
+  public class DuckTeacher {
+  public String name = "helpful"; // acesso public 
+  public void swim() { // acesso public
+  System.out.println("swim");
+  } }
+  </pre>
+  <p><b>DuckTeacher</b> permite acessar qualquer classe que quiser.</p>
+  <pre class="brush:java">
+  package pond.goose;
+  import pond.duck.DuckTeacher;
+  public class LostDuckling {
+  public void swim() {
+  DuckTeacher teacher = new DuckTeacher();
+  teacher.swim(); // permitido
+  System.out.println("Thanks" + teacher.name); // permitido
+  } }
+  </pre>
+  <p><b>LostDuckling</b> é capaz de referir para <b>swim()</b> e <b>name</b> no <b>DuckTeacher</b> porque eles são <b>public</b></p>.
+
+  <br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+    <tr><th colspan="4">TABELA Modificadores de acesso</th></tr>
+  <tr><td>Pode Acessar</td><td>  Se este membro é private? </td><td> Se este membro tem acesso default (pacote private) ?</td><td> Se este membro é protected?</td><td> Se este  membro é public?</td></tr>
+  <tr><td>Membro na mesma classe</td><td> Sim</td><td> Sim</td><td> Sim</td><td> Sim</td></tr>
+  <tr><td>Membro em outra classe no mesmo pacote</td><td> Não</td><td> Sim</td><td> Sim</td><td> Sim</td></tr>
+  <tr><td>Membro em uma superclasse em um pacote diferente</td><td> Não </td><td>Não</td><td> Sim</td><td> Sim</td></tr>
+  <tr><td>Método/campo em uma classe não superclasse em um diferente pacote</td><td> Não</td><td> Não</td><td> Não</td><td> Sim</td></tr>
+  </table>
+  </div>
+  <br>
+  </section>
+  <section id="idprjmetcampst">
+  <h2>Projetando métodos e campos estáticos</h2>
+
+  <p>Métodos Estático não exige uma instância de classe. Eles são compartilhados além de todos usuários da classe. Você pode pensar de estáticos como sendo membro da única classe objeto que existe independentemente de qualquer instância desta classe.</p>
+  <p>O método <b>main()</b> é estático. Isto quer dizer que você pode chamá-lo pelo nome da classe</p>
+  <pre class="brush:java">
+  public class Koala {
+  public static int count = 0; //variável static 
+  public static void main(String[] args) { //método static 
+  System.out.println(count);
+  }
+  }
+  </pre>
+
+  <p>O JVM basicamente chama <b>Koala.main()</b> para iniciar o programa. Você pode fazer isto também. Temos o <b>KoalaTester</b> que não faz nada, mas chama o método <b>main()</b></p>.
+  <pre class="brush:java">
+  public class KoalaTester {
   public static void main(String[] args) {
-  InitializationOrderSimple init = new InitializationOrderSimple();
-} 
-}
-</pre>
+  Koala.main(new String[0]); // chama método static
+  }
+  }
+  </pre>
 
-<p><b>A saída é:</b></p>
-<pre>
-0
-10
-Torchie
-constructor
-</pre>
+  <p>Quando executamos <b>KoalaTester</b> ele faz uma chamado para o método <b>main()</b> de <b>Koala</b>, que imprime o valor de <b>count</b>. O próposito deste exemplo é mostrar que o método <b>main()</b> pode ser chamado como qualquer outro método estático.</p>
+  </section>
+  <section id="idcallmethod">
+  <h2>Chamando um Método ou Variável Estática</h2>
 
-<p>Vamos olhar por que: Regra 1 não aplica porque não existe superclasse. Regra 2 diz para executar uma declaração de variável estática e inicializadores estáticos - neste caso linha 5 e 6, com a saída <b>0 e 10</b>. Regra 3 diz para executar a decaração da variável de instância e inicializadores de instância - aqui, linha 2 e 3, com a saída <b>Torchie</b>. Finalmente, regra 4 diz para executar o contrutor - aqui linha 7-9, com a sáida <b>constructor</b>.
-</section>
-<section id="encapsulardados">
-<h1>Encapsular Dados</h1>
+  <p>Acessar o método estático é fácil. Você somente coloca o nome da classe antes do método ou variável. Exemplo:</p>
+  <pre class="brush:java">
+  System.out.println(Koala.count);
+  Koala.main(new String[0]);
+  </pre>
 
-<p>Temos um exemplo de uma classe com um campo que não está privado:</p>
-<pre class="brush:java">
- public class Swan {
-int numberEggs; // variável de instância
-}
-</pre>
+  <p>Você pode usar uma instância de objeto para chamar um método estático.</p>
+  <pre class="brush:java">
+  5: Koala k = new Koala();
+  6: System.out.println(k.count); // k is a Koala
+  7: k = null;
+  8: System.out.println(k.count); // k is still a Koala
+  </pre>
 
-<p>Desde que exista um acesso <b>default(pacote privado)</b>, significa que qualquer classe no pacote pode definir <b>numberEggs</b>. Nós não temos mais controle sobre o que é colocado em nossa própria classe. Um chamador poderá escrever assim:</p>
-<br>
-<pre class="brush:java">mother.numberEggs = -1;</pre>
-<br>
+  <p>A saída deste código é <b>0</b> duas vezes. Linha 6 ver que <b>k</b> é um <b>Koala</b> e <b>count</b> é uma variável estática, assim ele ler esta variável estática. Linha 8 faz a mesma coisa. Java não se importa que <b>k</b> seja nulo. Como estamos procurando por uma estática, isso não importa.</p>
+  </section>
+  <section id="staticvsinst">
+  <h3>Estático vs. Instância</h3>
 
-<p>Isto claramente não é bom. Nós não queremos a mãe <b>Swan</b> tendo um número de ovos negativo!</p>
+  <p>Um membro estático não pode chamar um membro da instância</p>
+  <pre class="brush:java">
+  public class Static {
+  private String name = "Static class";
+  public static void first() { }
+  public static void second() { }
+  public void third() { System.out.println(name); }
+  public static void main(String args[]) {
+  first();
+  second();
+  third(); // NÃO COMPILA
+  } }
+  </pre>
+   <p>Compilador vai dar um erro sobre fazer uma referência estática para um método não estático</p>.
 
-<p>Encapsulamento significa que nós definimos a classe, assim somente métodos na classe com as variáveis pode referir para variável de instância. Chamadores são necessários para usar estes métodos. Vamos dar uma olhada no exemplo do Encapsulamento da classe Swan:</p>
-<pre class="brush:java">
- public class Swan {
- private int numberEggs; // private
- public int getNumberEggs() { // getter
- return numberEggs;
- }
- public void setNumberEggs(int numberEggs) { // setter
- if (numberEggs >= 0) // guard condition
- this.numberEggs = numberEggs;
- } 
-}
-</pre>
+   <br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+    <tr><th colspan="4">TABELA  Chamadas estáticas vs chamadas de instância</th></tr>
+  <tr><td>Tipo </td><td>Chamar</td><td> Legal?</td><td> Como?</td></tr>
+  <tr><td> Método Estático</td><td> Outro método ou variável estática</td><td>Sim </td><td>Usando o nome da classe</td></tr>
+  <tr><td> Método Estático </td><td>Um método ou variável de instância</td><td>Não</td></tr>
+  <tr><td>Método de Instância </td><td> Um método ou variável estática</td><td>Sim</td><td> Usando o nome da classe ou variável de referência</td></tr>
+  <tr><td>Método de Instância</td><td> Outra variável ou método de instância </td><td>Sim</td><td> Usando uma variável de referência</td></tr>
+  </table>
+  </div>
+  <br>
 
-<p>Note que agora <b>numberEggs</b> é privado na linha 2. Isto significa que somente o código dentro da classe pode ler ou escrever o valor de <b>numberEggs</b>. Desde que nós escrevemos a classe, nós sabemos ser  melhor do que definir um número negativos de ovos.  Adcionando um método nas linhas 3-5 para ler o valor que é chamado de um método acessor ou um <b>getter</b>. Adcionando também um método nas linhas 6-9 para atualizar o valor que é chamado de método definidor ou <b>setter</b>. O <b>setter</b> tem uma declaração  <b>if</b> neste exemplo para evitar configurar a variável de instância para um valor inválido. Essa condição de proteção protege a variável da instância. Na linha 8 nós usamos a palavra chave <b>this</b>  para diferenciar entre o parâmetro do método <b>numberEggs</b> e a variável de instância <b>numberEggs</b></p>.
-<br>
+  <p>Vamos ver alguns exemplos: </p>
+  <pre class="brush:java">
+   public class Gorilla {
+   public static int count;
+   public static void addGorilla() { count++; }
+   public void babyGorilla() { count++; }
+   public void announceBabies() {
+   addGorilla();
+   babyGorilla();
+   }
+  public static void announceBabiesToEveryone() {
+  addGorilla();
+  babyGorilla(); // NÃO COMPILA
+  }
+  public int total;
+  public static average = total / count; // NÃO COMPILA
+  }
+  </pre>
 
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-  <tr><th colspan="2">TABELA  Regras para convenções de nomenclatura do JavaBeans</th></tr>
-  <tr><th>Regra</th> <th>Exemplo</th></tr>
-<tr><td>Propriedades são privadas.</td> <td>private int numEggs;</td></tr>
-<tr><td>Os métodos getter começam com <b>is</b> se a propriedade é booleana.</td> <td>
-public boolean isHappy() { 
-return happy; 
-}</td></tr>
-<tr><td>Os métodos getter começam com <b>get</b> se a propriedade não for booleana.</td> <td>
-public int getNumEggs() { 
-return numEggs; 
-}
-</td></tr>
-<tr><td>Métodos setter começam com <b>set</b>.</td><td> public void setHappy(boolean happy) { 
-this.happy = happy; 
-}</td></tr>
-<tr><td>O nome do método deve ter um prefixo <b>set / get / is</b>, seguido pela primeira letra da propriedade em maiúscula, seguido pelo resto do nome da propriedade..</td><td>
-public void setNumEggs(int num) { 
-numEggs = num;
-}</td></tr>
-</table>
-</div>
-<br>
-<p>É hora de alguma prática. Veja se você pode descobrir quais linhas seguem as convenções de nomenclatura do JavaBeans:</p>
-<pre class="brush:java">
-12: private boolean playing;
-13: private String name;
-14: public boolean getPlaying() { return playing; }
-15: public boolean isPlaying() { return playing; }
-16: public String name() { return name; }
-17: public void updateName(String n) { name = n; }
-18: public void setname(String n) { name = n; }
-</pre>
-<p>As linhas 12 e 13 são boas. Eles são variáveis ​​de instância privadas. A linha 14 não segue as convenções de nomenclatura do JavaBeans. Como <b>playing</b> é um booleano, o <b>getter</b> deve começar com <b>is</b>. A linha 15 é um <b>getter</b> correto para <b>playing</b>. A linha 16 não segue as convenções de nomenclatura JavaBeans porque deve ser chamada de <b>getName</b>. As linhas 17 e 18 não seguem as convenções de nomenclatura JavaBeans porque devem ser nomeadas <b>setName</b>. Lembre-se de que o Java é <b>case sensitive</b> (faz distinção entre maiúsculas e minúsculas), portanto, <b>setname</b> não é adequado para atender à convenção de nomenclatura.</p>
-<h2>Criar Classes Imutáveis</h2>
-<p>Encapsular dados é útil porque evita chamadores de fazer mudanças descontroladas em sua classe. Outra técnica comum é fazer classes imutáveis, assim eles não podem ser toda mudada.</p>
-<p>Classes Imutáveis são úteis porque você sabe que elas serão sempre as mesmas. Você pode passar ao redor de sua aplicação com a garantia que o chamador não mudará nada. Isto ajuda a fazer programa com fácil manutenção. Ajuda também na performance, pois limita o número de cópias.</p>
-<pre class="brush:java">
-public class ImmutableSwan {
-private int numberEggs;
-public ImmutableSwan(int numberEggs) {
-this.numberEggs = numberEggs;
-}
-public int getNumberEggs() {
-return numberEggs;
-} 
-}
-</pre>
+  <p>Linha 3  e 4  estão funcionando porque ambos estático e métodos de instância pode referir para uma variável estática. Linha 5-8 estão funcionando porque um método de instância pode chamar um método estático. Linha 11 não compila porque um método estático não pode chamar um método de instância. Similarmente, linha 14 não compila porque uma variável estática está tentando usar uma variável de instância.</p>
+  </section>
+  <section id="varestatic">
+  <h2>Variável Estática</h2>
+  <p>Algumas variáveis estáticas devem mudar conforme o programa é executado. Como variável de instância você pode inicializar uma variavel estática</p>.
+  <pre class="brush:java">
+  public class Initializers {
+  private static int counter= 0; // inicialização
+  }
+  </pre>
+  <p>Outras variáveis de instância nunca mudam durante o programa. Este tipo é conhecido como constatnte. Este usa o modificador <b>final</b> para garantir que a variável nunca vá mudar. Constantes <b>static final</b> usa uma convenção de nomeação diferente de outras variáveis. Eles usam letras maiúsculas com <b>underscore</b> entre as palavras. Exemplo:</p>
+  <pre class="brush:java">
+  public class Initializers {
+  private static final int NUM_BUCKETS = 45;
+  public static void main(String[] args) {
+  NUM_BUCKETS = 5; // NÃO COMPILA
+  } 
+  }
+  </pre>
+  </section>
+  <section id="inicstatic">
+  <h2>Inicialização Estática</h2>
+  <p>Adcione a palavra-chave <b>static</b> para especificar que eles deverão ser executado quando a primeira classe é usada</b>.
+  <pre class="brush:java">
+  private static final int NUM_SECONDS_PER_HOUR;
+  static {
+  int numSecondsPerMinute = 60;
+  int numMinutesPerHour = 60;
+  NUM_SECONDS_PER_HOUR = numSecondsPerMinute * numMinutesPerHour;
+  }
+  </pre>
 
-<p>Neste exemplo não tem um <b>setter</b>. Nós não temos um construtor que permite definir o valor. Imutável é apenas medido depois que o objeto é construído. Classes Imutáveis são permitidos ter valores. Eles somente não pode ser mudado após a instanciação.</p>
-</section>
-<section id="lambda">
-<h1>Escrevendo Lambda Simples</h1>
+  <p>A inicalização estática executa quando a primeira classe é usada. A declaração nele executa e atribui qualquer variável estática como necessidade. A variável <b>final</b> não permite ser reatribuído.</p>
+  <p>Vamos ver outro exemplo para entender a diferença:</p>
+  <pre class="brush:java">
+  14: private static int one;
+  15: private static final int two;
+  16: private static final int three = 3;
+  17: private static final int four; // NÃO COMPILA
+  18: static {
+  19: one = 1;
+  20: two = 2;
+  21: three = 3; //NÃO COMPILA
+  22: two = 4; // NÃO COMPILA
+  23: }
+  </pre>
 
-<p> Java é uma linguagem orientada-objeto. Programa funcional é uma maneira de escrever código mais declarativamente. Você especifica o que você quer fazer em vez de lidar com o estado dos objetos. Você foca mais na expressão do que loops.</p>
+  <p>Linha 14 declara uma variável estática que não é <b>final</b>. Este pode ser atribuído muitas vezes. Linha 15 declara uma variável <b>final</b> sem inicializá-la. Isto significa que podemos inicalizá-lo exetamente uma vez no bloco estático. Linha 22 não compila porque esta é a segunda tentativa.. Linha 16 declara uma variável <b>final</b> e inicialliza no mesmo momento. Não é permitido atribuir novamente, então a linha 21 não compila. Linha 17 declara uma variável <b>final</b> que nunca é inicializada.</p> 
+  </section>
+  <section id="idimportstatic">
+  <h2>Importes Estáticos</h2>
 
- <p>Prgramação funcional usa expressão <b>lambda</b> para escrever código. Uma expressão é um bloco de código que é passado ao redor do programa. Você pode pensar da expressão <b>lambda</b> como um método anônimo. 
- <b>Expressão Lambda</b>, é como um método que você passa como se fosse uma variável.</p>
-</section>
-<section id="idlambdaexemplo">
- <h2>Lambda Exemplo</h2>
+  <p>Importes são conveniente porque não precisa especificar onde cada classe vem no momento de usá-la. Existe outro tipo de <b>import</b> chamado <b>import static</b>. Imports regulares são para importar classes. Imports Static são para importar membros static das classes.</b>
+  <pre class="brush:java">
+  import java.util.ArrayList;
+  import java.util.*;//Nós regularmente usamos esta técnica para importar:
+  import java.util.List;
+  import java.util.Arrays;
+  public class Imports {
+  public static void main(String[] args) {
+  List&ltString> list = Arrays.asList("one", "two");
+  }
+  }  
+  </pre>
 
- <p>O objetivo de imprimir todos os animais da lista de acordo com alguns critérios. Iremos mostrar como fazer isto com expresão lambda para ilustrar como lambdas são úteis. Iniciamos a saída com a classe Animal:</p>
-<pre class="brush:java">
-public class Animal {
-private String species;
-private boolean canHop;
-private boolean canSwim;
-public Animal(String speciesName, boolean hopper, boolean swimmer) {
-species = speciesName;
-canHop = hopper;
-canSwim = swimmer;
-}
-public boolean canHop() { return canHop; }
-public boolean canSwim() { return canSwim; }
-public String toString() { return species; }
-}
-</pre>
-<p>A classe <b>Animal</b> tem três variáveis de instâncias, que estão definidas no construtor. Ele tem dois métodos que obtém o estado de se o animal pode hop(pular) ou swim(nadar). Também tem um método <b>toString()</b> assim nós podemos facilmente identificar o Animal no programa.</p>
-<p>Vamos usar agora uma <b>interface</b>, assunto qual aprenderemos adiante. Por agora, é suficente lembrar que uma <b>interface</b> especifica os métodos que nossa classe precisa implementar:</p>
-<pre class="brush:java">
-public interface CheckTrait {
-boolean test(Animal a);
-}
-</pre>
+  <p>Justamente como imports regulares, você pode usar asterísticos(*) ou importar membro específico.</p>
 
-<p>A primeira coisa que nós queremos checar é se o Animal pode pular. Esta classe pode forncer isto:</p>
-<pre class="brush:java">
-public class CheckIfHopper implements CheckTrait {
-public boolean test(Animal a) {
-return a.canHop();
-}
-}
-</pre>
+  <p>O método anterior tem um método estático chamado: <b>Arrays.asList</b>. Reescrevendo o código para usar um import static:</p>
+  <pre class="brush:java">
+  import java.util.List;
+  import static java.util.Arrays.asList; // static import
+  public class StaticImports {
+  public static void main(String[] args) {
+  List&ltString> list = asList("one", "two"); // sem Arrays.
+  } 
+  }
+  </pre>
 
-<p>Agora nós temos  tudo que nós precisamos para escrever nosso código para procurar os Animais que pulam:</p>
-<pre class="brush:java">
- public class TraditionalSearch {
- public static void main(String[] args) {
- List&ltAnimal> animals = new ArrayList&ltAnimal>(); // lista de animals
- animals.add(new Animal("fish", false, true));
- animals.add(new Animal("kangaroo", true, false));
- animals.add(new Animal("rabbit", true, false));
- animals.add(new Animal("turtle", false, true));
- 
- print(animals, new CheckIfHopper()); // passa na classe que verifica
- }
- private static void print(List&ltAnimal> animals, CheckTrait checker) {
- for (Animal animal : animals) {
- if (checker.test(animal)) // a verificação geral
- System.out.print(animal + " ");
- }
- System.out.println();
- }
- }
-</pre>
+  <p>Neste exemplo, nós estamos especialmente importando o método <b>asList</b>. Isso significa que qualquer momento nós referimos para <b>asList</b> na classe, este vai chamar <b>Arrays.asList()</b></p>.
+  </section>
+  <section id="passardados">
+  <h1>Passando Dados entre Métodos</h1>
+  <p>Java é uma linguagem de passagem por valor. Isso quer dizer que a cópia da variável é feita e o método recebe esta cópia. Atribuições feita no método não afeta o chamado. Exemplo:</p>
+  <pre class="brush:java">
+  2: public static void main(String[] args) {
+  3: int num = 4;
+  4: newNumber(5);
+  5: System.out.println(num); // 4
+  6: }
+  7: public static void newNumber(int num) {
+  8: num = 8;
+  9: }
+  </pre>
 
-<p>O método <b>print()</b> na linha11 é muito geral - ele pode checar qualquer traço. Não é necessário saber especificamente o que estamos procurando para imprimir uma lista de animais.</p>
-<p>O que acontece se quisermos imprimir os Animais que nadam? Nós vamos precisar escrever outra classe <b>CheckIfSwins</b>. Então nós precisamos adcionar uma nova linha sob linha 9 que instancia esta classe. Estas duas coisas somente para fazer outra checagem. Nós podemos repetir esta classe inteira aqui e fazer você encontrar uma linha mudada. Usando <b>lambda</b> podemos substituir a linha 9 com o código seguinte:</p>
-<br>
-<pre class="brush:java">9: print(animals, a -> a.canHop());</pre>
-<br>
+  <p>Na linha 3 é atribuído o valor de <b>4</b>. Na linha 4 nós chamamos um método. Na linha 8, o parâmetro <b>num</b> no método  é definido como <b>8</b>.  Apesar deste parâmetro ter o mesmo  nome como a variável na linha 3 isto é uma coincidência. O nome poderá ser qualquer coisa. A variável 3 nunca muda porque nenhuma atribuição é feita para ele.</p>
 
-<p>Para imprimir Animals que sabem nadar não tem necessidade de uma classe extra para fazer uma coisa simples:</p>
+  <p>Agora vamos ver um exemplo com tipo de referência. Qual seria a saída deste código? </p>
 
-<pre class="brush:java">print(animals, a -> a.canSwim());</pre>
+  <pre class="brush:java">
+  public static void main(String[] args) {
+  String name = "Webby";
+  speak(name);
+  System.out.println(name); 
+  }
+  public static void speak(String name) {
+  name = "Sparky";
+  }
+  </pre>
+  <p><b>A resposta correta é Webby. </b></p>
+  <p>A variável atribuída é somente para o parâmetro do método e não afeta o chamador.</p>
 
-<p>E para imprimir Animals que não sabem nadar?</p>
-<pre class="brush:java">print(animals, a -> ! a.canSwim());</pre>
+   <p>Para revisar, o Java usa a passagem-por-valor para obter dados em um método. Atribuir um novo primitivo ou referência a um parâmetro não altera o chamador. Chamar métodos em uma referência a um objeto afeta o chamador.</p>
 
-<p>Este código usa um conceito chamado <b>deferred execution</b>. <b>Deferred Execution</b> significa que o código é especificado agora, mas será executado mais tarde. Neste caso, mais tarde é quando o método <b>print()</b> chamá-lo.</p>
-</section>
-<section id="idsintaxlambda">
-<h2>Sintax Lambda</h2>
+   <p>Vamos tentar um exemplo:</p>
 
-<p>Uma das expressões lambda mais simples que você pode escrever é aquela que você acabou de ver:</p>
-<pre class="brush:java">a -> a.canHop();</pre>
+  <pre class="brush:java">
+  public class ReturningValues {
+  public static void main(String[] args) {
+  int number = 1; // 1
+  String letters = "abc"; // abc
+  number(number); // 1
+  letters = letters(letters); // abcd
+  System.out.println(number + letters); // 1abcd
+  }
+   public static int number(int number) {
+   number++;
+   return number;
+  }
+  public static String letters(String letters) {
+   letters += "d";
+   return letters;
+  }
+  }
+  </pre>
+  <p>Linhas 3 e 4 são atribuições diretas. Linha 5 chama um método. Linha 10 incremeta o parâmetro do método para 2 mas deixa a variável <b>numbers</b> no método <b>main()</b> como <b>1</b>. Enquanto na linha 11 retorna o valor, o chamador ignora ele. O método chamado na linha 6 não ignora o resultado assim a letra torna <b>"abcd"</b>. Lembrar que isto acontece porque do valor retornado e não o parâmetro do método.</p>
+  </section>
+  <section id="metodosobrecarga">
+  <h1>Métodos de Sobrecarga</h1>
+  <p>Sobrecarga de método ocorre quando existem métodos de diferentes assinaturas com o mesmo nome, mas tipos diferentes de parâmetros.Tudo que não seja a assinatura do método pode variar para métodos sobrecarregados. Isso significa que pode haver diferentes modificadores de acesso, especificadores (como estático), tipos de retorno e listas de exceções.</p>
 
-<p>Isto significa que Java deve chamar um método com um parâmetro <b>Animal</b> que retorna um valor <b>boolean</b> que é o resultado de um <b>canHop()</b></p>.
-<p>Estamos passando este <b>lambda</b> como o segundo parâmetro do método <b>print()</b>. Este método espera um <b>CheckTrait</b> como o segundo parâmetro. Desde que nós estamos passando um <b>lambda</b>, Java tenta mapear lambda para esta interface:</p><br>
-<pre class="brush:java">boolean test(Animal a);</pre>
-<br>
-<p>Desde que o método da interface leva um Animal, isso quer dizer que o parâmetro <b>lambda</b> tem que ser um <b>Animal</b>. E desde que o método da <b>interface</b> retorna um <b>boolean</b>, <b>lambda</b> retorna um <b>boolean</b>.</p>
-<p>Em lambda estas duas próximas expressões que vamos analisar fazem exatamente a mesma coisa:</p>
-<pre class="brush:java">
-a -> a.canHop()
-|  |      | 
-|  seta   corpo 
-nome do parâmetro
-</pre>
-<ul>
-<li> Especifica um único parâmetro com o nome "a".</li>
-<li>O operador <b>seta(->)</b> para separar o parâmetro e o corpo</li>
-<li>Um corpo que chama um único método e retorna o resultado deste método</li>
-</ul>
-<pre class="brush:java">
-(Animal a) -> { return a.canHop(); }
-            
- //(Animal a) --->tipo parâmetro opcional 
- //a ---> nome do parâmetro
- // -> seta
- // return --->   necessário porque do bloco
- //a.canHop()---> corpo
-</pre>
-<ul>
- <li>Especifica um único parâmetro com o nome "a" e a afirmação é tipo Animal</li>
- <li>O operador <b>seta(->)</b> é para separar o parâmetro do corpo</li>
- <li> Um corpo que tem um ou mais linhas de código incluindo ponto e vírgula e a declaração <b>return</b>.</li>
- </ul>
- <p>Os parênteses só podem ser omitidos se existir um único parâmetro e este tipo não estar explicitamente afirmado.</p>
- <p>Vamos olhar alguns exemplos de <b>lambdas</b> válidos. Faz de conta que existam interfaces válidas que pode consumir um <b>lambda</b> com zero, um ,ou dois parâmetros <b>String</b></p>.
-<pre class="brush:java">
-3: print(() -> true); // 0 parametros
-4: print(a -> a.startsWith("test")); // 1 parametro
-5: print((String a) -> a.startsWith("test")); // 1 parametro
-6: print((a, b) -> a.startsWith("test")); // 2 parametros
-7: print((String a, String b) -> a.startsWith("test")); // 2 parametros
-</pre>
-<p>Note que todos estes exemplos tem parênteses ao redor da lista de parâmetros exceto de um que leva somente um parâmetro e não especifica o tipo. linha 3 leva <b>0</b> parâmetro e sempre retorna o <b>Boolean true</b>. linha 4 leva um parâmetro  e chama o método nele, retornando o resultado. Linha 5 faz o mesmo exceto que ele explicitamente define o tipo da variável. Linha 6 e 7 levam dois parâmetros e ignora um deles. Não existe uma regra que diga a você como usar todos os parâmetros definidos.</p>
-<p> Agora vamos fazer você identificar sintax inválidas:</p>
-<pre class="brush:java">
-print(a, b -> a.startsWith("test")); // NÃO COMPILA
-print(a -> { a.startsWith("test"); }); // NÃO COMPILA
-print(a -> { return a.startsWith("test") }); // NÃO COMPILA
-</pre>
-<p>A primeira linha precisa de parênteses ao redor da lista de parâmetros. A segunda linha está faltando a palavra chave <b>return</b>. A última linha está faltando o ponto e vírgula.</p>
-</section>
-<section id="idpredicate">
-<h2>Predicate</h2>
-<p>Lambdas trabalha com interfaces que tem somente um método. Este são chamados de interfaces funcional - interfaces que pode ser usada com programação funcional.</p>
-<p>Você pode imaginar que nós teríamos que criar quantidades de interfaces como esta para usar lambdas. Queremos testar <b>Animals</b> e <b>Strings</b> e <b>Plants</b> e qualquer coisa a mais que vir.</p>
-<p>Java reconhece que isto é um problema comum e fornece assim uma interface. Esta fica no pacote <b>java.util.function</b> e o trecho dele vemos a seguir: </p>
-<pre class="brush:java">
-public interface Predicate&ltT> {
-boolean test(T t);
-}
-</pre>
+  <p>Estes métodos sobrecarregados são todos válidos:</p>
+  <pre class="brush:java">
+  public void fly(int numMiles) { }
+  public void fly(short numFeet) { }
+  public boolean fly() { return false; }
+  void fly(int numMiles, short numFeet) { }
+  public void fly(short numFeet, int numMiles) throws Exception { }
+  </pre>
 
-<p>Este tipo de interface usa um tipo de <b>T</b> que é a sintax para genéricos. A única diferença para esse método <b>boolean test(Animal a);</b> é o uso deste tipo <b>T</b> em vez de <b>Animal.</b> Isso  é como quando criamos um <b>ArrayList</b> e conseguimos especificar qualquer tio nele. Isso significa que não precisamos mais da nossa própria interface e podemos colocar tudo relacionado à nossa pesquisa em uma classe:</p>
-<pre class="brush:java">
- import java.util.*;
- import java.util.function.*;
- public class PredicateSearch {
- public static void main(String[] args) {
- List&ltAnimal> animals = new ArrayList&ltAnimal>();
- animals.add(new Animal("fish", false, true));
- 
- print(animals, a -> a.canHop());
- }
- private static void print(List&ltAnimal> animals, Predicate&ltAnimal> checker) {
- for (Animal animal : animals) {
- if (checker.test(animal))
- System.out.print(animal + " ");
- }
- System.out.println();
- }
- }
-</pre>
+  <p>Vamos ver exemplo de sobrecarga que não é válido:</p>
+  <pre class="brush:java">
+  public void fly(int numMiles) { }
+  public int fly(int numMiles) { } // NÃO COMPILA
+  </pre>
+  <p>Este método não compila porque este apenas difere do original por tipo de retorno.</p>
 
-<p>Desta vez, a linha 10 é a única que mudou. Esperamos ter um <b>Predicate</b> passado nesse tipo <b>Animal</b>.</p>
-<p><b>ArrayList</b> declara um método <b>removeIf()</b> que leva um <b>Predicate</b>. Imagine que temos uma lista de nomes para <b>bunnies</b>. Nós decidimos que vamos remover todos os nomes de <b>bunnies</b> que inicia com a letra <b>h</b>. Nós podemos resolver estes problemas escrevendo um loop:</p>
-<pre class="brush:java">
-3: List&ltString> bunnies = new ArrayList&lt>();
-4: bunnies.add("long ear");
-5: bunnies.add("floppy");
-6: bunnies.add("hoppy");
-7: System.out.println(bunnies); // [long ear, floppy, hoppy]
-8: bunnies.removeIf(s -> s.charAt(0) != 'h');
-9: System.out.println(bunnies); // [hoppy]
-</pre>
-<p>Linha 8 define um <b>predicate</b> que leva uma <b>String</b> e retorna um <b>boolean</b>. O método <b>removeIf()</b> faz o resto.</p>
-</section>
-<section id="resumo">
-<h1>Resumão</h1>
+  <p>Por que este exemplo não compila?</p>
+  <pre class="brush:java">
+  public void fly(int numMiles) { }
+  public static void fly(int numMiles) { } // NÃO COMPILA
+  </pre>
+  <p>A lista de parâmetro é o mesmo. A diferença é que um é método de instância e outro um método estático.</p>
+  </section>
+  <section id="idvarsobrecarg">
+  <h2>Sobrecarga e Varargs</h2>
 
-<p>Java inicia métodos com um modificador de acesso <b>public</b>, <b>private</b>, <b>protected</b> ou <b>blank(acesso default)</b>. Este é seguido por uma opção específica como <b>static</b>, <b>final</b>, ou <b>abstract</b>. O próximo vem com o tipo de retorno, que é <b>void</b> ou um tipo Java. Os nomes dos métodos segue usando a regra de identificador padrão Java. Zero ou mais parâmetros vai no parênteses como a lista de parâmetros. Zero ou mais declarações vai nas chaves para fazer o corpo do método.</p><br>
-<p>Usando a palavra chave <b>private</b> significa que o código é somente acessível de dentro da mesma classe. Acesso <b>default(pacote private)</b> significa que o código é somente acessível do mesmo pacote. Usando a palavra chave <b>protected</b> significa que o código é acessível do mesmo pacote ou subclasse. Usando a palavra chave <b>public</b> significa que o código é acessível de qualquer lugar. Metodos Estático e variáveis estática são compartilhadas pela classe. Quando referenciado do lado de fora da classe, eles são chamados usando o nome da classe - por exemplo, <b>Staticclasse.metodo()</b>. Membros da intância são permitidos chamar membros estáticos, mas membros estáticos não são permitidos chamar membros da instância. <b>Imports Static</b> são usados para importar membros estáticos.</p><br>
-<p>Java usa passagem por valor, que significa que chamar métodos cria uma cópia dos parâmetros. Atribuir novos valores a esses parâmetros no método não afeta as variáveis do chamador.</p><br>
-<p>Chamar métodos em objetos que são parâmetros do método altera o estado desses objetos e é refletido no chamador.</p><br>
-<p>Sobrecarga de métodos são métodos com o mesmo nome, mas uma lista de parâmetro diferente. Java chama o método mais específico encontrado e corresponde por primitivos mais largos. Depois que vem autoboxing e varargs.</p><br>
-<p>Construtores são usados para instanciar novos objetos. O <b>construtor default sem argumento</b> é chamado quando o construtor é codificado. Múltiplos constutores são permitidos e podem chamar outros escrevendo <b>this()</b>. Se <b>this()</b> está presente, ele deve ser a primeira declaração no construtor. Construtores pode referir para variáveis de instância por escrever <b>this</b> antes do nome da variável indicando que ele quer a variável de instância e não o parâmetro do método com este nome. A ordem de inicialização é a superclasse; variáveis estática e inicializadores estático na ordem que aparecer; variáveis de instância e inicializadores de instância na ordem que aparecer; e finalmente o construtor.</p><br>
-<p>Encapsulamento refere-se a impedir que os chamadores alterem as variáveis de instância diretamente. Isto é feito por fazer variáveis de instância <b>private </b> e <b>getters/setters public</b>. Imutabilidade refere-se a impedir chamadores de mudar as variáveis de instância no todo.</p><br>
+  <p>Qual método  você pensa que é chamado se passarmos um int[]?</p>
+  <pre class="brush:java">
+  public void fly(int[] lengths){}
+  public void fly(int... lengths){} // NÃO COMPILA
+  </pre>
+  <p>Java trata <b>varags</b> como se fosse um <b>array</b>. Isto significa que a assinatura do método é o mesmo para ambos os métodos. Como não temos permissão para sobrecarregar métodos com a mesma lista de parâmetros, esse código não compila.</p>
+  </section>
+  <section id="idautoboxing"></section>
+  <h2>AutoBoxing</h2>
+  <p>Java realiza autoboxing quando tem a necessidade de converter um int primitivo para um objeto Integer.</p>
+  <p>O que acontece se nós tivermos ambos uma versão primitiva e uma inteira(integer)?</p>
+  <pre class="brush:java">
+  public void fly(int numMiles) { }
+  public void fly(Integer numMiles) { }
+  </pre>
+  <p>Java vai corresponder a versão <b>int numMiles</b>. Java tenta usar a lista de parâmetros mais específica que pode encontrar. Quando uma versão <b>int</b> primitivo não está presente este realizará o <b>autobox</b>. Contudo , quando a versão <b>int</b> primitivo é fornecido, não existe razão para java fazer um trabalho extra de Autoboxing.</p>
+  </section>
+  <section id="tiprefid">
+  <h2>Tipos de Referências</h2>
+  <p>Dada a regra sobre o Java escolher a versão mais específica de um método que ele pode. O que você pensa sobre a saída deste código?</p>
+  <pre class="brush:java">
+  public class ReferenceTypes {
+  public void fly(String s) {
+  System.out.print("string ");
+  }
+  public void fly(Object o) {
+  System.out.print("object ");
+  }
+  public static void main(String[] args) {
+  ReferenceTypes r = new ReferenceTypes();
+  r.fly("test");
+  r.fly(56);
+  }
+  }
+  </pre>
 
-<p>Expressões Lambda, ou lambdas, permite passar ao redor blocos de códigos. A sintax padrão como <b>( String a, String b) -> {return a.equals(b);}</b> O tipo do parâmetro pode ser omitido. Quando somente um parâmetro é especificado sem um tipo, os parênteses também podem ser omitidos. As chaves e a declarção <b>return</b> podem ser omitidos para uma única declaração, fazendo de forma curta <b>( a-> a.equals(b)).</b></p><br> <p><b>Lambdas</b> são passados para um método esperando uma interface com um método. <b>Predicate</b> é uma interface comum. Ele tem um método nomeado test que retorna um boolean e leva um tipo. O método <b>removeIf()</b> no <b>ArrayList</b> leva um <b>predicate</b>.</p><br>
-</section>
+  <p>A resposta é  <b>string object</b>. O primeiro chamado é uma <b>String</b> e encontra um correspondente direto. Não existe razão para usar a versão <b>Object</b> quando existe uma boa lista de parâmetro <b>String</b> somente esperando para ser chamado. O  segundo chamado procura por uma lista de parâmetro <b>int</b>. Quando este um não é encontrado, ele faz um <b>autoboxes</b> para <b>Integer</b>. Como ainda não encontra uma correspondência, vai para o <b>Object</b></p>.
+  </section>
+  <section id="primitiveid">
+  <h2>Primitivos</h2>
+
+  <p>Primitivos funciona de maneira similar a variáveis de referência. Java tenta encontrar o método sobrecarregado correspondente mais específico.</p> 
+  <p>O que acontece aqui?</p>
+  <pre class="brush:java">
+  public class Plane {
+  public void fly(int i) {
+  System.out.print("int ");
+  }
+  public void fly(long l) {
+  System.out.print("long ");
+  }
+  public static void main(String[] args) {
+  Plane p = new Plane();
+  p.fly(123);
+  p.fly(123L);
+  } 
+  }
+  </pre>
+  <p>A resposta é <b>int long</b>. O primeiro chamado passa um <b>int</b> e ver uma correspondência exata. O segundo chamado passa um <b>long</b> e também ver uma correspodência exata. </p>
+  </section>
+  <section id="idjunttudo">
+  <h2>Juntando Tudo</h2>
+
+  <p>Até agora, todas as regras quando um método sobrecarregado é chamado deve ser lógico. Java chama o método mais específico que ele pode. Quando alguns dos tipos interage, Java foca a regra na compatibilidade anterior.
+  A tabela abaixo mostra a ordem que Java usa para escolher o método sobrecarreagdo correto.</p><br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+  <tr><th>Regra</th><th>Exemplo de qual será escolhido por glide(1,2)</th></tr>
+  <tr><td>Correspondência exata por tipo</td><td>public String glide(int i, int j) {}</td></tr>
+    <tr><td> Tipo mais largo de primitivo</td><td> public String glide(long i, long j) {} </td></tr>
+    <tr><td>Tipo Autoboxed </td><td> public String glide(Integer i, Integer j) {} </tr>
+    <tr><td>Varargs</td><td> public String glide(int... nums) {} </td></tr>
+  </table>
+  </div>
+  <br>
+
+  <p>Vamos praticar executando as regras da Tabela.</p>  
+  <pre class="brush:java">
+  public class Glider2 {
+  public static String glide(String s) {
+  return "1";
+  }
+  public static String glide(String... s) {
+  return "2";
+  }
+  public static String glide(Object o) {
+  return "3";
+  }
+  public static String glide(String s, String t) {
+  return "4";
+  }
+  public static void main(String[] args) {
+  System.out.print(glide("a"));
+  System.out.print(glide("a", "b"));
+  System.out.print(glide("a", "b", "c"));
+  } 
+  }
+  </pre>
+
+  <p>Este imprime a saída <b>142</b>. O primeiro chamado corresponde a assinatura pegando um único <b>String</b> porque este é o mais específico que corresponde. O segundo chamado corresponde a assinatura que pega dois parâmetros <b>String</b>. O terceiro chamado a versão <b>varargs</b> é usada desde que não exista correspondente melhor.</p>
+  </section>
+  <section id="construtores">
+  <h1>Criando Construtores</h1> 
+
+  <p>Um construtor é um método especial que corresponde ao nome da classe e não tem um tipo de retorno. Aqui um exemplo:</p>
+  <pre class="brush:java">
+  public class Bunny {
+  public Bunny() {
+  System.out.println("construtor");
+  }
+  }
+  </pre>
+
+  <p>O nome do construtor, <b>Bunny</b>, corresponde ao nome da classe,<b> Bunny</b>, e não existe tipo de retorno, nem mesmo o <b>void</b>.</p>  
+  <p>Estes dois contrutores abaixo não são válido para classe <b>Bunny</b>:</p>
+  <pre class="brush:java">
+  public bunny() { } // NÃO COMPILA
+  public void Bunny() { }
+  </pre>
+
+  <p>O primeiro não corresponde ao nome da classe porque Java é <b>case sensitive</b>. O segundo método é perfeitamente um bom método, mas não é um construtor  porque este tem um tipo de retorno, <b>void</b>.</p>
+  <p>Construtores são usados quando criam um novo objeto. Este processo é chamado de instanciação porque este cria uma nova instância da classe. Um construtor é chamado quando nós escrevemos <b>new</b> seguido pelo nome da classe que nós queremos instanciar. Exemplo:</p>
+  <br>
+  <pre class="brush:java">new Bunny()</pre>
+  <br>
+
+  <p>Quando Java ver essa palavra-chave, ele aloca memória para o novo objeto. Java também procura por um construtor e chama ele.</p>
+  <p>Um consrutor é tipicamente usado para inicializar variáveis de instância. A palavra-chave diz a Java que você quer referenciar uma variável de instância. Na maioria das vezes <b>this</b> é opcional. O problema é que algumas vezes existem duas variáveis com o mesmo nome. No construtor, tem um que é parâmetro e um que é variável de uma instância. Se você de outra maneira não dizer, Java vai para o escopo mais granular, que é o parâmetro. Usando <b>this.nome</b> Java conta que quer instanciar a variável.</p>
+
+  <p>Aqui uma maneira comum de escrever um construtor :</p>
+  <pre class="brush:java">
+  public class Bunny {
+  private String color;
+  public Bunny(String color) {
+  this.color = color;
+  } 
+  }
+  </pre>
+
+  <p>Na linha 4 nós atribuímos o parâmetro <b>color</b> para a variável de instância <b>color</b>. O lado direito da atribuição refere ao parâmetro porque não especifica nada especial. O lado esquerdo da atribuição usa <b>this</b> para contar a Java que queremos usar a variável de instância.</p>
+  </section>
+  <section id="idconstrutdefaul">
+  <h2>Construtor Default</h2>
+
+  <p>Cada classe em Java tem um construtor se codificar um ou não. Se você não incluir qualquer construtor na classe, Java criará um pra você sem qualquer parâmetro.</p>
+
+  <p>Algumas vezes nós chamamos o <b>construtor-default sem argumentos</b>. Exemplo:</p>
+  <pre class="brush:java">
+  public class Rabbit {
+  public static void main(String[] args) {
+  Rabbit rabbit = new Rabbit(); // Chama construtor default
+  }
+  }
+  </pre>
+  <p>Na classe <b>Rabbit</b>, Java não ver construtor codificado e cria um.</p>
+  <br>
+  <pre class="brush:java">public Rabbit() {}</pre>
+  <br>
+
+  <p>O <b>construtor-default</b> tem uma lista de parâmetro vazio e um corpo vazio.</p>
+  <p>O <b>construtor-default</b> somente é suprido se não existir construtor presente.</p>
+  <pre class="brush:java">
+  class Rabbit1 {
+  }
+  class Rabbit2 {
+  public Rabbit2() { }
+  }
+  class Rabbit3 {
+  public Rabbit3(boolean b) { }
+  }
+  class Rabbit4 {
+  private Rabbit4() { }
+  }
+  </pre>
+
+  <p>Somente <b>Rabbit1</b> tem um <b>construtor-default sem argumento</b>. Este não tem um construtor codificado então Java gera um <b>construtor-default sem argumento</b>. <b>Rabbit2</b> e <b>Rabbit3</b> ambos tem um construtor publicado. <b>Rabbit4</b> tem um consrutor privado.</p>
+
+  <p>Vamos ver como funciona executando estes construtores:</p>
+  <pre class="brush:java">
+   public class RabbitsMultiply {
+   public static void main(String[] args) {
+   Rabbit1 r1 = new Rabbit1();
+   Rabbit2 r2 = new Rabbit2();
+   Rabbit3 r3 = new Rabbit3(true);
+   Rabbit4 r4 = new Rabbit4(); // NÃO COMPILA
+   } 
+  }
+  </pre>
+
+  <p>Linha 3 chama o <b>construtor-default sem argumento</b> gerado. Linha 4 e 5 chama o construtor fornecido pelo usário. Linha 6 não compila, <b>Rabbit4</b> é um construtor privado então outras classes não pode chamá-la.</p>
+  </section>
+  <section id="idsobrecconst">
+  <h2>Sobrecarga de construtores</h2>
+  <p>Temos visto somente um construtor por classe. Mas você pode ter múltiplos construtores na mesma classe. Ao sobrecarregar métodos, o nome do método e a lista de parâmetros precisavam corresponder. Como construtores, o nome é sempre o mesmo nome da classe. Isto significa que construtores deve ter diferentes parâmetros em ordem para ser sobrecarregado.</p>
+
+  <p>Este exemplo mostra dois construtores:</p>
+  <pre class="brush:java">
+  public class Hamster {
+  private String color;
+  private int weight;
+  public Hamster(int weight) { // primeiro construtor
+  this.weight = weight;
+  color = "brown";
+  }
+  public Hamster(int weight, String color) { // segundo construtor
+  this.weight = weight;
+  this.color = color;
+  }
+  }
+  </pre>
+  <p>Um dos construtores leva um único parâmetro <b>int</b>. O outro leva um <b>int</b> e um <b>String</b>. Esta lista de parâmetros são diferentes, assim os construtores são sobrecarregados com sucesso.</p>
+
+  <p>Caso queiramos para o primeiro construtor chamar o segundo construtor com dois parâmetros. Você pode ser tentado a escrever isso:</p>
+  <pre class="brush:java">
+  public Hamster(int weight) {
+  Hamster(weight, "brown"); // NÃO COMPILA
+  }
+  </pre>
+  <p>Isto não funciona! Construtores podem ser chamado apenas por escrever <b>new</b> antes do nome do construtor. Veja o que acontece se colocarmos <b>new</b> antes do nome do construtor:</p>
+  <pre class="brush:java">
+  public Hamster(int weight) {
+  new Hamster(weight, "brown"); // Compila mas não faz o que queremos
+  }
+  </pre>
+  <p>Esta tentativa compila. Mas não da forma que queremos. Quando o construtor com um parâmetro é chamado, este cria um objeto com o <b>color</b> e <b>weight</b>  padrão. Em seguida, ele constrói um objeto diferente com o <b>weight</b> e <b>color</b> desejados e ignora o novo objeto. Nós queremos <b>weight</b> e <b>color</b> definido no objeto. Nós estamos tentando instanciá-lo no primeiro lugar.</p>
+
+  <p>Java fornece uma solução com <b>this</b>, a mesma palavra chave usada para referir a variáveis de instãncia. Quando <b>this</b> é usado é como se fosse um método, Java chama outros construtores na mesma instância da classe.</p>
+  <pre class="brush:java">
+  public Hamster(int weight) {
+  this(weight, "brown");
+  }
+  </pre>
+
+  <p>Agora sim, Java chama os construtores que leva dois parâmetros. <b>weight</b> e <b>color</b> fica definido nesta instância.</p>
+
+  <p><b>this()</b> tem uma regra especial que você precisa saber. Se você escolher chamá-lo, o <b>this()</b> deve ser a primeira declaração não comentada no construtor. </p>
+  <pre class="brush:java">
+  3: public Hamster(int weight) {
+  4: System.out.println("in constructor");
+  5: // ready to call this
+  6: this(weight, "brown"); //NÃO COMPILA
+  7: }
+  </pre>
+  <p>Mesmo imprimindo a declaração na linha 4 não muda qualquer variável, ele ainda é uma declaração Java e não pode ser inserida antes da chamada para <b>this()</b>.</p>
+  </section>
+  <section id="idencadeamconst">
+  <h2>Encadeamento de Construtores</h2>
+
+  <p>Construtores sobrecarregados geralmente chamam uns aos outros. Uma técnica comum é fazer com que cada construtor adicione um parâmetro até chegar ao construtor que faz todo o trabalho.</p>
+  <p>Essa abordagem é chamada de encadeamento de construtores. Neste exemplo, todos os três construtores são encadeados:</p>
+  <pre class="brush:java">
+  public class Mouse {
+  private int numTeeth;
+  private int numWhiskers;
+  private int weight;
+  public Mouse(int weight) {
+  this(weight, 16);  // chma construtor com dois parâmetros
+  }
+  public Mouse(int weight, int numTeeth) {
+  this(weight, numTeeth, 6);  // chma construtor com trE^s parâmetros
+  }
+  public Mouse(int weight, int numTeeth, int numWhiskers) {
+  this.weight = weight;
+  this.numTeeth = numTeeth;
+  this.numWhiskers = numWhiskers;
+  }
+  public void print() {
+  System.out.println(weight + " " + numTeeth + " " + numWhiskers);
+  }
+  public static void main(String[] args) {
+  Mouse mouse = new Mouse(15);
+  mouse.print();
+  }
+  }
+  </pre>
+  <p>Este código imprime 15 6 6 . O método <b>main()</b> chama o construtor com um parâmetro. Este construtor adciona o segundo valor código-fixo e chama o construtor com dois parâmeros. Este construtor adciona mais um valor codigo-fixo e chama o construtor com três parâmetros. O construtor parâmetro-três atribui a variável de instância.</p>
+  </section>
+  <section id="idcampfinal">
+  <h2>Campos "final"</h2>
+
+  <p>A variável de instância <b>final</b> deve ser atribuído um valor exatamente uma vez. Nós vimos isto acontecer na linha da declaração e na instância inicializada. Existe mais uma atribuição desta que pode ser feita no construtor:</p>
+  <pre class="brush:java">
+  public class MouseHouse {
+  private final int volume;
+  private final String name = "The Mouse House";
+  public MouseHouse(int length, int width, int height) {
+  volume = length * width * height;
+  }
+  }
+  </pre>
+   <p>O construtor é parte do processo de inicialização, assim este é permitido atribuir variável instância <b>final</b> nele.</p>
+  </section>
+  <section id="idordinicaliz">
+  <h2> Ordem de inicialização</h2>
+
+  <p>Esta é uma lista que tem que ser memorizada:</p>
+  <ol>
+   <li> Se existe uma superclasse(que estudaremos mais adiante) inicialize este primeiro</li>
+  <li> Declarações de variáveis estáticas e inicializadores estáticos na ordem em que aparecem no arquivo</li>
+  <li>Declarações de variável de instância e inicializadores de instância na ordem em que aparecem no arquivo</li>
+  <li>Construtores</li>
+  </ol>
+
+  <p>Vamos tentar o primeiro exemplo:</p>
+  <pre class="brush:java">
+   public class InitializationOrderSimple {
+   private String name = "Torchie";
+   { System.out.println(name); }
+   private static int COUNT = 0;
+   static { System.out.println(COUNT); }
+   static { COUNT += 10; System.out.println(COUNT); }
+   public InitializationOrderSimple() {
+   System.out.println("constructor");
+   }
+    }
+  </pre>
+  <pre class="brush:java">
+    public class CallInitializationOrderSimple {
+    public static void main(String[] args) {
+    InitializationOrderSimple init = new InitializationOrderSimple();
+  } 
+  }
+  </pre>
+
+  <p><b>A saída é:</b></p>
+  <pre>
+  0
+  10
+  Torchie
+  constructor
+  </pre>
+
+  <p>Vamos olhar por que: Regra 1 não aplica porque não existe superclasse. Regra 2 diz para executar uma declaração de variável estática e inicializadores estáticos - neste caso linha 5 e 6, com a saída <b>0 e 10</b>. Regra 3 diz para executar a decaração da variável de instância e inicializadores de instância - aqui, linha 2 e 3, com a saída <b>Torchie</b>. Finalmente, regra 4 diz para executar o contrutor - aqui linha 7-9, com a sáida <b>constructor</b>.
+  </section>
+  <section id="encapsulardados">
+  <h1>Encapsular Dados</h1>
+
+  <p>Temos um exemplo de uma classe com um campo que não está privado:</p>
+  <pre class="brush:java">
+   public class Swan {
+  int numberEggs; // variável de instância
+  }
+  </pre>
+
+  <p>Desde que exista um acesso <b>default(pacote privado)</b>, significa que qualquer classe no pacote pode definir <b>numberEggs</b>. Nós não temos mais controle sobre o que é colocado em nossa própria classe. Um chamador poderá escrever assim:</p>
+  <br>
+  <pre class="brush:java">mother.numberEggs = -1;</pre>
+  <br>
+
+  <p>Isto claramente não é bom. Nós não queremos a mãe <b>Swan</b> tendo um número de ovos negativo!</p>
+
+  <p>Encapsulamento significa que nós definimos a classe, assim somente métodos na classe com as variáveis pode referir para variável de instância. Chamadores são necessários para usar estes métodos. Vamos dar uma olhada no exemplo do Encapsulamento da classe Swan:</p>
+  <pre class="brush:java">
+   public class Swan {
+   private int numberEggs; // private
+   public int getNumberEggs() { // getter
+   return numberEggs;
+   }
+   public void setNumberEggs(int numberEggs) { // setter
+   if (numberEggs >= 0) // guard condition
+   this.numberEggs = numberEggs;
+   } 
+  }
+  </pre>
+
+  <p>Note que agora <b>numberEggs</b> é privado na linha 2. Isto significa que somente o código dentro da classe pode ler ou escrever o valor de <b>numberEggs</b>. Desde que nós escrevemos a classe, nós sabemos ser  melhor do que definir um número negativos de ovos.  Adcionando um método nas linhas 3-5 para ler o valor que é chamado de um método acessor ou um <b>getter</b>. Adcionando também um método nas linhas 6-9 para atualizar o valor que é chamado de método definidor ou <b>setter</b>. O <b>setter</b> tem uma declaração  <b>if</b> neste exemplo para evitar configurar a variável de instância para um valor inválido. Essa condição de proteção protege a variável da instância. Na linha 8 nós usamos a palavra chave <b>this</b>  para diferenciar entre o parâmetro do método <b>numberEggs</b> e a variável de instância <b>numberEggs</b></p>.
+  <br>
+
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+    <tr><th colspan="2">TABELA  Regras para convenções de nomenclatura do JavaBeans</th></tr>
+    <tr><th>Regra</th> <th>Exemplo</th></tr>
+  <tr><td>Propriedades são privadas.</td> <td>private int numEggs;</td></tr>
+  <tr><td>Os métodos getter começam com <b>is</b> se a propriedade é booleana.</td> <td>
+  public boolean isHappy() { 
+  return happy; 
+  }</td></tr>
+  <tr><td>Os métodos getter começam com <b>get</b> se a propriedade não for booleana.</td> <td>
+  public int getNumEggs() { 
+  return numEggs; 
+  }
+  </td></tr>
+  <tr><td>Métodos setter começam com <b>set</b>.</td><td> public void setHappy(boolean happy) { 
+  this.happy = happy; 
+  }</td></tr>
+  <tr><td>O nome do método deve ter um prefixo <b>set / get / is</b>, seguido pela primeira letra da propriedade em maiúscula, seguido pelo resto do nome da propriedade..</td><td>
+  public void setNumEggs(int num) { 
+  numEggs = num;
+  }</td></tr>
+  </table>
+  </div>
+  <br>
+  <p>É hora de alguma prática. Veja se você pode descobrir quais linhas seguem as convenções de nomenclatura do JavaBeans:</p>
+  <pre class="brush:java">
+  12: private boolean playing;
+  13: private String name;
+  14: public boolean getPlaying() { return playing; }
+  15: public boolean isPlaying() { return playing; }
+  16: public String name() { return name; }
+  17: public void updateName(String n) { name = n; }
+  18: public void setname(String n) { name = n; }
+  </pre>
+  <p>As linhas 12 e 13 são boas. Eles são variáveis ​​de instância privadas. A linha 14 não segue as convenções de nomenclatura do JavaBeans. Como <b>playing</b> é um booleano, o <b>getter</b> deve começar com <b>is</b>. A linha 15 é um <b>getter</b> correto para <b>playing</b>. A linha 16 não segue as convenções de nomenclatura JavaBeans porque deve ser chamada de <b>getName</b>. As linhas 17 e 18 não seguem as convenções de nomenclatura JavaBeans porque devem ser nomeadas <b>setName</b>. Lembre-se de que o Java é <b>case sensitive</b> (faz distinção entre maiúsculas e minúsculas), portanto, <b>setname</b> não é adequado para atender à convenção de nomenclatura.</p>
+  <h2>Criar Classes Imutáveis</h2>
+  <p>Encapsular dados é útil porque evita chamadores de fazer mudanças descontroladas em sua classe. Outra técnica comum é fazer classes imutáveis, assim eles não podem ser toda mudada.</p>
+  <p>Classes Imutáveis são úteis porque você sabe que elas serão sempre as mesmas. Você pode passar ao redor de sua aplicação com a garantia que o chamador não mudará nada. Isto ajuda a fazer programa com fácil manutenção. Ajuda também na performance, pois limita o número de cópias.</p>
+  <pre class="brush:java">
+  public class ImmutableSwan {
+  private int numberEggs;
+  public ImmutableSwan(int numberEggs) {
+  this.numberEggs = numberEggs;
+  }
+  public int getNumberEggs() {
+  return numberEggs;
+  } 
+  }
+  </pre>
+
+  <p>Neste exemplo não tem um <b>setter</b>. Nós não temos um construtor que permite definir o valor. Imutável é apenas medido depois que o objeto é construído. Classes Imutáveis são permitidos ter valores. Eles somente não pode ser mudado após a instanciação.</p>
+  </section>
+  <section id="lambda">
+  <h1>Escrevendo Lambda Simples</h1>
+
+  <p> Java é uma linguagem orientada-objeto. Programa funcional é uma maneira de escrever código mais declarativamente. Você especifica o que você quer fazer em vez de lidar com o estado dos objetos. Você foca mais na expressão do que loops.</p>
+
+   <p>Prgramação funcional usa expressão <b>lambda</b> para escrever código. Uma expressão é um bloco de código que é passado ao redor do programa. Você pode pensar da expressão <b>lambda</b> como um método anônimo. 
+   <b>Expressão Lambda</b>, é como um método que você passa como se fosse uma variável.</p>
+  </section>
+  <section id="idlambdaexemplo">
+   <h2>Lambda Exemplo</h2>
+
+   <p>O objetivo de imprimir todos os animais da lista de acordo com alguns critérios. Iremos mostrar como fazer isto com expresão lambda para ilustrar como lambdas são úteis. Iniciamos a saída com a classe Animal:</p>
+  <pre class="brush:java">
+  public class Animal {
+  private String species;
+  private boolean canHop;
+  private boolean canSwim;
+  public Animal(String speciesName, boolean hopper, boolean swimmer) {
+  species = speciesName;
+  canHop = hopper;
+  canSwim = swimmer;
+  }
+  public boolean canHop() { return canHop; }
+  public boolean canSwim() { return canSwim; }
+  public String toString() { return species; }
+  }
+  </pre>
+  <p>A classe <b>Animal</b> tem três variáveis de instâncias, que estão definidas no construtor. Ele tem dois métodos que obtém o estado de se o animal pode hop(pular) ou swim(nadar). Também tem um método <b>toString()</b> assim nós podemos facilmente identificar o Animal no programa.</p>
+  <p>Vamos usar agora uma <b>interface</b>, assunto qual aprenderemos adiante. Por agora, é suficente lembrar que uma <b>interface</b> especifica os métodos que nossa classe precisa implementar:</p>
+  <pre class="brush:java">
+  public interface CheckTrait {
+  boolean test(Animal a);
+  }
+  </pre>
+
+  <p>A primeira coisa que nós queremos checar é se o Animal pode pular. Esta classe pode forncer isto:</p>
+  <pre class="brush:java">
+  public class CheckIfHopper implements CheckTrait {
+  public boolean test(Animal a) {
+  return a.canHop();
+  }
+  }
+  </pre>
+
+  <p>Agora nós temos  tudo que nós precisamos para escrever nosso código para procurar os Animais que pulam:</p>
+  <pre class="brush:java">
+   public class TraditionalSearch {
+   public static void main(String[] args) {
+   List&ltAnimal> animals = new ArrayList&ltAnimal>(); // lista de animals
+   animals.add(new Animal("fish", false, true));
+   animals.add(new Animal("kangaroo", true, false));
+   animals.add(new Animal("rabbit", true, false));
+   animals.add(new Animal("turtle", false, true));
+   
+   print(animals, new CheckIfHopper()); // passa na classe que verifica
+   }
+   private static void print(List&ltAnimal> animals, CheckTrait checker) {
+   for (Animal animal : animals) {
+   if (checker.test(animal)) // a verificação geral
+   System.out.print(animal + " ");
+   }
+   System.out.println();
+   }
+   }
+  </pre>
+
+  <p>O método <b>print()</b> na linha11 é muito geral - ele pode checar qualquer traço. Não é necessário saber especificamente o que estamos procurando para imprimir uma lista de animais.</p>
+  <p>O que acontece se quisermos imprimir os Animais que nadam? Nós vamos precisar escrever outra classe <b>CheckIfSwins</b>. Então nós precisamos adcionar uma nova linha sob linha 9 que instancia esta classe. Estas duas coisas somente para fazer outra checagem. Nós podemos repetir esta classe inteira aqui e fazer você encontrar uma linha mudada. Usando <b>lambda</b> podemos substituir a linha 9 com o código seguinte:</p>
+  <br>
+  <pre class="brush:java">9: print(animals, a -> a.canHop());</pre>
+  <br>
+
+  <p>Para imprimir Animals que sabem nadar não tem necessidade de uma classe extra para fazer uma coisa simples:</p>
+
+  <pre class="brush:java">print(animals, a -> a.canSwim());</pre>
+
+  <p>E para imprimir Animals que não sabem nadar?</p>
+  <pre class="brush:java">print(animals, a -> ! a.canSwim());</pre>
+
+  <p>Este código usa um conceito chamado <b>deferred execution</b>. <b>Deferred Execution</b> significa que o código é especificado agora, mas será executado mais tarde. Neste caso, mais tarde é quando o método <b>print()</b> chamá-lo.</p>
+  </section>
+  <section id="idsintaxlambda">
+  <h2>Sintax Lambda</h2>
+
+  <p>Uma das expressões lambda mais simples que você pode escrever é aquela que você acabou de ver:</p>
+  <pre class="brush:java">a -> a.canHop();</pre>
+
+  <p>Isto significa que Java deve chamar um método com um parâmetro <b>Animal</b> que retorna um valor <b>boolean</b> que é o resultado de um <b>canHop()</b></p>.
+  <p>Estamos passando este <b>lambda</b> como o segundo parâmetro do método <b>print()</b>. Este método espera um <b>CheckTrait</b> como o segundo parâmetro. Desde que nós estamos passando um <b>lambda</b>, Java tenta mapear lambda para esta interface:</p><br>
+  <pre class="brush:java">boolean test(Animal a);</pre>
+  <br>
+  <p>Desde que o método da interface leva um Animal, isso quer dizer que o parâmetro <b>lambda</b> tem que ser um <b>Animal</b>. E desde que o método da <b>interface</b> retorna um <b>boolean</b>, <b>lambda</b> retorna um <b>boolean</b>.</p>
+  <p>Em lambda estas duas próximas expressões que vamos analisar fazem exatamente a mesma coisa:</p>
+  <pre class="brush:java">
+  a -> a.canHop()
+  |  |      | 
+  |  seta   corpo 
+  nome do parâmetro
+  </pre>
+  <ul>
+  <li> Especifica um único parâmetro com o nome "a".</li>
+  <li>O operador <b>seta(->)</b> para separar o parâmetro e o corpo</li>
+  <li>Um corpo que chama um único método e retorna o resultado deste método</li>
+  </ul>
+  <pre class="brush:java">
+  (Animal a) -> { return a.canHop(); }
+              
+   //(Animal a) --->tipo parâmetro opcional 
+   //a ---> nome do parâmetro
+   // -> seta
+   // return --->   necessário porque do bloco
+   //a.canHop()---> corpo
+  </pre>
+  <ul>
+   <li>Especifica um único parâmetro com o nome "a" e a afirmação é tipo Animal</li>
+   <li>O operador <b>seta(->)</b> é para separar o parâmetro do corpo</li>
+   <li> Um corpo que tem um ou mais linhas de código incluindo ponto e vírgula e a declaração <b>return</b>.</li>
+   </ul>
+   <p>Os parênteses só podem ser omitidos se existir um único parâmetro e este tipo não estar explicitamente afirmado.</p>
+   <p>Vamos olhar alguns exemplos de <b>lambdas</b> válidos. Faz de conta que existam interfaces válidas que pode consumir um <b>lambda</b> com zero, um ,ou dois parâmetros <b>String</b></p>.
+  <pre class="brush:java">
+  3: print(() -> true); // 0 parametros
+  4: print(a -> a.startsWith("test")); // 1 parametro
+  5: print((String a) -> a.startsWith("test")); // 1 parametro
+  6: print((a, b) -> a.startsWith("test")); // 2 parametros
+  7: print((String a, String b) -> a.startsWith("test")); // 2 parametros
+  </pre>
+  <p>Note que todos estes exemplos tem parênteses ao redor da lista de parâmetros exceto de um que leva somente um parâmetro e não especifica o tipo. linha 3 leva <b>0</b> parâmetro e sempre retorna o <b>Boolean true</b>. linha 4 leva um parâmetro  e chama o método nele, retornando o resultado. Linha 5 faz o mesmo exceto que ele explicitamente define o tipo da variável. Linha 6 e 7 levam dois parâmetros e ignora um deles. Não existe uma regra que diga a você como usar todos os parâmetros definidos.</p>
+  <p> Agora vamos fazer você identificar sintax inválidas:</p>
+  <pre class="brush:java">
+  print(a, b -> a.startsWith("test")); // NÃO COMPILA
+  print(a -> { a.startsWith("test"); }); // NÃO COMPILA
+  print(a -> { return a.startsWith("test") }); // NÃO COMPILA
+  </pre>
+  <p>A primeira linha precisa de parênteses ao redor da lista de parâmetros. A segunda linha está faltando a palavra chave <b>return</b>. A última linha está faltando o ponto e vírgula.</p>
+  </section>
+  <section id="idpredicate">
+  <h2>Predicate</h2>
+  <p>Lambdas trabalha com interfaces que tem somente um método. Este são chamados de interfaces funcional - interfaces que pode ser usada com programação funcional.</p>
+  <p>Você pode imaginar que nós teríamos que criar quantidades de interfaces como esta para usar lambdas. Queremos testar <b>Animals</b> e <b>Strings</b> e <b>Plants</b> e qualquer coisa a mais que vir.</p>
+  <p>Java reconhece que isto é um problema comum e fornece assim uma interface. Esta fica no pacote <b>java.util.function</b> e o trecho dele vemos a seguir: </p>
+  <pre class="brush:java">
+  public interface Predicate&ltT> {
+  boolean test(T t);
+  }
+  </pre>
+
+  <p>Este tipo de interface usa um tipo de <b>T</b> que é a sintax para genéricos. A única diferença para esse método <b>boolean test(Animal a);</b> é o uso deste tipo <b>T</b> em vez de <b>Animal.</b> Isso  é como quando criamos um <b>ArrayList</b> e conseguimos especificar qualquer tio nele. Isso significa que não precisamos mais da nossa própria interface e podemos colocar tudo relacionado à nossa pesquisa em uma classe:</p>
+  <pre class="brush:java">
+   import java.util.*;
+   import java.util.function.*;
+   public class PredicateSearch {
+   public static void main(String[] args) {
+   List&ltAnimal> animals = new ArrayList&ltAnimal>();
+   animals.add(new Animal("fish", false, true));
+   
+   print(animals, a -> a.canHop());
+   }
+   private static void print(List&ltAnimal> animals, Predicate&ltAnimal> checker) {
+   for (Animal animal : animals) {
+   if (checker.test(animal))
+   System.out.print(animal + " ");
+   }
+   System.out.println();
+   }
+   }
+  </pre>
+
+  <p>Desta vez, a linha 10 é a única que mudou. Esperamos ter um <b>Predicate</b> passado nesse tipo <b>Animal</b>.</p>
+  <p><b>ArrayList</b> declara um método <b>removeIf()</b> que leva um <b>Predicate</b>. Imagine que temos uma lista de nomes para <b>bunnies</b>. Nós decidimos que vamos remover todos os nomes de <b>bunnies</b> que inicia com a letra <b>h</b>. Nós podemos resolver estes problemas escrevendo um loop:</p>
+  <pre class="brush:java">
+  3: List&ltString> bunnies = new ArrayList&lt>();
+  4: bunnies.add("long ear");
+  5: bunnies.add("floppy");
+  6: bunnies.add("hoppy");
+  7: System.out.println(bunnies); // [long ear, floppy, hoppy]
+  8: bunnies.removeIf(s -> s.charAt(0) != 'h');
+  9: System.out.println(bunnies); // [hoppy]
+  </pre>
+  <p>Linha 8 define um <b>predicate</b> que leva uma <b>String</b> e retorna um <b>boolean</b>. O método <b>removeIf()</b> faz o resto.</p>
+  </section>
+  <section id="resumo">
+  <h1>Resumão</h1>
+
+  <p>Java inicia métodos com um modificador de acesso <b>public</b>, <b>private</b>, <b>protected</b> ou <b>blank(acesso default)</b>. Este é seguido por uma opção específica como <b>static</b>, <b>final</b>, ou <b>abstract</b>. O próximo vem com o tipo de retorno, que é <b>void</b> ou um tipo Java. Os nomes dos métodos segue usando a regra de identificador padrão Java. Zero ou mais parâmetros vai no parênteses como a lista de parâmetros. Zero ou mais declarações vai nas chaves para fazer o corpo do método.</p><br>
+  <p>Usando a palavra chave <b>private</b> significa que o código é somente acessível de dentro da mesma classe. Acesso <b>default(pacote private)</b> significa que o código é somente acessível do mesmo pacote. Usando a palavra chave <b>protected</b> significa que o código é acessível do mesmo pacote ou subclasse. Usando a palavra chave <b>public</b> significa que o código é acessível de qualquer lugar. Metodos Estático e variáveis estática são compartilhadas pela classe. Quando referenciado do lado de fora da classe, eles são chamados usando o nome da classe - por exemplo, <b>Staticclasse.metodo()</b>. Membros da intância são permitidos chamar membros estáticos, mas membros estáticos não são permitidos chamar membros da instância. <b>Imports Static</b> são usados para importar membros estáticos.</p><br>
+  <p>Java usa passagem por valor, que significa que chamar métodos cria uma cópia dos parâmetros. Atribuir novos valores a esses parâmetros no método não afeta as variáveis do chamador.</p><br>
+  <p>Chamar métodos em objetos que são parâmetros do método altera o estado desses objetos e é refletido no chamador.</p><br>
+  <p>Sobrecarga de métodos são métodos com o mesmo nome, mas uma lista de parâmetro diferente. Java chama o método mais específico encontrado e corresponde por primitivos mais largos. Depois que vem autoboxing e varargs.</p><br>
+  <p>Construtores são usados para instanciar novos objetos. O <b>construtor default sem argumento</b> é chamado quando o construtor é codificado. Múltiplos constutores são permitidos e podem chamar outros escrevendo <b>this()</b>. Se <b>this()</b> está presente, ele deve ser a primeira declaração no construtor. Construtores pode referir para variáveis de instância por escrever <b>this</b> antes do nome da variável indicando que ele quer a variável de instância e não o parâmetro do método com este nome. A ordem de inicialização é a superclasse; variáveis estática e inicializadores estático na ordem que aparecer; variáveis de instância e inicializadores de instância na ordem que aparecer; e finalmente o construtor.</p><br>
+  <p>Encapsulamento refere-se a impedir que os chamadores alterem as variáveis de instância diretamente. Isto é feito por fazer variáveis de instância <b>private </b> e <b>getters/setters public</b>. Imutabilidade refere-se a impedir chamadores de mudar as variáveis de instância no todo.</p><br>
+
+  <p>Expressões Lambda, ou lambdas, permite passar ao redor blocos de códigos. A sintax padrão como <b>( String a, String b) -> {return a.equals(b);}</b> O tipo do parâmetro pode ser omitido. Quando somente um parâmetro é especificado sem um tipo, os parênteses também podem ser omitidos. As chaves e a declarção <b>return</b> podem ser omitidos para uma única declaração, fazendo de forma curta <b>( a-> a.equals(b)).</b></p><br> <p><b>Lambdas</b> são passados para um método esperando uma interface com um método. <b>Predicate</b> é uma interface comum. Ele tem um método nomeado test que retorna um boolean e leva um tipo. O método <b>removeIf()</b> no <b>ArrayList</b> leva um <b>predicate</b>.</p><br>
+  </section>
 
 
-<p class="nav-arq" id="referencia">Api's em java<a href="apijava.html">&laquo; anterior | <a href="designdeclasse.html">próximo >> Design de Classe &raquo;</a> </p>
-<div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/metodosencapsulamento" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
-</div>
-</div>
+  <p class="nav-arq" id="referencia">Api's em java<a href="apijava.html">&laquo; anterior | <a href="designdeclasse.html">próximo >> Design de Classe &raquo;</a> </p>
+  <div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/metodosencapsulamento" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+  </div>
+  </div>
 
-</body>
-	</html>
+  </body>
+  	</html>
 
 
 

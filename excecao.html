@@ -1,856 +1,929 @@
-<!DOCTYPE html>
- <html lang="pt-br">
-
-  
+  <!DOCTYPE html>
+   <html lang="pt-br">
   <head>
- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
- <link rel="stylesheet" type="text/css" href="css/stylos.css">
- <link rel="stylesheet" href="css/stylew3.css">
- <script type="text/javascript"src="js/efeitos.js"></script>
- <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
-<script src="code-brush-master/cbCore.js"></script>
-<script src="code-brush-master/cBrushXml.js"></script>
-<script src="code-brush-master/cBrushCss.js"></script>
-<script src="code-brush-master/cBrushPhp.js"></script>
-<script src="code-brush-master/cBrushSql.js"></script>
-<script src="code-brush-master/cBrushJScript.js"></script>   
-<script src="code-brush-master/cBrushJava.js"></script>  
-<script>
-    SyntaxHighlighter.defaults['auto-links'] = false;
-    SyntaxHighlighter.defaults['toolbar'] = false;
-    SyntaxHighlighter.all();
-</script>
- <title> Programar em Java</title>
- </head>
- <body>
- 
+   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/stylos.css">
+   <link rel="stylesheet" href="css/stylew3.css">
+   <script type="text/javascript"src="js/efeitos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="code-brush-master/tyrm.css" media="all" />
+  <script src="code-brush-master/cbCore.js"></script>
+  <script src="code-brush-master/cBrushXml.js"></script>
+                 
+  <script src="code-brush-master/cBrushCss.js"></script>
+  <script src="code-brush-master/cBrushPhp.js"></script>
+  <script src="code-brush-master/cBrushSql.js"></script>
+  <script src="code-brush-master/cBrushJScript.js"></script>   
+  <script src="code-brush-master/cBrushJava.js"></script>  
+  <script>
+      SyntaxHighlighter.defaults['auto-links'] = false;
+      SyntaxHighlighter.defaults['toolbar'] = false;
+      SyntaxHighlighter.all();
+  </script>
+  <script type="text/javascript">
+  jQuery(document).ready(function(jQuery) {            
+              var topMenu = jQuery("#mySidebar"),
+                  offset = 40,
+                  topMenuHeight = topMenu.outerHeight()+offset,
+                  // All list items
+                  menuItems =  topMenu.find('a[href*="#"]'),
+                  // Anchors corresponding to menu items
+                  scrollItems = menuItems.map(function(){
+                    var href = jQuery(this).attr("href"),
+                    id = href.substring(href.indexOf('#')),
+                    item = jQuery(id);
+                    //console.log(item)
+                    if (item.length) { return item; }
+                  });
 
-<!-- Top Navigation Menu -->
+              // so we can get a fancy scroll animation
+              menuItems.click(function(e){
+                var href = jQuery(this).attr("section"),
+                  id = href.substring(href.indexOf('#'));
+                    offsetTop = href === "#" ? 0 : jQuery(id).offset().top-topMenuHeight+1;
+                jQuery('html, body').stop().animate({ 
+                    scrollTop: offsetTop
+                }, 300);
+                e.preventDefault();
+              });
 
-  <div id="voltarTopo">
-  <a href="#" id="subir">Topo</a>
-</div>
+              // Bind to scroll
+              jQuery(window).scroll(function(){
+                 // Get container scroll position
+                 var fromTop = jQuery(this).scrollTop()+topMenuHeight;
 
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+                 // Get id of current scroll item
+                 var cur = scrollItems.map(function(){
+                   if (jQuery(this).offset().top < fromTop)
+                     return this;
+                 });
+
+                 // Get the id of the current element
+                 cur = cur[cur.length-1];
+                 var id = cur && cur.length ? cur[0].id : "";               
+                 
+                 menuItems.parent().removeClass("active");
+                 if(id){
+                      menuItems.parent().end().filter("[href*='#"+id+"']").parent().addClass("active");
+                 }
+                 
+              })
+          })</script>
+   <title> Programar em Java</title>
+   </head>
+   <body>
+   
+
+  <!-- Top Navigation Menu -->
+
+    <div id="voltarTopo">
+    <a href="#" id="subir">Topo</a>
+  </div>
+
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+    <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
+    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+   <li class="active">
+    <a class="w3-bar-item w3-button w3-teal" href="index.html">Home</a>
+      </li><li>
     
-  
-  <a class="w3-bar-item w3-button"  href="#excecao">6 - EXCEÇÕES</a>
-                  <a class="w3-bar-item w3-button"  href="#entexcecao">Entender Exceções</a>
-          
-          <a class="w3-bar-item w3-button" href="#idregrasexc">As Regras de Exceções</a>
-          <a class="w3-bar-item w3-button"  href="#idtipexce">Tipos de Exceção</a>
-          <a class="w3-bar-item w3-button"  href="#idlancexcec">Lançando Uma Exceção</a>
-<a class="w3-bar-item w3-button"  href="#try">Usando a Declaração Try</a>
-            <a class="w3-bar-item w3-button"  href="#idaddfinaly">Adcionando um Bloco finally</a>
-                  <a class="w3-bar-item w3-button"  href="#idcachtipexc">Pegando Vários Tipos de Exceções</a>
-          <a class="w3-bar-item w3-button"  href="#idlanecxeseg">Lançando uma Segunda Exceção</a>
+    <a class="w3-bar-item w3-button"  href="#excecao">6 - EXCEÇÕES</a>
+               </li><li>
+                    <a class="w3-bar-item w3-button"  href="#entexcecao">Entender Exceções</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#idregrasexc">As Regras de Exceções</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#idtipexce">Tipos de Exceção</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"  href="#idlancexcec">Lançando Uma Exceção</a>
+       </li><li>
+          <a class="w3-bar-item w3-button"  href="#try">Usando a Declaração Try</a>
+          </li><li>
+              <a class="w3-bar-item w3-button"  href="#idaddfinaly">Adcionando um Bloco finally</a>
+              </li><li>     
+              <a class="w3-bar-item w3-button"  href="#idcachtipexc">Pegando Vários Tipos de Exceções</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#idlanecxeseg">Lançando uma Segunda Exceção</a>
+            </li><li>
           <a class="w3-bar-item w3-button" href="#tiposexcecao">Reconhecendo Tipos comuns de Exceção</a>
-          <a class="w3-bar-item w3-button"  href="#idexruntime">Exceções Runtime </a>
-          <a class="w3-bar-item w3-button"  href="#idaritmeticexc">ArithmeticException</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#idexruntime">Exceções Runtime </a>
+          </li><li>
+            <a class="w3-bar-item w3-button"  href="#idaritmeticexc">ArithmeticException</a>
+  </li><li>
+             <a class="w3-bar-item w3-button"  href="#idarrayboundexc">ArrayIndexOutOfBoundsException</a>
+          </li><li>
+                    <a class="w3-bar-item w3-button"  href="#idclassexcp">ClassCastException</a>
+         </li><li>
+            <a class="w3-bar-item w3-button"  href="#idilleglex">IllegalArgumentException</a>
+            </li><li>
+            <a class="w3-bar-item w3-button" href="#idnullpointexc">NullPointerException</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#idnumbexcep">NumBerFormatException</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"  href="#exccheck">Exceções Checked</a>
+  </li><li>
+              <a class="w3-bar-item w3-button"  href="#iderrors">Errors</a>
+           
+           </li><li>        
+            <a class="w3-bar-item w3-button"  href="#idexcepiniterror">ExceptionInInitializerError</a>
+ </li><li>
+            <a class="w3-bar-item w3-button"  href="#idstackover">StackOverFlowError</a>
+          </li><li>
+            <a class="w3-bar-item w3-button" href="#idnoclassdef">NoClassDefFoundError</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#chamarexcecao">Chamando métodos que Lançam Exceção</a>
+            </li><li>
+            <a class="w3-bar-item w3-button"  href="#idsubclasses">Subclasses</a>
+  </li><li>
 
-            <a class="w3-bar-item w3-button"  href="#idarrayboundexc">ArrayIndexOutOfBoundsException</a>
-                  <a class="w3-bar-item w3-button"  href="#idclassexcp">ClassCastException</a>
-          <a class="w3-bar-item w3-button"  href="#idilleglex">IllegalArgumentException</a>
-          <a class="w3-bar-item w3-button" href="#idnullpointexc">NullPointerException</a>
-          <a class="w3-bar-item w3-button"  href="#idnumbexcep">NumBerFormatException</a>
-          <a class="w3-bar-item w3-button"  href="#exccheck">Exceções Checked</a>
+            <a class="w3-bar-item w3-button"  href="#idprintexc">Imprimindo uma Exceção</a>
+           </li><li>
+            <a class="w3-bar-item w3-button"  href="#resumo">Resumão</a>
+    </li><li>
+    <div> 
+      <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
+      <div id="demo" class="w3-hide">
 
-            <a class="w3-bar-item w3-button"  href="#iderrors">Errors</a>
-                  <a class="w3-bar-item w3-button"  href="#idexcepiniterror">ExceptionInInitializerError</a>
-          <a class="w3-bar-item w3-button"  href="#idstackover">StackOverFlowError</a>
-          <a class="w3-bar-item w3-button" href="#idnoclassdef">NoClassDefFoundError</a>
-          <a class="w3-bar-item w3-button"  href="#chamarexcecao">Chamando métodos que Lançam Exceção</a>
-          <a class="w3-bar-item w3-button"  href="#idsubclasses">Subclasses</a>
+     <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
+       <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
 
+  <a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
+  <a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
 
-          <a class="w3-bar-item w3-button"  href="#idprintexc">Imprimindo uma Exceção</a>
-          <a class="w3-bar-item w3-button"  href="#resumo">Resumão</a>
-  <div> 
-    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Mapa de Links <i class="fa fa-caret-down"></i></a>
-    <div id="demo" class="w3-hide">
+  <a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
 
-   <a class="w3-bar-item w3-button" href= "estruturadojava.html">1 - A Estrutura do Java</a>
-     <a class="w3-bar-item w3-button" href="operadorjava.html">2 - Operadores em java</a>
+  <a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
+  <a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
+  <a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
+  <a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
+  <a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
 
-<a class="w3-bar-item w3-button" href="apijava.html">3 - APIs Java</a>
-<a class="w3-bar-item w3-button" href=" metodoenc.html">4 - Métodos e Encapsulamento</a>
+  <a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
+  <a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
+  <a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
+  <a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
+  <a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
+  <a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
+  <a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
+  <a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
+  <a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
+  <a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
 
-<a class="w3-bar-item w3-button" href="designdeclasse.html">5 - Design de Classe </a>
+  <a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
+  <a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
+  <a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
+  <a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
 
-<a class="w3-bar-item w3-button" href="designavancado.html">7 - Design de Classe I</a>
-<a class="w3-bar-item w3-button" href="designdeclasseavancado.html">8 - Design de Classe Avançado</a>
-<a class="w3-bar-item w3-button" href=" colecaogeneric.html">9 - Generics E Collection</a>
-<a class="w3-bar-item w3-button" href="lambda.html">10 - Interfaces Funcionais embutidas do Lambda </a>
-<a class="w3-bar-item w3-button" href="apistream.html">11- Java Stream API</a>
-
-<a class="w3-bar-item w3-button" href="exceptioassertion.html">12 - Exceções Asserçoes</a>
-<a class="w3-bar-item w3-button" href="datetime.html">13 - Usando API DateTime JSE8</a>
-<a class="w3-bar-item w3-button" href=" javaio.html">14 - Java IO Fundamental</a>
-<a class="w3-bar-item w3-button" href="javafilenio.html">15 - Java File I/O (NIO.2) </a>
-<a class="w3-bar-item w3-button" href="concorrenciajava.html">16- Concorrência com Java</a>
-<a class="w3-bar-item w3-button" href="jdbcapplication.html">17 - Construindo aplicações Com Banco de Dados JDBC</a>
-<a class="w3-bar-item w3-button" href="localization.html">18 - Localização</a>
-<a class="w3-bar-item w3-button" href="javaee.html">19 - Java EE7</a>
-<a class="w3-bar-item w3-button" href="mlpraticasjee.html">20 - Práticas recomendada Java EE web </a>
-<a class="w3-bar-item w3-button" href="padroes.html">21 - Soluções prática usando Padrões</a>
-
-<a class="w3-bar-item w3-button" href="webstrut.html">22 - Iniciando Aplicativo web com Struts2</a>
-<a class="w3-bar-item w3-button" href="appbook.html">23- Construindo Aplicativo Bookstore web com Struts2</a>
-<a class="w3-bar-item w3-button" href= "springmvc.html">24 - Construindo Aplicativos Web  com o Spring Web MVC</a>
-<a class="w3-bar-item w3-button" href= "springwebmvc.html">25 - Criando aplicativos da Web com o Spring Web MVC</a>
-
-<a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
-      
+  <a class="w3-bar-item w3-button" href= "springboot.html">26 - Atualização dos serviços com Spring Boot</a>
+        
+      </div>
     </div>
+  </nav>
+
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+  <div class="w3-main" style="margin-left:250px;">
+
+  <div id="myTop" class=" w3-top w3-large">
+    <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  </p>
   </div>
-</nav>
 
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-
-<div class="w3-main" style="margin-left:250px;">
-
-<div id="myTop" class=" w3-top w3-large">
-  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-</p>
-</div>
-
-<header class="w3-container w3-theme" style="padding:64px 32px">
-  <h1 class="w3-xxxlarge">JAVA SE 8</h1>
-</header>
+  <header class="w3-container w3-theme" style="padding:64px 32px">
+    <h1 class="w3-xxxlarge">JAVA SE 8</h1>
+  </header>
 
 
-<section id="excecao">
-<h1>6 - EXCEÇÕES</h1>
+  <section id="excecao">
+  <h1> EXCEÇÕES</h1>
 
-<p><b>O objetivo desta seção é Manipular Exceções</b></p>
-<ul>
-<li>Diferenciar entre as exceções checadas(checked), exceções não checadas(unchecked)
-e erros</li>
-<li>Criar um bloco <b>try-catch</b> e determinar como exceções altera o fluxo normal do programa.</li>
-<li>Descrever as vantagens de manipular exceções</li>
-<li>Criar e invocar um método que lance uma exceção</li>
-<li>Reconhecer classes comum de exceções( tal como <span class="text"><b>NullPointerException, ArithmeticException, 
-ArrayIndexOutOfBoundsException, ClassCastException</b></span>)</li>
-</ul>
-</section>
-<section id="entexcecao">
-<h1>Entendendo Exceções</h1>
+  <p><b>O objetivo desta seção é Manipular Exceções</b></p>
+  <ul>
+  <li>Diferenciar entre as exceções checadas(checked), exceções não checadas(unchecked)
+  e erros</li>
+  <li>Criar um bloco <b>try-catch</b> e determinar como exceções altera o fluxo normal do programa.</li>
+  <li>Descrever as vantagens de manipular exceções</li>
+  <li>Criar e invocar um método que lance uma exceção</li>
+  <li>Reconhecer classes comum de exceções( tal como <span class="text"><b>NullPointerException, ArithmeticException, 
+  ArrayIndexOutOfBoundsException, ClassCastException</b></span>)</li>
+  </ul>
+  </section>
+  <section id="entexcecao">
+  <h1>Entendendo Exceções</h1>
 
-<p>Um programa pode falhar por qualquer razão. Vamos ver algumas poucas possibilidades:</p>
-<ul>
-<li>O código tenta conectar ao website, mas a conexão da Internet é baixa.</li>
-<li>Você faz um mistura de código e tenta acessar um index ou índice inválido em um array.</li>
-<li>Um método chama outro com um valor que o método não suporta.</li>
-</ul>
-<br>
-<p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
-<section id="idregrasexc">
-<h2>As Regras de Exceções</h2>
+  <p>Um programa pode falhar por qualquer razão. Vamos ver algumas poucas possibilidades:</p>
+  <ul>
+  <li>O código tenta conectar ao website, mas a conexão da Internet é baixa.</li>
+  <li>Você faz um mistura de código e tenta acessar um index ou índice inválido em um array.</li>
+  <li>Um método chama outro com um valor que o método não suporta.</li>
+  </ul>
+  <br>
+  <p><i>Todos os códigos  apresentado estão no reposítorio do github e poderão ser acessado através do link no final da página.</i></p><br>
+  <section id="idregrasexc">
+  <h2>As Regras de Exceções</h2>
 
- <p>Existem duas abordagens que Java usa para lidar com exceções. Um método pode manipular a exceção o caso em si ou fazer o chamador responsável.</p>
- <p>Vamos ver alguns exemplo: </p>
-<pre class="brush:java">
- public class Zoo {
- public static void main(String[] args) {
- System.out.println(args[0]);
- System.out.println(args[1]);
- } 
-}
-</pre>
-
-<p>Então você tenta chamá-lo sem argumentos suficiente:</p><br>
-
-<p><b>$ javac Zoo.java<br> 
-$ java Zoo Zoo</b></p>
-<br>
-
-<p>Na linah 4, Java percebe que existe somente um objeto no <b>array</b> e <b>index 1</b> não é permitido. Então java tenta manipular e lança uma exceção .. É como dizer: "Eu não posso lidar com isso!" e então a exceção é  mostrado assim:</p>
-<pre>
-ZooException in thread "main" 
-java.lang.ArrayIndexOutOfBoundsException: 1
-at mainmethod.Zoo.main(Zoo.java:7)
-</pre>
-
-<p>Exceções podem ocorrer em todo momento mesmo em programas sólidos. Quando escreve um programa mais avançado, é necessário lidar com falhas em acessar arquivos, redes, e serviços de fora.</p>
-</section>
-<section id="idtipexce">
-<h2>Tipos de Exceção</h2>
-
-<p>Uma exceção é um evento que altera o fluxo do programa. Java tem uma superclasse <b>java.lang.Throwable</b> para todos objetos que representa estes eventos. Note que todos eles tem a palavra <b>exception</b> em sua classe.</p>
-<div  class="w3-main">
-<div class="setas">
-    <ul class="setas-col setas-pseudo-absolute">
-       <li class="setas-item setas-item-text ">     <span class="text">java.lang.Object</span></li>
-       <!-- <li class="setas-item seta_top"></li>
-        <li class="setas-item seta_bottom"></li>
-        <li class="setas-item seta_left"></li>
-        <li class="setas-item seta_right"></li>-->
-    </ul></div>
-    <div class="setas">
-    <ul class="setas-col setas-pseudo-absolute">
-         <li class="setas-item setas-item-text seta_right">     <span class="text">java.lang.Error</span></li>
-    
-        <li class="setas-item setas-item-text seta_top">     <span class="text">java.lang.Throwable</span></li>
-  <li class="setas-item setas-item-text seta_left">     <span class="text">java.lang.Exception</span></li>           
-       </ul></div>
-    <div class="setas-r">
-    <ul class="setas-col-r setas-pseudo-absolute-r">
-      <li class="setas-item-r setas-item-text-r seta_top-r ">     <span class="text-r">java.lang.Object</span></li>
-      </div>
-      <div class="setas-r setas-r1">
-    <ul class="setas-col-r setas-pseudo-absolute-r setas-pseudo-absolute-r1">
-      <li class="setas-item-r setas-item-text-r  seta_left-r1"> <span class="text-r">java.lang.Throwable</span></li>
-        <li class="setas-item-r setas-item-text-r seta_left-r "> <span class="text-r">java.lang.Error</span></li>
-          <li class="setas-item-r setas-item-text-r seta_top-r1"> <span class="text-r">java.lang.Exception</span></li>
-         </ul></div>
- 
-    <div class="setas2">
-       <ul class="setas-col2 setas-pseudo-absolute2">
-        <li class="setas-item2 setas-item-text2 seta_top2"> <span class="text2">java.lang.RuntimeException</span></li>
-      </ul>
-      </div>
-</div>
-
-
-<p>Uma exceção de tempo de execução(runtime) é definida como a classe <b>RuntimeException</b> e suas subclasses. Exceções de tempo de execução tende ser inesperado mas não necessariamente fatal. Por exemplo, acessar um <b>array index</b> inválido é inesperado. Exceções em tempo de execução também são conhecidas como <b>unchecked exception</b>. Que são exceções não checadas em uma tradução livre.
-
-<p>Exceção em tempo de execução <b>unchecked</b> é um tipo específico de exceção. Todas exceções ocorrem no tempo em que o programa é executado.</p>
-
-<p>Uma <b>exceção checked</b> que são exceções checadas, inclue <b>Exception</b> e todas as subclasses que não estende <b>RuntimeException</b>. <b>Exceções Checked</b>  tende ser mais antecipada- por exemplo , tentar ler um arquivo que não existe.</b>
-<p>Exceções Checked ? O que estamos checando? Java tem uma regra declarada para <b>exceções checked</b>, Java exige o código para ou manipulá-los ou declará-los na assinatura do método.</p>
-
-<p>Por exemplo, este método que declara isso pode lançar uma exceção:</p>
-<pre class="brush:java">
-void cair() throws Exception {
-throw new Exception();
-</pre>
-
-<p>Note que você está usando diferentes palavras chave aqui. <b>throw</b> diz para Java que você quer lançar uma Exceção. <b>throws</b> simplesmente declara que o método pode lançar uma Exceção.</p>
-</section>
-<section id="idlancexcec">
-<h2>Lançando Uma Exceção</h2>
-<p>Qualquer código Java pode lançar uma exceção; isto inclui  o código que escrevemos.</p>
-<p>Iremos escever dois tipos de códigos que resulta em uma exceção. Este é o primeiro código errado, por exemplo:</p>
-<pre class="brush:java">
-String[] animais = new String[0];
-System.out.println(animals[0]);
-</pre>
-
-<p>Este código lança um <b>ArrayIndexOutOfBoundsException.</b> Isso significa que questões sobre exceções podem ser ocultas em questões que parece ser sobre algo a mais.</p>
-<p>A segunda maneira para o resultado do código em uma exceção é explicitar a requisição Java para lançar uma. Java deixa você escrever declarações como esta:</p>
-<pre class="brush:java">
-throw new Exception();
-throw new Exception("Ow! I fell.");
-throw new RuntimeException();
-throw new RuntimeException("Ow! I fell.");
-</pre>
-<p>Lançando a palavra chave <b>throw</b> está dizendo ao Java que quer alguma outra parte do código para lidar com exceção. 
-Quando criamos uma exceção, podemos passar geralmente um parâmetro <b>String</b> com uma mensagem ou não passar parâmetros e usar o padrão.</p>
-<p>Os primeiros dois exemplos cria um novo objeto do tipo <b>Exception</b> e lança ele. Os dois últimos exemplos mostra que o código parece o mesmo independente de qual tipo de exceção for lançado.</p>
-<br>
-<div style="overflow-x:auto;">
-<table class="w3-table-all">
-
-  <tr><th colspan="4"> Tabela de Tipos de Exceção</th></tr>
-<tr><th>Tipo</th><th> Como reconhecer</th><th>
-Tudo bem para o programa pegar?</th><th>
-O programa é necessário para manipular ou declarar?</th></tr>
-<tr><td>Runtime exception</td><td> Subclasse de 
-RuntimeException</td><td>
-Sim</td><td> Não</td></tr>
-<tr><td>Checked exception</td><td> Subclasse de Exception
-mas não subclasse de 
-RuntimeException</td><td>
-Sim </td><td>Sim</td></tr>
-<tr><td>Error</td><td> Subclasse de Error</td><td> Não</td><td> Não</td></tr>
-</table>
-</div>
-<br>
-</section>
-<section id="try">
-<h1>Usando a declaração try</h1>
-
-<p>Java usa uma decaração <b>try</b> para separar a lógica que pode lançar uma exceção da lógica para manipular esta exceção.</p>
-<pre class="brush:java">
-palavra chave
- |
- |
-try { -- chaves são necessárias
-
-	//o bloco try é tambem necessário para proteger o código 
- //se uma exceção é lançada na declaração try, a clausula catch tenta capturá-lo
-	
-} -- chaves são necessárias 
-catch 
-   |
-   |
-   palavra chave
-
-</pre>
-
-<p>O código no bloco <b>try</b> é executado normalmente. Se qualquer declaração lança uma exceção que pode ser pego capturado tipo de exceção listada no bloco <b>catch</b>, o bloco <b>try</b> para de executar e vai excutar a declaração <b>catch</b>. Se nenhuma das declarações no bloco <b>try</b> lança uma exceção que pode ser capturada, a cláusula <b>catch</b> não executa.</p>
-<p>Vamos analisar este exemplo:</p>
-<pre class="brush:java">
-3: void explorar() {
-4: try {
-5: cair();
-6: System.out.println("nunca chega aqui");
-7: } catch (RuntimeException e) {
-8: levantar();
-9: }
-10: verAnimais();
-11: }
-12: void cair() { throw new RuntimeException(); }
-</pre>
-
-<p>Primeiro, linha 5 chama o método <b>cair()</b>. Linha 12 lança uma exceção. Isso significa que Java pula direto para o bloco <b>catch</b>, pulando linha 6. O método <b>levantar()</b> está na linha 8. Agora a declaração <b>try</b> terminou e a execução prossegue normalmente com a linha 10.</p>
-
-<p>Agora vamos ver algumas declarações <b>try</b> inválidas:</b>
-<pre class="brush:java">
-try /// Não compila
-cair();
-catch(Exception)
-System.out.println("levante");
-</pre>
-<p>O problema que as chaves estava faltando:</p>
-<pre class="brush:java">
-try{ //agora sim compila!
-	cair();
-} catch(Exception e){
-	System.out.println("levante");
-}
-} 
-</pre>
-<p>Declarações <b>try</b> são como métodos em que as chaves são necessárias mesmo se existe somente uma declaração dentro do bloco de código.</p>
-<p>E esse aqui?</p>
-<pre class="brush:java">
-try {// não compila
-cair();
-}
-</pre>
-<p>Este não compila porque o bloco <b>try</b> não tem nada depois dele. Lembrar que o ponto de uma declaração <b>try</b> é para alguma coisa acontecer se uma exceção é lançada. Sem outra cláusula, a declaração <b>try</b> está solitário.</p> 
-<p>A próxima seção mostra como adcionar cláusula <b>finally</b> para uma declaração <b>try</b> e pegar diferentes tipos de exceção e descrever o que acontece se uma execução é lançada em <b>catch finally.</b>
-</section>
-<section id="idaddfinaly">
-<h2>Adcionando um Bloco finally</h2>
-<p>A declaração <b>try</b> também vai deixar você executar código no final com uma cláusula <b>finally</b> independente se um exceção é lançada.</p> 
-
-<p><b>A sintax da declaração com finaly:</b></p>
-<pre class="brush:java">
-Um bloco finally pode somente aparecer como parte da declaração try
-|
-|
-try{
-// protege o código
-}catch
-//manipula exceção
-}finally -- palavra chave
-//
-//O bloco finally sempre executa, se ou não uma exceção ocorrer no bloco try
-</pre>
-<p>Existem dois caminhos através do código com ambos um <b>catch</b> e um <b>finally</b>. Se uma exceção é lançada, o bloco <b>finally</b> é excecutado depois do bloco <b>catch</b>. Se exceção não é lançada, o bloco <b>finally</b> é executado depois do bloco <b>try</b> completar.</p>
-<pre class="brush:java">
-12: void explorar() {
-13: try {
-14: verAnimais();
-15: cair();
-16: } catch (Exception e) {
-17: getAbracoDeAmigo();
-18: } finally {
-19: verMaisAnimais();
-20: }
-21: irParaCasa();
-22: }
-</pre>
-
-<p>A pessoa cai na linha 15. Se a pessoa levanta por si mesmo, o código vai no bloco <b>finally</b> e executa a linha 19. Então a declaração <b>try</b> acaba e o código procede na linha 21. Se a pessoa não levantar por ela mesma , o código mostra uma exceção. O bloco <b>catch</b> executa e a pessoa ganha um abraço do amigo na linha 17. Então a declaração <b>try</b> acaba e o código procede na linha 21. De qualquer maneira o fim é o mesmo. O bloco <b>finally</b> é executado e a declaração <b>try</b> finaliza.</p>
-
-<p>Vamos ver o por que deste código a seguir não compilar:</p>
-<pre class="brush:java">
-25: try { // NÃO COMPILA
-26: cair();
-27: } finally {
-28: System.out.println("tudo bem");
-29: } catch (Exception e) {
-30: System.out.println("levante");
-31: }
-32:
-33: try { // NÃO COMPILA
-34: cair();
-35: }
-36: 
-37: try {
-38: cair();
-39: } finally {
-40: System.out.println("tudo bem");
-41: }
-</pre>
-<p>O primeiro exemplo ( linhas 25-31) não compila porque os blocos <b>catch</b> e <b>finally</b> estão na ordem errada. O segundo exemplo (linhas 33-35) não compila por que deve existir um bloco <b>catch</b> ou <b>finally</b>. O terceiro exemplo(37-41) <b>catch</b> não é necessário se <b>finally</b> está presente.</p>
-</section>
-<section id="idcachtipexc">
-<h2>Pegando Vários Tipos de Exceções</h2>
-<p>Até agora pegamos somente um tipo de exceção.  A seguir vamos ver quando diferentes tipos de exceções podem ser lançadas do mesmo método.</p>
-<p>É necessário fazer duas coisas com estas informações. Primeiro, você deve ser capaz de reconhecer se a exceção é <b>checked</b> ou uma <b>unchecked</b>. Segundo, você precisa determinar se qualquer das exceções são subclasses de outras.</p>
-<pre class="brush:java">
-class CaminhadaDeAnimais extends RuntimeException { }
-class ExposicaoFechada extends RuntimeException { }
-class ExposicaoFechadaParaLanche extends ExposicaoFechada { }
-</pre>
-<p>Neste exemplo, existem três exceções personalizada. Todas são exceções <b>unchecked</b> porque diretamente ou indiretamente estende <b>RuntimeException</b>. Agora pegamos ambos tipos de exceções e manipulamos eles para imprimir a mensagem apropriada:</p> 
-<pre class="brush:java">
-public void visitarPorcoEspinho() {
-try {
-verAnimal();
-} catch (CaminhadaDeAnimais e) {// primeiro bloco catch 
-System.out.print("tente mais tarde");
-} catch (ExposicaoFechada e) {// segundo bloco catch
-System.out.print("hoje nao");
-}
-}
-</pre>
-<p>Existem três possibilidades para quando este código é executado. Se <b>verAnimal()</b> não lançar uma exceção, nada é imprimido de saída. Se o animal está de sáda para caminhar, somente  primeiro bloco <b>catch</b> executa. Se a exposição estiver fechada, somente o segundo bloco executa.</p>
-
-<p>O exemplo a seguir mostra os tipos de exceção que herdam um do outro:</p>
-<pre class="brush:java">
-public void visitarGorilas() {
-try {
-verAnimal();
-} catch (ExposicaoFechadaParaLanche e) {// subclasse exception
-System.out.print("tente mais tarde");
-} catch (ExposicaoFechada e) {// superclasse exception
-System.out.print("hoje nao");
-}
-}
-</pre>
-<p>Se a mais específica <b>ExposicaoFechadaParaLanche</b> exceção é lançada, o primeiro bloco <b>catch</b> é executado. Se não, Java checa se a superclasse <b>ExposicaoFechada</b> exceção é lançada e pega eles. Este momento, a ordem do bloco importa. O reverso não funciona.</p>
-<pre class="brush:java">
-public void visitarGorilas() {
-try {
-verAnimal();
-} catch (ExposicaoFechada e) {// 
-System.out.print("tente mais tarde");
-} catch (ExposicaoFechadaParaLanche e) {// NÃO COMPILA
-System.out.print("hoje nao");
-}
-}
-</pre>
-
-<p>Neste momento, se a mais específica <b>ExposicaoFechadaParaLanche</b> exceção é lançada, o bloco <b>catch</b> para <b>ExposicaoFechada</b> executa - significa que não existe nenhum caminho para o segundo bloco <b>catch</b> executar. Java corretamente nos diz existir um bloco <b>catch</b> inalcançável.</p>
-</section>
-<section id="idlanecxeseg">
-<h2>Lançando uma Segunda Exceção</h2>
-
-<p>Um <b>bloco catch</b> ou <b>finally</b> pode ter qualquer código Java válido nele - incluindo outra declaração <b>try</b>.</p>
-
-<p>A seguir o código tenta ler um arquivo:</b>
-<pre class="brush:java">
-16: public static void main(String[] args) {
-17: FileReader reader = null;
-18: try {
-19: reader = read();
-20: } catch (IOException e) {
-21: try {
-22: if (reader != null) reader.close();
-23: } catch (IOException inner) {
-24: }
-25: }
-26: }
-27: private static FileReader read() throws IOException {
-28: // CODIGO VAI AQUI
-29: }
-</pre>
-<p>O caso mais fácil é se a linha 28 lança uma exceção. Então a entrada do bloco <b>catch</b> nas linhas 20-25 é ignorado. Em seguida, considere se a linha 28 lança um <b>NullPointerException</b>. Esse não é o <b>IOException</b>, assim o bloco <b>catch</b> nas linhas 20-25 ainda será ignorado.</p>
-<p>Se linha 28 lança uma <b>IOException</b>, o bloco <b>catch</b> nas linhas 20-25 é executado. Linha 22 tenta fechar o leitor, se isso ir bem, o código compila e o <b>método main()</b> finaliza normalmente. Se o método <b>close()</b> lançar uma exceção, Java procura por mais bloco <b>catch</b>. Não existe nenhum, então o método main lança esta nova exceção. Independentemene, a exceção na linha 28 é manipulada. Uma diferente exceção pode ser lançada, mas o da linha 28 está feito.</p>
-
-<p>O que você acha que esse método retorna?</p>
-<pre class="brush:java">
-30: public String exceptions() {
-31: String result = "";
-32: String v = null;
-33: try {
-34: try {
-35: result += "before";
-36: v.length();
-37: result += "after";
-38: } catch (NullPointerException e) {
-39: result += "catch";
-40: throw new RuntimeException();
-41: } finally {
-42: result += "finally";
-43: throw new Exception();
-44: }
-45: } catch (Exception e) {
-46: result += "done";
-47: }
-48: return result;
-49: }
-</pre>
-<p>A resposta correta é <b>before catch finally done</b>. Tudo está normal até a linha 35, quando <b>"before"</b> é adcionado. Linha 36 lança um <b>NullPointerException</b>. Linha 37 é ignorado como Java vai direto ao bloco <b>catch</b>. Linha 38 captura a exceção, e <b>"catch"</b> é adcionado na linha 39. Então linha 40 lança um <b>RuntimeException</b>. O bloco <b>finally</b> executa depois do <b>catch</b> independentemente se um exceção é lançada; ele adciona <b>"finally"</b> ao resultado. Neste ponto, temos completado a declaração <b>try</b> interna que executam nas linhas 34-44. O bloco <b>catch</b> exterior então ver que uma exceção foi lançada e captura ele na linha 45; ele adciona <b>"done"</b> ao resultado.</p>
-</section>
-<section id="tiposexcecao">
-<h1>Reconhecendo Tipos Comuns de Exceção</h1>
-
-<p>Vamos abordar três tipos de exceções: runtime, checked e errors.</p>
-</section>
-<section id="idexruntime">
-<h2>Exceções Runtime </h2>
-
-<p><b>Exceção Runtime</b> estende <b>RuntimeExceptions</b>. Eles não precisa, ser declarados ou manipulados. Eles podem ser lançados pelo programador ou pelo JVM . Exceções runtime comum inclui os seguintes:</p>
-
-<p><b>ArithmeticException</b> Lançado por JVM quando o código tenta dividir por zero.</p>
-
-<p><b>ArrayIndexOutOfBoundsException</b> Lançado pelo JVM quando o código usa um index ilegal para acessar o array.</p>
-
-<p><b>ClassCastException</b> Lançado pela JVM quando um tentativa é feita para converter uma exceção para uma subclasse da qual ele não é uma instância.</p>
-
-<p><b>IllegalArgumetException</b> Lançado pelo programador para indicar que um método tem sido passado um argumento inapropriado ou ilegal.</p>
-
-<p><b>NullPointerException</b> Lançado pela JVM quando existe uma referência nula onde um objeto é necessário.</p>
-
-<p><b>NumberFormatException</b> Lançado pelo prograador quando uma tentativa é feita para converter um <b>String</b> para um tipo númerico mas a <b>String</b> não tem o formato apropriado.</p>
-</section>
-<section id="idaritmeticexc">
-<h3>ArithmeticException</h3>
-<p>Ao tentar dividir um <b>int</b> por zero dá um resultado indefinido. Quando isto ocorrer, o JVM irá lançar um <b>ArithmeticException:</b></p>
-<pre class="brush:java">int answer = 11/0;</pre>
-
-<p>Executando este código o resultado da saída será a seguinte:</p>
-
-<pre>Exception in thread "main" java.lang.ArithmeticException: / by zero</pre>
-
-</section>
-<section id="idarrayboundexc">
-<h3>ArrayIndexOutOfBoundsException</h3>
-
-<p>Os índices de array começam com 0 e vão até 1 menos o tamanho do array - assim este código irá lançar um <b>ArrayIndexOutOfBoundsException:</b></p>
+   <p>Existem duas abordagens que Java usa para lidar com exceções. Um método pode manipular a exceção o caso em si ou fazer o chamador responsável.</p>
+   <p>Vamos ver alguns exemplo: </p>
   <pre class="brush:java">
-int [countsOfMoose]= new int[3];
-System.out.println(countsOfMoose[-1]);
-</pre>
-<p>Este é um problema porque não existe índice negativo de array. Executando este código gera a seguinte saída:</p>
+   public class Zoo {
+   public static void main(String[] args) {
+   System.out.println(args[0]);
+   System.out.println(args[1]);
+   } 
+  }
+  </pre>
 
-<pre>Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: -1</pre>
+  <p>Então você tenta chamá-lo sem argumentos suficiente:</p><br>
 
+  <p><b>$ javac Zoo.java<br> 
+  $ java Zoo Zoo</b></p>
+  <br>
 
-<p>Pelo menos Java nos diz qual índice estava inválido. Você pode ver o que está errado com este?</p>
-<pre class="brush:java">
-int total = 0;
-int[] countsOfMoose = new int[3];
-for (int i = 0; i <= countsOfMoose.length; i++) 
-total += countsOfMoose[i];
-</pre>
-<p>O problema é que o loop for deve ter < em vez de <= no final da interação do loop, Java tenta chamar <b>countsOfMoose[3]</b>, que é inválido. O array inclui somente três elementos, fazendo de <b>2</b> o maior index possível. A saída será assim:</p>
-<br>
-<pre>Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 3</pre>
-<br>
-</section>
-<section id="idclassexcp">
-<h3>ClassCastException</h3>
+  <p>Na linah 4, Java percebe que existe somente um objeto no <b>array</b> e <b>index 1</b> não é permitido. Então java tenta manipular e lança uma exceção .. É como dizer: "Eu não posso lidar com isso!" e então a exceção é  mostrado assim:</p>
+  <pre>
+  ZooException in thread "main" 
+  java.lang.ArrayIndexOutOfBoundsException: 1
+  at mainmethod.Zoo.main(Zoo.java:7)
+  </pre>
 
-<p>Java tenta proteger você de <b>casts</b> impossíveis. Este código não compila porque <b>Integer</b> não é uma subclasse de <b>String</b>:</p>
-<pre class="brush:java">
-String type = "moose";
-Integer number = (Integer) type; // NÃO COMPILA
-</pre>
-<p>Código mais complicado frustra as tentativas do Java de proteger você. Quando o <b>cast</b> falha em tempo de execução. Java irá lançar um <b>ClassCastException:</b></p>
-<pre class="brush:java">
-String type = "moose";
-Object obj = type;
-Integer number = (Integer) obj; 
-</pre>
- <p>O compilador ver um <b>cast</b> de <b>Object</b> para <b>Integer</b>. O compilador não percebe que há um <b>String</b> nesse objeto. Quando o código executa, ele gera a seguinte saída:</p>
-<pre>
-Exception in thread "main" java.lang.ClassCastException: java.lang.String
-cannot be cast to java.lang.Integer
-</pre>
-</section>
-<section id="idilleglex">
-<h3>IllegalArgumentException</h3>
-<p><b>IllegalArgumentException</b> é uma maneira para seu programa proteger a si mesmo.</p> 
-<pre class="brush:java">
-6: public void setNumberEggs(int numberEggs) {// setter
-7: if (numberEggs >= 0) // guard condition
-8: this.numberEggs = numberEggs;
-9: 
-}
-</pre>
+  <p>Exceções podem ocorrer em todo momento mesmo em programas sólidos. Quando escreve um programa mais avançado, é necessário lidar com falhas em acessar arquivos, redes, e serviços de fora.</p>
+  </section>
+  <section id="idtipexce">
+  <h2>Tipos de Exceção</h2>
 
-<p>Este código funciona, mas não queremos ignorar a requisição do chamador quando <b>numberEggs</b> for menor que zero. Queremos dizer ao chamador que algo está errado. Exceções são eficientes para fazer isso. Veja o exemplo abaixo:</p> 
-
-<pre class="brush:java">
-public static void setNumberEggs(int numberEggs) {
-if (numberEggs < 0) 
-throw new IllegalArgumentException(
-"# eggs must not be negative");
-this.numberEggs = numberEggs;
-}
-</pre>
-
-<p>O programa lança uma exceção quando o valor do parâmetro não corresponde. A saída será a seguinte:</p>
-
- <pre>Exception in thread "main" java.lang.IllegalArgumentException: # eggs must not be negative</pre>
- <br>
- <p>Claramente este é um problema que deve ser corrigido se o programador quer que o programa faça algo de útil.</p>
-</section>
-<section id="idnullpointexc">
-<h3>NullPointerException</h3>
-<p>Métodos e Variáveis de Instância deve ser chamado em uma referência não nula. Se a referência é nula, O JVM irá lançar um <b>NullPointerException:</b></p>
-
-<pre class="brush:java">
-String name;
-public void printLength() throws NullPointerException {
-System.out.println(name.length());
-}
-</pre>
-<p>Executando este  código o resultado da saída será assim:</p>
-
-<p><b>Exception in thread "main" java.lang.NullPointerException</b></p>
-</section>
-<section id="idnumbexcep">
-<h3>NumBerFormatException</h3>
-
-<p>Java fornece métodos para converter <b>strings</b> para números. Quando são passados os valores de maneira inválida, ele lança um <b>NumBerFormatException</b> . A idéia é similar ao <b>IllegalArgumentException</b>. Desde que este seja um problema comum, Java dá em uma classe separada. De fato, <b>NumBerFormatException</b> é uma  subclasse de <b>IllegalArgumentException</b>. Aqui está um exemplo de tentar converter alguma coisa não numérica dentro de um <b>int:</b>
-<br>
-<pre class="brush:java">Integer.parseInt("abc");</PRE>
-<br>
-<p>A saída será assim:</p>
-
-<pre> Exception in thread "main" java.lang.NumberFormatException: For input string: </pre><br>
-</section>
-<section id="exccheck">
-<h2>Exceções Checked</h2> 
-
-<p><b>Exceções Checked</b> tem <b>Exceptions</b> na sua hierarquia mas não <b>RuntimeException</b>. Ele deve ser declarado ou manipulado. Ele pode ser lançado pelo programador ou pela JVM.</p>
-
-<p>Exceções comuns de tempo de execução incluem os seguintes:</p>
-
-<p><b>FileNOtFoundException</b> Lancado programaticamente quando código tenta referenciar o arquivo que não existe.</p>
-<p><b>IOException</b> Lançado programaticamente quando existe um problema lendo ou escrevendo um arquivo.</p>
-</section>
-<section id="iderrors">
-<h2>Errors</h2>
-<p><b>Errors</b> estende a classe <b>Error</b>. Eles são lançado pela JVM e não deve ser manipulado ou declarado. Erros são raros, mas você pode ver estes:</p>
-
-<p><b>ExceptionInitializerError</b> Lançado pelo JVM quando um inicializador lança uma exceção e não manipula ele.</p>
-
-<p><b>StackOverFlowError</b> Lançado pelo JVM quando o método chama a si mesmo também muitas vezes(isso é chamado de recursão infinita porque o método chama a si mesmo sem fim)</p>
-
-<p><b>NoClassDefFoundError</b> Lançado pelo JVM quando a classe que o código usa é acessível no tempo de compilação mas não no tempo de execução.</p>
-</section>
-<section id="idexcepiniterror">
-<h3>ExceptionInInitializerError</h3>
-
-<p>Java executa inicializadores estáticos na primeira vez em que uma classe é usada. Se um dos inicalizadores estático lança uma exceção, Java não pode iniciar usando a classe. Ele declara derrota ao lançar um <b>ExceptionInInitializerError</b>. Este código mostra um <b>ArrayIndexOutOfBounds</b> no inicalizador estático:</p>
-<pre class="brush:java">
-static {
-int[] countsOfMoose = new int[3];
-int num = countsOfMoose[-1];
-}
-public static void main(String[] args) { }
-</pre>
-
-<p>Este código gera informação sobre duas exceções:</p>
-<pre>
-Exception in thread "main" java.lang.ExceptionInInitializerError
-Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
-</pre>
-
-<p>Pegamos o <b>ExceptionInInitializerError</b> porque o erro acontece no inicializador estático. Esta informação sozinha não seria particularmente útil em corrigir o problema. Contudo, Java também nos diz a causa original do problema: o <b>ArrayIndexOutOfBoundsException</b> que precisamos corrigir. </p>
- 
-<p>O <b>ExceptionInInitializerError</b> é um erro porque Java falhou ao carregar a classe inteira. Esta falha impede java de continuar.</p>
-</section>
-<section id="idstackover">
-<h3>StackOverFlowError</h3>
-<p>Quando java chama os métodos, ele coloca parâmetros e variáveis na pilha. Depois fazendo isso um número mais largo de vezes, a pilha executa fora do espaço e transborda. Isto é chamado um <b>StackOverFlowError</b>. Na maioria das vezes, esse erro ocorre quando o método chama si mesmo.</p>
-<pre class="brush:java">
-public static void doNotCodeThis(int num) {
-doNotCodeThis(1);
-}
-</pre>
-
-<p
->A saída contém esta linha :</p><br>
-<pre>Exception in thread "main" java.lang.StackOverflowError</re>
-<br>
-<p>Desde que o método chama si mesmo nunca terá fim. Eventualmente, Java executa fora do espaço na pilha e lança um erro. Isso é chamado de recursão infinita. Ele é melhor do que um loop infinito porque pelo menos Java irá pegar ele e lançar o erro. Com um loop infinito, Java somente usa todo seu CPU até você conseguir eliminar ele.</p>
-
-</section>
-<section id="idnoclassdef">
-<h3>NoClassDefFoundError</h3>
-<p>Ocorre quando Java não pode encontrar a classe em tempo de execução.</p>
-</section>
-<section id="chamarexcecao">
-<h1>Chamando Métodos Que Lançam Exceções</h1>
-
-<p>Quando você está chamando um método que lança uma exceção, a regra são as mesmas como dentro de um método. Você ver por que o seguinte código não compila?</p>
-
-<pre class="brush:java">
-class NoMoreCarrotsException extends Exception {}
-public class Bunny {
-public static void main(String[] args) {
-eatCarrot();// NÃO COMPILA
-}
-private static void eatCarrot() throws NoMoreCarrotsException {
-}
-}
-</pre>
-<p>O problema é que <b>NoMoreCarrotsException</b> é um exceção <b>checked</b>. Exceção Checked deve ser manipulada ou declarada. O código compilará se mudarmos o método main() para qualquer um destes:</p>
-<pre class="brush:java">
-public static void main(String[] args) 
-throws NoMoreCarrotsException {// DECLARA exception
-eatCarrot();
-}
-public static void main(String[] args) {
-try {
-eatCarrot();
-} catch (NoMoreCarrotsException e ) {// MANIPULA exception
-System.out.print("sad rabbit");
-}
-}
-</pre>
-<p>Você pode ter notado que <b>eatCarrot()</b> na verdade não lança uma exceção; ele somente declarou que poderia. Isto é suficiente para o compilador exigir o chamador para manipular ou declarar a exceção.</p>
-
-<p>Vamos ver este problema aqui?</p>
-<pre class="brush:java">
-public void bad() {
-try {
-eatCarrot();
-} catch (NoMoreCarrotsException e ) {//NÃO COMPILA
-System.out.print("sad rabbit");
-}
-}
-public void good() throws NoMoreCarrotsException {
-eatCarrot();
-}
-private static void eatCarrot() { }
-</pre>
-<p>Java sabe que <b>eatCarrot()</b> não pode lançar uma <b>exceção checked</b> - que significa não existir maneira para o bloco <b>catch</b> em <b>bad()</b> ser alcançado. Em comparação, <b>good()</b> é livre para declarar outra exceção.</p>
-</section>
-<section id="idsubclasses">
-<h2>Subclasses</h2>
-<p>vamos ver como sobrescrever métodos com exceções na declaração do método. Quando uma classe sobrescreve um método de uma superclasse ou implementa um método de uma interface, não é permitido adcionar nova <b>exceção checked</b> para assinatura do método. Por exemplo este código não é permitido:</p>
-<pre class="brush:java">
-class CanNotHopException extends Exception { }
-class Hopper {
-public void hop() { }
-}
-class Bunny extends Hopper {
-public void hop() throws CanNotHopException { } // NÃO COMPILA
-}
-</pre>
-
-<p>Java sabe que <b>hop()</b> não é permitido lancar qualquer <b>exceção checked</b> porque a <b>superclasse Hopper</b> não declarou nada. Imagine o que aconteceria se a subclasse pudesse adcionar <b>exceção checked</b> - voce poderia escrever código que chama Hopper's  método hop() e não manipular qualquer exceção. Então se <b>Bunny</b> fosse usado no lugar, o código não saberia manipular ou declarar <b>CanNotHopException</b>.</p> 
-<p>Uma subclasse é permitido declarar menos exceções do que a superclasse ou interface. Este é legal porque chamadores já estão manipulando eles.</p>
-<pre class="brush:java">
-class Hopper {
-public void hop() throws CanNotHopException { }
-}
-class Bunny extends Hopper {
-public void hop() { }
-}
-</pre>
-<p>Uma subclasse que não declara uma exceção é semelhante a um método que declara lançar uma exceção que nunca é lançada. Isto é perfeitamente legal.
-Similarmente, uma classe é permitido declarar uma subclasse de um tipo de exceção. A ideia é a mesma. A superclasse ou interface já cuidou de um tipo mais amplo. </p>
-<p>Aqui um exemplo:</p>
-<pre class="brush:java">
-class Hopper {
-public void hop() throws Exception { }
-}
-class Bunny extends Hopper {
-public void hop() throws CanNotHopException { }
-}
-</pre>
-<p><b>Bunny</b> poderia declarar que lança Exceção diretamente, ou poderia declarar que lança um mais específico tipo de Exceção. Ele pode até declarar que não lança nada.</p>
-<p>Esta regra aplica somente para <b>exceções checked</b>. A seguir o código é legal porque ele tem uma <b>exceção runtime</b> na versão da subclasse:</p>
-<pre class="brush:java">
-class Hopper {
-public void hop() { }
-}
-class Bunny extends Hopper {
-public void hop() throws IllegalStateException { }
-}
-</pre>
-<p>A razão pela qual não há problema em declarar novas exceções de tempo de execução em um método de subclasse é que a declaração é redundante. Os métodos são livres para lançar quaisquer exceções de tempo de execução que desejarem sem mencioná-los na declaração do método.</p>
-</section>
-<section id="idprintexc">
-<h2>Imprimindo uma Exceção</h2>
-<p>Existem três maneiras para imprimir uma exceção. Você pode deixar o Java imprimi-lo, imprimir apenas a mensagem ou imprimir de onde vem o rastreamento da pilha.</p> 
-<p>Este exmplo mostra as três abordagens:</p>
-<pre class="brush:java">
-5: public static void main(String[] args) {
-6: try {
-7:  hop();
-8: } catch (Exception e) {
-9: System.out.println(e);
-10: System.out.println(e.getMessage());
-11: e.printStackTrace();
-12: }
-13: }
-14: private static void hop() {
-15: throw new RuntimeException("cannot hop");
-16: 
-}
-</pre>
-
-<p>Este código  resulta na seguinte saída:</p>
-<pre>
-java.lang.RuntimeException: cannot hop
-cannot hop
-java.lang.RuntimeException: cannot hop
-at trycatch.Handling.hop(Handling.java:15)
-at trycatch.Handling.main(Handling.java:7)
-</pre>
-<p>A primeria linha mostra que Java imprime saída por default(padrão) o tipo de exceção e mensagem. A segunda linha mostra somente a mensagem. 
-O resto mostra o rastreamento da pilha.
-O rastreamento de pilha(stake trace) geralmente é o mais útil porque mostra onde a exceção ocorreu em cada método pelo qual passou.</p>
-</section>
-<section id="resumo">
-<h1>Resumão</h1>
-
-<p>Uma exceção indica que alguam coisa inesperada aconteceu. Um método pode manipular uma exceção por pegá-lo ou declará-lo para o chamador lidar. Muitas exceções são lançada pela biblioteca Java. Você pode lançar sua própria exceção com o código tal como <b>throw new Exception().</b>
-Subclasses de <b>java.langError</b> são exceções que um programador não deve tentar manipular. Subclases de <b>java.lang.RuntimeException</b> são <b>exceções runtime(uncheked)</b>. Subclasses de <b>java.lang.Exception</b> são <b>exceções checked</b>. Java necessita de <b>exceções checked</b> para ser manipulada ou declarada.
-Se uma <b>declaração try</b> tem múltiplos <b>blocos catch</b>, na maioria um <b>bloco catch</b> pode executar. Java procura por uma exceção que pode ser pega por cada <b>bloco catch</b> na ordem que ele aparecer e o primeiro correspondente é executado. Então a execução continua depois da <b>declaração try</b>. Se ambos <b>catch</b> e <b>finally</b> lançar uma exceção, única de <b>finally</b> será lançada.</p><br>
-
-<p>Exceções comum de tempo de execução(runtime) inclui:</p>
-<ul>
-<li> ArithmeticException</li>
-<li>ArrayIndexOutOfBoundsException</li>
-<li>ClassCastException</li>
-<li>IllegalArgumentException</li>
-<li>NullPointerException</li>
-<li>NumberFormatException</li>
-</ul><br>
-<p><b>IllegalArgumentException</b> e <b>NumberFormatException</b> são tipicamente lançado pelo programador, enquanto que os outros são tipicamente lançado por JVM.</p><br>
-<p>Exceções checked inclue:</p>
-<ul>
-<li> IOException</li>
-<li> FileNotFoundException</li>
-</ul>
-
-
-<p>Erros comuns inclue:</p>
-<ul>
-<li> ExceptionInInitializerError</li>
-<li> StackOverflowError</li>
-<li>NoClassDefFoundError</li>
-</ul>
-
-<p>Quando um método sobrescreve um método na superclasse ou interface, não é permitido adcionar <b>exceções checked</b>. Ele é permitido declarar menos exceções ou declarar uma subclasse de uma exceção declarada. Métodos declara exceções com a palavra chave <b>throws.</b></p><br>
-</section>
-
-<p class="nav-arq" id="referencia">Design de Classe<a href="designdeclasse.html">&laquo; anterior | <a href="designavancado.html">próximo &raquo;</a>Projeto de Classe I </p>
-  <div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/excecao" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
-  </div>
+  <p>Uma exceção é um evento que altera o fluxo do programa. Java tem uma superclasse <b>java.lang.Throwable</b> para todos objetos que representa estes eventos. Note que todos eles tem a palavra <b>exception</b> em sua classe.</p>
+  <div  class="w3-main">
+  <div class="setas">
+      <ul class="setas-col setas-pseudo-absolute">
+         <li class="setas-item setas-item-text ">     <span class="text">java.lang.Object</span></li>
+         <!-- <li class="setas-item seta_top"></li>
+          <li class="setas-item seta_bottom"></li>
+          <li class="setas-item seta_left"></li>
+          <li class="setas-item seta_right"></li>-->
+      </ul></div>
+      <div class="setas">
+      <ul class="setas-col setas-pseudo-absolute">
+           <li class="setas-item setas-item-text seta_right">     <span class="text">java.lang.Error</span></li>
+      
+          <li class="setas-item setas-item-text seta_top">     <span class="text">java.lang.Throwable</span></li>
+    <li class="setas-item setas-item-text seta_left">     <span class="text">java.lang.Exception</span></li>           
+         </ul></div>
+      <div class="setas-r">
+      <ul class="setas-col-r setas-pseudo-absolute-r">
+        <li class="setas-item-r setas-item-text-r seta_top-r ">     <span class="text-r">java.lang.Object</span></li>
+        </div>
+        <div class="setas-r setas-r1">
+      <ul class="setas-col-r setas-pseudo-absolute-r setas-pseudo-absolute-r1">
+        <li class="setas-item-r setas-item-text-r  seta_left-r1"> <span class="text-r">java.lang.Throwable</span></li>
+          <li class="setas-item-r setas-item-text-r seta_left-r "> <span class="text-r">java.lang.Error</span></li>
+            <li class="setas-item-r setas-item-text-r seta_top-r1"> <span class="text-r">java.lang.Exception</span></li>
+           </ul></div>
+   
+      <div class="setas2">
+         <ul class="setas-col2 setas-pseudo-absolute2">
+          <li class="setas-item2 setas-item-text2 seta_top2"> <span class="text2">java.lang.RuntimeException</span></li>
+        </ul>
+        </div>
   </div>
 
- 
-</body>
-</html>
+
+  <p>Uma exceção de tempo de execução(runtime) é definida como a classe <b>RuntimeException</b> e suas subclasses. Exceções de tempo de execução tende ser inesperado mas não necessariamente fatal. Por exemplo, acessar um <b>array index</b> inválido é inesperado. Exceções em tempo de execução também são conhecidas como <b>unchecked exception</b>. Que são exceções não checadas em uma tradução livre.
+
+  <p>Exceção em tempo de execução <b>unchecked</b> é um tipo específico de exceção. Todas exceções ocorrem no tempo em que o programa é executado.</p>
+
+  <p>Uma <b>exceção checked</b> que são exceções checadas, inclue <b>Exception</b> e todas as subclasses que não estende <b>RuntimeException</b>. <b>Exceções Checked</b>  tende ser mais antecipada- por exemplo , tentar ler um arquivo que não existe.</b>
+  <p>Exceções Checked ? O que estamos checando? Java tem uma regra declarada para <b>exceções checked</b>, Java exige o código para ou manipulá-los ou declará-los na assinatura do método.</p>
+
+  <p>Por exemplo, este método que declara isso pode lançar uma exceção:</p>
+  <pre class="brush:java">
+  void cair() throws Exception {
+  throw new Exception();
+  </pre>
+
+  <p>Note que você está usando diferentes palavras chave aqui. <b>throw</b> diz para Java que você quer lançar uma Exceção. <b>throws</b> simplesmente declara que o método pode lançar uma Exceção.</p>
+  </section>
+  <section id="idlancexcec">
+  <h2>Lançando Uma Exceção</h2>
+  <p>Qualquer código Java pode lançar uma exceção; isto inclui  o código que escrevemos.</p>
+  <p>Iremos escever dois tipos de códigos que resulta em uma exceção. Este é o primeiro código errado, por exemplo:</p>
+  <pre class="brush:java">
+  String[] animais = new String[0];
+  System.out.println(animals[0]);
+  </pre>
+
+  <p>Este código lança um <b>ArrayIndexOutOfBoundsException.</b> Isso significa que questões sobre exceções podem ser ocultas em questões que parece ser sobre algo a mais.</p>
+  <p>A segunda maneira para o resultado do código em uma exceção é explicitar a requisição Java para lançar uma. Java deixa você escrever declarações como esta:</p>
+  <pre class="brush:java">
+  throw new Exception();
+  throw new Exception("Ow! I fell.");
+  throw new RuntimeException();
+  throw new RuntimeException("Ow! I fell.");
+  </pre>
+  <p>Lançando a palavra chave <b>throw</b> está dizendo ao Java que quer alguma outra parte do código para lidar com exceção. 
+  Quando criamos uma exceção, podemos passar geralmente um parâmetro <b>String</b> com uma mensagem ou não passar parâmetros e usar o padrão.</p>
+  <p>Os primeiros dois exemplos cria um novo objeto do tipo <b>Exception</b> e lança ele. Os dois últimos exemplos mostra que o código parece o mesmo independente de qual tipo de exceção for lançado.</p>
+  <br>
+  <div style="overflow-x:auto;">
+  <table class="w3-table-all">
+
+    <tr><th colspan="4"> Tabela de Tipos de Exceção</th></tr>
+  <tr><th>Tipo</th><th> Como reconhecer</th><th>
+  Tudo bem para o programa pegar?</th><th>
+  O programa é necessário para manipular ou declarar?</th></tr>
+  <tr><td>Runtime exception</td><td> Subclasse de 
+  RuntimeException</td><td>
+  Sim</td><td> Não</td></tr>
+  <tr><td>Checked exception</td><td> Subclasse de Exception
+  mas não subclasse de 
+  RuntimeException</td><td>
+  Sim </td><td>Sim</td></tr>
+  <tr><td>Error</td><td> Subclasse de Error</td><td> Não</td><td> Não</td></tr>
+  </table>
+  </div>
+  <br>
+  </section>
+  <section id="try">
+  <h1>Usando a declaração try</h1>
+
+  <p>Java usa uma decaração <b>try</b> para separar a lógica que pode lançar uma exceção da lógica para manipular esta exceção.</p>
+  <pre class="brush:java">
+  palavra chave
+   |
+   |
+  try { -- chaves são necessárias
+
+  	//o bloco try é tambem necessário para proteger o código 
+   //se uma exceção é lançada na declaração try, a clausula catch tenta capturá-lo
+  	
+  } -- chaves são necessárias 
+  catch 
+     |
+     |
+     palavra chave
+
+  </pre>
+
+  <p>O código no bloco <b>try</b> é executado normalmente. Se qualquer declaração lança uma exceção que pode ser pego capturado tipo de exceção listada no bloco <b>catch</b>, o bloco <b>try</b> para de executar e vai excutar a declaração <b>catch</b>. Se nenhuma das declarações no bloco <b>try</b> lança uma exceção que pode ser capturada, a cláusula <b>catch</b> não executa.</p>
+  <p>Vamos analisar este exemplo:</p>
+  <pre class="brush:java">
+  3: void explorar() {
+  4: try {
+  5: cair();
+  6: System.out.println("nunca chega aqui");
+  7: } catch (RuntimeException e) {
+  8: levantar();
+  9: }
+  10: verAnimais();
+  11: }
+  12: void cair() { throw new RuntimeException(); }
+  </pre>
+
+  <p>Primeiro, linha 5 chama o método <b>cair()</b>. Linha 12 lança uma exceção. Isso significa que Java pula direto para o bloco <b>catch</b>, pulando linha 6. O método <b>levantar()</b> está na linha 8. Agora a declaração <b>try</b> terminou e a execução prossegue normalmente com a linha 10.</p>
+
+  <p>Agora vamos ver algumas declarações <b>try</b> inválidas:</b>
+  <pre class="brush:java">
+  try /// Não compila
+  cair();
+  catch(Exception)
+  System.out.println("levante");
+  </pre>
+  <p>O problema que as chaves estava faltando:</p>
+  <pre class="brush:java">
+  try{ //agora sim compila!
+  	cair();
+  } catch(Exception e){
+  	System.out.println("levante");
+  }
+  } 
+  </pre>
+  <p>Declarações <b>try</b> são como métodos em que as chaves são necessárias mesmo se existe somente uma declaração dentro do bloco de código.</p>
+  <p>E esse aqui?</p>
+  <pre class="brush:java">
+  try {// não compila
+  cair();
+  }
+  </pre>
+  <p>Este não compila porque o bloco <b>try</b> não tem nada depois dele. Lembrar que o ponto de uma declaração <b>try</b> é para alguma coisa acontecer se uma exceção é lançada. Sem outra cláusula, a declaração <b>try</b> está solitário.</p> 
+  <p>A próxima seção mostra como adcionar cláusula <b>finally</b> para uma declaração <b>try</b> e pegar diferentes tipos de exceção e descrever o que acontece se uma execução é lançada em <b>catch finally.</b>
+  </section>
+  <section id="idaddfinaly">
+  <h2>Adcionando um Bloco finally</h2>
+  <p>A declaração <b>try</b> também vai deixar você executar código no final com uma cláusula <b>finally</b> independente se um exceção é lançada.</p> 
+
+  <p><b>A sintax da declaração com finaly:</b></p>
+  <pre class="brush:java">
+  Um bloco finally pode somente aparecer como parte da declaração try
+  |
+  |
+  try{
+  // protege o código
+  }catch
+  //manipula exceção
+  }finally -- palavra chave
+  //
+  //O bloco finally sempre executa, se ou não uma exceção ocorrer no bloco try
+  </pre>
+  <p>Existem dois caminhos através do código com ambos um <b>catch</b> e um <b>finally</b>. Se uma exceção é lançada, o bloco <b>finally</b> é excecutado depois do bloco <b>catch</b>. Se exceção não é lançada, o bloco <b>finally</b> é executado depois do bloco <b>try</b> completar.</p>
+  <pre class="brush:java">
+  12: void explorar() {
+  13: try {
+  14: verAnimais();
+  15: cair();
+  16: } catch (Exception e) {
+  17: getAbracoDeAmigo();
+  18: } finally {
+  19: verMaisAnimais();
+  20: }
+  21: irParaCasa();
+  22: }
+  </pre>
+
+  <p>A pessoa cai na linha 15. Se a pessoa levanta por si mesmo, o código vai no bloco <b>finally</b> e executa a linha 19. Então a declaração <b>try</b> acaba e o código procede na linha 21. Se a pessoa não levantar por ela mesma , o código mostra uma exceção. O bloco <b>catch</b> executa e a pessoa ganha um abraço do amigo na linha 17. Então a declaração <b>try</b> acaba e o código procede na linha 21. De qualquer maneira o fim é o mesmo. O bloco <b>finally</b> é executado e a declaração <b>try</b> finaliza.</p>
+
+  <p>Vamos ver o por que deste código a seguir não compilar:</p>
+  <pre class="brush:java">
+  25: try { // NÃO COMPILA
+  26: cair();
+  27: } finally {
+  28: System.out.println("tudo bem");
+  29: } catch (Exception e) {
+  30: System.out.println("levante");
+  31: }
+  32:
+  33: try { // NÃO COMPILA
+  34: cair();
+  35: }
+  36: 
+  37: try {
+  38: cair();
+  39: } finally {
+  40: System.out.println("tudo bem");
+  41: }
+  </pre>
+  <p>O primeiro exemplo ( linhas 25-31) não compila porque os blocos <b>catch</b> e <b>finally</b> estão na ordem errada. O segundo exemplo (linhas 33-35) não compila por que deve existir um bloco <b>catch</b> ou <b>finally</b>. O terceiro exemplo(37-41) <b>catch</b> não é necessário se <b>finally</b> está presente.</p>
+  </section>
+  <section id="idcachtipexc">
+  <h2>Pegando Vários Tipos de Exceções</h2>
+  <p>Até agora pegamos somente um tipo de exceção.  A seguir vamos ver quando diferentes tipos de exceções podem ser lançadas do mesmo método.</p>
+  <p>É necessário fazer duas coisas com estas informações. Primeiro, você deve ser capaz de reconhecer se a exceção é <b>checked</b> ou uma <b>unchecked</b>. Segundo, você precisa determinar se qualquer das exceções são subclasses de outras.</p>
+  <pre class="brush:java">
+  class CaminhadaDeAnimais extends RuntimeException { }
+  class ExposicaoFechada extends RuntimeException { }
+  class ExposicaoFechadaParaLanche extends ExposicaoFechada { }
+  </pre>
+  <p>Neste exemplo, existem três exceções personalizada. Todas são exceções <b>unchecked</b> porque diretamente ou indiretamente estende <b>RuntimeException</b>. Agora pegamos ambos tipos de exceções e manipulamos eles para imprimir a mensagem apropriada:</p> 
+  <pre class="brush:java">
+  public void visitarPorcoEspinho() {
+  try {
+  verAnimal();
+  } catch (CaminhadaDeAnimais e) {// primeiro bloco catch 
+  System.out.print("tente mais tarde");
+  } catch (ExposicaoFechada e) {// segundo bloco catch
+  System.out.print("hoje nao");
+  }
+  }
+  </pre>
+  <p>Existem três possibilidades para quando este código é executado. Se <b>verAnimal()</b> não lançar uma exceção, nada é imprimido de saída. Se o animal está de sáda para caminhar, somente  primeiro bloco <b>catch</b> executa. Se a exposição estiver fechada, somente o segundo bloco executa.</p>
+
+  <p>O exemplo a seguir mostra os tipos de exceção que herdam um do outro:</p>
+  <pre class="brush:java">
+  public void visitarGorilas() {
+  try {
+  verAnimal();
+  } catch (ExposicaoFechadaParaLanche e) {// subclasse exception
+  System.out.print("tente mais tarde");
+  } catch (ExposicaoFechada e) {// superclasse exception
+  System.out.print("hoje nao");
+  }
+  }
+  </pre>
+  <p>Se a mais específica <b>ExposicaoFechadaParaLanche</b> exceção é lançada, o primeiro bloco <b>catch</b> é executado. Se não, Java checa se a superclasse <b>ExposicaoFechada</b> exceção é lançada e pega eles. Este momento, a ordem do bloco importa. O reverso não funciona.</p>
+  <pre class="brush:java">
+  public void visitarGorilas() {
+  try {
+  verAnimal();
+  } catch (ExposicaoFechada e) {// 
+  System.out.print("tente mais tarde");
+  } catch (ExposicaoFechadaParaLanche e) {// NÃO COMPILA
+  System.out.print("hoje nao");
+  }
+  }
+  </pre>
+
+  <p>Neste momento, se a mais específica <b>ExposicaoFechadaParaLanche</b> exceção é lançada, o bloco <b>catch</b> para <b>ExposicaoFechada</b> executa - significa que não existe nenhum caminho para o segundo bloco <b>catch</b> executar. Java corretamente nos diz existir um bloco <b>catch</b> inalcançável.</p>
+  </section>
+  <section id="idlanecxeseg">
+  <h2>Lançando uma Segunda Exceção</h2>
+
+  <p>Um <b>bloco catch</b> ou <b>finally</b> pode ter qualquer código Java válido nele - incluindo outra declaração <b>try</b>.</p>
+
+  <p>A seguir o código tenta ler um arquivo:</b>
+  <pre class="brush:java">
+  16: public static void main(String[] args) {
+  17: FileReader reader = null;
+  18: try {
+  19: reader = read();
+  20: } catch (IOException e) {
+  21: try {
+  22: if (reader != null) reader.close();
+  23: } catch (IOException inner) {
+  24: }
+  25: }
+  26: }
+  27: private static FileReader read() throws IOException {
+  28: // CODIGO VAI AQUI
+  29: }
+  </pre>
+  <p>O caso mais fácil é se a linha 28 lança uma exceção. Então a entrada do bloco <b>catch</b> nas linhas 20-25 é ignorado. Em seguida, considere se a linha 28 lança um <b>NullPointerException</b>. Esse não é o <b>IOException</b>, assim o bloco <b>catch</b> nas linhas 20-25 ainda será ignorado.</p>
+  <p>Se linha 28 lança uma <b>IOException</b>, o bloco <b>catch</b> nas linhas 20-25 é executado. Linha 22 tenta fechar o leitor, se isso ir bem, o código compila e o <b>método main()</b> finaliza normalmente. Se o método <b>close()</b> lançar uma exceção, Java procura por mais bloco <b>catch</b>. Não existe nenhum, então o método main lança esta nova exceção. Independentemene, a exceção na linha 28 é manipulada. Uma diferente exceção pode ser lançada, mas o da linha 28 está feito.</p>
+
+  <p>O que você acha que esse método retorna?</p>
+  <pre class="brush:java">
+  30: public String exceptions() {
+  31: String result = "";
+  32: String v = null;
+  33: try {
+  34: try {
+  35: result += "before";
+  36: v.length();
+  37: result += "after";
+  38: } catch (NullPointerException e) {
+  39: result += "catch";
+  40: throw new RuntimeException();
+  41: } finally {
+  42: result += "finally";
+  43: throw new Exception();
+  44: }
+  45: } catch (Exception e) {
+  46: result += "done";
+  47: }
+  48: return result;
+  49: }
+  </pre>
+  <p>A resposta correta é <b>before catch finally done</b>. Tudo está normal até a linha 35, quando <b>"before"</b> é adcionado. Linha 36 lança um <b>NullPointerException</b>. Linha 37 é ignorado como Java vai direto ao bloco <b>catch</b>. Linha 38 captura a exceção, e <b>"catch"</b> é adcionado na linha 39. Então linha 40 lança um <b>RuntimeException</b>. O bloco <b>finally</b> executa depois do <b>catch</b> independentemente se um exceção é lançada; ele adciona <b>"finally"</b> ao resultado. Neste ponto, temos completado a declaração <b>try</b> interna que executam nas linhas 34-44. O bloco <b>catch</b> exterior então ver que uma exceção foi lançada e captura ele na linha 45; ele adciona <b>"done"</b> ao resultado.</p>
+  </section>
+  <section id="tiposexcecao">
+  <h1>Reconhecendo Tipos Comuns de Exceção</h1>
+
+  <p>Vamos abordar três tipos de exceções: runtime, checked e errors.</p>
+  </section>
+  <section id="idexruntime">
+  <h2>Exceções Runtime </h2>
+
+  <p><b>Exceção Runtime</b> estende <b>RuntimeExceptions</b>. Eles não precisa, ser declarados ou manipulados. Eles podem ser lançados pelo programador ou pelo JVM . Exceções runtime comum inclui os seguintes:</p>
+
+  <p><b>ArithmeticException</b> Lançado por JVM quando o código tenta dividir por zero.</p>
+
+  <p><b>ArrayIndexOutOfBoundsException</b> Lançado pelo JVM quando o código usa um index ilegal para acessar o array.</p>
+
+  <p><b>ClassCastException</b> Lançado pela JVM quando um tentativa é feita para converter uma exceção para uma subclasse da qual ele não é uma instância.</p>
+
+  <p><b>IllegalArgumetException</b> Lançado pelo programador para indicar que um método tem sido passado um argumento inapropriado ou ilegal.</p>
+
+  <p><b>NullPointerException</b> Lançado pela JVM quando existe uma referência nula onde um objeto é necessário.</p>
+
+  <p><b>NumberFormatException</b> Lançado pelo prograador quando uma tentativa é feita para converter um <b>String</b> para um tipo númerico mas a <b>String</b> não tem o formato apropriado.</p>
+  </section>
+  <section id="idaritmeticexc">
+  <h3>ArithmeticException</h3>
+  <p>Ao tentar dividir um <b>int</b> por zero dá um resultado indefinido. Quando isto ocorrer, o JVM irá lançar um <b>ArithmeticException:</b></p>
+  <pre class="brush:java">int answer = 11/0;</pre>
+
+  <p>Executando este código o resultado da saída será a seguinte:</p>
+
+  <pre>Exception in thread "main" java.lang.ArithmeticException: / by zero</pre>
+
+  </section>
+  <section id="idarrayboundexc">
+  <h3>ArrayIndexOutOfBoundsException</h3>
+
+  <p>Os índices de array começam com 0 e vão até 1 menos o tamanho do array - assim este código irá lançar um <b>ArrayIndexOutOfBoundsException:</b></p>
+    <pre class="brush:java">
+  int [countsOfMoose]= new int[3];
+  System.out.println(countsOfMoose[-1]);
+  </pre>
+  <p>Este é um problema porque não existe índice negativo de array. Executando este código gera a seguinte saída:</p>
+
+  <pre>Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: -1</pre>
+
+
+  <p>Pelo menos Java nos diz qual índice estava inválido. Você pode ver o que está errado com este?</p>
+  <pre class="brush:java">
+  int total = 0;
+  int[] countsOfMoose = new int[3];
+  for (int i = 0; i <= countsOfMoose.length; i++) 
+  total += countsOfMoose[i];
+  </pre>
+  <p>O problema é que o loop for deve ter < em vez de <= no final da interação do loop, Java tenta chamar <b>countsOfMoose[3]</b>, que é inválido. O array inclui somente três elementos, fazendo de <b>2</b> o maior index possível. A saída será assim:</p>
+  <br>
+  <pre>Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 3</pre>
+  <br>
+  </section>
+  <section id="idclassexcp">
+  <h3>ClassCastException</h3>
+
+  <p>Java tenta proteger você de <b>casts</b> impossíveis. Este código não compila porque <b>Integer</b> não é uma subclasse de <b>String</b>:</p>
+  <pre class="brush:java">
+  String type = "moose";
+  Integer number = (Integer) type; // NÃO COMPILA
+  </pre>
+  <p>Código mais complicado frustra as tentativas do Java de proteger você. Quando o <b>cast</b> falha em tempo de execução. Java irá lançar um <b>ClassCastException:</b></p>
+  <pre class="brush:java">
+  String type = "moose";
+  Object obj = type;
+  Integer number = (Integer) obj; 
+  </pre>
+   <p>O compilador ver um <b>cast</b> de <b>Object</b> para <b>Integer</b>. O compilador não percebe que há um <b>String</b> nesse objeto. Quando o código executa, ele gera a seguinte saída:</p>
+  <pre>
+  Exception in thread "main" java.lang.ClassCastException: java.lang.String
+  cannot be cast to java.lang.Integer
+  </pre>
+  </section>
+  <section id="idilleglex">
+  <h3>IllegalArgumentException</h3>
+  <p><b>IllegalArgumentException</b> é uma maneira para seu programa proteger a si mesmo.</p> 
+  <pre class="brush:java">
+  6: public void setNumberEggs(int numberEggs) {// setter
+  7: if (numberEggs >= 0) // guard condition
+  8: this.numberEggs = numberEggs;
+  9: 
+  }
+  </pre>
+
+  <p>Este código funciona, mas não queremos ignorar a requisição do chamador quando <b>numberEggs</b> for menor que zero. Queremos dizer ao chamador que algo está errado. Exceções são eficientes para fazer isso. Veja o exemplo abaixo:</p> 
+
+  <pre class="brush:java">
+  public static void setNumberEggs(int numberEggs) {
+  if (numberEggs < 0) 
+  throw new IllegalArgumentException(
+  "# eggs must not be negative");
+  this.numberEggs = numberEggs;
+  }
+  </pre>
+
+  <p>O programa lança uma exceção quando o valor do parâmetro não corresponde. A saída será a seguinte:</p>
+
+   <pre>Exception in thread "main" java.lang.IllegalArgumentException: # eggs must not be negative</pre>
+   <br>
+   <p>Claramente este é um problema que deve ser corrigido se o programador quer que o programa faça algo de útil.</p>
+  </section>
+  <section id="idnullpointexc">
+  <h3>NullPointerException</h3>
+  <p>Métodos e Variáveis de Instância deve ser chamado em uma referência não nula. Se a referência é nula, O JVM irá lançar um <b>NullPointerException:</b></p>
+
+  <pre class="brush:java">
+  String name;
+  public void printLength() throws NullPointerException {
+  System.out.println(name.length());
+  }
+  </pre>
+  <p>Executando este  código o resultado da saída será assim:</p>
+
+  <p><b>Exception in thread "main" java.lang.NullPointerException</b></p>
+  </section>
+  <section id="idnumbexcep">
+  <h3>NumBerFormatException</h3>
+
+  <p>Java fornece métodos para converter <b>strings</b> para números. Quando são passados os valores de maneira inválida, ele lança um <b>NumBerFormatException</b> . A idéia é similar ao <b>IllegalArgumentException</b>. Desde que este seja um problema comum, Java dá em uma classe separada. De fato, <b>NumBerFormatException</b> é uma  subclasse de <b>IllegalArgumentException</b>. Aqui está um exemplo de tentar converter alguma coisa não numérica dentro de um <b>int:</b>
+  <br>
+  <pre class="brush:java">Integer.parseInt("abc");</PRE>
+  <br>
+  <p>A saída será assim:</p>
+
+  <pre> Exception in thread "main" java.lang.NumberFormatException: For input string: </pre><br>
+  </section>
+  <section id="exccheck">
+  <h2>Exceções Checked</h2> 
+
+  <p><b>Exceções Checked</b> tem <b>Exceptions</b> na sua hierarquia mas não <b>RuntimeException</b>. Ele deve ser declarado ou manipulado. Ele pode ser lançado pelo programador ou pela JVM.</p>
+
+  <p>Exceções comuns de tempo de execução incluem os seguintes:</p>
+
+  <p><b>FileNOtFoundException</b> Lancado programaticamente quando código tenta referenciar o arquivo que não existe.</p>
+  <p><b>IOException</b> Lançado programaticamente quando existe um problema lendo ou escrevendo um arquivo.</p>
+  </section>
+  <section id="iderrors">
+  <h2>Errors</h2>
+  <p><b>Errors</b> estende a classe <b>Error</b>. Eles são lançado pela JVM e não deve ser manipulado ou declarado. Erros são raros, mas você pode ver estes:</p>
+
+  <p><b>ExceptionInitializerError</b> Lançado pelo JVM quando um inicializador lança uma exceção e não manipula ele.</p>
+
+  <p><b>StackOverFlowError</b> Lançado pelo JVM quando o método chama a si mesmo também muitas vezes(isso é chamado de recursão infinita porque o método chama a si mesmo sem fim)</p>
+
+  <p><b>NoClassDefFoundError</b> Lançado pelo JVM quando a classe que o código usa é acessível no tempo de compilação mas não no tempo de execução.</p>
+  </section>
+  <section id="idexcepiniterror">
+  <h3>ExceptionInInitializerError</h3>
+
+  <p>Java executa inicializadores estáticos na primeira vez em que uma classe é usada. Se um dos inicalizadores estático lança uma exceção, Java não pode iniciar usando a classe. Ele declara derrota ao lançar um <b>ExceptionInInitializerError</b>. Este código mostra um <b>ArrayIndexOutOfBounds</b> no inicalizador estático:</p>
+  <pre class="brush:java">
+  static {
+  int[] countsOfMoose = new int[3];
+  int num = countsOfMoose[-1];
+  }
+  public static void main(String[] args) { }
+  </pre>
+
+  <p>Este código gera informação sobre duas exceções:</p>
+  <pre>
+  Exception in thread "main" java.lang.ExceptionInInitializerError
+  Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+  </pre>
+
+  <p>Pegamos o <b>ExceptionInInitializerError</b> porque o erro acontece no inicializador estático. Esta informação sozinha não seria particularmente útil em corrigir o problema. Contudo, Java também nos diz a causa original do problema: o <b>ArrayIndexOutOfBoundsException</b> que precisamos corrigir. </p>
+   
+  <p>O <b>ExceptionInInitializerError</b> é um erro porque Java falhou ao carregar a classe inteira. Esta falha impede java de continuar.</p>
+  </section>
+  <section id="idstackover">
+  <h3>StackOverFlowError</h3>
+  <p>Quando java chama os métodos, ele coloca parâmetros e variáveis na pilha. Depois fazendo isso um número mais largo de vezes, a pilha executa fora do espaço e transborda. Isto é chamado um <b>StackOverFlowError</b>. Na maioria das vezes, esse erro ocorre quando o método chama si mesmo.</p>
+  <pre class="brush:java">
+  public static void doNotCodeThis(int num) {
+  doNotCodeThis(1);
+  }
+  </pre>
+
+  <p
+  >A saída contém esta linha :</p><br>
+  <pre>Exception in thread "main" java.lang.StackOverflowError</re>
+  <br>
+  <p>Desde que o método chama si mesmo nunca terá fim. Eventualmente, Java executa fora do espaço na pilha e lança um erro. Isso é chamado de recursão infinita. Ele é melhor do que um loop infinito porque pelo menos Java irá pegar ele e lançar o erro. Com um loop infinito, Java somente usa todo seu CPU até você conseguir eliminar ele.</p>
+
+  </section>
+  <section id="idnoclassdef">
+  <h3>NoClassDefFoundError</h3>
+  <p>Ocorre quando Java não pode encontrar a classe em tempo de execução.</p>
+  </section>
+  <section id="chamarexcecao">
+  <h1>Chamando Métodos Que Lançam Exceções</h1>
+
+  <p>Quando você está chamando um método que lança uma exceção, a regra são as mesmas como dentro de um método. Você ver por que o seguinte código não compila?</p>
+
+  <pre class="brush:java">
+  class NoMoreCarrotsException extends Exception {}
+  public class Bunny {
+  public static void main(String[] args) {
+  eatCarrot();// NÃO COMPILA
+  }
+  private static void eatCarrot() throws NoMoreCarrotsException {
+  }
+  }
+  </pre>
+  <p>O problema é que <b>NoMoreCarrotsException</b> é um exceção <b>checked</b>. Exceção Checked deve ser manipulada ou declarada. O código compilará se mudarmos o método main() para qualquer um destes:</p>
+  <pre class="brush:java">
+  public static void main(String[] args) 
+  throws NoMoreCarrotsException {// DECLARA exception
+  eatCarrot();
+  }
+  public static void main(String[] args) {
+  try {
+  eatCarrot();
+  } catch (NoMoreCarrotsException e ) {// MANIPULA exception
+  System.out.print("sad rabbit");
+  }
+  }
+  </pre>
+  <p>Você pode ter notado que <b>eatCarrot()</b> na verdade não lança uma exceção; ele somente declarou que poderia. Isto é suficiente para o compilador exigir o chamador para manipular ou declarar a exceção.</p>
+
+  <p>Vamos ver este problema aqui?</p>
+  <pre class="brush:java">
+  public void bad() {
+  try {
+  eatCarrot();
+  } catch (NoMoreCarrotsException e ) {//NÃO COMPILA
+  System.out.print("sad rabbit");
+  }
+  }
+  public void good() throws NoMoreCarrotsException {
+  eatCarrot();
+  }
+  private static void eatCarrot() { }
+  </pre>
+  <p>Java sabe que <b>eatCarrot()</b> não pode lançar uma <b>exceção checked</b> - que significa não existir maneira para o bloco <b>catch</b> em <b>bad()</b> ser alcançado. Em comparação, <b>good()</b> é livre para declarar outra exceção.</p>
+  </section>
+  <section id="idsubclasses">
+  <h2>Subclasses</h2>
+  <p>vamos ver como sobrescrever métodos com exceções na declaração do método. Quando uma classe sobrescreve um método de uma superclasse ou implementa um método de uma interface, não é permitido adcionar nova <b>exceção checked</b> para assinatura do método. Por exemplo este código não é permitido:</p>
+  <pre class="brush:java">
+  class CanNotHopException extends Exception { }
+  class Hopper {
+  public void hop() { }
+  }
+  class Bunny extends Hopper {
+  public void hop() throws CanNotHopException { } // NÃO COMPILA
+  }
+  </pre>
+
+  <p>Java sabe que <b>hop()</b> não é permitido lancar qualquer <b>exceção checked</b> porque a <b>superclasse Hopper</b> não declarou nada. Imagine o que aconteceria se a subclasse pudesse adcionar <b>exceção checked</b> - voce poderia escrever código que chama Hopper's  método hop() e não manipular qualquer exceção. Então se <b>Bunny</b> fosse usado no lugar, o código não saberia manipular ou declarar <b>CanNotHopException</b>.</p> 
+  <p>Uma subclasse é permitido declarar menos exceções do que a superclasse ou interface. Este é legal porque chamadores já estão manipulando eles.</p>
+  <pre class="brush:java">
+  class Hopper {
+  public void hop() throws CanNotHopException { }
+  }
+  class Bunny extends Hopper {
+  public void hop() { }
+  }
+  </pre>
+  <p>Uma subclasse que não declara uma exceção é semelhante a um método que declara lançar uma exceção que nunca é lançada. Isto é perfeitamente legal.
+  Similarmente, uma classe é permitido declarar uma subclasse de um tipo de exceção. A ideia é a mesma. A superclasse ou interface já cuidou de um tipo mais amplo. </p>
+  <p>Aqui um exemplo:</p>
+  <pre class="brush:java">
+  class Hopper {
+  public void hop() throws Exception { }
+  }
+  class Bunny extends Hopper {
+  public void hop() throws CanNotHopException { }
+  }
+  </pre>
+  <p><b>Bunny</b> poderia declarar que lança Exceção diretamente, ou poderia declarar que lança um mais específico tipo de Exceção. Ele pode até declarar que não lança nada.</p>
+  <p>Esta regra aplica somente para <b>exceções checked</b>. A seguir o código é legal porque ele tem uma <b>exceção runtime</b> na versão da subclasse:</p>
+  <pre class="brush:java">
+  class Hopper {
+  public void hop() { }
+  }
+  class Bunny extends Hopper {
+  public void hop() throws IllegalStateException { }
+  }
+  </pre>
+  <p>A razão pela qual não há problema em declarar novas exceções de tempo de execução em um método de subclasse é que a declaração é redundante. Os métodos são livres para lançar quaisquer exceções de tempo de execução que desejarem sem mencioná-los na declaração do método.</p>
+  </section>
+  <section id="idprintexc">
+  <h2>Imprimindo uma Exceção</h2>
+  <p>Existem três maneiras para imprimir uma exceção. Você pode deixar o Java imprimi-lo, imprimir apenas a mensagem ou imprimir de onde vem o rastreamento da pilha.</p> 
+  <p>Este exmplo mostra as três abordagens:</p>
+  <pre class="brush:java">
+  5: public static void main(String[] args) {
+  6: try {
+  7:  hop();
+  8: } catch (Exception e) {
+  9: System.out.println(e);
+  10: System.out.println(e.getMessage());
+  11: e.printStackTrace();
+  12: }
+  13: }
+  14: private static void hop() {
+  15: throw new RuntimeException("cannot hop");
+  16: 
+  }
+  </pre>
+
+  <p>Este código  resulta na seguinte saída:</p>
+  <pre>
+  java.lang.RuntimeException: cannot hop
+  cannot hop
+  java.lang.RuntimeException: cannot hop
+  at trycatch.Handling.hop(Handling.java:15)
+  at trycatch.Handling.main(Handling.java:7)
+  </pre>
+  <p>A primeria linha mostra que Java imprime saída por default(padrão) o tipo de exceção e mensagem. A segunda linha mostra somente a mensagem. 
+  O resto mostra o rastreamento da pilha.
+  O rastreamento de pilha(stake trace) geralmente é o mais útil porque mostra onde a exceção ocorreu em cada método pelo qual passou.</p>
+  </section>
+  <section id="resumo">
+  <h1>Resumão</h1>
+
+  <p>Uma exceção indica que alguam coisa inesperada aconteceu. Um método pode manipular uma exceção por pegá-lo ou declará-lo para o chamador lidar. Muitas exceções são lançada pela biblioteca Java. Você pode lançar sua própria exceção com o código tal como <b>throw new Exception().</b>
+  Subclasses de <b>java.langError</b> são exceções que um programador não deve tentar manipular. Subclases de <b>java.lang.RuntimeException</b> são <b>exceções runtime(uncheked)</b>. Subclasses de <b>java.lang.Exception</b> são <b>exceções checked</b>. Java necessita de <b>exceções checked</b> para ser manipulada ou declarada.
+  Se uma <b>declaração try</b> tem múltiplos <b>blocos catch</b>, na maioria um <b>bloco catch</b> pode executar. Java procura por uma exceção que pode ser pega por cada <b>bloco catch</b> na ordem que ele aparecer e o primeiro correspondente é executado. Então a execução continua depois da <b>declaração try</b>. Se ambos <b>catch</b> e <b>finally</b> lançar uma exceção, única de <b>finally</b> será lançada.</p><br>
+
+  <p>Exceções comum de tempo de execução(runtime) inclui:</p>
+  <ul>
+  <li> ArithmeticException</li>
+  <li>ArrayIndexOutOfBoundsException</li>
+  <li>ClassCastException</li>
+  <li>IllegalArgumentException</li>
+  <li>NullPointerException</li>
+  <li>NumberFormatException</li>
+  </ul><br>
+  <p><b>IllegalArgumentException</b> e <b>NumberFormatException</b> são tipicamente lançado pelo programador, enquanto que os outros são tipicamente lançado por JVM.</p><br>
+  <p>Exceções checked inclue:</p>
+  <ul>
+  <li> IOException</li>
+  <li> FileNotFoundException</li>
+  </ul>
+
+
+  <p>Erros comuns inclue:</p>
+  <ul>
+  <li> ExceptionInInitializerError</li>
+  <li> StackOverflowError</li>
+  <li>NoClassDefFoundError</li>
+  </ul>
+
+  <p>Quando um método sobrescreve um método na superclasse ou interface, não é permitido adcionar <b>exceções checked</b>. Ele é permitido declarar menos exceções ou declarar uma subclasse de uma exceção declarada. Métodos declara exceções com a palavra chave <b>throws.</b></p><br>
+  </section>
+
+  <p class="nav-arq" id="referencia">Design de Classe<a href="designdeclasse.html">&laquo; anterior | <a href="designavancado.html">próximo &raquo;</a>Projeto de Classe I </p>
+    <div class="rodape"><p style ="tex-align:center"><a href="https://github.com/alanpontoinfo/javanis/tree/master/javacodigos/excecao" target="_blank" >ACESSE OS CÓDIGOS NO REPOSITÓRIO GITHUB</p><img src="imagens/github.png"/></a></div>
+    </div>
+    </div>
+
+   
+  </body>
+  </html>
 
 
 
