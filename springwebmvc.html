@@ -197,7 +197,7 @@ org.springframework.web.context.ContextLoaderListener
 </listener>
 </pre>
 
-<p>Por padrão, <b>ContextLoaderListener</b> carrega o arquivo de contexto do aplicativo armazenado no seu diretório <b>WEB-INF</b>. Esse local pode ser substituído, definindo o parâmetro de contexto <b>ConfigLocation</b> de contexto em <b>web.xml</b>, conforme mostrado no ntrecho de código a seguir:</p>
+<p>Por padrão, <b>ContextLoaderListener</b> carrega o arquivo de contexto do aplicativo armazenado no seu diretório <b>WEB-INF</b>. Esse local pode ser substituído, definindo o parâmetro de contexto <b>ConfigLocation</b> de contexto em <b>web.xml</b>, conforme mostrado no trecho de código a seguir:</p>
 <pre class="brush:xml">
 <context-param>
 <param-name>contextConfigLocation</param-name>
@@ -243,7 +243,7 @@ org.springframework.web.context.WebApplicationContext.</li>
 <br>
 
 <p><i>DispatcherServlet cria seu próprio WebApplicationContext, que contém os componentes específicos da Web, como Controllers e ViewResolver. Esse WebApplicationContext é aninhado dentro
-o WebApplicationContext root, carregado antes da inicialização do DispatcherServlet, para garantir que os componentes da Web no WebApplicationContext do DispatcherServlet possam encontrar suas dependências</i>.</p>
+do WebApplicationContext root, carregado antes da inicialização do DispatcherServlet, para garantir que os componentes da Web no WebApplicationContext do DispatcherServlet possam encontrar suas dependências</i>.</p>
 <br>
 
 <p><b>DispatcherServlet</b>, como qualquer outro <b>servlet</b>, é declarado no arquivo <b>web.xml</b> do seu aplicativo da web. Você precisa mapear as solicitações que deseja que o <b>DispatcherServlet</b> manipule, usando um mapeamento de URL no mesmo arquivo web.xml. O código a seguir ilustra uma declaração e mapeamento DispatcherServlet.</p>
@@ -415,7 +415,7 @@ Integração, Spring Persistence (Hibernate + JPA), Spring MVC e assim por diant
 <li>Mapeando a URL para Spring’s 	 DispatcherServlet</li>
 </ul>
 <br>
-<p>Veremos o uso de cada um deles, mas antes disso, modificaremos o web.xml. No projeto de modelo do Spring MVC, o arquivo web.xml gerado suporta o Servlet 2.5. Neste capítulo, usaremos Servlet 3.0 (o tcServer que acompanha o STS é construído sobre o Apache Tomcat 8, que suporta o Servlet 3.0), portanto, também precisamos alterar o cabeçalho XML de 2.5 para 3.0. O código abaixo mostra a tag < web-app> revisada.
+<p>Veremos o uso de cada um deles, mas antes disso, modificaremos o web.xml. No projeto de modelo do Spring MVC, o arquivo web.xml gerado suporta o Servlet 2.5. Neste capítulo, usaremos Servlet 3.0 (o tcServer que acompanha o STS é construído sobre o Apache Tomcat 8, que suporta o Servlet 3.0), portanto, também precisamos alterar o cabeçalho XML de 2.5 para 3.0. O código abaixo mostra a tag &ltweb-app> revisada.
 </p>
 <pre class="brush:xml">
 &lt?xml version="1.0" encoding="UTF-8"?>
@@ -460,8 +460,7 @@ version="3.0">
 <ul>
 <li>Linhas 2 a 6: na tag &ltweb-app>, o atributo version e a URL correspondente são alterados para a versão 3.0 para indicar ao contêiner da web que o aplicativo da web usará o Servlet 3.0.</li>
 <li>Linhas 10 a 13: na tag &ltcontext-param>, é fornecido o parâmetro ConfigLocation de contexto, que define o local do arquivo de configuração WebApplicationContext raiz do Spring.</li>
-<li>Linhas 16 a 18: um ouvinte da classe org.springframework.web.context.
-ContextLoaderListener está definido. É para o Spring carregar a raiz WebApplicationContext.</li>
+<li>Linhas 16 a 18: um ouvinte da classe org.springframework.web.context.ContextLoaderListener está definido. É para o Spring carregar a raiz WebApplicationContext.</li>
 <li>Linhas 21 a 29: Um servlet do expedidor (chamado appServlet) é definido. Usamos o gerado pelo projeto de modelo para a camada de apresentação do aplicativo. O WebApplicationContext para o servlet do expedidor está localizado em /src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</li>
 </ul>
 
@@ -1146,7 +1145,7 @@ return "redirect:/list_book.html";
 <ul>
 <li>Linha 31: A classe BookValidator é injetada usando o método setter.</li>
 <li>Linha 63: No saveBook(), validate() do BookValidator é chamado para verificar se os detalhes do livro foram inseridos pelo usuário. validate() recebe o valor do modelo Book e do objeto BindingResult para conter erros, se houver.<li>
-<li>Linha 67 e 71: É feita uma verificação simples paraque não deixe o campo em branco. Se houver erros, o aplicativo exibirá a mesma página com as mensagens de erro.
+<li>Linha 67 e 71: É feita uma verificação simples para que não deixe o campo em branco. Se houver erros, o aplicativo exibirá a mesma página com as mensagens de erro.
 Se não houver erros, ou seja, o usuário inseriu todos os dados corretos, o aplicativo exibirá a lista dos detalhes do livro juntamente com os detalhes do livro recém-inseridos.
 </li>
 </ul>
